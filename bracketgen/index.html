@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tournament Bracket Generator — Single Elimination | BracketGen</title>
+<meta name="description" content="A seeded single-elimination bracket for any number of teams — instantly.">
+<link rel="canonical" href="https://fun.fixoraa.tech/bracketgen/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Tournament Bracket Generator — Single Elimination | BracketGen">
+<meta property="og:description" content="A seeded single-elimination bracket for any number of teams — instantly.">
+<meta property="og:url" content="https://fun.fixoraa.tech/bracketgen/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BracketGen",
+      "url": "https://fun.fixoraa.tech/bracketgen/",
+      "applicationCategory": "Sports Tools",
+      "operatingSystem": "Web",
+      "description": "A seeded single-elimination bracket for any number of teams — instantly.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I seed a tournament bracket fairly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rank teams 1 to N by strength, then use the standard folding arrangement (1 vs lowest, 2 vs second-lowest, top two seeds in opposite halves). Seed by past results, qualifiers, or captain vote — and publish the method before the draw to avoid disputes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if my team count is not a power of 2?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The bracket rounds up to the next power of 2 (4, 8, 16, 32) and the missing slots become byes, awarded to the top seeds. With 6 teams in an 8-slot bracket, seeds 1 and 2 skip round one. The generator handles this automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is single elimination vs double elimination?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Single elimination: one loss and you are out — fast and dramatic. Double elimination: a loss drops you to a losers' bracket and only a second loss eliminates you — fairer but needs nearly twice as many games. This tool builds single-elimination brackets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I track winners in the bracket?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — tap the winning team in any matchup and it advances to the next round automatically. Byes advance on their own. When the final is decided, the champion gets the trophy screen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many games does a single-elimination tournament need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Always teams minus one: every game eliminates exactly one team, so 16 teams need 15 games and 8 teams need 7. Rounds equal log2 of the bracket size (4 rounds for 16 teams)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a random draw or seeded draw better?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Seeded is fairer for competitive events — it keeps the best teams apart until late rounds. Random is fine (and arguably more fun) for social events where skill is unknown; the shuffle button randomizes seeds. Announce which you are using either way."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F2F2FA; --surface:#FFFFFF; --tint:#DDDDF4; --line:#DDDDF4;
+  --accent:#2727A5; --accent-ink:#FFFFFF;
+  --ink:#1F1F33; --muted:#545478;
+  --footbg:#1e1e33; --footink:#f4eef4; --footmuted:#cdbfcd;
+  --display:'Teko', sans-serif; --body:system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-wrap{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em;font-family:var(--display)}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;font-weight:700;font-size:13px}
+.article-sec{margin:40px auto;max-width:780px;padding:0 20px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800;font-family:var(--display)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px auto;max-width:780px;padding:0 20px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;font-family:var(--display)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px;color:var(--ink)}
+.fx-footer{background:var(--footbg);color:var(--footink);margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff;font-family:var(--display)}
+.fx-footer p{font-size:15px;color:var(--footmuted);max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px}
+.fx-credit a{color:var(--accent_ink);font-weight:700}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+
+.hero{padding:44px 20px 8px;max-width:1200px;margin:0 auto;text-align:center}
+.eyebrow{display:inline-block;font-family:var(--display);font-size:20px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.hero h1{font-family:var(--display);font-size:clamp(44px,6.4vw,72px);font-weight:600;letter-spacing:.02em;line-height:1;margin-bottom:10px;text-transform:uppercase}
+.hero p{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto}
+.tool{max-width:1200px;margin:28px auto 8px;padding:0 20px}
+.setup{background:#fff;border:1px solid #d3d3ec;border-radius:16px;box-shadow:0 12px 32px rgba(39,39,165,.10);padding:26px 28px;margin-bottom:24px}
+.setup h2{font-family:var(--display);font-size:30px;font-weight:600;letter-spacing:.03em;margin-bottom:6px;text-transform:uppercase}
+.setup p{color:var(--muted);font-size:15px;margin-bottom:14px}
+.team-rows{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+.team-row{display:flex;gap:8px;align-items:center}
+.seedtag{font-family:var(--display);font-size:20px;background:var(--tint);color:var(--accent);border-radius:8px;min-width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-weight:600}
+.team-row input{font-family:var(--body);font-size:16px;padding:10px 14px;border:2px solid #d3d3ec;border-radius:10px;width:100%;color:var(--ink)}
+.team-row input:focus{outline:none;border-color:var(--accent)}
+.setup-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.btn{font-family:var(--display);font-size:22px;letter-spacing:.06em;text-transform:uppercase;padding:10px 30px;border-radius:10px;cursor:pointer;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.ghost{background:#fff;color:var(--accent)}
+.count-note{font-size:14px;color:var(--muted);margin-top:10px}
+.bracket-wrap{overflow-x:auto;padding-bottom:10px}
+.bracket{display:flex;gap:34px;min-width:max-content;padding:10px 4px 20px}
+.round{min-width:230px}
+.round h3{font-family:var(--display);font-size:24px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;text-align:center}
+.match{background:#fff;border:2px solid #d3d3ec;border-radius:12px;margin-bottom:14px;overflow:hidden;position:relative}
+.match .mteam{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;font-size:15px}
+.match .mteam:hover{background:var(--tint)}
+.match .mteam .sd{font-family:var(--display);font-size:19px;color:var(--muted);min-width:26px}
+.match .mteam.winner{background:var(--accent);color:#fff;font-weight:700}
+.match .mteam.winner .sd{color:#fff}
+.match .mteam.bye-team{background:var(--tint);font-style:italic;color:var(--muted);cursor:default}
+.match .vs{font-size:11px;text-align:center;color:var(--muted);letter-spacing:.2em;border-top:1px dashed #d3d3ec;border-bottom:1px dashed #d3d3ec;padding:2px}
+.match .mlabel{font-size:11px;color:var(--muted);padding:6px 12px 0;letter-spacing:.1em;text-transform:uppercase}
+.champ{text-align:center;margin:26px 0 8px;display:none}
+.champ.show{display:block}
+.champ .trophy{font-size:72px}
+.champ h2{font-family:var(--display);font-size:44px;color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
+.bracket-note{text-align:center;color:var(--muted);font-size:14px;margin-bottom:6px}
+.shuffle-note{font-size:13px;color:var(--muted)}
+.fx-tile{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#5a5ae0);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:#fff;font-family:system-ui}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{background:#fff;color:var(--accent);border:2px dashed var(--accent)}
+@media(max-width:640px){.team-rows{grid-template-columns:1fr}.round{min-width:200px}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-wrap">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/bracketgen/" aria-label="BracketGen home">
+      <span class="fx-tile" aria-hidden="true">🏆</span>
+      <span class="fx-name">BracketGen</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-wrap">
+  <section class="hero">
+    <span class="eyebrow">Official draw · single elimination</span>
+    <h1>Build your tournament bracket</h1>
+    <p>Enter your teams, get a fairly seeded single-elimination bracket with byes handled — then track winners to the trophy.</p>
+  </section>
+  <section class="tool" aria-label="BracketGen tool">
+<div class="setup">
+      <h2>1 · Enter the teams</h2>
+      <p>List teams in seed order (strongest first) — or hit shuffle for a random draw. Any number from 3 to 32.</p>
+      <div class="team-rows" id="bg-rows"></div>
+      <div class="setup-btns">
+        <button type="button" class="btn ghost" id="bg-add">+ Team</button>
+        <button type="button" class="btn ghost" id="bg-remove">− Team</button>
+        <button type="button" class="btn ghost" id="bg-shuffle">Shuffle seeds</button>
+        <button type="button" class="btn primary" id="bg-go">Generate bracket</button>
+      </div>
+      <div class="count-note" id="bg-count"></div>
+    </div>
+    <h2 style="font-family:var(--display);font-size:32px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">2 · Play it out</h2>
+    <p class="bracket-note">Tap a team to advance it. Byes advance automatically.</p>
+    <div class="bracket-wrap"><div class="bracket" id="bg-bracket"></div></div>
+    <div class="champ" id="bg-champ"><div class="trophy" aria-hidden="true">🏆</div><h2 id="bg-champ-name"></h2><p style="color:var(--muted)">Tournament champion</p></div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>How Tournament Seeding Actually Works</h2>
+<p>A bracket is not a random draw — or at least, a <em>good</em> one isn't. <strong>Seeding</strong> ranks teams 1 through N by strength and arranges the bracket so the strongest teams meet as late as possible. The classic arrangement pairs 1 vs. 16, 8 vs. 9, 5 vs. 12, 4 vs. 13, 6 vs. 11, 3 vs. 14, 7 vs. 10, and 2 vs. 15 in a 16-team field. Notice the pattern: the top seed gets the weakest opponent, and the top <em>two</em> seeds are placed in opposite halves so they can only meet in the final. The generator above uses exactly this "folding" method for any bracket size — the same math behind the NCAA basketball tournament's regions.</p>
+<p>Why does it matter for your office ping-pong league or youth soccer cup? Because nothing kills a tournament faster than the two best teams meeting in round one while two mediocre teams cakewalk to the final. Seeding protects the competitive integrity of the event: every round should feel earned, and the final should feel like a final.</p>
+<h2>Byes: When the Numbers Don't Cooperate</h2>
+<p>Brackets need powers of two: 4, 8, 16, 32. Real life gives you 6 teams, or 11, or 23. The fix is the <strong>bye</strong> — a free pass through the first round. Fairness demands byes go to the <em>top seeds</em>: with 6 teams in an 8-slot bracket, seeds 1 and 2 sit out round one while seeds 3–6 play. The tool computes the next power of two automatically, assigns byes to the highest seeds, and advances them without a click.</p>
+<p>There is strategy in byes beyond fairness. A bye means rest — but also rust; teams that play round one arrive battle-tested. Coaches debate this endlessly in every sport with playoff byes, from the NFL to tennis. For your local tournament, the practical rule is simple: announce the bye policy <em>before</em> registration closes, because nothing breeds suspicion like byes assigned after the fact.</p>
+<h2>Single Elimination: Brutal, Fast, Beloved</h2>
+<p><strong>Single elimination</strong> — lose once, go home — is the format this tool builds, and its appeal is obvious: it is fast (a 16-team tournament needs just 4 rounds and 15 games), dramatic (every game is win-or-go-home), and easy for spectators to follow. The NCAA's March Madness built a cultural phenomenon on exactly this knife's-edge structure.</p>
+<p>The cost is accuracy: the second-best team has a real chance of drawing the best team early and finishing "tied for ninth," which is why single elimination is a poor way to <em>rank</em> teams but a great way to <em>crown</em> a champion. Alternatives exist for different goals: <strong>double elimination</strong> (a loss sends you to a losers' bracket; two losses eliminate you) is fairer but needs nearly twice the games; <strong>round robin</strong> (everyone plays everyone) is fairest and slowest; <strong>Swiss system</strong> (used in chess and esports) pairs teams with similar records each round and handles any player count elegantly. For a weekend event with a trophy at stake, though, single elimination remains king.</p>
+<h2>Seeding Methods for Real Organizers</h2>
+<p>How do you seed fairly when you don't know the teams? A few battle-tested approaches. <strong>Past results:</strong> last season's standings or last year's finish — simple, defensible. <strong>Qualifiers or time trials:</strong> a short preliminary round sets the order objectively. <strong>Captain consensus:</strong> let team captains vote on a ranking (with their own team excluded from their ballot). <strong>Random draw:</strong> honest when skill is unknown — the shuffle button above does this — but announce it as random so nobody suspects favoritism.</p>
+<p>Whatever method you choose, publish it. The number-one source of tournament drama is not the games but the <em>perception</em> of a rigged draw. Post the seed list and the method before the bracket goes up, and let the tool's standard arrangement do the rest.</p>
+<h2>Running the Bracket on Game Day</h2>
+<p>Generate the bracket, then tap the winner of each matchup to advance them — the next round fills in automatically, and the champion gets the trophy screen. A few organizer pro tips: <strong>schedule backwards</strong> from the final (championship at a fixed time, earlier rounds floating); <strong>keep one court/field as the "feature" match</strong> for semifinals onward so spectators gather; <strong>photograph the bracket</strong> at each stage for disputes; and build in 15-minute buffers, because games never end on time.</p>
+<p>For scoring disputes, decide <em>beforehand</em> who calls winners — a neutral volunteer with the bracket open on their phone beats two captains arguing. And have a third-place game policy ready: some tournaments play one, some don't; players always ask.</p>
+<h2>The Math of Fair Draws</h2>
+<p>The folding algorithm deserves a closer look, because it is elegant. Start with [1]. To double the bracket, interleave each seed s with (size+1−s): [1] becomes [1,2], then [1,4,2,3], then [1,8,4,5,2,7,3,6]. Read off in pairs and you get exactly the classic matchups. The property it guarantees: the sum of each first-round pairing's seeds is constant (size+1), and the top seeds are maximally separated. It is the same structure whether you have 4 teams or 32 — the tool just runs the loop until the bracket fits.</p>
+<p>This is also why 5-team and 6-team brackets feel slightly awkward: the byes cluster at the top by design, so seeds 1–2 (or 1) wait while everyone else plays. Some organizers prefer to give byes <em>randomly</em> among all teams to keep things spicy — defensible for a social event, heresy for a competitive one. Know your crowd.</p>
+<h2>Bracket Formats Beyond Single Elimination</h2>
+<p>Once you outgrow single elimination, the format zoo awaits. <strong>Double elimination</strong> needs a winners' and losers' bracket and a possible grand-final reset — great for esports and fighting games. <strong>Round robin groups into knockout</strong> (the World Cup model) gives every team multiple games before anyone goes home, at the cost of scheduling complexity. <strong>Swiss</strong> runs a fixed number of rounds with no eliminations, cutting to a final — perfect for large casual fields. And <strong>ladder/king-of-the-hill</strong> formats suit ongoing leagues rather than events.</p>
+<p>The single-elimination bracket remains the right default when time is short, stakes are clear, and drama is the point. Generate it, print it or share the screen, and let the games begin — the bracket has been settling arguments about who's best since medieval jousting tournaments, and it has not lost its touch.</p>
+<h2>Consolation Rounds and Third-Place Games</h2>
+<p>Single elimination has one emotional flaw: half your teams play exactly one game and go home. For social and youth tournaments, that stings — people cleared their Saturday for twenty minutes of play. The classic fix is a <strong>consolation bracket</strong>: first-round losers drop into a parallel single-elimination bracket playing for, say, 5th place (or just pride and extra games). It doubles the fixtures for early losers at the cost of one extra round of scheduling, and it keeps the venue buzzing instead of emptying after round one.</p>
+<p>The <strong>third-place game</strong> deserves a deliberate decision, not an afterthought. Semifinal losers are often emotionally deflated — asking them to play again immediately can feel like punishment — yet many players genuinely want one more game, and spectators enjoy the curtain-raiser before the final. The Olympics play bronze-medal matches; the FIFA World Cup does too; the NCAA Final Four pointedly does not. Poll your teams during registration: if most want it, schedule it with a real prize (even a silly trophy beats nothing); if not, let the semifinal losers share third place and start the final an hour earlier. Either choice beats the awkward "so… do you guys want to play again?" in the parking lot.</p>
+<p>One more format worth knowing for big casual fields: run <strong>round-robin groups first</strong>, then seed a single-elimination knockout from group results. Every team is guaranteed several games, the group stage sorts out the true seed order (solving the "we didn't know the teams" problem), and the knockout keeps the drama. It needs more time and bookkeeping — but for the flagship annual tournament, it is the format players remember fondly, because nobody's day ended at 9am.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How do I seed a tournament bracket fairly?</summary><p>Rank teams 1 to N by strength, then use the standard folding arrangement (1 vs lowest, 2 vs second-lowest, top two seeds in opposite halves). Seed by past results, qualifiers, or captain vote — and publish the method before the draw to avoid disputes.</p></details>
+    <details><summary>What happens if my team count is not a power of 2?</summary><p>The bracket rounds up to the next power of 2 (4, 8, 16, 32) and the missing slots become byes, awarded to the top seeds. With 6 teams in an 8-slot bracket, seeds 1 and 2 skip round one. The generator handles this automatically.</p></details>
+    <details><summary>What is single elimination vs double elimination?</summary><p>Single elimination: one loss and you are out — fast and dramatic. Double elimination: a loss drops you to a losers' bracket and only a second loss eliminates you — fairer but needs nearly twice as many games. This tool builds single-elimination brackets.</p></details>
+    <details><summary>Can I track winners in the bracket?</summary><p>Yes — tap the winning team in any matchup and it advances to the next round automatically. Byes advance on their own. When the final is decided, the champion gets the trophy screen.</p></details>
+    <details><summary>How many games does a single-elimination tournament need?</summary><p>Always teams minus one: every game eliminates exactly one team, so 16 teams need 15 games and 8 teams need 7. Rounds equal log2 of the bracket size (4 rounds for 16 teams).</p></details>
+    <details><summary>Is a random draw or seeded draw better?</summary><p>Seeded is fairer for competitive events — it keeps the best teams apart until late rounds. Random is fine (and arguably more fun) for social events where skill is unknown; the shuffle button randomizes seeds. Announce which you are using either way.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-wrap">
+    <div class="fx-brand">BracketGen</div>
+    <p>BracketGen builds seeded single-elimination brackets for any team count, handles byes fairly, and tracks winners round by round.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function makeBracket(teams){
+  var names=(teams||[]).map(function(t){return String(t).trim();}).filter(function(t){return t.length>0;});
+  var n=names.length;
+  if(n<2) return {teams:n,size:0,rounds:0,byes:0,matches:[],error:"Add at least 2 teams."};
+  var size=1; while(size<n) size*=2;
+  var pos=[1];
+  while(pos.length<size){ var s=pos.length*2,next=[]; for(var i=0;i<pos.length;i++){ next.push(pos[i]); next.push(s+1-pos[i]); } pos=next; }
+  function mkMatch(seedA,seedB){
+    var ta=seedA<=n?{seed:seedA,name:names[seedA-1]}:null;
+    var tb=seedB<=n?{seed:seedB,name:names[seedB-1]}:null;
+    var bye=(ta&&!tb)||(tb&&!ta);
+    return {seedA:seedA,teamA:ta?ta.name:null,seedB:seedB,teamB:tb?tb.name:null,
+      bye:!!bye,winner:bye?(ta?ta.seed:tb.seed):null,winnerName:bye?(ta?ta.name:tb.name):null};
+  }
+  var rounds=[], first=[];
+  for(var i=0;i<size;i+=2) first.push(mkMatch(pos[i],pos[i+1]));
+  rounds.push(first);
+  var r=size/2;
+  while(r>1){ r/=2; var rd=[]; for(var j=0;j<r;j++) rd.push({seedA:null,teamA:null,seedB:null,teamB:null,bye:false,winner:null,winnerName:null}); rounds.push(rd); }
+  return {teams:n,size:size,rounds:rounds.length,byes:size-n,matches:rounds,error:null};
+}
+if(typeof document!=='undefined'){
+var bgTeams=["Eagles","Tigers","Sharks","Wolves","Falcons","Bears","Lions","Panthers"];
+var bgState=null;
+function bgRows(){
+  var box=document.getElementById('bg-rows');box.innerHTML='';
+  bgTeams.forEach(function(t,i){
+    var row=document.createElement('div');row.className='team-row';
+    row.innerHTML='<div class="seedtag">'+(i+1)+'</div>';
+    var inp=document.createElement('input');inp.value=t;inp.setAttribute('aria-label','Team '+(i+1)+' name');
+    inp.addEventListener('input',function(){bgTeams[i]=inp.value;});
+    row.appendChild(inp);box.appendChild(row);
+  });
+  var size=1;while(size<bgTeams.length)size*=2;
+  document.getElementById('bg-count').textContent=bgTeams.length+' teams · bracket of '+size+(size>bgTeams.length?' · '+(size-bgTeams.length)+' bye(s) for top seeds':' · no byes');
+}
+document.getElementById('bg-add').addEventListener('click',function(){if(bgTeams.length<32){bgTeams.push('Team '+(bgTeams.length+1));bgRows();}});
+document.getElementById('bg-remove').addEventListener('click',function(){if(bgTeams.length>3){bgTeams.pop();bgRows();}});
+document.getElementById('bg-shuffle').addEventListener('click',function(){
+  for(var i=bgTeams.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=bgTeams[i];bgTeams[i]=bgTeams[j];bgTeams[j]=t;}
+  bgRows();
+});
+var ROUND_NAMES=['Quarterfinals','Semifinals','Final'];
+function roundName(idx,total){ if(total===4)return ['Round of 16','Quarterfinals','Semifinals','Final'][idx]||('Round '+(idx+1)); if(total===3)return ROUND_NAMES[idx]; if(total===2)return ['Semifinals','Final'][idx]; if(total===5)return ['Round of 32','Round of 16','Quarterfinals','Semifinals','Final'][idx]; return 'Round '+(idx+1); }
+function bgDraw(){
+  var box=document.getElementById('bg-bracket');box.innerHTML='';
+  document.getElementById('bg-champ').classList.remove('show');
+  bgState.matches.forEach(function(rnd,ri){
+    var col=document.createElement('div');col.className='round';
+    col.innerHTML='<h3>'+roundName(ri,bgState.rounds)+'</h3>';
+    rnd.forEach(function(mt,mi){
+      var d=document.createElement('div');d.className='match';
+      d.innerHTML='<div class="mlabel">Match '+(mi+1)+'</div>';
+      [['A',mt.seedA,mt.teamA],['B',mt.seedB,mt.teamB]].forEach(function(side){
+        var t=document.createElement('div');t.className='mteam';
+        if(!side[2]){t.classList.add('bye-team');t.innerHTML='<span class="sd">'+side[1]+'</span><span>BYE</span>';}
+        else{
+          t.innerHTML='<span class="sd">'+side[1]+'</span><span>'+side[2].replace(/</g,'&lt;')+'</span>';
+          if(mt.winner&&(side[0]==='A'?mt.seedA:mt.seedB)===mt.winner)t.classList.add('winner');
+          t.addEventListener('click',function(){bgAdvance(ri,mi,side[0]==='A'?mt.seedA:mt.seedB,side[2]);});
+        }
+        d.appendChild(t);
+        if(side[0]==='A'){var vs=document.createElement('div');vs.className='vs';vs.textContent='VS';d.appendChild(vs);}
+      });
+      col.appendChild(d);
+    });
+    box.appendChild(col);
+  });
+}
+function bgAdvance(ri,mi,seed,name){
+  var mt=bgState.matches[ri][mi];
+  mt.winner=seed;mt.winnerName=name;
+  if(ri+1<bgState.rounds){
+    var nm=bgState.matches[ri+1][Math.floor(mi/2)];
+    if(mi%2===0){nm.seedA=seed;nm.teamA=name;}else{nm.seedB=seed;nm.teamB=name;}
+  } else {
+    document.getElementById('bg-champ-name').textContent=name;
+    document.getElementById('bg-champ').classList.add('show');
+    document.getElementById('bg-champ').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  bgDraw();
+  if(ri+1>=bgState.rounds){document.getElementById('bg-champ-name').textContent=name;document.getElementById('bg-champ').classList.add('show');}
+}
+document.getElementById('bg-go').addEventListener('click',function(){
+  bgState=makeBracket(bgTeams);
+  if(bgState.error){alert(bgState.error);return;}
+  bgDraw();
+  document.getElementById('bg-bracket').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+bgRows();
+bgState=makeBracket(bgTeams);bgDraw();
+}
+</script>
+</body>
+</html>
