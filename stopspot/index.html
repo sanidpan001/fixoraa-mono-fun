@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stopping Distance Calculator — Reaction + Braking Distance | StopSpot</title>
+<meta name="description" content="Stopping distance calculator: enter speed, reaction time and road condition to get reaction, braking and total stopping distance — with a road-strip visual and full speed chart. Free.">
+<link rel="canonical" href="https://fun.fixoraa.tech/stopspot/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Stopping Distance Calculator — Reaction + Braking Distance | StopSpot">
+<meta property="og:description" content="Stopping distance calculator: enter speed, reaction time and road condition to get reaction, braking and total stopping distance — with a road-strip visual and full speed chart. Free.">
+<meta property="og:url" content="https://fun.fixoraa.tech/stopspot/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "StopSpot",
+      "url": "https://fun.fixoraa.tech/stopspot/",
+      "applicationCategory": "Automotive Tools",
+      "operatingSystem": "Web",
+      "description": "Stopping distance calculator: enter speed, reaction time and road condition to get reaction, braking and total stopping distance \u2014 with a road-strip visual and full speed chart. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate stopping distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stopping distance is reaction distance plus braking distance. Reaction distance is speed \u00d7 reaction time (about 1.5 seconds for an alert driver). Braking distance follows v\u00b2/(254\u00d7friction) on flat ground. At 60 km/h on dry asphalt with 1.5 s reaction, that is roughly 25 m + 20 m = 45 m total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does stopping distance increase so fast with speed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because kinetic energy rises with the square of speed, braking distance does too. Doubling speed from 50 to 100 km/h roughly quadruples braking distance, while reaction distance only doubles. That is why small speed increases cost far more stopping room than they feel like."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much longer is stopping distance on a wet road?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly 1.5 to 2 times longer than on dry asphalt, because water reduces tyre grip (friction drops from about 0.7 to 0.4). On ice it can be five to eight times longer. Always slow down in rain \u2014 the posted limit assumes dry roads."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a normal driver reaction time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 1.5 seconds for an averagely alert driver is the standard engineering value. Expectant drivers can be under 1 second; tired drivers around 2 seconds; phone-distracted drivers 2.5 seconds or more. The calculator lets you try each scenario."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 2-second rule for following distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Keep a 2-second gap in dry conditions \u2014 that covers your reaction distance at any speed. Use 4 seconds in rain and 6+ on ice. Pick a fixed object by the road, count the seconds after the car ahead passes it, and adjust your gap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this calculator accurate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 it uses the AASHTO stopping-distance equation, the same formula highway engineers use for sight-distance design, with standard friction values (0.7 dry, 0.4 wet, 0.3 snow, 0.15 ice). It assumes flat ground and good tyres, so treat results as engineering estimates and keep extra margin."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF6EA; --surface:#FFFFFF; --accent:#C2410C; --accent-ink:#FFFFFF;
+  --ink:#2B2118; --muted:#6B5E4E; --line:#E8DCC8;
+  --display:'Archivo',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ss-wrap{font-family:'Archivo',Inter,system-ui,sans-serif;background:#FDF6EA;color:#2B2118;padding:56px 20px 72px;}.ss-inner{max-width:980px;margin:0 auto;}.ss-hero{text-align:center;margin-bottom:34px;}.ss-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C2410C;border:1.5px solid #C2410C;border-radius:999px;padding:6px 14px;margin-bottom:14px;}.ss-inner h1{font-size:clamp(34px,5vw,52px);font-weight:800;letter-spacing:-.02em;margin:0 0 10px;line-height:1.05;}.ss-tag{color:#6B5E4E;font-size:18px;margin:0;font-family:Inter,system-ui,sans-serif;}.ss-grid{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:start;}@media(max-width:860px){.ss-grid{grid-template-columns:1fr;}}.ss-card{background:#FFFFFF;border:1px solid #E8DCC8;border-radius:20px;padding:26px 24px;box-shadow:0 16px 40px rgba(194,65,12,.07);}.ss-card h2{font-size:17px;margin:0 0 4px;font-weight:800;letter-spacing:.02em;}.ss-sub{color:#6B5E4E;font-size:13.5px;margin:0 0 18px;font-family:Inter,system-ui,sans-serif;}.ss-field{margin-bottom:16px;font-family:Inter,system-ui,sans-serif;}.ss-field label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6B5E4E;margin-bottom:8px;}.ss-speedrow{display:flex;gap:8px;}.ss-speedrow input{flex:1;min-width:0;padding:12px 14px;font-size:20px;font-weight:700;border:2px solid #E8DCC8;border-radius:12px;font-family:inherit;color:#2B2118;}.ss-speedrow input:focus{outline:none;border-color:#C2410C;}.ss-unit{display:flex;border:2px solid #E8DCC8;border-radius:12px;overflow:hidden;}.ss-unit button{border:none;background:#fff;padding:12px 14px;font-size:14px;font-weight:700;cursor:pointer;color:#6B5E4E;font-family:inherit;}.ss-unit button.on{background:#C2410C;color:#fff;}.ss-cond{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.ss-cond button{border:2px solid #E8DCC8;background:#fff;border-radius:12px;padding:10px 6px;font-size:13.5px;font-weight:700;cursor:pointer;color:#6B5E4E;font-family:inherit;}.ss-cond button.on{border-color:#C2410C;color:#C2410C;background:#FDF6EA;}.ss-slider{width:100%;accent-color:#C2410C;}.ss-rxn-val{font-size:14px;font-weight:700;color:#C2410C;}.ss-rxn-note{font-size:12.5px;color:#6B5E4E;margin-top:4px;}.ss-road{background:#3A332C;border-radius:18px;padding:22px 20px 16px;color:#FDF6EA;position:relative;overflow:hidden;}.ss-road h2{color:#FDF6EA;}.ss-road .ss-sub{color:#CBBFAE;}.ss-strip{position:relative;height:118px;margin:18px 0 8px;background:repeating-linear-gradient(90deg,#4A4239 0 46px,#3A332C 46px 92px);border-radius:10px;border:1px solid #575046;}.ss-seg{position:absolute;top:34px;height:50px;border-radius:8px;transition:width .35s ease,left .35s ease;}.ss-seg.rxn{background:linear-gradient(180deg,#F59E0B,#D97706);left:6%;}.ss-seg.brk{background:linear-gradient(180deg,#EF4444,#B91C1C);}.ss-car{position:absolute;top:26px;left:2%;font-size:34px;transform:translateX(-50%);}.ss-flag{position:absolute;top:26px;font-size:30px;transform:translateX(-50%);transition:left .35s ease;}.ss-lbl{position:absolute;top:88px;transform:translateX(-50%);font-size:11.5px;font-weight:700;white-space:nowrap;color:#FDE68A;font-family:Inter,system-ui,sans-serif;transition:left .35s ease;}.ss-lbl.b{color:#FCA5A5;}.ss-nums{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px;}@media(max-width:560px){.ss-nums{grid-template-columns:1fr;}}.ss-num{background:#FFFFFF;border:1px solid #E8DCC8;border-radius:14px;padding:14px;text-align:center;font-family:Inter,system-ui,sans-serif;}.ss-num .v{font-size:30px;font-weight:800;font-family:'Archivo',sans-serif;color:#2B2118;}.ss-num .k{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6B5E4E;}.ss-num.total{border:2px solid #C2410C;}.ss-num.total .v{color:#C2410C;}.ss-follow{margin-top:14px;background:#FFF7ED;border:1px dashed #C2410C;border-radius:14px;padding:14px 16px;font-size:14.5px;color:#2B2118;font-family:Inter,system-ui,sans-serif;}.ss-table{width:100%;border-collapse:collapse;font-size:13.5px;font-family:Inter,system-ui,sans-serif;margin-top:10px;}.ss-table th,.ss-table td{padding:9px 8px;border-bottom:1px solid #E8DCC8;text-align:right;}.ss-table th:first-child,.ss-table td:first-child{text-align:left;}.ss-table th{color:#C2410C;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;}.ss-table tr.hl td{background:#FFF7ED;font-weight:700;}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="StopSpot home">
+      <span class="fx-logo-tile" aria-hidden="true">🛣️</span>
+      <span class="fx-brand">StopSpot</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-atlas-map" aria-label="StopSpot tool">
+<section class='ss-wrap'><div class='ss-inner'><div class='ss-hero'><span class='ss-kicker'>Road Safety Atlas</span><h1>Stopping Distance Calculator</h1><p class='ss-tag'>See exactly how far your car needs to stop.</p></div><div class='ss-grid'><div class='ss-card'><h2>Your scenario</h2><p class='ss-sub'>Set speed, alertness and road surface.</p><div class='ss-field'><label for='ss-speed'>Speed</label><div class='ss-speedrow'><input type='number' id='ss-speed' value='80' min='5' max='200' inputmode='decimal'><div class='ss-unit' role='group' aria-label='Speed units'><button id='ss-kmh' class='on' type='button'>km/h</button><button id='ss-mph' type='button'>mph</button></div></div></div><div class='ss-field'><label for='ss-rxn'>Reaction time <span class='ss-rxn-val' id='ss-rxnval'>1.5 s</span></label><input type='range' class='ss-slider' id='ss-rxn' min='0.8' max='2.5' step='0.1' value='1.5'><div class='ss-rxn-note' id='ss-rxnnote'>Normal, unexpected hazard</div></div><div class='ss-field'><label>Road surface</label><div class='ss-cond' id='ss-cond'><button type='button' data-mu='0.7' class='on'>☀️ Dry</button><button type='button' data-mu='0.4'>🌧️ Wet</button><button type='button' data-mu='0.3'>❄️ Snow</button><button type='button' data-mu='0.15'>🧊 Ice</button></div></div></div><div class='ss-road'><h2 style='font-size:17px;margin:0;'>Your stopping road</h2><p class='ss-sub'>Reaction + braking zones plotted to scale.</p><div class='ss-strip' aria-hidden='true'><div class='ss-car'>🚗</div><div class='ss-seg rxn' id='ss-segr'></div><div class='ss-seg brk' id='ss-segb'></div><div class='ss-flag' id='ss-flag'>🏁</div><div class='ss-lbl' id='ss-lblr'>reaction</div><div class='ss-lbl b' id='ss-lblb'>braking</div></div><div class='ss-nums'><div class='ss-num'><div class='k'>Reaction</div><div class='v' id='ss-rxn-d'>–</div></div><div class='ss-num'><div class='k'>Braking</div><div class='v' id='ss-brk-d'>–</div></div><div class='ss-num total'><div class='k'>Total stop</div><div class='v' id='ss-tot-d'>–</div></div></div><div class='ss-follow' id='ss-follow'></div></div></div><div class='ss-card' style='margin-top:22px;'><h2>Full speed chart</h2><p class='ss-sub'>Every 10 km/h, at your reaction time and surface. Your speed is highlighted.</p><div style='overflow-x:auto;'><table class='ss-table' id='ss-chart'><thead><tr><th>Speed</th><th>Reaction</th><th>Braking</th><th>Total</th></tr></thead><tbody></tbody></table></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Stopping Distance Really Means</h2><p>Stopping distance is the total ground your car covers from the instant you first perceive a hazard to the moment the car is fully stationary. It is not just braking — it is two separate phases added together. First comes <strong>reaction distance</strong>: the ground covered while your brain notices the danger, decides to brake, and moves your foot to the pedal. Then comes <strong>braking distance</strong>: the ground covered while the brakes convert the car's kinetic energy into heat. At motorway speeds the reaction phase alone can be longer than a tennis court, which is why total stopping distance surprises most drivers.</p><p>The two phases behave very differently. Reaction distance grows <em>linearly</em> with speed — double your speed, double the reaction distance. Braking distance grows <em>quadratically</em> — double your speed and the braking distance roughly quadruples, because kinetic energy rises with the square of velocity. That is the physics behind the old driving-instructor warning: speed kills stopping margin far faster than intuition suggests.</p><h2>The Formula Behind the Calculator</h2><p>This tool uses the AASHTO stopping-distance equation, the same formula road engineers use when designing sight distances on highways:</p><p><strong>s = (0.278 × t × v) + v² / (254 × (f + G))</strong></p><p>Here <strong>v</strong> is speed in km/h, <strong>t</strong> is perception-reaction time in seconds, <strong>f</strong> is the tyre–road friction coefficient, and <strong>G</strong> is the road grade as a decimal (positive uphill, negative downhill). The first term is reaction distance; the second is braking distance. On flat ground (G = 0), which this calculator assumes, the equation simplifies to the two-part form shown above.</p><p>Friction coefficients used in the presets come from standard road-engineering values: about <strong>0.7</strong> for dry asphalt, <strong>0.4</strong> for wet asphalt, <strong>0.3</strong> for packed snow, and <strong>0.15</strong> for ice. These are averages for good tyres — worn tyres on a wet road can be far worse, which is why the presets are starting points, not guarantees.</p><h2>Reaction Time: The Hidden Half of Stopping</h2><p>Most drivers picture stopping as a braking problem, but at typical road speeds the reaction phase often contributes a third or more of the total. A widely used design value is <strong>1.5 seconds</strong> — that covers perception, decision and foot movement for an averagely alert driver. Research shows the real range is wide:</p><ul><li><strong>Alert and expecting it</strong> (a brake-light test on a track): under 1.0 second.</li><li><strong>Normal driving, hazard appears unexpectedly</strong>: 1.2–1.8 seconds.</li><li><strong>Tired, or after hours of monotonous motorway driving</strong>: around 2.0 seconds.</li><li><strong>Distracted by a phone or conversation</strong>: 2.5 seconds or more — studies consistently show texting-level distraction more than doubles reaction time.</li></ul><p>At 100 km/h, the difference between a 1.0-second and a 2.5-second reaction is about 42 metres of extra travel before the brakes even begin — roughly ten car lengths. This is the single strongest argument against phone use while driving, and it is why this calculator lets you slide reaction time across those exact scenarios.</p><h2>Road Conditions Change Everything</h2><p>Friction is the quiet variable. On dry asphalt a modern car with good tyres can decelerate at roughly 0.7 g. Add water and the film between tyre and road drops grip dramatically — braking distance on wet asphalt is typically <strong>1.5 to 2 times</strong> longer than dry. On ice, with friction near 0.1–0.15, braking distance can be <strong>five to eight times</strong> longer. The calculator's chart makes this visceral: run the same speed through the dry and ice presets and watch the braking bar stretch.</p><p>Two practical consequences follow. First, the legal speed limit assumes dry roads and alert drivers — in rain, the safe speed is whatever keeps your stopping distance inside your sight distance, which is often well below the posted limit. Second, tyre condition matters enormously on wet roads: worn tread cannot clear water, so a wet-road stop with bald tyres can approach ice-like distances. Check tread depth with the 20p/quarter test regularly.</p><h2>Reading the Speed Chart</h2><p>The full chart this tool generates is worth studying, because it exposes the quadratic trap. From 20 to 40 km/h, total stopping distance roughly triples; from 60 to 120 km/h it nearly quadruples. A few landmark numbers on dry asphalt with 1.5 s reaction:</p><ul><li><strong>30 km/h</strong> (residential street): about 14 m total — you can stop within the length of a bus.</li><li><strong>50 km/h</strong> (urban limit): about 35 m — longer than most drivers guess.</li><li><strong>80 km/h</strong> (rural road): about 75 m.</li><li><strong>100 km/h</strong> (motorway): about 110 m — more than a football field.</li><li><strong>120 km/h</strong>: about 150 m on dry asphalt, over 210 m on wet.</li></ul><p>Notice that at 120 km/h on a wet road, you need more than two football fields to stop. If the car ahead of you is only three seconds ahead, you are inside its stopping envelope with almost no margin.</p><h2>The 2-Second Rule, Upgraded</h2><p>The classic following-distance advice — keep a 2-second gap to the vehicle ahead — comes directly from reaction time: two seconds of travel at your speed guarantees your reaction distance is covered. In rain, upgrade to <strong>4 seconds</strong>; on ice, <strong>6 or more</strong>. The calculator shows your 2-second following distance for your exact speed, so you can calibrate the rule instead of guessing. Pick a fixed roadside object, count the seconds after the car ahead passes it, and adjust.</p><p>Following distance is also where trucks and loaded vehicles diverge from cars. A heavily loaded SUV or a car towing a trailer needs noticeably more braking distance — add at least a second to every gap when towing or fully loaded, and remember that the friction presets assume a passenger car, not a 2-tonne rig.</p><h2>Learner-Driver Tips</h2><p>If you are learning, stopping distance questions appear on theory tests in almost every country, and examiners love the numbers. Memorize three anchors: reaction distance at 50 km/h with 1.5 s is about 21 m; braking distance roughly quadruples when speed doubles; wet roads roughly double braking distance. But the deeper lesson is judgment: always drive so you can stop within the distance you can see to be clear. That single rule, applied on every bend and crest, prevents more crashes than any memorized table.</p><h2>What This Calculator Does Not Cover</h2><p>No formula captures everything. This tool assumes flat ground, good tyres, dry-or-wet uniform friction, and full braking effort with ABS. It does not model downhill grades (which lengthen braking distance), brake fade on long descents, heavily loaded vehicles, or the extra distance of a trailer pushing from behind. Treat results as solid engineering estimates for a well-maintained car — and always leave margin on top.</p><h2>How ABS and Modern Brakes Change the Numbers</h2><p>The friction values in this calculator assume good tyres and a modern braking system with ABS. Anti-lock brakes do not shorten stopping distance on dry asphalt much — their real job is keeping the wheels rotating so you can still steer while braking hard. On loose surfaces like gravel or snow, ABS can actually <em>lengthen</em> stopping distance slightly compared to a locked wheel digging in, but it keeps the car controllable, which is the trade engineers chose. What shortens braking distance for real is tyre quality: the difference between premium and budget tyres in a wet emergency stop can exceed 10 metres from 100 km/h, more than any brake upgrade. Brake condition matters too — glazed pads, worn discs and old fluid all stretch the numbers this calculator shows. If your brakes pulse, squeal or pull, get them serviced before trusting any chart.</p><h2>Downhill Grades Lengthen Every Stop</h2><p>This calculator assumes flat ground, but hills change the physics. On a downhill grade, gravity keeps pulling the car forward while the brakes fight it, so braking distance grows — roughly 10–15% longer on a moderate 6% descent. Uphill, gravity helps and distances shrink. The full AASHTO equation includes grade (G) for exactly this reason: on a 6% downhill at 100 km/h, total stopping distance stretches by about 12 metres versus flat. Mountain drivers should internalize this: brake earlier on descents, use engine braking in a lower gear to keep the brakes cool, and never ride the pedal all the way down — faded brakes on a long grade are how runaway ramps get used.</p><h2>Loaded Cars and Trailers Need More Room</h2><p>Add four passengers and a boot full of luggage and two things change: the extra mass needs more energy dissipated (longer braking distance), and the rear-biased weight changes brake balance. Expect 10–20% longer stops in a fully loaded car. Towing is a bigger step change — a trailer adds mass <em>and</em> its own momentum pushing the tow vehicle, and many trailers have no brakes of their own below 750 kg. When towing, add at least 50% to your normal following distance, brake earlier and more progressively, and remember the trailer's brakes (if fitted) need a correctly set controller to share the work.</p><h2>Practice the Emergency Stop</h2><p>Knowing the numbers is half the battle; the other half is muscle memory. Find an empty car park or quiet road and practice full ABS stops from 40 and 60 km/h: press the brake pedal hard and fast, keep it planted through the ABS judder, and steer around an imaginary obstacle. Most drivers have never felt ABS activate and instinctively lift off when the pedal vibrates — exactly the wrong response. Two or three practice runs build the reflex that the numbers on this page assume: committed, full-force braking from the first instant.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do you calculate stopping distance?</summary><p>Stopping distance is reaction distance plus braking distance. Reaction distance is speed × reaction time (about 1.5 seconds for an alert driver). Braking distance follows v²/(254×friction) on flat ground. At 60 km/h on dry asphalt with 1.5 s reaction, that is roughly 25 m + 20 m = 45 m total.</p></details>
+<details><summary>Why does stopping distance increase so fast with speed?</summary><p>Because kinetic energy rises with the square of speed, braking distance does too. Doubling speed from 50 to 100 km/h roughly quadruples braking distance, while reaction distance only doubles. That is why small speed increases cost far more stopping room than they feel like.</p></details>
+<details><summary>How much longer is stopping distance on a wet road?</summary><p>Roughly 1.5 to 2 times longer than on dry asphalt, because water reduces tyre grip (friction drops from about 0.7 to 0.4). On ice it can be five to eight times longer. Always slow down in rain — the posted limit assumes dry roads.</p></details>
+<details><summary>What is a normal driver reaction time?</summary><p>About 1.5 seconds for an averagely alert driver is the standard engineering value. Expectant drivers can be under 1 second; tired drivers around 2 seconds; phone-distracted drivers 2.5 seconds or more. The calculator lets you try each scenario.</p></details>
+<details><summary>What is the 2-second rule for following distance?</summary><p>Keep a 2-second gap in dry conditions — that covers your reaction distance at any speed. Use 4 seconds in rain and 6+ on ice. Pick a fixed object by the road, count the seconds after the car ahead passes it, and adjust your gap.</p></details>
+<details><summary>Is this calculator accurate?</summary><p>Yes — it uses the AASHTO stopping-distance equation, the same formula highway engineers use for sight-distance design, with standard friction values (0.7 dry, 0.4 wet, 0.3 snow, 0.15 ice). It assumes flat ground and good tyres, so treat results as engineering estimates and keep extra margin.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">StopSpot</div>
+    <p>StopSpot turns your speed, reaction time and road condition into exact reaction, braking and total stopping distances — plotted on a road strip, with a full speed chart.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function stopDist(kmh,t,mu){var d=0.278*t*kmh+kmh*kmh/(254*mu);return Math.round(d*10)/10;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var speed=document.getElementById('ss-speed'),kmhB=document.getElementById('ss-kmh'),mphB=document.getElementById('ss-mph'),rxn=document.getElementById('ss-rxn'),rxnval=document.getElementById('ss-rxnval'),rxnnote=document.getElementById('ss-rxnnote'),cond=document.getElementById('ss-cond');if(!speed)return;var unit='kmh',mu=0.7;function rxnNote(t){if(t<1.1)return'Alert — expecting the hazard';if(t<1.7)return'Normal, unexpected hazard';if(t<2.2)return'Tired after a long drive';return'Distracted (phone / conversation)';}function kmh(){var v=parseFloat(speed.value)||0;return unit==='mph'?v*1.60934:v;}function fmt(m){return unit==='mph'?(m*3.28084).toFixed(0)+' ft':m.toFixed(1)+' m';}function fmtS(m){return unit==='mph'?(m*3.28084).toFixed(0):m.toFixed(1);}function render(){var v=kmh(),t=parseFloat(rxn.value);rxnval.textContent=t.toFixed(1)+' s';rxnnote.textContent=rxnNote(t);var rd=0.278*t*v,total=stopDist(v,t,mu),bd=Math.max(0,total-rd);document.getElementById('ss-rxn-d').textContent=fmt(rd);document.getElementById('ss-brk-d').textContent=fmt(bd);document.getElementById('ss-tot-d').textContent=fmt(total);var segr=document.getElementById('ss-segr'),segb=document.getElementById('ss-segb'),flag=document.getElementById('ss-flag'),lr=document.getElementById('ss-lblr'),lb=document.getElementById('ss-lblb');var span=Math.max(total,1),pad=6,usable=88;var wr=rd/span*usable,wb=bd/span*usable;segr.style.width=wr+'%';segb.style.left=(pad+wr)+'%';segb.style.width=wb+'%';flag.style.left=(pad+wr+wb)+'%';lr.style.left=(pad+wr/2)+'%';lr.textContent='reaction '+fmt(rd);lb.style.left=(pad+wr+wb/2)+'%';lb.textContent='braking '+fmt(bd);var follow=v/3.6*2;document.getElementById('ss-follow').innerHTML='<strong>2-second rule:</strong> keep at least <strong>'+fmt(follow)+'</strong> to the car ahead ('+(unit==='mph'?'double it in rain':'double it in rain, triple on ice')+').';var tb=document.querySelector('#ss-chart tbody');var html='';for(var s=20;s<=120;s+=10){var r2=0.278*t*s,b2=s*s/(254*mu),tt=r2+b2;var near=Math.abs(s-v)<5.1;html+='<tr'+(near?' class="hl"':'')+'><td>'+(unit==='mph'?Math.round(s/1.60934)+' mph':s+' km/h')+'</td><td>'+fmtS(r2)+'</td><td>'+fmtS(b2)+'</td><td><strong>'+fmtS(tt)+'</strong></td></tr>';}tb.innerHTML=html;}function setUnit(u){unit=u;kmhB.classList.toggle('on',u==='kmh');mphB.classList.toggle('on',u==='mph');render();}kmhB.addEventListener('click',function(){setUnit('kmh');});mphB.addEventListener('click',function(){setUnit('mph');});rxn.addEventListener('input',render);speed.addEventListener('input',render);var btns=cond.querySelectorAll('button');for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){for(var j=0;j<btns.length;j++)btns[j].classList.remove('on');this.classList.add('on');mu=parseFloat(this.getAttribute('data-mu'));render();});}render();});}
+</script>
+</body>
+</html>
