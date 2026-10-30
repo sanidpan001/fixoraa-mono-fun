@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Surfboard Volume Calculator: Board Litres by Weight &amp; Skill</title>
+<meta name="description" content="Find your ideal surfboard volume in litres from your weight and skill level, with a sensible range for your local waves.">
+<link rel="canonical" href="https://fun.fixoraa.tech/surfboard/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Surfboard Volume Calculator: Board Litres by Weight &amp; Skill">
+<meta property="og:description" content="Find your ideal surfboard volume in litres from your weight and skill level, with a sensible range for your local waves.">
+<meta property="og:url" content="https://fun.fixoraa.tech/surfboard/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SurfBoard",
+      "url": "https://fun.fixoraa.tech/surfboard/",
+      "applicationCategory": "Sports",
+      "operatingSystem": "Web",
+      "description": "Find your ideal surfboard volume in litres from your weight and skill level, with a sensible range for your local waves.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many litres should a beginner surfboard have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply your weight in kilograms by 0.95. An 80 kg beginner needs about 76 litres, ideally in a long, wide, stable shape such as a foam board or funboard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is more volume always better?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. More volume paddles and catches waves more easily, but it is harder to turn sharply and duck-dive. Advanced surfers deliberately ride less volume for performance in steep waves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my wetsuit change the volume I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, slightly. A thick winter wetsuit adds weight and restricts movement, so add a couple of litres for cold-water surfing compared with summer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I am between two board sizes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose the larger board for weak waves or infrequent surfing, and the smaller one for powerful waves and frequent sessions. The calculator's range covers this choice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can two boards with the same volume feel different?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Outline, rocker, rails, fins, and construction all change how volume behaves, so use volume as the first filter and shape as the second."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast should I step down in volume?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Drop about 10 percent at a time and spend a season on each step. If your wave count collapses after a step down, you went too far too fast."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a different volume for different waves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Weak waves reward extra volume; powerful waves let you ride less. Many surfers own two boards, one for everyday conditions and one for good waves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What volume does a 90 kg intermediate need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 59 litres (90 \u00d7 0.65). A fish, hybrid, or funboard in the 55\u201362 litre range is a sensible target."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EAF6F8; --surface:#FFFFFF; --accent:#0B6E7A; --accent-ink:#FFFFFF;
+  --ink:#122E33; --muted:#3D5A60; --line:#CDE6EA;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.sb-wrap{max-width:920px;margin:0 auto;padding:26px 16px 40px}.sb-wrap h1{font-size:clamp(30px,5.5vw,44px);line-height:1.15;margin:0 0 8px}.sb-tag{color:var(--muted);margin:0 0 18px;font-size:16px}.sb-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 2px 14px rgba(0,0,0,.06)}.sb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.sb-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--muted)}.sb-field input,.sb-field select{font:inherit;font-size:16px;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg);min-height:48px;width:100%;box-sizing:border-box}.sb-btns{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.sb-btns button{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer;min-height:44px}.sb-btns button.on,.sb-btns button.solid{background:var(--accent);color:var(--accent-ink)}.sb-calc{width:100%;background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:14px;font:inherit;font-size:17px;font-weight:800;cursor:pointer;min-height:52px}.sb-result{background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:22px;text-align:center;margin-top:16px}.sb-result .big{font-size:clamp(34px,7vw,52px);font-weight:800;line-height:1.1}.sb-result .sub{opacity:.92;margin-top:6px}.sb-hist{margin-top:14px;font-size:14px;color:var(--muted)}.sb-hist ul{padding-left:1.2rem;margin:6px 0 0}@media(max-width:640px){.sb-grid{grid-template-columns:1fr}.sb-wrap{padding:20px 12px 32px}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="SurfBoard home">
+      <span class="fx-logo-tile" aria-hidden="true">🏄</span>
+      <span class="fx-brand">SurfBoard</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-surf-wave" aria-label="SurfBoard tool">
+<div class='sb-wrap'><h1>🏄 Surfboard Volume Calculator</h1><p class='sb-tag'>Board litres by rider weight and skill — stop guessing at the surf shop.</p><div class='sb-card'><div class='sb-grid'><label class='sb-field'>Your weight (kg or lb)<input id='sbWeight' type='number' min='30' max='150' value='80'></label><label class='sb-field'>Skill level<select id='sbSkill'><option value='0.95' selected>Beginner</option><option value='0.65'>Intermediate</option><option value='0.45'>Advanced</option></select></label></div><div class='sb-btns'><button type='button' data-sb-preset='[80,0.95]'>Beginner · 80 kg</button><button type='button' data-sb-preset='[75,0.65]'>Intermediate · 75 kg</button><button type='button' data-sb-preset='[70,0.45]'>Advanced · 70 kg</button></div><div class='sb-btns'><button type='button' data-sb-unit='kg' class='on'>kg</button><button type='button' data-sb-unit='lb'>lb</button></div><button class='sb-calc' id='sbCalc' type='button'>Calculate</button><div class='sb-result' aria-live='polite'><div>Recommended volume</div><div class='big' id='sbRes'>76 litres</div><div class='sub' id='sbSub'>Aim for 72 to 80 litres.</div></div><div class='sb-hist'><strong>Recent calculations</strong><ul id='sbHistList'></ul><div class='sb-btns'><button type='button' id='sbCopy'>Copy result</button></div></div></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why surfboard volume matters more than length</h2><p>Ask any surf shop what board a beginner should buy and the conversation usually starts with length: a nine-foot longboard, a seven-foot funboard, a six-foot shortboard. Length matters, but it is not the number that decides whether you catch waves or spend the session flailing. That number is volume, measured in litres, and it is the single best predictor of how a board will float you, paddle, and catch waves. Volume is the total amount of foam in the board. More foam means more buoyancy, easier paddling, earlier wave entry, and more forgiveness when your feet land in the wrong place. Less foam means a board that sits lower in the water, responds faster to subtle input, and fits tighter into the curve of a steep wave face. The trade-off between those two qualities is the whole art of choosing a surfboard, and it starts with your body weight.</p><h2>The weight-times-factor formula</h2><p>The calculator on this page uses a simple, widely used rule: recommended volume in litres equals your body weight in kilograms multiplied by a factor set by your skill level. Beginners use 0.95, intermediates use 0.65, and advanced surfers use 0.45. An 80 kg beginner therefore lands on about 76 litres, an 80 kg intermediate on about 52 litres, and an 80 kg advanced surfer on about 36 litres. These factors are starting points, not laws of physics, and the result is deliberately given as a range of roughly four litres either side. Your local waves, your fitness, your age, and the kind of surfing you want to do all nudge you within or beyond that range. A beginner surfing weak, crumbly beach breaks will be happier at the top of the range or even above it, while a fit intermediate surfing punchy reef breaks can happily ride the bottom of it.</p><table><thead><tr><th>Rider weight</th><th>Beginner (×0.95)</th><th>Intermediate (×0.65)</th><th>Advanced (×0.45)</th></tr></thead><tbody><tr><td>60 kg</td><td>57 L</td><td>39 L</td><td>27 L</td></tr><tr><td>70 kg</td><td>67 L</td><td>46 L</td><td>32 L</td></tr><tr><td>80 kg</td><td>76 L</td><td>52 L</td><td>36 L</td></tr><tr><td>90 kg</td><td>86 L</td><td>59 L</td><td>41 L</td></tr><tr><td>100 kg</td><td>95 L</td><td>65 L</td><td>45 L</td></tr></tbody></table><h2>What each skill level really means</h2><p>Skill labels in surfing are slippery, so be honest with yourself when you pick one. A beginner is still learning to pop up consistently, rides mostly whitewater or the shoulder of small waves, and needs the board to do most of the work. If that is you, do not let pride shrink your volume: extra foam is what turns a frustrating session into a fun one, and fun is what keeps you coming back long enough to improve. An intermediate surfer catches unbroken waves regularly, trims down the line, and is starting turns, but still benefits from paddle power and stability. An advanced surfer generates their own speed, surfs in the pocket, and can compensate for low volume with technique, timing, and fitness. If you surf twice a year on holiday, you are a beginner for board-choice purposes no matter how long ago you first stood up.</p><h3>Volume is not the whole board</h3><p>Two boards with identical volume can feel completely different. A long, wide, thick board spreads its litres over a big outline and feels stable and glidey, while a short, narrow, thin board packs the same litres into a compact shape that turns sharply but paddles less efficiently. Outline, rocker (the curve from nose to tail), rail shape, fin setup, and construction all change how volume behaves. Think of volume as the first filter: it narrows the field to boards that will float you properly. After that, shape decides the character. Beginners should favour wider outlines and flatter rockers, which plane early and stay stable. Intermediates moving down in volume should do it gradually, in steps of five litres or so, rather than jumping straight from a 60-litre funboard to a 32-litre shortboard.</p><h2>How waves change the number</h2><p>The formula assumes average conditions, so adjust for your home break. Weak, slow, fat waves need more volume because the wave itself gives you less push; add five litres or so if your local spot is a soft beach break. Powerful, steep, hollow waves let you ride less volume because the wave does a lot of the work and a smaller board fits the curve better; experienced surfers often drop a few litres for good reef or point breaks. Cold water also matters in a small way: a thick winter wetsuit adds weight and restricts movement, so winter boards often carry a couple of extra litres. If you travel between a soft summer beach break and a punchy winter reef, one board will always be a compromise, which is why experienced surfers eventually own a small quiver rather than a single perfect board.</p><h2>Common mistakes when choosing volume</h2><ul><li><strong>Copying a pro's board:</strong> professional surfers ride tiny volumes because they surf powerful waves daily with elite fitness. Their board will sink you, not inspire you.</li><li><strong>Buying for the surfer you want to be:</strong> buy for the surfer you are this season. You can always sell and step down as you improve.</li><li><strong>Ignoring the wetsuit:</strong> add your wetsuit weight in winter, especially in a thick suit with boots and hood.</li><li><strong>Chasing one magic number:</strong> volume is a range. A board within a few litres of your target, with a shape you like, beats an exact match with a shape you hate.</li><li><strong>Forgetting paddle fitness:</strong> if you only surf occasionally, extra volume compensates for paddle fitness you have not built yet.</li></ul><h2>Stepping down sensibly</h2><p>Progress in surfing is largely a story of gradually reducing volume as skill and fitness grow. The safe pattern is to drop about ten percent at a time and spend a full season on each step. Going from 70 litres to 60, then to 52, then to 45 gives your paddling, timing, and wave reading time to catch up with the board. Each step will initially feel harder, especially on the paddle back out, and that is normal. If you find yourself catching far fewer waves after a step down, you have gone too far, too fast, and there is no shame in stepping back up. Wave count is the honest metric of progress: the right board is the one that maximises the waves you actually catch and enjoy, not the smallest board you can technically stand on.</p><h2>Foam, fish, and funboards: where the litres live</h2><p>Beginner-friendly boards hide their volume in plain sight. Foam boards (softboards) pack huge volume into safe, forgiving shapes and are the best learning tool ever made; an eight-foot foam board can carry 60 to 70 litres and will catch waves in almost anything. Funboards and mini-mals, typically seven to eight feet, carry 45 to 60 litres and suit progressing beginners who want to start turning. Fish designs are short and wide, packing surprising volume into a five- to six-foot board, which makes them a popular intermediate step for small waves. True performance shortboards sit at the low end of the chart, and hybrid grovellers fill the gap for everyday conditions. When you compare boards, always check the manufacturer's stated volume: two boards that look the same size can differ by ten litres or more.</p><h2>Putting the calculator to work</h2><p>Use the result as your shopping shortlist, not a verdict. Enter your weight honestly, pick the skill level that matches your current surfing rather than your ambition, and note the suggested range. Then filter boards by that volume range first and by shape second. If you are between sizes, choose the larger one when your waves are weak, your sessions are infrequent, or you are returning after a break; choose the smaller one when your waves are powerful and you surf several times a week. Demo days, rentals, and second-hand boards are cheap ways to test a volume before committing. And remember that fitness changes the equation over a season: as your paddling improves, the same board will feel progressively easier, which is a sign you are ready for the next step down, not that your board was wrong.</p><p>The right volume does not make you a good surfer overnight, but the wrong volume can stop you becoming one. Get the litres right, and the rest of surfing — timing, positioning, turning — gets a fair chance to develop.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many litres should a beginner surfboard have?</summary><p>Multiply your weight in kilograms by 0.95. An 80 kg beginner needs about 76 litres, ideally in a long, wide, stable shape such as a foam board or funboard.</p></details>
+<details><summary>Is more volume always better?</summary><p>No. More volume paddles and catches waves more easily, but it is harder to turn sharply and duck-dive. Advanced surfers deliberately ride less volume for performance in steep waves.</p></details>
+<details><summary>Does my wetsuit change the volume I need?</summary><p>Yes, slightly. A thick winter wetsuit adds weight and restricts movement, so add a couple of litres for cold-water surfing compared with summer.</p></details>
+<details><summary>What if I am between two board sizes?</summary><p>Choose the larger board for weak waves or infrequent surfing, and the smaller one for powerful waves and frequent sessions. The calculator's range covers this choice.</p></details>
+<details><summary>Can two boards with the same volume feel different?</summary><p>Absolutely. Outline, rocker, rails, fins, and construction all change how volume behaves, so use volume as the first filter and shape as the second.</p></details>
+<details><summary>How fast should I step down in volume?</summary><p>Drop about 10 percent at a time and spend a season on each step. If your wave count collapses after a step down, you went too far too fast.</p></details>
+<details><summary>Do I need a different volume for different waves?</summary><p>Weak waves reward extra volume; powerful waves let you ride less. Many surfers own two boards, one for everyday conditions and one for good waves.</p></details>
+<details><summary>What volume does a 90 kg intermediate need?</summary><p>About 59 litres (90 × 0.65). A fish, hybrid, or funboard in the 55–62 litre range is a sensible target.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SurfBoard</div>
+    <p>SurfBoard finds your ideal board volume in litres from your weight and skill level.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function surfVolume(weightKg,factor){if(!(weightKg>0)||!(factor>0))return NaN;return Math.round(weightKg*factor);}
+var sb_unit='metric';
+function sb_calc(){
+var v0=parseFloat(document.getElementById('sbWeight').value)||0;
+var v1=parseFloat(document.getElementById('sbSkill').value)||0;
+var unit=sb_unit;
+var w=(unit==='lb')?v0/2.20462:v0;var r=surfVolume(w,v1);var disp='Aim for '+(r-4)+' to '+(r+4)+' litres. Weaker waves and heavier boards need the top end; powerful waves let you go smaller.';
+document.getElementById('sbRes').textContent=r;
+document.getElementById('sbSub').innerHTML=disp;
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');h.unshift(r+' | '+disp.replace(/<[^>]+>/g,''));h=h.slice(0,5);localStorage.setItem('%sHist',JSON.stringify(h));var ul=document.getElementById('%sHistList');ul.innerHTML='';h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+}
+function sb_preset(vals){vals.forEach(function(v,i){var el=document.getElementById(['sbWeight','sbSkill'][i]);if(el)el.value=v;});sb_calc();}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+document.getElementById('sbCalc').addEventListener('click',sb_calc);
+document.querySelectorAll('[data-sb-preset]').forEach(function(b){b.addEventListener('click',function(){var vals=JSON.parse(b.getAttribute('data-sb-preset'));sb_preset(vals);});});
+document.querySelectorAll('[data-sb-unit]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-sb-unit]').forEach(function(x){x.classList.remove('on');});b.classList.add('on');sb_unit=b.getAttribute('data-sb-unit');sb_calc();});});
+var cp=document.getElementById('sbCopy');if(cp){cp.addEventListener('click',function(){var t=document.getElementById('sbRes').textContent+' '+document.getElementById('sbSub').textContent;try{navigator.clipboard.writeText(t);}catch(e){}});}
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');var ul=document.getElementById('%sHistList');h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+sb_calc();});}
+</script>
+</body>
+</html>
