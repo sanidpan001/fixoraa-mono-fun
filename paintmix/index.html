@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paint Mixing Ratio Calculator — Custom Colors | PaintMix</title>
+<meta name="description" content="Mix custom paint colors by ratio — exact amounts, batch scaling and a recipe log.">
+<link rel="canonical" href="https://fun.fixoraa.tech/paintmix/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Paint Mixing Ratio Calculator — Custom Colors | PaintMix">
+<meta property="og:description" content="Mix custom paint colors by ratio — exact amounts, batch scaling and a recipe log.">
+<meta property="og:url" content="https://fun.fixoraa.tech/paintmix/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PaintMix",
+      "url": "https://fun.fixoraa.tech/paintmix/",
+      "applicationCategory": "DIY Tools",
+      "operatingSystem": "Web",
+      "description": "Mix custom paint colors by ratio — exact amounts, batch scaling and a recipe log.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you mix paint colors in a ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add the parts together, divide your batch size by the total, and multiply back out. For a 3:1 ratio in a 32 oz batch: 4 parts total, 8 oz per part — 24 oz of the first color, 8 oz of the second. The calculator above does this in ounces and milliliters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a 3:1 paint ratio mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three parts of the first color to one part of the second — 75% to 25%. Ratios describe proportions, so 3:1 works whether you are mixing 4 ounces or 4 gallons; only the per-part amount changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I measure paint by weight or volume?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Volume (ml/oz) is standard for DIY and perfectly accurate enough. Weight is more precise and avoids pouring losses, but you must stay in one system — weight and volume ratios are not interchangeable because paint densities differ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I match a custom paint color later?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Keep the exact recipe: brand, product line, base, sheen, ratio and batch size — plus a dried swatch. With that record, you or the paint store can reproduce the color years later even if the original cans are gone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my mixed paint look different when dry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paint changes as it dries — latex usually dries slightly darker — and sheen affects perception. Always test your mix on a primed board, let it dry 2+ hours, and judge it in the room’s actual light before committing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I mix different brands of paint together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can, but stick to the same type (latex with latex) and similar quality tiers. Different brands’ bases vary, so the same ratio gives different colors — which is why logging the exact products matters more than the ratio alone."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#F5F2FA;--surface:#FFFFFF;--tint:#E6DDF4;--accent:#5B27A5;--accent-deep:#431B7D;--accent-ink:#FFFFFF;--ink:#271F33;--muted:#635478;--line:#D5C9EE;--display:'Funnel Sans',system-ui,sans-serif;--body:'Funnel Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+.fx-wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:50%;background:conic-gradient(from 20deg,#5B27A5,#9B59D0,#5B27A5);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px}
+.fx-name{font-weight:800;font-size:20px}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.pm-hero{padding:44px 0 6px;text-align:center}
+.pm-eyebrow{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--tint);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.pm-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:10px}
+.pm-hero p{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto}
+.pm-console{margin:28px 0 8px;background:#221631;border-radius:22px;padding:26px;box-shadow:0 16px 40px rgba(91,39,165,.25);color:#EDE7F7}
+.pm-channels{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.pm-row{background:#2E1F45;border:2px solid #4A3370;border-radius:16px;padding:16px;text-align:center}
+.pm-row input[type=color]{width:64px;height:64px;border:3px solid #4A3370;border-radius:50%;background:none;cursor:pointer;padding:0}
+.pm-row input[type=number]{font:inherit;width:100%;margin-top:10px;padding:10px;background:#1A1029;border:2px solid #4A3370;border-radius:10px;color:#fff;text-align:center;font-size:18px;font-weight:700}
+.pm-row input[type=number]:focus{outline:3px solid var(--accent);border-color:#9B59D0}
+.pm-row span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B79FE0}
+.pm-batch{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.pm-batch label{font-weight:700;font-size:14px}
+.pm-batch input{font:inherit;width:150px;padding:11px 13px;background:#1A1029;border:2px solid #4A3370;border-radius:10px;color:#fff;font-size:16px}
+.pm-results{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.pm-amounts{background:#1A1029;border:2px solid #4A3370;border-radius:14px;padding:16px}
+.pm-amt{display:flex;align-items:center;gap:12px;padding:9px 4px;border-bottom:1px dashed #4A3370;font-size:15px}
+.pm-amt:last-child{border-bottom:0}
+.pm-dot{width:26px;height:26px;border-radius:50%;border:2px solid #4A3370;flex-shrink:0}
+.pm-amt b{font-size:17px}.pm-amt span{color:#B79FE0;margin-left:auto}
+.pm-totalml{margin-top:10px;font-size:13px;color:#B79FE0;font-weight:700}
+.pm-swatchbox{text-align:center}
+.pm-swatch{height:150px;border-radius:14px;border:3px solid #4A3370;margin-bottom:12px;transition:background .3s}
+.pm-save{font:inherit;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:12px 26px;font-weight:800;cursor:pointer;font-size:15px}
+.pm-save:hover{background:var(--accent-deep)}
+.pm-log{margin-top:18px;background:#1A1029;border:2px solid #4A3370;border-radius:14px;padding:16px}
+.pm-log h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#B79FE0;margin-bottom:8px}
+.pm-log ul{list-style:none;font-size:14px}
+.pm-log li{padding:7px 2px;border-bottom:1px dashed #4A3370}
+.pm-log li:last-child{border-bottom:0}
+.article-sec{margin:40px 0;max-width:780px}.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800}
+.article-sec p{margin-bottom:14px;color:#3d3350}.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#3d3350}.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:780px}.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#3d3350;font-size:15px}
+.fx-footer{background:#221631;color:#ddd2f0;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#a78fd0;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}.fx-credit a{color:#c4a5f5;font-weight:700}
+@media(max-width:860px){.pm-channels{grid-template-columns:repeat(2,1fr)}.pm-results{grid-template-columns:1fr}}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-wrap">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/paintmix/" aria-label="PaintMix home">
+      <span class="fx-tile" aria-hidden="true">P</span>
+      <span class="fx-name">PaintMix</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-wrap">
+  <section class="pm-hero">
+    <span class="pm-eyebrow">Ratio to recipe</span>
+      <h1>Paint Mixing Ratio Calculator</h1>
+      <p>Got a ratio like 3:1? Enter your colors, parts and batch size — get exact ounces and milliliters per color, a live swatch, and a saved recipe log.</p>
+  </section>
+
+<section class="pm-console" aria-label="PaintMix tool">
+  <div class="pm-channels" id="pm-rows"></div>
+  <div class="pm-batch">
+    <label for="pm-total">Batch size (fl oz)</label>
+    <input type="number" id="pm-total" value="32" min="1" max="640" step="1">
+  </div>
+  <div class="pm-results">
+    <div>
+      <div class="pm-amounts" id="pm-amounts" aria-live="polite"></div>
+      <div class="pm-totalml" id="pm-totalml"></div>
+    </div>
+    <div class="pm-swatchbox">
+      <div class="pm-swatch" id="pm-swatch" role="img" aria-label="Mixed color preview"></div>
+      <button type="button" class="pm-save" id="pm-save">Save this recipe</button>
+    </div>
+  </div>
+  <div class="pm-log"><h3>Recipe log</h3><ul id="pm-log"></ul></div>
+</section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>Ratios, Not Recipes</h2>
+<p>Custom paint colors live and die by <strong>ratio</strong>. "Three parts red to one part yellow" is a formula you can reproduce forever; "a glug of red and a splash of yellow" is a color you will never see again. The ratio is the entire secret of reliable custom mixing — it scales to any batch size and survives the gap between test swatch and full gallon.</p><p>The math is simple division. Add the parts (3 + 1 = 4), divide the batch by the total (32 oz ÷ 4 = 8 oz per part), and multiply back out: 24 oz of the first color, 8 oz of the second. This calculator does exactly that, in both fluid ounces and milliliters, so you can measure with whatever tools you own.</p><p>Write the ratio down <em>before</em> you mix, not after. Memory lies about ratios — "I think it was mostly blue" is how you end up with four almost-matching gallons. The recipe log on this page exists for exactly this discipline: save every mix the moment it works.</p>
+<h2>Measuring by Weight vs Volume</h2>
+<p>Volume (milliliters, ounces) is the home mixer’s standard — graduated mixing cups are cheap and the math is intuitive. But <strong>weight is more accurate</strong>: put the container on a kitchen scale, tare it, and pour to the gram. No meniscus reading, no cup-pouring losses, and thick paints measure the same as thin ones.</p><p>The catch is density. A milliliter of titanium-white-heavy paint weighs more than a milliliter of a tint base, so weight ratios and volume ratios are not interchangeable unless you convert. Pick one system per recipe and stay in it. For most DIY work, milliliters are perfectly accurate enough — the visible difference between 24.0 and 24.5 oz in a quart is nil.</p><p>Whatever you measure with, measure the <em>same way</em> every time. Consistency of method beats precision of instrument: the same cup, the same scale, the same pouring habit, every batch.</p>
+<h2>Scaling Batches Up and Down</h2>
+<p>Ratios scale linearly, which is their superpower. A 3:1 mix that works in a 4-ounce sample becomes 24:8 ounces in a quart — same color, guaranteed, as long as the component paints are identical. Always <strong>test small, then scale</strong>: dial in the ratio in a baby-food jar before committing a gallon.</p><p>Scaling down has one trap: measurement error magnifies. A half-milliliter error in a 10 ml test batch is 5 percent; in a 1-liter batch it is 0.05 percent. If your test ratio uses tiny amounts of a strong tint, round the scaled recipe sensibly — the error shrinks as the batch grows, which works in your favor.</p><p>Scaling up has a different trap: container size. A "gallon" of mixed paint needs a container bigger than a gallon if you want to stir it. Mix in a 5-gallon bucket for gallon batches, and mix 10–15 percent more than the job needs — running out mid-wall is the one mistake ratios cannot fix.</p>
+<h2>The Recipe Log Habit</h2>
+<p>Every professional paint mixer keeps a formula book, and you should too. Log four things per recipe: the <strong>exact products</strong> (brand, line, base, sheen — "white" is not a color, it is a hundred colors), the <strong>ratio</strong>, the <strong>batch size</strong>, and a <strong>dried swatch</strong> labeled with the date.</p><p>The product detail matters more than people expect. The same 3:1 ratio in two different brands’ "navy" and "white" gives two different colors, because the starting paints differ. When you need more paint in two years, the brand and line are what let you — or the paint store — reproduce it.</p><p>The save button above stores recipes in your browser with all of this. For the truly organized, paint the swatch on the recipe card itself: dried paint on paper is the only color record that does not lie the way phone photos do.</p>
+<h2>Mixing Technique</h2>
+<p>Pour the <strong>largest component first</strong>, then add smaller parts — it is easier to adjust a big base toward a tint than the reverse. Add strong tints (blacks, deep blues, reds) last and gradually; they dominate far beyond their volume, and overshooting means diluting the whole batch back with base.</p><p>Stir like you mean it: 2–3 minutes of thorough stirring with a proper mixing paddle, scraping the bottom and sides. Paint stratifies — the color at the top of a poorly stirred can is not the color at the bottom, and your "ratio" is fiction until the mix is homogeneous. For batches over a quart, a drill-mounted paddle is worth every penny.</p><p>Strain the mix through a paint strainer into the final container. It catches the dried skin bits and unmixed globs that become texture defects on the wall. This one step separates amateur mixes from professional ones.</p>
+<h2>Testing Before You Commit</h2>
+<p>Never trust a wet mix. Paint <strong>dries darker or lighter</strong> than it looks wet — latex typically dries slightly darker, and sheen changes perception further. Brush your test mix onto a primed board (not the wall, not bare cardboard) and let it dry fully, 2+ hours, before judging.</p><p>Evaluate the dried swatch in the room’s actual light, at the time of day you use the room. North light, warm bulbs, and evening sun each tell a different story about the same color. Tape the swatch to the wall and live with it 48 hours — colors you love at noon can feel wrong at 8 p.m.</p><p>Test at the right sheen, or as close as you can. A matte test of a color you will buy in eggshell will read lighter and chalkier than the final wall. If you must test with a different sheen, judge hue only, not depth.</p>
+<h2>Common Ratio Starting Points</h2>
+<p>Useful starting ratios to experiment from (first color : second): <strong>3:1</strong> — a strong shift that keeps the first color’s character, e.g., navy pulled toward teal with green. <strong>1:1</strong> — a true midpoint, great for muting a loud color with its complement or white. <strong>5:1</strong> — a whisper of change, like warming a gray with a touch of umber.</p><p>To mute without muddying, add the color’s <strong>complement</strong> in small ratios (10:1 to start) rather than black or gray — complements neutralize while keeping the color lively. To lighten, use white in 4:1 or 3:1 steps; to deepen, use black at 20:1 — black is shockingly strong and the most common way beginners ruin a mix.</p><p>Record every experiment, including the failures. A log of "4:1 too green, 5:1 just right" is how you develop an eye — and it is the difference between mixing as craft and mixing as luck.</p>
+<h2>Storing Custom Mixes</h2>
+<p>Store mixed paint like the pros: <strong>pour into the smallest airtight container that fits</strong> (less air = longer life), label it with the recipe, date, and room, and keep it at room temperature — never in a freezing garage. Latex paint that freezes is ruined; the emulsion breaks and no amount of stirring fixes it.</p><p>Before resealing, wipe the rim clean and lay plastic wrap under the lid for a tighter seal. Stored well, custom latex lasts 2–5 years; test old paint on cardboard before trusting it on a wall — if it smells sour or will not stir smooth, it is done.</p><p>Keep the recipe longer than the paint. Colors get discontinued, rooms get repainted, and a ten-year-old ratio card plus current colorants from the paint store is often enough for a near-perfect rematch. The log is the real asset; the leftover can is just convenience.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do you mix paint colors in a ratio?</summary><p>Add the parts together, divide your batch size by the total, and multiply back out. For a 3:1 ratio in a 32 oz batch: 4 parts total, 8 oz per part — 24 oz of the first color, 8 oz of the second. The calculator above does this in ounces and milliliters.</p></details>
+<details><summary>What does a 3:1 paint ratio mean?</summary><p>Three parts of the first color to one part of the second — 75% to 25%. Ratios describe proportions, so 3:1 works whether you are mixing 4 ounces or 4 gallons; only the per-part amount changes.</p></details>
+<details><summary>Should I measure paint by weight or volume?</summary><p>Volume (ml/oz) is standard for DIY and perfectly accurate enough. Weight is more precise and avoids pouring losses, but you must stay in one system — weight and volume ratios are not interchangeable because paint densities differ.</p></details>
+<details><summary>How do I match a custom paint color later?</summary><p>Keep the exact recipe: brand, product line, base, sheen, ratio and batch size — plus a dried swatch. With that record, you or the paint store can reproduce the color years later even if the original cans are gone.</p></details>
+<details><summary>Why does my mixed paint look different when dry?</summary><p>Paint changes as it dries — latex usually dries slightly darker — and sheen affects perception. Always test your mix on a primed board, let it dry 2+ hours, and judge it in the room’s actual light before committing.</p></details>
+<details><summary>Can I mix different brands of paint together?</summary><p>You can, but stick to the same type (latex with latex) and similar quality tiers. Different brands’ bases vary, so the same ratio gives different colors — which is why logging the exact products matters more than the ratio alone.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-wrap">
+    <div class="fx-brand">PaintMix</div>
+    <p>PaintMix turns paint ratios into exact batch recipes — ounces and milliliters per color, batch scaling, and a saved recipe log.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function _r(n, d) { var p = Math.pow(10, d); return Math.round(n * p) / p; }
+var OZ_TO_ML = 29.5735;
+
+// ratios: [3,1] = 3 parts color A to 1 part color B. totalOz: batch size.
+function paintMix(ratios, totalOz) {
+  var rs = (ratios || []).map(function (x) { return Math.max(0, x || 0); }).filter(function (x) { return x > 0; });
+  var total = Math.max(0, totalOz || 0);
+  var parts = rs.reduce(function (s, x) { return s + x; }, 0);
+  var amountsOz = rs.map(function (x) { return parts > 0 ? _r(total * x / parts, 2) : 0; });
+  var amountsMl = amountsOz.map(function (oz) { return _r(oz * OZ_TO_ML, 1); });
+  return {
+    ratioText: rs.join(':'),
+    totalOz: _r(total, 2),
+    totalMl: _r(total * OZ_TO_ML, 1),
+    amountsOz: amountsOz,
+    amountsMl: amountsMl
+  };
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', function () {
+    var rows = document.getElementById('pm-rows'),
+        total = document.getElementById('pm-total');
+    if (!rows) return;
+    var colors = [
+      { c: '#C0392B', parts: 3 }, { c: '#F1C40F', parts: 1 },
+      { c: '#2C3E50', parts: 0 }, { c: '#ECF0F1', parts: 0 }
+    ];
+    function mixHex(list) {
+      var tot = list.reduce(function (s, x) { return s + x.parts; }, 0) || 1;
+      var rgb = [0, 0, 0];
+      list.forEach(function (x) {
+        var n = parseInt(x.c.slice(1), 16);
+        rgb[0] += ((n >> 16) & 255) * x.parts / tot;
+        rgb[1] += ((n >> 8) & 255) * x.parts / tot;
+        rgb[2] += (n & 255) * x.parts / tot;
+      });
+      return '#' + rgb.map(function (v) {
+        var h = Math.round(v).toString(16);
+        return h.length === 1 ? '0' + h : h;
+      }).join('');
+    }
+    function render() {
+      rows.innerHTML = '';
+      colors.forEach(function (col, i) {
+        var row = document.createElement('div');
+        row.className = 'pm-row';
+        var pick = document.createElement('input');
+        pick.type = 'color'; pick.value = col.c;
+        pick.setAttribute('aria-label', 'Color ' + (i + 1));
+        pick.addEventListener('input', function () { col.c = pick.value; run(); });
+        var pin = document.createElement('input');
+        pin.type = 'number'; pin.min = '0'; pin.max = '20'; pin.step = '0.5'; pin.value = col.parts;
+        pin.setAttribute('aria-label', 'Parts of color ' + (i + 1));
+        pin.addEventListener('input', function () { col.parts = parseFloat(pin.value) || 0; run(); });
+        var lab = document.createElement('span');
+        lab.textContent = 'parts';
+        row.appendChild(pick); row.appendChild(pin); row.appendChild(lab);
+        rows.appendChild(row);
+      });
+    }
+    function run() {
+      var r = paintMix(colors.map(function (c) { return c.parts; }), parseFloat(total.value) || 0);
+      var out = document.getElementById('pm-amounts');
+      out.innerHTML = '';
+      var active = colors.filter(function (c) { return c.parts > 0; });
+      active.forEach(function (col, i) {
+        var d = document.createElement('div');
+        d.className = 'pm-amt';
+        d.innerHTML = '<span class="pm-dot" style="background:' + col.c + '"></span><b>' +
+          r.amountsOz[i] + ' oz</b><span>' + r.amountsMl[i] + ' ml</span>';
+        out.appendChild(d);
+      });
+      document.getElementById('pm-totalml').textContent = r.totalMl + ' ml total (' + r.ratioText + ')';
+      document.getElementById('pm-swatch').style.background = mixHex(active.length ? active : [{ c: '#ffffff', parts: 1 }]);
+    }
+    document.getElementById('pm-save').addEventListener('click', function () {
+      var r = paintMix(colors.map(function (c) { return c.parts; }), parseFloat(total.value) || 0);
+      var log = [];
+      try { log = JSON.parse(localStorage.getItem('paintmix-log') || '[]'); } catch (e) {}
+      log.unshift({ when: new Date().toISOString().slice(0, 10), mix: colors.filter(function (c) { return c.parts > 0; }).map(function (c) { return c.c + ' ' + c.parts; }), total: r.totalMl + ' ml' });
+      try { localStorage.setItem('paintmix-log', JSON.stringify(log.slice(0, 12))); } catch (e) {}
+      renderLog();
+    });
+    function renderLog() {
+      var log = [];
+      try { log = JSON.parse(localStorage.getItem('paintmix-log') || '[]'); } catch (e) {}
+      var el = document.getElementById('pm-log');
+      el.innerHTML = '';
+      if (!log.length) { el.innerHTML = '<li>No saved recipes yet.</li>'; return; }
+      log.forEach(function (e) {
+        var li = document.createElement('li');
+        li.textContent = e.when + ' — ' + e.mix.join(' + ') + ' → ' + e.total;
+        el.appendChild(li);
+      });
+    }
+    total.addEventListener('input', run);
+    render(); run(); renderLog();
+  });
+}
+
+</script>
+</body>
+</html>
