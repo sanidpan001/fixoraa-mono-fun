@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fermentation Tracker — Kombucha, Kimchi & Kefir Timelines | FermentTrack</title>
+<meta name="description" content="Track your ferments batch by batch — timelines, readiness checks and tasting notes.">
+<link rel="canonical" href="https://fun.fixoraa.tech/fermentrack/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Fermentation Tracker — Kombucha, Kimchi & Kefir Timelines | FermentTrack">
+<meta property="og:description" content="Track your ferments batch by batch — timelines, readiness checks and tasting notes.">
+<meta property="og:url" content="https://fun.fixoraa.tech/fermentrack/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "FermentTrack",
+      "url": "https://fun.fixoraa.tech/fermentrack/",
+      "applicationCategory": "Food Tools",
+      "operatingSystem": "Web",
+      "description": "Track your ferments batch by batch — timelines, readiness checks and tasting notes.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How long does kombucha take to ferment?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Typically 7 to 14 days at 75–85°F. Cooler kitchens stretch it to 3 weeks; warmer spots finish closer to a week. Taste is the real timer — bottle when it is pleasantly tart, not sweet. The tracker adjusts the timeline for your actual temperature." } },
+        { "@type": "Question", "name": "How do I know when kimchi is ready?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bubbles rise when you tilt the jar, the brine turns cloudy and tangy, and the cabbage softens while keeping crunch — usually 3 to 7 days at room temperature. Refrigerate when it tastes right to you; it keeps fermenting slowly in the fridge." } },
+        { "@type": "Question", "name": "Does temperature change fermentation time?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A lot. Below a ferment's ideal range, microbes work about 50% slower; above it, about 20% faster — with more risk of off flavors. A kombucha that finishes in 7 days at 80°F can take 14+ days at 65°F. Enter your kitchen temperature for an adjusted timeline." } },
+        { "@type": "Question", "name": "How can I tell if my ferment went bad?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Fuzzy mold in pink, black, green or white on the surface means discard — kahm yeast (flat, white, wrinkly film) is harmless but skim it. Rotten or putrid smells, slimy textures beyond normal, and anything that makes you recoil are all discard signals. When in doubt, throw it out." } },
+        { "@type": "Question", "name": "Should I burp my fermenting jars?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes for sealed jars of active ferments like kimchi and water kefir — CO2 builds pressure fast. Burp daily, or use airlocks and fermentation lids that vent automatically. Kombucha's cloth cover and milk kefir's loose lid vent on their own." } },
+        { "@type": "Question", "name": "Why track batches instead of just remembering?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Because ferments overlap and timelines blur — the kimchi from Tuesday, the kefir from Thursday, the kombucha you meant to taste Sunday. A dated log with temperature-adjusted ready windows turns guessing into a tasting schedule." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F7FAF2; --surface:#FFFFFF; --tint:#ECF4DD;
+  --accent:#5C7C1D; --accent-deep:#425A12; --accent-ink:#FFFFFF;
+  --ink:#2C331F; --muted:#697552; --line:#CFE0B4;
+  --font:'Golos Text',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:rgba(255,255,255,.94);border-bottom:2px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:14px 4px 14px 4px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-size:23px}
+.fx-name{font-weight:800;font-size:21px;letter-spacing:-.02em}
+.fx-name small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.16em;text-transform:uppercase}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;font-family:var(--font)}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:10px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+/* hero */
+.ft-hero{padding:44px 0 6px}
+.ft-formula{display:inline-block;font-size:14px;font-weight:600;color:var(--accent-deep);background:var(--tint);border:1px solid var(--line);padding:8px 16px;border-radius:10px;margin-bottom:14px}
+.ft-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:-.025em;font-weight:800;margin-bottom:10px;max-width:720px}
+.ft-hero p{font-size:18px;color:var(--muted);max-width:660px}
+/* lab bench */
+.ft-bench{margin:28px 0 10px;background:var(--surface);border:2px solid var(--line);border-radius:20px;box-shadow:0 14px 30px rgba(92,124,29,.10);overflow:hidden}
+.ft-bench-head{padding:18px 28px;border-bottom:2px solid var(--line);background:linear-gradient(180deg,var(--tint),#fff)}
+.ft-bench-head h2{font-size:19px;font-weight:800}
+.ft-bench-head p{font-size:14px;color:var(--muted)}
+.ft-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.ft-inputs{padding:24px 28px}
+.ft-results{padding:24px 28px;background:linear-gradient(180deg,#FCFDF8,var(--tint));border-left:2px dashed var(--line)}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.field .hint{font-weight:400;font-size:13px;color:var(--muted)}
+.field select,.field input[type=date],.field input[type=text]{font:inherit;padding:11px 13px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%;max-width:280px;font-family:var(--font)}
+.field select:focus,.field input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+input[type=range]{width:100%;max-width:300px;accent-color:var(--accent)}
+.ft-timeline{background:#fff;border:2px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.ft-timeline .when{font-size:15px;font-weight:700;color:var(--accent-deep);margin-bottom:8px}
+.ft-bar{height:16px;border-radius:999px;background:var(--tint);position:relative;overflow:hidden;margin:8px 0}
+.ft-bar i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,var(--accent),#8FAE3F);border-radius:999px;transition:width .4s ease}
+.ft-barlabels{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.ft-check{list-style:none;margin-top:4px}
+.ft-check li{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:8px;font-size:14.5px;cursor:pointer}
+.ft-check input{accent-color:var(--accent);width:18px;height:18px;margin-top:2px;flex:none}
+.ft-check li.done{opacity:.62;text-decoration:line-through}
+.ft-tempnote{font-size:14px;color:var(--accent-deep);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 13px;margin-top:10px}
+.ft-batches{margin-top:16px}
+.ft-batches h3{font-size:15px;font-weight:800;margin-bottom:8px;color:var(--accent-deep)}
+.ft-batch{display:flex;gap:10px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:8px;font-size:14px}
+.ft-batch .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none}
+.ft-batch .rm{margin-left:auto;border:0;background:none;color:var(--muted);font-size:17px;cursor:pointer;font-family:var(--font)}
+.ft-addrow{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.ft-addrow input{flex:1;min-width:120px}
+.ft-addbtn{border:0;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:11px 18px;font:inherit;font-weight:800;cursor:pointer;font-family:var(--font)}
+/* article */
+.article-sec{margin:42px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--accent-deep)}
+.article-sec p{margin-bottom:14px;color:#39432c}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#39432c}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent-deep)}
+.faq-sec details p{padding:14px 18px;color:#39432c;font-size:15px}
+/* footer */
+.fx-footer{background:#2a3419;color:#e6eed6;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#b3c493;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#c4e39a;font-weight:700}
+@media(max-width:760px){
+  .ft-grid{grid-template-columns:1fr}
+  .ft-results{border-left:0;border-top:2px dashed var(--line)}
+  .fx-nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/fermentrack/" aria-label="FermentTrack home">
+      <span class="fx-tile" aria-hidden="true">&#129529;</span>
+      <span class="fx-name">FermentTrack<small>Batch lab</small></span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="ft-hero">
+    <span class="ft-formula">sugars + microbes + time &rarr; flavor &nbsp;·&nbsp; temperature sets the rate</span>
+    <h1>Fermentation Tracker: Is Your Batch Ready Yet?</h1>
+    <p>Pick your ferment, set the start date and kitchen temperature — get a temperature-adjusted ready window, a readiness checklist to taste against, and a running batch log.</p>
+  </section>
+
+  <section class="ft-bench" aria-label="FermentTrack tool">
+    <div class="ft-bench-head">
+      <h2>Experiment setup</h2>
+      <p>Log the batch — the lab computes the timeline.</p>
+    </div>
+    <div class="ft-grid">
+      <div class="ft-inputs">
+        <div class="field">
+          <label for="ft-ferment">Ferment</label>
+          <select id="ft-ferment">
+            <option value="kombucha" selected>Kombucha</option>
+            <option value="kimchi">Kimchi</option>
+            <option value="milk kefir">Milk kefir</option>
+            <option value="water kefir">Water kefir</option>
+            <option value="sauerkraut">Sauerkraut</option>
+            <option value="sourdough starter">Sourdough starter</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ft-start">Batch start date</label>
+          <input type="date" id="ft-start">
+        </div>
+        <div class="field">
+          <label for="ft-temp">Kitchen temperature — <span id="ft-tempval">74°F</span></label>
+          <input type="range" id="ft-temp" min="55" max="95" step="1" value="74">
+        </div>
+        <div class="ft-batches">
+          <h3>Batch log</h3>
+          <div id="ft-batchlist"></div>
+          <div class="ft-addrow">
+            <input type="text" id="ft-batchname" placeholder="Batch name (e.g. Ginger batch #3)" aria-label="Batch name">
+            <button type="button" class="ft-addbtn" id="ft-add">+ Log batch</button>
+          </div>
+        </div>
+      </div>
+      <div class="ft-results" aria-live="polite">
+        <div class="ft-timeline">
+          <div class="when" id="ft-when">Ready between Oct 31 and Nov 7</div>
+          <div class="ft-bar"><i id="ft-progress" style="width:30%"></i></div>
+          <div class="ft-barlabels"><span id="ft-day0">started</span><span id="ft-dayn">day 14</span></div>
+        </div>
+        <h3 style="font-size:15px;font-weight:800;margin-bottom:8px;color:var(--accent-deep)">Readiness checklist — taste against these</h3>
+        <ul class="ft-check" id="ft-check"></ul>
+        <div class="ft-tempnote" id="ft-tempnote"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+    <h2>Why "7 to 14 Days" Is Not an Answer</h2>
+    <p>Every fermentation recipe gives a time range — kombucha 7 to 14 days, kimchi 3 to 7, sauerkraut 3 to 4 weeks — and every beginner discovers the range is where the recipe ends and the anxiety begins. Is day 7 "done" or merely "started"? The honest answer is that fermentation time is not a property of the recipe; it is a property of the recipe plus your kitchen. Temperature, culture vigor, salt concentration, and even jar geometry shift the timeline by factors, not percentages.</p>
+    <p>Temperature dominates. Microbial metabolism roughly follows the Q10 rule — activity doubles or triples with each 18°F (10°C) rise — which is why a kombucha that finishes in 7 days at 80°F can take 14+ days at 65°F. This tracker applies that reality: tell it your kitchen temperature and it stretches or compresses each ferment's baseline window, then gives you a readiness checklist so your senses make the final call. Time proposes; tasting disposes.</p>
+    <h2>Kombucha: Reading the Brew</h2>
+    <p>Kombucha's baseline is 7–14 days at 75–85°F, but the SCOBY does not own a calendar. Start tasting at day 5 with a clean straw slipped under the pellicle. You are tracking the sugar-to-acid arc: sweet tea becomes lightly tart, then pleasantly vinegary, then mouth-puckering. Bottle at "pleasantly tart" — carbonation's second ferment will add another layer of acidity. A new cream-colored SCOBY layer forming on top is a good sign of vigor; brown stringy yeast bits dangling below are normal and harmless.</p>
+    <p>The discard signals are specific: fuzzy mold — dry, dusty spots in white, green, black, or pink sitting on the surface — means the whole batch goes, jar sterilized before reuse. A flat, white, wrinkly film is probably kahm yeast, harmless but off-flavored; skim it and proceed. Vinegar smell is fine (it is vinegar, partly). Rotten smell is not.</p>
+    <h2>Kimchi and Sauerkraut: Salt, Time, Patience</h2>
+    <p>Vegetable ferments run on lactic-acid bacteria already living on the produce, with salt as the bouncer that keeps spoilage microbes out while the good ones establish. Kimchi moves fast — 3–7 days at room temperature — because its seasoning paste and cut vegetables give bacteria easy access. You will see bubbles when you tilt the jar, the brine will cloud, and the flavor will turn from salty to salty-tangy. Refrigerate when it tastes right to you; cold does not stop fermentation, it just slows it to a crawl, so kimchi keeps evolving for months.</p>
+    <p>Sauerkraut is the slow sibling: 3–4 weeks at 60–75°F for full flavor development. The common mistake is refrigerating at week one when it tastes "fine" — fine is not sauerkraut; tangy, complex, and mellow is. Keep everything submerged under the brine the entire time (a cabbage-leaf cap plus a weight), because exposed cabbage molds. Salt at 2% of vegetable weight is the well-tested ratio; below 1.5% invites mush, above 2.5% stalls the ferment.</p>
+    <h2>Milk and Water Kefir: The Daily Ferments</h2>
+    <p>Kefirs are the sprinters: 24–48 hours for milk kefir, 24–72 for water kefir, at normal room temperatures. Milk kefir is ready when the milk thickens like thin yogurt and just begins to separate into whey pockets — strain before full separation for the creamiest result. Water kefir is done when it tastes lightly sweet-tart and fizzy, with multiplied grains as the sign of a happy culture.</p>
+    <p>Because the cycle is daily, kefir rewards routine: morning strain, fresh milk or sugar water, back on the counter. Grains are resilient but not indestructible — chlorinated water and prolonged starvation are the two killers. If you need a break, rest milk grains in fresh milk in the fridge for up to a week; they will wake up in a batch or two.</p>
+    <h2>Sourdough Starter: The Two-Week Project</h2>
+    <p>A new sourdough starter takes 7–14 days of twice-daily feedings to become bake-ready, and the timeline is the least predictable of all the ferments here because you are ranching a wild ecosystem, not pitching a known culture. Days 1–3 often show a burst of activity from bacteria that will later die off — the "false start" that discourages beginners when it fades. The real culture establishes around days 5–10.</p>
+    <p>Readiness has four tests, all in the checklist above: doubling within 4–8 hours of feeding, bubbles throughout (not just on top), a yeasty-sweet smell rather than acetone, and the float test — a spoonful that floats in water. A starter that passes all four will leaven bread; one that passes three needs a few more days. Temperature matters enormously here: starters at 65°F develop at half the pace of those at 78°F.</p>
+    <h2>Temperature: The Dial You Actually Control</h2>
+    <p>You cannot change your culture's genetics, but you can change its thermostat. Below a ferment's ideal range, everything runs about 50% slower — the tracker's cold adjustment. Above the range, about 20% faster, with rising risk of off-flavors: hot kimchi gets mushy, hot kombucha turns harshly vinegary, hot starters favor bacteria over yeast and bake sour, flat loaves.</p>
+    <p>Practical temperature control is low-tech: the top of the fridge runs warm, a turned-off oven with the light on holds ~80°F, a seedling heat mat under a towel gives precise warmth, and a cooler corner of the basement gives cool stability. Pick the spot that matches the ferment, not the ferment that matches the spot — moving the jar two rooms over is often the difference between a 10-day and a 16-day kombucha.</p>
+    <h2>The Batch Log Habit</h2>
+    <p>Ferments overlap — the kimchi from Tuesday, the kefir strained Thursday, the kombucha you meant to taste Sunday — and human memory is a poor lab notebook. The batch log above exists for exactly this: name the batch, stamp the start date, and the tracker computes its personal ready window from today's temperature. When you taste, jot the result; patterns emerge fast. "Batch #3 was perfect at day 9" is worth more than any recipe's range, because it is calibrated to your kitchen, your culture, and your taste.</p>
+    <p>Tasting notes need not be elaborate: date, day count, and three words ("tart, fizzy, ready" or "sweet, flat, wait"). Six months of three-word notes make you the local expert on your own ferments — which is the only expertise that matters.</p>
+    <h2>Safety: When to Throw It Out</h2>
+    <p>Fermentation is safe because acidity, salt, and competitive microbes exclude pathogens — but "when in doubt, throw it out" is still the rule. Discard on: fuzzy mold of any color on the surface (not to be scraped off — the invisible network runs deep), putrid or rotten smells, slimy textures beyond the normal (okra-like ropiness in some vegetable ferments is fine; sudden slime in kefir is not), and any ferment that simply repels you. Botulism risk in properly salted and acidified ferments is negligible, but low-salt experiments and oil-sealed garlic are the known edge cases — do not improvise there.</p>
+    <p>Cleanliness prevents most failures: hot soapy wash for jars, no soap residue, clean hands, and utensils that have not touched raw meat. Fermentation is controlled rot, and control starts with the vessel.</p>
+  <h2>Second Ferments and Flavoring</h2>
+    <p>The primary ferment builds the foundation; the second ferment builds the character. Kombucha bottled with a spoonful of fruit or ginger and left 2–3 days at room temperature carbonates naturally and takes on flavor — burp daily past day two, because bottle bombs are real. Water kefir's second ferment works the same way and is where it becomes genuinely delicious. Kimchi needs no second ferment, but its flavor keeps evolving in the fridge for months; label jars with dates so you can taste the arc. Milk kefir can get a second ferment too — 12 hours with a strip of lemon peel or vanilla — for a thicker, milder result. The tracker's timelines cover primary fermentation; second ferments run on taste alone, checked daily.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How long does kombucha take to ferment?</summary><p>Typically 7 to 14 days at 75–85°F. Cooler kitchens stretch it to 3 weeks; warmer spots finish closer to a week. Taste is the real timer — bottle when it is pleasantly tart, not sweet. The tracker adjusts the timeline for your actual temperature.</p></details>
+    <details><summary>How do I know when kimchi is ready?</summary><p>Bubbles rise when you tilt the jar, the brine turns cloudy and tangy, and the cabbage softens while keeping crunch — usually 3 to 7 days at room temperature. Refrigerate when it tastes right to you; it keeps fermenting slowly in the fridge.</p></details>
+    <details><summary>Does temperature change fermentation time?</summary><p>A lot. Below a ferment's ideal range, microbes work about 50% slower; above it, about 20% faster — with more risk of off flavors. A kombucha that finishes in 7 days at 80°F can take 14+ days at 65°F. Enter your kitchen temperature for an adjusted timeline.</p></details>
+    <details><summary>How can I tell if my ferment went bad?</summary><p>Fuzzy mold in pink, black, green or white on the surface means discard — kahm yeast (flat, white, wrinkly film) is harmless but skim it. Rotten or putrid smells, slimy textures beyond normal, and anything that makes you recoil are all discard signals. When in doubt, throw it out.</p></details>
+    <details><summary>Should I burp my fermenting jars?</summary><p>Yes for sealed jars of active ferments like kimchi and water kefir — CO2 builds pressure fast. Burp daily, or use airlocks and fermentation lids that vent automatically. Kombucha's cloth cover and milk kefir's loose lid vent on their own.</p></details>
+    <details><summary>Why track batches instead of just remembering?</summary><p>Because ferments overlap and timelines blur — the kimchi from Tuesday, the kefir from Thursday, the kombucha you meant to taste Sunday. A dated log with temperature-adjusted ready windows turns guessing into a tasting schedule.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">FermentTrack</div>
+    <p>FermentTrack follows your ferments batch by batch — temperature-adjusted timelines, readiness checklists and a batch log.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+var DATA={
+kombucha:{min:7,max:14,cold:70,hot:85,check:['Tastes pleasantly tart, not sweet','A new SCOBY layer has formed on top','pH reads below 3.5','No fuzzy mold \u2014 brown yeast strands are normal']},
+kimchi:{min:3,max:7,cold:60,hot:75,check:['Bubbles rise when the jar is tilted','Brine turns cloudy and tangy','Cabbage softens but keeps its crunch','Refrigerate once it is sour enough for you']},
+'milk kefir':{min:1,max:2,cold:65,hot:80,check:['Milk thickens like thin yogurt','Whey pockets are just starting to form','Smells pleasantly sour, not rotten','Strain before it fully separates']},
+'water kefir':{min:1,max:3,cold:68,hot:80,check:['Fizzy and lightly sweet-tart','Grains have multiplied','No off or rotten smell','Bottle for a second ferment if you like fizz']},
+sauerkraut:{min:21,max:28,cold:60,hot:75,check:['Brine fully covers the cabbage','Bubbling slows after week two','Tastes tangy, not just salty','Kraut stays crisp and submerged']},
+'sourdough starter':{min:7,max:14,cold:70,hot:80,check:['Doubles within 4\u20138 hours of feeding','Full of bubbles throughout','Smells yeasty-sweet, not like acetone','Passes the float test in water']}
+};
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+var fSel=document.getElementById('ft-ferment'),startEl=document.getElementById('ft-start'),tempEl=document.getElementById('ft-temp');
+(function(){var d=new Date();startEl.value=d.toISOString().slice(0,10);})();
+fSel.addEventListener('change',calc);
+startEl.addEventListener('change',calc);
+tempEl.addEventListener('input',function(){
+  document.getElementById('ft-tempval').textContent=tempEl.value+'\u00B0F';calc();
+});
+function fmtDate(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'});}
+function calc(){
+  var key=fSel.value,d=DATA[key],temp=parseInt(tempEl.value,10);
+  var mult=temp<d.cold?1.5:temp>d.hot?0.8:1.0;
+  var dMin=Math.round(d.min*mult),dMax=Math.round(d.max*mult);
+  var start=startEl.value?new Date(startEl.value+'T12:00:00'):new Date();
+  var r1=new Date(start);r1.setDate(r1.getDate()+dMin);
+  var r2=new Date(start);r2.setDate(r2.getDate()+dMax);
+  document.getElementById('ft-when').textContent=cap(key)+' ready between '+fmtDate(r1)+' and '+fmtDate(r2)+' ('+dMin+'\u2013'+dMax+' days)';
+  var now=new Date(),elapsed=Math.max(0,Math.round((now-start)/86400000));
+  document.getElementById('ft-progress').style.width=Math.min(100,elapsed/dMax*100)+'%';
+  document.getElementById('ft-day0').textContent='day 0 · '+fmtDate(start);
+  document.getElementById('ft-dayn').textContent='day '+dMax+' · '+fmtDate(r2)+' · today is day '+elapsed;
+  var ul=document.getElementById('ft-check');ul.innerHTML='';
+  d.check.forEach(function(c){
+    var li=document.createElement('li');
+    var cb=document.createElement('input');cb.type='checkbox';
+    cb.addEventListener('change',function(){li.classList.toggle('done',cb.checked);});
+    li.appendChild(cb);
+    var sp=document.createElement('span');sp.textContent=c;li.appendChild(sp);
+    li.addEventListener('click',function(e){if(e.target!==cb){cb.checked=!cb.checked;li.classList.toggle('done',cb.checked);}});
+    ul.appendChild(li);
+  });
+  var note=temp<d.cold?'Below the ideal range ('+d.cold+'\u2013'+d.hot+'\u00B0F) — fermentation runs about 50% slower. Find a warmer spot if you are impatient.':temp>d.hot?'Above the ideal range ('+d.cold+'\u2013'+d.hot+'\u00B0F) — about 20% faster; start tasting early to avoid off flavors.':'Inside the ideal '+d.cold+'\u2013'+d.hot+'\u00B0F range for '+key+'.';
+  document.getElementById('ft-tempnote').textContent=note;
+}
+var batches=[];
+document.getElementById('ft-add').addEventListener('click',function(){
+  var name=document.getElementById('ft-batchname').value.trim()||cap(fSel.value)+' batch';
+  batches.push({name:name,ferment:fSel.value,start:startEl.value||new Date().toISOString().slice(0,10)});
+  document.getElementById('ft-batchname').value='';
+  renderBatches();
+});
+function renderBatches(){
+  var list=document.getElementById('ft-batchlist');list.innerHTML='';
+  if(!batches.length){list.innerHTML='<p style="font-size:13.5px;color:var(--muted)">No batches logged yet — your ferments will appear here.</p>';return;}
+  batches.forEach(function(b,i){
+    var d=DATA[b.ferment],temp=parseInt(tempEl.value,10);
+    var mult=temp<d.cold?1.5:temp>d.hot?0.8:1.0;
+    var r2=new Date(b.start+'T12:00:00');r2.setDate(r2.getDate()+Math.round(d.max*mult));
+    var row=document.createElement('div');row.className='ft-batch';
+    row.innerHTML='<span class="dot"></span><span><strong>'+b.name.replace(/</g,'&lt;')+'</strong><br><span style="color:var(--muted)">'+cap(b.ferment)+' · started '+b.start+' · ready by '+fmtDate(r2)+'</span></span>';
+    var rm=document.createElement('button');rm.className='rm';rm.textContent='\u00D7';rm.setAttribute('aria-label','Remove batch');
+    rm.addEventListener('click',function(){batches.splice(i,1);renderBatches();});
+    row.appendChild(rm);list.appendChild(row);
+  });
+}
+renderBatches();calc();
+})();
+</script>
+</body>
+</html>
