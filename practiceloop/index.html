@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music Practice Planner — Build Your Weekly Routine | PracticeLoop</title>
+<meta name="description" content="Free music practice planner: build a balanced session plan for any time you have, with presets, focus areas and weekly tracking. No signup.">
+<link rel="canonical" href="https://fun.fixoraa.tech/practiceloop/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Music Practice Planner — Build Your Weekly Routine | PracticeLoop">
+<meta property="og:description" content="Free music practice planner: build a balanced session plan for any time you have, with presets, focus areas and weekly tracking. No signup.">
+<meta property="og:url" content="https://fun.fixoraa.tech/practiceloop/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PracticeLoop",
+      "url": "https://fun.fixoraa.tech/practiceloop/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Free music practice planner: build a balanced session plan for any time you have, with presets, focus areas and weekly tracking. No signup.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long should a music practice session be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "30 minutes of focused practice is the sweet spot for most players \u2014 long enough for real work, short enough to do daily. 15 focused minutes beats an hour of noodling, and 60-minute deep sessions work best 1\u20132 times a week. Consistency beats duration: five 20-minute days outperform one 100-minute day for motor learning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I practice first in a session?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Always warm up first (about 15% of your time) with slow, easy material \u2014 then tackle your hardest focus area while concentration is fresh. Save repertoire run-throughs and fun playing for later in the session. PracticeLoop orders blocks this way automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I split practice time between technique and songs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Beginners: ~40% technique, 40% repertoire. Intermediate: shift toward songs and repertoire (50%+). Advanced: target specific technical ceilings in short blocks. Keep ear training and theory in the rotation at any level \u2014 15 minutes a week compounds enormously."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I stay consistent with practicing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lower the bar: commit to a 15-minute minimum you can do on your worst day, log every session, and watch the streak. PracticeLoop's week board and session log make the habit visible. Missing one day is nothing; missing two is the start of a new habit \u2014 the bad kind."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do when I hit a plateau?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Change the method, not the minutes: shrink the chunk to 4 bars, practice with dotted rhythms, play it in a different key, or get one targeted lesson. Also check the usual suspects \u2014 practicing at performance tempo instead of slow, only playing strengths, and never recording yourself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it better to practice one thing or many things per session?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two focus areas per 30-minute session is ideal \u2014 enough variety to stay engaged, enough depth to progress. Single-focus 15-minute sessions are perfect for busy days. Avoid cramming five areas into one session; everything gets a shallow pass and nothing improves."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FBF3F7; --surface:#FFFFFF; --accent:#9D174D; --accent-ink:#FFFFFF;
+  --ink:#38232E; --muted:#6E5560; --line:#EBD5E0;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.pl-wrap{font-family:'Fraunces',Georgia,serif;background:#FBF3F7;color:#38232E;padding:58px 20px 76px;}
+.pl-inner{max-width:1080px;margin:0 auto;}
+.pl-topline{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.pl-dot{width:11px;height:11px;border-radius:50%;background:#3E9B4F;box-shadow:0 0 0 4px rgba(62,155,79,.18);}
+.pl-status{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:#6E5560;font-weight:600;font-family:Inter,system-ui,sans-serif;}
+.pl-inner h1{font-size:clamp(32px,5vw,50px);line-height:1.06;letter-spacing:-.01em;margin:0 0 10px;font-weight:600;text-wrap:balance;}
+.pl-tag{color:#6E5560;font-size:17px;max-width:660px;margin:0 0 30px;line-height:1.55;font-family:Inter,system-ui,sans-serif;}
+.pl-deck{background:#fff;border:1px solid #EBD5E0;border-radius:22px;padding:28px;box-shadow:0 18px 44px rgba(157,23,77,.08);margin-bottom:22px;}
+.pl-deck h2{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:#9D174D;margin:0 0 4px;font-weight:700;font-family:Inter,system-ui,sans-serif;}
+.pl-deck .pl-sub{font-size:13.5px;color:#6E5560;margin:0 0 18px;font-family:Inter,system-ui,sans-serif;line-height:1.55;}
+.pl-timerow{display:flex;align-items:center;gap:18px;margin-bottom:20px;flex-wrap:wrap;}
+.pl-timeread{font-size:34px;font-weight:600;min-width:190px;}
+.pl-timeread small{font-size:14px;color:#6E5560;font-family:Inter,system-ui,sans-serif;font-weight:400;}
+.pl-slider{flex:1;min-width:220px;accent-color:#9D174D;height:36px;}
+.pl-presets{display:flex;gap:9px;}
+.pl-preset{border:2px solid #EBD5E0;background:#FBF3F7;border-radius:999px;padding:9px 18px;font-size:13.5px;font-weight:700;cursor:pointer;color:#9D174D;font-family:Inter,system-ui,sans-serif;}
+.pl-preset:hover{border-color:#9D174D;}
+.pl-chips{display:flex;flex-wrap:wrap;gap:9px;}
+.pl-chip{border:2px solid #EBD5E0;background:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;color:#38232E;font-family:Inter,system-ui,sans-serif;}
+.pl-chip.on{background:#9D174D;border-color:#9D174D;color:#fff;}
+.pl-plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:22px;}
+.pl-block{background:#fff;border:1px solid #EBD5E0;border-radius:18px;padding:20px;box-shadow:0 10px 26px rgba(157,23,77,.06);border-top:5px solid #9D174D;}
+.pl-block.edge{border-top-color:#E8A0BF;background:#FDF8FB;}
+.pl-min{font-size:30px;font-weight:600;color:#9D174D;}
+.pl-min span{font-size:13px;color:#6E5560;font-family:Inter,system-ui,sans-serif;font-weight:400;margin-left:4px;}
+.pl-block h3{margin:6px 0 8px;font-size:17px;font-weight:600;text-transform:capitalize;}
+.pl-block p{margin:0;font-size:13.5px;color:#6E5560;line-height:1.6;font-family:Inter,system-ui,sans-serif;}
+.pl-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;}
+.pl-card{background:#fff;border:1px solid #EBD5E0;border-radius:20px;padding:24px;box-shadow:0 14px 34px rgba(157,23,77,.07);}
+.pl-card h2{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:#9D174D;margin:0 0 4px;font-weight:700;font-family:Inter,system-ui,sans-serif;}
+.pl-card .pl-sub{font-size:13.5px;color:#6E5560;margin:0 0 16px;font-family:Inter,system-ui,sans-serif;line-height:1.55;}
+.pl-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:14px;}
+.pl-day{border:1px solid #EBD5E0;border-radius:13px;padding:10px 4px;text-align:center;background:#FBF3F7;font-family:Inter,system-ui,sans-serif;}
+.pl-day.today{border-color:#9D174D;}
+.pl-day.done{background:#9D174D;border-color:#9D174D;color:#fff;}
+.pl-day.done .pl-dm{color:#fff;}
+.pl-dn{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;opacity:.75;}
+.pl-dd{display:block;font-size:17px;font-weight:700;}
+.pl-dm{display:block;font-size:11px;font-weight:700;color:#9D174D;}
+.pl-weekfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-family:Inter,system-ui,sans-serif;font-size:14px;color:#6E5560;font-weight:600;}
+.pl-btn{background:#9D174D;color:#fff;border:none;border-radius:12px;padding:12px 18px;font-size:14px;font-weight:700;cursor:pointer;font-family:Inter,system-ui,sans-serif;}
+.pl-btn:hover{filter:brightness(1.08);}
+.pl-btn.ghost{background:#fff;color:#9D174D;border:2px solid #9D174D;}
+.pl-logrow{display:flex;gap:10px;align-items:center;padding:10px 2px;border-bottom:1px solid #F3E2EA;font-family:Inter,system-ui,sans-serif;font-size:13.5px;}
+.pl-logd{color:#6E5560;min-width:96px;}
+.pl-logf{flex:1;text-transform:capitalize;}
+.pl-logm{font-weight:700;color:#9D174D;}
+.pl-dim{color:#6E5560;font-size:14px;font-family:Inter,system-ui,sans-serif;line-height:1.6;}
+.pl-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+@media(max-width:920px){.pl-grid{grid-template-columns:1fr;}}
+@media(max-width:520px){.pl-wrap{padding:40px 14px 56px;}.pl-deck{padding:20px 16px;}.pl-timeread{font-size:28px;min-width:150px;}.pl-week{gap:5px;}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PracticeLoop home">
+      <span class="fx-logo-tile" aria-hidden="true">🎵</span>
+      <span class="fx-brand">PracticeLoop</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-console-dash" aria-label="PracticeLoop tool">
+<section class='pl-wrap'><div class='pl-inner'>
+<div class='pl-topline'><span class='pl-dot' aria-hidden='true'></span><span class='pl-status'>Practice Console &middot; Ready</span></div>
+<h1>Music Practice Planner — Build a Session That Fits Your Day</h1>
+<p class='pl-tag'>Tell PracticeLoop how many minutes you have and what needs work. It builds a balanced warm-up &rarr; focus &rarr; cool-down plan, then tracks your week.</p>
+<div class='pl-deck'>
+<h2>Session Controls</h2>
+<p class='pl-sub'>Set your time, pick your focus areas, and the plan builds itself.</p>
+<div class='pl-timerow'>
+<input class='pl-slider' type='range' id='pl-time' min='10' max='120' step='5' value='30' aria-label='Session length in minutes'>
+<div class='pl-timeread' id='pl-timeread'>30 min session</div>
+<div class='pl-presets'>
+<button class='pl-preset' data-preset='15' type='button'>Quick 15</button>
+<button class='pl-preset' data-preset='30' type='button'>Standard 30</button>
+<button class='pl-preset' data-preset='60' type='button'>Deep 60</button>
+</div>
+</div>
+<div class='pl-chips' id='pl-chips' role='group' aria-label='Focus areas'></div>
+</div>
+<div class='pl-plan' id='pl-plan' aria-live='polite'></div>
+<div class='pl-grid'>
+<div class='pl-card'>
+<h2>Week Board</h2>
+<p class='pl-sub'>Your last 7 days at a glance. Log sessions to build the streak.</p>
+<div class='pl-week' id='pl-week'></div>
+<div class='pl-weekfoot'><span id='pl-weektotal'>0 min this week</span><span id='pl-streak'>0 days streak</span></div>
+<div class='pl-actions'>
+<button class='pl-btn' id='pl-logbtn' type='button'>Log this session</button>
+<button class='pl-btn ghost' id='pl-copy' type='button'>Copy plan</button>
+</div>
+</div>
+<div class='pl-card'>
+<h2>Session Log</h2>
+<p class='pl-sub'>Recent sessions, saved on this device.</p>
+<div id='pl-log'></div>
+</div>
+</div>
+</div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Most Practice Fails (and It's Not Laziness)</h2><p>Ask a musician why they are not improving and they will blame discipline. But watch them practice and the real problem appears: they noodle. Twenty unstructured minutes of playing what they already know, a glance at the hard part, then the comfortable riff again. Researchers call the alternative <strong>deliberate practice</strong> &mdash; practice aimed at a specific weakness, with feedback, at the edge of ability. The difference between noodling and deliberate practice is not effort; it is <em>structure</em>. A plan turns the same thirty minutes into a different activity entirely.</p><p>That is what a practice planner does. It answers the two questions that derail sessions: <em>what should I work on?</em> and <em>for how long?</em> PracticeLoop builds every session in three phases &mdash; warm-up, focused work, cool-down &mdash; because that arc matches how bodies and brains actually learn motor skills.</p><h2>The Three Phases of a Good Session</h2><p><strong>Warm-up (about 15%).</strong> Cold muscles and a cold embouchure lie to you: everything feels harder than it is, and pushing early is how injuries and bad habits start. Five unhurried minutes of slow scales, long tones or gentle sirens raises blood flow and gives your brain clean, slow repetitions to calibrate on. Professional athletes would never sprint cold; musicians should not shred cold either.</p><p><strong>Focused work (the bulk).</strong> This is the deliberate-practice zone: one weakness at a time, in short reps, with a clear success criterion. &ldquo;Clean chord changes at 80 bpm&rdquo; beats &ldquo;work on rhythm&rdquo; because you know when you have won. PracticeLoop splits your available time across the focus areas you pick &mdash; technique, repertoire, songs, improvisation, theory, ear training &mdash; so nothing important starves while you chase the urgent thing.</p><p><strong>Cool-down (about 10%).</strong> End with something you love, played slowly and well. This is not sentimentality: motor learning research shows that the last thing you do in a session gets consolidated overnight. Ending on a win means your brain files away success, and you will <em>want</em> to come back tomorrow. The players who quit are usually the ones who end every session frustrated.</p><h2>How to Split Your Time</h2><p>The right split depends on your level. <strong>Beginners (first year)</strong> should weight technique and repertoire heavily &mdash; roughly 40% technique, 40% repertoire, 20% everything else. Fundamentals compound: every hour of clean chord changes pays off in every song you will ever learn. <strong>Intermediate players</strong> shift toward repertoire and songs (50%+), because the bottleneck is no longer the hands but the music &mdash; finishing pieces, playing with others, performing. <strong>Advanced players</strong> often need the reverse: their repertoire is fine, but specific technical ceilings (speed, a weak register, reading) need targeted 10-minute blocks.</p><p>Two areas deserve a permanent seat regardless of level: <strong>ear training</strong> and <strong>theory</strong>. Fifteen minutes a week of singing intervals back or naming chords by ear does more for your musicianship than another hour of scales, because the ear is the instrument and the hands are just the speakers. Players who &ldquo;don't have time for theory&rdquo; are usually the ones stuck transcribing the same lick for the third month.</p><h2>The Focus-Area Menu, Explained</h2><p><strong>Technique</strong> is the gym: scales, arpeggios, picking patterns, sticking, breath control. Rule: one drill at a time, metronome on, tempo only rises when reps are clean. <strong>Repertoire</strong> is the workshop: pieces you are learning, bar by bar &mdash; the &ldquo;hardest 8 bars&rdquo; method (loop the worst section until it is the easiest) beats playing the whole piece badly ten times. <strong>Songs</strong> is the dress rehearsal: full run-throughs with no stopping, training recovery from mistakes instead of perfection. <strong>Improvisation</strong> is the playground: constraints (one scale, one rhythmic idea) force creativity better than total freedom. <strong>Theory</strong> and <strong>ear training</strong> are the classroom: the concepts that make everything else faster.</p><h2>Presets for Real Life</h2><p><strong>Quick 15</strong> is the consistency engine: 3-minute warm-up, 10 minutes on your single biggest weakness, 2-minute cool-down. Fifteen focused minutes beats an hour of noodling, and &mdash; crucially &mdash; a 15-minute session is one you will actually do on a busy day. Streaks are built on minimums, not maximums.</p><p><strong>Standard 30</strong> is the daily driver: 5 minutes warm-up, ~22 minutes across two focus areas, 3 minutes cool-down. Enough for real progress on two fronts without fatigue. <strong>Deep 60</strong> is the weekend session: 9 minutes warm-up, ~45 minutes across three or four areas, 6 minutes cool-down. Long sessions need a mid-point reset &mdash; stand up, shake out, sip water at the halfway mark, or the second half's quality collapses.</p><h2>Tracking: The Unsexy Superpower</h2><p>What gets measured gets practiced. Logging sessions does three things: it makes the habit visible (the week board never lies), it reveals patterns (you will discover you always skip ear training), and it protects you from your own narrative (&ldquo;I never practice&rdquo; vs. 140 logged minutes). PracticeLoop's log lives on your device &mdash; no account, no cloud &mdash; and the streak counter rewards the only metric that matters: showing up.</p><p>Review the log monthly, not daily. Daily review breeds guilt; monthly review breeds insight. Look for: total minutes trending up or down, focus areas you avoid (schedule them first in the session, when willpower is fresh), and the ratio of technique to repertoire. If you are &ldquo;practicing&rdquo; but the log shows 90% playing-through-songs, you have diagnosed your own plateau.</p><h2>Beating Plateaus</h2><p>Every player stalls. The usual causes, in order: <strong>1. No clear target</strong> &mdash; &ldquo;get better at guitar&rdquo; is not a target; &ldquo;clean barre changes at 100 bpm&rdquo; is. <strong>2. Practicing at performance tempo</strong> &mdash; if you cannot play it slowly, you cannot play it; the metronome is not optional. <strong>3. Only practicing strengths</strong> &mdash; the comfortable riff is the enemy. <strong>4. No recording</strong> &mdash; your ears lie in the moment; a phone recording tells the truth. <strong>5. Skipping rest</strong> &mdash; consolidation happens between sessions, not during them; two 30-minute days beat one 60-minute day for motor learning.</p><p>When a specific skill stalls for three weeks, change the <em>method</em>, not the <em>minutes</em>: shrink the chunk (4 bars instead of 16), change the rhythm (dotted practice), change the context (play it in a different key), or get one lesson on exactly that skill. Plateaus are information, not verdicts.</p><h2>Practice vs. Playing: Protect Both</h2><p>Here is the trap of a good planner: turning all music into homework. <strong>Practice</strong> is deliberate, uncomfortable, measured. <strong>Playing</strong> is joyful, free, unmeasured &mdash; the jam, the campfire, the song you play just because. You need both, and they are not interchangeable. Schedule practice, but also fiercely protect unplanned playing time; it is where motivation lives and where practice's gains get road-tested. The cool-down block exists partly for this: every session should touch joy, so the instrument never becomes only a task.</p><h2>Mental Practice: Rehearsing Without the Instrument</h2><p>Some of the most effective practice needs no instrument at all. <strong>Mental rehearsal</strong> &mdash; vividly imagining yourself playing a passage, feeling the fingerings and hearing the result &mdash; activates many of the same neural pathways as physical practice, and sports science has validated it for decades. Try it on your commute: pick the hardest 8 bars of your current piece, close your eyes, and &ldquo;play&rdquo; them in your head at tempo, noticing exactly where your mental fingers stumble. Those stumbles mark the spots your hands have not truly learned yet, and ten minutes of mental reps often unlocks what an hour of physical repetition could not. Score study counts too: reading through a piece away from the instrument, singing each line and mapping the form, builds the audiation &mdash; the inner hearing &mdash; that separates players who read notes from players who read music. Add one mental-practice block to your week and watch physical sessions get more efficient, because the brain arrives already knowing the map.</p><h2>A Sample Week</h2><p>Monday: Standard 30 &mdash; technique + repertoire. Tuesday: Quick 15 &mdash; ear training only (the neglected child). Wednesday: Standard 30 &mdash; songs + improvisation. Thursday: Quick 15 &mdash; theory (analyze one song's chords). Friday: Standard 30 &mdash; technique + repertoire. Saturday: Deep 60 &mdash; the full menu, plus recording. Sunday: off, or pure playing &mdash; no metronome allowed. Total: ~3 focused hours, every area touched, one rest day. Run that week for a month and compare your log's first and last recordings. That gap is what a plan buys.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How long should a music practice session be?</summary><p>30 minutes of focused practice is the sweet spot for most players — long enough for real work, short enough to do daily. 15 focused minutes beats an hour of noodling, and 60-minute deep sessions work best 1–2 times a week. Consistency beats duration: five 20-minute days outperform one 100-minute day for motor learning.</p></details>
+<details><summary>What should I practice first in a session?</summary><p>Always warm up first (about 15% of your time) with slow, easy material — then tackle your hardest focus area while concentration is fresh. Save repertoire run-throughs and fun playing for later in the session. PracticeLoop orders blocks this way automatically.</p></details>
+<details><summary>How do I split practice time between technique and songs?</summary><p>Beginners: ~40% technique, 40% repertoire. Intermediate: shift toward songs and repertoire (50%+). Advanced: target specific technical ceilings in short blocks. Keep ear training and theory in the rotation at any level — 15 minutes a week compounds enormously.</p></details>
+<details><summary>How can I stay consistent with practicing?</summary><p>Lower the bar: commit to a 15-minute minimum you can do on your worst day, log every session, and watch the streak. PracticeLoop's week board and session log make the habit visible. Missing one day is nothing; missing two is the start of a new habit — the bad kind.</p></details>
+<details><summary>What should I do when I hit a plateau?</summary><p>Change the method, not the minutes: shrink the chunk to 4 bars, practice with dotted rhythms, play it in a different key, or get one targeted lesson. Also check the usual suspects — practicing at performance tempo instead of slow, only playing strengths, and never recording yourself.</p></details>
+<details><summary>Is it better to practice one thing or many things per session?</summary><p>Two focus areas per 30-minute session is ideal — enough variety to stay engaged, enough depth to progress. Single-focus 15-minute sessions are perfect for busy days. Avoid cramming five areas into one session; everything gets a shallow pass and nothing improves.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PracticeLoop</div>
+    <p>PracticeLoop turns the minutes you have into a balanced warm-up/focus/cool-down session plan — with presets, focus areas, a week board and streak tracking, all on your device.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var PL_DEFAULTS=["technique","repertoire","theory","ear training"];
+var PL_DRILLS={
+"warmup":"Slow scales, long tones or lip-trill sirens at 60% tempo. Wake the hands and voice up gently.",
+"technique":"One drill on loop: 2-minute reps, bump the tempo only when every rep is clean.",
+"repertoire":"Play the piece through once, then loop the hardest 8 bars until they feel easy.",
+"theory":"Take one song you love: name its chords by ear and write the progression in Roman numerals.",
+"ear training":"Sing intervals back against a drone, then transcribe one short lick by ear.",
+"songs":"Run your setlist top to bottom with no stopping — a gig simulation.",
+"improvisation":"One backing track, one scale, five choruses. Record the last one and listen back.",
+"cooldown":"Play something you love, slowly. Always end on a win."};
+function buildPracticePlan(minutes,focus){
+  var m=Math.max(10,Math.round(Number(minutes)||30));
+  var areas=(focus&&focus.length)?focus.slice():PL_DEFAULTS.slice();
+  var warmup=Math.max(3,Math.round(m*0.15));
+  var cooldown=Math.max(2,Math.round(m*0.10));
+  var remaining=Math.max(0,m-warmup-cooldown);
+  var n=areas.length,base=Math.floor(remaining/n),rem=remaining%n;
+  var plan={warmup:warmup};
+  areas.forEach(function(a,i){plan[a]=base+(i<rem?1:0);});
+  plan.cooldown=cooldown;plan.total=m;
+  return plan;
+}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+  var slider=document.getElementById('pl-time'),timeRead=document.getElementById('pl-timeread'),
+      chips=document.getElementById('pl-chips'),planOut=document.getElementById('pl-plan'),
+      weekRow=document.getElementById('pl-week'),weekTotal=document.getElementById('pl-weektotal'),
+      logList=document.getElementById('pl-log'),logBtn=document.getElementById('pl-logbtn'),
+      copyB=document.getElementById('pl-copy'),streakEl=document.getElementById('pl-streak');
+  if(!slider||!planOut)return;
+  var AREAS=["technique","repertoire","songs","improvisation","theory","ear training"];
+  var focus=["technique","repertoire"];
+  var LSKEY='practiceloop-log-v1';
+  function loadLog(){try{return JSON.parse(localStorage.getItem(LSKEY))||[];}catch(e){return[];}}
+  function saveLog(l){try{localStorage.setItem(LSKEY,JSON.stringify(l));}catch(e){}}
+  function dayKey(d){return d.toISOString().slice(0,10);}
+  function renderChips(){
+    chips.innerHTML='';
+    AREAS.forEach(function(a){
+      var b=document.createElement('button');b.type='button';
+      b.className='pl-chip'+(focus.indexOf(a)>=0?' on':'');b.textContent=a;
+      b.setAttribute('aria-pressed',focus.indexOf(a)>=0?'true':'false');
+      b.addEventListener('click',function(){
+        var k=focus.indexOf(a);if(k>=0)focus.splice(k,1);else focus.push(a);
+        if(!focus.length)focus=[a];
+        renderChips();renderPlan();
+      });
+      chips.appendChild(b);
+    });
+  }
+  function renderPlan(){
+    var mins=Number(slider.value);timeRead.textContent=mins+' min session';
+    var plan=buildPracticePlan(mins,focus);
+    var order=['warmup'].concat(focus.length?focus:PL_DEFAULTS).concat(['cooldown']);
+    planOut.innerHTML=order.map(function(k,i){
+      var label=k==='warmup'?'Warm-up':k==='cooldown'?'Cool-down':k.charAt(0).toUpperCase()+k.slice(1);
+      return '<article class="pl-block'+(i===0||i===order.length-1?' edge':'')+'">'+
+      '<div class="pl-min">'+plan[k]+'<span>min</span></div>'+
+      '<h3>'+label+'</h3><p>'+(PL_DRILLS[k]||PL_DRILLS.technique)+'</p></article>';
+    }).join('');
+    planOut.dataset.plan=JSON.stringify(plan);
+  }
+  function renderWeek(){
+    var log=loadLog(),now=new Date(),cells=[],mins=0,streak=0;
+    for(var i=6;i>=0;i--){
+      var d=new Date(now);d.setDate(now.getDate()-i);var k=dayKey(d);
+      var entries=log.filter(function(e){return e.day===k;});
+      var msum=entries.reduce(function(s,e){return s+e.mins;},0);mins+=msum;
+      var done=msum>0;
+      if(done&&i<=streak+0){/* streak computed below */}
+      cells.push('<div class="pl-day'+(done?' done':'')+(i===0?' today':'')+'"><span class="pl-dn">'+'SMTWTFS'[d.getDay()]+'</span><span class="pl-dd">'+d.getDate()+'</span>'+(done?'<span class="pl-dm">'+msum+'m</span>':'')+'</div>');
+    }
+    var cd=new Date(now);streak=0;
+    while(true){var kk=dayKey(cd);var has=log.some(function(e){return e.day===kk;});if(!has)break;streak++;cd.setDate(cd.getDate()-1);}
+    weekRow.innerHTML=cells.join('');
+    weekTotal.textContent=mins+' min this week';
+    if(streakEl)streakEl.textContent=streak+(streak===1?' day':' days')+' streak';
+  }
+  function renderLog(){
+    var log=loadLog().slice().reverse();
+    logList.innerHTML=log.length?log.slice(0,8).map(function(e){
+      return '<div class="pl-logrow"><span class="pl-logd">'+e.day+'</span><span class="pl-logf">'+e.focus.join(', ')+'</span><span class="pl-logm">'+e.mins+' min</span></div>';
+    }).join(''):'<p class="pl-dim">No sessions logged yet — finish a plan and hit \u201cLog this session\u201d.</p>';
+  }
+  slider.addEventListener('input',renderPlan);
+  document.querySelectorAll('[data-preset]').forEach(function(b){
+    b.addEventListener('click',function(){slider.value=b.getAttribute('data-preset');renderPlan();});
+  });
+  if(logBtn)logBtn.addEventListener('click',function(){
+    var log=loadLog();var plan=JSON.parse(planOut.dataset.plan||'{}');
+    log.push({day:dayKey(new Date()),mins:plan.total||Number(slider.value),focus:focus.slice()});
+    saveLog(log);renderWeek();renderLog();
+    logBtn.textContent='Logged!';setTimeout(function(){logBtn.textContent='Log this session';},1600);
+  });
+  if(copyB)copyB.addEventListener('click',function(){
+    var plan=JSON.parse(planOut.dataset.plan||'{}');
+    var lines=['PracticeLoop session \u2014 '+plan.total+' min'];
+    Object.keys(plan).forEach(function(k){if(k!=='total')lines.push('\u2022 '+k+': '+plan[k]+' min');});
+    if(navigator.clipboard)navigator.clipboard.writeText(lines.join('\n'));
+    copyB.textContent='Copied!';setTimeout(function(){copyB.textContent='Copy plan';},1600);
+  });
+  renderChips();renderPlan();renderWeek();renderLog();
+});}
+
+</script>
+</body>
+</html>
