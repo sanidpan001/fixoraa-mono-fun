@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fence Gate Build Calculator — Frame, Braces & Hardware | FenceGate</title>
+<meta name="description" content="Fence gate cut list, diagonal brace angle and hardware for a sag-free gate.">
+<link rel="canonical" href="https://fun.fixoraa.tech/fencegate/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Fence Gate Build Calculator — Frame, Braces & Hardware | FenceGate">
+<meta property="og:description" content="Fence gate cut list, diagonal brace angle and hardware for a sag-free gate.">
+<meta property="og:url" content="https://fun.fixoraa.tech/fencegate/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "FenceGate",
+      "url": "https://fun.fixoraa.tech/fencegate/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Fence gate cut list, diagonal brace angle and hardware for a sag-free gate.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which way should the diagonal brace go on a fence gate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From the bottom of the hinge side to the top of the latch side. In this orientation the brace works in compression, pushing up against sag. Reversed (high hinge to low latch), it hangs in tension and does nothing — the gate will sag."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you calculate the diagonal brace length for a gate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's the hypotenuse of the inside frame: brace = √((width−7)² + (height−7)²) for 2×4 framing, and the angle is arctan(rise/run). A 48×48-in. gate gives a 58-in. brace at 45°. The calculator figures it for any size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many hinges does a fence gate need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two hinges for gates up to 4 ft wide; three for wider or heavy gates, with the middle hinge biased toward the top. Use 8–10 in. strap or T-hinges, screwed into the stile (not just pickets) with long exterior screws."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much smaller than the opening should a gate be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Build the frame 1 to 1.5 inches narrower than the post-to-post opening — about 1/2 to 3/4 in. clearance per side for hinges and seasonal swelling. A gate built tight in summer won't close in winter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How deep should gate posts be set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At least 30 inches deep in concrete (below the frost line in cold climates), with the hole bottom slightly belled and the concrete crowned to shed water. Use 6×6 posts for gates over 5 ft wide. Let concrete cure 48 hours before hanging."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my gate drag on the ground?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sag: the latch side has dropped because the diagonal brace is missing, reversed, or loose — or the hinge post has leaned. Check the brace first (it should run low-hinge to high-latch and be tight), then the post plumb. A turnbuckle cable or adjustable hinge can re-level it without rebuilding."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9F0E1; --tint:#F4E6D2; --accent:#845815; --accent-deep:#171D5E;
+  --ink:#23263A; --muted:#5A5E7A; --line:#B5B8DA;
+  --display:'Cabin',system-ui,sans-serif; --body:'Cabin',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:#fff;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:#fff}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:#fff}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:#fff;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:#1d1d1d;color:#e8e8e8;margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bdbdbd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--tint);font-weight:700}
+input,select,button{font:inherit}
+
+
+.fg-hero{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:52px 0 6px}
+.fg-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:2px solid var(--line);padding:7px 16px;border-radius:999px;margin-bottom:16px}
+.fg-hero h1{font-size:clamp(34px,5vw,52px);letter-spacing:-.03em;font-weight:800;margin-bottom:12px}
+.fg-hero p{font-size:18px;color:var(--muted);max-width:560px}
+.fg-hero-num{background:var(--accent);color:#fff;border-radius:22px;padding:26px 34px;text-align:center;box-shadow:0 8px 0 var(--accent-deep)}
+.fg-hero-num span:first-child{font-size:52px;font-weight:800;display:block;line-height:1}
+.fg-hero-num .cap{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+.fg-tool{background:#fff;border:2px solid var(--line);border-radius:24px;margin:26px 0 8px;overflow:hidden;box-shadow:0 14px 34px rgba(35,43,139,.10)}
+.fg-cols{display:grid;grid-template-columns:1.05fr .95fr}
+.fg-left{padding:28px;border-right:2px dashed var(--line)}
+.fg-inputs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:7px}
+.field .hint{font-weight:400;color:var(--muted);font-size:12px}
+.field input{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.field input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+#fg-svg{width:100%;height:auto;background:var(--bg);border:2px solid var(--line);border-radius:16px}
+.fg-brace{margin-top:14px;font-size:14px;color:var(--muted);background:var(--tint);border-radius:12px;padding:12px 16px}
+.fg-brace b{color:var(--accent)}
+.fg-right{padding:28px;background:linear-gradient(180deg,#fff,var(--bg))}
+.fg-h{font-size:15px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.fg-h:not(:first-child){margin-top:22px}
+.fg-cuts{list-style:none}
+.fg-cuts li{display:flex;justify-content:space-between;gap:10px;padding:11px 4px;border-bottom:2px dashed var(--line);font-size:15px}
+.fg-cuts li:last-child{border:0}
+.fg-cuts .q{font-weight:800;color:var(--accent);min-width:44px}
+.fg-cuts .d{color:var(--muted);font-size:13px}
+.fg-hw{list-style:none}
+.fg-hw li{padding:10px 14px;background:#fff;border:2px solid var(--line);border-radius:12px;margin-bottom:8px;font-size:14px;font-weight:600}
+.fg-hw li b{color:var(--accent)}
+.fg-note{margin-top:16px;font-size:13px;color:var(--muted)}
+@media(max-width:760px){.fg-cols{grid-template-columns:1fr}.fg-left{border-right:0;border-bottom:2px dashed var(--line)}.fg-hero{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<header class="fx-header fencegate-hdr">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/fencegate/" aria-label="FenceGate home">
+      <span class="fx-tile" aria-hidden="true">FG</span>
+      <span class="fx-name">FenceGate</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="fg-hero">
+    <div>
+      <span class="fg-eyebrow">Sag-proof math</span>
+      <h1>Fence Gate Builder</h1>
+      <p>A gate that stays square for years: exact cuts, the diagonal brace angle that actually prevents sag, and every piece of hardware.</p>
+    </div>
+    <div class="fg-hero-num"><span id="fg-hero-ang">45.0&deg;</span><span class="cap">brace angle</span></div>
+  </section>
+  <section class="fg-tool" aria-label="FenceGate tool">
+    <div class="fg-cols">
+      <div class="fg-left">
+        <div class="fg-inputs">
+          <div class="field"><label for="fg-w">Gate width (in.) <span class="hint">opening between posts</span></label>
+            <input type="number" id="fg-w" value="48" min="24" max="96" step="1"></div>
+          <div class="field"><label for="fg-h">Gate height (in.)</label>
+            <input type="number" id="fg-h" value="48" min="24" max="72" step="1"></div>
+        </div>
+        <svg id="fg-svg" viewBox="0 0 340 300" role="img" aria-label="Gate frame diagram"></svg>
+        <p class="fg-brace" id="fg-brace">Diagonal brace: <b>58.0 in.</b> at <b>45.0&deg;</b> — bottom hinge side to top latch side.</p>
+      </div>
+      <div class="fg-right" aria-live="polite">
+        <h2 class="fg-h">Cut list</h2>
+        <ul class="fg-cuts" id="fg-cuts"></ul>
+        <h2 class="fg-h">Hardware</h2>
+        <ul class="fg-hw" id="fg-hw"></ul>
+        <p class="fg-note">Posts: 2× <b>4×4</b> (6×6 for gates over 5 ft wide), set 30 in. deep in concrete. Leave 1/2– in. clearance each side of the gate.</p>
+      </div>
+    </div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+    <h2>Why Gates Sag (and the One Brace That Stops It)</h2>
+    <p>Every wooden gate wants to become a parallelogram. Gravity pulls the free (latch) side down, the frame racks, and within a season the latch no longer meets the strike. The fix is not heavier wood or more screws — it is a <strong>diagonal brace in compression</strong>, running from the bottom of the hinge side to the top of the latch side.</p>
+    <p>Direction matters absolutely. The brace must push <strong>up</strong> against the sagging corner, which means low on the hinge post, high on the latch side. Flip it — high hinge to low latch — and the brace hangs in tension, doing nothing while the gate sags exactly as before. Walk any neighborhood and you can spot the flipped braces by the gates dragging on the ground beneath them.</p>
+    <p>The calculator gives you the brace's exact length (the hypotenuse of the inside frame) and its angle, so you can set the miter saw once and cut it right. Cut the brace <strong>slightly long</strong> and tap it into place — a compression fit that you have to persuade is a brace that stays put.</p>
+    <h2>Sizing the Opening</h2>
+    <p>Measure the <strong>opening between the posts</strong>, not the old gate. Build the gate frame 1 to 1.5 inches narrower than the opening: about 1/2 to 3/4 inch of clearance per side for the hinges and seasonal swelling. A gate built tight in July will not close in January.</p>
+    <p>Standard walk gates run <strong>36 to 48 inches</strong> wide; 42 inches is the sweet spot that admits a wheelbarrow without admitting regret. Double gates for driveways split the opening — each leaf follows the same math, and each leaf wants its own diagonal brace. Keep single leaves under about 6 feet wide; beyond that, the leverage defeats wood joinery and you are in steel-frame territory.</p>
+    <p>Height should match the fence — typically 48 to 72 inches. Taller gates catch more wind, which is a real load: a 6-foot solid gate in a gust sees serious force at the hinges. If your site is windy, consider spaced pickets instead of solid boards to let air through.</p>
+    <h2>The Frame: Stiles, Rails, and Real Dimensions</h2>
+    <p>The frame is four pieces of <strong>2x4</strong>: two full-height stiles and two rails that fit between them. With 3.5-inch-wide 2x4s, each rail is the gate width minus 7 inches — the calculator does this subtraction for you. Use pressure-treated lumber or cedar; untreated pine becomes compost.</p>
+    <p>Joinery: exterior screws (2.5-inch) driven through the stiles into the rail ends, two per joint, pre-drilled. Fancy mortise-and-tenon joints are lovely and unnecessary — the diagonal brace carries the structural load; the corner joints just hold the rectangle together while you fit it. A bead of exterior wood glue at each joint is cheap insurance.</p>
+    <p>Add a <strong>mid rail</strong> if you are nailing pickets to the frame — it gives the picket middles something to bite. For open-frame gates (no pickets), the mid rail is optional but adds welcome stiffness on wide gates.</p>
+    <h2>Cutting the Diagonal</h2>
+    <p>The brace spans the inside of the frame corner to corner: run equals gate width minus 7 inches, rise equals gate height minus 7 inches. Length is the hypotenuse; angle is the arctangent of rise over run. For a square 48-by-48 gate that is 58 inches at exactly 45 degrees — the prettiest number in gate building.</p>
+    <p>Set the miter saw to the <strong>brace angle</strong> (not its complement — dry-fit first, trust the calculator second, your eyes last). Cut one end, hold it in the frame, mark the other end in place, then cut. In-place marking forgives every measuring sin, including the frame not being perfectly square.</p>
+    <p>Fit the brace <strong>inside</strong> the frame, flush or slightly recessed, screwed through the rails and stiles into its ends. Some builders add a second diagonal forming a Z — unnecessary if the first is correct, but harmless. What actually helps on wide gates is a <strong>tension cable with turnbuckle</strong> as a complement: the wood brace pushes, the cable pulls, and the gate stays square for a decade.</p>
+    <h2>Hinges: Where Cheap Gets Expensive</h2>
+    <p>Buy the <strong>longest strap or T-hinges</strong> that look right — 8 to 10 inches for a walk gate. Long hinges spread the load across more of the stile instead of concentrating it at two screws that will wallow out. Two hinges suffice up to about 4 feet wide; use <strong>three</strong> beyond that, with the middle hinge slightly closer to the top.</p>
+    <p>Screw hinges into the <strong>stile</strong>, never just into pickets, with 2.5-inch exterior screws that bite deep. The post-side hinge screws should be longer still — 3-inch — because the post carries the whole gate's weight times leverage. Pre-drill everything; splitting a stile at the hinge is a special kind of heartbreak.</p>
+    <p>Adjustable hinges exist and are worth the premium on heavy gates: a turn of a wrench re-levels a gate that has settled, instead of a Saturday with shims. Self-closing hinges are required by code around pools in most jurisdictions — check before you build.</p>
+    <h2>Latches and the Strike Side</h2>
+    <p>A gravity latch is simple and reliable: the arm drops into the catch when the gate swings shut. Mount it at a comfortable <strong>48 inches</strong> high, out of small children's reach if that matters. Lever latches operable from both sides cost more and are worth it on gates you use daily.</p>
+    <p>The strike side needs a solid target — a dedicated strike post or a reinforced section of fence. The classic failure is latching to a wobbly fence rail that flexes; the gate then rattles in wind and the latch wears. If the fence run is light, sink a proper 4x4 just for the strike.</p>
+    <p>Add a <strong>gate stop</strong> — a small block the gate closes against. It takes the slam load instead of the latch, which doubles latch life and stops the gate from swinging through in wind.</p>
+    <h2>Posts: The Foundation Nobody Sees</h2>
+    <p>Gate posts work harder than any other post in the fence: they carry the gate's weight on a lever arm, resist wind, and take slam loads. Use <strong>4x4 minimum</strong>, 6x6 for gates over 5 feet wide or heavy solid designs. Set them <strong>30 inches deep</strong> (below frost line where applicable) in concrete, bell the hole bottom slightly, and crown the concrete to shed water.</p>
+    <p>Let concrete cure <strong>48 hours</strong> before hanging the gate — green concrete creeps under load and the post leans by degrees that matter at the latch. Brace the posts plumb while curing; a post that cures out of plumb is a gate that never latches right.</p>
+    <p>The hinge post deserves extra: a deeper hole, more concrete, and ideally a diagonal kick brace to the next fence post for wide gates. Every degree the hinge post leans multiplies at the latch side — a 1-degree lean on a 4-foot gate drops the latch corner nearly an inch.</p>
+    <h2>Pickets, Gaps, and Finishing</h2>
+    <p>If the gate carries pickets to match the fence, cut them all to the same length with a stop block and keep a consistent <strong>gap</strong> — 1/4 to 1/2 inch for airflow, tight for privacy. Start from the center and work outward so any odd spacing lands symmetrically at the edges, or start at the hinge side so the latch side looks clean.</p>
+    <p>Screw pickets (do not nail) with two exterior screws per rail — screws hold against warping where nails surrender. Pre-stain or pre-paint pickets <strong>before</strong> hanging, especially the edges; touch up after. Bare wood edges behind pickets are where rot starts.</p>
+    <p>Finish the whole gate — all six sides of every board, including ends and the bottom — with exterior stain or paint. End grain drinks water; sealed end grain does not. Re-coat every two to three years and the gate outlasts the fence around it.</p>
+    <h2>The Annual Five-Minute Tune-Up</h2>
+    <p>Once a year, walk the gate with a screwdriver: tighten hinge screws (they loosen as wood cycles), check the latch alignment, and look at the brace — it should still be tight in its seat. A brace that has worked loose can be re-wedged or shimmed in minutes; ignored, it lets the sag begin.</p>
+    <p>Spray hinges and latch with a dry lubricant, not oil that attracts grit. Check the bottom clearance: if the gate has started kissing the ground, a turnbuckle cable or an adjustable hinge buys years before any rebuild conversation.</p>
+    <p>And keep vegetation off it. Vines look romantic and hold moisture against wood, which is rot's favorite invitation. Five minutes with pruners each spring is the cheapest gate maintenance ever invented.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>Which way should the diagonal brace go on a fence gate?</summary><p>From the bottom of the hinge side to the top of the latch side. In this orientation the brace works in compression, pushing up against sag. Reversed (high hinge to low latch), it hangs in tension and does nothing — the gate will sag.</p></details>
+    <details><summary>How do you calculate the diagonal brace length for a gate?</summary><p>It's the hypotenuse of the inside frame: brace = √((width−7)² + (height−7)²) for 2×4 framing, and the angle is arctan(rise/run). A 48×48-in. gate gives a 58-in. brace at 45°. The calculator figures it for any size.</p></details>
+    <details><summary>How many hinges does a fence gate need?</summary><p>Two hinges for gates up to 4 ft wide; three for wider or heavy gates, with the middle hinge biased toward the top. Use 8–10 in. strap or T-hinges, screwed into the stile (not just pickets) with long exterior screws.</p></details>
+    <details><summary>How much smaller than the opening should a gate be?</summary><p>Build the frame 1 to 1.5 inches narrower than the post-to-post opening — about 1/2 to 3/4 in. clearance per side for hinges and seasonal swelling. A gate built tight in summer won't close in winter.</p></details>
+    <details><summary>How deep should gate posts be set?</summary><p>At least 30 inches deep in concrete (below the frost line in cold climates), with the hole bottom slightly belled and the concrete crowned to shed water. Use 6×6 posts for gates over 5 ft wide. Let concrete cure 48 hours before hanging.</p></details>
+    <details><summary>Why does my gate drag on the ground?</summary><p>Sag: the latch side has dropped because the diagonal brace is missing, reversed, or loose — or the hinge post has leaned. Check the brace first (it should run low-hinge to high-latch and be tight), then the post plumb. A turnbuckle cable or adjustable hinge can re-level it without rebuilding.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">FenceGate</div>
+    <p>FenceGate designs a gate that stays square — exact cut list, diagonal brace angle and length, and the hinges, latch and posts it needs.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TOOLJS */
+function computeGate(o){
+  var railLen=o.w-7,stLen=o.h,run=o.w-7,rise=o.h-7;
+  var diag=Math.sqrt(run*run+rise*rise);
+  var angle=Math.atan2(rise,run)*180/Math.PI;
+  return{rails:2,railLen:railLen,stiles:2,stLen:stLen,diag:diag,angle:angle,hinges:o.w>48?3:2};
+}
+if(typeof document!=='undefined'){
+(function(){
+  function val(id){return parseFloat(document.getElementById(id).value)||0;}
+  function fmt(n,d){return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});}
+  ['fg-w','fg-h'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
+  function draw(r,W,H){
+    var svg=document.getElementById('fg-svg'),NS='http://www.w3.org/2000/svg';
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    var sx=250/Math.max(W,H),ox=45,oy=40;
+    function X(v){return ox+v*sx;} function Y(v){return oy+(H-v)*sx;}
+    function bar(x,y,w,h){var e=document.createElementNS(NS,'rect');
+      e.setAttribute('x',X(x));e.setAttribute('y',Y(y+h));e.setAttribute('width',w*sx);e.setAttribute('height',h*sx);
+      e.setAttribute('fill','#fff');e.setAttribute('stroke','#845815');e.setAttribute('stroke-width',3);svg.appendChild(e);}
+    bar(0,0,3.5,H);bar(W-3.5,0,3.5,H);
+    bar(3.5,0,W-7,3.5);bar(3.5,H-3.5,W-7,3.5);
+    var d=document.createElementNS(NS,'line');
+    d.setAttribute('x1',X(3.5));d.setAttribute('y1',Y(3.5));d.setAttribute('x2',X(W-3.5));d.setAttribute('y2',Y(H-3.5));
+    d.setAttribute('stroke','#845815');d.setAttribute('stroke-width',7);d.setAttribute('stroke-linecap','round');
+    d.setAttribute('opacity','.85');svg.appendChild(d);
+    var t=document.createElementNS(NS,'text');
+    t.setAttribute('x',170);t.setAttribute('y',292);t.setAttribute('text-anchor','middle');
+    t.setAttribute('font-size',13);t.setAttribute('fill','#5A5E7A');t.setAttribute('font-weight',700);
+    t.textContent=W+' in. wide × '+H+' in. tall — frame from 2×4s';
+    svg.appendChild(t);
+    [[X(3.5),Y(3.5)],[X(W-3.5),Y(H-3.5)]].forEach(function(p){
+      var c=document.createElementNS(NS,'circle');c.setAttribute('cx',p[0]);c.setAttribute('cy',p[1]);
+      c.setAttribute('r',6);c.setAttribute('fill','#845815');svg.appendChild(c);});
+  }
+  function calc(){
+    var r=computeGate({w:val('fg-w'),h:val('fg-h')});
+    document.getElementById('fg-hero-ang').innerHTML=fmt(r.angle,1)+'&deg;';
+    document.getElementById('fg-brace').innerHTML='Diagonal brace: <b>'+fmt(r.diag,1)+' in.</b> at <b>'+fmt(r.angle,1)+'&deg;</b> — bottom hinge side to top latch side.';
+    document.getElementById('fg-cuts').innerHTML=
+      '<li><span class="q">2 ×</span><span>Stiles — '+fmt(r.stLen,0)+' in.<span class="d"> full height 2×4</span></span></li>'+
+      '<li><span class="q">2 ×</span><span>Rails — '+fmt(r.railLen,1)+' in.<span class="d"> fit between stiles</span></span></span></li>'+
+      '<li><span class="q">1 ×</span><span>Diagonal brace — '+fmt(r.diag,1)+' in. @ '+fmt(r.angle,1)+'&deg;<span class="d"> cut to fit, compression fit</span></span></li>'+
+      '<li><span class="q">1 ×</span><span>Mid rail (optional) — '+fmt(r.railLen,1)+' in.<span class="d"> for picket nailing</span></span></li>';
+    document.getElementById('fg-hw').innerHTML=
+      '<li><b>'+r.hinges+' ×</b> T-hinges or strap hinges, 8–10 in.</li>'+
+      '<li><b>1 ×</b> gate latch (gravity or lever)</li>'+
+      '<li><b>1 box</b> 2.5-in. exterior screws</li>'+
+      '<li><b>2 ×</b> post bases or concrete for posts</li>';
+    draw(r,val('fg-w'),val('fg-h'));
+  }
+  calc();
+})();
+}
+</script>
+</body>
+</html>
