@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkey Thaw Time Calculator — Fridge &amp; Cold Water Planner | ThawTime</title>
+<meta name="description" content="ThawTime plans safe turkey defrosting by the USDA clock — fridge days, cold-water hours, a dinner-date reverse planner, and a cook-from-frozen fallback. Free.">
+<link rel="canonical" href="https://fun.fixoraa.tech/thawtime/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Turkey Thaw Time Calculator — Fridge &amp; Cold Water Planner | ThawTime">
+<meta property="og:description" content="ThawTime plans safe turkey defrosting by the USDA clock — fridge days, cold-water hours, a dinner-date reverse planner, and a cook-from-frozen fallback. Free.">
+<meta property="og:url" content="https://fun.fixoraa.tech/thawtime/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ThawTime",
+      "url": "https://fun.fixoraa.tech/thawtime/",
+      "applicationCategory": "Kitchen Tools",
+      "operatingSystem": "Web",
+      "description": "ThawTime plans safe turkey defrosting by the USDA clock \u2014 fridge days, cold-water hours, a dinner-date reverse planner, and a cook-from-frozen fallback. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take to thaw a turkey in the fridge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "USDA rule: 24 hours of fridge time per 4\u20135 pounds. A 12-lb turkey needs about 3 days, 16 lb about 4 days, 20 lb about 5 days. Always round up to whole days and start a day early \u2014 a fridge-thawed turkey stays safe 1\u20132 extra days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long to thaw a turkey in cold water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "30 minutes per pound: a 16-lb turkey takes about 8 hours. Keep it in a leak-proof bag, fully submerged in cold water, and change the water every 30 minutes. Cook it immediately once thawed \u2014 do not refrigerate it again."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you thaw a turkey on the counter overnight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 never thaw a turkey on the counter. The surface sits in the bacterial danger zone (40\u2013140\u00b0F) for hours while the center stays frozen. Use the fridge (safest) or cold water (fastest) instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you cook a turkey from frozen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, USDA says it is safe, but allow at least 50% more cooking time. You cannot stuff a frozen turkey, and you must remove the giblet bag with tongs once it loosens. The texture and browning will not be quite as good as a properly thawed bird."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you refreeze a thawed turkey?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meat thawed in the refrigerator can be refrozen without cooking (quality dips a little). Meat thawed in cold water or the microwave must be cooked first. Never refreeze anything that spent over 2 hours at room temperature."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far ahead can I buy a fresh (never-frozen) turkey?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A fresh turkey from the store should go into your fridge immediately and be cooked within 1\u20132 days of purchase \u2014 ask the store when it was packed. If your dinner is more than 2 days out, buy frozen and thaw it yourself; a fresh bird bought too early is riskier than a properly thawed frozen one."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F1F7F3; --surface:#FFFFFF; --accent:#0F766E; --accent-ink:#FFFFFF;
+  --ink:#1E2A28; --muted:#55665F; --line:#CFE3DA;
+  --display:'Zilla Slab',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.tt-wrap{font-family:'Zilla Slab',Georgia,serif;background:#F1F7F3;color:#1E2A28;padding:56px 18px 72px;}.tt-log{max-width:880px;margin:0 auto;background:#FFFDF9;border:1px solid #CFE3DA;border-radius:14px;box-shadow:0 20px 50px rgba(15,118,110,.10);overflow:hidden;}.tt-head{text-align:center;padding:36px 24px 10px;border-bottom:2px solid #0F766E;}.tt-head h1{font-size:clamp(30px,4.6vw,44px);font-weight:700;margin:10px 0 6px;letter-spacing:-.01em;}.tt-emoji{font-size:46px;}.tt-tag{font-family:Inter,system-ui,sans-serif;color:#55665F;font-size:16.5px;margin:0;}.tt-meta{display:flex;justify-content:space-between;font-family:Inter,system-ui,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:#0F766E;font-weight:700;padding:14px 28px;border-bottom:1px dashed #CFE3DA;}.tt-entry{border-bottom:1px solid #CFE3DA;padding:18px 28px;font-family:Inter,system-ui,sans-serif;background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(15,118,110,.05) 27px,rgba(15,118,110,.05) 28px);}.tt-entry label{display:block;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#55665F;margin-bottom:8px;}.tt-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}.tt-entry input,.tt-entry select{width:100%;padding:12px;font-size:16px;border:1.5px solid #CFE3DA;border-radius:10px;font-family:Inter,system-ui,sans-serif;background:#fff;color:#1E2A28;}.tt-entry input:focus,.tt-entry select:focus{outline:none;border-color:#0F766E;}.tt-unit{display:flex;border:1.5px solid #CFE3DA;border-radius:10px;overflow:hidden;background:#fff;}.tt-unit button{flex:1;border:none;background:#fff;padding:12px;font-size:14px;font-weight:700;cursor:pointer;color:#55665F;font-family:Inter,system-ui,sans-serif;}.tt-unit button.on{background:#0F766E;color:#fff;}.tt-row{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:start;border-bottom:1px solid #CFE3DA;padding:20px 28px;font-family:Inter,system-ui,sans-serif;}.tt-row:last-child{border-bottom:none;}.tt-when{font-family:'Zilla Slab',serif;font-weight:700;color:#0F766E;font-size:15px;line-height:1.4;}.tt-when .d{display:block;font-size:22px;}.tt-what h3{margin:0 0 6px;font-size:17px;color:#1E2A28;}.tt-what p{margin:0;font-size:14.5px;color:#55665F;line-height:1.65;}.tt-what .n{font-family:'Zilla Slab',serif;font-size:26px;font-weight:700;color:#1E2A28;}.tt-stamp{display:inline-block;margin-top:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#0F766E;border:2px solid #0F766E;border-radius:8px;padding:4px 10px;transform:rotate(-1.5deg);}.tt-warn{background:#FFF7ED;border:1px solid #FDBA74;border-radius:10px;margin:18px 28px;padding:14px 16px;font-family:Inter,system-ui,sans-serif;font-size:14px;color:#7C4A12;line-height:1.6;}.tt-warn strong{color:#9A3412;}@media(max-width:640px){.tt-grid{grid-template-columns:1fr;}.tt-row{grid-template-columns:1fr;gap:6px;padding:18px 20px;}.tt-entry{padding:16px 20px;}.tt-meta{padding:12px 20px;}.tt-warn{margin:14px 20px;}.tt-wrap{padding:40px 12px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ThawTime home">
+      <span class="fx-logo-tile" aria-hidden="true">🧊</span>
+      <span class="fx-brand">ThawTime</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-ledger-lines" aria-label="ThawTime tool">
+<section class='tt-wrap'><div class='tt-log'><div class='tt-head'><div class='tt-emoji' aria-hidden='true'>🧊</div><h1>Turkey Thaw Time Calculator</h1><p class='tt-tag'>Never start thawing too late again.</p></div><div class='tt-meta'><span>Thaw log · No. 001</span><span>USDA rates</span></div><div class='tt-entry'><div class='tt-grid'><div><label for='tt-protein'>Protein</label><select id='tt-protein'><option value='turkey'>Whole turkey</option><option value='chicken'>Whole chicken</option><option value='beef'>Beef roast</option><option value='pork'>Pork roast</option><option value='ham'>Bone-in ham</option></select></div><div><label for='tt-weight'>Weight</label><input type='number' id='tt-weight' value='16' min='0' step='0.5' inputmode='decimal'></div><div><label>Units</label><div class='tt-unit' role='group' aria-label='Weight units'><button id='tt-lb' class='on' type='button'>lb</button><button id='tt-kg' type='button'>kg</button></div></div></div></div><div class='tt-entry'><label for='tt-dinner'>Dinner date (when you roast)</label><input type='date' id='tt-dinner' style='max-width:280px'></div><div id='tt-rows'><div class='tt-row'><div class='tt-when'><span class='d' id='tt-fridge-days'>–</span>fridge days</div><div class='tt-what'><h3>🧊 Refrigerator method <span style='font-weight:400;font-size:13px;color:#55665F'>(safest)</span></h3><p class='n' id='tt-fridge-hrs'>–</p><p id='tt-fridge-note'>Enter a weight to see the plan.</p><span class='tt-stamp' id='tt-fridge-stamp'>Start date →</span></div></div><div class='tt-row'><div class='tt-when'><span class='d' id='tt-water-hrs'>–</span>cold-water hrs</div><div class='tt-what'><h3>🚰 Cold-water method <span style='font-weight:400;font-size:13px;color:#55665F'>(rescue)</span></h3><p class='n' id='tt-water-n'>–</p><p id='tt-water-note'></p><span class='tt-stamp' id='tt-water-stamp'>Water changes</span></div></div><div class='tt-row'><div class='tt-when'><span class='d'>+50%</span>cook time</div><div class='tt-what'><h3>🔥 Cook from frozen <span style='font-weight:400;font-size:13px;color:#55665F'>(last resort)</span></h3><p id='tt-frozen-note'>USDA-approved fallback: roast straight from frozen with at least 50% more cooking time. No stuffing; fish out the giblet bag with tongs once it loosens.</p></div></div></div><div class='tt-warn' id='tt-warn'><strong>⚠ Never thaw on the counter.</strong> The surface enters the bacterial danger zone (40–140°F) for hours while the center stays frozen. Fridge or cold water only.</div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The Two USDA Rules That Govern All Thawing</h2><p>Every safe thawing method in existence reduces to two numbers published by the USDA Food Safety and Inspection Service. In the <strong>refrigerator</strong>: allow <strong>24 hours for every 4 to 5 pounds</strong> of meat — about 6 hours per pound. In <strong>cold water</strong>: allow <strong>30 minutes per pound</strong>, with the water changed every 30 minutes. There is no third safe method for a whole turkey or roast; the microwave works only for small cuts you cook immediately afterward, and the countertop is never safe, no matter what anyone's grandmother did.</p><p>Why the counter is banned deserves a sentence, because it is the most common mistake in home kitchens. A frozen turkey thawing on the counter spends hours with its <strong>surface in the bacterial danger zone (40–140°F / 4–60°C)</strong> while its center is still ice. Bacteria like Salmonella double every 20 minutes in that zone. The fridge keeps the entire bird below 40°F the whole time; cold water keeps it cold through constant water changes. Both methods never let the surface warm up — that is the whole game.</p><h2>Refrigerator Thawing: The Math</h2><p>The fridge rule is deliberately conservative: 24 hours per 4 pounds. In practice that means a 12-pound turkey needs about 3 days, a 16-pounder about 4 days, and a 20-pounder a full 5 days. Always <strong>round up to whole days</strong> when planning — a turkey that is "almost thawed" on roasting morning is a crisis, while a turkey thawed a day early is simply convenient, because a fridge-thawed bird stays safe to cook for <strong>1–2 more days</strong>.</p><p>Setup matters as much as timing. Keep the turkey in its <strong>original wrapper</strong> (it is a leak barrier), set it <strong>breast-side up on a rimmed tray or sheet pan</strong> on the <strong>bottom shelf</strong>, so drips cannot contaminate food below. Verify the fridge is at or below 40°F / 4°C with a $5 fridge thermometer — many home fridges run warmer than their dial claims, and a 45°F fridge thaws faster but unsafely.</p><h2>The 24-Hour Check</h2><p>About a day before you plan to roast, do the ice check: press the thickest part of the breast and reach into the cavity. If you feel <strong>ice crystals or a hard frozen core</strong>, switch to the cold-water method immediately — it buys roughly 10x speed. This single check has saved more Thanksgivings than any gadget. A turkey can feel thawed on the outside while the deep breast and cavity are still solid; the cavity is the last place to thaw because it is insulated on all sides.</p><h2>Cold-Water Thawing: The Rescue Method</h2><p>When the fridge runs out of calendar, cold water is the answer: <strong>30 minutes per pound</strong>, so a 16-pound turkey takes about 8 hours. The procedure is fussy but simple — seal the bird in a <strong>leak-proof bag</strong> (double-bag if the wrapper is torn), <strong>submerge it completely</strong> in cold tap water in a clean sink or cooler, and <strong>change the water every 30 minutes</strong> so the surface never warms into the danger zone. Set a repeating timer; the water changes are the entire safety mechanism.</p><p>The non-negotiable rule of cold-water thawing: <strong>cook it immediately</strong> once thawed. Unlike fridge-thawed meat, a cold-water-thawed bird cannot go back in the fridge for a day or two, and it cannot be refrozen. Plan the water bath to finish within an hour or two of roasting time.</p><h2>Planning Backwards From Dinner</h2><p>The useful direction for thaw math is reverse: pick the dinner date, subtract the thaw time, and you get the <strong>move-to-fridge date</strong>. Thanksgiving Thursday with a 16-pound turkey? Four fridge days means it moves from freezer to fridge on <strong>Sunday</strong>. This is the calculation people get wrong every year — they count forward ("three days should do it") instead of backward from the meal, and forward-counting has no safety margin.</p><p>Build in a one-day buffer on purpose. A fridge-thawed turkey holds 1–2 days, so starting a day early costs nothing and protects against a slow fridge, a bigger-than-labeled bird, or a freezer that ran extra cold. The only thawing error you cannot recover from is starting too late — every other mistake has a fix.</p><h2>Cooking From Frozen: The Emergency Exit</h2><p>If roasting morning arrives and the bird is still a block of ice, the USDA says you can <strong>roast it frozen</strong> — it is fully safe, just slow: allow <strong>at least 50% more cooking time</strong>. A 4-hour turkey becomes a 6-hour turkey. Two catches: you cannot stuff a frozen bird (bake the stuffing separately), and the neck/giblet packet must be fished out with tongs once it loosens partway through cooking. The skin will not brown as beautifully and the texture is slightly less even, but it beats canceling dinner.</p><h2>Other Meats, Same Rules</h2><p>The fridge and cold-water rates apply to all frozen meat and poultry, not just turkey. A whole chicken thaws in about a day in the fridge; a 4-pound beef roast needs roughly a day; a bone-in ham needs 4–5 hours per pound in the fridge. Small cuts — steaks, chops, chicken breasts — thaw in hours in the fridge or about an hour in cold water, and these are the only things the <strong>microwave defrost setting</strong> is reasonable for: use it only if you cook the meat <strong>immediately</strong> after, because microwaves create warm spots where bacteria wake up.</p><p>Refreezing rules are worth memorizing: meat thawed in the <strong>fridge</strong> can be refrozen without cooking (quality dips slightly, safety is fine). Meat thawed in <strong>cold water or the microwave</strong> must be cooked before refreezing. And never refreeze anything that spent more than 2 hours in the danger zone — when in doubt, throw it out.</p><h2>What Never Works (Stop Doing These)</h2><ul><li><strong>Hot water thawing.</strong> It rockets the surface into the danger zone while the center stays frozen — the worst of both worlds.</li><li><strong>The garage / back porch.</strong> Outdoor temperatures swing all day; "cold outside" is not a controlled 38°F.</li><li><strong>Thawing a stuffed bird's stuffing separately then re-stuffing.</strong> Stuff a thawed bird right before roasting, never in advance, and never stuff a partially frozen one.</li><li><strong>Rinsing the turkey.</strong> It does not remove bacteria — it aerosolizes them across your sink and counters. Pat dry if you must; the oven's heat does the sanitizing.</li><li><strong>Trusting the pop-up timer.</strong> Those plastic pop-ups trigger late and inconsistently. A $15 instant-read thermometer is the single best turkey investment you will ever make.</li></ul><h2>A Sample Timeline: 16-lb Turkey, Thursday Dinner</h2><p><strong>Sunday:</strong> move turkey from freezer to fridge (bottom shelf, tray underneath). <strong>Wednesday evening:</strong> ice check — press breast, feel cavity. If icy, start cold-water bath Thursday morning (8 hours, water changed every 30 min). <strong>Thursday:</strong> roast per the time calculator, rest 30 minutes tented, carve. <strong>Within 2 hours of serving:</strong> carve leftovers off the bone into shallow containers and refrigerate — the carcass left on the counter is a bacterial incubator. Total active planning: one date on the calendar, one ice check. That is the entire system, and it works every year.</p><h2>Fresh vs Frozen: The Buying Timeline</h2><p>Fresh (never-frozen) turkeys skip the thaw math entirely — but they impose their own deadline. A fresh bird must be cooked within <strong>1–2 days of purchase</strong>, and grocery "fresh" turkeys are often chilled for days before they reach the case, so ask when it was packed. If dinner is more than two days after your shopping trip, <strong>buy frozen</strong>: a properly fridge-thawed frozen turkey is safer and often juicier than a fresh bird that sat too long, because freezing pauses the bacterial clock completely.</p><p>Price and quality cut the other way, too. Frozen turkeys are typically half the price per pound of fresh, and blind taste tests consistently fail to distinguish them once both are brined and roasted properly. The "fresh is better" premium buys you convenience (no thaw planning), not flavor. What actually determines juiciness is brining, not letting the breast overcook, and resting — none of which care whether the bird was ever frozen. So unless you are buying the day before, frozen plus a thaw plan is the smarter, cheaper move.</p><p>One more buying tip: <strong>check the weight on the label against your guest count before you leave the store.</strong> A 1–1¼ pounds-per-person rule means a 12-person dinner with leftover ambitions needs an 18–20 pound bird, and discovering a 10-pounder at home on Sunday night restarts the whole thaw timeline. Buy the bird first, plan the thaw second, and everything downstream stays calm.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How long does it take to thaw a turkey in the fridge?</summary><p>USDA rule: 24 hours of fridge time per 4–5 pounds. A 12-lb turkey needs about 3 days, 16 lb about 4 days, 20 lb about 5 days. Always round up to whole days and start a day early — a fridge-thawed turkey stays safe 1–2 extra days.</p></details>
+<details><summary>How long to thaw a turkey in cold water?</summary><p>30 minutes per pound: a 16-lb turkey takes about 8 hours. Keep it in a leak-proof bag, fully submerged in cold water, and change the water every 30 minutes. Cook it immediately once thawed — do not refrigerate it again.</p></details>
+<details><summary>Can you thaw a turkey on the counter overnight?</summary><p>No — never thaw a turkey on the counter. The surface sits in the bacterial danger zone (40–140°F) for hours while the center stays frozen. Use the fridge (safest) or cold water (fastest) instead.</p></details>
+<details><summary>Can you cook a turkey from frozen?</summary><p>Yes, USDA says it is safe, but allow at least 50% more cooking time. You cannot stuff a frozen turkey, and you must remove the giblet bag with tongs once it loosens. The texture and browning will not be quite as good as a properly thawed bird.</p></details>
+<details><summary>Can you refreeze a thawed turkey?</summary><p>Meat thawed in the refrigerator can be refrozen without cooking (quality dips a little). Meat thawed in cold water or the microwave must be cooked first. Never refreeze anything that spent over 2 hours at room temperature.</p></details>
+<details><summary>How far ahead can I buy a fresh (never-frozen) turkey?</summary><p>A fresh turkey from the store should go into your fridge immediately and be cooked within 1–2 days of purchase — ask the store when it was packed. If your dinner is more than 2 days out, buy frozen and thaw it yourself; a fresh bird bought too early is riskier than a properly thawed frozen one.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ThawTime</div>
+    <p>ThawTime plans safe defrosting by the USDA clock: fridge, cold-water, and frozen-roast fallback times for turkey, chicken, beef, pork and ham — with a dinner-date reverse planner.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var TT_RATE={fridge:16/3,coldwater:0.5,microwave:0.15};
+function thawHours(w,method){w=Number(w);if(!(w>0))return 0;var r=TT_RATE[method]||TT_RATE.fridge;return Math.round(w*r*10)/10;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var wUnit='lb';var pEl=document.getElementById('tt-protein'),wEl=document.getElementById('tt-weight'),dEl=document.getElementById('tt-dinner');var lbB=document.getElementById('tt-lb'),kgB=document.getElementById('tt-kg');function fmtDate(d){return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});}function calc(){var raw=parseFloat(wEl.value);var wLb=wUnit==='kg'?raw*2.20462:raw;var fh=thawHours(wLb,'fridge'),wh=thawHours(wLb,'coldwater');var fdays=wLb>0?Math.ceil(fh/24):0;document.getElementById('tt-fridge-days').textContent=wLb>0?fdays:'\u2013';document.getElementById('tt-fridge-hrs').textContent=wLb>0?fh+' hours ('+fdays+' day'+(fdays===1?'':'s')+' rounded up)':'\u2013';var fn=document.getElementById('tt-fridge-note'),fs=document.getElementById('tt-fridge-stamp');if(dEl.value&&wLb>0){var dinner=new Date(dEl.value+'T12:00:00');var start=new Date(dinner.getTime()-fdays*86400000);fn.textContent='For dinner '+fmtDate(dinner)+': move it from freezer to fridge on '+fmtDate(start)+' (bottom shelf, on a tray). Fridge-thawed meat keeps 1\u20132 extra days.';fs.textContent='Move to fridge: '+fmtDate(start);}else{fn.textContent=wLb>0?'24 hrs per 4\u20135 lbs. Round up to whole days; a fridge-thawed bird keeps 1\u20132 extra days.':'Enter a weight to see the plan.';fs.textContent='Start date \u2192';}
+document.getElementById('tt-water-hrs').textContent=wLb>0?wh:'\u2013';document.getElementById('tt-water-n').textContent=wLb>0?wh+' hours in cold water':'\u2013';var changes=wLb>0?Math.ceil(wh*2):0;document.getElementById('tt-water-note').textContent=wLb>0?'Leak-proof bag, fully submerged, water changed every 30 minutes. Cook immediately after \u2014 no re-chilling.':' ';
+document.getElementById('tt-water-stamp').textContent=wLb>0?changes+' water changes':'Water changes';}
+function setUnit(u){wUnit=u;lbB.classList.toggle('on',u==='lb');kgB.classList.toggle('on',u==='kg');calc();}
+if(lbB)lbB.addEventListener('click',function(){setUnit('lb');});if(kgB)kgB.addEventListener('click',function(){setUnit('kg');});
+if(wEl)wEl.addEventListener('input',calc);if(pEl)pEl.addEventListener('change',calc);if(dEl)dEl.addEventListener('change',calc);
+calc();});}
+</script>
+</body>
+</html>
