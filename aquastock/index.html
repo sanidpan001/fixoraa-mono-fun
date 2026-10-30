@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aquarium Stocking Calculator — How Many Fish Per Gallon? | AquaStock</title>
+<meta name="description" content="How many fish your tank can safely hold — stocking level, filtration check and water-change plan.">
+<link rel="canonical" href="https://fun.fixoraa.tech/aquastock/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Aquarium Stocking Calculator — How Many Fish Per Gallon? | AquaStock">
+<meta property="og:description" content="How many fish your tank can safely hold — stocking level, filtration check and water-change plan.">
+<meta property="og:url" content="https://fun.fixoraa.tech/aquastock/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "AquaStock",
+      "url": "https://fun.fixoraa.tech/aquastock/",
+      "applicationCategory": "Pet Tools",
+      "operatingSystem": "Web",
+      "description": "How many fish your tank can safely hold — stocking level, filtration check and water-change plan.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How many fish per gallon is actually safe?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The classic inch-per-gallon rule says one inch of adult fish per gallon of water, but it is only a starting point. Slim-bodied community fish like tetras follow it well; heavy-bodied fish like goldfish need two to three times that space. This calculator adjusts the rule for species bioload and your filter's real capacity, which is what actually keeps water safe." } },
+        { "@type": "Question", "name": "Does a bigger filter let me keep more fish?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, within limits. A filter rated to turn over your tank's volume 4 to 6 times per hour processes waste far better than a weak one, so the same tank can safely hold more fish. The calculator measures your filter's GPH against tank size and raises or lowers the safe stocking number. Past about 8x turnover there are diminishing returns, and swimming space still sets a hard ceiling." } },
+        { "@type": "Question", "name": "How do I count fish inches — baby size or adult size?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Always count adult size. That cute one-inch juvenile cichlid becomes a six-inch adult, and it is the adult that produces waste and needs swimming room. Look up the species' maximum adult length and use that number for every fish you plan to keep." } },
+        { "@type": "Question", "name": "Why do goldfish need so much more space than tetras?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Body mass and metabolism. A goldfish is deep-bodied and eats constantly, producing far more ammonia per inch than a slender tetra. They also grow large — a common goldfish can reach 10 inches — so a 20-gallon tank that suits 20 inches of tetras safely holds only a couple of fancy goldfish." } },
+        { "@type": "Question", "name": "How often should I change water based on stocking?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Lightly stocked tanks do well with 15 to 20 percent weekly. At full stocking, change 25 percent weekly. Overstocked tanks need 30 percent weekly or twice-weekly changes to keep nitrates under 40 ppm. The calculator gives you a schedule from your actual stocking level." } },
+        { "@type": "Question", "name": "What are the signs my tank is overstocked?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nitrates climbing above 40 ppm between water changes, fish gasping at the surface, persistent algae blooms, and aggression over territory are the classic signs. If you see them, do an immediate water change, cut feeding, and either upgrade filtration or rehome some fish." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F2F9FA; --surface:#FFFFFF; --tint:#DDF0F4;
+  --accent:#217B8C; --accent-deep:#175A66; --accent-ink:#FFFFFF;
+  --ink:#1F3033; --muted:#547278; --line:#CBE3E9;
+  --ok:#2E7D4F; --warn:#B07A1E; --bad:#B03A2E;
+  --font:'Sofia Sans',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px;
+  background-image:radial-gradient(circle at 12% 8%,rgba(33,123,140,.06) 0 90px,transparent 91px),
+                   radial-gradient(circle at 88% 20%,rgba(33,123,140,.05) 0 60px,transparent 61px);}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+/* header */
+.fx-header{background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:2px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:14px 14px 14px 4px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 10px rgba(33,123,140,.35)}
+.fx-name{font-weight:800;font-size:21px;letter-spacing:-.02em}
+.fx-name small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;font-family:var(--font)}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+/* hero */
+.as-hero{padding:46px 0 6px}
+.as-eyebrow{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);background:var(--tint);border:1px solid var(--line);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.as-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:-.025em;font-weight:800;margin-bottom:10px;max-width:700px}
+.as-hero p{font-size:18px;color:var(--muted);max-width:660px}
+/* journal tool */
+.as-journal{position:relative;margin:28px 0 10px;background:var(--surface);border:2px solid var(--line);border-radius:6px 22px 6px 22px;box-shadow:0 14px 34px rgba(33,123,140,.10);overflow:hidden}
+.as-journal::before{content:"";position:absolute;top:0;bottom:0;left:34px;width:2px;background:rgba(176,58,46,.28)}
+.as-tape{position:absolute;top:-2px;width:110px;height:26px;background:rgba(33,123,140,.18);border-left:1px dashed rgba(33,123,140,.4);border-right:1px dashed rgba(33,123,140,.4)}
+.as-journal-head{padding:20px 26px 6px 56px}
+.as-journal-head h2{font-size:19px;font-weight:800;letter-spacing:-.01em}
+.as-journal-head p{font-size:14px;color:var(--muted)}
+.as-journal-body{display:grid;grid-template-columns:1.05fr .95fr;gap:0}
+.as-inputs{padding:22px 26px 28px 56px}
+.as-results{padding:22px 26px 28px 30px;background:linear-gradient(180deg,#FBFEFE,var(--tint));border-left:2px dashed var(--line)}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.field .hint{font-weight:400;font-size:13px;color:var(--muted)}
+.field input[type=number]{font:inherit;padding:11px 13px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%;max-width:240px}
+.field input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{border:2px solid var(--line);background:#fff;border-radius:999px;padding:9px 15px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;color:var(--ink);transition:all .12s}
+.chips button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);box-shadow:0 3px 0 var(--accent-deep)}
+.as-meter{margin:6px 0 16px}
+.as-meter-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.as-meter-top .pct{font-size:44px;font-weight:800;letter-spacing:-.03em;color:var(--accent-deep)}
+.as-meter-top .lbl{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.as-tank{height:26px;border:2px solid var(--line);border-radius:999px;background:#fff;overflow:hidden;position:relative}
+.as-fill{height:100%;width:10%;border-radius:999px;background:linear-gradient(90deg,var(--accent),#3AA7BC);transition:width .4s ease}
+.as-status{display:inline-block;font-weight:800;font-size:15px;padding:8px 16px;border-radius:999px;margin-bottom:14px}
+.as-status.ok{background:#DDF2E4;color:#1E5C38}
+.as-status.full{background:#FDF3D8;color:#7A5410}
+.as-status.over{background:#F9E2DE;color:#8C2B20}
+.as-lines{list-style:none;font-size:15px}
+.as-lines li{display:flex;justify-content:space-between;gap:12px;padding:9px 2px;border-bottom:1px dashed var(--line)}
+.as-lines li:last-child{border-bottom:0}
+.as-lines .k{color:var(--muted)}
+.as-lines .v{font-weight:800;text-align:right}
+.as-note{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;font-size:14px;color:var(--accent-deep);margin-top:16px}
+/* article */
+.article-sec{margin:42px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--accent-deep)}
+.article-sec p{margin-bottom:14px;color:#2c4045}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#2c4045}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent-deep)}
+.faq-sec details p{padding:14px 18px;color:#2c4045;font-size:15px}
+/* footer */
+.fx-footer{background:#16333a;color:#dceeee;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#a9c6cd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#9fd8e2;font-weight:700}
+@media(max-width:760px){
+  .as-journal-body{grid-template-columns:1fr}
+  .as-results{border-left:0;border-top:2px dashed var(--line)}
+  .as-journal::before{left:22px}
+  .as-inputs{padding-left:40px}
+  .as-journal-head{padding-left:40px}
+  .fx-nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/aquastock/" aria-label="AquaStock home">
+      <span class="fx-tile" aria-hidden="true">&#128031;</span>
+      <span class="fx-name">AquaStock<small>Field notes</small></span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="as-hero">
+    <span class="as-eyebrow">Field notes &middot; Freshwater</span>
+    <h1>How Many Fish Per Gallon? Find Your Tank&rsquo;s Safe Limit</h1>
+    <p>Enter your tank size, your fish, and your filter — get a stocking level built on bioload and filtration, not just the old inch-per-gallon guess, plus a water-change plan to match.</p>
+  </section>
+
+  <section class="as-journal" aria-label="AquaStock tool">
+    <span class="as-tape" style="left:60px;transform:rotate(-3deg)"></span>
+    <span class="as-tape" style="right:60px;transform:rotate(2deg)"></span>
+    <div class="as-journal-head">
+      <h2>Specimen entry: your tank</h2>
+      <p>Log the measurements — the journal does the stocking math.</p>
+    </div>
+    <div class="as-journal-body">
+      <div class="as-inputs">
+        <div class="field">
+          <label for="as-gal">Tank size <span class="hint">— US gallons</span></label>
+          <input type="number" id="as-gal" value="20" min="1" max="1000" step="1">
+        </div>
+        <div class="field">
+          <label for="as-inches">Total fish length <span class="hint">— adult inches, all fish added together</span></label>
+          <input type="number" id="as-inches" value="12" min="0" max="2000" step="0.5">
+        </div>
+        <div class="field">
+          <label for="as-gph">Filter flow <span class="hint">— gallons per hour (GPH on the box)</span></label>
+          <input type="number" id="as-gph" value="100" min="0" max="5000" step="5">
+        </div>
+        <div class="field">
+          <label>Species bioload <span class="hint">— heavier fish need more water per inch</span></label>
+          <div class="chips" id="as-species" role="group" aria-label="Species bioload">
+            <button type="button" data-s="tetra" class="on">Tetras &amp; community</button>
+            <button type="button" data-s="betta">Bettas</button>
+            <button type="button" data-s="cichlid">Cichlids</button>
+            <button type="button" data-s="goldfish">Goldfish</button>
+          </div>
+        </div>
+      </div>
+      <div class="as-results" aria-live="polite">
+        <div class="as-meter">
+          <div class="as-meter-top">
+            <span class="pct" id="as-pct">48%</span>
+            <span class="lbl">stocked</span>
+          </div>
+          <div class="as-tank"><div class="as-fill" id="as-fill"></div></div>
+        </div>
+        <span class="as-status ok" id="as-status">Understocked — room to grow</span>
+        <ul class="as-lines">
+          <li><span class="k">Safe capacity</span><span class="v" id="as-cap">25 in of fish</span></li>
+          <li><span class="k">Filter turnover</span><span class="v" id="as-turn">5.0&times;/hour</span></li>
+          <li><span class="k">Water change</span><span class="v" id="as-wc">15% weekly</span></li>
+          <li><span class="k">Gallons per change</span><span class="v" id="as-wcgal">3 gal</span></li>
+        </ul>
+        <div class="as-note" id="as-note">A filter turning the tank 4–6 times per hour is the sweet spot for a community tank.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+    <h2>Where the Inch-Per-Gallon Rule Comes From</h2>
+    <p>Walk into any fish store and ask how many fish fit in a 20-gallon tank, and someone will recite the oldest rule in the hobby: one inch of fish per gallon of water. It dates back decades, to an era of under-gravel filters and sparse stocking, and it survives because it is beautifully simple. Twenty gallons, twenty inches of fish, done. But simplicity is also its flaw, because the rule quietly assumes something that is not true — that every inch of fish pollutes the water equally.</p>
+    <p>Compare a neon tetra and a goldfish. A neon tetra is a slender, two-inch wisp that eats a pinch of flakes and produces a whisper of waste. A goldfish is a deep-bodied eating machine that can reach ten inches and generates ammonia like a fish three times its length. Twenty inches of tetras in a 20-gallon tank is a lively, healthy community. Twenty inches of goldfish in the same tank is a water-quality disaster within weeks. The inch-per-gallon rule treats them as identical, which is why experienced keepers call it a starting point, never a verdict.</p>
+    <p>The honest version of the rule has three variables, not one: how much waste the fish produce (bioload), how fast the filter removes it (filtration capacity), and how much swimming space the species needs. This calculator combines all three. You enter the tank size, the total adult inches of fish, the filter's flow rate, and the species group — and it returns a stocking level that reflects reality instead of folklore.</p>
+    <h2>Bioload: Why Species Changes the Math</h2>
+    <p>Bioload is the total waste load your fish place on the system — ammonia from gills and solid waste, which your filter's bacteria convert to nitrite and then nitrate. Slim-bodied community fish like tetras, guppies, rasboras, and small danios are light polluters and follow the classic one-inch-per-gallon guideline closely. Bettas are similar per inch, though they must be housed with tank-mate rules of their own.</p>
+    <p>Cichlids — even the dwarf varieties — are messier eaters with faster metabolisms, so this calculator counts each of their inches as roughly 1.4 inches of community fish. Goldfish are in another league entirely: heavy-bodied, constant grazers with inefficient digestion. Each goldfish inch counts as about two inches of community fish, which is why a single fancy goldfish needs 20 gallons to itself and a common goldfish really belongs in a pond. Stocking a goldfish tank by the plain inch-per-gallon rule is the single most common beginner mistake in the hobby.</p>
+    <h2>Filtration: The Multiplier Most Calculators Ignore</h2>
+    <p>Your filter is the engine that makes stocking possible, and not all engines are equal. The standard measure is turnover: how many times per hour the filter moves the tank's full volume, expressed as GPH (gallons per hour) divided by tank gallons. A 20-gallon tank with a 100 GPH filter turns over 5 times per hour — solidly in the recommended 4–6x range for community tanks. The same tank with a 40 GPH filter manages only 2x, and its real safe capacity is far lower than the inch-per-gallon rule suggests.</p>
+    <p>This calculator converts turnover into a filtration modifier. At 4x turnover the modifier is 1.0 — the textbook baseline. Stronger filtration up to about 8x raises safe capacity (capped at a 40% bonus, because swimming space eventually becomes the limit), while weak filtration below 4x shrinks it (down to a 40% penalty). Two identical tanks with different filters genuinely support different numbers of fish, and now you can see by how much. When shopping for a filter, ignore the "up to X gallons" on the box — it is marketing. Divide its GPH by your tank size and aim for 4–6x for community fish, 6–8x for messy species like goldfish and cichlids.</p>
+    <h2>Reading Your Stocking Level</h2>
+    <p>The calculator expresses stocking as a percentage of safe capacity and sorts it into four bands. Under 85% is understocked — you have comfortable room to add fish, which is the ideal place to be. From 85% to 100% is fully stocked: a healthy maximum where water parameters stay stable with routine care. From 100% to 120% is overstocked — survivable with strong filtration and disciplined water changes, but with no margin for error. Above 120% is dangerously overstocked, and the honest advice is to upgrade the tank, upgrade the filter, or rehome fish before problems start.</p>
+    <p>Treat 100% as a ceiling to approach slowly, not a target to hit on day one. New tanks should be stocked gradually over weeks so the bacterial colony can grow into the load — adding all the fish at once to a fresh tank is how "new tank syndrome" wipes out a whole community overnight.</p>
+    <h2>Your Water-Change Schedule, From Your Actual Numbers</h2>
+    <p>Water changes are the other half of stocking math, and the right schedule depends on how hard the tank is working. Lightly stocked tanks (under 70%) thrive on 15% weekly changes. Moderately stocked tanks do well at 20%. At full stocking, 25% weekly keeps nitrates in the safe zone. Overstocked tanks need 30% weekly — or twice-weekly changes if nitrates still climb past 40 ppm between changes.</p>
+    <p>The calculator converts the percentage into gallons so you know exactly how much to siphon. A few habits make changes safer: match the new water's temperature within a couple of degrees, always add dechlorinator before the water touches the tank, and vacuum the substrate lightly rather than deep-cleaning it — the gravel bed houses much of your beneficial bacteria. Never change filter media and do a huge water change in the same week; that one-two punch can crash a cycle.</p>
+    <h2>Counting Inches the Right Way</h2>
+    <p>The most common measurement error is counting the fish you see today instead of the fish you will have in a year. That one-inch juvenile angelfish becomes a six-inch adult. The two-inch common pleco at the store becomes a two-foot tank-buster. Always look up the species' maximum adult size and use that figure for every fish. If you are unsure, round up — the calculator's safety margin will thank you.</p>
+    <p>Schooling fish add a second rule: many species need minimum group sizes to feel secure, typically six or more for tetras, rasboras, and corydoras. A "correct" inch count of three neon tetras is still wrong husbandry. Plan the school first, then check the inches fit — not the other way around.</p>
+    <h2>Territory and Swimming Space: What Math Misses</h2>
+    <p>No calculator can measure aggression or swimming style, so apply judgment on top of the numbers. A 20-gallon tall tank and a 20-gallon long tank hold the same water, but the long tank supports far more active swimmers like danios that patrol horizontal space. Territorial cichlids need broken sightlines — rocks and plants that divide the tank into claimed zones — or the inch math will not save the weakest fish. Bottom-dwellers like corydoras barely register in the water column but still count fully in bioload.</p>
+    <p>As a rule of thumb, if a species is known as nippy, territorial, or highly active, stock 10–20% lighter than the calculator suggests and provide the cover or space the species profile demands. The calculator handles chemistry; you handle behavior.</p>
+    <h2>The Stocking Workflow That Works</h2>
+    <p>Here is the process experienced keepers follow. First, choose your species and look up adult sizes and minimum group sizes. Second, add up the adult inches and run them through the calculator with your real tank gallons and filter GPH. Third, if the result is over 85%, either choose a smaller school, a larger tank, or a stronger filter — decide before buying, not after. Fourth, cycle the tank fully, then add fish in batches over several weeks, testing ammonia and nitrite between additions. Fifth, set your water-change schedule from the calculator's output and test nitrates monthly; if they creep past 40 ppm, increase the change volume before adding anything new.</p>
+    <p>Follow that sequence and the question "how many fish per gallon" answers itself — not with a folk rule, but with a number tuned to your tank, your filter, and your fish.</p>
+    <h2>Common Stocking Mistakes</h2>
+    <p>The classic errors are worth naming because the calculator cannot catch them. Adding too many fish too fast to a new tank crashes the nitrogen cycle. Trusting the filter box's "up to 30 gallons" claim instead of computing real turnover. Counting juvenile sizes. Mixing heavy-bodied goldfish with tropical community fish — different temperature needs and wildly different waste output. And the slow creep: a tank that was perfectly stocked a year ago becomes overstocked as every fish grows into its adult inches. Re-run your numbers once a year; your fish will not stay the size they were at the store.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many fish per gallon is actually safe?</summary><p>The classic inch-per-gallon rule says one inch of adult fish per gallon of water, but it is only a starting point. Slim-bodied community fish like tetras follow it well; heavy-bodied fish like goldfish need two to three times that space. This calculator adjusts the rule for species bioload and your filter's real capacity, which is what actually keeps water safe.</p></details>
+    <details><summary>Does a bigger filter let me keep more fish?</summary><p>Yes, within limits. A filter rated to turn over your tank's volume 4 to 6 times per hour processes waste far better than a weak one, so the same tank can safely hold more fish. The calculator measures your filter's GPH against tank size and raises or lowers the safe stocking number. Past about 8x turnover there are diminishing returns, and swimming space still sets a hard ceiling.</p></details>
+    <details><summary>How do I count fish inches — baby size or adult size?</summary><p>Always count adult size. That cute one-inch juvenile cichlid becomes a six-inch adult, and it is the adult that produces waste and needs swimming room. Look up the species' maximum adult length and use that number for every fish you plan to keep.</p></details>
+    <details><summary>Why do goldfish need so much more space than tetras?</summary><p>Body mass and metabolism. A goldfish is deep-bodied and eats constantly, producing far more ammonia per inch than a slender tetra. They also grow large — a common goldfish can reach 10 inches — so a 20-gallon tank that suits 20 inches of tetras safely holds only a couple of fancy goldfish.</p></details>
+    <details><summary>How often should I change water based on stocking?</summary><p>Lightly stocked tanks do well with 15 to 20 percent weekly. At full stocking, change 25 percent weekly. Overstocked tanks need 30 percent weekly or twice-weekly changes to keep nitrates under 40 ppm. The calculator gives you a schedule from your actual stocking level.</p></details>
+    <details><summary>What are the signs my tank is overstocked?</summary><p>Nitrates climbing above 40 ppm between water changes, fish gasping at the surface, persistent algae blooms, and aggression over territory are the classic signs. If you see them, do an immediate water change, cut feeding, and either upgrade filtration or rehome some fish.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">AquaStock</div>
+    <p>AquaStock tells you how many fish your aquarium can safely hold — stocking level, filtration check and a water-change plan from your real numbers.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+var factors={tetra:1.0,betta:1.0,cichlid:0.7,goldfish:0.5};
+var species='tetra';
+function num(id){return parseFloat(document.getElementById(id).value)||0;}
+document.getElementById('as-species').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  species=b.getAttribute('data-s');
+  this.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+  b.classList.add('on');calc();
+});
+['as-gal','as-inches','as-gph'].forEach(function(id){
+  document.getElementById(id).addEventListener('input',calc);
+});
+function calc(){
+  var gal=num('as-gal'),inches=num('as-inches'),gph=num('as-gph');
+  if(gal<=0){return;}
+  var sf=factors[species]||1, turnover=gph/gal;
+  var ff=Math.min(1.4,Math.max(0.6,turnover/4));
+  var cap=gal*sf*ff, level=inches/cap;
+  var pct=Math.round(level*100);
+  var status,cls;
+  if(level<=0.85){status='Understocked — room to grow';cls='ok';}
+  else if(level<=1.0){status='Fully stocked — healthy maximum';cls='full';}
+  else if(level<=1.2){status='Overstocked — watch water closely';cls='over';}
+  else{status='Dangerously overstocked — act now';cls='over';}
+  var wpct=level<=0.7?15:level<=0.85?20:level<=1.0?25:30;
+  document.getElementById('as-pct').textContent=pct+'%';
+  document.getElementById('as-fill').style.width=Math.min(100,pct)+'%';
+  var st=document.getElementById('as-status');
+  st.textContent=status;st.className='as-status '+cls;
+  document.getElementById('as-cap').textContent=(Math.round(cap*10)/10)+' in of fish';
+  document.getElementById('as-turn').textContent=(Math.round(turnover*10)/10)+'\u00D7/hour';
+  document.getElementById('as-wc').textContent=wpct+'% weekly';
+  document.getElementById('as-wcgal').textContent=(Math.round(gal*wpct/100*10)/10)+' gal';
+  var note=document.getElementById('as-note');
+  if(turnover<4){note.textContent='Your filter turns the tank only '+ (Math.round(turnover*10)/10) +'\u00D7 per hour — upgrading toward 4\u20136\u00D7 would raise safe capacity.';}
+  else if(level>1){note.textContent='Over 100% stocked: increase water changes and test nitrates weekly until the level drops.';}
+  else{note.textContent='A filter turning the tank 4\u20136 times per hour is the sweet spot for a community tank.';}
+}
+calc();
+})();
+</script>
+</body>
+</html>
