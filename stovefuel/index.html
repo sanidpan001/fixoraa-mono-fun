@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camping Stove Fuel Calculator — Canisters by Trip Days, Meals &amp; People</title>
+<meta name="description" content="Calculate how many camping stove fuel canisters you need from trip days, meals per day, and group size, so you never run out at camp.">
+<link rel="canonical" href="https://fun.fixoraa.tech/stovefuel/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Camping Stove Fuel Calculator — Canisters by Trip Days, Meals &amp; People">
+<meta property="og:description" content="Calculate how many camping stove fuel canisters you need from trip days, meals per day, and group size, so you never run out at camp.">
+<meta property="og:url" content="https://fun.fixoraa.tech/stovefuel/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "StoveFuel",
+      "url": "https://fun.fixoraa.tech/stovefuel/",
+      "applicationCategory": "Outdoor",
+      "operatingSystem": "Web",
+      "description": "Calculate how many camping stove fuel canisters you need from trip days, meals per day, and group size, so you never run out at camp.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much stove fuel do I need per person per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 50 g per person per day for two cooked meals, or 25 g per person per meal. Cold weather, altitude, and melting snow can double this."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a 230 g gas canister last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standard 230 g canister lasts roughly one person four to five days at two meals a day, or a pair of campers about two to three days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I carry a spare fuel canister?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A spare canister is cheap insurance against cold weather, wind, a leaking valve, or a longer trip. Running out of fuel at camp ruins meals and morale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does cold weather use more stove fuel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, significantly. Cold canisters lose pressure, water takes longer to boil, and melting snow for water can double or triple fuel use."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I fly with camping stove fuel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Gas canisters cannot go on aircraft in luggage or hand baggage. Buy fuel at your destination and dispose of empty canisters properly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know how much fuel is left in a canister?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Weigh it and subtract the empty canister weight, printed on the base, or float it in water and mark the level. A luggage scale works well."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is liquid fuel better than gas canisters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Liquid fuel performs better in extreme cold and at altitude, and is cheaper per trip, but stoves need priming and maintenance. Gas canisters are simpler and cleaner for most campers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I store fuel canisters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Store upright in a cool, dry place away from heat and direct sun. Never store in a hot car or near a flame, and check valves for leaks before a trip."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fff7ed; --surface:#ffffff; --accent:#9a3412; --accent-ink:#ffffff;
+  --ink:#2c1a0e; --muted:#6e4a33; --line:#e8cbb0;
+  --display:'DM Serif Display',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+.hist{margin-top:1rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.1rem}
+.hist h3{font-size:1rem;margin-bottom:.4rem} .hist ul{padding-left:1.2rem;color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}.formcard,.resultcard{padding:.9rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="StoveFuel home">
+      <span class="fx-logo-tile" aria-hidden="true">🔥</span>
+      <span class="fx-brand">StoveFuel</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-stove-flame" aria-label="StoveFuel tool">
+<div class="layout"><h1>Camping Stove Fuel Calculator</h1><p class="sub">Work out stove fuel canisters for your trip by days, meals, and people.</p><div class="formcard"><label>Trip days<input id="days" type="number" value="3" step="any" min="0"></label><label>Cooked meals per day<input id="meals" type="number" value="2" step="any" min="0"></label><label>People<input id="people" type="number" value="2" step="any" min="0"></label><div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div><div class="presets" id="presets"></div></div><div class="resultcard" id="result" aria-live="polite"><p>Enter your values to see the result.</p></div><div class="hist"><h3>Recent calculations</h3><ul id="histList"></ul></div><p class="muted">Tip: always carry one spare canister — cold weather and snow-melting double fuel use.</p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why fuel planning matters</h2>
+<p>Running out of stove fuel at camp is one of the most avoidable miseries in camping. There is no shop, no delivery, and cold food for the rest of the trip, which is a particular problem if you depend on the stove for safe drinking water. Yet fuel planning is often guesswork, because consumption depends on days, meals, people, and conditions. A simple rule brings order: allow about twenty-five grams of gas per person per cooked meal. Two meals a day for one person is fifty grams a day, and a standard 230-gram canister therefore lasts that person about four to five days. Scale by days, meals, and people, and the canister count follows.</p>
+<h2>The 25-gram rule</h2>
+<p>Twenty-five grams per person per meal is a planning figure for ordinary camp cooking: boiling water, heating a one-pot meal, or frying breakfast. It assumes a reasonably sheltered stove and ordinary meals, not elaborate cooking or melting snow. A group does not scale perfectly, because a large pot shared by four people is more efficient than four small pots, but the per-person figure remains a safe planning guide. For a weekend trip of two days, two meals a day, and two people, the total is two times two times two times twenty-five, which is 200 grams, or one canister, with a spare strongly advised. The calculator uses this figure and rounds canisters up, since a fraction of a canister cannot be bought.</p>
+<h2>Canister sizes and types</h2>
+<p>The standard backpacking canister holds 230 grams of gas, a mix of butane and propane, and it is the size most campers carry. Smaller 100-gram canisters suit solo overnight trips, while larger 450-gram canisters suit base camps and car camping. Threaded canisters fit most modern stoves, but always check your stove's fitting before buying. Canister weight includes the metal canister itself, so a full 230-gram canister weighs about 380 grams in total, and the empty weight is printed on the base. Weighing a partly used canister and subtracting the empty weight tells you exactly how much fuel remains, which is the most reliable way to plan a second trip on a half-full canister.</p>
+<h2>Cold, wind, and altitude</h2>
+<p>Conditions change fuel use dramatically, and this is where trips go wrong. Cold weather lowers canister pressure, so the stove burns weakly and boiling takes longer. Wind steals heat from the pot, which is why a windshield, used safely and never enclosing the canister, saves a surprising amount of fuel. Altitude lowers the boiling point of water, which sounds helpful but actually means food cooks more slowly and needs longer simmering. Melting snow for drinking water is the biggest fuel cost of all, easily doubling or tripling daily use, because snow must first melt and then heat. For winter trips, snow-melting trips, or exposed camps, plan double fuel and carry a spare canister as standard.</p>
+<h2>Meal planning and fuel</h2>
+<p>What you cook affects fuel as much as how often. One-pot meals, instant noodles, and foods that only need boiling water are fuel-efficient. Meals that need long simmering, like dried beans or tough meat, cost far more fuel, so pre-soak beans, choose quick-cooking grains, and use a pot with a lid. A lid alone saves a remarkable amount of fuel by trapping heat. Cooking for a group in one large pot is more efficient than cooking separately, and cooking breakfast and dinner, with a cold lunch, halves fuel compared with three cooked meals. Plan the menu with fuel in mind, and the calculator's meal count becomes a real planning tool rather than a guess.</p>
+<h2>Safety and storage</h2>
+<p>Gas canisters are safe when handled properly, but they deserve respect. Never use a stove inside a tent, where carbon monoxide and fire are serious risks. Cook in a ventilated porch or outside, keep canisters upright and away from flames, and never heat a canister to increase pressure. Check valves for leaks by listening and smelling before each trip, and carry canisters upright in a protective case. Empty canisters should be punctured only with a proper tool, where facilities exist, and recycled as metal. Never fly with canisters, and buy fuel at your destination for fly-in trips. A little care with fuel keeps the whole camp safe.</p>
+<h2>A worked example</h2>
+<p>For three days, two meals a day, and two people, the total is three times two times two times twenty-five, which is 300 grams, or two 230-gram canisters. For a solo week of seven days at three meals a day, the total is seven times three times one times twenty-five, which is 525 grams, or three canisters. For a group trip of two days, two meals, and four people, the total is 400 grams, or two canisters. These figures assume ordinary conditions, so add a spare canister for cold weather, wind, or snow-melting. The calculator gives the base figure instantly, and your judgement about conditions adds the safety margin.</p>
+<h2>Packing and checking fuel</h2>
+<p>Before a trip, weigh every canister and label it with remaining grams, so you know exactly what you carry. Pack canisters upright, protected from punctures, and away from food, since a leaking valve can taint food. At camp, keep a spare canister in a known spot, not buried at the bottom of a bag. After a trip, weigh canisters again and note the remainder for next time, because real consumption data beats any rule of thumb. Over a few trips, you will learn whether your group cooks lean or lavish, and your estimates will sharpen. Good fuel planning is invisible when it works, and that is exactly the point.</p>
+<h2>Estimating fuel for longer expeditions</h2>
+<p>For expeditions longer than a week, fuel planning shifts from canister counting to resupply planning. A solo camper on two meals a day uses about 350 grams a week, so a two-week trip needs roughly 700 grams, or four 230-gram canisters, before any safety margin. Carrying that much gas is heavy and bulky, so long trips usually plan a resupply point, a switch to liquid fuel, or a mix of stove cooking and cold food. Liquid fuel, carried in a refillable bottle, is lighter per unit of energy and performs better in cold, but it requires a stove that burns it and some practice with priming. Whatever the system, weigh fuel at each resupply, log real consumption against the plan, and adjust the next leg. Expedition fuel planning rewards the same habit as weekend planning, only more so: measure, record, and carry a margin.</p>
+<h2>Stove maintenance that saves fuel</h2>
+<p>A clean, well-maintained stove burns more efficiently and uses noticeably less fuel than a dirty or damaged one. Before a trip, check jets for blockages, seals for cracks, and connections for leaks, and clean soot from the burner and pot supports. A windscreen used correctly, shielding the flame without enclosing the canister, can cut fuel use by a third in breezy conditions. Match pot size to burner size so flames do not lick uselessly around the sides, and use a pot with a lid and a heat-exchanger base if your stove supports one, since it captures heat that would otherwise escape. Small maintenance habits, plus a spare seal kit for liquid-fuel stoves, keep fuel consumption predictable and prevent the mid-trip stove failure that wastes both fuel and food.</p>
+<h3>Fuel guide (25 g per person per meal, 230 g canisters)</h3><table><tr><th>Trip</th><th>Fuel needed</th><th>Canisters</th></tr><tr><td>2 days, 2 meals, 2 people</td><td>200 g</td><td>1 (+1 spare)</td></tr><tr><td>3 days, 2 meals, 2 people</td><td>300 g</td><td>2</td></tr><tr><td>7 days, 3 meals, 1 person</td><td>525 g</td><td>3</td></tr><tr><td>4 days, 3 meals, 4 people</td><td>1200 g</td><td>6</td></tr></table>
+<ul><li>Allow 25 g of gas per person per cooked meal.</li><li>A 230 g canister lasts one person about 4 to 5 days at two meals a day.</li><li>Cold, wind, and snow-melting can double fuel use.</li><li>Always carry one spare canister.</li><li>Weigh canisters to check remaining fuel — never guess.</li></ul>
+<p>Fuel planning is simple arithmetic plus a safety margin. Count days, meals, and people, allow twenty-five grams per person per meal, round up to whole canisters, and add a spare for bad weather. Then the stove lights every morning, the coffee is hot, and the trip runs the way it should.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much stove fuel do I need per person per day?</summary><p>About 50 g per person per day for two cooked meals, or 25 g per person per meal. Cold weather, altitude, and melting snow can double this.</p></details>
+<details><summary>How long does a 230 g gas canister last?</summary><p>A standard 230 g canister lasts roughly one person four to five days at two meals a day, or a pair of campers about two to three days.</p></details>
+<details><summary>Should I carry a spare fuel canister?</summary><p>Yes. A spare canister is cheap insurance against cold weather, wind, a leaking valve, or a longer trip. Running out of fuel at camp ruins meals and morale.</p></details>
+<details><summary>Does cold weather use more stove fuel?</summary><p>Yes, significantly. Cold canisters lose pressure, water takes longer to boil, and melting snow for water can double or triple fuel use.</p></details>
+<details><summary>Can I fly with camping stove fuel?</summary><p>No. Gas canisters cannot go on aircraft in luggage or hand baggage. Buy fuel at your destination and dispose of empty canisters properly.</p></details>
+<details><summary>How do I know how much fuel is left in a canister?</summary><p>Weigh it and subtract the empty canister weight, printed on the base, or float it in water and mark the level. A luggage scale works well.</p></details>
+<details><summary>Is liquid fuel better than gas canisters?</summary><p>Liquid fuel performs better in extreme cold and at altitude, and is cheaper per trip, but stoves need priming and maintenance. Gas canisters are simpler and cleaner for most campers.</p></details>
+<details><summary>How should I store fuel canisters?</summary><p>Store upright in a cool, dry place away from heat and direct sun. Never store in a hot car or near a flame, and check valves for leaks before a trip.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">StoveFuel</div>
+    <p>StoveFuel estimates camping stove fuel canisters from trip length, meals, and group size.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function stoveFuel(days, meals, people) { if (days <= 0 || meals <= 0 || people <= 0) return {grams: 0, canisters: 0}; var g = days * meals * people * 25; return {grams: g, canisters: Math.ceil(g / 230)}; }
+
+if (typeof document !== 'undefined') {
+  var _hist = [];
+  function _renderHist() {
+    var el = document.getElementById('histList');
+    if (el) el.innerHTML = _hist.map(function(h) { return '<li>' + h + '</li>'; }).join('') || '<li>No calculations yet.</li>';
+  }
+  function run() {
+    var r=stoveFuel(+document.getElementById('days').value,+document.getElementById('meals').value,+document.getElementById('people').value);document.getElementById('result').innerHTML='<p class="big">'+r.canisters+' canister(s) &middot; '+r.grams+' g fuel</p><p>Based on standard 230 g canisters. Carry one spare canister for cold weather or melting snow.</p>';window._last='StoveFuel: '+r.canisters+' canisters ('+r.grams+' g) for '+document.getElementById('days').value+' days';
+    if (window._last) { _hist.unshift(window._last); _hist = _hist.slice(0, 5); _renderHist(); }
+  }
+  document.getElementById('calcBtn').onclick = run;
+  document.getElementById('copyBtn').onclick = function() { if (window._last && navigator.clipboard) navigator.clipboard.writeText(window._last); };
+  var P = [['Weekend: 2 days, 2 meals, 2 people',[2,2,2]],['Week trip solo: 7 days, 2 meals, 1 person',[7,2,1]],['Group trip: 4 days, 3 meals, 4 people',[4,3,4]]];
+  document.getElementById('presets').innerHTML = P.map(function(p, i) { return '<button type="button" data-i="' + i + '">' + p[0] + '</button>'; }).join('');
+  document.querySelectorAll('#presets button').forEach(function(b) {
+    b.onclick = function() {
+      var v = P[+b.dataset.i][1];
+      document.getElementById('days').value=v[0];document.getElementById('meals').value=v[1];document.getElementById('people').value=v[2];
+      run();
+    };
+  });
+  _renderHist();
+  run();
+}
+
+</script>
+</body>
+</html>
