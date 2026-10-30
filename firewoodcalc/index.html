@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Firewood Cord Calculator — How Many Cords Are in Your Stack? | FirewoodCalc</title>
+<meta name="description" content="Free firewood cord calculator: enter your stack length, width and height to find cords, volume and cost before you buy or sell firewood.">
+<link rel="canonical" href="https://fun.fixoraa.tech/firewoodcalc/">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"FirewoodCalc","applicationCategory":"Home","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What is a cord of firewood?", "acceptedAnswer": {"@type": "Answer", "text": "A full cord is 128 cubic feet of neatly stacked wood \u2014 for example a stack 4 feet high, 4 feet deep and 8 feet long."}},{"@type": "Question", "name": "What is a face cord?", "acceptedAnswer": {"@type": "Answer", "text": "A face cord is one row of logs, usually 8 feet long and 4 feet high, with a depth equal to the log length (often 16 inches). It is about one-third of a full cord."}},{"@type": "Question", "name": "How many cords do I need for winter?", "acceptedAnswer": {"@type": "Answer", "text": "Most wood-heated homes use 2 to 5 cords per winter. Mild climates and efficient stoves use less; large, older homes in cold regions use more."}},{"@type": "Question", "name": "Does the calculator account for air gaps?", "acceptedAnswer": {"@type": "Answer", "text": "The standard cord definition already assumes normally stacked wood with small gaps. Very loosely stacked wood will read higher than its true solid-wood content."}},{"@type": "Question", "name": "Should I measure before or after stacking?", "acceptedAnswer": {"@type": "Answer", "text": "After stacking, always. A loose pile in a truck can look 30 percent bigger than the same wood stacked neatly."}},{"@type": "Question", "name": "How much does a cord weigh?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on species and moisture: a cord of seasoned oak weighs roughly 3,500 to 4,000 pounds, while softwoods are lighter."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:'Karla',sans-serif;background:#FDF8EE;color:#2B332A;line-height:1.6}
+a{color:#2D5A3D} header{background:#2D5A3D;color:#FFFFFF;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#FFFFFF;text-decoration:none}
+.mark{width:44px;height:44px;border-radius:18px;background:#2D5A3D;color:#fff;display:grid;place-items:center;font-size:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#2D5A3D;color:#fff;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+.btn2{background:transparent;color:#FFFFFF;border:2px solid #FFFFFF}
+.wrap{max-width:960px;margin:0 auto;padding:16px} .badge{display:inline-block;background:#E7E0CF;color:#2B332A;border:1px solid #2D5A3D;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px}
+.card{background:#fff;border:1px solid #E7E0CF;border-radius:18px;padding:20px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.hero-note{border:2px dashed #2D5A3D;border-radius:14px;padding:14px;background:#F3EFE0}.toolcard{border-top:8px solid #2D5A3D}h1,h2{font-family:Fraunces,serif}
+label{display:block;font-weight:700;margin:12px 0 4px} input,select,textarea{width:100%;padding:12px;border:1.5px solid #E7E0CF;border-radius:10px;font-size:16px;font-family:inherit}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px} @media(max-width:600px){.grid{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start}}
+.res{margin-top:16px;padding:16px;background:#E7E0CF;border-radius:18px;font-size:18px} .res b{font-size:26px}
+.err{color:#b91c1c;font-weight:700} article{background:#fff;border-radius:18px;padding:24px;margin-top:20px} article h2{margin-top:28px}
+.faq details{background:#fff;border:1px solid #E7E0CF;border-radius:12px;padding:14px;margin:10px 0} .faq summary{font-weight:700;cursor:pointer}
+footer{background:#2D5A3D;color:#FFFFFF;padding:28px 16px;margin-top:24px} footer a{color:#FFFFFF;font-weight:700}
+.hist{font-size:14px;background:#fff;border:1px dashed #2D5A3D;padding:10px;border-radius:10px;margin-top:12px;white-space:pre-wrap}
+</style></head>
+<body>
+<header><a class="logo" href="https://fixoraa.tech"><span class="mark">🪵</span>FirewoodCalc</a>
+<nav><a class="btn btn2" href="https://fixoraa.tech">Home</a> <a class="btn btn2" href="https://fixoraa.tech">More Tools</a></nav></header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="wrap">
+<span class="badge">Unlimited Free Usage</span><h1>Firewood Cord Calculator</h1><p>Stack it, measure it, know exactly how many cords you have — and what they are worth.</p><div class="hero-note"><strong>Field rule:</strong> one full cord = 128 cubic feet of neatly stacked wood (for example 4 ft × 4 ft × 8 ft). A face cord is only one row deep, so it is usually a third of a full cord.</div>
+<section class="card" aria-label="Tool">
+<div class="grid"><div><label for="stack_l">Stack length (ft)</label><input id="stack_l" type="number" step="any" value="16" placeholder="Stack length (ft)"></div><div><label for="stack_w">Stack width / depth (ft)</label><input id="stack_w" type="number" step="any" value="4" placeholder="Stack width / depth (ft)"></div><div><label for="stack_h">Stack height (ft)</label><input id="stack_h" type="number" step="any" value="4" placeholder="Stack height (ft)"></div><div><label for="price">Price per cord (optional, $)</label><input id="price" type="number" step="any" value="250" placeholder="Price per cord (optional, $)"></div></div><div style="margin-top:14px"><button class="btn" onclick="calc()">Calculate</button> <button class="btn" onclick="resetF()">Reset</button></div><div style="margin-top:10px">Presets: <button class="btn" type="button" onclick="applyPreset({"stack_l": 4, "stack_w": 4, "stack_h": 4})">Small stack</button> <button class="btn" type="button" onclick="applyPreset({"stack_l": 8, "stack_w": 4, "stack_h": 4})">One full cord</button> <button class="btn" type="button" onclick="applyPreset({"stack_l": 8, "stack_w": 4, "stack_h": 8})">Two cords</button> </div>
+<div id="err" class="err" role="alert"></div>
+<div id="res" class="res" style="display:none"></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+<button class="btn" onclick="saveHist()">Save to history</button>
+<button class="btn" onclick="copyRes()">Copy result</button>
+<button class="btn" onclick="dlCSV()">Export CSV</button></div>
+<div id="hist" class="hist" style="display:none"></div>
+<p><strong>Seasoning note:</strong> freshly cut wood can be 50% water by weight. Burn only wood dried below 20% moisture — it burns hotter, cleaner and leaves far less creosote in your chimney.</p>
+</section>
+<div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article><p>Buying firewood by the truckload and wondering whether you actually got what you paid for is one of the oldest homeowner frustrations. A seller says “a cord,” but cords come in full, face and thrown varieties, and a loosely piled truck bed can look generous while holding far less wood than a neat stack. The firewood cord calculator removes that guesswork. You measure the stack you have — or the stack you are about to receive — enter its length, width and height, and instantly learn how many full cords it contains, how many cubic feet of stacked wood that represents, and what the pile is worth at your local price per cord. It is a small tool with a very practical job: protecting your wallet, helping you order the right amount before winter, and making sure your stove or fireplace never runs short on the coldest night of the year.</p>
+<h2>How to use this calculator</h2>
+<p>Measuring a woodpile is simple once you know the standard. A full cord is defined as 128 cubic feet of wood stacked in a neat, compact pile — the classic example is a stack 4 feet high, 4 feet deep and 8 feet long. Enter those three dimensions for your own pile, and the calculator divides the total stacked volume by 128 to give you cords. If you also enter a price per cord, it multiplies cords by price to estimate the pile's value. The tool also handles partial cords gracefully: a stack of 64 cubic feet is half a cord, and the result is shown to two decimal places so small piles are still meaningful.</p>
+<ol><li>Measure the stack's length along the ground, in feet, from end to end.</li><li>Measure its height at several points and use the average, since piles are rarely perfectly level.</li><li>Measure the depth of the rows — a single row of 16-inch logs is about 1.3 feet deep.</li><li>Enter all three numbers and your local price per cord, if you know it.</li><li>Press Calculate and read your cords, cubic feet and estimated value.</li></ol>
+<h2>Understanding your results</h2>
+<p><strong>Cords.</strong> The headline number. One full cord equals 128 cubic feet of stacked wood. Most homes burn between two and five cords per winter, depending on climate and stove efficiency.</p>
+<p><strong>Cubic feet stacked.</strong> The raw volume of your pile. This is the number to compare against a delivery ticket or a seller's claim.</p>
+<p><strong>Estimated value.</strong> Cords multiplied by your price per cord. Use it to check a quote, split a bulk order fairly with a neighbour, or price wood you are selling.</p>
+<p><strong>Zero or tiny results.</strong> If the calculator returns zero, one of your dimensions is zero — check that every field has a real measurement.</p>
+<h2>Practical tips</h2><ul><li>Measure the stack after it is stacked, not while it is still in a loose truck pile — loose wood can overstate volume by 30 percent or more.</li><li>Use average height, not the tallest log, or you will overstate your cords.</li><li>Count only the wood itself: subtract space taken by gaps, pallets or a sloping pile edge.</li><li>Remember that a face cord is not a full cord — ask sellers which one their price refers to.</li><li>Stack bark-side up on the top row to shed rain, and keep the pile off the ground on pallets.</li><li>Buy or cut wood in spring so it has a full summer to season before winter.</li></ul>
+<h2>Common mistakes to avoid</h2><ul><li>Confusing a face cord with a full cord and paying full-cord prices for a third of the wood.</li><li>Measuring a loose pile in the truck instead of the stacked pile at home.</li><li>Using the tallest single point as the height of an uneven stack.</li><li>Forgetting that 16-inch logs stacked three rows deep are about 4 feet deep, not 4 feet per row.</li><li>Ordering exactly your burn estimate with no buffer — a hard winter or a new stove can change consumption fast.</li></ul>
+<h2>Who benefits most</h2>
+<p>This calculator is built for homeowners with a wood stove or fireplace, firewood sellers who want to quote honestly, tree services clearing storm wood, and anyone splitting a bulk delivery with friends. If you heat with wood, even part-time, knowing your cords turns an annual argument with a supplier into a two-minute measurement. Campers, cabin owners and small homesteads use it too — a weekend cabin might need only a face cord or two, and ordering a full cord would waste money and space.</p>
+<h2>Worked example</h2>
+<p>Consider a stack 16 feet long, 4 feet deep and 4 feet high. Its volume is 16 × 4 × 4 = 256 cubic feet. Dividing by 128 gives exactly 2 cords. At 250 dollars per cord, that pile is worth about 500 dollars. Now compare a single row of 16-inch logs, 8 feet long and 4 feet high: the depth is only about 1.33 feet, so the volume is 8 × 4 × 1.33 = 42.7 cubic feet, or 0.33 cords — one face cord, not a full cord. That single distinction is where most firewood disputes live, and it is exactly what this calculator makes visible.</p>
+<h2>Checking and re-running your result</h2>
+<p>Double-check your result by re-measuring the stack from the other side and averaging the two readings. If a delivery arrives, stack it before paying the balance where possible, then measure. Re-run the calculator whenever you add wood or burn through a row — keeping a running tally through winter tells you in January whether your remaining pile will last until March, while there is still time to order more. Species and seasoning deserve a closer look, because not all cords are equal. Hardwoods such as oak, hickory and maple pack more heat per cord than softwoods like pine and spruce — a cord of seasoned oak delivers roughly 24 to 28 million BTUs, while a cord of pine delivers closer to 15 to 17 million. That means a softwood fire needs more cords for the same warmth, more frequent loading, and more chimney cleaning, since softwoods also produce more creosote. If you buy by the cord, ask the species before you ask the price, and compare prices per million BTUs rather than per cord when species differ. Seasoning is the other half of value: freshly cut wood can hold 50 percent moisture, and burning it wastes much of its energy boiling water out of the logs while coating your flue with creosote. Properly seasoned wood reads below 20 percent on a moisture meter, feels light for its size, has cracked ends, and sounds hollow when two pieces are knocked together. Stack it off the ground, with air gaps between rows, top-covered but sides open, and give it at least six to twelve months — oak often needs a full year or more. A cheap moisture meter pays for itself the first time it stops you accepting a wet delivery, and keeping a simple log of cords bought, species, price and burn rate turns each winter into data for the next one. A quick reference for the most common stacks helps you sanity-check any result at a glance: a stack 4 feet high, 4 feet deep and 8 feet long is one full cord; the same footprint at 2 feet high is half a cord; a single row of 16-inch logs, 8 feet long and 4 feet high, is a face cord of about one third of a cord; and a standard pickup bed, loosely loaded, typically holds well under half a cord despite looking full. Keep these landmarks in mind when a seller quotes a price, and always confirm in writing whether the quote is per full cord or per face cord before delivery.</p></article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary>What is a cord of firewood?</summary><p>A full cord is 128 cubic feet of neatly stacked wood — for example a stack 4 feet high, 4 feet deep and 8 feet long.</p></details><details><summary>What is a face cord?</summary><p>A face cord is one row of logs, usually 8 feet long and 4 feet high, with a depth equal to the log length (often 16 inches). It is about one-third of a full cord.</p></details><details><summary>How many cords do I need for winter?</summary><p>Most wood-heated homes use 2 to 5 cords per winter. Mild climates and efficient stoves use less; large, older homes in cold regions use more.</p></details><details><summary>Does the calculator account for air gaps?</summary><p>The standard cord definition already assumes normally stacked wood with small gaps. Very loosely stacked wood will read higher than its true solid-wood content.</p></details><details><summary>Should I measure before or after stacking?</summary><p>After stacking, always. A loose pile in a truck can look 30 percent bigger than the same wood stacked neatly.</p></details><details><summary>How much does a cord weigh?</summary><p>It depends on species and moisture: a cord of seasoned oak weighs roughly 3,500 to 4,000 pounds, while softwoods are lighter.</p></details></section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer><p><strong>FirewoodCalc</strong> — Measure your woodpile in cords, not guesses.</p>
+<p>FirewoodCalc is a free firewood measuring tool that turns stack dimensions into cords, cubic feet and cost in seconds.</p>
+<p><a href="https://fixoraa.tech">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p></footer>
+<script id="pure">function firewoodCords(l,w,h){return Math.round(l*w*h/128*100)/100;}</script>
+<script>function calc(){var l=num('stack_l'),w=num('stack_w'),h=num('stack_h'),p=num('price');
+    if(l<0||w<0||h<0){showErr('Dimensions cannot be negative.');return;} document.getElementById('err').textContent='';
+    var c=firewoodCords(l,w,h); var vol=Math.round(l*w*h*10)/10;
+    var html='<b>'+c+' cords</b> &nbsp;·&nbsp; '+vol+' cubic feet stacked';
+    if(p>0) html+=' &nbsp;·&nbsp; estimated value $'+Math.round(c*p);
+    if(c===0) html+=' — a zero-size stack holds no wood. Enter real dimensions to get a result.';
+    showRes(html); window._line=c+' cords ('+vol+' cu ft)';}
+  
+function applyPreset(o){for(var k in o){var e=document.getElementById(k);if(e)e.value=o[k];}calc();}
+function resetF(){var els=document.querySelectorAll('input,select');els.forEach(function(e){if(e.type!=='button')e.value='';});document.getElementById('res').style.display='none';document.getElementById('err').textContent='';}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+
+function showRes(html){var r=document.getElementById('res');r.style.display='block';r.innerHTML=html;window._last=html.replace(/<[^>]+>/g,' ');}
+function showErr(m){document.getElementById('err').textContent=m;}
+function saveHist(){if(!window._last)return;var k='hist_firewoodcalc';var a=JSON.parse(localStorage.getItem(k)||'[]');a.unshift(new Date().toLocaleString()+': '+window._last);localStorage.setItem(k,JSON.stringify(a.slice(0,10)));var d=document.getElementById('hist');d.style.display='block';d.textContent=a.join('\n');}
+function copyRes(){if(window._last&&navigator.clipboard)navigator.clipboard.writeText(window._last);}
+function dlCSV(){if(!window._last)return;var b=new Blob([window._last],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='firewoodcalc-result.csv';a.click();}
+</script>
+</body></html>
