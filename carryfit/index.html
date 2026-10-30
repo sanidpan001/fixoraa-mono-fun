@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carry-On Size Checker — Will My Bag Fit? | CarryFit</title>
+<meta name="description" content="Free carry-on size checker: enter your bag&#x27;s dimensions and get pass/fail verdicts for 12 airlines, plus personal-item limits. No signup.">
+<link rel="canonical" href="https://fun.fixoraa.tech/carryfit/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Carry-On Size Checker — Will My Bag Fit? | CarryFit">
+<meta property="og:description" content="Free carry-on size checker: enter your bag&#x27;s dimensions and get pass/fail verdicts for 12 airlines, plus personal-item limits. No signup.">
+<meta property="og:url" content="https://fun.fixoraa.tech/carryfit/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CarryFit",
+      "url": "https://fun.fixoraa.tech/carryfit/",
+      "applicationCategory": "Travel Tools",
+      "operatingSystem": "Web",
+      "description": "Free carry-on size checker: enter your bag's dimensions and get pass/fail verdicts for 12 airlines, plus personal-item limits. No signup.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the standard carry-on size for US airlines?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most US legacy airlines (American, Delta, United, Alaska, JetBlue) allow 22 \u00d7 14 \u00d7 9 inches, including wheels and handles. Southwest and Frontier allow 24 \u00d7 16 \u00d7 10. Budget and international carriers are usually stricter \u2014 always check your specific airline before you fly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do carry-on dimensions include wheels and handles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 almost every airline's limit explicitly includes wheels and handles. Measure your bag standing upright, from the bottom of the wheels to the top of the retracted handle, at the widest points. Luggage marketed as '22-inch' often measures 23\u201324 inches all-in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a weight limit for carry-on bags?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Major US carriers impose no weight limit on carry-ons for domestic flights (you must be able to lift the bag into the bin). International and budget carriers commonly cap carry-ons at 7\u201310 kg and do weigh bags at check-in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a carry-on and a personal item?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A personal item must fit under the seat in front of you \u2014 roughly 18 \u00d7 14 \u00d7 8 inches on US carriers, smaller on budget airlines. On Frontier, Spirit and Allegiant the personal item is the only free bag; the overhead-bin carry-on costs extra."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if my bag is too big at the gate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You will almost certainly pay a gate-check fee (often $50\u2013100, more on budget carriers) and your bag will be checked to your destination. Pre-paying for a checked bag online before you fly is nearly always cheaper than the gate penalty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I rotate my bag to fit the sizer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The tool sorts your bag's three dimensions and compares each against the airline's sorted limit, so a bag that fits when rotated passes. Real sizers work the same way \u2014 orientation does not matter, only whether each dimension fits."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FAF4E8; --surface:#FFFFFF; --accent:#8C4A0B; --accent-ink:#FFFFFF;
+  --ink:#33240F; --muted:#6E5B3E; --line:#E7D9BE;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.cf-wrap{font-family:'Fraunces',Georgia,serif;background:linear-gradient(180deg,#FAF4E8 0%,#F5EDDA 100%);color:#33240F;padding:60px 20px 80px;}.cf-inner{max-width:900px;margin:0 auto;}.cf-head{text-align:center;margin-bottom:34px;}.cf-logo{font-size:54px;}.cf-head h1{font-size:clamp(34px,5.2vw,54px);font-weight:600;letter-spacing:-.01em;margin:14px 0 10px;line-height:1.05;}.cf-tag{color:#6E5B3E;font-size:18px;margin:0;font-family:Inter,system-ui,sans-serif;}.cf-input{background:#fff;border:1px solid #E7D9BE;border-radius:24px;padding:30px 30px 26px;box-shadow:0 20px 48px rgba(140,74,11,.10);max-width:680px;margin:0 auto;}.cf-input h2{font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:#8C4A0B;margin:0 0 16px;font-weight:700;font-family:Inter,system-ui,sans-serif;}.cf-dims{display:flex;gap:12px;align-items:flex-end;justify-content:center;flex-wrap:wrap;}.cf-dim{display:flex;flex-direction:column;gap:8px;flex:1;min-width:110px;}.cf-dim label{font-size:12.5px;font-weight:700;color:#6E5B3E;text-transform:uppercase;letter-spacing:.08em;font-family:Inter,system-ui,sans-serif;}.cf-dim input{padding:13px 12px;font-size:20px;border:2px solid #E7D9BE;border-radius:14px;font-family:Inter,system-ui,sans-serif;color:#33240F;width:100%;box-sizing:border-box;text-align:center;}.cf-dim input:focus{outline:none;border-color:#8C4A0B;}.cf-x{font-size:22px;color:#B49B72;padding-bottom:12px;font-family:Inter,system-ui,sans-serif;}.cf-row{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:20px;flex-wrap:wrap;font-family:Inter,system-ui,sans-serif;}.cf-toggle{display:flex;border:2px solid #E7D9BE;border-radius:13px;overflow:hidden;background:#fff;}.cf-toggle button{border:none;background:transparent;padding:10px 18px;font-size:14px;font-weight:700;color:#6E5B3E;cursor:pointer;font-family:inherit;}.cf-toggle button.on{background:#8C4A0B;color:#fff;}.cf-presets{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px;font-family:Inter,system-ui,sans-serif;}.cf-preset{background:#FAF4E8;border:1px solid #E7D9BE;border-radius:999px;padding:8px 15px;font-size:13.5px;cursor:pointer;color:#33240F;}.cf-preset:hover{border-color:#8C4A0B;color:#8C4A0B;}.cf-linear{text-align:center;font-family:Inter,system-ui,sans-serif;color:#6E5B3E;font-size:14px;margin-top:14px;}.cf-linear strong{color:#8C4A0B;}.cf-stack{max-width:680px;margin:34px auto 0;}.cf-stack h3{font-size:22px;margin:0 0 4px;font-weight:600;text-align:center;}.cf-stack p.sub{text-align:center;color:#6E5B3E;font-family:Inter,system-ui,sans-serif;font-size:14.5px;margin:0 0 18px;}.cf-card{background:#fff;border:1px solid #E7D9BE;border-left:6px solid #8C4A0B;border-radius:16px;padding:16px 20px;margin-bottom:-6px;box-shadow:0 10px 26px rgba(140,74,11,.08);display:flex;align-items:center;gap:14px;position:relative;font-family:Inter,system-ui,sans-serif;}.cf-card:nth-child(odd){transform:translateX(10px);}.cf-card.pass{border-left-color:#3E7C2B;}.cf-card.fail{border-left-color:#B3261E;}.cf-air{flex:1;min-width:0;}.cf-air .n{font-weight:700;font-size:16.5px;}.cf-air .l{font-size:13.5px;color:#6E5B3E;margin-top:3px;}.cf-badge{flex:0 0 auto;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:8px 14px;border-radius:999px;}.cf-badge.pass{background:#E4F2DF;color:#2F6123;}.cf-badge.fail{background:#FBE3E1;color:#8F1D16;}.cf-margin{font-size:13px;color:#6E5B3E;margin-top:3px;}.cf-pi{margin-top:40px;}.cf-foot{text-align:center;font-family:Inter,system-ui,sans-serif;color:#6E5B3E;font-size:13px;margin-top:26px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.6;}@media (max-width:560px){.cf-input{padding:22px 18px;}.cf-card:nth-child(odd){transform:translateX(6px);}.cf-dims{gap:8px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="CarryFit home">
+      <span class="fx-logo-tile" aria-hidden="true">🧳</span>
+      <span class="fx-brand">CarryFit</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-deck-stack" aria-label="CarryFit tool">
+<section class='cf-wrap'><div class='cf-inner'><div class='cf-head'><div class='cf-logo' aria-hidden='true'>🧳</div><h1>Carry-On Size Checker</h1><p class='cf-tag'>Will your bag fit? Check it against 12 airlines before the gate does.</p></div><div class='cf-input'><h2>Your bag — measure wheels &amp; handles included</h2><div class='cf-dims'><div class='cf-dim'><label for='cf-l'>Length</label><input type='number' id='cf-l' value='22' min='1' max='40' step='0.5' inputmode='decimal'></div><span class='cf-x'>×</span><div class='cf-dim'><label for='cf-w'>Width</label><input type='number' id='cf-w' value='14' min='1' max='40' step='0.5' inputmode='decimal'></div><span class='cf-x'>×</span><div class='cf-dim'><label for='cf-h'>Height</label><input type='number' id='cf-h' value='9' min='1' max='40' step='0.5' inputmode='decimal'></div><div class='cf-toggle' role='group' aria-label='Units' style='align-self:flex-end'><button type='button' data-u='in' class='on'>in</button><button type='button' data-u='cm'>cm</button></div></div><div class='cf-presets' id='cf-presets'></div><div class='cf-linear' id='cf-linear'></div></div><div class='cf-stack'><h3>Carry-on verdicts</h3><p class='sub'>Bags can rotate — each dimension is matched to the closest limit.</p><div id='cf-list'></div></div><div class='cf-stack cf-pi'><h3>Personal item check</h3><p class='sub'>The smaller bag that goes under the seat.</p><div id='cf-pilist'></div></div><p class='cf-foot'>Limits are widely published 2025–2026 figures and change — verify on your airline's baggage page before a high-stakes trip. US carriers generally have no carry-on weight limit; most international carriers cap at 7–10 kg.</p></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Carry-On Size Rules Exist</h2><p>Overhead bins are a fixed, unforgiving volume of space, and every airline has done the same math: a cabin with 180 seats needs 180 bags to fit into bins designed around a standard suitcase. The size limit is not arbitrary — it is the geometry of the bin, minus a margin for the doors to close. When your bag exceeds it, the airline is not being difficult; your bag physically does not fit, and the resulting gate-check fee ($50–100 on many carriers) is the price of finding out at the boarding door.</p><p>Enforcement has tightened noticeably. Automated bag-measuring frames at check-in and boarding gates, stricter gate agents during peak season when bins fill early, and budget carriers that monetize every inch have all raised the stakes. The bag that “always fit before” can fail on a full flight when crew are actively policing the sizer. Measuring at home, against the actual published limits, is the only reliable move.</p><h2>The 22 × 14 × 9 Standard</h2><p>Most US legacy carriers — American, Delta, United, Alaska, JetBlue — converge on <strong>22 × 14 × 9 inches (56 × 36 × 23 cm)</strong>, including wheels and handles. That 45-linear-inch box is the de facto American standard, and most “carry-on sized” luggage sold in the US is built to it. Southwest and Frontier are more generous at 24 × 16 × 10. Spirit sits in between at 22 × 18 × 10.</p><p>Internationally the picture fragments. European legacy carriers typically allow 55 × 40 × 20–23 cm — slightly narrower and, crucially, often <em>with weight limits</em> (7–10 kg is common) where US carriers impose none. Budget carriers are strictest: Ryanair's free allowance is only a small under-seat bag (40 × 20 × 25 cm), with the 55 × 40 × 20 cm cabin bag reserved for priority boarding. Flying a US-sized roller on a European budget hop is the single most common way travelers get stung.</p><h2>The Wheels-and-Handles Trap</h2><p>Nearly every airline's published limit <strong>includes wheels and handles</strong>. Luggage makers, meanwhile, often advertise the body dimensions — the “22-inch” bag on the shelf may measure 24 inches wheel-to-handle-top. That two-inch lie is the entire margin. Always measure the bag yourself, standing upright, from the bottom of the wheels to the top of the retracted handle, at the widest points. This tool's limits assume the all-in measurement, because that is what the sizer at the gate measures.</p><p>Soft-sided bags add a wrinkle: an under-packed duffel can be squashed into a sizer that its nominal dimensions would fail. Hard-shell cases cannot. If your bag is borderline, soft-sided and slightly under-filled is the forgiving combination; rigid and stuffed to the zipper is the worst.</p><h2>Weight Limits: America's Exception</h2><p>US domestic flying is the global outlier: major carriers impose <strong>no weight limit</strong> on carry-ons (you must still be able to lift the bag into the bin yourself). Almost everywhere else, weight is policed. European and Asian carriers commonly cap carry-ons at 7–10 kg, and they weigh at check-in. A 12 kg roller that breezes through Chicago gets gate-checked in Frankfurt.</p><p>The practical advice: if your itinerary mixes US and international carriers, pack to the strictest rule on the ticket — usually the international leg's weight limit. A portable luggage scale ($10, fits in a side pocket) pays for itself the first time it saves a repacking scramble on the terminal floor.</p><h2>Personal Item vs. Carry-On</h2><p>You are generally allowed two pieces: the carry-on (overhead bin) and a <strong>personal item</strong> (under the seat in front of you). Personal-item limits run around 18 × 14 × 8 inches on US carriers, smaller on budget airlines — and on Frontier, Spirit and Allegiant the personal item is the <em>only</em> free bag, with the overhead carry-on a paid add-on that costs far more at the gate than online.</p><p>United and Delta basic-economy fares on many routes are personal-item-only: no free carry-on at all. Know your fare class before you pack. This tool checks your second bag against personal-item limits in the same pass, because the “it fit as a carry-on” bag often fails as a personal item and vice versa.</p><h2>How the Verdicts Work</h2><p>Enter your bag's three dimensions and the tool compares them against each airline's published sizer, allowing rotation — a 9 × 14 × 22 bag fits a 22 × 14 × 9 sizer, because bags turn. Each dimension of your (sorted) bag must be within the (sorted) limit. The verdict shows your margin: “fits with 1.0 in to spare” or “fails depth by 1.5 in.” Borderline results deserve respect: sizers are rigid, bags bulge, and gate agents have discretion — treat “fits by 0.5 in” as a warning, not a promise.</p><p>Limits change, so the table here reflects widely published 2025–2026 figures and the tool notes where budget carriers differ. Before a high-stakes trip — a tight connection on a budget airline, say — verify against the airline's own baggage page. Policies are the airline's contract of carriage; this tool is the fast check that keeps you out of the fee line.</p><h2>Carry-On by Region: What Changes When You Cross Borders</h2><p>The US “no weight limit, generous box” model is the exception, not the rule. In <strong>Europe</strong>, legacy carriers typically allow 55 × 40 × 20–23 cm and weigh the bag: 8 kg is the common cap (Lufthansa group, Air France–KLM), 10 kg on British Airways. Budget carriers split the allowance: a small under-seat bag free, the full-size cabin bag only with priority boarding or a paid bundle. In <strong>Asia</strong>, 7 kg is the near-universal carry-on weight limit across full-service carriers (Singapore Airlines, Cathay Pacific, ANA, JAL), with total dimensions around 115 linear cm. <strong>Middle East</strong> carriers (Emirates, Qatar, Etihad) allow 7 kg in economy — 10–15 kg in premium cabins — at 55 × 38 × 20 cm-ish. <strong>Latin America</strong> largely mirrors the US on size but many carriers enforce 10 kg.</p><p>The practical rule for multi-airline itineraries: <strong>pack to the strictest carrier on the ticket</strong>. A codeshare booked through a US airline but operated by a European partner applies the operator's rules at the gate. Star Alliance, oneworld and SkyTeam harmonize many things; baggage enforcement is not one of them. When in doubt, the operating carrier's baggage page — not the marketing carrier's — is the source of truth.</p><h2>Packing to the Sizer: Practical Tricks</h2><p>Frequent carry-on-only travelers converge on the same playbook. <strong>Buy to the strictest box you fly</strong>: a 55 × 40 × 20 cm case works essentially everywhere, while a 22 × 14 × 9-inch US roller fails European budget sizers. <strong>Weigh packed, not empty</strong>: the 2–4 kg tare weight of the case itself counts against 7 kg limits, so lightweight polycarbonate or soft-sided bags earn their price on international trips. <strong>Use compression</strong>: packing cubes and compression straps do not change dimensions much, but they stop the bulge that turns a pass into a fail at the sizer. <strong>Keep the expansion zipper closed</strong> at the airport — expanded, most bags gain 2 inches and fail.</p><p>Boarding order matters too. On full flights, even compliant bags get gate-checked when bins fill — which is free (unlike the oversize penalty) but still means waiting at the carousel. Early boarding groups, or simply queuing promptly when your group is called, protect the overhead slot your bag earned. And photograph your bag's measurements once: a phone note reading “21.6 × 15.4 × 9.6 in — fits Delta/United, fails Ryanair priority” ends the pre-trip guessing forever.</p><h2>If Your Bag Fails</h2><p>You have options, roughly in order of cost. <strong>Repack into a smaller bag</strong> if you own one — cheapest. <strong>Pre-pay for a checked bag online</strong>, which is almost always cheaper than the gate-check penalty. <strong>Wear the bulk</strong>: coats, boots and the heavy sweater travel on your body, not in the bag. <strong>Ship it</strong>: for long trips, luggage-forwarding services sometimes beat airline fees. And the nuclear option — <strong>buy the bag at the destination</strong> — occasionally wins for one-way moves.</p><p>What never works: arguing geometry with the gate agent. The sizer is the sizer. The travelers who never pay fees are not the ones with the best arguments; they are the ones who measured at home.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is the standard carry-on size for US airlines?</summary><p>Most US legacy airlines (American, Delta, United, Alaska, JetBlue) allow 22 × 14 × 9 inches, including wheels and handles. Southwest and Frontier allow 24 × 16 × 10. Budget and international carriers are usually stricter — always check your specific airline before you fly.</p></details>
+<details><summary>Do carry-on dimensions include wheels and handles?</summary><p>Yes — almost every airline's limit explicitly includes wheels and handles. Measure your bag standing upright, from the bottom of the wheels to the top of the retracted handle, at the widest points. Luggage marketed as '22-inch' often measures 23–24 inches all-in.</p></details>
+<details><summary>Is there a weight limit for carry-on bags?</summary><p>Major US carriers impose no weight limit on carry-ons for domestic flights (you must be able to lift the bag into the bin). International and budget carriers commonly cap carry-ons at 7–10 kg and do weigh bags at check-in.</p></details>
+<details><summary>What is the difference between a carry-on and a personal item?</summary><p>A personal item must fit under the seat in front of you — roughly 18 × 14 × 8 inches on US carriers, smaller on budget airlines. On Frontier, Spirit and Allegiant the personal item is the only free bag; the overhead-bin carry-on costs extra.</p></details>
+<details><summary>What happens if my bag is too big at the gate?</summary><p>You will almost certainly pay a gate-check fee (often $50–100, more on budget carriers) and your bag will be checked to your destination. Pre-paying for a checked bag online before you fly is nearly always cheaper than the gate penalty.</p></details>
+<details><summary>Can I rotate my bag to fit the sizer?</summary><p>The tool sorts your bag's three dimensions and compares each against the airline's sorted limit, so a bag that fits when rotated passes. Real sizers work the same way — orientation does not matter, only whether each dimension fits.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CarryFit</div>
+    <p>CarryFit checks your bag's dimensions against 12 airlines' carry-on limits — plus personal-item rules — so you know before the gate agent does.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function bagFits(l,w,h,ml,mw,mh){var b=[+l,+w,+h].sort(function(a,b){return b-a;});var m=[+ml,+mw,+mh].sort(function(a,b){return b-a;});return b[0]<=m[0]&&b[1]<=m[1]&&b[2]<=m[2];}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var L=document.getElementById('cf-l'),W=document.getElementById('cf-w'),H=document.getElementById('cf-h');if(!L)return;var unit='in';var AIR=[['American Airlines',[22,14,9],'56 × 36 × 23 cm'],['Delta Air Lines',[22,14,9],'56 × 36 × 23 cm'],['United Airlines',[22,14,9],'56 × 36 × 23 cm · incl. handles & wheels'],['Southwest Airlines',[24,16,10],'61 × 41 × 25 cm'],['JetBlue Airways',[22,14,9],'56 × 36 × 23 cm'],['Alaska Airlines',[22,14,9],'56 × 36 × 23 cm'],['Spirit Airlines',[22,18,10],'56 × 46 × 25 cm'],['Frontier Airlines',[24,16,10],'61 × 41 × 25 cm'],['British Airways',[22,18,10],'56 × 45 × 25 cm'],['Lufthansa',[21.7,15.7,9.8],'55 × 40 × 25 cm'],['easyJet',[22,18,10],'56 × 45 × 25 cm · large cabin bag'],['Ryanair',[21.7,15.7,7.9],'55 × 40 × 20 cm · priority cabin bag']];var PI=[['American / Delta / United',[18,14,8]],['Southwest',[18.5,13.5,8.5]],['JetBlue',[17,13,8]],['Spirit / Frontier',[18,14,8]],['Ryanair (free small bag)',[15.7,9.8,7.9]]];var PRESETS=[['Standard US roller',22,14,9],['Compact Euro cabin',21.5,15.5,8],['Max Southwest',24,16,10],['Weekend duffel',20,12,10]];var presBox=document.getElementById('cf-presets');PRESETS.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='cf-preset';b.textContent=p[0]+' · '+p[1]+'×'+p[2]+'×'+p[3];b.addEventListener('click',function(){setDims(p[1],p[2],p[3],'in');});presBox.appendChild(b);});function toIn(v){return unit==='cm'?v/2.54:v;}function setDims(l,w,h,u){if(u==='cm'){L.value=(l*2.54).toFixed(1);W.value=(w*2.54).toFixed(1);H.value=(h*2.54).toFixed(1);}else{L.value=l;W.value=w;H.value=h;}render();}document.querySelectorAll('.cf-toggle button').forEach(function(b){b.addEventListener('click',function(){var nu=b.getAttribute('data-u');if(nu===unit)return;var vals=[toIn(parseFloat(L.value)||0),toIn(parseFloat(W.value)||0),toIn(parseFloat(H.value)||0)];unit=nu;document.querySelectorAll('.cf-toggle button').forEach(function(x){x.classList.toggle('on',x===b);});if(unit==='cm'){L.value=(vals[0]*2.54).toFixed(1);W.value=(vals[1]*2.54).toFixed(1);H.value=(vals[2]*2.54).toFixed(1);}else{L.value=+vals[0].toFixed(1);W.value=+vals[1].toFixed(1);H.value=+vals[2].toFixed(1);}render();});});function margin(b,m){var bs=b.slice().sort(function(a,b){return b-a;}),ms=m.slice().sort(function(a,b){return b-a;});var d=[];for(var i=0;i<3;i++)d.push(ms[i]-bs[i]);return d;}function render(){var l=toIn(parseFloat(L.value)||0),w=toIn(parseFloat(W.value)||0),h=toIn(parseFloat(H.value)||0);var lin=l+w+h;document.getElementById('cf-linear').innerHTML='Your bag: <strong>'+l.toFixed(1)+' × '+w.toFixed(1)+' × '+h.toFixed(1)+' in</strong> · '+lin.toFixed(1)+' linear inches';var list=document.getElementById('cf-list');list.innerHTML='';AIR.forEach(function(a){var ok=bagFits(l,w,h,a[1][0],a[1][1],a[1][2]);var mg=margin([l,w,h],a[1]);var worst=Math.min(mg[0],mg[1],mg[2]);var card=document.createElement('div');card.className='cf-card '+(ok?'pass':'fail');card.innerHTML='<div class="cf-air"><div class="n">'+a[0]+'</div><div class="l">Limit '+a[1][0]+' × '+a[1][1]+' × '+a[1][2]+' in · '+a[2]+'</div><div class="cf-margin">'+(ok?('Fits — '+worst.toFixed(1)+' in to spare on the tightest side'):('Too big — fails by '+Math.abs(worst).toFixed(1)+' in'))+'</div></div><span class="cf-badge '+(ok?'pass':'fail')+'">'+(ok?'Fits':'No fit')+'</span>';list.appendChild(card);});var pl=document.getElementById('cf-pilist');pl.innerHTML='';PI.forEach(function(a){var ok=bagFits(l,w,h,a[1][0],a[1][1],a[1][2]);var card=document.createElement('div');card.className='cf-card '+(ok?'pass':'fail');card.innerHTML='<div class="cf-air"><div class="n">'+a[0]+'</div><div class="l">Limit '+a[1][0]+' × '+a[1][1]+' × '+a[1][2]+' in</div></div><span class="cf-badge '+(ok?'pass':'fail')+'">'+(ok?'Fits':'No fit')+'</span>';pl.appendChild(card);});}[L,W,H].forEach(function(el){el.addEventListener('input',render);});render();});}
+</script>
+</body>
+</html>
