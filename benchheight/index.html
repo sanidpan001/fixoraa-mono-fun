@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BenchHeight: Workbench Height Calculator - Ergonomic Bench Height by Your Height</title>
+<meta name="description" content="Calculate the ergonomic workbench height for your height and task: general, precision or heavy work.">
+<link rel="canonical" href="https://fun.fixoraa.tech/benchheight/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="BenchHeight: Workbench Height Calculator - Ergonomic Bench Height by Your Height">
+<meta property="og:description" content="Calculate the ergonomic workbench height for your height and task: general, precision or heavy work.">
+<meta property="og:url" content="https://fun.fixoraa.tech/benchheight/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BenchHeight",
+      "url": "https://fun.fixoraa.tech/benchheight/",
+      "applicationCategory": "Home / DIY",
+      "operatingSystem": "Web",
+      "description": "Calculate the ergonomic workbench height for your height and task: general, precision or heavy work.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the ideal workbench height for a 175 cm person?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 91 cm for general work, 96 cm for precision work, and 86 cm for heavy work. Test the height for 20 minutes before building."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should a workbench be at elbow height?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A general bench sits just below elbow height, so your forearms are roughly level with slightly bent elbows and relaxed shoulders."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a kitchen counter the right height for a workbench?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. Kitchen counters suit food preparation, but workshop work varies: precision work needs a higher bench, heavy work a lower one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if several people share one bench?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use an adjustable bench, or set it for the tallest regular user and provide a standing platform for shorter users."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I raise a workbench that is too low?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add sturdy hardwood blocks or adjustable feet under the legs. Test the new height before fixing anything permanently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a vice change the ideal bench height?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A vice raises the work itself, so if you use a vice heavily, set the bench a few centimetres lower to compensate."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EFF6FF; --surface:#FFFFFF; --accent:#1D4ED8; --accent-ink:#FFFFFF;
+  --ink:#172554; --muted:#475569; --line:#BFDBFE;
+  --display:'Archivo',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.bh-steps{display:flex;gap:.8rem;margin-bottom:1.2rem;flex-wrap:wrap}.bh-step{flex:1;min-width:140px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:1rem;display:flex;gap:.7rem;align-items:center}.bh-step span{width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0}.bh-form{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:1.3rem;display:flex;flex-direction:column;gap:.9rem}.bh-form label{font-weight:600;display:flex;flex-direction:column;gap:.35rem}.bh-form input,.bh-form select{padding:.7rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;min-height:44px}.bh-go,.bh-copy{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.8rem 1.2rem;font-weight:700;min-height:44px;cursor:pointer}.bh-result{margin-top:1.2rem;background:#DBEAFE;border-radius:16px;padding:1.4rem}.bh-result .big{font-size:2.4rem;font-weight:800;font-family:var(--display)}.bh-sub{color:var(--muted);margin:.4rem 0 1.2rem}@media(max-width:640px){.bh-steps{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="BenchHeight home">
+      <span class="fx-logo-tile" aria-hidden="true">🔨</span>
+      <span class="fx-brand">BenchHeight</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-workbench" aria-label="BenchHeight tool">
+<h1>BenchHeight: Workbench Height Calculator</h1><p class="bh-sub">The bench height that fits your height and your kind of work.</p><div class="bh-steps"><div class="bh-step"><span>1</span><p>Enter your height</p></div><div class="bh-step"><span>2</span><p>Pick your main task</p></div><div class="bh-step"><span>3</span><p>Test it for 20 minutes</p></div></div><div class="bh-form"><label>Your height (cm)<input id="height" type="number" min="0" value="175"></label><label>Main task<select id="task"><option value="0">General assembly &amp; DIY</option><option value="5">Precision work (electronics, fine joinery)</option><option value="-5">Heavy work (planing, hammering)</option></select></label><label>Working position<select id="pos"><option>Standing</option><option>Seated (subtract about 20 cm as a guide)</option></select></label><button class="bh-go" id="go">Calculate bench height</button></div><div class="bh-result" id="res"><p>Enter your height to see the recommended bench height.</p></div><button class="bh-copy" id="copy">Copy result</button>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why workbench height matters more than workbench size</h2><p>Most people choose a workbench by its length and its storage, and then spend years working at a height that hurts. A bench that is too low forces you to hunch over your work, straining your back, neck and shoulders within an hour. A bench that is too high forces your shoulders up and your elbows out, making fine work shaky and tiring. The right height depends on your own height and on the kind of work you do, because precision work, general assembly and heavy work each ask your body to hold a different posture. BenchHeight calculates a starting height from your height and your task, so you can build, buy or adjust a bench that fits you, rather than adapting your body to a bench that does not.</p><h2>How the height calculation works</h2><p>The calculator uses a simple ergonomic rule: for standing work, a general-purpose bench should sit at about fifty-two percent of your height, which puts the work surface just below elbow height for most people, where your arms rest naturally and your back stays straight. Precision work, such as electronics, model making or fine joinery, is raised by about five centimetres, so small details sit closer to your eyes without you bending over them. Heavy work, such as hammering, planing or assembling large parts, is lowered by about five centimetres, so you can use your body weight and keep your shoulders down. These are starting points, not medical prescriptions: if you have a back condition or you work seated, use the result as a guide and adjust in small steps until the posture feels easy.</p><h2>Standing, sitting and adjustable benches</h2><p>Standing benches suit most workshop tasks, because you can move around the work, apply force and reach tools easily. A standing bench for a person of average height usually falls between 85 and 95 centimetres, but taller and shorter people need quite different heights, which is why a bench built to a generic standard often feels wrong. Seated benches, for electronics or detailed craft work, are lower, typically around 70 to 75 centimetres, with a good chair and foot support. Adjustable benches are the best solution if several people share a workshop, or if you switch between precision and heavy work: a crank or electric adjustment lets each person set their own height in seconds. If your bench cannot adjust, you can raise it with sturdy blocks under the legs, or lower the working height with a thick anti-fatigue mat and a lower work platform.</p><h2>Step by step: using BenchHeight</h2><p>Enter your height in centimetres and choose the task that best matches your main work. The calculator returns a recommended bench height, plus a note on the posture to check: for general work, your elbows should be slightly bent and your forearms roughly level when your hands rest on the work; for precision work, the piece should sit a little higher so you can see detail without bending your neck; for heavy work, you should be able to lean into the task without raising your shoulders. Test the height before you commit: stack boards or books on an existing table to the recommended height and work at it for twenty minutes. That short test tells you more than any formula, because your body, your tools and your habits all play a part.</p><h2>Elbow height and the posture check</h2><p>Elbow height is the traditional workshop measurement: stand relaxed with your arms at your sides, bend your elbows to ninety degrees, and measure from the floor to your elbow. A general bench is usually a little below elbow height, because most tasks involve holding tools or materials above the surface. If you work mostly with hand planes or saws, a slightly lower bench helps you use your weight; if you work mostly with small parts, a slightly higher bench saves your neck. Check your posture honestly: your back should be straight, your shoulders should be down and relaxed, and you should not need to bend your neck sharply to see the work. Pain after an hour is information, not weakness, and it usually means the height, the lighting or the tool position needs changing, not that you need to push through it.</p><h2>Bench depth, lighting and layout</h2><p>Height is only part of a comfortable bench. Depth matters too: a bench 60 to 75 centimetres deep lets you reach the back without leaning, while a deeper bench is useful for large assemblies but needs good lighting at the back. Lighting should come from above and slightly in front of you, so your hands do not cast shadows on the work, and a task light that you can move is worth more than a bright room light alone. Keep the tools you use most within easy reach, and store heavy items low, so you are not lifting them to bench height repeatedly. An anti-fatigue mat reduces leg and back fatigue during long standing sessions, and a footrest, even a simple low block, lets you shift your weight and rest one foot at a time.</p><h2>Common workbench mistakes</h2><p>The most common mistake is copying a friend's bench height or a standard kitchen counter height, neither of which has anything to do with your height or your work. Kitchen counters, at about 90 centimetres, suit food preparation for people of average height, but they are often too high for heavy workshop work and too low for tall precision workers. Another mistake is building a bench and then discovering it is too high to clamp work or too low to see detail, because the height was never tested. A third is ignoring the floor: an uneven floor makes even a perfect bench wobble, so level the bench and shim the legs before judging the height. Finally, do not forget the vice: a vice mounted on a bench adds height to the work itself, so if you use a vice heavily, set the bench a few centimetres lower to compensate.</p><h2>Building or modifying a bench to the right height</h2><p>If you are building a new bench, cut the legs to the calculator's height minus the thickness of the top, and remember that a thick hardwood top adds several centimetres. Build the frame square and braced, because a wobbly bench at the right height is still a bad bench. If you are modifying an existing bench, raising it is usually easier than lowering it: sturdy hardwood blocks bolted under the legs, or adjustable feet, can add five to ten centimetres safely. Lowering a bench means cutting the legs, which is permanent, so test first with a lower work surface placed on the bench. Whatever you do, measure twice, build once, and re-check the height after adding a vice, a mat or a new top, because each of those changes the effective working height by a centimetre or two.</p><h2>A comfortable workshop is a safer workshop</h2><p>Comfort and safety are closely linked in a workshop: a tired, hunched worker is more likely to slip, misjudge a cut or drop a tool. A bench at the right height keeps your posture natural, your grip secure and your attention on the work rather than on your aching back. Take breaks, change tasks regularly, and stretch between long sessions, because even a perfect bench does not replace movement. BenchHeight gives you a personal starting point in seconds; the short test at that height, and small adjustments from there, give you a bench that fits you for years. That is a small investment of time for a large return in comfort, accuracy and enjoyment of the work itself.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is the ideal workbench height for a 175 cm person?</summary><p>About 91 cm for general work, 96 cm for precision work, and 86 cm for heavy work. Test the height for 20 minutes before building.</p></details>
+<details><summary>Should a workbench be at elbow height?</summary><p>A general bench sits just below elbow height, so your forearms are roughly level with slightly bent elbows and relaxed shoulders.</p></details>
+<details><summary>Is a kitchen counter the right height for a workbench?</summary><p>Not necessarily. Kitchen counters suit food preparation, but workshop work varies: precision work needs a higher bench, heavy work a lower one.</p></details>
+<details><summary>What if several people share one bench?</summary><p>Use an adjustable bench, or set it for the tallest regular user and provide a standing platform for shorter users.</p></details>
+<details><summary>How do I raise a workbench that is too low?</summary><p>Add sturdy hardwood blocks or adjustable feet under the legs. Test the new height before fixing anything permanently.</p></details>
+<details><summary>Does a vice change the ideal bench height?</summary><p>Yes. A vice raises the work itself, so if you use a vice heavily, set the bench a few centimetres lower to compensate.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BenchHeight</div>
+    <p>BenchHeight recommends an ergonomic workbench height from your height and your main task.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function computeBench(height,adj){if(!(height>0))return{bench:0};return{bench:Math.round((height*0.52+adj)*10)/10};}
+function render(){var h=+document.getElementById('height').value,a=+document.getElementById('task').value,pos=document.getElementById('pos').value;var r=computeBench(h,a);if(!r.bench){document.getElementById('res').innerHTML='<p>Enter your height above zero.</p>';return;}var b=r.bench;var note=pos.indexOf('Seated')>=0?' Seated guide: about '+(Math.round((b-20)*10)/10)+' cm with a good chair and foot support.':' Elbows slightly bent, forearms roughly level, shoulders down.';document.getElementById('res').innerHTML='<p class="big">'+b+' cm</p><p>Recommended standing bench height for '+h+' cm.</p><p>Test it first: stack boards to this height and work for 20 minutes.'+note+'</p>';}
+document.getElementById('go').addEventListener('click',render);
+document.getElementById('copy').addEventListener('click',function(){var t=document.getElementById('res').innerText;navigator.clipboard&&navigator.clipboard.writeText(t);});
+render();
+</script>
+</body>
+</html>
