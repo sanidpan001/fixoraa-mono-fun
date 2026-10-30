@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mushroom Grow Kit Yield Calculator — Fresh Yield by Flush</title>
+<meta name="description" content="Calculate expected mushroom grow kit yield from substrate weight and biological efficiency, split by flush.">
+<link rel="canonical" href="https://fun.fixoraa.tech/mushroomgrow/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Mushroom Grow Kit Yield Calculator — Fresh Yield by Flush">
+<meta property="og:description" content="Calculate expected mushroom grow kit yield from substrate weight and biological efficiency, split by flush.">
+<meta property="og:url" content="https://fun.fixoraa.tech/mushroomgrow/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "MushroomGrow",
+      "url": "https://fun.fixoraa.tech/mushroomgrow/",
+      "applicationCategory": "Garden",
+      "operatingSystem": "Web",
+      "description": "Calculate expected mushroom grow kit yield from substrate weight and biological efficiency, split by flush.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much mushroom will a 5 kg kit produce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A well-kept oyster kit at eighty percent efficiency yields about four kilograms of fresh mushrooms in total across several flushes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is biological efficiency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fresh mushroom weight divided by dry substrate weight, as a percentage. Seventy to one hundred percent is typical for oyster kits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do mushrooms come in flushes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mushrooms fruit, rest while the mycelium recovers, then fruit again. The first flush is usually the largest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are my mushroom stems long with tiny caps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That usually means stale air with too much carbon dioxide. Increase fresh air exchange."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do fresh mushrooms keep?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only a few days in the fridge, so cook, share, or dry each flush promptly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I eat any mushroom that grows on my kit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Never eat a mushroom you cannot confidently identify, because wild species can colonise a neglected kit."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#f7f3fb; --surface:#ffffff; --accent:#4a1d5c; --accent-ink:#ffffff;
+  --ink:#1e1a24; --muted:#4a4356; --line:#d9cde8;
+  --display:'DM Serif Display',serif; --body:'Public Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+.layout-steps .steps{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem} .layout-steps .steps span{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;font-weight:600} @media(min-width:760px){.layout-steps .formcard{max-width:36rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="MushroomGrow home">
+      <span class="fx-logo-tile" aria-hidden="true">🍄</span>
+      <span class="fx-brand">MushroomGrow</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-spore-log" aria-label="MushroomGrow tool">
+<div class="layout-steps">
+<h1>Mushroom Grow Kit Yield Calculator</h1>
+<p class="sub">Estimate total fresh mushroom yield from substrate weight and efficiency.</p>
+<div class="formcard">
+<label>Substrate weight (kg)<input id="sub" type="number" value="5" step="1" min="0"></label><label>Efficiency factor (0.5–1.0)<input id="eff" type="number" value="0.8" step="0.1" min="0"></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter substrate and efficiency to see expected yield.</p></div>
+<div class='steps'><span>1. Colonise</span><span>2. First flush</span><span>3. Rest & second flush</span></div>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How much mushroom can a grow kit actually produce?</h2>
+<p>Mushroom grow kits promise a satisfying harvest from a small box, but the yield varies a lot with the size of the kit, the species, and how well you follow the fruiting conditions. The key concept is biological efficiency, which is the weight of fresh mushrooms harvested divided by the dry weight of the substrate they grew on, expressed as a percentage. Many oyster mushroom kits achieve seventy to one hundred percent biological efficiency over several flushes, meaning a kit with five kilograms of wet substrate might yield several kilograms of fresh mushrooms in total, not all at once. This calculator takes substrate weight and a realistic efficiency factor and turns them into an expected total yield, so you can judge whether a kit is good value and how much mushroom to expect in your kitchen.</p>
+<p>Yield does not arrive in one harvest. Mushrooms fruit in flushes, with the first flush usually the largest, followed by smaller second and third flushes as the substrate's nutrients run down. A kit that yields four kilograms in total might give two kilograms in the first flush, about 1.2 kilograms in the second, and the rest in a third, spread over several weeks. Resting the kit between flushes, with a soak or a period of lower humidity as the instructions advise, helps trigger the next flush. Species matters too. Oyster mushrooms are fast, generous, and forgiving, which is why most beginner kits use them. Shiitake takes longer and yields less per flush but has a richer flavour, while lion's mane is slower and more sensitive to conditions but increasingly popular.</p>
+<h2>Substrate, spawn, and what the numbers mean</h2>
+<p>Substrate is the material mushrooms eat, usually pasteurised straw, hardwood sawdust, or a mix, colonised by mycelium, the white, thread-like body of the fungus. When you buy a kit, you are buying substrate already colonised by mycelium and ready to fruit. The efficiency factor in the calculator is a planning figure, not a guarantee: 0.8 means eighty percent biological efficiency, which is realistic for a well-kept oyster kit, while 0.5 is conservative for a first attempt or a less generous species. If a seller claims yields far above one hundred percent for a first flush alone, treat the claim with scepticism, because total yield across all flushes is the honest measure, and fresh mushrooms are about ninety percent water, so weight includes a lot of water.</p>
+<p>Fresh weight versus dry weight confuses many buyers. A kilogram of fresh oyster mushrooms cooks down dramatically and dries to roughly one hundred grams, because most of the weight is water. That does not make fresh yield less real: fresh mushrooms are how you cook and eat them, and the calculator reports fresh weight for that reason. Storage matters because fresh mushrooms keep only a few days in the fridge, so plan to cook, share, or dry each flush promptly. Drying in a low oven or dehydrator preserves the harvest for months, and dried mushrooms rehydrate well in soups, risottos, and sauces. Freezing cooked mushrooms is another option, although texture changes, so drying is usually the better preservation method.</p>
+<h2>Fruiting conditions that make or break a kit</h2>
+<p>Mushrooms fruit when conditions signal that it is time to reproduce. The triggers are fresh air, humidity, light, and a small temperature drop, in combination. Most kits need humidity around eighty to ninety percent, which is why instructions tell you to mist the kit or keep it in a humidity tent. Too little humidity gives small, cracked caps that stop growing, while too much stagnant moisture invites contamination. Fresh air exchange matters just as much: mushrooms breathe out carbon dioxide, and stale, carbon-dioxide-rich air causes long stems and tiny caps, a classic sign of poor ventilation. A few gentle air exchanges per day, plus indirect light, usually fixes both problems. Direct sunlight overheats and dries a kit, so bright indirect light is ideal.</p>
+<p>Contamination is the main reason kits fail. Green mould, sour smells, or black spots usually mean the kit was kept too wet, too warm, or in stale air, or that it was already contaminated when bought. Buy from a reputable supplier, follow the instructions exactly, wash your hands before handling the kit, and do not open the bag more than necessary before fruiting. If contamination appears on a small area, some growers cut it away and continue, but if it spreads, discard the kit rather than eating mushrooms from it. Never eat a mushroom you cannot confidently identify, even if it grew from a kit, because wild mushrooms can colonise a neglected kit and some are poisonous. When in doubt, throw it out.</p>
+<h2>A worked example and kitchen planning</h2>
+<p>Take a five kilogram oyster substrate with an efficiency factor of 0.8. The expected total yield is four kilograms of fresh mushrooms across all flushes. That is a lot of mushrooms for one household, so plan recipes, sharing, and drying in advance. A ten kilogram substrate at full efficiency gives about ten kilograms in total, which suits a household that cooks mushrooms often or a small community group sharing a kit. Smaller kits, around one to two kilograms of substrate, give a more manageable one to two kilograms in total and are a better first experiment. Starting small teaches you the fruiting routine without overwhelming your fridge, and a successful small kit builds confidence for a larger one.</p>
+<p>Cost comparison is worth doing honestly. Divide the kit price by the expected yield from the calculator to get a cost per kilogram, and compare it with shop prices for the same species. Kits are rarely the cheapest way to buy mushrooms, but they offer freshness, the satisfaction of growing your own, and species that are hard to find in shops, such as pink oyster or lion's mane. If your main goal is cheap mushrooms, a shop is simpler. If your goal is learning, freshness, and fun, a kit is excellent value. Keep notes on each kit: species, substrate weight, flush weights, and conditions, so your next kit's efficiency factor is based on your own results rather than a guess.</p>
+<h3>Yield guide by substrate and efficiency</h3>
+<table><tr><th>Substrate</th><th>Conservative (0.5)</th><th>Typical oyster (0.8)</th><th>Excellent (1.0)</th></tr>
+<tr><td>2 kg</td><td>1.0 kg</td><td>1.6 kg</td><td>2.0 kg</td></tr>
+<tr><td>5 kg</td><td>2.5 kg</td><td>4.0 kg</td><td>5.0 kg</td></tr>
+<tr><td>10 kg</td><td>5.0 kg</td><td>8.0 kg</td><td>10.0 kg</td></tr></table>
+<ul><li>Expect several flushes, not one big harvest.</li><li>Keep humidity high but air fresh, not stagnant.</li><li>Use bright, indirect light, never direct sun.</li><li>Cook, share, or dry each flush promptly.</li><li>Never eat a mushroom you cannot identify.</li><li>Record flush weights to improve your next estimate.</li></ul>
+<p>A mushroom kit is a small lesson in biology that you can eat. Use the calculator to set realistic expectations, follow the fruiting conditions carefully, and enjoy each flush as it arrives.</p><p>If your first kit succeeds, growing from spawn and substrate yourself is the natural next step, although it needs more care with sterilisation and cleanliness. Beginners often start with a ready-to-fruit kit, then try a spawn bag, and only later attempt to prepare their own substrate. Each step teaches a little more about the organism: how mycelium colonises, what contamination looks like, and how fruiting conditions trigger mushrooms. Local mushroom growing groups and suppliers are generous with advice, and learning from other growers shortens the trial-and-error phase considerably. Grow at your own pace, and enjoy each harvest along the way.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much mushroom will a 5 kg kit produce?</summary><p>A well-kept oyster kit at eighty percent efficiency yields about four kilograms of fresh mushrooms in total across several flushes.</p></details>
+<details><summary>What is biological efficiency?</summary><p>Fresh mushroom weight divided by dry substrate weight, as a percentage. Seventy to one hundred percent is typical for oyster kits.</p></details>
+<details><summary>Why do mushrooms come in flushes?</summary><p>Mushrooms fruit, rest while the mycelium recovers, then fruit again. The first flush is usually the largest.</p></details>
+<details><summary>Why are my mushroom stems long with tiny caps?</summary><p>That usually means stale air with too much carbon dioxide. Increase fresh air exchange.</p></details>
+<details><summary>How long do fresh mushrooms keep?</summary><p>Only a few days in the fridge, so cook, share, or dry each flush promptly.</p></details>
+<details><summary>Can I eat any mushroom that grows on my kit?</summary><p>No. Never eat a mushroom you cannot confidently identify, because wild species can colonise a neglected kit.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">MushroomGrow</div>
+    <p>MushroomGrow estimates fresh mushroom yield from a grow kit's substrate and efficiency.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(sub,factor){if(sub<=0||factor<=0)return{yieldKg:0,first:0,rest:0};var y=sub*factor;return{yieldKg:Math.round(y*100)/100,first:Math.round(y*0.5*100)/100,rest:Math.round(y*0.5*100)/100};}
+function run(){var r=compute(+document.getElementById('sub').value,+document.getElementById('eff').value);document.getElementById('result').innerHTML='<p class="big">About '+r.yieldKg+' kg total</p><p>First flush roughly '+r.first+' kg, later flushes '+r.rest+' kg</p><p class="muted">Fresh mushrooms are about 90% water, so cook or dry each flush promptly.</p>';window._last='MushroomGrow: about '+r.yieldKg+' kg total yield';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Starter kit: 2 kg, oyster',[2,0.8]],['Classic: 5 kg, oyster',[5,0.8]],['Big kit: 10 kg, excellent',[10,1.0]]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){var v=P[+b.dataset.i][1];document.getElementById('sub').value=v[0];document.getElementById('eff').value=v[1];run();};});
+run();
+</script>
+</body>
+</html>
