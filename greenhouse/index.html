@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greenhouse Heating &amp; Ventilation Calculator — Heater Size &amp; Vents</title>
+<meta name="description" content="Calculate greenhouse heating power and ventilation vent numbers from size and inside-outside temperature difference.">
+<link rel="canonical" href="https://fun.fixoraa.tech/greenhouse/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Greenhouse Heating &amp; Ventilation Calculator — Heater Size &amp; Vents">
+<meta property="og:description" content="Calculate greenhouse heating power and ventilation vent numbers from size and inside-outside temperature difference.">
+<meta property="og:url" content="https://fun.fixoraa.tech/greenhouse/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GreenHouse",
+      "url": "https://fun.fixoraa.tech/greenhouse/",
+      "applicationCategory": "Garden",
+      "operatingSystem": "Web",
+      "description": "Calculate greenhouse heating power and ventilation vent numbers from size and inside-outside temperature difference.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much heating does a greenhouse need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on volume and temperature difference. A 45 m\u00b3 greenhouse needs about 13.5 kW at a ten degree difference without extra insulation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the cheapest way to cut greenhouse heating costs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Insulate with bubble wrap, use thermal screens, add thermal mass, and heat only the area you truly need warm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many vents does a greenhouse need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly one vent per fifteen cubic metres, split between roof vents for hot air and low side vents for cool intake."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What temperature should I heat a greenhouse to?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Frost-free is enough for overwintering tender plants, five to ten degrees suits cool-season crops, and warm crops need fifteen degrees or more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do automatic vent openers work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Wax-cylinder openers open roof vents as temperature rises, without electricity, and are excellent value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my greenhouse overheating in summer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Too little ventilation and too much sun. Open all vents and doors, add shade cloth or shade paint, and damp down floors on hot days."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#f2fbf5; --surface:#ffffff; --accent:#365314; --accent-ink:#ffffff;
+  --ink:#1a2214; --muted:#46543a; --line:#cfe0bd;
+  --display:'Bricolage Grotesque',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+.layout-dash .dash{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1rem} .layout-dash .dash span{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.7rem;font-weight:700} @media(max-width:640px){.layout-dash .dash{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="GreenHouse home">
+      <span class="fx-logo-tile" aria-hidden="true">🏡</span>
+      <span class="fx-brand">GreenHouse</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-glasshouse" aria-label="GreenHouse tool">
+<div class="layout-dash">
+<h1>Greenhouse Heating & Ventilation Calculator</h1>
+<p class="sub">Estimate heating power and vent numbers from greenhouse size and temperature gap.</p>
+<div class="formcard">
+<label>Length (m)<input id="len" type="number" value="6" step="1" min="0"></label><label>Width (m)<input id="wid" type="number" value="3" step="1" min="0"></label><label>Height (m)<input id="hei" type="number" value="2.5" step="0.1" min="0"></label><label>Inside minus outside (°C)<input id="diff" type="number" value="10" step="1" min="0"></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter dimensions and temperature difference to see heating and vents.</p></div>
+<div class='dash'><span>🌡️ Heat</span><span>🪟 Vents</span><span>📦 Volume</span></div>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How much heating and ventilation does a greenhouse need?</h2>
+<p>A greenhouse is a balancing act. In cold weather it must hold enough heat to keep plants alive, and in warm weather it must shed heat fast enough to stop plants cooking. Both jobs depend on the same basic facts: how big the greenhouse is, how cold it gets outside, and how well the glazing holds heat. This calculator starts with length, width, height, and the temperature difference between inside and outside, and estimates the heating power needed plus the number of vents for airflow. These are planning figures for a typical hobby greenhouse, not a commercial design, but they are accurate enough to size a heater, choose vents, and spot a greenhouse that will be expensive to heat before you buy it.</p>
+<p>Heating need rises with volume and with temperature difference. A larger greenhouse has more air to warm and more glazing area losing heat, while a bigger gap between inside and outside temperatures means heat escapes faster. The calculator uses a simple heat-loss factor of 0.03 kilowatts per cubic metre per degree of difference, which suits single-glazed hobby greenhouses with reasonable draught sealing. A greenhouse of six by three by two and a half metres has forty-five cubic metres of volume, so a ten degree difference needs about 13.5 kilowatts of heating, which is a serious heater and a warning about heating costs. Double glazing, bubble-wrap insulation, or thermal screens can cut that figure substantially, which is why insulation is usually cheaper than a bigger heater.</p>
+<h2>Glazing, insulation, and thermal mass</h2>
+<p>Glazing choice is the biggest single factor in heat loss. Single glass loses heat quickly but lets in the most light. Twin-wall polycarbonate loses less heat and is safer and lighter, but it transmits slightly less light and can discolour over time. Bubble-wrap insulation, fixed to the inside in winter, is the cheapest upgrade for most hobby greenhouses and can halve heat loss on cold nights. Thermal mass also helps: water barrels, brick paths, and stone walls absorb heat during the day and release it slowly at night, smoothing temperature swings. A few hundred litres of water in dark barrels is a surprisingly effective, low-cost thermal store, although it cannot replace a heater on a hard frost night.</p>
+<p>Temperature targets should match what you actually grow. Frost-free, meaning just above zero degrees, is enough for overwintering tender plants and hardy crops. Five to ten degrees suits cool-season salads and many ornamentals, while fifteen degrees or more is needed for tomatoes, peppers, and tropical plants through winter, and heating to that level all winter is expensive in cold climates. Many growers heat only a small propagation area or a cold frame inside the greenhouse, keeping the rest frost-free, which cuts costs dramatically. Decide your minimum temperature honestly before sizing a heater, because every extra degree in midwinter costs real money.</p>
+<h2>Ventilation: the summer problem</h2>
+<p>Ventilation matters even more than heating for most of the year, because an unventilated greenhouse in summer can exceed forty degrees and kill plants quickly. Hot air rises, so roof vents are the most effective, and side vents or louvres let cooler air in low down, creating a natural chimney effect. Automatic vent openers, which use a wax cylinder that expands with heat, open roof vents without electricity and are one of the best-value greenhouse accessories. The calculator suggests roughly one vent per fifteen cubic metres of volume, which gives a six by three metre greenhouse about three vents, split between roof and sides. In practice, more vents are better than fewer, and a greenhouse that cannot be opened widely on a hot day is a greenhouse that will overheat.</p>
+<p>Fans help where natural ventilation is not enough. A small exhaust fan at one end and an inlet at the other creates controlled airflow, reduces humidity, and discourages fungal disease. Humidity control matters because still, damp air encourages botrytis and mildew, especially on tomatoes and cucumbers. Watering in the morning, spacing plants for airflow, and removing dead leaves all help, but ventilation is the main tool. Damping down, which means wetting the floor and paths on hot days, cools the air by evaporation and raises humidity for plants that like it, although it should be avoided if disease is already a problem. Shade paint or shade cloth in summer cuts heat gain at the source and is worth using on south-facing glass.</p>
+<h2>A worked example</h2>
+<p>Consider a ten by four by three metre greenhouse, with one hundred and twenty cubic metres of volume, and a fifteen degree temperature difference on a cold night. The calculator gives fifty-four kilowatts of heating need, which is far beyond a domestic electric heater and shows why heating a large greenhouse to warm temperatures all winter is rarely sensible. The same greenhouse kept just five degrees above outside needs only eighteen kilowatts, still large, but the comparison makes the point: insulate, heat only part of the space, or accept a lower minimum temperature. Ventilation for this greenhouse is eight vents, which sounds like a lot until you imagine a hot July afternoon with the roof closed. In summer, every vent open, plus doors open, is normal.</p>
+<p>Siting and orientation affect both heating and ventilation. A greenhouse sheltered from cold winds loses less heat, while one in a frost pocket will be colder than the forecast suggests. Orienting the ridge east to west maximises winter light in northern latitudes, although practical factors like access and shade from trees often matter more. Avoid placing a greenhouse under trees, which drop leaves and branches, shade the glass, and drip sap. A level base, good drainage, and a water supply nearby save endless hassle. Think about access in winter too: a path that ices over or a door that sticks in frost will discourage the daily checks that keep plants alive.</p>
+<h3>Planning guide by greenhouse size</h3>
+<table><tr><th>Greenhouse</th><th>Volume</th><th>Heat at 10° difference</th><th>Vents</th></tr>
+<tr><td>6 × 3 × 2.5 m</td><td>45 m³</td><td>13.5 kW</td><td>3</td></tr>
+<tr><td>8 × 3 × 2.5 m</td><td>60 m³</td><td>18 kW</td><td>4</td></tr>
+<tr><td>10 × 4 × 3 m</td><td>120 m³</td><td>36 kW</td><td>8</td></tr></table>
+<ul><li>Insulate before buying a bigger heater.</li><li>Heat only the area you truly need warm.</li><li>Use roof vents plus low side vents for chimney airflow.</li><li>Fit automatic vent openers for hot days.</li><li>Add thermal mass with water barrels or brick.</li><li>Shade in summer to cut heat at the source.</li></ul>
+<p>A greenhouse that is easy to heat in winter and easy to ventilate in summer is a pleasure to use all year. Size the heater honestly, fit plenty of vents, insulate well, and let the plants tell you whether the balance is right.</p><p>Record keeping turns a greenhouse from a hobby into a craft. Note sowing dates, varieties, temperatures, watering, and harvests, even briefly, and patterns appear within a season: which crops thrive, which corner stays coldest, and when pests first appear. A simple minimum-maximum thermometer, checked daily, tells you more about heating and ventilation needs than any calculation, because it shows what actually happened overnight and on hot afternoons. Combine those records with the calculator's planning figures, and each year your greenhouse runs a little smoother, with fewer losses and better harvests.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much heating does a greenhouse need?</summary><p>It depends on volume and temperature difference. A 45 m³ greenhouse needs about 13.5 kW at a ten degree difference without extra insulation.</p></details>
+<details><summary>What is the cheapest way to cut greenhouse heating costs?</summary><p>Insulate with bubble wrap, use thermal screens, add thermal mass, and heat only the area you truly need warm.</p></details>
+<details><summary>How many vents does a greenhouse need?</summary><p>Roughly one vent per fifteen cubic metres, split between roof vents for hot air and low side vents for cool intake.</p></details>
+<details><summary>What temperature should I heat a greenhouse to?</summary><p>Frost-free is enough for overwintering tender plants, five to ten degrees suits cool-season crops, and warm crops need fifteen degrees or more.</p></details>
+<details><summary>Do automatic vent openers work?</summary><p>Yes. Wax-cylinder openers open roof vents as temperature rises, without electricity, and are excellent value.</p></details>
+<details><summary>Why is my greenhouse overheating in summer?</summary><p>Too little ventilation and too much sun. Open all vents and doors, add shade cloth or shade paint, and damp down floors on hot days.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">GreenHouse</div>
+    <p>GreenHouse sizes heating and ventilation for hobby greenhouses from dimensions and temperature gap.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(l,w,h,diff){if(l<=0||w<=0||h<=0||diff<=0)return{vol:0,heat:0,vents:0};var v=l*w*h;return{vol:Math.round(v*100)/100,heat:Math.round(v*diff*0.03*100)/100,vents:Math.ceil(v/15)};}
+function run(){var r=compute(+document.getElementById('len').value,+document.getElementById('wid').value,+document.getElementById('hei').value,+document.getElementById('diff').value);document.getElementById('result').innerHTML='<p class="big">'+r.heat+' kW heating</p><p>Volume '+r.vol+' m³ &middot; about '+r.vents+' vents</p><p class="muted">Insulation or a lower target temperature cuts heating need sharply.</p>';window._last='GreenHouse: '+r.heat+' kW heating, '+r.vents+' vents, '+r.vol+' m3';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Small: 6 × 3 × 2.5, 10°',[6,3,2.5,10]],['Medium: 8 × 3 × 2.5, 10°',[8,3,2.5,10]],['Large cold night: 10 × 4 × 3, 15°',[10,4,3,15]]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){var v=P[+b.dataset.i][1];document.getElementById('len').value=v[0];document.getElementById('wid').value=v[1];document.getElementById('hei').value=v[2];document.getElementById('diff').value=v[3];run();};});
+run();
+</script>
+</body>
+</html>
