@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lawn Mowing Time Calculator: How Long to Mow Your Lawn?</title>
+<meta name="description" content="Calculate lawn mowing time from lawn area, mower cutting width, and walking speed, at realistic efficiency.">
+<link rel="canonical" href="https://fun.fixoraa.tech/mowtime/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Lawn Mowing Time Calculator: How Long to Mow Your Lawn?">
+<meta property="og:description" content="Calculate lawn mowing time from lawn area, mower cutting width, and walking speed, at realistic efficiency.">
+<meta property="og:url" content="https://fun.fixoraa.tech/mowtime/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "MowTime",
+      "url": "https://fun.fixoraa.tech/mowtime/",
+      "applicationCategory": "Garden",
+      "operatingSystem": "Web",
+      "description": "Calculate lawn mowing time from lawn area, mower cutting width, and walking speed, at realistic efficiency.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take to mow 500 square metres?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 20 minutes of actual mowing with a 46 cm mower at 4 km/h, or about 30 minutes including edging and emptying."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What walking speed should I use for mowing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 3 to 4 km/h for a push mower, 5 km/h or more for a self-propelled mower on open ground. Wet grass and slopes slow you down."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a wider mower always mow faster?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On open lawns yes, but in tight gardens with many obstacles a narrower, more manoeuvrable mower can be faster overall."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why use 80 percent efficiency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because you overlap passes, turn at the ends, and slow around obstacles. No one mows at 100 percent theoretical coverage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long to mow an acre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An acre is about 4,047 square metres. With a 53 cm mower at 5 km/h it takes about 115 minutes of mowing, plus edging time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I mow wet grass?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Avoid it if you can. Wet grass clumps, clogs the mower, and slows you down. Mow when grass is dry for the fastest, cleanest job."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I mow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Weekly in the growing season, following the one-third rule: never cut more than a third of the grass height at once."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a robot mower save time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, it mows a little and often while you do other things, though setup and boundary layout take time upfront."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F2F8F2; --surface:#FFFFFF; --accent:#2E6B34; --accent-ink:#FFFFFF;
+  --ink:#1E2E20; --muted:#4F6A52; --line:#CFE2D0;
+  --display:'Work Sans',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.fld label{display:block;font-weight:600;margin-bottom:.3rem}
+.fld input,.fld select{width:100%;padding:.65rem .8rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:var(--surface);color:var(--ink);min-height:44px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.presets button{padding:.5rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.btn{background:var(--accent);color:var(--accent-ink);border:none;border-radius:999px;padding:.8rem 1.6rem;font-size:1rem;font-weight:700;cursor:pointer;min-height:48px}
+.btn2{background:transparent;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:.6rem 1.2rem;font-weight:600;cursor:pointer;min-height:44px}
+.result{margin-top:1.1rem;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:1rem;font-size:1.05rem}
+.result b{font-size:1.25rem}
+.hist{margin-top:.8rem;color:var(--muted);font-size:.9rem}
+@media (max-width:640px){.row{grid-template-columns:1fr}.tool-card{padding:1rem}.tool-card h1{font-size:1.4rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="MowTime home">
+      <span class="fx-logo-tile" aria-hidden="true">🌱</span>
+      <span class="fx-brand">MowTime</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-mow-stripe" aria-label="MowTime tool">
+<div class="tool-card"><h1>Lawn Mowing Time Calculator</h1><p class="sub">Estimate mowing time from lawn area, mower width, and walking speed.</p>
+<div class="presets"><button type="button" data-preset="lawnA:500,mowW:46,mowS:4">500 m2, 46 cm, 4 km/h</button><button type="button" data-preset="lawnA:1000,mowW:53,mowS:5">1000 m2, 53 cm, 5 km/h</button><button type="button" data-preset="lawnA:200,mowW:40,mowS:3.5">200 m2, 40 cm, 3.5 km/h</button></div>
+<div class="row"><div class="fld"><label for="lawnA">Lawn area (m2)</label><input id="lawnA" type="number" value="500" min="10" max="10000"></div>
+<div class="fld"><label for="mowW">Mower width (cm)</label><input id="mowW" type="number" value="46" min="25" max="120"></div></div>
+<div class="row"><div class="fld"><label for="mowS">Walking speed (km/h)</label><input id="mowS" type="number" value="4" min="2" max="10" step="0.5"></div>
+<div class="fld"><label>&nbsp;</label><button class="btn" id="calcBtn" type="button">Calculate mowing time</button></div></div>
+<div class="result" id="res" aria-live="polite">Enter your lawn area, mower width, and speed to see your mowing time.</div>
+<p><button class="btn2" id="copyBtn" type="button">Copy result</button></p><p class="hist" id="hist"></p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How long does it take to mow a lawn?</h2>
+<p>Mowing time is a simple calculation once you know three numbers: your lawn area, your mower's cutting width, and your walking speed. Multiply cutting width in metres by speed in metres per hour to get your theoretical coverage rate, then apply an efficiency factor of about 80 percent, since you overlap passes, turn at the ends, and slow down around obstacles. Divide lawn area by that effective rate and you have your mowing time. A 500 square metre lawn mowed with a 46 centimetre mower at 4 kilometres per hour covers about 1,472 square metres per hour effectively, so the job takes about 20 minutes of actual mowing. Add edging, emptying the catcher, and moving obstacles, and the real job is closer to 30 minutes.</p>
+<p>Walking speed is the variable most people get wrong, because they imagine a brisk stride and forget that mowing is slower than walking. A comfortable mowing pace is 3 to 4 kilometres per hour for a push mower, while a self-propelled mower or a ride-on machine can sustain 5 to 8 kilometres per hour on open ground. Wet grass, slopes, long grass, and frequent obstacles all slow you down, sometimes dramatically. A lawn that takes 20 minutes in midsummer, when growth is steady and grass is dry, can take 35 minutes in spring, when the grass is long, wet, and thick after a growth spurt.</p>
+<h2>Mower width and its trade-offs</h2>
+<p>Cutting width is the biggest lever on mowing time after lawn size. A 33 centimetre mower, typical of small electric models, takes roughly 40 percent longer than a 46 centimetre mower on the same lawn, while a 53 centimetre petrol mower cuts the time further still. Wider is not always better, though: a wide mower is heavier, harder to turn in tight spaces, and cannot fit through narrow gates or between beds. For lawns with many trees, beds, and narrow passages, a narrower mower that manoeuvres easily can beat a wide mower that constantly needs repositioning. Ride-on mowers suit lawns over 1,000 square metres, where walking time dominates, but they are overkill for a small urban garden.</p>
+<table><tr><th>Lawn area</th><th>Mower width</th><th>Speed</th><th>Approx. mowing time</th></tr>
+<tr><td>100 m2</td><td>33 cm</td><td>4 km/h</td><td>About 6 min</td></tr>
+<tr><td>200 m2</td><td>40 cm</td><td>3.5 km/h</td><td>About 11 min</td></tr>
+<tr><td>500 m2</td><td>46 cm</td><td>4 km/h</td><td>About 20 min</td></tr>
+<tr><td>1000 m2</td><td>53 cm</td><td>5 km/h</td><td>About 28 min</td></tr>
+<tr><td>2000 m2</td><td>107 cm ride-on</td><td>6 km/h</td><td>About 23 min</td></tr></table>
+<h2>Measuring your lawn area accurately</h2>
+<p>Most people overestimate their lawn area, because they picture the whole garden rather than just the grass. Measure the lawn itself, excluding beds, paths, patios, and driveways, and break irregular lawns into rectangles and triangles that you can measure separately. For a roughly rectangular lawn, length times width is enough. For curved lawns, measure in sections and add them up, or pace it out: an average adult step is about 75 centimetres, so counting steps gives a usable estimate. If you use a robot mower, its app often reports the area it actually mows, which is a useful cross-check. An accurate area matters, because every other estimate, from mowing time to fertiliser quantity, depends on it.</p>
+<h2>Mowing patterns that save time</h2>
+<p>Pattern choice affects both time and lawn health. Straight parallel stripes are fastest for rectangular lawns, since you minimise turning, and they look superb. Spiral mowing from the outside in suits square lawns and reduces turning further, but it leaves a centre that needs a final pass. Alternating direction each week, stripes one week and cross-stripes the next, prevents ruts and keeps grass growing upright. Avoid mowing in the same pattern every time, since wheels compact the same lines and grass leans permanently. Whatever pattern you choose, overlap each pass by about 10 percent of the mower width, since a zero-overlap pass leaves uncut strips that need a second run.</p>
+<h2>Grass growth and seasonal timing</h2>
+<p>Mowing time changes through the season because grass growth changes. Spring growth is explosive, and a lawn left for two weeks can be twice as tall, which doubles cutting time and may need two passes: a high first cut, then a lower second cut a few days later. Summer growth is steadier, and weekly mowing keeps time predictable. Autumn growth slows, but fallen leaves add time if you mow them up. Winter growth is minimal in most climates, and mowing can drop to fortnightly or stop altogether. The one-third rule, never cut more than a third of the grass height at once, is the key to healthy grass and predictable mowing times, since it prevents scalping and stress.</p>
+<h2>Edging, trimming, and the full job</h2>
+<p>Mowing time is only part of the job. Edging along paths, walls, and beds, trimming around trees and fences, and emptying the grass catcher all add time, often 30 to 50 percent on top of pure mowing time. A lawn with long edges, many trees, and tight corners can take as long to edge as to mow. Factor this in when planning: if the calculator says 20 minutes of mowing, budget 30 minutes for the whole job. A strimmer or edging tool speeds up edges, and a mulching mower eliminates emptying time, since clippings are chopped finely and left on the lawn to feed it, though mulching works best when grass is dry and not too long.</p>
+<h2>Push, self-propelled, and robot mowers</h2>
+<p>Push mowers are cheapest and lightest, and they suit small, flat lawns, but they demand the most effort and the slowest pace on slopes. Self-propelled mowers drive themselves forward, so you just steer, which sustains a faster, steadier pace and reduces fatigue, especially on larger or sloping lawns. Ride-on mowers transform large lawns, cutting a 2,000 square metre job to under half an hour of seat time, but they need storage space, fuel, and maintenance. Robot mowers take time out of the equation entirely, mowing a little and often while you do something else, though they need boundary wire or GPS setup and they work best on simple, open lawns without many obstacles.</p>
+<h2>Wet grass, slopes, and obstacles</h2>
+<p>Wet grass clumps, clogs the mower, and slows you down, so mow when grass is dry if you can, and allow extra time after rain. Slopes slow walking speed and increase effort, so a self-propelled mower or a lighter model helps, and on steep slopes, mow across the slope, not up and down, for safety and control. Obstacles like trees, trampolines, washing lines, and toys all add turning and trimming time, so clear the lawn before you start rather than weaving around objects. A quick five-minute tidy before mowing often saves ten minutes of weaving during it.</p>
+<h2>Fuel, battery, and cord considerations</h2>
+<p>Petrol mowers run as long as you have fuel, which suits large lawns, but they need servicing, oil, and winter storage care. Battery mowers are quieter, cleaner, and lighter, but runtime limits the job: a typical battery gives 30 to 60 minutes, so a large lawn may need a second battery or a mid-job charge. Corded electric mowers never run out of power, but the cord limits range and adds time spent managing it around obstacles. Match the power source to your lawn size and your tolerance for maintenance, and remember that a mower that runs out halfway through is slower than a slightly slower mower that finishes in one go.</p>
+<h3>Small lawns: is a mower worth it?</h3>
+<p>For lawns under 50 square metres, a small electric mower or even a hand mower may be all you need, and the job takes under 10 minutes. Some owners of tiny lawns use a strimmer for the whole job, which is quick but gives a less even finish. A robot mower is rarely worth it for a tiny lawn, since setup time exceeds mowing time. Whatever you use, keep blades sharp, since a blunt blade tears grass, which looks brown at the tips and invites disease, while a sharp blade cuts cleanly and keeps the lawn green.</p>
+<h2>Keeping mowing time down over the season</h2>
+<p>The best way to keep mowing time predictable is to mow regularly, little and often, rather than letting grass grow long and then battling it. Weekly mowing in the growing season keeps each job short, keeps the lawn healthy, and avoids the double-cut penalty of overgrown grass. Feed and water sensibly, since overfed, overwatered grass grows faster and needs more mowing, while a healthy but not pampered lawn grows steadily. Finally, keep your mower maintained: sharp blades, clean decks, and correct tyre pressure all keep the effective mowing rate close to the theoretical rate the calculator assumes.</p>
+<ul><li>Measure lawn area excluding beds, paths, and patios.</li><li>Use 80 percent efficiency to allow for overlap and turning.</li><li>Budget 30 to 50 percent extra for edging and emptying.</li><li>Mow little and often, never more than a third at once.</li><li>Clear obstacles before you start mowing.</li></ul>
+<p>Mowing time is predictable once you know your lawn area, mower width, and pace. Use the calculator above to get a realistic estimate, add time for edging, and plan your weekend around a job that takes minutes, not a mystery.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How long does it take to mow 500 square metres?</summary><p>About 20 minutes of actual mowing with a 46 cm mower at 4 km/h, or about 30 minutes including edging and emptying.</p></details>
+<details><summary>What walking speed should I use for mowing?</summary><p>About 3 to 4 km/h for a push mower, 5 km/h or more for a self-propelled mower on open ground. Wet grass and slopes slow you down.</p></details>
+<details><summary>Does a wider mower always mow faster?</summary><p>On open lawns yes, but in tight gardens with many obstacles a narrower, more manoeuvrable mower can be faster overall.</p></details>
+<details><summary>Why use 80 percent efficiency?</summary><p>Because you overlap passes, turn at the ends, and slow around obstacles. No one mows at 100 percent theoretical coverage.</p></details>
+<details><summary>How long to mow an acre?</summary><p>An acre is about 4,047 square metres. With a 53 cm mower at 5 km/h it takes about 115 minutes of mowing, plus edging time.</p></details>
+<details><summary>Should I mow wet grass?</summary><p>Avoid it if you can. Wet grass clumps, clogs the mower, and slows you down. Mow when grass is dry for the fastest, cleanest job.</p></details>
+<details><summary>How often should I mow?</summary><p>Weekly in the growing season, following the one-third rule: never cut more than a third of the grass height at once.</p></details>
+<details><summary>Does a robot mower save time?</summary><p>Yes, it mows a little and often while you do other things, though setup and boundary layout take time upfront.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">MowTime</div>
+    <p>MowTime estimates your mowing time from lawn size, mower width, and pace.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcMow(area, widthCm, speedKmh) {
+  var rate = (widthCm / 100) * speedKmh * 1000 * 0.8;
+  var mins = Math.round(area / rate * 60 * 10) / 10;
+  return { mins: mins };
+}
+
+if (typeof document !== 'undefined') {
+  var histKey = 'fxhist';
+  function showHist() {
+    try {
+      var h = JSON.parse(localStorage.getItem(histKey) || '[]');
+      var el = document.getElementById('hist');
+      if (el && h.length) { el.textContent = 'Recent: ' + h.slice(-3).join('  |  '); }
+    } catch (e) {}
+  }
+  function saveHist(s) {
+    try {
+      var h = JSON.parse(localStorage.getItem(histKey) || '[]');
+      h.push(s); if (h.length > 5) { h.shift(); }
+      localStorage.setItem(histKey, JSON.stringify(h));
+    } catch (e) {}
+  }
+  function copyRes() {
+    var el = document.getElementById('res');
+    if (!el) { return; }
+    var t = el.textContent || '';
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard) { navigator.clipboard.writeText(t); }
+    } catch (e) {}
+  }
+  var btn = document.getElementById('calcBtn');
+  if (btn) { btn.onclick = function () { 
+        var a = parseFloat(document.getElementById('lawnA').value) || 0;
+        var w = parseFloat(document.getElementById('mowW').value) || 0;
+        var s = parseFloat(document.getElementById('mowS').value) || 0;
+        var r = calcMow(a, w, s);
+        var out = '<b>About ' + r.mins + ' minutes</b> of mowing for ' + a + ' m\u00b2, at 80% mowing efficiency. Add time for edging, emptying, and obstacles.';
+        document.getElementById('res').innerHTML = out;
+        saveHist(r.mins + ' min, ' + a + 'm2');
+        showHist();
+ }; }
+  var cp = document.getElementById('copyBtn');
+  if (cp) { cp.onclick = copyRes; }
+  var ps = document.querySelectorAll('[data-preset]');
+  for (var i = 0; i < ps.length; i++) {
+    (function (b) {
+      b.onclick = function () {
+        var v = b.getAttribute('data-preset');
+        var parts = v.split(',');
+        for (var j = 0; j < parts.length; j++) {
+          var kv = parts[j].split(':');
+          var inp = document.getElementById(kv[0]);
+          if (inp) { inp.value = kv[1]; }
+        }
+        if (btn) { btn.click(); }
+      };
+    })(ps[i]);
+  }
+  showHist();
+}
+
+</script>
+</body>
+</html>
