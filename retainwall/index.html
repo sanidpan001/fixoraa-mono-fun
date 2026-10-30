@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retaining Wall Block Calculator — Blocks, Base & Drainage | RetainWall</title>
+<meta name="description" content="Retaining wall blocks, cap, base stone, backfill and drainage in one estimate.">
+<link rel="canonical" href="https://fun.fixoraa.tech/retainwall/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Retaining Wall Block Calculator — Blocks, Base & Drainage | RetainWall">
+<meta property="og:description" content="Retaining wall blocks, cap, base stone, backfill and drainage in one estimate.">
+<meta property="og:url" content="https://fun.fixoraa.tech/retainwall/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RetainWall",
+      "url": "https://fun.fixoraa.tech/retainwall/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Retaining wall blocks, cap, base stone, backfill and drainage in one estimate.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many blocks do I need for a 20-foot retaining wall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a 2-ft exposed wall with standard 16×8-in. blocks: 3 courses × 15 blocks = 45 blocks, plus 5% waste = 48 to order, plus 20 cap blocks. The calculator also figures base stone (~0.74 yd³), backfill (~1.48 yd³) and 20 ft of drain pipe."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How deep should the base be for a retaining wall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Six inches of compacted crushed stone (3/4-in. minus), extending 6 inches beyond the block faces front and back, plus one full block course buried below grade. Compact in 2-inch lifts and screed the top dead level — the whole wall inherits this surface."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need drainage behind a retaining wall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — always. A 12-inch column of clean drainage stone behind the wall with a perforated 4-inch pipe at its base, sloped to daylight. Waterlogged soil is the #1 cause of wall failure; the drainage system weighs almost nothing in the budget and does most of the structural work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is geogrid required for a retaining wall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally above 3 feet of exposed height, and always per the block manufacturer's engineering tables or an engineer's spec. Geogrid layers every ~2 courses extend back into the backfill and lock wall and soil into one mass. Most codes require permits and engineered drawings over 4 feet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I build a retaining wall on clay soil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but the drainage column becomes critical — clay swells when wet and pushes hard. Never backfill with clay directly against the blocks; use the 12-inch clean-stone column wrapped in filter fabric, and reroute all uphill water (downspouts, sump discharge) around the wall."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a DIY block retaining wall cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly $15–$30 per square foot of wall face for DIY (blocks, cap, base stone, backfill stone, pipe, fabric), versus $40–$75+ professionally installed. A 20×2-ft wall runs about $600–$1,200 in materials. Taller walls needing geogrid and engineering cost more."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9F2E1; --tint:#F4EAD2; --accent:#846515; --accent-deep:#49175E;
+  --ink:#33203A; --muted:#6B5A72; --line:#D0B5DA;
+  --display:'Fira Sans',system-ui,sans-serif; --body:'Fira Sans',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:#fff;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:#fff}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:#fff}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:#fff;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:#1d1d1d;color:#e8e8e8;margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bdbdbd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--tint);font-weight:700}
+input,select,button{font:inherit}
+
+
+.rw-hero{text-align:center;padding:52px 0 4px}
+.rw-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:2px solid var(--line);padding:7px 16px;border-radius:999px;margin-bottom:16px}
+.rw-hero h1{font-size:clamp(34px,5vw,52px);letter-spacing:-.03em;font-weight:800;margin-bottom:12px}
+.rw-hero p{font-size:18px;color:var(--muted);max-width:620px;margin:0 auto}
+.rw-tool{background:#fff;border:2px solid var(--line);border-radius:24px;margin:26px 0 8px;overflow:hidden;box-shadow:0 14px 34px rgba(108,35,139,.10)}
+.rw-form{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:26px 26px 6px}
+.field label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}
+.field .hint{font-weight:400;color:var(--muted);font-size:12px}
+.field input,.field select{width:100%;padding:11px 13px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.field input:focus,.field select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+#rw-svg{width:100%;height:auto;display:block;background:var(--bg);border-top:2px solid var(--line);border-bottom:2px solid var(--line)}
+.rw-cards{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:22px 26px 26px}
+.rw-card{background:var(--tint);border:2px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+.rw-card.big{grid-column:span 2;background:var(--accent);border-color:var(--accent-deep);color:#fff}
+.rw-card.big .k{color:#fff;opacity:.85}
+.rw-card.big .v{color:#fff}
+.rw-card .k{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+.rw-card .v{font-size:26px;font-weight:800;color:var(--accent-deep);display:block}
+.rw-card .s{font-size:12px;color:#fff;opacity:.85;font-weight:600}
+.rw-card.flag .v{font-size:16px}
+@media(max-width:860px){.rw-cards{grid-template-columns:repeat(3,1fr)}.rw-form{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.rw-cards{grid-template-columns:1fr 1fr}.rw-card.big{grid-column:span 2}}
+
+</style>
+</head>
+<body>
+<header class="fx-header retainwall-hdr">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/retainwall/" aria-label="RetainWall home">
+      <span class="fx-tile" aria-hidden="true">RW</span>
+      <span class="fx-name">RetainWall</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="rw-hero">
+    <span class="rw-eyebrow">Full-system estimate</span>
+    <h1>Retaining Wall Calculator</h1>
+    <p>Not just blocks — the base, the backfill, the drain pipe. The whole system, one estimate.</p>
+  </section>
+  <section class="rw-tool" aria-label="RetainWall tool">
+    <div class="rw-form">
+      <div class="field"><label for="rw-len">Wall length (ft)</label><input type="number" id="rw-len" value="20" min="2" max="200" step="1"></div>
+      <div class="field"><label for="rw-h">Wall height (ft) <span class="hint">exposed</span></label><input type="number" id="rw-h" value="2" min="1" max="8" step="0.5"></div>
+      <div class="field"><label for="rw-block">Block size</label><select id="rw-block">
+        <option value="16x8" selected>Standard 16×8 in. face</option>
+        <option value="18x9">Large 18×9 in. face</option></select></div>
+      <div class="field"><label for="rw-waste">Waste</label><select id="rw-waste">
+        <option value="0.05" selected>5%</option><option value="0.10">10%</option></select></div>
+    </div>
+    <svg id="rw-svg" viewBox="0 0 640 260" role="img" aria-label="Wall cross-section"></svg>
+    <div class="rw-cards" aria-live="polite">
+      <div class="rw-card big"><span class="k">Wall blocks</span><span class="v" id="rw-blocks">45</span><span class="s" id="rw-courses">3 courses</span></div>
+      <div class="rw-card"><span class="k">Cap blocks</span><span class="v" id="rw-cap">20</span></div>
+      <div class="rw-card"><span class="k">Base stone</span><span class="v" id="rw-base">0.74 yd³</span></div>
+      <div class="rw-card"><span class="k">Backfill stone</span><span class="v" id="rw-bf">1.48 yd³</span></div>
+      <div class="rw-card"><span class="k">Drain pipe</span><span class="v" id="rw-drain">20 ft</span></div>
+      <div class="rw-card flag" id="rw-flagcard"><span class="k">Geogrid</span><span class="v" id="rw-grid">Not needed</span></div>
+    </div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+    <h2>Blocks Are the Smallest Part of the System</h2>
+    <p>Count-the-blocks calculators lie by omission. The blocks are the visible 40 percent of a retaining wall; the <strong>base, backfill and drainage</strong> are the invisible 60 percent that decides whether the wall stands for decades or leans by spring. This estimate prices the whole system, because a wall built of perfect blocks on a bad base is just an expensive future demolition.</p>
+    <p>The physics is simple and unforgiving: soil plus water weighs about <strong>110 pounds per cubic foot</strong>, and it pushes sideways with a force that grows with the square of the wall height. Double the height, quadruple the push. Everything below — the compacted base that spreads the load, the drainage stone that keeps water from adding its weight, the pipe that carries water away — exists to manage that force.</p>
+    <p>Under 3 feet, a careful DIYer with segmental blocks can build a wall that lasts. Over 3 to 4 feet, the forces, the permits and the consequences all change character — that is where the calculator starts flagging <strong>geogrid</strong> and where a structural engineer earns their fee.</p>
+    <h2>Courses, Setback, and the Batter</h2>
+    <p>Segmental walls lean back into the hill as they rise — about <strong>1 inch of setback per course</strong>, called the batter. The batter is structural: it moves the wall's weight over its own base, resisting overturning. It also means each course is slightly shorter than the one below, which is why the calculator shrinks every course by the setback instead of multiplying one course count.</p>
+    <p>Course count is wall height divided by block face height, rounded up. A 2-foot wall with 8-inch faces needs exactly 3 courses; a 30-inch wall needs 4, and that fourth course is mostly buried or capped — which is fine, because the <strong>first course is always buried</strong>. Bury at least 6 inches (one full course for 8-inch block) below grade: buried courses do not count toward the pretty exposed height, but they anchor everything.</p>
+    <p>Cap blocks finish the top: they overhang slightly, shed water, and give the wall its finished look. Order caps for the full wall length — the calculator uses 12-inch caps — plus a couple of spares, because caps are also the pieces most likely to chip during handling.</p>
+    <h2>The Base: 6 Inches of Crushed Stone</h2>
+    <p>The base is <strong>6 inches of compacted crushed stone</strong> (3/4-inch minus / crusher run), extending 6 inches beyond the block faces front and back. Not pea gravel, not sand, not “packed dirt” — angular crushed stone that locks together under compaction. The calculator's base volume uses the block depth plus 12 inches of width; on a 20-foot wall with 12-inch-deep blocks that is about 3/4 of a cubic yard.</p>
+    <p>Compaction is the whole game: compact the trench bottom, add stone in <strong>2-inch lifts</strong>, compact each lift with a plate compactor or hand tamper. Then screed the top perfectly level — the first course of blocks sits directly on this surface, and every sixteenth of an inch of error multiplies up the wall. Spend an hour here and save a day of shimming.</p>
+    <p>Never set blocks on undisturbed topsoil or, worse, on fill that has not been compacted. Topsoil compresses, fill settles, and the wall follows. Dig to firm subgrade — if the trench bottom is soft, dig deeper and add more stone.</p>
+    <h2>Backfill and the Drainage Sandwich</h2>
+    <p>Behind the wall goes <strong>12 inches of clean drainage stone</strong> (3/4-inch clear, no fines), from the base all the way to within a few inches of the top. Water moving through soil hits this stone column and drops straight down instead of pushing on the wall — this single detail prevents more wall failures than everything else combined. The calculator figures a full 12-inch column behind the full wall height.</p>
+    <p>At the bottom of that stone column sits a <strong>perforated 4-inch drain pipe</strong>, holes down, sloping to daylight or a storm drain. “Daylight” means the pipe must actually exit somewhere lower than the wall base — a pipe to nowhere is decoration. Wrap the pipe and stone in filter fabric to keep soil from migrating in and clogging the system over the years.</p>
+    <p>Above the stone, fold the fabric over and finish with soil and sod. Never backfill with clay directly against the blocks — clay holds water like a bathtub against exactly the surface you are trying to keep dry.</p>
+    <h2>When Geogrid Enters the Chat</h2>
+    <p>Over about <strong>3 feet of exposed height</strong>, gravity walls want help: layers of <strong>geogrid</strong> — synthetic mesh — sandwiched between courses and extending back into the backfill. The grid turns the wall and a wedge of soil behind it into one coherent mass that cannot tip or slide. It is the difference between stacking blocks and building a structure.</p>
+    <p>Grid layers typically go every 2 courses, extending back 60 to 100 percent of the wall height, and they must be the right strength for the height — this is specified by engineers or the block manufacturer's engineering tables, not guessed. The calculator flags the requirement; the specification comes from the tables.</p>
+    <p>Walls over 4 feet in most jurisdictions need a <strong>permit and engineered drawings</strong>, and many places count the buried course and the slope above in the height. Check before digging — “I didn't know” does not survive the conversation with the inspector or the neighbor downhill.</p>
+    <h2>Curves, Corners, and Corners That Aren't</h2>
+    <p>Gentle curves are free with segmental block — just fan the blocks, keeping the front faces tight and letting the backs gap, filling gaps with stone. Tight curves need blocks cut or special corner units; never force a radius so tight the faces gap open, because the interlock disappears with the contact.</p>
+    <p>Inside corners (wall turning into the hill) are easy: interleave the courses. Outside corners need corner blocks or careful miter cuts — they are the slowest part of any wall, so budget time, not just material. Steps in the wall (stepped top following a slope) each need their own cap treatment; plan cap quantities per level.</p>
+    <p>Where the wall meets a house foundation or existing structure, leave a small expansion gap filled with backer rod and flexible sealant. Rigid walls bonded to structures crack at the joint within a few freeze-thaw cycles — the gap is cheaper than the repair.</p>
+    <h2>Soil You Can't See Matters Most</h2>
+    <p>Before ordering a single block, dig a test hole where the wall will stand. <strong>Clay</strong> swells when wet and pushes relentlessly — clay backfill is the number-one killer of DIY walls, which is why the drainage column matters doubly there. <strong>Sand</strong> drains beautifully but needs the fabric wrap to keep it out of your stone. <strong>Fill</strong> of unknown history must be treated as guilty until proven innocent: compact it in lifts or dig through it.</p>
+    <p>Water sources uphill — downspouts, sump discharges, neighbor's grading — must be rerouted <strong>around</strong> the wall, never behind it. A downspout dumping behind a retaining wall is a demolition plan with a 5-year timeline. Extend downspouts past the wall's ends or pipe them through.</p>
+    <p>If the slope above the wall continues upward (a surcharge), the effective push increases — steeper surcharge, bigger push. Terraced walls (two short walls instead of one tall one) handle surcharges far better than single tall walls, and each terrace under 3 feet stays in friendly DIY territory.</p>
+    <h2>Ordering and Delivery Day</h2>
+    <p>Order blocks by the <strong>pallet</strong> when you can — pallets run 40 to 60 blocks depending on size, and the per-block price drops. The calculator's block count plus 5 percent waste, rounded up to pallets, is the order. Caps usually come in smaller cubes; stone and base come by the cubic yard or by the ton (about 1.4 tons per cubic yard of crushed stone).</p>
+    <p>Have the delivery placed <strong>as close to the wall line as possible</strong> — every block weighs 30 to 80 pounds, and carrying them 100 feet each way across a yard is how backs and schedules break. A pallet near the work beats a pallet in the driveway.</p>
+    <p>Stage the work: day one dig and base, day two first courses and drainage, then courses and backfill together — <strong>backfill as you rise</strong>, compacting the stone every course or two. Never stack the full wall and backfill afterward; you cannot compact stone behind a finished wall, and uncompacted backfill settles and drags the top courses with it.</p>
+    <h2>What Failure Looks Like (So You Can Avoid It)</h2>
+    <p>Walls rarely collapse dramatically; they <strong>lean, bulge and slide</strong> over seasons. A forward lean at the top means overturning pressure — usually waterlogged backfill with no drainage. A belly in the middle means the base settled or the backfill was never compacted. Stepped cracking through the courses means differential settlement below.</p>
+    <p>Catch it early and the fix is drainage: expose the back, add the stone column and pipe that should have been there, and rebuild the top courses. Caught late, the fix is rebuilding. The materials for doing it right the first time cost a fraction of doing it twice — drainage stone is the cheapest insurance in landscaping.</p>
+    <p>Walk your wall every spring. Sight along the top cap: it should be dead straight. Any new lean, any fresh gap at a corner, any water seeping through the face after rain — investigate that weekend, not next year. Walls talk before they fail; the trick is listening.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many blocks do I need for a 20-foot retaining wall?</summary><p>For a 2-ft exposed wall with standard 16×8-in. blocks: 3 courses × 15 blocks = 45 blocks, plus 5% waste = 48 to order, plus 20 cap blocks. The calculator also figures base stone (~0.74 yd³), backfill (~1.48 yd³) and 20 ft of drain pipe.</p></details>
+    <details><summary>How deep should the base be for a retaining wall?</summary><p>Six inches of compacted crushed stone (3/4-in. minus), extending 6 inches beyond the block faces front and back, plus one full block course buried below grade. Compact in 2-inch lifts and screed the top dead level — the whole wall inherits this surface.</p></details>
+    <details><summary>Do I need drainage behind a retaining wall?</summary><p>Yes — always. A 12-inch column of clean drainage stone behind the wall with a perforated 4-inch pipe at its base, sloped to daylight. Waterlogged soil is the #1 cause of wall failure; the drainage system weighs almost nothing in the budget and does most of the structural work.</p></details>
+    <details><summary>When is geogrid required for a retaining wall?</summary><p>Generally above 3 feet of exposed height, and always per the block manufacturer's engineering tables or an engineer's spec. Geogrid layers every ~2 courses extend back into the backfill and lock wall and soil into one mass. Most codes require permits and engineered drawings over 4 feet.</p></details>
+    <details><summary>Can I build a retaining wall on clay soil?</summary><p>Yes, but the drainage column becomes critical — clay swells when wet and pushes hard. Never backfill with clay directly against the blocks; use the 12-inch clean-stone column wrapped in filter fabric, and reroute all uphill water (downspouts, sump discharge) around the wall.</p></details>
+    <details><summary>How much does a DIY block retaining wall cost?</summary><p>Roughly $15–$30 per square foot of wall face for DIY (blocks, cap, base stone, backfill stone, pipe, fabric), versus $40–$75+ professionally installed. A 20×2-ft wall runs about $600–$1,200 in materials. Taller walls needing geogrid and engineering cost more.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RetainWall</div>
+    <p>RetainWall estimates the whole system — wall blocks, cap, crushed-stone base, backfill, drain pipe — and flags geogrid when the wall needs it.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TOOLJS */
+function computeWall(o){
+  var face={ '16x8':{L:16,H:8},'18x9':{L:18,H:9} }[o.preset];
+  var courses=Math.ceil(o.h*12/face.H-1e-9),blocks=0;
+  for(var i=0;i<courses;i++){blocks+=Math.ceil((o.len*12-1*i)/face.L-1e-9);}
+  var withW=Math.ceil(blocks*(1+o.waste)-1e-9);
+  var cap=Math.ceil(o.len*12/12-1e-9);
+  var baseCY=(0.5*((12+12)/12)*o.len)/27;
+  var bfCY=(1*o.h*o.len)/27;
+  return{courses:courses,blocks:blocks,withWaste:withW,cap:cap,baseCY:baseCY,bfCY:bfCY,drain:o.len,geogrid:o.h>3};
+}
+if(typeof document!=='undefined'){
+(function(){
+  function val(id){return parseFloat(document.getElementById(id).value)||0;}
+  function fmt(n,d){return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});}
+  ['rw-len','rw-h','rw-block','rw-waste'].forEach(function(id){
+    var el=document.getElementById(id);el.addEventListener('input',calc);el.addEventListener('change',calc);});
+  function draw(r,H){
+    var svg=document.getElementById('rw-svg'),NS='http://www.w3.org/2000/svg';
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    var maxC=Math.min(r.courses,8),ch=150/maxC,bw=52,x0=250;
+    var soil=document.createElementNS(NS,'rect');
+    soil.setAttribute('x',x0+maxC*bw+40);soil.setAttribute('y',20);soil.setAttribute('width',640);
+    soil.setAttribute('height',200);soil.setAttribute('fill','#F4EAD2');svg.appendChild(soil);
+    var grass=document.createElementNS(NS,'rect');
+    grass.setAttribute('x',0);grass.setAttribute('y',196);grass.setAttribute('width',640);
+    grass.setAttribute('height',64);grass.setAttribute('fill','#E9F5E0');svg.appendChild(grass);
+    var base=document.createElementNS(NS,'rect');
+    base.setAttribute('x',x0-40);base.setAttribute('y',196);base.setAttribute('width',maxC*bw+120);
+    base.setAttribute('height',24);base.setAttribute('fill','#fff');base.setAttribute('stroke','#846515');
+    base.setAttribute('stroke-dasharray','7 5');base.setAttribute('stroke-width',2);svg.appendChild(base);
+    for(var i=0;i<maxC;i++){
+      var y=196-(i+1)*ch,x=x0+i*7;
+      var b=document.createElementNS(NS,'rect');
+      b.setAttribute('x',x);b.setAttribute('y',y);b.setAttribute('width',bw);b.setAttribute('height',ch-2);
+      b.setAttribute('fill',i%2?'#fff':'#F9F2E1');b.setAttribute('stroke','#846515');b.setAttribute('stroke-width',2);
+      svg.appendChild(b);
+    }
+    var cap=document.createElementNS(NS,'rect');
+    cap.setAttribute('x',x0+(maxC-1)*7-6);cap.setAttribute('y',196-maxC*ch-14);
+    cap.setAttribute('width',bw+12);cap.setAttribute('height',14);
+    cap.setAttribute('fill','#846515');svg.appendChild(cap);
+    var bf=document.createElementNS(NS,'rect');
+    bf.setAttribute('x',x0+maxC*bw+40);bf.setAttribute('y',196-maxC*ch);bf.setAttribute('width',56);
+    bf.setAttribute('height',maxC*ch);bf.setAttribute('fill','#fff');bf.setAttribute('stroke','#846515');
+    bf.setAttribute('stroke-width',1.5);bf.setAttribute('stroke-dasharray','4 4');svg.appendChild(bf);
+    var pipe=document.createElementNS(NS,'circle');
+    pipe.setAttribute('cx',x0+maxC*bw+68);pipe.setAttribute('cy',188);pipe.setAttribute('r',10);
+    pipe.setAttribute('fill','none');pipe.setAttribute('stroke','#1F7784');pipe.setAttribute('stroke-width',4);
+    svg.appendChild(pipe);
+    function lab(x,y,t,anchor){var e=document.createElementNS(NS,'text');
+      e.setAttribute('x',x);e.setAttribute('y',y);e.setAttribute('text-anchor',anchor||'middle');
+      e.setAttribute('font-size',12);e.setAttribute('font-weight',700);e.setAttribute('fill','#6B5A72');
+      e.textContent=t;svg.appendChild(e);}
+    lab(x0-40,246,'6-in. compacted base','start');
+    lab(x0+maxC*bw+68,170,'drain pipe');
+    lab(x0+maxC*bw+96,120,'12-in. backfill','start');
+    lab(x0+(maxC-1)*7+bw/2,196-maxC*ch-20,'cap');
+    lab(320,30,H+' ft exposed × '+r.courses+' courses (1-in. setback each)');
+  }
+  function calc(){
+    var o={len:val('rw-len'),h:val('rw-h'),preset:document.getElementById('rw-block').value,
+      waste:parseFloat(document.getElementById('rw-waste').value)};
+    var r=computeWall(o);
+    document.getElementById('rw-blocks').textContent=r.withWaste;
+    document.getElementById('rw-courses').textContent=r.courses+' courses · '+r.blocks+' + waste';
+    document.getElementById('rw-cap').textContent=r.cap;
+    document.getElementById('rw-base').textContent=fmt(r.baseCY,2)+' yd³';
+    document.getElementById('rw-bf').textContent=fmt(r.bfCY,2)+' yd³';
+    document.getElementById('rw-drain').textContent=fmt(r.drain,0)+' ft';
+    document.getElementById('rw-grid').textContent=r.geogrid?'Required':'Not needed';
+    document.getElementById('rw-flagcard').style.borderColor=r.geogrid?'#8B3E23':'';
+    draw(r,o.h);
+  }
+  calc();
+})();
+}
+</script>
+</body>
+</html>
