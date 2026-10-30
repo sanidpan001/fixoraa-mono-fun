@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Long Do Brake Pads Last? — Pad Life Estimator | BrakeLife</title>
+<meta name="description" content="Estimate your brake pad life from driving style, mileage mix and vehicle weight.">
+<link rel="canonical" href="https://fun.fixoraa.tech/brakelife/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="How Long Do Brake Pads Last? — Pad Life Estimator | BrakeLife">
+<meta property="og:description" content="Estimate your brake pad life from driving style, mileage mix and vehicle weight.">
+<meta property="og:url" content="https://fun.fixoraa.tech/brakelife/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BrakeLife",
+      "url": "https://fun.fixoraa.tech/brakelife/",
+      "applicationCategory": "Automotive Tools",
+      "operatingSystem": "Web",
+      "description": "Estimate your brake pad life from driving style, mileage mix and vehicle weight.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How long do brake pads normally last?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Typically 30,000 to 70,000 miles for front pads, with rears lasting 1.5 to 2 times longer. Gentle highway drivers can exceed 70,000 miles; aggressive city drivers in heavy vehicles may need fronts at 25,000. Your driving style, city mix and vehicle weight decide where you land — which is what this estimator models." } },
+        { "@type": "Question", "name": "Do front or rear brake pads wear out first?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Fronts, almost always. Under braking, weight transfers forward and the front axle does roughly 70 percent of the stopping work. Expect rear pads to last about 1.7 times as long as fronts, and budget for front replacements roughly twice as often." } },
+        { "@type": "Question", "name": "What are the signs brake pads need replacing?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A high-pitched squeal when braking (the wear indicator), grinding metal-on-metal (pads gone — stop driving), a vibrating pedal, longer stopping distances, or a brake warning light. Pads at 3mm thickness or less are due regardless of mileage." } },
+        { "@type": "Question", "name": "Does driving style really change pad life that much?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Dramatically. Late, hard braking converts far more kinetic energy into pad wear than early, gentle braking, and riding the brakes downhill cooks them. An aggressive driver can halve pad life versus a gentle one in the same car — the single biggest variable in the estimate." } },
+        { "@type": "Question", "name": "How much does a brake pad replacement cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Per axle, roughly $150–$250 for sedans, $230–$350 for SUVs, $280–$400 for trucks, and more for performance cars — parts plus labor. Rotors add cost if they are scored or below minimum thickness. The estimator prices your vehicle class per axle." } },
+        { "@type": "Question", "name": "Should I replace rotors with the pads?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not automatically. Measure rotor thickness against the minimum stamped on the rotor hat — if above minimum, smooth and pulsation-free, new pads alone are fine. Replace or resurface rotors that are scored, warped (pedal pulsation), or near minimum thickness." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#FAF2F2; --surface:#FFFFFF; --tint:#F4DDDD;
+  --accent:#A52727; --accent-deep:#7C1D1D; --accent-ink:#FFFFFF;
+  --ink:#331F1F; --muted:#785454; --line:#E4BFBF;
+  --font:'Share Tech Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;font-size:15px;
+  background-image:linear-gradient(rgba(165,39,39,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(165,39,39,.055) 1px,transparent 1px);
+  background-size:28px 28px;}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:rgba(255,255,255,.95);border-bottom:1px solid var(--accent);box-shadow:0 1px 0 var(--accent-deep);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border:2px solid var(--accent);border-radius:4px;background:var(--surface);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;position:relative}
+.fx-tile::after{content:"";position:absolute;inset:4px;border:1px dashed var(--line);border-radius:2px}
+.fx-name{font-size:20px;letter-spacing:.02em}
+.fx-name small{display:block;font-size:10px;color:var(--muted);letter-spacing:.22em;text-transform:uppercase}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 16px;border:1px solid var(--accent);border-radius:3px;font-size:13px;text-decoration:none;color:var(--accent);font-family:var(--font);transition:background .12s}
+.fx-btn:hover{background:var(--tint)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:6px 12px;border:1px dashed var(--accent);border-radius:3px;background:var(--tint);color:var(--accent-deep);font-size:12px}
+/* hero */
+.bl-hero{padding:40px 0 6px}
+.bl-fig{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.bl-hero h1{font-size:clamp(28px,4.4vw,42px);line-height:1.15;letter-spacing:0;font-weight:400;margin-bottom:10px;max-width:720px}
+.bl-hero p{font-size:15px;color:var(--muted);max-width:660px}
+/* drawing sheet tool */
+.bl-sheet{margin:26px 0 10px;background:var(--surface);border:2px solid var(--accent);box-shadow:6px 6px 0 rgba(165,39,39,.12)}
+.bl-titlebar{border-bottom:2px solid var(--accent);padding:12px 22px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.bl-titlebar h2{font-size:17px;font-weight:400;letter-spacing:.04em}
+.bl-titlebar .dwg{margin-left:auto;font-size:12px;color:var(--muted)}
+.bl-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0}
+.bl-inputs{padding:22px;border-right:1px dashed var(--line)}
+.bl-results{padding:22px;background:repeating-linear-gradient(0deg,transparent 0 26px,rgba(165,39,39,.05) 26px 27px)}
+.field{margin-bottom:18px}
+.field>label{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.field input[type=number],.field select{font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--accent);border-radius:3px;background:#fff;color:var(--ink);width:100%;max-width:250px}
+.quiz{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quiz button{border:1px solid var(--line);background:#fff;border-radius:3px;padding:10px;font:inherit;font-size:13px;cursor:pointer;color:var(--ink);text-align:left}
+.quiz button b{display:block;font-size:14px}
+.quiz button.on{border:2px solid var(--accent);background:var(--tint);padding:9px}
+input[type=range]{width:100%;max-width:320px;accent-color:var(--accent)}
+.bl-axle{border:1px solid var(--accent);border-radius:3px;margin-bottom:14px;overflow:hidden}
+.bl-axle .ah{background:var(--tint);padding:8px 14px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between}
+.bl-axle .ab{padding:12px 14px}
+.bl-miles{font-size:34px;letter-spacing:-.01em}
+.bl-miles small{font-size:14px;color:var(--muted)}
+.bl-wearbar{height:12px;border:1px solid var(--accent);border-radius:2px;margin-top:8px;position:relative;background:#fff}
+.bl-wearbar i{position:absolute;left:0;top:0;bottom:0;background:repeating-linear-gradient(-45deg,var(--accent),var(--accent) 6px,var(--accent-deep) 6px,var(--accent-deep) 12px)}
+.bl-cost{font-size:13px;color:var(--muted);margin-top:6px}
+.bl-total{border:2px solid var(--accent);border-radius:3px;padding:14px;text-align:center;margin-top:6px;background:#fff}
+.bl-total .n{font-size:30px}
+.bl-total .l{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.bl-note{font-size:13px;color:var(--accent-deep);margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+/* article */
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:20px;letter-spacing:.02em;margin:34px 0 10px;font-weight:400;color:var(--accent-deep);text-transform:uppercase}
+.article-sec p{margin-bottom:13px;color:#402b2b}
+.article-sec ul,.article-sec ol{margin:0 0 13px 20px;color:#402b2b}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:34px 0;max-width:780px}
+.faq-sec h2{font-size:20px;letter-spacing:.02em;text-transform:uppercase;margin-bottom:14px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);margin-bottom:8px}
+.faq-sec summary{padding:13px 15px;cursor:pointer;list-style:none;font-size:14.5px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:1px solid var(--line);color:var(--accent-deep)}
+.faq-sec details p{padding:12px 15px;color:#402b2b;font-size:14px}
+/* footer */
+.fx-footer{background:#2c1b1b;color:#f0dcdcdc;margin-top:42px;padding:38px 0 32px;border-top:3px solid var(--accent)}
+.fx-footer .fx-brand{font-size:20px;margin-bottom:8px;color:#fff;letter-spacing:.04em}
+.fx-footer p{font-size:14px;color:#cfa9a9;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;text-decoration:none;border-bottom:1px solid var(--accent);font-size:14px}
+.fx-credit{font-size:13px!important}
+.fx-credit a{color:#f0a8a8}
+@media(max-width:760px){
+  .bl-grid{grid-template-columns:1fr}
+  .bl-inputs{border-right:0;border-bottom:1px dashed var(--line)}
+  .quiz{grid-template-columns:1fr}
+  .fx-nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/brakelife/" aria-label="BrakeLife home">
+      <span class="fx-tile" aria-hidden="true">&#8857;</span>
+      <span class="fx-name">BrakeLife<small>DWG-042 / REV A</small></span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="bl-hero">
+    <div class="bl-fig">FIG. 01 — Pad wear projection</div>
+    <h1>How Long Do Brake Pads Last? A Measured Estimate</h1>
+    <p>Not 30,000–70,000 miles of shrug — a projection from your driving style, city/highway mix, and vehicle weight, per axle, with replacement cost.</p>
+  </section>
+
+  <section class="bl-sheet" aria-label="BrakeLife tool">
+    <div class="bl-titlebar"><h2>&#9746; INPUT PARAMETERS</h2><span class="dwg">SCALE — NTS &nbsp; UNITS — MI/LBS</span></div>
+    <div class="bl-grid">
+      <div class="bl-inputs">
+        <div class="field">
+          <label>Driving style — pick the honest one</label>
+          <div class="quiz" id="bl-style" role="group" aria-label="Driving style">
+            <button type="button" data-s="gentle"><b>Gentle</b>Early, easy braking</button>
+            <button type="button" data-s="normal" class="on"><b>Normal</b>Average traffic flow</button>
+            <button type="button" data-s="spirited"><b>Spirited</b>Late braking, quick</button>
+            <button type="button" data-s="aggressive"><b>Aggressive</b>Hard stops, tailgating</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="bl-city">City driving — <span id="bl-cityval">50%</span> of miles</label>
+          <input type="range" id="bl-city" min="0" max="100" step="5" value="50">
+        </div>
+        <div class="field">
+          <label for="bl-weight">Vehicle weight (lbs)</label>
+          <input type="number" id="bl-weight" value="3500" min="1500" max="10000" step="100">
+        </div>
+        <div class="field">
+          <label for="bl-class">Vehicle class</label>
+          <select id="bl-class">
+            <option value="sedan" selected>Sedan / compact</option>
+            <option value="suv">SUV / crossover</option>
+            <option value="truck">Truck</option>
+            <option value="sports">Sports / performance</option>
+          </select>
+        </div>
+      </div>
+      <div class="bl-results" aria-live="polite">
+        <div class="bl-axle">
+          <div class="ah"><span>Front axle</span><span id="bl-fpct">80%</span></div>
+          <div class="ab">
+            <div class="bl-miles"><span id="bl-front">40,000</span> <small>miles</small></div>
+            <div class="bl-wearbar"><i id="bl-fbar" style="width:80%"></i></div>
+            <div class="bl-cost">Replacement ≈ <span id="bl-fcost">$180</span> per axle</div>
+          </div>
+        </div>
+        <div class="bl-axle">
+          <div class="ah"><span>Rear axle</span><span id="bl-rpct">136%</span></div>
+          <div class="ab">
+            <div class="bl-miles"><span id="bl-rear">68,000</span> <small>miles</small></div>
+            <div class="bl-wearbar"><i id="bl-rbar" style="width:100%"></i></div>
+            <div class="bl-cost">Replacement ≈ <span id="bl-rcost">$160</span> per axle</div>
+          </div>
+        </div>
+        <div class="bl-total">
+          <div class="n">$<span id="bl-total">340</span></div>
+          <div class="l">est. full replacement, both axles</div>
+        </div>
+        <div class="bl-note" id="bl-note">Fronts do ~70% of braking work — budget for them roughly twice as often as rears.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+    <h2>Why the Range Is So Wide: 30,000 to 70,000 Miles</h2>
+    <p>Ask "how long do brake pads last" and every source answers with a range so wide it is nearly useless: 30,000 to 70,000 miles. The range is honest — pad life genuinely varies that much — but it is wide because three powerful variables hide inside it: how you brake, where you drive, and how much mass you are stopping. A gentle highway commuter in a light sedan and an aggressive city driver in a heavy SUV are not experiencing the same physics, so they should not get the same number.</p>
+    <p>This estimator separates the variables. Driving style scales the baseline from 1.3x (gentle) down to 0.55x (aggressive). City percentage discounts life up to 40%, because city miles pack far more stops per mile than highway miles. Vehicle weight scales against a 3,500-pound reference, since kinetic energy — and therefore pad wear — rises with mass. Multiply the three, apply them to a 50,000-mile front-axle baseline, and the shrug becomes a projection.</p>
+    <h2>The Physics in One Paragraph</h2>
+    <p>Braking converts kinetic energy into heat through friction, and pad material is the sacrificial fuel. Double your speed and you quadruple the energy each stop must dissipate — which is why late, hard braking from speed eats pads so much faster than early, gentle deceleration. Heavier vehicles carry more energy at the same speed. City driving multiplies the number of conversion events per mile. Every factor in the estimator traces back to this single mechanism: energy in, pad out.</p>
+    <h2>Driving Style: The Biggest Lever You Control</h2>
+    <p>Of the three variables, style moves the needle most. Gentle drivers brake early and progressively, spreading each stop's energy over time and distance; the estimator credits them 30% above baseline. Normal drivers get the baseline. Spirited drivers — late braking, brisk pace — lose 25%. Aggressive drivers, with hard stops and constant speed corrections in traffic, lose 45%. The spread between gentle and aggressive is more than 2-to-1 on the same car, which matches what shops see: two identical models, one needing pads at 28,000 miles, the other at 65,000.</p>
+    <p>The good news is that style is free to change. Looking far ahead, coasting down to stops, and leaving a real following gap are the three habits that move a driver from "spirited" to "normal" without adding a minute to the commute. Regenerative braking in hybrids and EVs does the same job automatically, which is why those cars famously stretch pad life past 100,000 miles.</p>
+    <h2>City vs. Highway: Stops Per Mile</h2>
+    <p>A highway mile might contain zero brake applications; a city mile can contain a dozen. The estimator discounts pad life linearly with city percentage, up to 40% off for pure city driving. This is deliberately simple — real city severity varies — but it captures the dominant effect. A driver at 80% city should expect roughly two-thirds the pad life of the same driver at 20% city, all else equal.</p>
+    <p>Terrain matters inside the mix too. Mountain drivers who ride the brakes downhill instead of downshifting cook pads far faster than flat-land city drivers; if your "city" includes a mountain commute, nudge your style one notch more aggressive in the quiz to compensate.</p>
+    <h2>Weight: Why Trucks Eat Pads</h2>
+    <p>Kinetic energy equals half mass times velocity squared, so mass counts linearly: a 6,000-pound truck carries roughly 70% more braking energy than a 3,500-pound sedan at the same speed. The estimator scales life by the ratio 3,500/weight, clamped so extreme inputs stay sane. This is also why towing demolishes pad life — a 5,000-pound trailer behind a truck effectively doubles the mass every stop must absorb, on brakes sized for the truck alone. Trailer brakes are not optional equipment; they are pad-life insurance.</p>
+    <h2>Front vs. Rear: The 70/30 Split</h2>
+    <p>Under braking, weight transfers forward — nosedive is the visible symptom — loading the front tires and letting the front brakes do roughly 70% of the work. Rear pads therefore last about 1.7 times as long as fronts, which the estimator applies directly. Practical consequences: you will replace fronts roughly twice as often as rears; a shop quoting all four corners when only the fronts are worn is selling you early rears; and a car whose rears wore first has a brake bias or stuck-caliper problem worth diagnosing.</p>
+    <h2>Reading the Wear: Signs and Measurements</h2>
+    <p>Mileage estimates guide planning; physical inspection decides action. Most pads have a metal wear indicator that screeches when 2–3mm of material remains — that squeal is a service reminder, not an emergency. Grinding is the emergency: pad material gone, metal backing on rotor, every mile now machining the rotor. Visual check through the wheel spokes works on many cars; otherwise a shop measures pad thickness during tire rotations. Replace at 3mm or less regardless of what any estimator said.</p>
+    <p>Also watch the pedal: pulsation under braking usually means warped or unevenly deposited rotors, and a soft or sinking pedal means hydraulic issues, not pad wear. Longer stopping distances develop gradually enough that drivers adapt — if a panic stop surprises you, the pads were telling you for months.</p>
+    <h2>Replacement Costs by Vehicle Class</h2>
+    <p>Per-axle pad replacement (parts plus labor) runs roughly $150–$250 for sedans and compacts, $230–$350 for SUVs and crossovers, $280–$400 for trucks, and $400+ for sports and performance cars with big multi-piston calipers. Rotors, if needed, add $100–$250 per axle. Dealer prices sit at the top of each range, independents in the middle, DIY at parts cost ($40–$120 per axle for quality pads).</p>
+    <p>The estimator totals both axles so you can budget the full job, but remember the axles wear on different schedules — you will rarely pay the full total at once. Price pads by brand tier, not just price: premium ceramic or semi-metallic pads from established makers genuinely outlast and out-stop budget pads, often making them cheaper per mile.</p>
+    <h2>Extending Pad Life Without Driving Like a Saint</h2>
+    <p>Beyond gentler braking, a few mechanical choices matter. Engine braking on long descents (downshift instead of riding the pedal) saves enormous pad material. Keeping tires properly inflated shortens stopping distances slightly, reducing the work per stop. Fixing a sticking caliper slide pin — a common cause of one-sided rapid wear — can double life on the affected corner. And bedding new pads properly (a series of moderate stops to transfer an even friction layer to the rotor) prevents the uneven deposits that cause pulsation and premature replacement.</p>
+    <p>None of these require a personality transplant. They are small, permanent adjustments that compound over 50,000 miles into real money and fewer shop visits.</p>
+    <h2>Using Your Estimate</h2>
+    <p>Treat the projection as a planning horizon, not a service order. If the estimator says 40,000 miles on the fronts and your car has 32,000 on the original pads, start checking thickness at each rotation and budget the $180 — no surprise, no emergency. If it says 25,000 and you are at 30,000, inspect this month. Pair the estimate with annual physical checks and the wear indicators, and brake maintenance becomes the most predictable line in your car budget.</p>
+  <h2>The Maintenance Minder Question</h2>
+    <p>Many modern cars have brake-wear sensors or service minders that estimate pad life from driving data — more sophisticated than any web calculator, since they watch your actual braking. Trust them as a second opinion, not gospel: sensors trigger at a fixed thickness on one pad, usually the inner front, and cannot see uneven wear across the axle. The best practice is triangulation — the estimator's projection for planning, the minder's warning for timing, and a visual check for truth. When the minder and the estimator disagree by a wide margin, the car is telling you something changed: a sticking caliper, new driving conditions, or a recent pad compound with different wear characteristics.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How long do brake pads normally last?</summary><p>Typically 30,000 to 70,000 miles for front pads, with rears lasting 1.5 to 2 times longer. Gentle highway drivers can exceed 70,000 miles; aggressive city drivers in heavy vehicles may need fronts at 25,000. Your driving style, city mix and vehicle weight decide where you land — which is what this estimator models.</p></details>
+    <details><summary>Do front or rear brake pads wear out first?</summary><p>Fronts, almost always. Under braking, weight transfers forward and the front axle does roughly 70 percent of the stopping work. Expect rear pads to last about 1.7 times as long as fronts, and budget for front replacements roughly twice as often.</p></details>
+    <details><summary>What are the signs brake pads need replacing?</summary><p>A high-pitched squeal when braking (the wear indicator), grinding metal-on-metal (pads gone — stop driving), a vibrating pedal, longer stopping distances, or a brake warning light. Pads at 3mm thickness or less are due regardless of mileage.</p></details>
+    <details><summary>Does driving style really change pad life that much?</summary><p>Dramatically. Late, hard braking converts far more kinetic energy into pad wear than early, gentle braking, and riding the brakes downhill cooks them. An aggressive driver can halve pad life versus a gentle one in the same car — the single biggest variable in the estimate.</p></details>
+    <details><summary>How much does a brake pad replacement cost?</summary><p>Per axle, roughly $150–$250 for sedans, $230–$350 for SUVs, $280–$400 for trucks, and more for performance cars — parts plus labor. Rotors add cost if they are scored or below minimum thickness. The estimator prices your vehicle class per axle.</p></details>
+    <details><summary>Should I replace rotors with the pads?</summary><p>Not automatically. Measure rotor thickness against the minimum stamped on the rotor hat — if above minimum, smooth and pulsation-free, new pads alone are fine. Replace or resurface rotors that are scored, warped (pedal pulsation), or near minimum thickness.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BrakeLife</div>
+    <p>BrakeLife estimates your brake pad life from driving style, city mix and vehicle weight — front and rear axles, with replacement costs.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+var styles={gentle:1.3,normal:1.0,spirited:0.75,aggressive:0.55};
+var costs={sedan:[180,160],suv:[260,230],truck:[320,280],sports:[450,400]};
+var style='normal';
+function num(id){return parseFloat(document.getElementById(id).value)||0;}
+document.getElementById('bl-style').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  style=b.getAttribute('data-s');
+  this.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+  b.classList.add('on');calc();
+});
+var cityEl=document.getElementById('bl-city');
+cityEl.addEventListener('input',function(){
+  document.getElementById('bl-cityval').textContent=cityEl.value+'%';calc();
+});
+['bl-weight','bl-class'].forEach(function(id){
+  var el=document.getElementById(id);
+  el.addEventListener('input',calc);el.addEventListener('change',calc);
+});
+function calc(){
+  var city=num('bl-city'),w=num('bl-weight')||3500;
+  var cls=document.getElementById('bl-class').value;
+  var s=styles[style]||1, cityF=1-city/100*0.4;
+  var wF=Math.min(1.3,Math.max(0.7,3500/w));
+  var front=Math.round(50000*s*cityF*wF), rear=Math.round(front*1.7);
+  var c=costs[cls]||costs.sedan;
+  document.getElementById('bl-front').textContent=front.toLocaleString('en-US');
+  document.getElementById('bl-rear').textContent=rear.toLocaleString('en-US');
+  var fpct=Math.min(100,Math.round(front/50000*100)), rpct=Math.min(100,Math.round(rear/85000*100));
+  document.getElementById('bl-fbar').style.width=fpct+'%';
+  document.getElementById('bl-rbar').style.width=rpct+'%';
+  document.getElementById('bl-fpct').textContent=fpct+'%';
+  document.getElementById('bl-rpct').textContent=Math.round(rear/50000*100)+'%';
+  document.getElementById('bl-fcost').textContent='$'+c[0];
+  document.getElementById('bl-rcost').textContent='$'+c[1];
+  document.getElementById('bl-total').textContent=(c[0]+c[1]).toLocaleString('en-US');
+  var note=document.getElementById('bl-note');
+  if(front<25000){note.textContent='Short projection — inspect pad thickness now; you may be closer to replacement than the odometer suggests.';}
+  else if(front>60000){note.textContent='Long projection — your habits are pad-friendly. Still inspect yearly; estimates never replace a look.';}
+  else{note.textContent='Fronts do ~70% of braking work — budget for them roughly twice as often as rears.';}
+}
+calc();
+})();
+</script>
+</body>
+</html>
