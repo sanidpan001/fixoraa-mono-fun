@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Scale Am I Playing? Reverse Scale Finder by Notes | ScaleSpot</title>
+<meta name="description" content="Enter your riff&#x27;s notes and ScaleSpot names the scale — ranked best-fit matches across 96 scales, with formulas and chords in key. Free.">
+<link rel="canonical" href="https://fun.fixoraa.tech/scalespot/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="What Scale Am I Playing? Reverse Scale Finder by Notes | ScaleSpot">
+<meta property="og:description" content="Enter your riff&#x27;s notes and ScaleSpot names the scale — ranked best-fit matches across 96 scales, with formulas and chords in key. Free.">
+<meta property="og:url" content="https://fun.fixoraa.tech/scalespot/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ScaleSpot",
+      "url": "https://fun.fixoraa.tech/scalespot/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Enter your riff's notes and ScaleSpot names the scale \u2014 ranked best-fit matches across 96 scales, with formulas and chords in key. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I use a reverse scale finder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tap every distinct note in your riff or melody on the note deck \u2014 order doesn't matter. ScaleSpot checks all 96 scales in its database (8 scale types \u00d7 12 roots) and lists every scale containing your notes, ranked by fewest extra notes. The top card is your best fit, with the scale's notes, formula, mood and harmonized chords."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many notes do I need to enter to identify a scale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Four distinct notes is the practical minimum; five to seven is the sweet spot. With only two or three notes, dozens of scales match and the ranking can't help you. If your riff is short, add the notes from the chord underneath it \u2014 that usually completes the picture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do if no scale matches my notes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You almost certainly have a chromatic passing tone \u2014 one note that decorates the riff but doesn't live in the scale, like a bluesy flat-five in a major riff. Remove the most suspicious note and re-run. The tool says so explicitly when the note set matches nothing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between A minor pentatonic and C major pentatonic in my results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They contain the exact same five notes \u2014 they're relatives. The difference is the tonal center: if your phrases resolve to A, think A minor; if they resolve to C, think C major. Seeing both in your results isn't a contradiction, it's theory telling you your riff has two valid homes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the results to write chords for my riff?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 that's what the 'Chords in key' strip is for. For major and natural minor results it shows all seven diatonic triads with Roman numerals. Start with I, IV and V for a chorus, borrow the vi or ii for a sadder verse, and you'll stay inside the riff's harmonic world."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the sharps/flats toggle change the results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 matching is done on pitch classes, so Bb and A# are identical to the engine. The toggle only changes how note names are displayed, so flat keys like F and Bb read naturally in flats and sharp keys like E and A read in sharps."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF7EE; --surface:#FFFFFF; --accent:#A34D1F; --accent-ink:#FFFFFF;
+  --ink:#2E2A24; --muted:#6B6257; --line:#E7DAC6;
+  --display:'Space Grotesk',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ss-wrap{font-family:'Space Grotesk',Inter,system-ui,sans-serif;background:#FDF7EE;color:#2E2A24;padding:58px 20px 76px;}
+.ss-inner{max-width:1080px;margin:0 auto;}
+.ss-topline{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+.ss-dot{width:11px;height:11px;border-radius:50%;background:#3E9B4F;box-shadow:0 0 0 4px rgba(62,155,79,.18);}
+.ss-status{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:#6B6257;font-weight:600;}
+.ss-inner h1{font-size:clamp(32px,5vw,52px);line-height:1.04;letter-spacing:-.01em;margin:0 0 10px;font-weight:700;text-wrap:balance;}
+.ss-tag{color:#6B6257;font-size:17.5px;max-width:640px;margin:0 0 30px;line-height:1.55;font-family:Inter,system-ui,sans-serif;}
+.ss-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:22px;align-items:start;}
+.ss-panel{background:#fff;border:1px solid #E7DAC6;border-radius:22px;padding:26px;box-shadow:0 18px 44px rgba(163,77,31,.08);}
+.ss-panel-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px;flex-wrap:wrap;}
+.ss-panel h2{font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:#A34D1F;margin:0;font-weight:700;}
+.ss-panel .ss-sub{font-size:13.5px;color:#6B6257;margin:0 0 16px;font-family:Inter,system-ui,sans-serif;line-height:1.55;}
+.ss-deck{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:16px;}
+.ss-pad{border:2px solid #E7DAC6;background:#FDF7EE;border-radius:13px;padding:13px 4px;font-size:16px;font-weight:700;cursor:pointer;color:#2E2A24;font-family:'Space Grotesk',sans-serif;transition:all .15s ease;min-height:52px;}
+.ss-pad:hover{border-color:#A34D1F;}
+.ss-pad.on{background:#A34D1F;border-color:#A34D1F;color:#fff;box-shadow:0 6px 16px rgba(163,77,31,.35);}
+.ss-sel{min-height:30px;background:#FDF7EE;border:1px dashed #A34D1F;border-radius:12px;padding:9px 14px;font-size:14.5px;color:#2E2A24;font-family:Inter,system-ui,sans-serif;margin-bottom:14px;line-height:1.5;}
+.ss-controls{display:flex;gap:10px;flex-wrap:wrap;}
+.ss-btn{background:#A34D1F;color:#fff;border:none;border-radius:13px;padding:12px 18px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:Inter,system-ui,sans-serif;}
+.ss-btn:hover{filter:brightness(1.08);}
+.ss-btn.ghost{background:#fff;color:#A34D1F;border:2px solid #A34D1F;}
+.ss-btn.ghost.on{background:#A34D1F;color:#fff;}
+.ss-out{display:flex;flex-direction:column;gap:14px;min-height:280px;}
+.ss-empty{border:2px dashed #E7DAC6;border-radius:18px;padding:44px 24px;text-align:center;color:#6B6257;font-size:15px;line-height:1.7;font-family:Inter,system-ui,sans-serif;background:#fff;}
+.ss-card{display:flex;gap:16px;background:#fff;border:1px solid #E7DAC6;border-radius:18px;padding:20px;box-shadow:0 10px 26px rgba(163,77,31,.07);}
+.ss-card.best{border:2px solid #A34D1F;}
+.ss-rank{flex-shrink:0;width:40px;height:40px;border-radius:12px;background:#FDF7EE;border:1px solid #E7DAC6;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:#A34D1F;}
+.ss-card.best .ss-rank{background:#A34D1F;color:#fff;border-color:#A34D1F;}
+.ss-card-b{flex:1;min-width:0;}
+.ss-card h3{margin:0 0 8px;font-size:20px;font-weight:700;letter-spacing:-.01em;}
+.ss-besttag{font-size:11px;background:#3E9B4F;color:#fff;border-radius:999px;padding:3px 10px;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;font-family:Inter,system-ui,sans-serif;}
+.ss-fit{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.ss-fit-t{font-size:12.5px;color:#6B6257;font-family:Inter,system-ui,sans-serif;white-space:nowrap;font-weight:600;}
+.ss-fitbar{flex:1;height:9px;background:#F1E7D3;border-radius:999px;overflow:hidden;}
+.ss-fitbar span{display:block;height:100%;background:linear-gradient(90deg,#D08A4E,#A34D1F);border-radius:999px;}
+.ss-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px;}
+.ss-chip{background:#FDF7EE;border:1px solid #E7DAC6;border-radius:9px;padding:5px 11px;font-size:14px;font-weight:600;}
+.ss-chip.hi{background:#A34D1F;color:#fff;border-color:#A34D1F;}
+.ss-formula{font-size:13.5px;color:#6B6257;margin:0 0 10px;font-family:Inter,system-ui,sans-serif;line-height:1.6;}
+.ss-harm{display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:#FDF7EE;border-radius:12px;padding:10px 12px;}
+.ss-harm-t{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#A34D1F;font-weight:700;font-family:Inter,system-ui,sans-serif;}
+.ss-hch{background:#fff;border:1px solid #E7DAC6;border-radius:8px;padding:4px 10px;font-size:13.5px;font-weight:600;}
+.ss-hch em{font-style:normal;color:#6B6257;font-size:11.5px;margin-left:3px;}
+.ss-foot{margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:13.5px;color:#6B6257;font-family:Inter,system-ui,sans-serif;}
+@media(max-width:900px){.ss-grid{grid-template-columns:1fr;}.ss-deck{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:520px){.ss-wrap{padding:40px 14px 56px;}.ss-panel{padding:20px 16px;}.ss-card{padding:16px 14px;}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ScaleSpot home">
+      <span class="fx-logo-tile" aria-hidden="true">🎸</span>
+      <span class="fx-brand">ScaleSpot</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-console-dash" aria-label="ScaleSpot tool">
+<section class='ss-wrap'><div class='ss-inner'>
+<div class='ss-topline'><span class='ss-dot' aria-hidden='true'></span><span class='ss-status'>Scale ID Console &middot; Online</span></div>
+<h1>What Scale Am I Playing? Reverse Scale Finder</h1>
+<p class='ss-tag'>Tap the notes of your riff — ScaleSpot works backwards from the notes to name the scale, ranked by fit, with the chords that live inside it.</p>
+<div class='ss-grid'>
+<div class='ss-panel'>
+<div class='ss-panel-h'><h2>Note Input Deck</h2></div>
+<p class='ss-sub'>Toggle every distinct note you hear in the riff or melody. Order doesn't matter — 4 to 7 notes nails it.</p>
+<div class='ss-deck' id='ss-deck' role='group' aria-label='Chromatic note pads'></div>
+<div class='ss-sel' id='ss-sel' role='status'></div>
+<div class='ss-controls'>
+<button class='ss-btn ghost' id='ss-clear' type='button'>Clear deck</button>
+<button class='ss-btn ghost' id='ss-acc' type='button'># (sharps)</button>
+<button class='ss-btn' id='ss-copy' type='button'>Copy results</button>
+</div>
+</div>
+<div class='ss-panel'>
+<div class='ss-panel-h'><h2>Match Matrix</h2></div>
+<p class='ss-sub'>Every scale in the database that contains your notes, ranked — fewest extra notes wins.</p>
+<div class='ss-out' id='ss-out'></div>
+</div>
+</div>
+<p class='ss-foot'>ℹ️ Database: major, natural minor, both pentatonics, blues, dorian, mixolydian and harmonic minor &times; all 12 roots (96 scales). Chromatic passing tones can hide the match — drop the odd one out and re-run.</p>
+</div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The Riff Comes First — Theory Comes Second</h2><p>Almost nobody writes music by thinking &ldquo;I would like to compose in D dorian today.&rdquo; The real workflow runs backwards: you are noodling on the guitar, you land on a handful of notes that sound right together, the riff is good &mdash; and you have no idea what scale you are actually in. Without a name for it, you cannot extend the riff, you cannot solo over it with confidence, and you cannot tell the bass player what to play. That gap between &ldquo;this sounds right&rdquo; and &ldquo;this is in such-and-such&rdquo; is exactly what a reverse scale finder closes.</p><p>Traditional scale tools go one direction: pick a scale, see the notes. That is useful for practice, but it is the opposite of how songs get written. ScaleSpot goes the other way &mdash; you feed it the notes you are already playing, and it searches 96 scales (eight scale types across all twelve roots) to find every scale that contains them, ranked so the tightest fit lands on top. It is the direction you actually write in.</p><h2>How the Matching Works</h2><p>The logic is simple set matching, and understanding it makes you a better user. Your notes are converted to pitch classes (C is C no matter the octave), then each of the 96 scales is checked: does this scale contain <em>all</em> of your notes? Every scale that passes becomes a candidate. Candidates are ranked by <strong>extra notes</strong> &mdash; how many scale tones you did <em>not</em> play. A five-note riff that exactly fills a pentatonic box (zero extra notes, 100% fit) outranks a seven-note scale that merely contains your five notes, because the tighter scale describes your riff more precisely.</p><p>This ranking mirrors how musicians actually think. If your riff uses C, D, E, G and A, calling it &ldquo;C major&rdquo; is technically true but musically vague &mdash; C major contains two notes you never touched. Calling it &ldquo;C major pentatonic&rdquo; (or its twin, A minor pentatonic) tells you exactly where you live. The fit meter on each result card makes this visible: 100% means your notes <em>are</em> the scale; lower percentages mean the scale is a bigger house with empty rooms.</p><h2>The Eight Scale Types in the Database</h2><p><strong>Major (1 2 3 4 5 6 7)</strong> is the bright, resolved default &mdash; the &ldquo;do re mi&rdquo; sound. <strong>Natural minor (1 2 b3 4 5 b6 b7)</strong> is its dark sibling, the classic emotional key of countless ballads and metal anthems. These two seven-note parents anchor everything else.</p><p><strong>Major pentatonic (1 2 3 5 6)</strong> and <strong>minor pentatonic (1 b3 4 5 b7)</strong> are the five-note workhorses. The minor pentatonic is the single most-played scale in rock guitar &mdash; the famous &ldquo;box&rdquo; shape. If your riff is four or five notes and sounds like rock, the answer is very often a pentatonic. <strong>Blues (1 b3 4 b5 5 b7)</strong> adds the flat-five &ldquo;blue note&rdquo; to the minor pentatonic; that one chromatic tone is the cry in the voice of blues and hard rock.</p><p>The three modes cover the in-between colors: <strong>dorian (1 2 b3 4 5 6 b7)</strong> is minor with a raised sixth &mdash; the Santana and funk sound; <strong>mixolydian (1 2 3 4 5 6 b7)</strong> is major with a flat seventh &mdash; the swagger of blues-rock and folk-rock; <strong>harmonic minor (1 2 b3 4 5 b6 7)</strong> raises the seventh for an exotic, tense pull back home &mdash; the sound of metal leads and Middle Eastern-flavored melodies.</p><h2>Reading Your Results Like a Musician</h2><p>Start with the <strong>best fit</strong> card, but do not stop there. The second and third results are often <em>relatives</em> of the first &mdash; A minor pentatonic and C major pentatonic contain the exact same notes, just centered on different roots. That is not a bug; it is music theory telling you that your riff has two valid homes. The practical question is: where does the riff <em>resolve</em>? If phrases keep landing on A, think A minor; if they land on C, think C major. The tool gives you the candidates; your ear picks the winner.</p><p>The <strong>formula line</strong> (e.g. 1 b3 4 5 b7) is worth learning to read. It describes each scale as alterations of the major scale, and once you can read formulas you can build any scale from any root without a tool. The <strong>mood note</strong> on each card is a one-line character sketch &mdash; useful when you are choosing between two close matches for a songwriting decision.</p><p>For major and natural minor results, the <strong>chords in key</strong> strip is pure gold. It shows the seven diatonic triads with their Roman numerals &mdash; the chord palette your riff was born from. Writing a chorus? Start with the I, IV and V. Need a sadder verse? Borrow from the vi or ii. This is the bridge from &ldquo;what scale is this&rdquo; to &ldquo;what do I play next.&rdquo;</p><h2>What to Do With the Answer</h2><p>A scale name is only useful if it changes what your hands do. Here is the playbook:</p><ol><li><strong>Extend the riff.</strong> The result card shows the full scale &mdash; the highlighted notes are yours, the rest are the notes you <em>have not tried yet</em>. Those unplayed scale tones are your safest melodic extensions.</li><li><strong>Solo over it.</strong> Play the matching pentatonic or full scale over the riff. Because every note belongs to the same family, nearly everything you play will sound intentional.</li><li><strong>Write the chords.</strong> Use the harmonized chords strip to build a progression under the riff. In major, I&ndash;V&ndash;vi&ndash;IV fits almost anything; in minor, try i&ndash;VI&ndash;III&ndash;VII.</li><li><strong>Talk to the band.</strong> &ldquo;It is in A minor pentatonic&rdquo; is a complete musical instruction. The bassist, keyboardist and second guitarist instantly know their note pool.</li><li><strong>Transpose it.</strong> Once you know the scale type, you can move the whole riff to any root and keep its character &mdash; handy when the singer needs it lower.</li></ol><h2>Common Traps (and How to Dodge Them)</h2><p><strong>The chromatic passing tone.</strong> The number-one reason a search returns nothing is a single note that does not belong &mdash; a bluesy flat-five slipped into a major riff, or a chromatic walk-up between chord tones. The tool tells you when no scale contains all your notes; the fix is to drop the odd one out and re-run. Passing tones are decoration, not residents.</p><p><strong>Key vs. scale confusion.</strong> &ldquo;What key is this in?&rdquo; and &ldquo;what scale is this?&rdquo; are cousins, not twins. A song in the key of C major might use C major pentatonic for the verse riff and C mixolydian for the solo &mdash; same key, different scales. ScaleSpot answers the scale question; the key is usually the chord the song resolves to.</p><p><strong>Too few notes.</strong> Two notes match dozens of scales &mdash; the ranking cannot help you because nearly everything fits. Give the tool at least four distinct notes; five to seven is the sweet spot where the best fit genuinely means something.</p><p><strong>Enharmonic blindness.</strong> Bb and A# are the same pitch. The sharps/flats toggle exists so the results speak your instrument's language &mdash; flat keys (F, Bb, Eb) read naturally in flats, sharp keys (G, D, A, E) in sharps. The matching is identical either way.</p><h2>Practice Drills Using Your Results</h2><p>Turn the tool into a teacher with three drills. <strong>Drill 1 &mdash; Fill the box:</strong> take your best-fit pentatonic and play it ascending and descending across all six strings, then improvise for two minutes using <em>only</em> those five notes. Constraint breeds melody. <strong>Drill 2 &mdash; Find the relatives:</strong> play your riff's scale, then its relative major/minor (the tool's second result is often the relative) back to back. Hear how the same notes change character when the root moves. <strong>Drill 3 &mdash; Chord-tone targeting:</strong> loop the I&ndash;IV&ndash;V from the harmonized strip and force yourself to land each chord change on a chord tone from the scale. This is the single fastest path from &ldquo;playing scales&rdquo; to &ldquo;playing music.&rdquo;</p><h2>Why This Beats Guessing (or Asking a Forum)</h2><p>Posting &ldquo;what scale is C D E G A&rdquo; on a forum gets you five confident, contradictory answers. The math does not argue: subset matching across a fixed, correct database gives you every valid answer, ranked by a transparent rule, in under a second. And unlike a forum, it shows its work &mdash; the fit meter, the formulas and the chord strips let you verify the answer with your own ears. Use the tool for speed, then use the drills above to make the knowledge yours. The goal was never the label; it is what the label lets you play next.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I use a reverse scale finder?</summary><p>Tap every distinct note in your riff or melody on the note deck — order doesn't matter. ScaleSpot checks all 96 scales in its database (8 scale types × 12 roots) and lists every scale containing your notes, ranked by fewest extra notes. The top card is your best fit, with the scale's notes, formula, mood and harmonized chords.</p></details>
+<details><summary>How many notes do I need to enter to identify a scale?</summary><p>Four distinct notes is the practical minimum; five to seven is the sweet spot. With only two or three notes, dozens of scales match and the ranking can't help you. If your riff is short, add the notes from the chord underneath it — that usually completes the picture.</p></details>
+<details><summary>What should I do if no scale matches my notes?</summary><p>You almost certainly have a chromatic passing tone — one note that decorates the riff but doesn't live in the scale, like a bluesy flat-five in a major riff. Remove the most suspicious note and re-run. The tool says so explicitly when the note set matches nothing.</p></details>
+<details><summary>What is the difference between A minor pentatonic and C major pentatonic in my results?</summary><p>They contain the exact same five notes — they're relatives. The difference is the tonal center: if your phrases resolve to A, think A minor; if they resolve to C, think C major. Seeing both in your results isn't a contradiction, it's theory telling you your riff has two valid homes.</p></details>
+<details><summary>Can I use the results to write chords for my riff?</summary><p>Yes — that's what the 'Chords in key' strip is for. For major and natural minor results it shows all seven diatonic triads with Roman numerals. Start with I, IV and V for a chorus, borrow the vi or ii for a sadder verse, and you'll stay inside the riff's harmonic world.</p></details>
+<details><summary>Does the sharps/flats toggle change the results?</summary><p>No — matching is done on pitch classes, so Bb and A# are identical to the engine. The toggle only changes how note names are displayed, so flat keys like F and Bb read naturally in flats and sharp keys like E and A read in sharps.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ScaleSpot</div>
+    <p>ScaleSpot works backwards from the notes of your riff to name the scale — ranked best-fit matches across 96 scales, with formulas, moods and the chords that live inside each one.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var SS_NOTES=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+var SS_FLATS={"DB":"C#","EB":"D#","GB":"F#","AB":"G#","BB":"A#"};
+var SS_SCALES=[
+["major",[0,2,4,5,7,9,11]],
+["natural minor",[0,2,3,5,7,8,10]],
+["major pentatonic",[0,2,4,7,9]],
+["minor pentatonic",[0,3,5,7,10]],
+["blues",[0,3,5,6,7,10]],
+["dorian",[0,2,3,5,7,9,10]],
+["mixolydian",[0,2,4,5,7,9,10]],
+["harmonic minor",[0,2,3,5,7,8,11]]];
+var SS_FORMULA={"major":"1 2 3 4 5 6 7","natural minor":"1 2 b3 4 5 b6 b7","major pentatonic":"1 2 3 5 6","minor pentatonic":"1 b3 4 5 b7","blues":"1 b3 4 b5 5 b7","dorian":"1 2 b3 4 5 6 b7","mixolydian":"1 2 3 4 5 6 b7","harmonic minor":"1 2 b3 4 5 b6 7"};
+var SS_MOOD={"major":"Bright, resolved — the default happy sound.","natural minor":"Dark, emotional — the classic sad key.","major pentatonic":"Open, sweet — country and folk melodies.","minor pentatonic":"The rock solo box — raw and punchy.","blues":"Gritty and vocal — the flat-5 is the cry.","dorian":"Minor with a lifted 6th — Santana, funk.","mixolydian":"Major with a flat 7th — blues-rock swagger.","harmonic minor":"Exotic tension — the raised 7th pulls hard home."};
+function ssNorm(n){var s=String(n).trim().toUpperCase().replace("\u266F","#").replace("\u266D","B");if(SS_FLATS[s])return SS_FLATS[s];return s;}
+function ssPc(n){return SS_NOTES.indexOf(ssNorm(n));}
+function identifyScale(notes){
+  var pcs=[];
+  (notes||[]).forEach(function(n){var p=ssPc(n);if(p>=0&&pcs.indexOf(p)<0)pcs.push(p);});
+  if(!pcs.length)return[];
+  var out=[];
+  SS_NOTES.forEach(function(root,ri){
+    SS_SCALES.forEach(function(st){
+      var sp=st[1].map(function(iv){return (ri+iv)%12;});
+      var ok=pcs.every(function(p){return sp.indexOf(p)>=0;});
+      if(ok)out.push({name:root+" "+st[0],extra:sp.length-pcs.length,notes:sp.map(function(p){return SS_NOTES[p];}),formula:SS_FORMULA[st[0]],mood:SS_MOOD[st[0]],fit:Math.round(pcs.length/sp.length*100)});
+    });
+  });
+  out.sort(function(a,b){return a.extra-b.extra||(a.name<b.name?-1:1);});
+  return out.slice(0,5).map(function(m){return m.name;});
+}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+  var deck=document.getElementById('ss-deck'),out=document.getElementById('ss-out'),
+      selRead=document.getElementById('ss-sel'),clearB=document.getElementById('ss-clear'),
+      copyB=document.getElementById('ss-copy'),accToggle=document.getElementById('ss-acc'),
+      lastResults=[];
+  if(!deck||!out)return;
+  var selected=[],useFlats=false;
+  var FLATN=["C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"];
+  function label(i){return useFlats?FLATN[i]:SS_NOTES[i];}
+  function renderDeck(){
+    deck.innerHTML='';
+    SS_NOTES.forEach(function(n,i){
+      var b=document.createElement('button');
+      b.type='button';b.className='ss-pad'+(selected.indexOf(i)>=0?' on':'');
+      b.textContent=label(i);b.setAttribute('aria-pressed',selected.indexOf(i)>=0?'true':'false');
+      b.addEventListener('click',function(){
+        var k=selected.indexOf(i);
+        if(k>=0)selected.splice(k,1);else selected.push(i);
+        renderDeck();identify();
+      });
+      deck.appendChild(b);
+    });
+    selRead.textContent=selected.length?selected.slice().sort(function(a,b){return a-b;}).map(label).join('  \u00B7  '):'Tap the pads above \u2014 start with your riff\u2019s notes.';
+  }
+  function chipRow(notes,hi){return notes.map(function(n){return '<span class="ss-chip'+(hi&&hi.indexOf(n)>=0?' hi':'')+'">'+n+'</span>';}).join('');}
+  function harmonized(rootIdx,type){
+    if(type!=='major'&&type!=='natural minor')return '';
+    var q=type==='major'?['','m','m','','','m','dim']:['m','dim','','m','m','',''];
+    var rom=type==='major'?['I','ii','iii','IV','V','vi','vii\u00B0']:['i','ii\u00B0','III','iv','v','VI','VII'];
+    var pcs=SS_SCALES.filter(function(s){return s[0]===type;})[0][1].map(function(iv){return (rootIdx+iv)%12;});
+    var cells=pcs.map(function(p,i){return '<span class="ss-hch">'+label(p)+q[i]+' <em>'+rom[i]+'</em></span>';}).join('');
+    return '<div class="ss-harm"><span class="ss-harm-t">Chords in key</span>'+cells+'</div>';
+  }
+  function identify(){
+    var notes=selected.map(function(i){return SS_NOTES[i];});
+    var pcs=selected.slice();
+    var all=[];
+    SS_NOTES.forEach(function(root,ri){
+      SS_SCALES.forEach(function(st){
+        var sp=st[1].map(function(iv){return (ri+iv)%12;});
+        if(pcs.every(function(p){return sp.indexOf(p)>=0;}))
+          all.push({name:root+' '+st[0],extra:sp.length-pcs.length,type:st[0],root:ri,
+            notes:sp.map(function(p){return label(p);}),raw:sp,
+            fit:Math.round(pcs.length/sp.length*100)});
+      });
+    });
+    all.sort(function(a,b){return a.extra-b.extra||(a.name<b.name?-1:1);});
+    lastResults=all.slice(0,5);
+    if(!pcs.length){out.innerHTML='<div class="ss-empty">Your ranked matches will appear here.<br>Tip: most riffs reveal themselves in 4\u20136 notes.</div>';return;}
+    if(!all.length){out.innerHTML='<div class="ss-empty">No single scale in the database holds all those notes.<br>Try removing a chromatic passing tone \u2014 the riff\u2019s home notes are usually 5\u20137 of them.</div>';return;}
+    out.innerHTML=all.slice(0,5).map(function(m,i){
+      return '<article class="ss-card'+(i===0?' best':'')+'">'+
+        '<div class="ss-rank">'+(i+1)+'</div>'+
+        '<div class="ss-card-b"><h3>'+m.name+(i===0?' <span class="ss-besttag">best fit</span>':'')+'</h3>'+
+        '<div class="ss-fit"><span class="ss-fit-t">Fit '+m.fit+'%</span><span class="ss-fitbar"><span style="width:'+m.fit+'%"></span></span><span class="ss-fit-t">'+m.extra+' extra note'+(m.extra===1?'':'s')+'</span></div>'+
+        '<div class="ss-chips">'+chipRow(m.notes,m.raw.filter(function(){return true;}).map(function(p){return label(p);}))+'</div>'+
+        '<p class="ss-formula">Formula '+SS_FORMULA[m.type]+' &nbsp;\u00B7&nbsp; '+SS_MOOD[m.type]+'</p>'+
+        harmonized(m.root,m.type)+
+        '</div></article>';
+    }).join('');
+  }
+  if(clearB)clearB.addEventListener('click',function(){selected=[];renderDeck();identify();});
+  if(accToggle)accToggle.addEventListener('click',function(){useFlats=!useFlats;accToggle.textContent=useFlats?'b (flats)':'# (sharps)';accToggle.classList.toggle('on',useFlats);renderDeck();identify();});
+  if(copyB)copyB.addEventListener('click',function(){
+    if(!lastResults.length)return;
+    var txt=lastResults.map(function(m,i){return (i+1)+'. '+m.name+' ('+m.fit+'% fit) \u2014 '+m.notes.join(' ');}).join('\n');
+    if(navigator.clipboard)navigator.clipboard.writeText('ScaleSpot results for ['+selected.map(label).join(' ')+']:\n'+txt);
+    copyB.textContent='Copied!';setTimeout(function(){copyB.textContent='Copy results';},1600);
+  });
+  renderDeck();identify();
+});}
+
+</script>
+</body>
+</html>
