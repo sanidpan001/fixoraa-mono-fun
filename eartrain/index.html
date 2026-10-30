@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EarTrain — Free Interval Ear Training Quiz</title>
+<meta name="description" content="Free interval ear training quiz: hear two real tones, name the interval, climb levels and build streaks. Train your musical ear in 10 minutes a day.">
+<link rel="canonical" href="https://fun.fixoraa.tech/eartrain/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="EarTrain — Free Interval Ear Training Quiz">
+<meta property="og:description" content="Free interval ear training quiz: hear two real tones, name the interval, climb levels and build streaks. Train your musical ear in 10 minutes a day.">
+<meta property="og:url" content="https://fun.fixoraa.tech/eartrain/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "EarTrain",
+      "url": "https://fun.fixoraa.tech/eartrain/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Free interval ear training quiz: hear two real tones, name the interval, climb levels and build streaks. Train your musical ear in 10 minutes a day.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's the best order to learn intervals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with 4 intervals (major 2nd, major 3rd, perfect 5th, octave), then add 4 more at intermediate, then the full 13 at advanced. Small sets with high accuracy beat large sets with guessing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should I practice ear training each day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ten focused minutes daily beats an hour weekly. Interval recognition is pattern learning, and it consolidates between sessions \u2014 consistency matters more than duration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I remember the tritone and minor 2nd?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The tritone (6 semitones) is dissonant and unmistakable \u2014 think The Simpsons theme. The minor 2nd (1 semitone) is the tense Jaws-theme sound. Reference songs make both easy to lock in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I practice ascending or descending intervals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ascending (low to high) is easier for beginners because the second note feels like a destination. Master ascending first, then practice descending intervals as a separate skill."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does singing intervals help even if I'm not a singer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 sing intervals even badly. Producing the sound with your voice builds muscular and auditory memory that passive listening can't match, and it directly improves intonation for singers and players."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which intervals should beginners learn first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Perfect 5ths and octaves first (most distinct), then 3rds and 4ths, then the chromatic ones (2nds, 6ths, 7ths, tritone). EarTrain's levels follow exactly this order."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F6FAFF; --surface:#FFFFFF; --accent:#4A5FD9; --accent-ink:#FFFFFF;
+  --ink:#1E2440; --muted:#4B5470; --line:#DCE3F4;
+  --display:'Be Vietnam Pro',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.et-hero{text-align:center;max-width:720px;margin:0 auto 26px}.et-kicker{display:inline-block;background:#E3E9FB;color:#4A5FD9;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin:0 0 12px}.et-hero h1{font-family:'Be Vietnam Pro',Inter,sans-serif;font-size:clamp(2.4rem,6vw,3.8rem);margin:0 0 10px;letter-spacing:-.02em;color:#1E2440}.et-hero p{color:#4B5470;font-size:1.12rem;margin:0}.et-card{max-width:640px;margin:0 auto;background:#fff;border:2px solid #DCE3F4;border-radius:26px;padding:30px;box-shadow:0 18px 40px rgba(74,95,217,.10)}.et-levels{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}.et-lvl{border:2px solid #DCE3F4;background:#F6FAFF;color:#1E2440;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;cursor:pointer;min-height:44px}.et-lvl.active{background:#4A5FD9;border-color:#4A5FD9;color:#fff}.et-playrow{text-align:center;margin:6px 0 18px}.et-play{background:#4A5FD9;color:#fff;border:none;font-size:1.1rem;font-weight:800;padding:16px 40px;border-radius:999px;cursor:pointer;min-height:56px;box-shadow:0 8px 20px rgba(74,95,217,.35)}.et-play:active{transform:scale(.97)}.et-staff-note{font-size:15px;color:#4B5470;text-align:center;margin-bottom:16px;min-height:22px;font-weight:600}.et-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.et-choice{border:2px solid #DCE3F4;background:#F6FAFF;border-radius:14px;padding:14px;font-size:15px;font-weight:700;color:#1E2440;cursor:pointer;min-height:56px}.et-choice.correct{background:#1E9E6A;border-color:#1E9E6A;color:#fff}.et-choice.wrong{background:#D64545;border-color:#D64545;color:#fff}.et-choice:disabled{opacity:.85;cursor:default}.et-score{display:flex;justify-content:center;gap:26px;margin-top:20px;flex-wrap:wrap}.et-score div{text-align:center}.et-score b{display:block;font-size:1.7rem;color:#4A5FD9}.et-score span{font-size:12px;font-weight:700;color:#4B5470;text-transform:uppercase;letter-spacing:.06em}.et-feedback{text-align:center;font-weight:700;margin-top:14px;min-height:26px;font-size:16px}@media(max-width:640px){.et-card{padding:20px}.et-choices{grid-template-columns:1fr}.et-hero h1{font-size:2.2rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="EarTrain home">
+      <span class="fx-logo-tile" aria-hidden="true">🎧</span>
+      <span class="fx-brand">EarTrain</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-hero-card" aria-label="EarTrain tool">
+<div class="et-hero"><p class="et-kicker">Free ear training</p><h1>EarTrain</h1><p>Hear two notes. Name the interval. Build an ear musicians envy — ten minutes a day.</p></div><div class="et-card"><div class="et-levels" role="group" aria-label="Difficulty level"><button class="et-lvl active" data-lvl="0">🌱 Beginner</button><button class="et-lvl" data-lvl="1">🌿 Intermediate</button><button class="et-lvl" data-lvl="2">🔥 Advanced</button></div><div class="et-playrow"><button class="et-play" id="etPlay">▶ Play interval</button></div><div class="et-staff-note" id="etHint">Press play, listen, then pick the interval below.</div><div class="et-choices" id="etChoices"></div><div class="et-feedback" id="etFeedback"></div><div class="et-score"><div><b id="etStreak">0</b><span>Streak</span></div><div><b id="etCorrect">0</b><span>Correct</span></div><div><b id="etTotal">0</b><span>Answered</span></div><div><b id="etAcc">—</b><span>Accuracy</span></div></div></div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What interval ear training actually is</h2><p>An interval is the distance between two notes, measured in semitones. A perfect 5th (seven semitones, like the opening of "Twinkle Twinkle") sounds completely different from a minor 2nd (one semitone, the "Jaws" theme). Interval ear training is the practice of hearing two notes and naming that distance instantly — and it's the single fastest way to improve as a musician, whether you play, sing, produce or just love music.</p><p>Why does it matter? Because every melody, chord and bassline is built from intervals. When you can identify them by ear, you can learn songs without tabs, transcribe solos, sing harmonies, and understand why some chord changes give you goosebumps. It's the difference between reading about swimming and getting in the water.</p><h2>The 13 intervals you need to know</h2><p>There are twelve semitones in an octave, giving thirteen interval names from unison to octave. Each has a famous reference song that makes it memorable — musicians have used these mnemonics for generations.</p><table><thead><tr><th>Semitones</th><th>Interval</th><th>Reference song</th></tr></thead><tbody><tr><td>0</td><td>Unison</td><td>— (same note)</td></tr><tr><td>1</td><td>Minor 2nd</td><td>Jaws theme</td></tr><tr><td>2</td><td>Major 2nd</td><td>Happy Birthday (first two notes)</td></tr><tr><td>3</td><td>Minor 3rd</td><td>Smoke on the Water riff</td></tr><tr><td>4</td><td>Major 3rd</td><td>When the Saints Go Marching In</td></tr><tr><td>5</td><td>Perfect 4th</td><td>Here Comes the Bride</td></tr><tr><td>6</td><td>Tritone</td><td>The Simpsons theme</td></tr><tr><td>7</td><td>Perfect 5th</td><td>Twinkle Twinkle Little Star</td></tr><tr><td>8</td><td>Minor 6th</td><td>The Entertainer</td></tr><tr><td>9</td><td>Major 6th</td><td>My Bonnie Lies Over the Ocean</td></tr><tr><td>10</td><td>Minor 7th</td><td>Somewhere (West Side Story)</td></tr><tr><td>11</td><td>Major 7th</td><td>Take On Me (chorus leap)</td></tr><tr><td>12</td><td>Octave</td><td>Somewhere Over the Rainbow</td></tr></tbody></table><h2>How to practice: the level system</h2><h3>Level 1 — Beginner: the big, obvious ones</h3><p>Start with just four intervals: major 2nd, major 3rd, perfect 5th and octave. These are the most distinct-sounding and the most common in pop music. Practice until you score 8 out of 10 consistently. Most people manage this in a few days of short sessions.</p><h3>Level 2 — Intermediate: filling the gaps</h3><p>Add perfect 4th, minor 3rd, major 6th and minor 7th. The 4th vs 5th distinction trips up nearly everyone at first — the trick is that the 5th sounds "complete" and powerful while the 4th sounds slightly suspended, like it's leaning forward. The minor 3rd has a sad, dark colour compared to the bright major 3rd.</p><h3>Level 3 — Advanced: the full chromatic set</h3><p>Add the remaining five: unison, minor 2nd, tritone, minor 6th and major 7th. The tritone (six semitones) is famously dissonant — medieval musicians called it "the devil in music." The minor 2nd is the tense, itchy sound of horror-movie scores. At this level you're identifying all thirteen intervals, which is a genuinely professional-grade ear.</p><h2>Practice tips that actually work</h2><p><strong>Short sessions beat marathons.</strong> Ten focused minutes daily builds ear skills far faster than an hour once a week. Ear training is pattern recognition, and pattern recognition consolidates during sleep.</p><p><strong>Sing the intervals.</strong> Even badly. Producing the interval with your voice builds a physical memory that passive listening never creates. Sing the reference songs, then sing the interval alone.</p><p><strong>Learn intervals ascending first.</strong> Notes played low-to-high are easier to judge than high-to-low. Master ascending, then add descending.</p><p><strong>Use reference songs shamelessly.</strong> Every professional musician learned intervals with song mnemonics. Keep your personal reference list — songs you know cold — and mentally hum them when unsure.</p><p><strong>Test, don't just drill.</strong> Quizzing yourself (like EarTrain does) with immediate feedback is dramatically more effective than passively listening to interval examples. The streak system exists because the mild pressure of "don't break the streak" keeps you focused.</p><h2>From intervals to real musicianship</h2><p>Once intervals feel easy, the same skill unlocks chord qualities (major vs minor vs dominant 7th), scale degrees, and eventually full transcription. Film composers, session players and producers all describe the moment intervals "clicked" as the point music stopped being mysterious. Ten minutes a day with a quiz like this is the shortest path there.</p><h2>After intervals: chord qualities</h2><p>Once intervals feel easy, the natural next step is chord qualities — hearing whether a chord is major, minor, dominant 7th or diminished. The good news: chord quality is just intervals stacked. A major triad is a major 3rd plus a perfect 5th; a minor triad swaps in a minor 3rd. Train chord qualities the same way: short daily quizzes, small sets (major vs minor first), reference songs (major = \"Happy Birthday\" brightness, minor = \"Smoke on the Water\" darkness). Most students find chord qualities click faster than intervals did, because the ear is already trained.</p><h2>Functional hearing: scale degrees</h2><p>The advanced level of ear training is functional — hearing notes as scale degrees (1, 2, 3…) within a key rather than as isolated intervals. This is how session musicians transcribe so fast: they hear the bass note as \"that's the 5 going to the 1\" and the melody writes itself. To start, play a major scale, then quiz yourself on random degrees against a drone of the tonic. It's humbling at first and transformative within weeks.</p><h2>Ear training for producers</h2><p>Producers use interval skills differently: recognising the interval between a vocal and a harmony, identifying the bass movement under a sample, or hearing that a synth line clashes by a minor 2nd. If you produce, practice with your own sounds — run EarTrain-style drills using your DAW's piano roll, then apply the skill to EQ decisions (\"that resonance is a major 3rd above the fundamental\"). The ear is the most important plugin you own.</p><h2>Breaking through plateaus</h2><p>Every ear-training student stalls — usually at 4th vs 5th, or 6th vs 7th. The fix is never \"more of the same.\" Instead: shrink the set to just the two confused intervals and drill them head-to-head for a week. Sing both repeatedly. Find new reference songs for each. Sleep on it — literally; interval recognition consolidates overnight, and confused pairs often resolve after a few nights. Plateaus aren't failure; they're the ear reorganising at a deeper level.</p><h2>How good can your ear get?</h2><p>With consistent practice, most people reach reliable interval identification within 3–6 months — a skill that permanently changes how you hear music. Perfect pitch (naming notes with no reference) is largely innate and not the goal; relative pitch (intervals, degrees, qualities) is trainable at any age and far more musically useful. Ten minutes a day is the whole price of admission.</p><h2>Training with a partner</h2><p>Ear training with a friend multiplies the value: take turns playing intervals for each other on your instruments, and argue about the tricky ones. Explaining <em>why</em> you heard a perfect 4th instead of a 5th forces the kind of active listening that solo quizzes can't quite replicate. Music schools have run ear training as a group class for a century for exactly this reason — the social pressure and discussion accelerate learning.</p><h2>When to trust your ear on stage</h2><p>The end goal isn't quiz scores — it's musical situations. The guitarist who hears the singer modulate up a semitone and follows instantly, the singer who finds a harmony a 3rd above the melody without hunting, the producer who identifies a clashing interval in a mix. Every EarTrain session is rehearsal for those moments. Quiz until it's boring, then go use it on real music — that's where the skill compounds.</p><h2>Melodic vs harmonic intervals: the missing half of ear training</h2><p>Everything covered so far is a <em>melodic</em> interval — two notes heard one after the other, like the opening of a song. But real music stacks notes <em>simultaneously</em> too, and a <em>harmonic</em> interval — two notes played at the same time — is a different puzzle for your ear.</p><p>The distinction matters because the two forms behave differently. A major 3rd played melodically (C, then E) is easy: you hear the leap. Played harmonically (C and E together), the notes fuse into a single blended sonority, and beginners often hear just "a chord" without naming the distance. Yet harmony is where intervals do their emotional work: every triad, every bassline-against-melody moment, every film-score swell is built from harmonic intervals.</p><p>The fix is to train harmonic intervals as their own category. Start with the stable ones — perfect 5ths and octaves, where the fusion is cleanest — then move to 3rds and 6ths, where consonance starts colouring the sound. Tackle 2nds and 7ths last: their tension is exactly what makes jazz and film scores shimmer.</p><p>Practical drill: hear a harmonic interval, then sing the <em>bottom</em> note and the <em>top</em> note separately. This "un-fusing" trains your ear to pull apart what harmony glues together — the exact skill transcribers and arrangers use every day.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What&#x27;s the best order to learn intervals?</summary><p>Start with 4 intervals (major 2nd, major 3rd, perfect 5th, octave), then add 4 more at intermediate, then the full 13 at advanced. Small sets with high accuracy beat large sets with guessing.</p></details>
+<details><summary>How long should I practice ear training each day?</summary><p>Ten focused minutes daily beats an hour weekly. Interval recognition is pattern learning, and it consolidates between sessions — consistency matters more than duration.</p></details>
+<details><summary>How do I remember the tritone and minor 2nd?</summary><p>The tritone (6 semitones) is dissonant and unmistakable — think The Simpsons theme. The minor 2nd (1 semitone) is the tense Jaws-theme sound. Reference songs make both easy to lock in.</p></details>
+<details><summary>Should I practice ascending or descending intervals?</summary><p>Ascending (low to high) is easier for beginners because the second note feels like a destination. Master ascending first, then practice descending intervals as a separate skill.</p></details>
+<details><summary>Does singing intervals help even if I&#x27;m not a singer?</summary><p>Yes — sing intervals even badly. Producing the sound with your voice builds muscular and auditory memory that passive listening can't match, and it directly improves intonation for singers and players.</p></details>
+<details><summary>Which intervals should beginners learn first?</summary><p>Perfect 5ths and octaves first (most distinct), then 3rds and 4ths, then the chromatic ones (2nds, 6ths, 7ths, tritone). EarTrain's levels follow exactly this order.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">EarTrain</div>
+    <p>EarTrain is a free interval ear-training quiz — hear two notes, name the interval, build levels and streaks.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function intervalName(semitones){var names={0:'Unison',1:'Minor 2nd',2:'Major 2nd',3:'Minor 3rd',4:'Major 3rd',5:'Perfect 4th',6:'Tritone',7:'Perfect 5th',8:'Minor 6th',9:'Major 6th',10:'Minor 7th',11:'Major 7th',12:'Octave'};return names[semitones]||null;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+var LEVELS=[[2,4,7,12],[2,3,4,5,7,9,10,12],[0,1,2,3,4,5,6,7,8,9,10,11,12]];
+var level=0,current=null,streak=0,correct=0,total=0;
+var ctx=null;function audio(){if(!ctx){var AC=window.AudioContext||window.webkitAudioContext;ctx=new AC();}if(ctx.state==='suspended')ctx.resume();return ctx;}
+function tone(freq,t0,dur){var c=audio();var o=c.createOscillator();var g=c.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(0.5,t0+0.03);g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);o.connect(g);g.connect(c.destination);o.start(t0);o.stop(t0+dur+0.05);}
+function playInterval(semi){var c=audio();var t=c.currentTime+0.05;var base=261.63;tone(base,t,0.7);tone(base*Math.pow(2,semi/12),t+0.8,0.9);}
+function newRound(){var pool=LEVELS[level];current=pool[Math.floor(Math.random()*pool.length)];var opts=[current];while(opts.length<4){var cand=pool[Math.floor(Math.random()*pool.length)];if(opts.indexOf(cand)<0)opts.push(cand);}
+opts.sort(function(){return Math.random()-0.5;});var box=document.getElementById('etChoices');box.innerHTML='';document.getElementById('etFeedback').textContent='';document.getElementById('etHint').textContent='Listen carefully… which interval was that?';opts.forEach(function(s){var b=document.createElement('button');b.className='et-choice';b.textContent=intervalName(s);b.addEventListener('click',function(){answer(s,b);});box.appendChild(b);});playInterval(current);}
+function answer(s,btn){var buttons=document.getElementById('etChoices').children;for(var i=0;i<buttons.length;i++)buttons[i].disabled=true;total++;var ok=(s===current);if(ok){correct++;streak++;btn.classList.add('correct');document.getElementById('etFeedback').textContent='✓ Correct! That was a '+intervalName(current)+'.';document.getElementById('etFeedback').style.color='#1E9E6A';}else{streak=0;btn.classList.add('wrong');document.getElementById('etFeedback').textContent='✗ That was a '+intervalName(current)+'. Try again!';document.getElementById('etFeedback').style.color='#D64545';for(var j=0;j<buttons.length;j++){if(buttons[j].textContent===intervalName(current))buttons[j].classList.add('correct');}}
+document.getElementById('etStreak').textContent=streak;document.getElementById('etCorrect').textContent=correct;document.getElementById('etTotal').textContent=total;document.getElementById('etAcc').textContent=Math.round(100*correct/total)+'%';setTimeout(newRound,1600);}
+document.getElementById('etPlay').addEventListener('click',newRound);
+var lvls=document.querySelectorAll('.et-lvl');lvls.forEach(function(l){l.addEventListener('click',function(){lvls.forEach(function(x){x.classList.remove('active');});l.classList.add('active');level=+l.dataset.lvl;newRound();});});
+});}
+</script>
+</body>
+</html>
