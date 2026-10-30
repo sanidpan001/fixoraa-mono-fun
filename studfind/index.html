@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stud Spacing Layout Calculator | StudFind</title>
+<meta name="description" content="Stud spacing layout calculator: every stud position from the corner for 16 or 24 in spacing, visual strip, and king/cripple stud notes. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/studfind/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Stud Spacing Layout Calculator | StudFind">
+<meta property="og:description" content="Stud spacing layout calculator: every stud position from the corner for 16 or 24 in spacing, visual strip, and king/cripple stud notes. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/studfind/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "StudFind",
+      "url": "https://fun.fixoraa.tech/studfind/",
+      "applicationCategory": "DIY Tools",
+      "operatingSystem": "Web",
+      "description": "Stud spacing layout calculator: every stud position from the corner for 16 or 24 in spacing, visual strip, and king/cripple stud notes. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should studs be 16 or 24 inches apart?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "16 inches on center is the standard for load-bearing and exterior walls \u2014 it aligns with 48-inch sheet goods so every edge lands on a stud. 24-inch spacing is fine for interior non-load-bearing walls and saves lumber, but needs 5/8-inch drywall on ceilings to prevent sag."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 16 inches on center mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On center means measured from the center of one stud to the center of the next \u2014 not edge to edge. Since studs are 1.5 inches wide, edge-to-edge measuring drifts your layout half an inch per bay and leaves sheet edges floating."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my wall length isn't a multiple of the spacing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 the tool always includes a stud at the wall's far end, even when it doesn't fall on a spacing interval. A 2-ft wall at 16-inch spacing gives positions 0, 16, 24. Real walls always get an end stud to close the wall and support the top plate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are king, jack, and cripple studs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "King studs are full-height studs flanking a door or window opening; jack studs (trimmers) sit inside the kings and carry the header. Cripple studs are short studs above the header and below the sill that keep the layout rhythm so sheathing lands on framing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a double top plate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Load-bearing walls get a double top plate to tie intersecting walls together and spread loads \u2014 stagger the second plate's joints at least 24 inches from the first plate's joints. Interior non-load-bearing walls can use a single top plate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the bottom plate need to be pressure-treated on concrete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bottom plates sitting on concrete must be pressure-treated lumber (plus a sill gasket in most codes) or they will rot from moisture wicking up. This is one of the most common and most damaging framing shortcuts."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F4F7F0; --surface:#FFFFFF; --accent:#4D7C0F; --accent-ink:#FFFFFF;
+  --ink:#20242C; --muted:#5A6478; --line:#DEE7D3;
+  --display:'Archivo',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.sd-wrap{font-family:Inter,system-ui,sans-serif;background:#F4F7F0;color:#20242C;padding:64px 20px 84px;}.sd-inner{max-width:680px;margin:0 auto;}.sd-head{text-align:center;margin-bottom:32px;}.sd-logo{width:72px;height:72px;margin:0 auto 16px;border-radius:50%;background:linear-gradient(135deg,#4D7C0F,#8ab53f);color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(77,124,15,.25);}.sd-head h1{font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(30px,5vw,46px);margin:0 0 10px;letter-spacing:-.02em;}.sd-head p{color:#5A6478;margin:0;font-size:16.5px;}.sd-card{background:#FFFFFF;border:1px solid #DEE7D3;border-radius:26px;padding:36px;box-shadow:0 24px 60px rgba(77,124,15,.10);}.sd-field{margin-bottom:18px;}.sd-field label{display:block;font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#5A6478;margin-bottom:8px;}.sd-field input{width:100%;padding:14px;font-size:17px;border:2px solid #DEE7D3;border-radius:14px;font-family:inherit;color:#20242C;background:#F4F7F0;box-sizing:border-box;min-height:56px;}.sd-field input:focus{outline:none;border-color:#4D7C0F;}.sd-seg{display:flex;gap:10px;}.sd-seg button{flex:1;border:2px solid #DEE7D3;background:#fff;border-radius:14px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;color:#20242C;}.sd-seg button.on{border-color:#4D7C0F;background:#F4F7F0;color:#4D7C0F;}.sd-strip{margin-top:26px;background:#F4F7F0;border:1px solid #DEE7D3;border-radius:16px;padding:22px 18px 14px;position:relative;min-height:96px;}.sd-strip .sd-line{position:absolute;left:18px;right:18px;top:52px;height:6px;background:#DEE7D3;border-radius:3px;}.sd-tick{position:absolute;top:34px;transform:translateX(-50%);text-align:center;}.sd-tick .sd-mark{width:10px;height:42px;background:#4D7C0F;border-radius:3px;margin:0 auto;} .sd-tick.end .sd-mark{background:#20242C;} .sd-tick .sd-num{font-size:11px;font-weight:700;color:#5A6478;margin-top:4px;white-space:nowrap;}.sd-count{margin-top:18px;text-align:center;font-size:16px;font-weight:800;color:#4D7C0F;}.sd-list{margin-top:14px;font-size:14.5px;color:#5A6478;line-height:1.9;text-align:center;}.sd-notes{margin-top:24px;border-top:1px solid #DEE7D3;padding-top:18px;font-size:14px;color:#5A6478;line-height:1.7;}.sd-notes strong{color:#20242C;}.sd-compare{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}.sd-cmp{background:#F4F7F0;border:1px solid #DEE7D3;border-radius:12px;padding:12px;text-align:center;font-size:13.5px;}.sd-cmp strong{display:block;font-size:18px;color:#4D7C0F;}@media (max-width:560px){.sd-card{padding:24px 16px;}.sd-compare{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="StudFind home">
+      <span class="fx-logo-tile" aria-hidden="true">🔨</span>
+      <span class="fx-brand">StudFind</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-zen-single" aria-label="StudFind tool">
+<section class='sd-wrap'><div class='sd-inner'><div class='sd-head'><div class='sd-logo' aria-hidden='true'>🔨</div><h1>Stud Spacing Layout Calculator</h1><p>Every stud, exactly where it belongs.</p></div><div class='sd-card'><div class='sd-field'><label for='sd-wall'>Wall length (feet)</label><input id='sd-wall' type='number' min='0' step='0.5' value='8' inputmode='decimal'></div><div class='sd-field'><label>Stud spacing</label><div class='sd-seg' id='sd-seg' role='radiogroup' aria-label='Stud spacing'><button type='button' data-sp='16' class='on'>16 in o.c.</button><button type='button' data-sp='24'>24 in o.c.</button></div></div><div class='sd-strip' id='sd-strip' aria-hidden='true'><div class='sd-line'></div></div><div class='sd-count' id='sd-count'></div><div class='sd-list' id='sd-list'></div><div class='sd-compare' id='sd-compare'></div><div class='sd-notes'><strong>King &amp; cripple stud notes:</strong> every door/window opening needs 2 king studs (full height) + 2 jack studs (under the header). Add short cripple studs above headers and below sills to keep the layout rhythm. Budget 1 extra stud per corner and wall intersection for drywall backing. Mark centers at spacing minus 3/4 in from the wall end for textbook layout.</div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Stud Spacing Is Not Random</h2><p>Walk up to any framed wall in North America and the studs will almost certainly sit 16 inches apart, center to center. That number is not arbitrary — it is the product of material dimensions, structural engineering, and a century of building convention converging on one spacing that makes everything else work. A standard sheet of plywood or drywall is 48 inches wide; at 16-inch spacing, every sheet edge lands exactly on a stud center (0, 16, 32, 48), so nothing is left floating. The calculator above applies this logic to any wall length: enter the length, pick 16 or 24 inch spacing, and it returns every stud position measured from the corner.</p><p>Spacing is measured <strong>on center</strong> (o.c.) — from the center of one stud to the center of the next — not edge to edge. This matters because studs are 1.5 inches wide; measuring edge to edge would drift your layout by half an inch per bay and leave sheet edges hanging.</p><h2>16 vs 24 Inches: The Real Trade-off</h2><table><thead><tr><th></th><th>16 in o.c.</th><th>24 in o.c.</th></tr></thead><tbody><tr><td>Studs per 8-ft wall</td><td>7</td><td>5</td></tr><tr><td>Lumber use</td><td>~40% more</td><td>Baseline</td></tr><tr><td>Wall strength</td><td>Higher</td><td>Adequate for most</td></tr><tr><td>Insulation cavity</td><td>Narrower batts</td><td>Wider batts, fewer thermal bridges</td></tr><tr><td>Drywall support</td><td>Stiffer, less sag</td><td>Needs 5/8 in drywall on ceilings</td></tr><tr><td>Typical use</td><td>Load-bearing, exterior</td><td>Interior non-load-bearing</td></tr></tbody></table><p>Sixteen-inch spacing is the default for load-bearing and exterior walls in most codes. Twenty-four-inch spacing — called <strong>advanced framing</strong> when used on exteriors — saves lumber, reduces thermal bridging (studs conduct heat far worse than insulation does), and is perfectly adequate for interior non-load-bearing walls. The catch: 24-inch spacing needs thicker drywall on ceilings (1/2-inch sags between 24-inch joists) and is not allowed for some load-bearing situations. When in doubt, check your local code — and for anything structural, 16 inches is never wrong.</p><h2>Reading the Layout: Positions From the Corner</h2><p>The tool's positions are measured in inches from the <strong>corner</strong> (the outside face of the end stud). The first position is always 0 — the corner stud itself — then each spacing interval: 16, 32, 48, and so on. The final position is the far end of the wall, even when it does not fall exactly on a spacing interval. That is why a 2-foot (24-inch) wall at 16-inch spacing gives positions 0, 16, 24: the last stud lands at the wall's end.</p><p>This end-stud behavior reflects real framing. Walls are built as assemblies: the corner gets its stud, then layout proceeds at the chosen interval, and the far end always gets a stud to close the wall and support the top plate. Openings complicate things — windows and doors get king studs (full-height, beside the opening) and jack studs (supporting the header) — which is why the tool includes king/cripple notes for walls with openings.</p><h3>The 3/4-inch layout trick</h3><p>Old-school framers hook their tape on the end of the wall and mark stud centers at 15-1/4, 31-1/4, 47-1/4 inches — that is, 16 inches on center <em>minus half a stud width</em>. Why? Because the first stud's center sits 3/4 inch from the wall's end (half of the 1.5-inch stud). Marking this way means every subsequent mark is a true center, and 48-inch sheet edges land dead on. The tool reports positions from the corner face; subtract 3/4 inch when marking centers on your plates if you want textbook layout.</p><h2>King, Jack, and Cripple Studs</h2><p>A plain wall needs only common studs, but every door and window opening needs a small family of specialty studs:</p><ul><li><strong>King studs:</strong> full-height studs on each side of the opening, nailed to the common studs. They anchor the whole opening assembly.</li><li><strong>Jack studs</strong> (trimmer studs): shorter studs nailed inside the kings that carry the header's weight down to the bottom plate.</li><li><strong>Header:</strong> the beefy horizontal beam spanning the opening — sized by the opening width and the load above (this is engineering; follow span tables or an engineer's spec).</li><li><strong>Cripple studs:</strong> short studs above the header and below the sill that maintain the 16/24-inch layout rhythm across the opening so sheathing and drywall still land on framing.</li></ul><p>Count on two kings plus two jacks per opening when ordering lumber, plus cripples every 16 (or 24) inches across the header's width. Openings are where framing lumber estimates go wrong — a wall with three windows needs noticeably more studs than the plain-wall math suggests.</p><h2>Corners, Intersections, and Top Plates</h2><p>Real walls are not isolated lines — they meet at corners and T-intersections, and each junction needs backing for drywall. The standard corner uses three studs arranged so drywall has nailing on both faces. T-intersections where a partition meets an exterior wall need a similar backing stud. Budget one extra stud per corner and per intersection beyond the layout math.</p><p><strong>Top plates</strong> deserve their own note: load-bearing walls get a <em>double</em> top plate (two horizontal 2×4s), which ties intersecting walls together and distributes loads. The second plate's joints must overlap the first plate's joints by at least 24 inches — stagger them deliberately when you cut plates to length.</p><h2>Marking and Building the Wall</h2><ol><li><strong>Cut plates to length</strong> — bottom plate (pressure-treated if on concrete) and top plate(s), all the same length as the wall.</li><li><strong>Lay plates side by side</strong> on the floor or sawhorses, ends flush.</li><li><strong>Mark stud positions</strong> on both plates simultaneously using the tool's position list — mark an X on the side where each stud goes.</li><li><strong>Mark openings</strong> — kings, jacks, header height, cripples — before nailing anything.</li><li><strong>Nail studs between plates</strong> (three 16d nails per end, or structural screws), keeping crowns (the bow in each stud) facing the same way.</li><li><strong>Square the wall</strong> by measuring diagonals before sheathing — equal diagonals mean square.</li><li><strong>Raise, plumb, and brace</strong> before attaching to the structure.</li></ol><h2>Common Layout Mistakes</h2><ul><li><strong>Measuring edge to edge:</strong> layout is on center. Half-inch drift per bay adds up to floating sheet edges.</li><li><strong>Forgetting the end stud:</strong> the far end of every wall needs a stud — the tool includes it automatically.</li><li><strong>Ignoring crowns:</strong> every stud bows slightly; crown them all the same direction or the wall waves.</li><li><strong>Skipping backing at intersections:</strong> drywall with nothing to nail to cracks within a year.</li><li><strong>Wrong plate on concrete:</strong> bottom plates on concrete must be pressure-treated (and usually need a sill gasket) or they rot.</li></ul><p>Stud layout is one of those jobs where ten minutes with a calculator and a tape measure saves hours of rework. Get the positions right on the plates, and the wall practically builds itself.</p><h2>Advanced Framing: Doing More With Less</h2><p><strong>Advanced framing</strong> (optimum value engineering) redesigns the wall to use a third less lumber: 24-inch stud spacing, single top plates with aligned framing, two-stud corners, and no cripples where sheathing spans the gap. It is code-legal for many applications, cuts thermal bridging dramatically (every missing stud is insulation instead of a heat leak), and lowers material costs. The trade-offs are real: it demands careful planning, drywall crews must know the 24-inch layout, and some inspectors scrutinize it more closely. For interior non-load-bearing walls, though, 24-inch spacing with a single top plate is simply the efficient default — there is no structural argument for 16 inches there.</p><h2>Plumbing and Electrical in Stud Walls</h2><p>Walls are also chases for services, and layout should anticipate them. <strong>Electrical:</strong> drill holes through stud centers (never notch the edge beyond code limits — generally no more than 25 percent of stud depth for load-bearing), keep holes 1-1/4 inches from the stud face or add nail plates, and plan outlet boxes on the stud layout so boxes land on framing. <strong>Plumbing:</strong> drain pipes need bigger holes than studs allow — plan plumbing walls as 2×6 walls, where there is room to bore without compromising structure. Mark all service locations on your plates during layout; drilling after drywall is how pipes get pierced.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>Should studs be 16 or 24 inches apart?</summary><p>16 inches on center is the standard for load-bearing and exterior walls — it aligns with 48-inch sheet goods so every edge lands on a stud. 24-inch spacing is fine for interior non-load-bearing walls and saves lumber, but needs 5/8-inch drywall on ceilings to prevent sag.</p></details>
+<details><summary>What does 16 inches on center mean?</summary><p>On center means measured from the center of one stud to the center of the next — not edge to edge. Since studs are 1.5 inches wide, edge-to-edge measuring drifts your layout half an inch per bay and leaves sheet edges floating.</p></details>
+<details><summary>What if my wall length isn&#x27;t a multiple of the spacing?</summary><p>No — the tool always includes a stud at the wall's far end, even when it doesn't fall on a spacing interval. A 2-ft wall at 16-inch spacing gives positions 0, 16, 24. Real walls always get an end stud to close the wall and support the top plate.</p></details>
+<details><summary>What are king, jack, and cripple studs?</summary><p>King studs are full-height studs flanking a door or window opening; jack studs (trimmers) sit inside the kings and carry the header. Cripple studs are short studs above the header and below the sill that keep the layout rhythm so sheathing lands on framing.</p></details>
+<details><summary>Do I need a double top plate?</summary><p>Load-bearing walls get a double top plate to tie intersecting walls together and spread loads — stagger the second plate's joints at least 24 inches from the first plate's joints. Interior non-load-bearing walls can use a single top plate.</p></details>
+<details><summary>Why does the bottom plate need to be pressure-treated on concrete?</summary><p>Bottom plates sitting on concrete must be pressure-treated lumber (plus a sill gasket in most codes) or they will rot from moisture wicking up. This is one of the most common and most damaging framing shortcuts.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">StudFind</div>
+    <p>StudFind plans stud layouts: every stud position from the corner for any wall length and spacing, with a visual strip.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function studPositions(wallFt,spacingIn){var total=Number(wallFt)*12,sp=Number(spacingIn);if(!(total>0)||!(sp>0))return [];var out=[];for(var p=0;p<total;p+=sp){out.push(Math.round(p*100)/100);}var last=out[out.length-1];if(Math.abs(last-total)>1e-9)out.push(Math.round(total*100)/100);return out;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){function el(id){return document.getElementById(id);}var spacing=16;function render(){var wall=el('sd-wall');if(!wall)return;var wf=Number(wall.value);var pos=studPositions(wf,spacing);var strip=el('sd-strip');if(strip){var old=strip.querySelectorAll('.sd-tick');for(var i=old.length-1;i>=0;i--)old[i].remove();var totalIn=wf*12;pos.forEach(function(p){var t=document.createElement('div');t.className='sd-tick'+(Math.abs(p-totalIn)<1e-9?' end':'');var pct=totalIn>0?(p/totalIn*100):0;t.style.left='calc('+(18/(strip.clientWidth||680)*100)+'% + '+(pct*(1-36/(strip.clientWidth||680)))+'%)';t.innerHTML='<div class="sd-mark"></div><div class="sd-num">'+p+'&Prime;</div>';strip.appendChild(t);});}var cnt=el('sd-count');if(cnt)cnt.textContent=pos.length?pos.length+' studs'+(wf>0?' for a '+wf+'-ft wall':''):'';var list=el('sd-list');if(list)list.textContent=pos.length?('Positions from corner (inches): '+pos.join(', ')):'Enter a wall length.';var cmp=el('sd-compare');if(cmp){var a=studPositions(wf,16).length,b=studPositions(wf,24).length;cmp.innerHTML='<div class="sd-cmp"><strong>'+a+'</strong>studs at 16 in o.c.<br>stronger · standard</div><div class="sd-cmp"><strong>'+b+'</strong>studs at 24 in o.c.<br>saves '+(a-b)+' studs · interior only</div>';}}var seg=el('sd-seg');if(seg){var btns=seg.querySelectorAll('button');for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){for(var j=0;j<btns.length;j++)btns[j].classList.remove('on');this.classList.add('on');spacing=Number(this.getAttribute('data-sp'));render();});}}var w=el('sd-wall');if(w)w.addEventListener('input',render);render();});}
+</script>
+</body>
+</html>
