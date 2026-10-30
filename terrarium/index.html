@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Closed Terrarium Soil Layers Calculator — Drainage, Charcoal &amp; Soil</title>
+<meta name="description" content="Calculate drainage, charcoal, and soil volumes for a closed terrarium from its inside dimensions.">
+<link rel="canonical" href="https://fun.fixoraa.tech/terrarium/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Closed Terrarium Soil Layers Calculator — Drainage, Charcoal &amp; Soil">
+<meta property="og:description" content="Calculate drainage, charcoal, and soil volumes for a closed terrarium from its inside dimensions.">
+<meta property="og:url" content="https://fun.fixoraa.tech/terrarium/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Terrarium",
+      "url": "https://fun.fixoraa.tech/terrarium/",
+      "applicationCategory": "Home / Garden",
+      "operatingSystem": "Web",
+      "description": "Calculate drainage, charcoal, and soil volumes for a closed terrarium from its inside dimensions.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much drainage does a closed terrarium need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About twenty percent of the container height, using leca, gravel, or small stones, so excess water sits away from roots."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does charcoal do in a terrarium?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Activated charcoal absorbs odours and helps keep the enclosed air fresh in a sealed system."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often do I water a closed terrarium?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only when the soil looks dry and condensation has disappeared, which may be every few months once balanced."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my terrarium glass always foggy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Constant heavy condensation means too much water. Leave the lid off for a day to let some evaporate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use succulents in a closed terrarium?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Succulents and cacti hate constant humidity and will rot. Choose humidity-loving plants like fittonia and ferns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What light does a terrarium need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bright, indirect light. Direct sun overheats the glass and scorches the plants."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#f0faf0; --surface:#ffffff; --accent:#14532d; --accent-ink:#ffffff;
+  --ink:#16211a; --muted:#3d5145; --line:#c2e0c6;
+  --display:'Fraunces',serif; --body:'Public Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+.layout-layers .layers{margin-top:1rem;border:1px solid var(--line);border-radius:14px;overflow:hidden} .layout-layers .ly{padding:.6rem;text-align:center;font-weight:700} .layout-layers .soil{background:#d9ead3} .layout-layers .char{background:#e8e8e8} .layout-layers .drain{background:#d6c9a8} @media(min-width:760px){.layout-layers{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}.layout-layers h1,.layout-layers .sub{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="Terrarium home">
+      <span class="fx-logo-tile" aria-hidden="true">🌿</span>
+      <span class="fx-brand">Terrarium</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-glass-garden" aria-label="Terrarium tool">
+<div class="layout-layers">
+<h1>Closed Terrarium Soil Layers Calculator</h1>
+<p class="sub">Split your container's volume into drainage, charcoal, and soil.</p>
+<div class="formcard">
+<label>Inside length (cm)<input id="len" type="number" value="30" step="1" min="0"></label><label>Inside width (cm)<input id="wid" type="number" value="20" step="1" min="0"></label><label>Inside height (cm)<input id="hei" type="number" value="30" step="1" min="0"></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter inside dimensions to see layer volumes.</p></div>
+<div class='layers'><div class='ly soil'>Soil 50%</div><div class='ly char'>Charcoal 10%</div><div class='ly drain'>Drainage 20%</div></div>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How much soil and drainage does a closed terrarium need?</h2>
+<p>A closed terrarium is a tiny, self-watering ecosystem in glass. Plants, soil, and moisture recycle inside the container, so water that evaporates condenses on the glass and drips back down, and the plants can thrive for months with very little attention. Getting the layers right is what makes that cycle work. Too little drainage and water pools at the bottom, roots rot, and the terrarium turns musty. Too much soil and there is no room for plants to grow or for air to circulate. This calculator works from the inside dimensions of your container and splits the volume into sensible layers: drainage material at the bottom, a thin charcoal layer, and soil on top, so you can buy the right amounts before you start planting.</p>
+<p>The layer proportions used here are practical rather than sacred. Drainage material, usually leca balls, gravel, or small stones, takes about twenty percent of the total height, because it creates a reservoir where excess water can sit away from roots. Activated charcoal takes about ten percent, and its job is to absorb odours and keep the enclosed air fresh, which matters in a sealed system. Soil takes about fifty percent, leaving the remaining space for plants and air. These percentages are applied to the container's total volume, which is length times width times height divided by one thousand to give litres. A thirty by twenty by thirty centimetre container holds eighteen litres in total, giving about 3.6 litres of drainage, 1.8 litres of charcoal, and nine litres of soil.</p>
+<h2>Choosing a container and plants</h2>
+<p>Container shape changes how a terrarium behaves. Tall, narrow jars suit plants that like humidity and upright growth, while wide, shallow bowls suit creeping plants and miniature landscapes. A lid is essential for a truly closed terrarium, because it traps the moisture cycle, but the seal does not need to be airtight. In fact, a lid that can be lifted occasionally for airing is an advantage. Glass must be clear and clean, because algae and grime block light, and plants in a terrarium need bright, indirect light rather than direct sun, which overheats the glass and cooks the plants. A north-facing windowsill or a spot a metre or two from a bright window usually works, and a simple grow light helps in dark rooms.</p>
+<p>Plant choice decides whether the terrarium thrives or struggles. Good closed-terrarium plants love humidity, stay small, and tolerate low light. Classic choices include fittonia, with its veined leaves, small ferns, peperomia, pilea, and mosses, which form a soft green carpet. Avoid cacti and succulents in closed terrariums, because they hate constant humidity and will rot. Avoid fast, large growers too, because they quickly outgrow the glass and need constant pruning. Buy small plants, ideally in six to nine centimetre pots, and plan to use three to seven plants depending on container size. A mix of heights, with a taller plant at the back and creepers at the front, looks natural and gives the arrangement depth.</p>
+<h2>Building the layers, step by step</h2>
+<p>Start with clean glass and clean hands. Add the drainage layer first, spreading it evenly, then sprinkle the charcoal over it. A thin mesh or a layer of sphagnum moss between drainage and soil stops soil washing down into the stones, and it is worth including if you have it. Add soil next, mounding it slightly toward the back so the arrangement has a sense of landscape. Use a light, free-draining houseplant mix, not heavy garden soil, which compacts and holds too much water. Make planting holes with a spoon or chopstick, place each plant gently, and firm the soil around the roots without crushing them. Finish with moss, small stones, or a decorative touch, but keep decorations minimal so plants have room to grow.</p>
+<p>Watering a new closed terrarium is a one-time judgement call that beginners often get wrong. Water lightly, just enough to dampen the soil throughout without creating a puddle in the drainage layer. Then close the lid and watch for a day or two. A light mist on the glass in the morning that clears by afternoon is ideal. Constant heavy condensation means there is too much water, so leave the lid off for a day to let some evaporate. No condensation at all after a few days means it is too dry, so add a small amount of water and check again. Once balanced, a closed terrarium may need water only every few months, which is part of its charm. Resist the urge to water on a schedule, and water only when the soil looks dry and condensation has disappeared.</p>
+<h2>Light, pruning, and troubleshooting</h2>
+<p>Light is the most common cause of failure. Too little light gives leggy, pale growth, while direct sun overheats the glass and scorches leaves. Move the terrarium gradually if you change its position, and rotate it occasionally so plants grow evenly rather than leaning toward the window. Prune regularly, pinching back long stems and removing dead leaves before they rot. Pruning also keeps plants in scale with the container, which is the whole point of a miniature landscape. If mould appears on the soil surface, remove the affected soil, improve air circulation by opening the lid for a few days, and water less. Springtails, tiny white jumping creatures, are harmless and actually help by eating mould and decaying matter.</p>
+<p>Long-term care is mostly observation. Check every week or two for condensation balance, new growth, and any plant that is struggling. Replace a failing plant promptly rather than letting it rot and affect its neighbours. Clean the inside of the glass occasionally with a soft cloth on a stick, because a clear view is half the pleasure of a terrarium. With the right layers, the right plants, and a light touch on watering, a closed terrarium can live for years and become a small, calming world on a desk or shelf. The calculator's job is simply to make sure you start with the right amounts, so the ecosystem has the structure it needs from day one.</p>
+<h3>Layer guide by container size</h3>
+<table><tr><th>Container (cm)</th><th>Total volume</th><th>Drainage</th><th>Charcoal</th><th>Soil</th></tr>
+<tr><td>30 × 20 × 30</td><td>18 L</td><td>3.6 L</td><td>1.8 L</td><td>9 L</td></tr>
+<tr><td>40 × 25 × 40</td><td>40 L</td><td>8 L</td><td>4 L</td><td>20 L</td></tr>
+<tr><td>25 × 25 × 25</td><td>15.6 L</td><td>3.1 L</td><td>1.6 L</td><td>7.8 L</td></tr></table>
+<ul><li>Use bright, indirect light, never direct sun on glass.</li><li>Choose humidity-loving, slow-growing plants.</li><li>Water lightly once, then only when condensation disappears.</li><li>Keep a mesh or moss barrier between drainage and soil.</li><li>Prune regularly to keep plants in scale.</li><li>Open the lid for a day if condensation stays heavy.</li></ul>
+<p>A closed terrarium rewards patience. Build the layers carefully, plant thoughtfully, water sparingly, and then step back and let the little ecosystem find its balance. The glass will do most of the work, and you get to enjoy watching it.</p><p>If you enjoy your first terrarium, a second one is a natural next step, and it is a chance to try a different style. A tall jar suits a miniature forest with a single upright plant and moss, while a wide bowl suits a landscape with paths, stones, and creeping plants. Keep the same layer principles and plant rules, but vary the planting and decoration so each terrarium has its own character. Terrariums also make thoughtful gifts, provided the recipient knows the basic care: bright indirect light, almost no watering, and occasional pruning. A small care card with the terrarium saves many questions later.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much drainage does a closed terrarium need?</summary><p>About twenty percent of the container height, using leca, gravel, or small stones, so excess water sits away from roots.</p></details>
+<details><summary>What does charcoal do in a terrarium?</summary><p>Activated charcoal absorbs odours and helps keep the enclosed air fresh in a sealed system.</p></details>
+<details><summary>How often do I water a closed terrarium?</summary><p>Only when the soil looks dry and condensation has disappeared, which may be every few months once balanced.</p></details>
+<details><summary>Why is my terrarium glass always foggy?</summary><p>Constant heavy condensation means too much water. Leave the lid off for a day to let some evaporate.</p></details>
+<details><summary>Can I use succulents in a closed terrarium?</summary><p>No. Succulents and cacti hate constant humidity and will rot. Choose humidity-loving plants like fittonia and ferns.</p></details>
+<details><summary>What light does a terrarium need?</summary><p>Bright, indirect light. Direct sun overheats the glass and scorches the plants.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">Terrarium</div>
+    <p>Terrarium splits a closed terrarium's volume into drainage, charcoal, and soil layers.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(l,w,h){if(l<=0||w<=0||h<=0)return{vol:0,drain:0,char:0,soil:0};var v=l*w*h/1000;return{vol:Math.round(v*100)/100,drain:Math.round(v*0.2*100)/100,char:Math.round(v*0.1*100)/100,soil:Math.round(v*0.5*100)/100};}
+function run(){var r=compute(+document.getElementById('len').value,+document.getElementById('wid').value,+document.getElementById('hei').value);document.getElementById('result').innerHTML='<p class="big">'+r.vol+' litres total</p><p>Drainage '+r.drain+' L &middot; charcoal '+r.char+' L &middot; soil '+r.soil+' L</p><p class="muted">Remaining space is for plants and air circulation.</p>';window._last='Terrarium: '+r.vol+' L total, drainage '+r.drain+' L, charcoal '+r.char+' L, soil '+r.soil+' L';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Small jar: 25 cm cube',[25,25,25]],['Classic: 30 × 20 × 30',[30,20,30]],['Large: 40 × 25 × 40',[40,25,40]]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){var v=P[+b.dataset.i][1];document.getElementById('len').value=v[0];document.getElementById('wid').value=v[1];document.getElementById('hei').value=v[2];run();};});
+run();
+</script>
+</body>
+</html>
