@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://fun.fixoraa.tech/brewmetric/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrewMetric — Coffee Ratio Lab: Coffee-to-Water Ratio Calculator, Pour Over Timer & Sour Coffee Fixer</title>
+<meta name="description" content="BrewMetric's free Coffee Ratio Lab: coffee-to-water ratio calculator, pour over coffee timer, taste troubleshooter for sour or bitter coffee, bean-age advisor, dial-in journal and caffeine estimator. Unlimited free usage, no signup.">
+<meta name="keywords" content="coffee to water ratio calculator, pour over coffee timer, why does my coffee taste sour, coffee ratio chart, how much coffee per cup, caffeine in coffee calculator, coffee brewing guide, dial in coffee">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        parchment: '#F5EFE3',
+        parchdeep: '#E9DFC6',
+        cream: '#FBF7EC',
+        espresso: '#6F4E37',
+        espressodark: '#43301F',
+        ink: '#2B2118',
+        brass: '#C9A227',
+        brassdark: '#8F7013',
+        brasslight: '#EBD98A'
+      },
+      fontFamily: {
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        body: ['Georgia', '"Times New Roman"', 'serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace']
+      }
+    }
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    background-color: #F5EFE3;
+    background-image:
+      radial-gradient(1200px 500px at 50% -120px, rgba(201,162,39,.14), transparent 70%),
+      radial-gradient(900px 600px at 100% 100%, rgba(111,78,55,.10), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 3px, rgba(111,78,55,.018) 3px 4px);
+  }
+  .card-paper {
+    background: #FBF7EC;
+    border: 1px solid rgba(201,162,39,.6);
+    box-shadow: 0 1px 0 #fff inset, 0 14px 28px -16px rgba(67,48,31,.45);
+    position: relative;
+  }
+  .card-paper::before {
+    content: ""; position: absolute; inset: 7px;
+    border: 1px dashed rgba(111,78,55,.35); border-radius: 2px; pointer-events: none;
+  }
+  .rivet { position: absolute; width: 11px; height: 11px; border-radius: 9999px;
+    background: radial-gradient(circle at 35% 30%, #F4E6A8, #C9A227 55%, #8F7013);
+    box-shadow: 0 1px 2px rgba(0,0,0,.35), inset 0 -1px 1px rgba(0,0,0,.25); }
+  .stamp {
+    display: inline-block; border: 2px solid #8F7013; color: #6E5610; border-radius: 6px;
+    padding: .28rem .8rem; font-family: 'IBM Plex Mono', monospace; font-size: .7rem;
+    letter-spacing: .22em; text-transform: uppercase; transform: rotate(-2.5deg);
+    box-shadow: inset 0 0 0 1px rgba(201,162,39,.35); background: rgba(201,162,39,.10);
+    font-weight: 600;
+  }
+  .stamp-red { border-color: #9C3B2E; color: #7E2D22; background: rgba(156,59,46,.07); box-shadow: inset 0 0 0 1px rgba(156,59,46,.3); }
+  .stamp-green { border-color: #4F7A3A; color: #3E612D; background: rgba(79,122,58,.07); box-shadow: inset 0 0 0 1px rgba(79,122,58,.3); }
+  .station-tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .3em;
+    text-transform: uppercase; color: #8F7013; font-weight: 600;
+  }
+  input[type="range"].brass-range { -webkit-appearance: none; appearance: none; height: 8px; border-radius: 9999px;
+    background: linear-gradient(90deg, #C9A227, #EBD98A); outline: none; border: 1px solid #8F7013; }
+  input[type="range"].brass-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px;
+    border-radius: 9999px; background: radial-gradient(circle at 35% 30%, #F6ECB8, #C9A227 60%, #8F7013);
+    border: 2px solid #6E5610; box-shadow: 0 2px 5px rgba(0,0,0,.35); cursor: pointer; }
+  input[type="range"].brass-range::-moz-range-thumb { width: 24px; height: 24px; border-radius: 9999px;
+    background: radial-gradient(circle at 35% 30%, #F6ECB8, #C9A227 60%, #8F7013);
+    border: 2px solid #6E5610; box-shadow: 0 2px 5px rgba(0,0,0,.35); cursor: pointer; }
+  .field { background: #fff; border: 1px solid rgba(111,78,55,.4); border-radius: .375rem;
+    padding: .55rem .75rem; width: 100%; color: #2B2118; font-family: 'IBM Plex Mono', monospace; }
+  .field:focus { outline: 2px solid #C9A227; outline-offset: 1px; border-color: #8F7013; }
+  select.field, input.field { font-size: .95rem; }
+  .btn-brass {
+    background: linear-gradient(180deg, #E3C964 0%, #C9A227 55%, #A8841C 100%);
+    color: #2B2118; font-family: 'IBM Plex Mono', monospace; font-weight: 600; letter-spacing: .08em;
+    border: 1px solid #6E5610; border-radius: .5rem; padding: .7rem 1.4rem; text-transform: uppercase; font-size: .82rem;
+    box-shadow: 0 3px 0 #6E5610, 0 6px 12px -4px rgba(67,48,31,.5); transition: transform .08s ease, box-shadow .08s ease;
+  }
+  .btn-brass:hover { filter: brightness(1.05); }
+  .btn-brass:active { transform: translateY(2px); box-shadow: 0 1px 0 #6E5610; }
+  .btn-ghost {
+    border: 1px solid rgba(111,78,55,.5); color: #6F4E37; border-radius: .5rem; padding: .55rem 1rem;
+    font-family: 'IBM Plex Mono', monospace; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; background: transparent;
+  }
+  .btn-ghost:hover { background: rgba(201,162,39,.12); }
+  .chip {
+    border: 1.5px solid rgba(111,78,55,.45); border-radius: 9999px; padding: .5rem 1rem; cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace; font-size: .8rem; background: #fff; color: #43301F; transition: all .15s ease;
+  }
+  .chip:hover { border-color: #8F7013; background: rgba(201,162,39,.1); }
+  .chip.on { background: #6F4E37; color: #F5EFE3; border-color: #43301F; box-shadow: 0 3px 8px -2px rgba(67,48,31,.5); }
+  .ruled { background-image: repeating-linear-gradient(transparent 0 27px, rgba(111,78,55,.14) 27px 28px); }
+  .timer-digit { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+  .phase-row.active { background: rgba(201,162,39,.16); border-left: 4px solid #C9A227; }
+  .phase-row.done { opacity: .55; }
+  details.faq { background: #FBF7EC; border: 1px solid rgba(201,162,39,.55); border-radius: .5rem; }
+  details.faq summary { cursor: pointer; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: #43301F; }
+  details.faq summary::-webkit-details-marker { color: #8F7013; }
+  .mode-tab { font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .05em; text-transform: uppercase;
+    padding: .5rem .9rem; border-radius: .5rem; border: 1px solid rgba(111,78,55,.4); color: #6F4E37; background: transparent; }
+  .mode-tab.on { background: #6F4E37; color: #F5EFE3; border-color: #43301F; }
+  @media print { .no-print { display: none !important; } }
+</style>
+</head>
+<body id="top" class="bg-parchment text-ink font-body antialiased">
+
+<!-- ============ STICKY HEADER ============ -->
+<header class="sticky top-0 z-50 no-print" style="background: linear-gradient(180deg, #43301F 0%, #2E2013 100%); border-bottom: 2px solid #C9A227;">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M15 6h10v6l4 18a4 4 0 0 1-4 5H15a4 4 0 0 1-4-5l4-18V6z" stroke="#C9A227" stroke-width="2.4" fill="rgba(201,162,39,.12)"/>
+        <path d="M13 22h14" stroke="#C9A227" stroke-width="2.4"/>
+        <circle cx="20" cy="29" r="2.2" fill="#C9A227"/>
+        <circle cx="16.5" cy="26.5" r="1.3" fill="#EBD98A"/>
+        <circle cx="23.5" cy="26.5" r="1.3" fill="#EBD98A"/>
+      </svg>
+      <span class="leading-none">
+        <span class="block font-display font-800 text-xl tracking-wide" style="color:#EBD98A; font-weight:800;">BrewMetric</span>
+        <span class="block font-mono text-[10px] tracking-[0.28em] uppercase" style="color:#C9A227;">Coffee Ratio Lab</span>
+      </span>
+    </a>
+    <nav class="flex items-center gap-5 font-mono text-sm">
+      <a href="#top" class="hover:underline" style="color:#EBD98A;">Home</a>
+      <a href="https://fixoraa.tech" class="hover:underline" style="color:#EBD98A;">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pt-10 pb-2 text-center">
+  <p class="station-tag mb-3">Apothecary of Coffee &middot; Est. for brewers</p>
+  <h1 class="font-display font-extrabold text-4xl sm:text-5xl leading-tight" style="color:#43301F;">
+    The Coffee Ratio Lab
+  </h1>
+  <p class="mt-3 text-lg max-w-2xl mx-auto" style="color:#6F4E37;">
+    Weigh it. Time it. Taste it. Fix it. Every formula a great cup needs —
+    ratios, pour-over timing, taste diagnosis and a brewer's journal — in one brass-bound notebook.
+  </p>
+  <div class="mt-5 flex items-center justify-center gap-3 flex-wrap">
+    <span class="stamp">Unlimited Free Usage</span>
+    <span class="font-mono text-xs tracking-widest uppercase" style="color:#8F7013;">No signup &middot; No paywall &middot; No watermark</span>
+  </div>
+</section>
+
+<!-- ============ TOP AD (verbatim) ============ -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOOL ============ -->
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-8 space-y-10">
+
+  <!-- STATION I : RATIO CALCULATOR -->
+  <section aria-label="Coffee to water ratio calculator" class="card-paper rounded-lg p-5 sm:p-8">
+    <span class="rivet" style="top:8px;left:8px;"></span><span class="rivet" style="top:8px;right:8px;"></span>
+    <span class="rivet" style="bottom:8px;left:8px;"></span><span class="rivet" style="bottom:8px;right:8px;"></span>
+    <p class="station-tag">Station I &mdash; Formula Desk</p>
+    <h2 class="font-display text-2xl sm:text-3xl font-bold mt-1" style="color:#43301F;">Coffee-to-Water Ratio Calculator</h2>
+    <p class="mt-2 text-sm" style="color:#6F4E37;">Pick a brew method, set your dose or your water, and dial the strength with the brass slider. 1 gram of water &asymp; 1 ml.</p>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-6">
+      <div class="space-y-4">
+        <div>
+          <label for="method-select" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Brew method</label>
+          <select id="method-select" class="field mt-1"></select>
+        </div>
+        <div class="flex gap-2">
+          <button id="mode-dose" class="mode-tab on flex-1" type="button">I weighed my coffee</button>
+          <button id="mode-water" class="mode-tab flex-1" type="button">I measured my water</button>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="dose-input" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Coffee (g)</label>
+            <input id="dose-input" type="number" min="1" max="500" step="0.5" value="20" class="field mt-1" inputmode="decimal">
+          </div>
+          <div>
+            <label for="water-input" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Water (g / ml)</label>
+            <input id="water-input" type="number" min="1" max="5000" step="1" value="320" class="field mt-1" inputmode="decimal" disabled>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="ratio-slider" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Strength &mdash; ratio</label>
+            <span class="font-mono font-semibold text-lg" style="color:#43301F;"><span id="ratio-readout">1:16</span></span>
+          </div>
+          <input id="ratio-slider" type="range" min="10" max="20" step="0.5" value="16" class="brass-range w-full mt-2" aria-label="Coffee to water ratio">
+          <div class="flex justify-between font-mono text-[11px] mt-1" style="color:#8F7013;"><span>1:10 strong</span><span>1:20 light</span></div>
+        </div>
+        <p id="calc-msg" class="font-mono text-sm min-h-[1.5rem]" style="color:#9C3B2E;" role="alert"></p>
+      </div>
+      <div>
+        <div class="rounded-md p-5 text-center" style="background:#43301F; border:1px solid #C9A227;">
+          <p class="font-mono text-[11px] tracking-[0.25em] uppercase" style="color:#C9A227;">Prescription</p>
+          <p id="calc-big" class="timer-digit font-semibold mt-2" style="color:#F5EFE3; font-size:2.6rem; line-height:1;">&mdash;</p>
+          <p id="calc-sub" class="font-mono text-sm mt-1" style="color:#EBD98A;">&mdash;</p>
+        </div>
+        <div id="calc-recipe" class="mt-4 text-sm space-y-1.5"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION II : POUR OVER TIMER -->
+  <section aria-label="Pour over coffee timer" class="card-paper rounded-lg p-5 sm:p-8">
+    <span class="rivet" style="top:8px;left:8px;"></span><span class="rivet" style="top:8px;right:8px;"></span>
+    <span class="rivet" style="bottom:8px;left:8px;"></span><span class="rivet" style="bottom:8px;right:8px;"></span>
+    <p class="station-tag">Station II &mdash; Brass Chronometer</p>
+    <h2 class="font-display text-2xl sm:text-3xl font-bold mt-1" style="color:#43301F;">Pour Over Coffee Timer</h2>
+    <p class="mt-2 text-sm" style="color:#6F4E37;">A staged timer for every method — bloom, pours and drawdown with exact water targets per phase.</p>
+
+    <div class="grid md:grid-cols-5 gap-6 mt-6">
+      <div class="md:col-span-2 space-y-4">
+        <div>
+          <label for="timer-method" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Brew method</label>
+          <select id="timer-method" class="field mt-1"></select>
+        </div>
+        <div>
+          <label for="timer-dose" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Coffee dose (g)</label>
+          <input id="timer-dose" type="number" min="1" max="500" step="0.5" value="20" class="field mt-1" inputmode="decimal">
+        </div>
+        <button id="timer-build" class="btn-brass w-full" type="button">Prepare the timer</button>
+        <div class="flex gap-2">
+          <button id="timer-start" class="btn-ghost flex-1" type="button" disabled>Start</button>
+          <button id="timer-pause" class="btn-ghost flex-1" type="button" disabled>Pause</button>
+          <button id="timer-reset" class="btn-ghost flex-1" type="button" disabled>Reset</button>
+        </div>
+        <p id="timer-msg" class="font-mono text-sm min-h-[1.5rem]" style="color:#9C3B2E;" role="alert"></p>
+      </div>
+      <div class="md:col-span-3">
+        <div class="rounded-md p-5 text-center" style="background:#43301F; border:1px solid #C9A227;">
+          <p id="timer-phase" class="font-mono text-[11px] tracking-[0.25em] uppercase" style="color:#C9A227;">Ready</p>
+          <p id="timer-clock" class="timer-digit font-semibold" style="color:#F5EFE3; font-size:3.2rem; line-height:1.1;">0:00</p>
+          <div class="mt-3 h-2.5 rounded-full overflow-hidden" style="background:rgba(245,239,227,.18);">
+            <div id="timer-bar" class="h-full rounded-full" style="width:0%; background:linear-gradient(90deg,#C9A227,#EBD98A); transition:width .2s linear;"></div>
+          </div>
+          <p id="timer-water" class="font-mono text-sm mt-2" style="color:#EBD98A;">&mdash;</p>
+        </div>
+        <ol id="timer-phases" class="mt-4 space-y-2 text-sm"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION III : TASTE TROUBLESHOOTER -->
+  <section aria-label="Coffee taste troubleshooter" class="card-paper rounded-lg p-5 sm:p-8">
+    <span class="rivet" style="top:8px;left:8px;"></span><span class="rivet" style="top:8px;right:8px;"></span>
+    <span class="rivet" style="bottom:8px;left:8px;"></span><span class="rivet" style="bottom:8px;right:8px;"></span>
+    <p class="station-tag">Station III &mdash; Diagnosis Chart</p>
+    <h2 class="font-display text-2xl sm:text-3xl font-bold mt-1" style="color:#43301F;">Taste Troubleshooter</h2>
+    <p class="mt-2 text-sm" style="color:#6F4E37;">Tap every fault you taste in the cup. The chart stamps a diagnosis and prescribes concrete fixes — pick more than one if the cup is confusing.</p>
+    <div id="symptom-chips" class="flex flex-wrap gap-2 mt-5"></div>
+    <div id="diagnosis-output" class="mt-5 space-y-4">
+      <p class="text-sm italic" style="color:#8F7013;">No symptoms selected yet — the diagnosis chart is blank. Tap a symptom above to begin.</p>
+    </div>
+  </section>
+
+  <!-- STATION IV : DIAL-IN JOURNAL -->
+  <section aria-label="Dial-in brew journal" class="card-paper rounded-lg p-5 sm:p-8">
+    <span class="rivet" style="top:8px;left:8px;"></span><span class="rivet" style="top:8px;right:8px;"></span>
+    <span class="rivet" style="bottom:8px;left:8px;"></span><span class="rivet" style="bottom:8px;right:8px;"></span>
+    <p class="station-tag">Station IV &mdash; Brewer's Logbook</p>
+    <h2 class="font-display text-2xl sm:text-3xl font-bold mt-1" style="color:#43301F;">Dial-In Journal</h2>
+    <p class="mt-2 text-sm" style="color:#6F4E37;">Log every brew — ratio, grind, temperature, time and a taste score out of 10. Your logbook lives in this browser and charts your progress toward the perfect cup.</p>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-6">
+      <form id="journal-form" class="space-y-3" novalidate>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="j-date" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Date</label>
+            <input id="j-date" type="date" class="field mt-1">
+          </div>
+          <div>
+            <label for="j-method" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Method</label>
+            <select id="j-method" class="field mt-1"></select>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label for="j-dose" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Coffee (g)</label>
+            <input id="j-dose" type="number" min="1" max="500" step="0.5" value="20" class="field mt-1" inputmode="decimal">
+          </div>
+          <div>
+            <label for="j-ratio" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Ratio 1:</label>
+            <input id="j-ratio" type="number" min="1" max="40" step="0.5" value="16" class="field mt-1" inputmode="decimal">
+          </div>
+          <div>
+            <label for="j-temp" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Temp (&deg;C)</label>
+            <input id="j-temp" type="number" min="60" max="100" step="1" value="94" class="field mt-1" inputmode="decimal">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="j-grind" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Grind</label>
+            <select id="j-grind" class="field mt-1">
+              <option>Extra Fine</option><option>Fine</option><option selected>Medium-Fine</option>
+              <option>Medium</option><option>Medium-Coarse</option><option>Coarse</option><option>Extra Coarse</option>
+            </select>
+          </div>
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Brew time</span>
+            <div class="flex gap-2 mt-1">
+              <input id="j-time-min" type="number" min="0" max="720" value="3" class="field" aria-label="Minutes" inputmode="numeric">
+              <input id="j-time-sec" type="number" min="0" max="59" value="0" class="field" aria-label="Seconds" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="j-score" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Taste score</label>
+            <span class="font-mono font-semibold" style="color:#43301F;"><span id="j-score-readout">7</span> / 10</span>
+          </div>
+          <input id="j-score" type="range" min="1" max="10" step="1" value="7" class="brass-range w-full mt-2" aria-label="Taste score out of 10">
+        </div>
+        <div>
+          <label for="j-note" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Tasting note (optional)</label>
+          <input id="j-note" type="text" maxlength="140" placeholder="e.g. sweet, apricot, clean finish" class="field mt-1" style="font-family:Georgia,serif;">
+        </div>
+        <p id="j-msg" class="font-mono text-sm min-h-[1.5rem]" role="alert"></p>
+        <button type="submit" class="btn-brass w-full">Record this brew</button>
+      </form>
+      <div>
+        <div id="journal-stats" class="grid grid-cols-3 gap-3 text-center"></div>
+        <div id="journal-best" class="mt-4"></div>
+        <div class="flex items-center justify-between mt-5">
+          <h3 class="font-display font-bold text-lg" style="color:#43301F;">Logbook entries</h3>
+          <button id="journal-clear" class="btn-ghost" type="button">Clear all</button>
+        </div>
+        <ol id="journal-list" class="mt-3 space-y-2 text-sm max-h-80 overflow-y-auto pr-1"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION V : BEAN-AGE ADVISOR -->
+  <section aria-label="Coffee bean age advisor" class="card-paper rounded-lg p-5 sm:p-8">
+    <span class="rivet" style="top:8px;left:8px;"></span><span class="rivet" style="top:8px;right:8px;"></span>
+    <span class="rivet" style="bottom:8px;left:8px;"></span><span class="rivet" style="bottom:8px;right:8px;"></span>
+    <p class="station-tag">Station V &mdash; Roast-Date Almanac</p>
+    <h2 class="font-display text-2xl sm:text-3xl font-bold mt-1" style="color:#43301F;">Bean-Age Advisor</h2>
+    <p class="mt-2 text-sm" style="color:#6F4E37;">Enter the roast date printed on the bag. Fresh beans need rest, old beans need rescue — the almanac prescribes the right grind and temperature for the bean's age.</p>
+    <div class="grid md:grid-cols-3 gap-4 mt-6">
+      <div>
+        <label for="roast-date" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Roast date</label>
+        <input id="roast-date" type="date" class="field mt-1">
+      </div>
+      <div>
+        <label for="roast-level" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Roast level</label>
+        <select id="roast-level" class="field mt-1">
+          <option value="light">Light roast</option>
+          <option value="medium" selected>Medium roast</option>
+          <option value="dark">Dark roast</option>
+        </select>
+      </div>
+      <div class="flex items-end">
+        <button id="bean-btn" class="btn-brass w-full" type="button">Read the almanac</button>
+      </div>
+    </div>
+    <p id="bean-msg" class="font-mono text-sm mt-2 min-h-[1.5rem]" style="color:#9C3B2E;" role="alert"></p>
+    <div id="bean-output" class="mt-2"></div>
+  </section>
+
+  <!-- STATION VI : CAFFEINE ESTIMATOR -->
+  <section aria-label="Coffee caffeine estimator" class="card-paper rounded-lg p-5 sm:p-8">
+    <span class="rivet" style="top:8px;left:8px;"></span><span class="rivet" style="top:8px;right:8px;"></span>
+    <span class="rivet" style="bottom:8px;left:8px;"></span><span class="rivet" style="bottom:8px;right:8px;"></span>
+    <p class="station-tag">Station VI &mdash; Stimulant Scales</p>
+    <h2 class="font-display text-2xl sm:text-3xl font-bold mt-1" style="color:#43301F;">Caffeine Estimator</h2>
+    <p class="mt-2 text-sm" style="color:#6F4E37;">Your dose and brew method decide how much caffeine lands in the cup. Get an honest estimate in milligrams, plus a plain-English comparison.</p>
+    <div class="grid md:grid-cols-2 gap-6 mt-6 items-start">
+      <div class="space-y-4">
+        <div>
+          <label for="caf-dose" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Coffee dose (g)</label>
+          <input id="caf-dose" type="number" min="1" max="100" step="0.5" value="18" class="field mt-1" inputmode="decimal">
+        </div>
+        <div>
+          <label for="caf-method" class="font-mono text-xs uppercase tracking-widest" style="color:#8F7013;">Brew method</label>
+          <select id="caf-method" class="field mt-1"></select>
+        </div>
+        <button id="caf-btn" class="btn-brass w-full" type="button">Weigh the caffeine</button>
+        <p id="caf-msg" class="font-mono text-sm min-h-[1.5rem]" style="color:#9C3B2E;" role="alert"></p>
+      </div>
+      <div>
+        <div class="rounded-md p-5 text-center" style="background:#43301F; border:1px solid #C9A227;">
+          <p class="font-mono text-[11px] tracking-[0.25em] uppercase" style="color:#C9A227;">Estimated caffeine</p>
+          <p class="timer-digit font-semibold mt-2" style="color:#F5EFE3; font-size:2.8rem; line-height:1;"><span id="caf-big">&mdash;</span><span class="text-xl"> mg</span></p>
+          <p id="caf-method-line" class="font-mono text-sm mt-1" style="color:#EBD98A;">&mdash;</p>
+        </div>
+        <div id="caf-output" class="mt-4 text-sm space-y-2"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ BOTTOM AD (verbatim) ============ -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SEO ARTICLE ============ -->
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pb-10">
+  <article id="seo-article" class="card-paper rounded-lg p-6 sm:p-10 ruled">
+    <p class="station-tag">The Brewer's Handbook</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2 mb-6" style="color:#43301F;">The Complete Guide to Coffee-to-Water Ratio, Pour Over Timing, and Fixing Sour Coffee</h2>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">What is coffee-to-water ratio, and why does it matter so much?</h3>
+    <p class="mb-4">The coffee-to-water ratio is simply the weight of dry coffee grounds compared to the weight of brew water, written as 1:16 — one part coffee to sixteen parts water. It is the single most powerful variable in your cup because it decides strength: how concentrated the dissolved coffee compounds are in the finished brew. Get the ratio right and even a modest grinder can produce a sweet, balanced cup. Get it wrong and no amount of expensive beans will save you. A cup brewed at 1:13 will taste heavy, intense and possibly harsh, while the same beans at 1:18 will taste delicate, tea-like and possibly thin. Neither is objectively wrong — strength is a preference — but there is a well-tested middle ground where most coffees taste their best, and that is exactly what a coffee to water ratio calculator helps you hit consistently. Instead of guessing with scoops, you weigh your dose, pick your ratio, and the calculator tells you precisely how much water to pour. Since one gram of water equals one milliliter, the same number works on your kettle's markings too.</p>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">The golden ratios for every brew method</h3>
+    <p class="mb-4">Different brew methods extract coffee differently, so each has its own classic starting ratio. The Specialty Coffee Association's "golden ratio" for drip and filter coffee is 1:18, though most home brewers find 1:15 to 1:17 sweeter and more satisfying. Here are the starting points professionals use: pour over (V60, Kalita) at 1:15 to 1:17, Chemex at 1:16 to 1:17, French press at 1:12 to 1:15, AeroPress at 1:12 to 1:14, moka pot at roughly 1:10, espresso at 1:1.5 to 1:2.5 (a "normale" double is typically 18 grams in, 36 grams out), and cold brew concentrate at 1:8 to 1:10, diluted afterward. Treat these as trailheads, not laws. Lighter roasts and denser beans often shine a touch stronger, around 1:15, because they need help showing body; darker roasts can go leaner toward 1:17 since they extract easily and turn bitter fast. The practical move is to pick the middle of your method's range, brew three cups while changing nothing else, and only then nudge the ratio half a point in the direction your palate asks for.</p>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">Strength versus extraction: the two dials everyone confuses</h3>
+    <p class="mb-4">Here is the distinction that separates decent home brewers from great ones. Strength is how much coffee is dissolved in the water — controlled by the ratio. Extraction is how much flavor you pulled out of each ground — controlled by grind size, water temperature and contact time. A cup can be strong but under-extracted (intense yet sour), or weak but over-extracted (thin yet bitter). This is why "why does my coffee taste sour" is such a common search: sourness is the signature of under-extraction, and it can happen at any ratio. Roughly the first compounds water dissolves are fruity acids and salts, then come the sweet sugars, and finally the bitter plant fibers. Stop the brew too early — grind too coarse, water too cool, time too short — and you get only the acids: sour, salty, hollow. Push too far and the bitters dominate. The sweet spot for most methods is extracting 18 to 22 percent of the grounds' mass. When a cup tastes off, first ask which dial is wrong: if it tastes thin and watery, adjust strength (the ratio); if it tastes sour, bitter or harsh at a sensible ratio, adjust extraction (grind, temperature, time).</p>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">How to measure coffee without a scale (and why a scale is worth it)</h3>
+    <p class="mb-4">You can brew good coffee without a scale: a level tablespoon of whole-bean-equivalent ground coffee weighs roughly 7 to 10 grams depending on grind and roast, so two tablespoons per 6-ounce (180 ml) cup lands you near 1:16. Tablespoons, however, are inconsistent — grind size alone can swing a scoop by 30 percent, which is the difference between balanced and disappointing. A 20-dollar kitchen scale that reads to 0.1 grams is the highest-value upgrade in all of coffee brewing. Weigh the dose, tare, pour to your target water weight, and your ratio is exact every single morning. If you must use volume, at least calibrate once: weigh ten level scoops of your usual grind, take the average, and write the grams-per-scoop on a piece of tape stuck to your coffee jar. Your future self, dialing in a new bag, will thank you.</p>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">How to time a pour over: the V60 walkthrough</h3>
+    <p class="mb-4">A pour over coffee timer is not about fussiness — it is about repeatability. When every pour lands at the same second, the only thing changing between cups is the variable you chose to change, and that is how you actually learn your coffee. Here is the classic V60 method for 20 grams of coffee and 320 grams of water (1:16), targeting a 3-minute total brew. Start the timer as you begin the bloom: pour 40 to 50 grams of water, just enough to saturate the grounds, and swirl gently. Wait until 0:45 — the bed will bubble and rise as carbon dioxide escapes. From 0:45 to 1:15, pour in slow spirals up to about 200 grams total. From 1:15 to 1:45, top up to the full 320 grams with a final gentle swirl. Then hands off: let the drawdown finish by about 3:00. If the bed drains before 2:30, your grind is too coarse; if it is still dripping at 3:45, it is too fine. Flat bed, sweet cup. A deep crater in the middle means you poured too aggressively and carved a channel — pour softer next time. Use the staged timer above and it will call out each phase with its water target so you can focus on the pour, not the clock.</p>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">Why does my coffee taste sour? (And what about bitter, weak or muddy?)</h3>
+    <p class="mb-4">Sour coffee is under-extracted coffee — full stop. The brew finished before the sweet compounds dissolved, leaving only the sharp acids. The fixes, in order of impact: grind finer, use hotter water (93 to 96 C for pour over), and extend the brew time by pouring more slowly or tightening the drawdown. Also check the roast date — beans less than three or four days off roast are still full of carbon dioxide, bloom violently and brew sour no matter what you do; give them rest. Bitter coffee is the mirror image: over-extraction. Grind coarser, drop the temperature a couple of degrees, shorten the brew. Weak, watery coffee that is not sour is a strength problem — add more coffee, moving from 1:17 toward 1:15. Muddy, silty cups with sludge at the bottom come from excess fines: grind coarser, stir less, pour gently, and consider a burr grinder, which produces far fewer tiny particles than a blade grinder. Harsh, mouth-drying astringency usually means channeling — water found a fast path through the bed and over-extracted one part of it. Pour in even spirals, keep the water level steady, and do not blast the coffee bed. Change one variable at a time, taste, and write it down — which is exactly what the dial-in journal is for.</p>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">Water temperature and grind size: the extraction levers</h3>
+    <p class="mb-4">If ratio is the strength dial, temperature and grind are the extraction levers you will reach for daily. Hotter water extracts faster and more aggressively: the standard window is 90 to 96 C (195 to 205 F), with lighter roasts liking the hotter end and darker roasts preferring it cooler to avoid bitterness. Water straight off a rolling boil is fine for light-roast pour overs; for dark roasts, let the kettle sit 30 to 60 seconds. Grind size works the same way: finer means more surface area, faster extraction; coarser means slower. Match the grind to the method — extra fine for espresso, fine for moka and AeroPress, medium-fine for pour over, medium-coarse for Chemex, coarse for French press, extra coarse for cold brew — then adjust one notch at a time based on taste. One notch finer fixes sour; one notch coarser fixes bitter. That single rule resolves the majority of bad cups.</p>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">Dialing in a new bag of beans: the journal method</h3>
+    <p class="mb-4">Every bag of coffee is a small science experiment, and the dial-in journal turns your mornings into data. Start at the method's standard recipe — say 20 grams at 1:16, 94 C, medium-fine, 3 minutes for a V60 — and score the cup out of 10 with a one-line tasting note. Tomorrow, change exactly one thing: grind one notch finer. Score again. The journal's trend line will show your scores climbing as you converge on the bean's sweet spot, usually within three to five cups, and the "best recipe" card preserves the winning formula so you can repeat it exactly. This discipline matters because human taste memory is unreliable; without notes, you will re-learn the same lessons with every bag. Professionals call this dialing in, and it is the difference between occasionally great coffee and consistently great coffee. Also log the roast date: beans peak roughly 5 to 14 days off roast for filter (a bit longer for espresso), so a recipe that scored 9 on day 10 may need a slightly finer grind by day 25 as the beans age and extract less eagerly.</p>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">How much caffeine is actually in your cup?</h3>
+    <p class="mb-4">Caffeine content follows the dose more than the method. Arabica beans contain roughly 12 milligrams of caffeine per gram (robusta nearly double that), and a typical brew extracts 75 to 95 percent of it depending on method — immersion methods like French press and cold brew extract the most, espresso the least per gram because the contact time is so short. So a 20-gram pour over delivers around 140 to 160 milligrams, while an 18-gram double espresso lands near 130 milligrams despite tasting far stronger. For reference, an 8-ounce brewed coffee averages about 95 milligrams, a cup of black tea about 50, and a standard energy drink about 80. If you are sensitive to caffeine, the honest lever is dose: brewing 15 grams instead of 20 at the same ratio cuts caffeine by a quarter with no change in strength or flavor balance. The estimator above does this math for your exact dose and method.</p>
+
+    <h3 class="font-display text-xl font-bold mt-8 mb-3" style="color:#43301F;">Five ratio mistakes almost everyone makes</h3>
+    <p class="mb-4">First, measuring coffee by volume while measuring water by weight — pick one system, preferably weight, for both. Second, changing the ratio and the grind on the same morning, which makes it impossible to know what fixed (or broke) the cup. Third, using the espresso ratio mindset on filter coffee: 1:2 is correct for espresso and wildly strong for a V60. Fourth, ignoring the roast date — dialing in a 3-day-old bag and a 30-day-old bag with identical settings guarantees frustration. Fifth, forgetting that "cups" on coffee makers are usually 5 or 6 ounces, not 8 — if your machine says 12 cups, that is roughly 60 ounces or 1.8 liters, needing about 110 grams of coffee at 1:16, far more than most people use. Fix these five and your coffee gets better this week, with the same beans and the same grinder you already own.</p>
+
+    <p class="mt-8 pt-6 font-mono text-sm" style="border-top:1px dashed rgba(111,78,55,.4); color:#8F7013;">Filed in the Brewer's Handbook &middot; BrewMetric Coffee Ratio Lab &middot; Free forever, no signup.</p>
+  </article>
+</section>
+
+<!-- ============ FAQS ============ -->
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pb-12">
+  <h2 class="font-display text-2xl sm:text-3xl font-bold mb-5 text-center" style="color:#43301F;">Frequently Asked Questions</h2>
+  <div class="max-w-3xl mx-auto space-y-3">
+    <details class="faq p-4">
+      <summary>What is the best coffee to water ratio?</summary>
+      <p class="mt-2 text-sm">For pour over and drip coffee, start at 1:16 — one gram of coffee for every 16 grams (ml) of water. The widely cited "golden ratio" is 1:18, but most home brewers prefer 1:15 to 1:17 for a sweeter, fuller cup. Espresso uses 1:2, French press 1:12 to 1:15, and cold brew concentrate 1:8. Adjust half a point at a time toward stronger (lower second number) or lighter (higher second number) until it matches your taste.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>How do I time a pour over coffee?</summary>
+      <p class="mt-2 text-sm">Start the timer as you pour the bloom (about 2x the coffee weight in water) and wait 45 seconds. Then pour in stages — to 60% of your water by 1:15, to 100% by 1:45 — and let the drawdown finish around 3:00 for a V60 (about 4:00 for Chemex). If it drains much faster, grind finer; if it stalls, grind coarser. The staged timer above calls out each phase with exact water targets.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>Why does my coffee taste sour?</summary>
+      <p class="mt-2 text-sm">Sourness means under-extraction: the brew finished before the sweet compounds dissolved, leaving only sharp acids. Fix it by grinding finer, using hotter water (93–96&deg;C for pour over), and extending the brew time. Also check the roast date — beans under 4 days off roast are still degassing and will taste sour until they rest. Use the taste troubleshooter above for a full diagnosis.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>Why does my coffee taste bitter instead?</summary>
+      <p class="mt-2 text-sm">Bitterness means over-extraction: too much was pulled from the grounds, including harsh plant fibers. Do the opposite of the sour fix — grind coarser, lower the water temperature by 2&deg;C, and shorten the brew. Very dark roasts and stale beans (over 6–8 weeks old) also taste bitter; stale beans are best repurposed for cold brew.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>How long should coffee rest after roasting?</summary>
+      <p class="mt-2 text-sm">Most filter coffee peaks 5 to 14 days off roast; espresso often needs 7 to 21 days because it is more sensitive to CO2. Dark roasts degas faster (ready in 3–5 days, fade sooner), light roasts slower. Brewing before the rest window gives gassy, sour, uneven cups. Enter your bag's roast date in the bean-age advisor above for exact guidance.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>How much caffeine is in my cup of coffee?</summary>
+      <p class="mt-2 text-sm">Roughly 12 mg of caffeine per gram of arabica beans, times your brew method's extraction (75–95%). A 20 g pour over lands around 150 mg; an 18 g double espresso around 130 mg. For comparison, black tea has about 50 mg per cup and a standard brewed 8 oz coffee about 95 mg. The caffeine estimator above computes it for your exact dose and method.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="no-print" style="background:#2E2013; border-top:2px solid #C9A227;">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-8 text-center">
+    <p class="font-display font-bold text-lg" style="color:#EBD98A;">BrewMetric &mdash; Coffee Ratio Lab</p>
+    <p class="font-mono text-xs mt-2 tracking-widest uppercase" style="color:#C9A227;">Unlimited free usage &middot; No signup &middot; No paywall</p>
+    <p class="text-xs mt-3" style="color:#A68B5B;">Brew better, one weighed dose at a time. Your journal never leaves this browser.</p>
+  </div>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+
+<!-- ============ LIB (inlined at build time) ============ -->
+<script id="brewmetric-coffee-ratio-lab-lib">
+/* BrewMetric — Coffee Ratio Lab core logic.
+   Pure functions only: no DOM, window, document, localStorage, or navigator access.
+   All functions are top-level declarations so the test harness can eval them. */
+
+function bmRound(n, d) {
+  var p = Math.pow(10, d == null ? 1 : d);
+  return Math.round(n * p) / p;
+}
+
+function bmIsPosNum(x) {
+  return typeof x === 'number' && isFinite(x) && x > 0;
+}
+
+/* Water (grams, ~equal to ml) needed for a coffee dose at a 1:ratioParts ratio. */
+function ratioGrams(coffeeG, ratioParts) {
+  if (!bmIsPosNum(coffeeG) || !bmIsPosNum(ratioParts)) return null;
+  if (ratioParts > 40) return null;
+  return bmRound(coffeeG * ratioParts, 1);
+}
+
+/* Coffee dose (grams) needed for a target water amount at a 1:ratioParts ratio. */
+function coffeeForWater(waterG, ratioParts) {
+  if (!bmIsPosNum(waterG) || !bmIsPosNum(ratioParts)) return null;
+  if (ratioParts > 40) return null;
+  return bmRound(waterG / ratioParts, 1);
+}
+
+function ratioLabel(ratioParts) {
+  return '1:' + (bmRound(ratioParts, 1));
+}
+
+/* Brew-method catalogue: defaults, temp windows, timing, caffeine efficiency. */
+function listMethods() {
+  return [
+    {
+      id: 'v60', name: 'Pour Over (V60)', ratio: 16, tempLow: 92, tempHigh: 96,
+      timeS: 180, eff: 0.85, grind: 'Medium-fine (like sea salt)',
+      blurb: 'The classic filter method. Clean, sweet, highlights acidity.',
+      phases: [
+        { name: 'Bloom', waterPct: 15, timeS: 45, note: 'Pour about 2x the coffee weight in water. Saturate every ground, then give the brewer a gentle swirl.' },
+        { name: 'First pour', waterPct: 45, timeS: 30, note: 'Slow spirals from center outward to about 60% of total water. Keep the water level steady.' },
+        { name: 'Final pour', waterPct: 40, timeS: 30, note: 'Top up to 100% of the water. One gentle swirl settles the coffee bed.' },
+        { name: 'Drawdown', waterPct: 0, timeS: 75, note: 'Let it drip through. A flat, even bed means a good pour; a deep crater means you poured too hard.' }
+      ]
+    },
+    {
+      id: 'chemex', name: 'Chemex', ratio: 16.5, tempLow: 93, tempHigh: 96,
+      timeS: 240, eff: 0.85, grind: 'Medium-coarse (like raw sugar)',
+      blurb: 'Thick filter gives a silky, sediment-free cup. Slightly longer drawdown than a V60.',
+      phases: [
+        { name: 'Bloom', waterPct: 15, timeS: 60, note: 'Saturate all grounds with 2x their weight in water. Swirl gently and wait.' },
+        { name: 'First pour', waterPct: 45, timeS: 45, note: 'Pour in slow concentric circles to 60% of total water.' },
+        { name: 'Final pour', waterPct: 40, timeS: 45, note: 'Fill to 100%. Keep the pour gentle so the bed stays level.' },
+        { name: 'Drawdown', waterPct: 0, timeS: 90, note: 'Let it finish dripping. Total time around 4 minutes; much longer means grind too fine.' }
+      ]
+    },
+    {
+      id: 'french-press', name: 'French Press', ratio: 14, tempLow: 93, tempHigh: 96,
+      timeS: 240, eff: 0.9, grind: 'Coarse (like breadcrumbs)',
+      blurb: 'Full immersion. Heavy body, rich and forgiving.',
+      phases: [
+        { name: 'Pour & stir', waterPct: 100, timeS: 15, note: 'Add all the water, then stir the crust so every ground is wet.' },
+        { name: 'Steep', waterPct: 0, timeS: 225, note: 'Lid on, plunger up. Wait the full 4 minutes. Break the crust and skim foam before plunging slowly.' }
+      ]
+    },
+    {
+      id: 'aeropress', name: 'AeroPress', ratio: 13, tempLow: 85, tempHigh: 92,
+      timeS: 120, eff: 0.9, grind: 'Fine (like table salt)',
+      blurb: 'Fast immersion with pressure. Sweet, concentrated, espresso-like.',
+      phases: [
+        { name: 'Pour', waterPct: 100, timeS: 10, note: 'Add all the water quickly and stir 3 times.' },
+        { name: 'Steep', waterPct: 0, timeS: 80, note: 'Cap on. Let it steep; cooler water (85-92 C) keeps it sweet.' },
+        { name: 'Press', waterPct: 0, timeS: 30, note: 'Press down slowly and steadily. Stop at the first hiss.' }
+      ]
+    },
+    {
+      id: 'espresso', name: 'Espresso', ratio: 2, tempLow: 90, tempHigh: 94,
+      timeS: 28, eff: 0.75, grind: 'Extra fine (like powdered sugar)',
+      blurb: 'Pressure extraction. Intense, syrupy, the base of milk drinks.',
+      phases: [
+        { name: 'Pre-infusion', waterPct: 0, timeS: 8, note: 'Low-pressure soak wets the puck evenly and prevents channeling.' },
+        { name: 'Extraction', waterPct: 0, timeS: 20, note: 'Full pressure. Aim for about 2x the dose weight in the cup in 25-30 seconds total.' }
+      ]
+    },
+    {
+      id: 'moka', name: 'Moka Pot', ratio: 10, tempLow: 88, tempHigh: 92,
+      timeS: 300, eff: 0.85, grind: 'Fine (slightly coarser than espresso)',
+      blurb: 'Stovetop pressure brewer. Strong and bold, close to espresso.',
+      phases: [
+        { name: 'Brew', waterPct: 100, timeS: 240, note: 'Fill the base with pre-heated water. Medium-low heat; coffee should rise steadily, not sputter.' },
+        { name: 'Finish', waterPct: 0, timeS: 60, note: 'At the first gurgle, pull it off the heat and run the base under cold water to stop extraction.' }
+      ]
+    },
+    {
+      id: 'cold-brew', name: 'Cold Brew', ratio: 8, tempLow: 20, tempHigh: 25,
+      timeS: 43200, eff: 0.95, grind: 'Extra coarse (like peppercorns)',
+      blurb: 'Slow room-temp steep. Naturally sweet, low acid, served diluted.',
+      phases: [
+        { name: 'Combine', waterPct: 100, timeS: 60, note: 'Stir grounds and room-temp water together until fully saturated.' },
+        { name: 'Steep', waterPct: 0, timeS: 43140, note: 'Cover and rest 12 hours at room temperature, then strain. Dilute the concentrate about 1:1 with water or milk.' }
+      ]
+    }
+  ];
+}
+
+function methodById(id) {
+  var methods = listMethods();
+  for (var i = 0; i < methods.length; i++) {
+    if (methods[i].id === id) return methods[i];
+  }
+  return null;
+}
+
+/* Build a timed pour plan for a method, dose and water amount. */
+function phasesFor(methodId, coffeeG, waterG) {
+  var m = methodById(methodId);
+  if (!m || !bmIsPosNum(coffeeG)) return null;
+  var total = bmIsPosNum(waterG) ? waterG : ratioGrams(coffeeG, m.ratio);
+  if (!total) return null;
+  var t = 0;
+  var out = m.phases.map(function (p, i) {
+    var start = t;
+    t += p.timeS;
+    return {
+      n: i + 1,
+      name: p.name,
+      startS: start,
+      endS: t,
+      timeS: p.timeS,
+      waterG: p.waterPct ? bmRound(total * p.waterPct / 100, 0) : 0,
+      waterPct: p.waterPct,
+      note: p.note
+    };
+  });
+  return { method: m, coffeeG: bmRound(coffeeG, 1), waterG: bmRound(total, 1), phases: out, totalS: t };
+}
+
+/* Taste-fault knowledge base: symptom -> diagnosis + concrete fixes. */
+function tasteDiagnoses() {
+  return {
+    sour: {
+      id: 'sour', label: 'Sour / sharp', hint: 'Lemony, vinegary, thin — makes you wince',
+      diagnosis: 'Under-extracted',
+      explanation: 'Not enough flavor was pulled out of the grounds. Sourness is the first thing water extracts, so a sour cup almost always means the brew finished too early or too cool — the sweet and bitter compounds never made it into the cup.',
+      fixes: [
+        'Grind one notch finer — more surface area extracts faster.',
+        'Raise water temperature by 2 C (aim for 93-96 C for pour over).',
+        'Extend the brew: pour slower or add 15-30 seconds to the drawdown.',
+        'Tighten the ratio slightly, e.g. from 1:17 to 1:16.',
+        'If the beans are less than 4 days off roast, rest them longer — fresh beans brew sour and uneven.'
+      ]
+    },
+    bitter: {
+      id: 'bitter', label: 'Bitter / ashy', hint: 'Harsh bitterness, dry, burnt aftertaste',
+      diagnosis: 'Over-extracted',
+      explanation: 'Too much was pulled out of the grounds. After the sweet compounds dissolve, water starts extracting harsh, bitter plant fibers. A bitter, ashy cup means the extraction went past the sweet spot.',
+      fixes: [
+        'Grind one notch coarser — less surface area slows extraction.',
+        'Lower water temperature by 2 C (try 88-91 C).',
+        'Shorten the brew: pour a little faster or coarsen the grind so drawdown finishes sooner.',
+        'Loosen the ratio slightly, e.g. from 1:15 to 1:16.',
+        'Check bean age: beans more than 6-8 weeks old often taste flat and bitter — grind finer and brew them as cold brew instead.'
+      ]
+    },
+    weak: {
+      id: 'weak', label: 'Weak / watery', hint: 'Tea-like, no body, flavor washes out',
+      diagnosis: 'Under-strength (too little coffee)',
+      explanation: 'Weak is not the same as sour. A weak cup can be perfectly extracted yet still taste thin — there simply was not enough coffee for the water. This is a dose problem, not an extraction problem.',
+      fixes: [
+        'Increase the dose: move from 1:17 toward 1:15 or even 1:14.',
+        'Weigh your coffee — scoops are wildly inconsistent; 1 tablespoon can vary by 3+ grams.',
+        'If the cup is both weak AND sour, grind finer too — you have low strength and low extraction.',
+        'For immersion methods, make sure all grounds are fully saturated with a good stir.'
+      ]
+    },
+    muddy: {
+      id: 'muddy', label: 'Muddy / silty', hint: 'Gritty sludge at the bottom, heavy and dull',
+      diagnosis: 'Too many fines / over-agitation',
+      explanation: 'Excess tiny particles (fines) slip through the filter and keep extracting in the cup, making it muddy and dull. Blade grinders and aggressive stirring are the usual culprits.',
+      fixes: [
+        'Grind one notch coarser and use a burr grinder if you can — it makes far fewer fines.',
+        'Stir and swirl less: one gentle swirl after the bloom is enough.',
+        'Pour gently; blasting the bed kicks up fines.',
+        'Let the last sip sit — or decant the cup and leave the sludge behind.',
+        'For French press, skim the floating crust and plunge very slowly.'
+      ]
+    },
+    harsh: {
+      id: 'harsh', label: 'Harsh / drying', hint: 'Astringent, mouth-puckering, unpleasant dryness',
+      diagnosis: 'Astringent over-extraction / channeling',
+      explanation: 'That drying, tea-bag-left-too-long sensation is astringency: water found a fast path through the coffee bed (channeling) and over-extracted one part while under-extracting the rest. Very hot water makes it worse.',
+      fixes: [
+        'Grind coarser and keep water at 90-93 C — boiling water scorches the bed.',
+        'Pour in slow, even spirals and keep the water level consistent to avoid channels.',
+        'Do not agitate the bed late in the brew; let the drawdown finish undisturbed.',
+        'Use a flat, level coffee bed — tap the brewer gently after adding grounds.',
+        'If it happens every time with the same beans, they may be baked/dark-roasted past their prime.'
+      ]
+    }
+  };
+}
+
+function listSymptoms() {
+  var d = tasteDiagnoses();
+  return Object.keys(d).map(function (k) {
+    return { id: d[k].id, label: d[k].label, hint: d[k].hint };
+  });
+}
+
+/* symptomIds: array of symptom ids (or a single id string). Returns diagnosis cards. */
+function diagnoseTaste(symptomIds) {
+  var ids = Array.isArray(symptomIds) ? symptomIds : [symptomIds];
+  var d = tasteDiagnoses();
+  var out = [];
+  var seen = {};
+  ids.forEach(function (id) {
+    if (d[id] && !seen[id]) { seen[id] = true; out.push(d[id]); }
+  });
+  return out;
+}
+
+/* Parse a YYYY-MM-DD date string into a UTC-midnight Date, or null. */
+function parseISODate(s) {
+  if (typeof s !== 'string') return null;
+  var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s.trim());
+  if (!m) return null;
+  var y = +m[1], mo = +m[2], d = +m[3];
+  if (mo < 1 || mo > 12 || d < 1 || d > 31) return null;
+  var dt = new Date(Date.UTC(y, mo - 1, d));
+  if (dt.getUTCFullYear() !== y || dt.getUTCMonth() !== mo - 1 || dt.getUTCDate() !== d) return null;
+  return dt;
+}
+
+/* Bean-age advisor: roast date -> rest window + grind/temp adjustments. */
+function beanAgeAdvice(roastDateISO, todayISO, roastLevel) {
+  var roast = parseISODate(roastDateISO);
+  var today = parseISODate(todayISO);
+  if (!roast || !today) return { error: 'Please enter valid dates in YYYY-MM-DD format.' };
+  var days = Math.round((today.getTime() - roast.getTime()) / 86400000);
+  if (days < 0) return { error: 'The roast date is in the future — check the date on the bag.' };
+
+  var level = (roastLevel === 'light' || roastLevel === 'dark') ? roastLevel : 'medium';
+  var peaks = { light: [7, 35], medium: [5, 28], dark: [3, 18] };
+  var peak = peaks[level];
+  var levelWord = level + ' roast';
+
+  if (days < peak[0]) {
+    return {
+      daysOffRoast: days, roastLevel: level, status: 'too-fresh',
+      headline: 'Too fresh — let it rest',
+      detail: 'At ' + days + (days === 1 ? ' day' : ' days') + ' off roast this ' + levelWord + ' is still degassing CO2. ' +
+        'Fresh beans bloom aggressively and brew unevenly, which is why the cup can taste sour and hollow right now. ' +
+        'Peak flavor starts around day ' + peak[0] + '.',
+      restNote: 'Best from day ' + peak[0] + ' to day ' + peak[1] + ' off roast. Store sealed at room temperature, away from light.',
+      adjustments: [
+        'Grind one notch coarser than your usual setting to slow the gassy, uneven extraction.',
+        'Extend the bloom to a full 60 seconds and swirl twice.',
+        'Drop water temperature by about 1 C (91-93 C for pour over).',
+        'A big, domed, fast bloom is normal now — it is CO2 escaping, not a mistake.'
+      ]
+    };
+  }
+  if (days <= peak[1]) {
+    return {
+      daysOffRoast: days, roastLevel: level, status: 'peak',
+      headline: 'In its prime — brew away',
+      detail: 'At ' + days + ' days off roast this ' + levelWord + ' is inside its peak window (day ' +
+        peak[0] + ' to day ' + peak[1] + '). Dial in normally: this is the window your journal entries should be judged against.',
+      restNote: 'Peak window: day ' + peak[0] + ' to day ' + peak[1] + '. Keep the bag sealed and grind just before brewing.',
+      adjustments: [
+        'Use your standard recipe: 1:16, 93-94 C, medium-fine grind for pour over.',
+        'Log this brew in the dial-in journal — these are your reference shots.',
+        'Taste before changing anything; only adjust one variable at a time.'
+      ]
+    };
+  }
+  if (days <= 60) {
+    return {
+      daysOffRoast: days, roastLevel: level, status: 'aging',
+      headline: 'Past prime — compensate a little',
+      detail: 'At ' + days + ' days off roast this ' + levelWord + ' has lost much of its CO2 and aromatics. ' +
+        'The cup may taste flatter and slightly bitter. You can still get good cups by extracting a bit more aggressively.',
+      restNote: 'Past the peak window (day ' + peak[0] + ' to day ' + peak[1] + '). Brew through it in the next week or two.',
+      adjustments: [
+        'Grind one notch finer to increase extraction from the tired beans.',
+        'Raise water temperature by 1-2 C (94-96 C for pour over).',
+        'Tighten the ratio slightly, e.g. from 1:16 to 1:15.5, for more body.',
+        'Consider freezing the remainder in a sealed bag to slow further aging.'
+      ]
+    };
+  }
+  return {
+    daysOffRoast: days, roastLevel: level, status: 'stale',
+    headline: 'Stale — repurpose, do not fight it',
+    detail: 'At ' + days + ' days off roast this ' + levelWord + ' is well past its best. ' +
+      'No grind or temperature trick will bring back the aromatics, and chasing it usually just makes bitter cups.',
+    restNote: 'Older than 60 days. Do not buy this much coffee at once next time — 2-3 weeks worth is the sweet spot.',
+    adjustments: [
+      'Use it for cold brew concentrate: long, forgiving extraction hides staleness.',
+      'Or brew it strong for iced coffee and milk drinks where freshness matters less.',
+      'If you must brew hot: grind finer, use 94-96 C water, and expect a flat cup.',
+      'Buy smaller bags more often — freshness beats any recipe tweak.'
+    ]
+  };
+}
+
+/* Plain-English comparison for a caffeine amount in mg. */
+function caffeineComparison(mg) {
+  if (!(mg >= 0)) return 'Enter a valid dose to estimate caffeine.';
+  if (mg < 35) return 'Less than a can of cola (about 35 mg) — a very gentle cup.';
+  if (mg < 70) return 'About one cup of black tea (about 50 mg).';
+  if (mg < 110) return 'About one standard 8 oz brewed coffee (about 95 mg).';
+  if (mg < 170) return 'A strong mug of filter coffee — roughly two cups of tea.';
+  if (mg < 250) return 'About two to three espresso shots (about 63 mg each).';
+  return 'Very strong — like three or more energy drinks. Consider a smaller dose or a milder method.';
+}
+
+/* Caffeine estimate: dose (g) x ~12 mg/g arabica x method extraction efficiency. */
+function estimateCaffeine(doseG, methodId) {
+  if (!bmIsPosNum(doseG)) return { error: 'Enter a coffee dose in grams.' };
+  if (doseG > 100) return { error: 'That dose looks unusually large — check your grams.' };
+  var m = methodById(methodId);
+  if (!m) return { error: 'Choose a brew method.' };
+  var mg = Math.round(doseG * 12 * m.eff);
+  return {
+    mg: mg,
+    doseG: bmRound(doseG, 1),
+    method: m.name,
+    ratio: ratioLabel(m.ratio),
+    comparison: caffeineComparison(mg),
+    note: 'Estimate for 100% arabica (about 12 mg caffeine per gram of beans) at typical extraction for ' +
+      m.name + '. Robusta beans can nearly double these numbers.'
+  };
+}
+
+/* Validate a dial-in journal entry. Returns an array of error strings (empty = valid). */
+function validateEntry(e) {
+  var errs = [];
+  if (!e || typeof e !== 'object') return ['Entry is missing.'];
+  if (!parseISODate(e.date)) errs.push('Pick a valid brew date.');
+  if (!methodById(e.method)) errs.push('Choose a brew method.');
+  if (!bmIsPosNum(e.coffeeG)) errs.push('Enter the coffee dose in grams.');
+  if (!(typeof e.ratio === 'number' && isFinite(e.ratio) && e.ratio > 0 && e.ratio <= 40)) errs.push('Ratio must be between 1:1 and 1:40.');
+  if (!e.grind || typeof e.grind !== 'string') errs.push('Choose a grind setting.');
+  if (!(typeof e.tempC === 'number' && isFinite(e.tempC) && e.tempC >= 60 && e.tempC <= 100)) errs.push('Water temperature should be 60-100 C.');
+  if (!(typeof e.timeS === 'number' && isFinite(e.timeS) && e.timeS > 0 && e.timeS <= 86400)) errs.push('Enter a valid brew time.');
+  if (!(typeof e.score === 'number' && isFinite(e.score) && e.score >= 1 && e.score <= 10)) errs.push('Taste score must be between 1 and 10.');
+  return errs;
+}
+
+/* Journal stats: average score, best recipe, and score trend. Expects entries sorted by date ascending. */
+function summarizeJournal(entries) {
+  var list = (entries || []).filter(function (e) {
+    return e && typeof e.score === 'number' && isFinite(e.score);
+  });
+  if (!list.length) return { count: 0, avgScore: null, best: null, trend: 'not-enough' };
+  var sum = 0, best = list[0];
+  list.forEach(function (e) {
+    sum += e.score;
+    if (e.score > best.score || (e.score === best.score && e.date > best.date)) best = e;
+  });
+  var trend = 'steady';
+  if (list.length >= 4) {
+    var half = Math.floor(list.length / 2);
+    var avgFirst = 0, avgSecond = 0;
+    for (var i = 0; i < half; i++) avgFirst += list[i].score;
+    for (var j = half; j < list.length; j++) avgSecond += list[j].score;
+    avgFirst /= half; avgSecond /= (list.length - half);
+    if (avgSecond - avgFirst >= 0.5) trend = 'improving';
+    else if (avgFirst - avgSecond >= 0.5) trend = 'declining';
+  }
+  return { count: list.length, avgScore: bmRound(sum / list.length, 1), best: best, trend: trend };
+}
+
+/* Human-readable trend label. */
+function trendLabel(trend) {
+  if (trend === 'improving') return 'Improving — your dialing-in is working.';
+  if (trend === 'declining') return 'Declining — something changed; check bean age or grind.';
+  if (trend === 'not-enough') return 'Log a few more brews to see a trend.';
+  return 'Steady — consistent cups.';
+}
+
+/* Format seconds as m:ss or h:mm:ss for the timer display. */
+function fmtClock(totalS) {
+  totalS = Math.max(0, Math.round(totalS));
+  var h = Math.floor(totalS / 3600);
+  var m = Math.floor((totalS % 3600) / 60);
+  var s = totalS % 60;
+  var ss = (s < 10 ? '0' : '') + s;
+  if (h > 0) return h + ':' + (m < 10 ? '0' : '') + m + ':' + ss;
+  return m + ':' + ss;
+}
+
+</script>
+
+<!-- ============ UI WIRING ============ -->
+<script>
+(function () {
+  'use strict';
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function num(v) { var n = parseFloat(v); return isFinite(n) ? n : NaN; }
+
+  /* Populate every method <select> from the lib catalogue. */
+  ['method-select', 'timer-method', 'j-method', 'caf-method'].forEach(function (id) {
+    var sel = $(id);
+    listMethods().forEach(function (m) {
+      var o = document.createElement('option');
+      o.value = m.id; o.textContent = m.name;
+      sel.appendChild(o);
+    });
+  });
+  $('timer-method').value = 'v60';
+  $('caf-method').value = 'v60';
+
+  /* ---------------- STATION I : ratio calculator ---------------- */
+  var calcMode = 'dose';
+  var doseInput = $('dose-input'), waterInput = $('water-input'),
+      ratioSlider = $('ratio-slider'), ratioReadout = $('ratio-readout'),
+      calcMsg = $('calc-msg'), calcBig = $('calc-big'), calcSub = $('calc-sub'),
+      calcRecipe = $('calc-recipe');
+
+  function setCalcMode(mode) {
+    calcMode = mode;
+    $('mode-dose').classList.toggle('on', mode === 'dose');
+    $('mode-water').classList.toggle('on', mode === 'water');
+    doseInput.disabled = (mode === 'water');
+    waterInput.disabled = (mode === 'dose');
+    renderCalc();
+  }
+  $('mode-dose').addEventListener('click', function () { setCalcMode('dose'); });
+  $('mode-water').addEventListener('click', function () { setCalcMode('water'); });
+
+  function renderCalc() {
+    var m = methodById($('method-select').value) || listMethods()[0];
+    var ratio = num(ratioSlider.value);
+    ratioReadout.textContent = '1:' + (isFinite(ratio) ? ratio : '?');
+    calcMsg.textContent = '';
+    calcMsg.style.color = '#9C3B2E';
+
+    if (!(ratio > 0 && ratio <= 40)) {
+      calcMsg.textContent = 'Please choose a ratio between 1:1 and 1:40.';
+      calcBig.textContent = '—'; calcSub.textContent = '—'; renderRecipe(m, null);
+      return;
+    }
+    if (calcMode === 'dose') {
+      var dose = num(doseInput.value);
+      if (!(dose > 0)) {
+        calcMsg.textContent = 'Enter your coffee dose in grams to get the water amount.';
+        calcBig.textContent = '—'; calcSub.textContent = '—'; renderRecipe(m, null);
+        return;
+      }
+      var w = ratioGrams(dose, ratio);
+      calcBig.textContent = w + ' g';
+      calcSub.textContent = 'water for ' + dose + ' g coffee at ' + ratioLabel(ratio);
+      renderRecipe(m, { dose: dose, water: w });
+    } else {
+      var wat = num(waterInput.value);
+      if (!(wat > 0)) {
+        calcMsg.textContent = 'Enter your water amount in grams (ml) to get the coffee dose.';
+        calcBig.textContent = '—'; calcSub.textContent = '—'; renderRecipe(m, null);
+        return;
+      }
+      var c = coffeeForWater(wat, ratio);
+      calcBig.textContent = c + ' g';
+      calcSub.textContent = 'coffee for ' + wat + ' g water at ' + ratioLabel(ratio);
+      renderRecipe(m, { dose: c, water: wat });
+    }
+  }
+
+  function renderRecipe(m, amounts) {
+    var html = '<div class="rounded-md p-4 text-sm" style="background:rgba(201,162,39,.10); border:1px solid rgba(201,162,39,.5);">';
+    html += '<p class="font-mono text-[11px] uppercase tracking-[0.2em] mb-2" style="color:#8F7013;">Method card — ' + esc(m.name) + '</p>';
+    html += '<ul class="space-y-1" style="color:#43301F;">';
+    html += '<li><span class="font-mono text-xs uppercase" style="color:#8F7013;">Grind:</span> ' + esc(m.grind) + '</li>';
+    html += '<li><span class="font-mono text-xs uppercase" style="color:#8F7013;">Water temp:</span> ' + m.tempLow + '–' + m.tempHigh + ' &deg;C</li>';
+    html += '<li><span class="font-mono text-xs uppercase" style="color:#8F7013;">Total time:</span> ' + esc(fmtClock(m.timeS)) + ' (method default)</li>';
+    if (amounts) {
+      html += '<li><span class="font-mono text-xs uppercase" style="color:#8F7013;">Your brew:</span> ' +
+        esc(String(amounts.dose)) + ' g coffee → ' + esc(String(amounts.water)) + ' g water</li>';
+    }
+    html += '</ul><p class="mt-2 italic text-xs" style="color:#6F4E37;">' + esc(m.blurb) + '</p></div>';
+    calcRecipe.innerHTML = html;
+  }
+
+  $('method-select').addEventListener('change', function () {
+    var m = methodById(this.value);
+    if (m) ratioSlider.value = m.ratio;
+    renderCalc();
+  });
+  [doseInput, waterInput, ratioSlider].forEach(function (el) {
+    el.addEventListener('input', renderCalc);
+  });
+  setCalcMode('dose');
+
+  /* ---------------- STATION II : pour over timer ---------------- */
+  var T = { plan: null, idx: 0, left: 0, running: false, tickId: null, elapsed: 0 };
+  var timerMethod = $('timer-method'), timerDose = $('timer-dose'),
+      timerClock = $('timer-clock'), timerPhase = $('timer-phase'),
+      timerBar = $('timer-bar'), timerWater = $('timer-water'),
+      timerPhases = $('timer-phases'), timerMsg = $('timer-msg');
+
+  function beep(freq, dur) {
+    try {
+      var Ctx = window.AudioContext || window.webkitAudioContext;
+      beep.ctx = beep.ctx || new Ctx();
+      var ctx = beep.ctx, o = ctx.createOscillator(), g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.frequency.value = freq || 880; o.type = 'sine';
+      g.gain.setValueAtTime(0.07, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + (dur || 0.25));
+      o.start(); o.stop(ctx.currentTime + (dur || 0.25));
+    } catch (e) { /* silent when audio is unavailable */ }
+  }
+
+  function paintPhases() {
+    timerPhases.innerHTML = T.plan.phases.map(function (p, i) {
+      var cls = 'phase-row rounded-md px-3 py-2 flex gap-3 items-start';
+      if (i < T.idx) cls += ' done';
+      if (i === T.idx && (T.running || T.left > 0 || T.elapsed > 0)) cls += ' active';
+      var waterBit = p.waterG ? '<span class="font-mono text-xs" style="color:#8F7013;">pour to ' + p.waterG + ' g</span>' : '<span class="font-mono text-xs" style="color:#8F7013;">no pour</span>';
+      return '<li class="' + cls + '" style="border:1px solid rgba(201,162,39,.4); background:#fff;">' +
+        '<span class="font-mono font-semibold" style="color:#8F7013;">' + (i + 1) + '.</span>' +
+        '<span class="flex-1"><span class="font-semibold" style="color:#43301F;">' + esc(p.name) + '</span> ' +
+        '<span class="font-mono text-xs" style="color:#6F4E37;">(' + esc(fmtClock(p.timeS)) + ')</span><br>' +
+        waterBit + '<br><span class="text-xs italic" style="color:#6F4E37;">' + esc(p.note) + '</span></span></li>';
+    }).join('');
+  }
+
+  function paintClock() {
+    var cur = T.plan ? T.plan.phases[T.idx] : null;
+    timerClock.textContent = fmtClock(T.left);
+    timerPhase.textContent = cur ? ('Phase ' + (T.idx + 1) + ' of ' + T.plan.phases.length + ' — ' + cur.name) : 'Ready';
+    timerWater.textContent = cur
+      ? (cur.waterG ? 'Target: ' + cur.waterG + ' g total water this phase' : 'Hands off — let it work')
+      : '—';
+    var pct = T.plan && T.plan.totalS ? Math.min(100, (T.elapsed / T.plan.totalS) * 100) : 0;
+    timerBar.style.width = pct + '%';
+  }
+
+  function timerButtons() {
+    var has = !!T.plan;
+    $('timer-start').disabled = !has || T.running || T.idx >= T.plan.phases.length;
+    $('timer-pause').disabled = !has || !T.running;
+    $('timer-reset').disabled = !has;
+  }
+
+  $('timer-build').addEventListener('click', function () {
+    stopTick();
+    timerMsg.textContent = '';
+    var dose = num(timerDose.value);
+    if (!(dose > 0)) {
+      timerMsg.textContent = 'Enter a coffee dose in grams first.';
+      return;
+    }
+    var m = methodById(timerMethod.value);
+    var water = ratioGrams(dose, m.ratio);
+    var plan = phasesFor(m.id, dose, water);
+    if (!plan) { timerMsg.textContent = 'Could not build the timer — check your inputs.'; return; }
+    T.plan = plan; T.idx = 0; T.left = plan.phases[0].timeS; T.elapsed = 0; T.running = false;
+    timerMsg.style.color = '#4F7A3A';
+    timerMsg.textContent = 'Timer ready: ' + dose + ' g coffee, ' + water + ' g water, ' + fmtClock(plan.totalS) + ' total.';
+    paintPhases(); paintClock(); timerButtons();
+  });
+
+  function stopTick() {
+    if (T.tickId) { clearInterval(T.tickId); T.tickId = null; }
+    T.running = false;
+  }
+
+  $('timer-start').addEventListener('click', function () {
+    if (!T.plan || T.running || T.idx >= T.plan.phases.length) return;
+    timerMsg.textContent = ''; timerMsg.style.color = '#9C3B2E';
+    T.running = true; timerButtons(); paintPhases();
+    var last = Date.now();
+    T.tickId = setInterval(function () {
+      var now = Date.now();
+      var dt = (now - last) / 1000; last = now;
+      T.left -= dt; T.elapsed += dt;
+      if (T.left <= 0) {
+        T.idx++;
+        if (T.idx >= T.plan.phases.length) {
+          stopTick(); T.left = 0; T.elapsed = T.plan.totalS;
+          timerPhase.textContent = 'Brew complete — enjoy!';
+          timerWater.textContent = 'Decant, taste, and log it in your journal.';
+          beep(880, 0.3); setTimeout(function () { beep(1174, 0.4); }, 320);
+          paintPhases(); paintClock(); timerButtons();
+          return;
+        }
+        T.left = T.plan.phases[T.idx].timeS;
+        beep(660, 0.22);
+      }
+      paintPhases(); paintClock();
+    }, 200);
+  });
+
+  $('timer-pause').addEventListener('click', function () {
+    stopTick(); paintPhases(); timerButtons();
+  });
+
+  $('timer-reset').addEventListener('click', function () {
+    stopTick();
+    if (T.plan) { T.idx = 0; T.left = T.plan.phases[0].timeS; T.elapsed = 0; }
+    timerPhase.textContent = 'Ready';
+    paintPhases(); paintClock(); timerButtons();
+  });
+
+  /* ---------------- STATION III : taste troubleshooter ---------------- */
+  var chipBox = $('symptom-chips'), diagOut = $('diagnosis-output');
+  var activeSymptoms = {};
+
+  listSymptoms().forEach(function (s) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.dataset.id = s.id;
+    b.innerHTML = '<span class="font-semibold">' + esc(s.label) + '</span><br>' +
+      '<span class="text-[11px] opacity-80">' + esc(s.hint) + '</span>';
+    b.addEventListener('click', function () {
+      if (activeSymptoms[s.id]) { delete activeSymptoms[s.id]; b.classList.remove('on'); }
+      else { activeSymptoms[s.id] = true; b.classList.add('on'); }
+      renderDiagnoses();
+    });
+    chipBox.appendChild(b);
+  });
+
+  function renderDiagnoses() {
+    var ids = Object.keys(activeSymptoms);
+    if (!ids.length) {
+      diagOut.innerHTML = '<p class="text-sm italic" style="color:#8F7013;">No symptoms selected yet — the diagnosis chart is blank. Tap a symptom above to begin.</p>';
+      return;
+    }
+    diagOut.innerHTML = diagnoseTaste(ids).map(function (d) {
+      var fixes = d.fixes.map(function (f) {
+        return '<li class="flex gap-2"><span style="color:#8F7013;">&#10003;</span><span>' + esc(f) + '</span></li>';
+      }).join('');
+      return '<div class="rounded-md p-5" style="background:#fff; border:1px solid rgba(201,162,39,.55);">' +
+        '<div class="flex flex-wrap items-center gap-3">' +
+        '<span class="stamp stamp-red">' + esc(d.diagnosis) + '</span>' +
+        '<span class="font-display font-bold text-lg" style="color:#43301F;">' + esc(d.label) + '</span></div>' +
+        '<p class="mt-3 text-sm" style="color:#43301F;">' + esc(d.explanation) + '</p>' +
+        '<p class="font-mono text-[11px] uppercase tracking-[0.2em] mt-4 mb-2" style="color:#8F7013;">Prescribed fixes</p>' +
+        '<ul class="space-y-1.5 text-sm" style="color:#43301F;">' + fixes + '</ul></div>';
+    }).join('');
+  }
+
+  /* ---------------- STATION IV : dial-in journal ---------------- */
+  var JKEY = 'brewmetric-journal-v1';
+  function loadJ() {
+    try { var a = JSON.parse(localStorage.getItem(JKEY)); return Array.isArray(a) ? a : []; }
+    catch (e) { return []; }
+  }
+  function saveJ(a) { try { localStorage.setItem(JKEY, JSON.stringify(a)); } catch (e) { /* storage full/blocked */ } }
+
+  $('j-date').value = new Date().toISOString().slice(0, 10);
+  $('j-score').addEventListener('input', function () { $('j-score-readout').textContent = this.value; });
+
+  function sortedEntries() {
+    return loadJ().slice().sort(function (a, b) {
+      return String(a.date).localeCompare(String(b.date));
+    });
+  }
+
+  function renderJournal() {
+    var entries = sortedEntries();
+    var stats = summarizeJournal(entries);
+    var trendArrow = stats.trend === 'improving' ? '&#8599;' : (stats.trend === 'declining' ? '&#8600;' : '&#8594;');
+    var trendColor = stats.trend === 'improving' ? '#4F7A3A' : (stats.trend === 'declining' ? '#9C3B2E' : '#8F7013');
+    $('journal-stats').innerHTML =
+      statCard('Brews logged', stats.count) +
+      statCard('Average score', stats.avgScore == null ? '—' : stats.avgScore + ' / 10') +
+      '<div class="rounded-md p-3" style="background:#fff; border:1px solid rgba(201,162,39,.5);">' +
+      '<p class="font-mono text-[10px] uppercase tracking-widest" style="color:#8F7013;">Trend</p>' +
+      '<p class="font-mono font-semibold text-lg" style="color:' + trendColor + ';">' + trendArrow + '</p>' +
+      '<p class="text-[11px] italic" style="color:#6F4E37;">' + esc(trendLabel(stats.trend)) + '</p></div>';
+
+    if (stats.best) {
+      var b = stats.best, m = methodById(b.method);
+      $('journal-best').innerHTML =
+        '<div class="rounded-md p-4" style="background:rgba(201,162,39,.12); border:2px solid #C9A227;">' +
+        '<span class="stamp stamp-green">Best recipe</span>' +
+        '<p class="font-display font-bold text-lg mt-2" style="color:#43301F;">' + esc(String(b.coffeeG)) + ' g &middot; 1:' + esc(String(b.ratio)) +
+        ' &middot; ' + esc(m ? m.name : b.method) + '</p>' +
+        '<p class="font-mono text-xs mt-1" style="color:#6F4E37;">' + esc(b.grind) + ' &middot; ' + esc(String(b.tempC)) + '&deg;C &middot; ' +
+        esc(fmtClock(b.timeS)) + ' &middot; scored ' + esc(String(b.score)) + '/10 on ' + esc(b.date) +
+        (b.note ? ' &middot; &ldquo;' + esc(b.note) + '&rdquo;' : '') + '</p></div>';
+    } else {
+      $('journal-best').innerHTML = '<p class="text-sm italic" style="color:#8F7013;">Your best-scoring recipe will be stamped here once you log a brew.</p>';
+    }
+
+    var list = entries.slice().reverse();
+    $('journal-list').innerHTML = list.length ? list.map(function (e) {
+      var realIdx = entries.indexOf(e);
+      var m = methodById(e.method);
+      return '<li class="rounded-md px-3 py-2 flex items-start gap-3" style="background:#fff; border:1px solid rgba(201,162,39,.4);">' +
+        '<span class="font-mono font-semibold text-base" style="color:#8F7013; min-width:2.2rem;">' + esc(String(e.score)) + '</span>' +
+        '<span class="flex-1"><span class="font-semibold" style="color:#43301F;">' + esc(m ? m.name : e.method) + '</span> ' +
+        '<span class="font-mono text-xs" style="color:#6F4E37;">' + esc(String(e.coffeeG)) + 'g &middot; 1:' + esc(String(e.ratio)) +
+        ' &middot; ' + esc(e.grind) + ' &middot; ' + esc(String(e.tempC)) + '&deg;C &middot; ' + esc(fmtClock(e.timeS)) + '</span><br>' +
+        '<span class="text-xs" style="color:#8F7013;">' + esc(e.date) + (e.note ? ' — ' + esc(e.note) : '') + '</span></span>' +
+        '<button type="button" data-del="' + realIdx + '" class="font-mono text-xs underline" style="color:#9C3B2E;">delete</button></li>';
+    }).join('')
+      : '<li class="text-sm italic" style="color:#8F7013;">No brews logged yet — your first entry starts the trend line.</li>';
+
+    Array.prototype.forEach.call($('journal-list').querySelectorAll('[data-del]'), function (btn) {
+      btn.addEventListener('click', function () {
+        var all = loadJ();
+        var target = entries[parseInt(btn.getAttribute('data-del'), 10)];
+        var i = all.indexOf(target);
+        if (i > -1) { all.splice(i, 1); saveJ(all); renderJournal(); }
+      });
+    });
+  }
+
+  function statCard(label, value) {
+    return '<div class="rounded-md p-3" style="background:#fff; border:1px solid rgba(201,162,39,.5);">' +
+      '<p class="font-mono text-[10px] uppercase tracking-widest" style="color:#8F7013;">' + esc(label) + '</p>' +
+      '<p class="font-mono font-semibold text-lg" style="color:#43301F;">' + esc(String(value)) + '</p></div>';
+  }
+
+  $('journal-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var msg = $('j-msg');
+    msg.style.color = '#9C3B2E'; msg.textContent = '';
+    var entry = {
+      date: $('j-date').value,
+      method: $('j-method').value,
+      coffeeG: num($('j-dose').value),
+      ratio: num($('j-ratio').value),
+      grind: $('j-grind').value,
+      tempC: num($('j-temp').value),
+      timeS: num($('j-time-min').value) * 60 + num($('j-time-sec').value),
+      score: parseInt($('j-score').value, 10),
+      note: $('j-note').value.trim()
+    };
+    if (isNaN(entry.timeS)) entry.timeS = NaN;
+    var errs = validateEntry(entry);
+    if (errs.length) { msg.textContent = errs[0]; return; }
+    var all = loadJ(); all.push(entry); saveJ(all);
+    msg.style.color = '#4F7A3A';
+    msg.textContent = 'Logged — ' + entry.score + '/10. Keep the streak going.';
+    $('j-note').value = '';
+    renderJournal();
+  });
+
+  $('journal-clear').addEventListener('click', function () {
+    if (!loadJ().length) return;
+    if (window.confirm('Erase the whole logbook? This cannot be undone.')) {
+      saveJ([]); renderJournal();
+    }
+  });
+
+  renderJournal();
+
+  /* ---------------- STATION V : bean-age advisor ---------------- */
+  $('bean-btn').addEventListener('click', function () {
+    var msg = $('bean-msg'), out = $('bean-output');
+    msg.textContent = ''; out.innerHTML = '';
+    var roast = $('roast-date').value;
+    if (!roast) { msg.textContent = 'Pick the roast date printed on the bag.'; return; }
+    var today = new Date().toISOString().slice(0, 10);
+    var a = beanAgeAdvice(roast, today, $('roast-level').value);
+    if (a.error) { msg.textContent = a.error; return; }
+    var stampCls = a.status === 'peak' ? 'stamp stamp-green'
+      : (a.status === 'too-fresh' ? 'stamp' : 'stamp stamp-red');
+    out.innerHTML =
+      '<div class="rounded-md p-5" style="background:#fff; border:1px solid rgba(201,162,39,.55);">' +
+      '<div class="flex flex-wrap items-center gap-3">' +
+      '<span class="' + stampCls + '">' + esc(a.headline) + '</span>' +
+      '<span class="font-mono text-sm" style="color:#6F4E37;">' + a.daysOffRoast + (a.daysOffRoast === 1 ? ' day' : ' days') +
+      ' off roast &middot; ' + esc(a.roastLevel) + ' roast</span></div>' +
+      '<p class="mt-3 text-sm" style="color:#43301F;">' + esc(a.detail) + '</p>' +
+      '<p class="mt-2 text-sm italic" style="color:#8F7013;">' + esc(a.restNote) + '</p>' +
+      '<p class="font-mono text-[11px] uppercase tracking-[0.2em] mt-4 mb-2" style="color:#8F7013;">Adjustments</p>' +
+      '<ul class="space-y-1.5 text-sm" style="color:#43301F;">' +
+      a.adjustments.map(function (x) {
+        return '<li class="flex gap-2"><span style="color:#8F7013;">&#10003;</span><span>' + esc(x) + '</span></li>';
+      }).join('') + '</ul></div>';
+  });
+
+  /* ---------------- STATION VI : caffeine estimator ---------------- */
+  function renderCaffeine() {
+    var msg = $('caf-msg'), out = $('caf-output');
+    msg.textContent = ''; out.innerHTML = '';
+    $('caf-big').textContent = '—'; $('caf-method-line').textContent = '—';
+    var r = estimateCaffeine(num($('caf-dose').value), $('caf-method').value);
+    if (r.error) { msg.textContent = r.error; return; }
+    $('caf-big').textContent = r.mg;
+    $('caf-method-line').textContent = r.doseG + ' g via ' + r.method + ' (' + r.ratio + ' default)';
+    out.innerHTML =
+      '<div class="rounded-md p-4" style="background:rgba(201,162,39,.10); border:1px solid rgba(201,162,39,.5);">' +
+      '<p class="font-display font-bold text-lg" style="color:#43301F;">&#9749; ' + esc(r.comparison) + '</p>' +
+      '<p class="text-xs mt-2 italic" style="color:#6F4E37;">' + esc(r.note) + '</p></div>';
+  }
+  $('caf-btn').addEventListener('click', renderCaffeine);
+  renderCaffeine();
+})();
+</script>
+
+<!-- ============ JSON-LD FAQ SCHEMA ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best coffee to water ratio?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For pour over and drip coffee, start at 1:16 — one gram of coffee per 16 grams of water. The classic golden ratio is 1:18, but most home brewers prefer 1:15 to 1:17. Espresso uses 1:2, French press 1:12 to 1:15, and cold brew concentrate 1:8. Adjust half a point at a time until it matches your taste." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I time a pour over coffee?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Bloom for 45 seconds, pour to 60% of your water by 1:15, to 100% by 1:45, and let the drawdown finish around 3:00 for a V60 (about 4:00 for Chemex). If it drains much faster, grind finer; if it stalls, grind coarser." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my coffee taste sour?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sourness means under-extraction: the brew finished before the sweet compounds dissolved. Grind finer, use hotter water (93-96 C for pour over), and extend the brew time. Beans under 4 days off roast also taste sour until they rest." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my coffee taste bitter instead?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Bitterness means over-extraction. Grind coarser, lower the water temperature by 2 C, and shorten the brew. Dark roasts and stale beans also taste bitter; stale beans are best used for cold brew." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should coffee rest after roasting?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most filter coffee peaks 5 to 14 days off roast; espresso often needs 7 to 21 days. Dark roasts degas faster (ready in 3-5 days), light roasts slower. Brewing before the rest window gives gassy, sour, uneven cups." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much caffeine is in my cup of coffee?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Roughly 12 mg of caffeine per gram of arabica beans times your method's extraction (75-95%). A 20 g pour over has about 150 mg; an 18 g double espresso about 130 mg. Black tea has about 50 mg per cup for comparison." }
+    }
+  ]
+}
+</script>
+</body>
+</html>
