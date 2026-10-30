@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Off-Grid Battery Bank Size Calculator — Amp-Hours You Need | BatteryBank</title>
+<meta name="description" content="Free off-grid battery bank size calculator: daily energy, autonomy days, voltage and depth of discharge give required amp-hours.">
+<link rel="canonical" href="https://fun.fixoraa.tech/batterybank/">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"BatteryBank","applicationCategory":"Home","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "How many amp-hours do I need for off-grid living?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on daily use, autonomy days, voltage and battery type. A small cabin might need 167 amp-hours; a full home can need 500 or more. This calculator gives your exact figure."}},{"@type": "Question", "name": "What is depth of discharge?", "acceptedAnswer": {"@type": "Answer", "text": "The fraction of a battery's capacity you regularly use. Lead-acid batteries should stay above 50% discharge; lithium batteries can go to 80% without harm."}},{"@type": "Question", "name": "How many days of autonomy should I plan for?", "acceptedAnswer": {"@type": "Answer", "text": "Two to three days suits most climates. One day is minimal and risky; more than three days gets expensive fast."}},{"@type": "Question", "name": "Is 12V, 24V or 48V better?", "acceptedAnswer": {"@type": "Answer", "text": "Higher voltage suits bigger systems: 12V for small cabins, 24V for medium systems, 48V for whole homes. Higher voltage means thinner, cheaper cabling."}},{"@type": "Question", "name": "Can I mix old and new batteries?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mixed banks age unevenly and the weakest battery limits the whole bank. Replace banks as a matched set."}},{"@type": "Question", "name": "Do I need to account for inverter losses?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, in detailed designs. A 90% efficient inverter needs about 11% more stored energy. Add a margin or increase your daily figure accordingly."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:'IBM Plex Sans',sans-serif;background:#EFFAFA;color:#123B3B;line-height:1.6}
+a{color:#0E7490} header{background:#164E63;color:#FFFFFF;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#FFFFFF;text-decoration:none}
+.mark{width:44px;height:44px;border-radius:14px;background:#0E7490;color:#fff;display:grid;place-items:center;font-size:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#0E7490;color:#fff;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+.btn2{background:transparent;color:#FFFFFF;border:2px solid #FFFFFF}
+.wrap{max-width:960px;margin:0 auto;padding:16px} .badge{display:inline-block;background:#C9E8E8;color:#123B3B;border:1px solid #0E7490;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px}
+.card{background:#fff;border:1px solid #C9E8E8;border-radius:14px;padding:20px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.vault{display:grid;grid-template-columns:1fr 1fr;gap:0}.vault div{border:2px solid #0E7490;padding:16px}.vault div:first-child{background:#164E63;color:#fff;border-radius:14px 0 0 14px}.vault div:last-child{border-radius:0 14px 14px 0}@media(max-width:640px){.vault{grid-template-columns:1fr}.vault div:first-child{border-radius:14px 14px 0 0}.vault div:last-child{border-radius:0 0 14px 14px}}h1,h2{font-family:'Bricolage Grotesque',sans-serif}
+label{display:block;font-weight:700;margin:12px 0 4px} input,select,textarea{width:100%;padding:12px;border:1.5px solid #C9E8E8;border-radius:10px;font-size:16px;font-family:inherit}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px} @media(max-width:600px){.grid{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start}}
+.res{margin-top:16px;padding:16px;background:#C9E8E8;border-radius:14px;font-size:18px} .res b{font-size:26px}
+.err{color:#b91c1c;font-weight:700} article{background:#fff;border-radius:14px;padding:24px;margin-top:20px} article h2{margin-top:28px}
+.faq details{background:#fff;border:1px solid #C9E8E8;border-radius:12px;padding:14px;margin:10px 0} .faq summary{font-weight:700;cursor:pointer}
+footer{background:#164E63;color:#FFFFFF;padding:28px 16px;margin-top:24px} footer a{color:#FFFFFF;font-weight:700}
+.hist{font-size:14px;background:#fff;border:1px dashed #0E7490;padding:10px;border-radius:10px;margin-top:12px;white-space:pre-wrap}
+</style></head>
+<body>
+<header><a class="logo" href="https://fixoraa.tech"><span class="mark">▣</span>BatteryBank</a>
+<nav><a class="btn btn2" href="https://fixoraa.tech">Home</a> <a class="btn btn2" href="https://fixoraa.tech">More Tools</a></nav></header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="wrap">
+<div class="vault"><div><span class="badge">Unlimited Free Usage</span><h1>Off-Grid Battery Bank Size Calculator</h1><p>How much battery do you need to ride through cloudy days? Enter daily use and autonomy, get amp-hours.</p></div><div><strong>Inputs that matter</strong><ul><li>Daily energy (watt-hours)</li><li>Days of autonomy</li><li>System voltage</li><li>Safe depth of discharge</li></ul></div></div>
+<section class="card" aria-label="Tool">
+<div class="grid"><div><label for="daily_wh">Daily energy use (watt-hours)</label><input id="daily_wh" type="number" step="any" value="1000" placeholder="Daily energy use (watt-hours)"></div><div><label for="days">Days of autonomy</label><input id="days" type="number" step="any" value="1" placeholder="Days of autonomy"></div><div><label for="volts">System voltage</label><select id="volts"><option value="12">12 V</option><option value="24">24 V</option><option value="48">48 V</option></select></div><div><label for="dod">Usable depth of discharge</label><select id="dod"><option value="0.5">50% (lead-acid safe)</option><option value="0.8">80% (lithium safe)</option><option value="1">100% (theoretical only)</option></select></div></div><div style="margin-top:14px"><button class="btn" onclick="calc()">Calculate</button> <button class="btn" onclick="resetF()">Reset</button></div><div style="margin-top:10px">Presets: <button class="btn" type="button" onclick="applyPreset({"daily_wh": 1000, "days": 1})">Small cabin</button> <button class="btn" type="button" onclick="applyPreset({"daily_wh": 2400, "days": 2})">Weekend cabin</button> <button class="btn" type="button" onclick="applyPreset({"daily_wh": 5000, "days": 2})">Full home</button> </div>
+<div id="err" class="err" role="alert"></div>
+<div id="res" class="res" style="display:none"></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+<button class="btn" onclick="saveHist()">Save to history</button>
+<button class="btn" onclick="copyRes()">Copy result</button>
+<button class="btn" onclick="dlCSV()">Export CSV</button></div>
+<div id="hist" class="hist" style="display:none"></div>
+<p><strong>Battery reality:</strong> lead-acid batteries last longest when discharged only to 50%, while lithium batteries tolerate 80% routinely. Sizing with the correct depth of discharge is the difference between a bank that lasts three years and one that lasts ten.</p>
+</section>
+<article><p>Going off-grid is liberating until the lights go out on the second cloudy day. The battery bank is the heart of any off-grid system — it stores the sun you collected yesterday for the night you need it tonight — and sizing it wrong is the most expensive mistake in the whole setup. Too small, and you run dry, damage the batteries by over-discharging them, and live with a system you cannot trust. Too big, and you have spent thousands on capacity you never cycle. The off-grid battery bank size calculator finds the right size: your daily energy use, the number of cloudy days you want to ride through, your system voltage, and the safe depth of discharge for your battery chemistry, combined into one amp-hour figure you can shop for.</p>
+<h2>How to use this calculator</h2>
+<p>Battery sizing is energy arithmetic. Start with daily energy use in watt-hours — the sum of everything the system powers in a day. Multiply by days of autonomy, the number of sunless days the bank must cover alone. That gives the total stored energy needed. Divide by system voltage to convert watt-hours into amp-hours, the unit batteries are sold in. Finally divide by depth of discharge, because only part of a battery's capacity should be used regularly: lead-acid batteries should only be discharged to about 50%, lithium batteries to about 80%. The calculator performs all four steps and rounds to whole amp-hours.</p>
+<ol><li>Add up daily energy use: list your loads, their watts, and hours used, then multiply and sum — or read it from an energy monitor.</li><li>Choose days of autonomy: one day is minimal, two to three days is comfortable for most climates.</li><li>Pick your system voltage — 12 volts for small cabins, 24 or 48 volts for larger homes.</li><li>Choose depth of discharge for your battery type: 50% for lead-acid, 80% for lithium.</li><li>Press Calculate and read your required amp-hours and the equivalent number of 100-amp-hour batteries.</li></ol>
+<h2>Understanding your results</h2>
+<p><strong>Amp-hours required.</strong> The headline figure — the battery bank capacity your system needs at your chosen voltage and depth of discharge.</p>
+<p><strong>100-amp-hour units.</strong> A practical translation, since many batteries are sold as 100-amp-hour blocks. Wiring them in series raises voltage; in parallel raises capacity.</p>
+<p><strong>Why depth of discharge matters.</strong> Sizing a lead-acid bank at 100% discharge would halve its life. The depth-of-discharge step is what makes the answer honest.</p>
+<p><strong>Zero results.</strong> Zero daily energy means zero battery needed. If your loads are real and you see zero, check the energy field.</p>
+<h2>Practical tips</h2><ul><li>Size for winter, not summer — short days and long nights are when the bank earns its keep.</li><li>Prefer lithium for daily cycling if the budget allows; the higher usable capacity and longer life usually win on lifetime cost.</li><li>Keep batteries in a cool, ventilated, dry place — heat is the silent killer of battery life.</li><li>Add a battery monitor so you always know the state of charge; guessing is how banks get damaged.</li><li>Plan for growth: leave room and wiring capacity for extra batteries if your loads will increase.</li><li>Re-check sizing whenever you add a major load, like a fridge, a pump or a workshop tool.</li></ul>
+<h2>Common mistakes to avoid</h2><ul><li>Sizing at 100% depth of discharge and destroying a lead-acid bank within a year or two.</li><li>Counting only one cloudy day of autonomy in a climate where three-day storms are normal.</li><li>Forgetting inverter losses — a 90% efficient inverter means the bank must supply about 11% more energy.</li><li>Mixing old and new batteries in one bank, so the weakest battery limits the whole system.</li><li>Choosing voltage by habit — a 12-volt system for a whole house means enormous, expensive cabling.</li><li>Buying capacity without a monitor and discovering problems only when the lights go out.</li></ul>
+<h2>Who benefits most</h2>
+<p>This calculator is for cabin owners, van-lifers and boat owners building off-grid power, homeowners adding battery backup to solar, and installers quoting systems who want a transparent number to show clients. It is also useful for anyone comparing quotes: two installers recommending different bank sizes can be judged against the same arithmetic. If your power comes from the sun and must last through the night, this calculation is the foundation everything else rests on.</p>
+<h2>Worked example</h2>
+<p>Take a small cabin using 1,000 watt-hours per day, wanting one day of autonomy, on a 12-volt system with lead-acid batteries at 50% depth of discharge: 1,000 × 1 ÷ (12 × 0.5) = 166.7, rounded to 167 amp-hours — two 100-amp-hour batteries. Now a weekend cabin using 2,400 watt-hours per day for two days on a 24-volt lithium system at 80%: 2,400 × 2 ÷ (24 × 0.8) = 250 amp-hours exactly. Same method, very different answers — because autonomy, voltage and chemistry all change the result, and guessing any one of them wrecks the sizing.</p>
+<h2>Checking and re-running your result</h2>
+<p>Check your result by comparing it with your installer's recommendation and by monitoring real consumption for a month — energy monitors often reveal loads you forgot. If the bank runs dry regularly, re-run the calculator with more autonomy days or a corrected daily figure rather than simply adding batteries blindly. Save each sizing to history, and revisit it whenever your loads change, because a bank sized for last year's cabin will not serve this year's workshop. Battery chemistry is the decision that shapes everything else about an off-grid bank, so compare chemistries on lifetime cost rather than sticker price. Flooded lead-acid batteries are cheap to buy but need watering, ventilation for hydrogen gas, and strict 50 percent discharge limits; sealed AGM lead-acid removes the watering but not the discharge limit. Lithium iron phosphate, or LiFePO4, costs two to three times more upfront yet delivers 80 percent usable capacity, thousands more cycles, and a decade or more of service, so it usually wins over the system's life. Temperature is the quiet killer: lead-acid capacity drops sharply below freezing, lithium should not be charged below zero without a heated battery, and every chemistry ages faster in a hot shed, so an insulated, ventilated battery room is part of the system, not an afterthought. Inverter sizing runs alongside battery sizing — the inverter must handle your largest simultaneous load plus motor surges, and a 90 percent efficient inverter means the bank supplies roughly eleven percent more energy than your loads consume. Solar pairing matters too: a bank sized for three days of autonomy still needs enough panel wattage to recharge it on an average winter day, or it will slowly walk down to empty across a cloudy week. Finally, budget for a battery monitor and a proper charge controller; the monitor is your fuel gauge, and guessing state of charge is how banks get ruined. Revisit the whole calculation annually, because loads creep upward and panels degrade. A quick reference for the systems people build most often: a 1,000-watt-hour-per-day cabin with one day of autonomy needs about 167 amp-hours at 12 volts on lead-acid; the same cabin on lithium needs about 104 amp-hours; a 2,400-watt-hour-per-day weekend cabin with two days of autonomy needs about 250 amp-hours at 24 volts on lithium; and a 5,000-watt-hour-per-day home with two days of autonomy needs about 260 amp-hours at 48 volts on lithium. Voltage and chemistry change the answer dramatically, so never copy a neighbour's bank size without running your own numbers.</p></article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary>How many amp-hours do I need for off-grid living?</summary><p>It depends on daily use, autonomy days, voltage and battery type. A small cabin might need 167 amp-hours; a full home can need 500 or more. This calculator gives your exact figure.</p></details><details><summary>What is depth of discharge?</summary><p>The fraction of a battery's capacity you regularly use. Lead-acid batteries should stay above 50% discharge; lithium batteries can go to 80% without harm.</p></details><details><summary>How many days of autonomy should I plan for?</summary><p>Two to three days suits most climates. One day is minimal and risky; more than three days gets expensive fast.</p></details><details><summary>Is 12V, 24V or 48V better?</summary><p>Higher voltage suits bigger systems: 12V for small cabins, 24V for medium systems, 48V for whole homes. Higher voltage means thinner, cheaper cabling.</p></details><details><summary>Can I mix old and new batteries?</summary><p>No. Mixed banks age unevenly and the weakest battery limits the whole bank. Replace banks as a matched set.</p></details><details><summary>Do I need to account for inverter losses?</summary><p>Yes, in detailed designs. A 90% efficient inverter needs about 11% more stored energy. Add a margin or increase your daily figure accordingly.</p></details></section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer><p><strong>BatteryBank</strong> — Stored energy, sized to your nights.</p>
+<p>BatteryBank sizes an off-grid battery bank from your daily energy use, autonomy days, system voltage and safe depth of discharge.</p>
+<p><a href="https://fixoraa.tech">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p></footer>
+<script id="pure">function batteryAh(wh,days,volts,dod){return Math.round(wh*days/(volts*dod));}</script>
+<script>function calc(){var wh=num('daily_wh'),d=num('days'),v=parseFloat(document.getElementById('volts').value||12),dod=parseFloat(document.getElementById('dod').value||0.5);
+    if(wh<0||d<0){showErr('Values cannot be negative.');return;} document.getElementById('err').textContent='';
+    var ah=batteryAh(wh,d,v,dod); var units=Math.ceil(ah/100);
+    var html='<b>'+ah+' amp-hours</b> at '+v+' V — about <b>'+units+' × 100 Ah batterie'+(units===1?'':'s')+'</b> wired for your system voltage.';
+    if(wh===0) html='No daily energy use entered, so the battery bank is 0 amp-hours.';
+    showRes(html);}
+  
+function applyPreset(o){for(var k in o){var e=document.getElementById(k);if(e)e.value=o[k];}calc();}
+function resetF(){var els=document.querySelectorAll('input,select');els.forEach(function(e){if(e.type!=='button')e.value='';});document.getElementById('res').style.display='none';document.getElementById('err').textContent='';}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+
+function showRes(html){var r=document.getElementById('res');r.style.display='block';r.innerHTML=html;window._last=html.replace(/<[^>]+>/g,' ');}
+function showErr(m){document.getElementById('err').textContent=m;}
+function saveHist(){if(!window._last)return;var k='hist_batterybank';var a=JSON.parse(localStorage.getItem(k)||'[]');a.unshift(new Date().toLocaleString()+': '+window._last);localStorage.setItem(k,JSON.stringify(a.slice(0,10)));var d=document.getElementById('hist');d.style.display='block';d.textContent=a.join('\n');}
+function copyRes(){if(window._last&&navigator.clipboard)navigator.clipboard.writeText(window._last);}
+function dlCSV(){if(!window._last)return;var b=new Blob([window._last],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='batterybank-result.csv';a.click();}
+</script>
+</body></html>
