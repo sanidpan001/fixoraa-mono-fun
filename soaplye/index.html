@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lye Calculator for Cold Process Soap Making | SoapLye</title>
+<meta name="description" content="Free lye calculator for cold process soap making: enter your oils, pick a superfat, and get exact NaOH and water weights. Recipe builder, batch scaler, and bar yield.">
+<link rel="canonical" href="https://fun.fixoraa.tech/soaplye/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Lye Calculator for Cold Process Soap Making | SoapLye">
+<meta property="og:description" content="Free lye calculator for cold process soap making: enter your oils, pick a superfat, and get exact NaOH and water weights. Recipe builder, batch scaler, and bar yield.">
+<meta property="og:url" content="https://fun.fixoraa.tech/soaplye/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SoapLye",
+      "url": "https://fun.fixoraa.tech/soaplye/",
+      "applicationCategory": "DIY Tools",
+      "operatingSystem": "Web",
+      "description": "Free lye calculator for cold process soap making: enter your oils, pick a superfat, and get exact NaOH and water weights. Recipe builder, batch scaler, and bar yield.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate lye for cold process soap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply each oil's weight in grams by its NaOH SAP value, add the results together, then multiply by (1 \u2212 superfat \u00f7 100). For example, 500 g olive oil (SAP 0.135) at 5% superfat: 500 \u00d7 0.135 \u00d7 0.95 = 64.1 g NaOH. This calculator does the whole recipe automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What superfat percentage should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "5% is the standard for everyday cold process body bars \u2014 safe and balanced. Use 8\u201310% for facial or sensitive-skin bars, and 0\u20133% for laundry or shaving soap where maximum cleansing matters. Higher superfat means a milder but softer bar with a shorter shelf life."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much water do I mix with the lye?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Think in lye concentration, not cups of water. At the standard 33% concentration: water = lye weight \u00d7 67 \u00f7 33. So 142.6 g NaOH needs about 289.6 g distilled water. Lower concentration (28%) gives more working time; higher (38%) speeds unmolding and cure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this calculator for hot process soap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Hot process uses exactly the same lye and water math as cold process \u2014 the difference is technique (cooking the batter), not recipe chemistry. Enter your oils and superfat here just as you would for a cold process batch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it safe to make soap with lye at home?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with proper precautions: chemical-splash goggles, nitrile gloves, long sleeves, and ventilation. Always add lye TO water (never water to lye), avoid aluminium containers, and let the solution cool before soaping. Rinse skin contact under cool running water for 15\u201320 minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did my soap fail the zap test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A tingly tongue means unreacted lye remains \u2014 the batch is lye-heavy. The usual causes are misweighed lye, a typo in the calculator, or 0% superfat meeting higher-than-average SAP values. Keep at least 3\u20135% superfat as a safety margin and always double-check weights before mixing."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FAF5EA; --surface:#FFFDF6; --accent:#8C2F1B; --accent-ink:#FFFFFF;
+  --ink:#2E2A24; --muted:#6E6455; --line:#E7DAC0;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.sl-wrap{max-width:1060px;margin:0 auto;padding:10px 6px 46px;font-family:Inter,system-ui,sans-serif;color:#2E2A24;}.sl-hero{background:#FFFDF6;border:1px solid #E7DAC0;border-radius:22px;padding:38px 30px;text-align:center;position:relative;box-shadow:0 14px 34px rgba(140,47,27,.07);margin-bottom:28px;overflow:hidden;}.sl-hero:before,.sl-hero:after{content:'';position:absolute;top:-14px;width:110px;height:34px;background:rgba(140,47,27,.12);border:1px solid rgba(140,47,27,.15);}.sl-hero:before{left:8%;transform:rotate(-6deg);}.sl-hero:after{right:8%;transform:rotate(6deg);}.sl-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8C2F1B;margin-bottom:10px;}.sl-hero h1{font-family:Fraunces,serif;font-size:clamp(30px,4.6vw,46px);font-weight:700;line-height:1.08;margin:0 0 10px;letter-spacing:-.01em;}.sl-tag{color:#6E6455;font-size:17px;margin:0;max-width:620px;margin-left:auto;margin-right:auto;}.sl-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:26px;align-items:start;}.sl-card{background:#FFFDF6;border:1px solid #E7DAC0;border-radius:20px;padding:28px 26px;box-shadow:0 10px 28px rgba(46,42,36,.05);margin-bottom:22px;}.sl-card h2{font-family:Fraunces,serif;font-size:23px;margin:0 0 6px;}.sl-sub{color:#6E6455;font-size:14.5px;margin:0 0 18px;}.sl-oilrow{display:grid;grid-template-columns:1fr 130px 40px;gap:10px;margin-bottom:10px;align-items:center;}.sl-oilrow select,.sl-oilrow input,.sl-num{padding:11px 12px;font-size:15px;border:2px solid #E7DAC0;border-radius:12px;font-family:inherit;color:#2E2A24;background:#fff;width:100%;min-width:0;}.sl-oilrow select:focus,.sl-oilrow input:focus,.sl-num:focus{outline:none;border-color:#8C2F1B;}.sl-x{background:none;border:2px solid #E7DAC0;color:#8C2F1B;border-radius:10px;width:40px;height:44px;font-size:18px;cursor:pointer;font-weight:700;}.sl-x:hover{background:#8C2F1B;color:#fff;border-color:#8C2F1B;}.sl-add{background:none;border:2px dashed #8C2F1B;color:#8C2F1B;border-radius:12px;padding:10px 16px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit;margin:4px 0 2px;}.sl-add:hover{background:rgba(140,47,27,.07);}.sl-ctl{margin:18px 0 6px;}.sl-ctl label{display:flex;justify-content:space-between;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#6E6455;margin-bottom:8px;}.sl-ctl label output{color:#8C2F1B;font-size:15px;}.sl-ctl input[type=range]{width:100%;accent-color:#8C2F1B;}.sl-seg{display:flex;gap:8px;flex-wrap:wrap;}.sl-seg button{border:2px solid #E7DAC0;background:#fff;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;color:#2E2A24;}.sl-seg button.on{background:#8C2F1B;color:#fff;border-color:#8C2F1B;}.sl-btn{width:100%;background:#8C2F1B;color:#fff;border:none;border-radius:14px;padding:15px;font-size:18px;font-weight:700;cursor:pointer;font-family:Fraunces,serif;letter-spacing:.02em;margin-top:14px;}.sl-btn:hover{filter:brightness(1.08);}.sl-btn.ghost{background:none;color:#8C2F1B;border:2px solid #8C2F1B;font-family:Inter,system-ui,sans-serif;font-size:15px;padding:11px;}.sl-res{display:none;margin-top:20px;border:2px dashed #8C2F1B;border-radius:16px;padding:22px;background:#FAF5EA;}.sl-res.show{display:block;}.sl-res h3{font-family:Fraunces,serif;margin:0 0 12px;font-size:20px;}.sl-rgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}.sl-r{background:#FFFDF6;border:1px solid #E7DAC0;border-radius:12px;padding:12px 14px;}.sl-r .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:#6E6455;font-weight:700;}.sl-r .v{font-size:22px;font-weight:700;color:#8C2F1B;font-family:Fraunces,serif;}.sl-scale{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap;}.sl-margin{display:flex;flex-direction:column;gap:20px;position:sticky;top:90px;}.sl-marginhead{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#6E6455;text-align:center;}.sl-note{background:#FFF6D8;border:1px solid #EBDFB4;border-radius:6px 22px 6px 22px;padding:18px 18px 16px;box-shadow:0 10px 22px rgba(46,42,36,.10);font-family:Caveat,cursive;font-size:20px;line-height:1.45;color:#4A3F2A;position:relative;}.sl-note strong{font-size:22px;}.sl-note.n1{transform:rotate(-2deg);}.sl-note.n2{transform:rotate(1.4deg);background:#FDEBD9;border-color:#F0D5B8;}.sl-note.n3{transform:rotate(-1deg);background:#E9F3E4;border-color:#CBDFC0;}.sl-note .pin{position:absolute;top:-11px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:#8C2F1B;box-shadow:inset -3px -3px 0 rgba(0,0,0,.25);}@media(max-width:520px){.sl-oilrow{grid-template-columns:1fr 1fr 44px;}.sl-oilrow select{grid-column:1/-1;}}@media(max-width:900px){.sl-grid{grid-template-columns:1fr;}.sl-margin{position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}.sl-marginhead{grid-column:1/-1;}.sl-hero{padding:30px 20px;}.sl-card{padding:22px 18px;}.sl-rgrid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="SoapLye home">
+      <span class="fx-logo-tile" aria-hidden="true">🧼</span>
+      <span class="fx-brand">SoapLye</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-notebook-margin" aria-label="SoapLye tool">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet"><section class="sl-wrap"><div class="sl-hero"><span class="sl-kicker">The soaper's notebook</span><h1>Lye Calculator for Cold Process Soap</h1><p class="sl-tag">Exact lye math for every batch — no guesswork, no caustic surprises.</p></div><div class="sl-grid"><div><div class="sl-card"><h2>Build your recipe</h2><p class="sl-sub">Add each oil with its weight in grams. Percentages auto-balance as you type.</p><div id="sl-oils"></div><button class="sl-add" id="sl-add" type="button">+ Add another oil</button><div class="sl-ctl"><label>Superfat (lye discount) <output id="sl-sfout">5%</output></label><input type="range" id="sl-sf" min="0" max="20" step="1" value="5"></div><div class="sl-ctl"><label>Lye concentration</label><div class="sl-seg" id="sl-conc"><button type="button" data-c="28">28% — slow trace</button><button type="button" data-c="33" class="on">33% — standard</button><button type="button" data-c="38">38% — fast cure</button></div></div><button class="sl-btn" id="sl-go" type="button">Calculate my lye</button><div class="sl-res" id="sl-res" role="status"><h3>Your batch</h3><div class="sl-rgrid"><div class="sl-r"><div class="k">Sodium hydroxide (NaOH)</div><div class="v" id="sl-lye">–</div></div><div class="sl-r"><div class="k">Distilled water</div><div class="v" id="sl-water">–</div></div><div class="sl-r"><div class="k">Total batch weight</div><div class="v" id="sl-total">–</div></div><div class="sl-r"><div class="k">≈ Bars (110 g each)</div><div class="v" id="sl-bars">–</div></div></div><div class="sl-scale"><span style="font-size:14px;color:#6E6455;font-weight:600">Scale batch to</span><input class="sl-num" id="sl-scale" type="number" min="100" step="50" value="1000" style="width:110px"><span style="font-size:14px;color:#6E6455">g oils</span><button class="sl-btn ghost" id="sl-copy" type="button" style="width:auto;margin-top:0">Copy recipe</button></div></div></div></div><aside class="sl-margin" aria-label="Margin notes"><div class="sl-marginhead">— margin notes —</div><div class="sl-note n1"><span class="pin"></span><strong>⚠️ Safety first:</strong> always add lye TO water, never water to lye. Goggles + gloves, ventilate, no aluminium pots!</div><div class="sl-note n2"><span class="pin"></span><strong>Superfat cheat-sheet:</strong> 5% all-round · 8–10% facial bars · 0–3% laundry &amp; shaving soap.</div><div class="sl-note n3"><span class="pin"></span><strong>Cure times:</strong> 4–6 weeks standard, 8–12 weeks for castile. Bars keep hardening long after unmoulding.</div></aside></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Lye Math Is Non-Negotiable in Soap Making</h2><p>Every bar of real soap — cold process, hot process, even the liquid soap in your pump bottle — is born from one chemical reaction: <strong>saponification</strong>. Oils and fats meet a strong alkali (sodium hydroxide for bar soap, potassium hydroxide for liquid soap), and the reaction converts them into soap plus glycerin. The reaction is beautifully predictable, which is why a lye calculator works at all: each oil needs a fixed, known amount of lye per gram to fully saponify. Get that number right and you get a mild, long-lasting bar. Get it wrong and you get one of two failures — a <strong>lye-heavy</strong> bar that can irritate or burn skin, or a <strong>lye-light</strong> bar that stays soft, greasy, and turns rancid on the shelf.</p><p>This is why experienced soap makers repeat one rule to every beginner: <em>never eyeball lye</em>. A kitchen scale and a calculator are as essential as the oils themselves. The margin between a safe bar and a caustic one is a few grams — invisible to the eye, trivial to a scale. This guide explains exactly what the calculator is doing under the hood, so you understand every number on your recipe card.</p><h2>SAP Values: The Number Behind Every Recipe</h2><p>Every oil and fat has a <strong>SAP value</strong> (saponification value): the grams of sodium hydroxide needed to fully saponify one gram of that oil. Coconut oil's NaOH SAP is 0.190, olive oil's is 0.135, shea butter's is 0.128. The differences reflect each oil's fatty-acid profile — shorter fatty-acid chains (like the lauric acid abundant in coconut oil) need more lye per gram than longer chains.</p><p>The fundamental formula for a single oil is simple:</p><p><strong>Lye needed = oil weight × SAP value × (1 − superfat)</strong></p><p>For a multi-oil recipe, you calculate each oil separately and add them up:</p><p><strong>Total lye = [(oil₁ × SAP₁) + (oil₂ × SAP₂) + …] × (1 − superfat)</strong></p><p>A worked example: a 1,000 g batch of 500 g olive oil (SAP 0.135), 300 g coconut oil (SAP 0.190), and 200 g shea butter (SAP 0.128) at 5% superfat. Olive: 500 × 0.135 = 67.5 g. Coconut: 300 × 0.190 = 57.0 g. Shea: 200 × 0.128 = 25.6 g. Raw total: 150.1 g. With the 5% lye discount: 150.1 × 0.95 = <strong>142.6 g NaOH</strong>. That is precisely what this calculator computes for you, oil by oil.</p><p>Two cautions about SAP values. First, published SAP values are <strong>averages</strong> — natural oils vary 1–3% by crop, origin, and processing. Reputable calculators all draw from the same compiled saponification charts, and the small natural variance is exactly what your superfat absorbs. Second, always use the NaOH column for bar soap and the KOH column for liquid soap; potassium hydroxide's SAP values are roughly 1.4× higher because KOH is a heavier molecule.</p><h2>Superfat: Your Built-In Safety Margin</h2><p><strong>Superfat</strong> (also called lye discount) is the percentage of oils deliberately left unsaponified. At 5% superfat, you use 5% less lye than the SAP math demands, so about 5% of the oils remain free in the finished bar. Those free oils do two jobs: they guarantee that no unreacted lye survives even if your scale or SAP values are slightly off, and they make the bar milder and more conditioning on skin.</p><p>Choosing a superfat is a formulating decision, not a guess:</p><ul><li><strong>0–3%:</strong> laundry soap, shaving soap, and mechanic's soap where maximum cleansing matters and skin mildness doesn't.</li><li><strong>5%:</strong> the all-round standard for cold process body bars — safe, balanced, good shelf life.</li><li><strong>8–10%:</strong> facial bars and sensitive-skin recipes; richer feel, slightly softer bar, shorter shelf life.</li><li><strong>Above 10%:</strong> specialty territory (salt bars, some castiles). Expect softness and watch for rancidity — high free-oil content oxidizes faster.</li></ul><p>One beginner mistake is treating superfat as optional because "my last batch was fine without it." That luck runs on the natural variance of SAP values. A 0% superfat batch made with oils whose true SAP runs high can finish lye-heavy — and a lye-heavy bar doesn't announce itself until it meets skin. Keep at least 3–5% unless you know exactly why you're going lower.</p><h2>Water: Lye Concentration, Not "How Much Water"</h2><p>Old recipes say "use X grams of water," but modern soap makers think in <strong>lye concentration</strong>: the percentage of the lye solution that is actually lye. A 33% lye concentration means 33 g NaOH dissolved in every 100 g of solution (33 g lye + 67 g water). The conversion is:</p><p><strong>Water = lye × (100 − concentration) ÷ concentration</strong></p><p>So 142.6 g NaOH at 33% concentration needs 142.6 × 67 ÷ 33 = <strong>289.6 g of distilled water</strong>.</p><p>Why does concentration matter? Less water (higher concentration, e.g. 38%) means the batter reaches trace faster, unmolds sooner, and cures quicker — but gives you less working time for swirls. More water (lower concentration, e.g. 28%) gives luxurious working time for intricate designs but a longer cure and slightly more shrinkage. <strong>33% is the reliable middle ground</strong> most recipes assume, and it's this calculator's default. Always use distilled water: tap water's minerals can cause unpredictable trace, discoloration, and reduced lather.</p><h2>Reading Your Results: Lye, Water, Batch, Bars</h2><p>The calculator returns four numbers. <strong>NaOH</strong> is weighed first into your lye-safe container — and weighed separately from everything else, double-checked before it touches water. <strong>Distilled water</strong> is measured into a heat-safe pitcher (stainless steel, heavy-duty polypropylene #5, or tempered glass — never aluminium, which reacts violently with lye). <strong>Total batch weight</strong> (oils + lye + water) tells you whether your mold is big enough: a standard 1 kg-oil batch fills roughly a 1.2-litre loaf mold. <strong>Bar yield</strong> divides the batch by ~110 g per finished bar, a typical cured bar weight, so you know how many bars a batch produces and can plan packaging and costing.</p><p>The <strong>batch scaler</strong> resizes a tested recipe to any oil weight while keeping every oil's proportion identical — essential when a 500 g test batch graduates to a 3 kg production run. Scale only proven recipes: a formula that misbehaves at 500 g misbehaves identically at 3 kg, just more expensively.</p><h2>Step-by-Step: Mixing Lye Water Safely</h2><ol><li><strong>Gear up:</strong> chemical-splash goggles (not reading glasses), nitrile gloves, long sleeves, closed-toe shoes. Work near running water.</li><li><strong>Ventilate:</strong> open windows or work under a range hood. The first 30 seconds after lye hits water release sharp fumes — don't lean over the pitcher.</li><li><strong>Water first, lye second:</strong> measure distilled water into the pitcher, then slowly sprinkle in the weighed NaOH while stirring gently. <strong>Never pour water onto dry lye</strong> — it can erupt.</li><li><strong>Expect heat:</strong> the solution will spike to 80–95°C within a minute. This is normal chemistry, not a mistake.</li><li><strong>Cool to working temperature:</strong> most cold process soaping happens with lye solution and oils both around 38–43°C (100–110°F). A 10-degree difference between the two is fine; a 40-degree difference causes false trace.</li><li><strong>Combine and blend:</strong> pour the lye solution into the melted oils (never the reverse), then stick-blend in short pulses to light trace — the texture of thin custard.</li></ol><p>If lye solution contacts skin, rinse under cool running water for 15–20 minutes; that's the medically correct response (vinegar is for work surfaces, not skin). Keep the lye container labelled and out of reach while it cools — clear liquid in an unmarked jug is a classic household accident.</p><h2>Troubleshooting: What the Numbers Warn You About</h2><h3>Zap test fails (tingly tongue)</h3><p>A faint tingle on the tongue means free lye remains — the batch is lye-heavy. Causes: misweighed lye, a data-entry slip in the calculator, or 0% superfat meeting high-SAP oils. Rebatching with extra oil can rescue it; otherwise the batch is for laundry, not skin.</p><h3>Soft, weepy bars after a week</h3><p>Usually lye-light: too little lye or far too much superfat, or a very high percentage of soft oils (olive, sunflower) with no hard-oil backbone. Reformulate toward 40–60% hard oils (coconut, palm, cocoa butter, tallow) and keep superfat at 5–8%.</p><h3>Crumbly, cracking bars</h3><p>Often too much hard oil/butter, lye concentration too high, or cutting too late. High-butter recipes need 3–5 days before unmolding but shouldn't wait weeks before cutting.</p><h3>Orange spots (DOS)</h3><p>Dreaded orange spots are rancidity — oxidation of free oils. High superfat, high-linoleic oils (grapeseed, hemp), and warm humid curing areas invite it. Keep superfat reasonable, cure in cool ventilated space, and consider rosemary oleoresin at 0.5% for high-risk recipes.</p><h2>Curing: The Step You Can't Rush</h2><p>Freshly cut soap is technically soap, but it's not <em>finished</em> soap. During the 4–6 week cure, water evaporates, the crystalline structure of the bar firms up, lather improves dramatically, and the bar lasts longer in the shower. Castile (100% olive oil) soap famously needs 8–12 weeks to become its best self — early castile is slimy; aged castile is superb. Cure bars on ventilated racks with air space between them, turning weekly, away from direct sun. The bar you test at week 2 is a preview, not the verdict.</p><h2>Hot Process Uses the Same Math</h2><p>A common question: does hot process soap need a different calculation? No — <strong>the lye math is identical</strong>. Hot process simply cooks the batter to force saponification to completion before molding, so the soap is usable within days instead of weeks. Enter your oils and superfat here exactly as you would for cold process. (Liquid soap is the exception: it uses KOH, whose SAP values are ~1.4× the NaOH values, with much higher water content.)</p><h2>From Test Batch to Production</h2><p>The professional workflow is: formulate → run the numbers → pour a small 300–500 g test batch → evaluate at full cure → tweak → recalculate → scale up. Small batches teach you trace behavior, scent acceleration, and unmolding quirks cheaply. Keep a notebook (paper or digital) of every batch: exact weights, temperatures, observations, and cure notes. Six months later, when a customer asks for "that oatmeal bar from spring," the notebook — and the recipe card this calculator copies for you — is the difference between a business and a hobby.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate lye for cold process soap?</summary><p>Multiply each oil's weight in grams by its NaOH SAP value, add the results together, then multiply by (1 − superfat ÷ 100). For example, 500 g olive oil (SAP 0.135) at 5% superfat: 500 × 0.135 × 0.95 = 64.1 g NaOH. This calculator does the whole recipe automatically.</p></details>
+<details><summary>What superfat percentage should I use?</summary><p>5% is the standard for everyday cold process body bars — safe and balanced. Use 8–10% for facial or sensitive-skin bars, and 0–3% for laundry or shaving soap where maximum cleansing matters. Higher superfat means a milder but softer bar with a shorter shelf life.</p></details>
+<details><summary>How much water do I mix with the lye?</summary><p>Think in lye concentration, not cups of water. At the standard 33% concentration: water = lye weight × 67 ÷ 33. So 142.6 g NaOH needs about 289.6 g distilled water. Lower concentration (28%) gives more working time; higher (38%) speeds unmolding and cure.</p></details>
+<details><summary>Can I use this calculator for hot process soap?</summary><p>Yes. Hot process uses exactly the same lye and water math as cold process — the difference is technique (cooking the batter), not recipe chemistry. Enter your oils and superfat here just as you would for a cold process batch.</p></details>
+<details><summary>Is it safe to make soap with lye at home?</summary><p>Yes, with proper precautions: chemical-splash goggles, nitrile gloves, long sleeves, and ventilation. Always add lye TO water (never water to lye), avoid aluminium containers, and let the solution cool before soaping. Rinse skin contact under cool running water for 15–20 minutes.</p></details>
+<details><summary>Why did my soap fail the zap test?</summary><p>A tingly tongue means unreacted lye remains — the batch is lye-heavy. The usual causes are misweighed lye, a typo in the calculator, or 0% superfat meeting higher-than-average SAP values. Keep at least 3–5% superfat as a safety margin and always double-check weights before mixing.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SoapLye</div>
+    <p>SoapLye turns your oil recipe into exact NaOH and water weights at any superfat — with a batch scaler, bar-yield estimate, and printable recipe card.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function lyeNeeded(oils,superfat){var t=0;for(var i=0;i<oils.length;i++){t+=Number(oils[i][0])*Number(oils[i][1]);}return Math.round(t*(1-Number(superfat)/100)*10)/10;}
+var SL_SAP={"Coconut oil (76°)":0.190,"Palm oil":0.141,"Olive oil":0.135,"Castor oil":0.128,"Shea butter":0.128,"Cocoa butter":0.137,"Sweet almond oil":0.136,"Sunflower oil":0.134,"Avocado oil":0.133,"Lard":0.141,"Tallow (beef)":0.143};
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var box=document.getElementById('sl-oils');if(!box)return;var sf=document.getElementById('sl-sf'),sfout=document.getElementById('sl-sfout'),concBox=document.getElementById('sl-conc'),go=document.getElementById('sl-go'),res=document.getElementById('sl-res'),lyeEl=document.getElementById('sl-lye'),waterEl=document.getElementById('sl-water'),totEl=document.getElementById('sl-total'),barsEl=document.getElementById('sl-bars'),scaleIn=document.getElementById('sl-scale'),copyBtn=document.getElementById('sl-copy');var conc=33;function oilOptions(sel){var h='';for(var k in SL_SAP){h+='<option value="'+SL_SAP[k]+'"'+(k===sel?' selected':'')+'>'+k+'</option>';}h+='<option value="custom">Custom SAP…</option>';return h;}function addRow(name,grams){var d=document.createElement('div');d.className='sl-oilrow';d.innerHTML='<select aria-label="Oil">'+oilOptions(name)+'</select><input type="number" min="0" step="1" value="'+(grams||'')+'" placeholder="grams" aria-label="Grams" inputmode="decimal"><button class="sl-x" type="button" aria-label="Remove oil">×</button>';var sel=d.querySelector('select'),inp=d.querySelector('input');sel.addEventListener('change',function(){if(sel.value==='custom'){var v=prompt('Enter the NaOH SAP value for this oil (e.g. 0.135):','0.135');if(v&&!isNaN(parseFloat(v))){var o=document.createElement('option');o.value=parseFloat(v);o.textContent='Custom ('+parseFloat(v)+')';o.selected=true;sel.appendChild(o);}else{sel.selectedIndex=0;}}});d.querySelector('.sl-x').addEventListener('click',function(){if(box.children.length>1)d.remove();});box.appendChild(d);}addRow('Olive oil',500);addRow('Coconut oil (76°)',300);addRow('Shea butter',200);document.getElementById('sl-add').addEventListener('click',function(){addRow('Olive oil','');});sf.addEventListener('input',function(){sfout.textContent=sf.value+'%';});concBox.addEventListener('click',function(e){if(e.target.tagName==='BUTTON'){var b=concBox.querySelectorAll('button');for(var i=0;i<b.length;i++)b[i].classList.remove('on');e.target.classList.add('on');conc=parseFloat(e.target.getAttribute('data-c'));}});function readOils(scaleTo){var rows=box.querySelectorAll('.sl-oilrow'),oils=[],total=0;for(var i=0;i<rows.length;i++){var s=rows[i].querySelector('select'),g=parseFloat(rows[i].querySelector('input').value)||0;if(s.value==='custom'||g<=0)continue;oils.push([g,parseFloat(s.value)]);total+=g;}if(scaleTo&&total>0){var f=scaleTo/total;for(var j=0;j<oils.length;j++)oils[j][0]=Math.round(oils[j][0]*f*10)/10;total=scaleTo;}return{oils:oils,total:total};}go.addEventListener('click',function(){var r=readOils(parseFloat(scaleIn.value)||0);if(!r.oils.length){lyeEl.textContent='—';res.classList.add('show');return;}var lye=lyeNeeded(r.oils,parseFloat(sf.value));var water=Math.round(lye*(100-conc)/conc*10)/10;var total=Math.round((r.total+lye+water)*10)/10;lyeEl.textContent=lye+' g';waterEl.textContent=water+' g';totEl.textContent=total+' g';barsEl.textContent='≈ '+Math.floor(total/110);res.classList.add('show');res.scrollIntoView({behavior:'smooth',block:'nearest'});});copyBtn.addEventListener('click',function(){var r=readOils(0);var txt='SoapLye recipe — '+r.total+'g oils, '+sf.value+'% superfat, '+conc+'% lye conc.\n';for(var i=0;i<r.oils.length;i++)txt+='- '+r.oils[i][0]+'g oil (SAP '+r.oils[i][1]+')\n';txt+='NaOH: '+lyeEl.textContent+' | Water: '+waterEl.textContent;if(navigator.clipboard)navigator.clipboard.writeText(txt);copyBtn.textContent='Copied!';setTimeout(function(){copyBtn.textContent='Copy recipe';},1600);});});}
+</script>
+</body>
+</html>
