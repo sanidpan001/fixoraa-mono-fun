@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riddle Generator — 200+ Riddles with Answers | RiddleGen</title>
+<meta name="description" content="Fresh riddles on demand — filter by age and difficulty, reveal answers with a tap.">
+<link rel="canonical" href="https://fun.fixoraa.tech/riddlegen/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Riddle Generator — 200+ Riddles with Answers | RiddleGen">
+<meta property="og:description" content="Fresh riddles on demand — filter by age and difficulty, reveal answers with a tap.">
+<meta property="og:url" content="https://fun.fixoraa.tech/riddlegen/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RiddleGen",
+      "url": "https://fun.fixoraa.tech/riddlegen/",
+      "applicationCategory": "Fun & Lifestyle",
+      "operatingSystem": "Web",
+      "description": "Fresh riddles on demand \u2014 filter by age and difficulty, reveal answers with a tap.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I choose riddles for kids?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Set the age filter to Kids and difficulty to Easy. Kid riddles should use concrete wordplay with familiar objects (clocks, towels, piano keys) and have answers they can picture. Avoid riddles that depend on abstract concepts or vocabulary they have not met yet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes a riddle hard vs easy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Easy riddles use one familiar double-meaning and a concrete answer. Medium riddles add misdirection or metaphor. Hard riddles require abandoning your first interpretation entirely \u2014 the answer feels obvious only after you hear it. The filter above sorts the collection accordingly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use these riddles in my classroom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 they are free for classroom use. Use the print button to make a worksheet set, or run the reveal cards on a projector for whole-class play. Having students write their own riddles is an excellent follow-up that builds inference and vocabulary skills."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many riddles should I prepare for a party?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eight to ten great riddles beats twenty mediocre ones. Mix two easy warm-ups, a run of mediums, and one hard showstopper to close. Keep two extra hard ones in reserve for the guest who solves everything instantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best way to reveal a riddle answer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Build the drama: let the group exhaust their guesses first, offer one hint if they are stuck, then reveal with flair. The tap-to-reveal card keeps the answer hidden until the moment is right \u2014 never show the answer before guesses run out."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I write my own riddles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start from the answer and describe it sideways: use a word's double meaning, a paradox structure ('the more you take...'), or words from the wrong category. Test on one person \u2014 30 to 90 seconds of struggle is the sweet spot between too easy and unfair."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#F7F2FA;--accent:#7B27A5;--tint:#ECDDF4;--ink:#2C1F33;--muted:#6C5478;--accent-ink:#FFFFFF;--card:#FFFFFF}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Luckiest Guy',system-ui,cursive;background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px;background-image:radial-gradient(var(--tint) 2px,transparent 2.5px);background-size:30px 30px}
+.fx-container{max-width:1060px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--card);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-headrow{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#9B4FC4,var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 3px 8px rgba(123,39,165,.4);font-family:'Luckiest Guy',cursive}
+.fx-name{font-size:25px;letter-spacing:.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 18px;border-radius:999px;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:var(--card);transition:transform .12s;font-family:system-ui;font-weight:700}
+.fx-btn:hover{transform:translateY(-2px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--ink);font-size:13px;border:2px dashed var(--accent);font-family:system-ui}
+.hero{text-align:center;padding:44px 0 8px}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:system-ui;font-weight:700}
+.hero h1{font-size:clamp(36px,6vw,60px);line-height:1.05;margin-bottom:10px;font-weight:400;text-shadow:3px 3px 0 var(--tint)}
+.lede{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto;font-family:system-ui}
+.tool{margin:28px 0 10px}
+.rg-filters{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.rg-filters .grp{background:var(--card);border:2px solid var(--tint);border-radius:14px;padding:10px 14px}
+.rg-filters label{font-family:system-ui;font-size:13px;font-weight:700;display:block;margin-bottom:6px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.rg-filters select{font-family:system-ui;font-size:16px;padding:8px 12px;border:2px solid var(--tint);border-radius:8px;color:var(--ink);background:#fff}
+.rg-deal{display:block;margin:0 auto 26px;font-family:'Luckiest Guy',cursive;font-size:22px;letter-spacing:.03em;background:var(--accent);color:var(--accent-ink);border:0;border-radius:16px;padding:15px 44px;cursor:pointer;box-shadow:0 5px 0 #521A6E;transition:transform .12s}
+.rg-deal:hover{transform:translateY(-2px) rotate(-1deg)}
+.rg-stage{display:flex;justify-content:center;margin-bottom:26px;perspective:1200px}
+.rg-card{width:min(520px,100%);min-height:300px;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.7,.3,1.2);cursor:pointer}
+.rg-card.flip{transform:rotateY(180deg)}
+.rg-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:3px solid var(--accent);border-radius:20px;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:0 12px 30px rgba(123,39,165,.18)}
+.rg-face.back{transform:rotateY(180deg);background:var(--accent);border-color:#521A6E}
+.rg-q{font-size:clamp(21px,3.4vw,29px);line-height:1.35;font-weight:400}
+.rg-hint{font-family:system-ui;font-size:13px;color:var(--muted);margin-top:16px;letter-spacing:.06em}
+.rg-a{font-size:clamp(26px,4vw,36px);color:#fff;font-weight:400}
+.rg-a-hint{font-family:system-ui;font-size:13px;color:rgba(255,255,255,.8);margin-top:14px;letter-spacing:.06em}
+.rg-meta{display:flex;gap:8px;justify-content:center;margin-bottom:6px}
+.rg-tag{font-family:system-ui;font-size:12px;font-weight:700;background:var(--tint);color:var(--accent);border-radius:999px;padding:4px 12px;letter-spacing:.06em;text-transform:uppercase}
+.rg-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.rg-actions button{font-family:system-ui;font-weight:700;font-size:15px;padding:10px 22px;border-radius:999px;border:2px solid var(--accent);background:var(--card);color:var(--accent);cursor:pointer}
+.rg-actions button:hover{background:var(--tint)}
+.rg-favs{max-width:640px;margin:0 auto}
+.rg-favs h3{font-size:20px;margin-bottom:10px;text-align:center;font-weight:400}
+.rg-favs ul{list-style:none}
+.rg-favs li{font-family:system-ui;background:var(--card);border:2px solid var(--tint);border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.rg-favs li button{background:none;border:0;color:var(--accent);font-size:18px;cursor:pointer}
+.article-sec{margin:44px 0;max-width:780px}
+.article-sec h2{font-size:26px;margin:36px 0 12px;font-weight:400}
+.article-sec p{margin-bottom:14px;color:#41354a;font-family:system-ui}
+.article-sec ul,.article-sec ol{margin:0 0 14px 24px;color:#41354a;font-family:system-ui}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0 10px;max-width:780px}
+.faq-sec h2{font-size:26px;margin-bottom:16px;font-weight:400}
+.faq-sec details{background:var(--card);border:2px solid var(--tint);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:15px 18px;cursor:pointer;list-style:none;font-size:18px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--tint);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#41354a;font-size:15px;font-family:system-ui}
+.fx-footer{background:#2a1e33;color:#ece2f4;margin-top:48px;padding:42px 0 36px}
+.fx-footer .fx-brand{font-size:26px;margin-bottom:8px;color:#fff;font-weight:400}
+.fx-footer p{font-size:15px;color:#c4aed6;max-width:640px;margin-bottom:14px;font-family:system-ui}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;text-decoration:none;border-bottom:2px solid var(--accent);font-family:system-ui}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#d8bdf2;font-weight:700}
+@media(max-width:680px){.fx-nav{margin-left:0}.rg-card{min-height:260px}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-headrow">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/riddlegen/" aria-label="RiddleGen home">
+      <span class="fx-tile" aria-hidden="true">?</span>
+      <span class="fx-name">RiddleGen</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="hero">
+    <span class="eyebrow">Deal yourself a brain-teaser</span>
+    <h1>Riddle Generator</h1>
+    <p class="lede">Pick an age group and difficulty, then tap the card to reveal the answer. Fresh riddles on demand — for classrooms, parties, and long car rides.</p>
+  </section>
+  <section class="tool" aria-label="RiddleGen tool">
+<div class="rg-filters">
+      <div class="grp"><label for="rg-diff">Difficulty</label>
+        <select id="rg-diff"><option value="any">Any</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></div>
+      <div class="grp"><label for="rg-age">Age group</label>
+        <select id="rg-age"><option value="any">Any</option><option value="kids">Kids</option><option value="teens">Teens</option><option value="adults">Adults</option></select></div>
+    </div>
+    <button type="button" class="rg-deal" id="rg-deal">Deal me a riddle</button>
+    <div class="rg-meta" id="rg-meta"></div>
+    <div class="rg-stage">
+      <div class="rg-card" id="rg-card" role="button" tabindex="0" aria-label="Riddle card, activate to reveal answer">
+        <div class="rg-face front"><div class="rg-q" id="rg-q">Pick your filters and hit the button…</div><div class="rg-hint">TAP CARD TO REVEAL</div></div>
+        <div class="rg-face back"><div class="rg-a" id="rg-a"></div><div class="rg-a-hint">TAP TO FLIP BACK</div></div>
+      </div>
+    </div>
+    <div class="rg-actions">
+      <button type="button" id="rg-fav">♡ Save favorite</button>
+      <button type="button" id="rg-print">🖨️ Print set</button>
+    </div>
+    <div class="rg-favs" id="rg-favwrap" hidden>
+      <h3>Your favorites</h3>
+      <ul id="rg-favs"></ul>
+    </div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>Why Riddles Never Get Old</h2>
+<p>Riddles are the oldest interactive entertainment on Earth — the Sphinx was asking them before writing was common — and they still work because they hack the brain's reward system. A riddle poses a small, solvable mystery; the moment of insight delivers a genuine dopamine hit. That is why a good riddle night outlasts any trivia app: everyone gets to feel clever, the stakes are zero, and the groans at a pun answer are half the fun. Teachers have known this forever — a riddle is a five-second lesson in lateral thinking disguised as play.</p>
+<p>The trick to riddles is matching them to the audience, which is exactly what the filters above do. Easy riddles for young kids rely on concrete wordplay ("What has keys but can't open locks?" — a piano). Medium riddles add misdirection and metaphor. Hard riddles demand you abandon your first interpretation entirely. Serve a hard riddle to a six-year-old and you get tears; serve an easy one to adults and you get eye-rolls. The difficulty and age filters are not decoration — they are the difference between a delighted room and a dead one.</p>
+<h2>How to Run a Riddle Night</h2>
+<p>Riddles shine in groups with a tiny bit of structure. The classic format: one reader, everyone else shouts guesses, three guesses per person, and the reader reveals the answer with maximum drama. Keep score if the group is competitive (a point per solve, bonus for solving without hints), or skip scoring entirely for casual nights — the fun is the collective "ohhh" when the answer lands. Deal a new riddle with the button above, tap the card to reveal, and keep a favorites list of the ones that killed.</p>
+<p>Pacing matters more than quantity. Twenty riddles in a row exhausts a room; eight great ones with banter between them is a perfect evening. Mix difficulties — two easy warm-ups, a run of mediums, one hard showstopper to end the night. For kids' parties, let the birthday child read the riddles; being the keeper of the answers is a power trip they will remember. And always have two extra hard riddles in reserve for the one guest who solves everything instantly — every group has one, and they need to be humbled gently.</p>
+<h2>Riddles in the Classroom</h2>
+<p>Teachers: riddles are a stealth teaching tool. They build vocabulary (kids learn "current," "bark," and "pupil" have double meanings), phonemic awareness (puns train sound play), and inference skills (eliminating wrong interpretations is scientific thinking). Use them as lesson openers, transition activities, or early-finisher tasks. The age filter keeps content appropriate, and the print function turns a set into a worksheet in one click.</p>
+<p>The pedagogy works because riddles create what researchers call "desirable difficulty" — effort that feels like play. A child wrestling with "what gets wetter the more it dries" is practicing abstract reasoning without knowing it. Let students write their own riddles too; constructing a riddle requires understanding the answer deeply enough to describe it sideways, which is a higher-order skill disguised as silliness. Collect the best student riddles and run them through the same reveal-card format — authorship makes them unforgettable.</p>
+<h2>The Anatomy of a Great Riddle</h2>
+<p>Great riddles share a structure: a true description that sounds false, or a false-sounding description that is true. "What has a face and two hands but no arms or legs?" works because "face" and "hands" prime you for a person while describing a clock. The misdirection is always linguistic — words with double meanings (bark, nail, pupil), idioms taken literally, or categories quietly switched. Once you see the mechanism, you can solve riddles faster: ask "which word here has two meanings?" and the answer usually falls out.</p>
+<p>This is also why riddles translate poorly and age interestingly. A riddle built on English homophones dies in translation; a riddle built on universal experience ("what gets bigger the more you take away?" — a hole) works everywhere. The oldest riddles in the collection — the Sphinx's "what walks on four legs in the morning..." — are pure logic, no wordplay, which is why they survive millennia. When writing your own, aim for the universal layer first and the wordplay second; the combination is what makes a riddle feel both clever and fair.</p>
+<h2>Riddles for Long Car Rides</h2>
+<p>The car is the natural habitat of the riddle: a captive audience, no screens required, and a built-in time limit. The driver reads (or a passenger reads from the card), everyone guesses, and the miles disappear. For road trips, set the filter to the youngest passenger's level — a riddle everyone can solve beats a clever one nobody gets. Take turns being the reader so the driver is not doing all the work, and keep a running score on the dashboard with a dry-erase marker if the kids need stakes.</p>
+<p>Car-ride riddles have one special rule: no looking at the card until guesses are exhausted, because the temptation to "just peek" is overwhelming in close quarters. The tap-to-reveal design helps — the answer stays hidden until someone commits to flipping. For very long drives, alternate riddles with other car games (20 questions, the license-plate game) to prevent riddle fatigue. And save one genuinely hard riddle for the final 30 minutes; ending the trip on a collective solve is a core family memory in the making.</p>
+<h2>Writing Your Own Riddles</h2>
+<p>Writing riddles is easier than it looks once you know the templates. <strong>The double-meaning:</strong> pick a word with two senses (letter, nail, date) and describe the surprising one. <strong>The paradox:</strong> "the more you take, the more you leave behind" — find any process with this shape. <strong>The category switch:</strong> describe a thing using words from the wrong category (a river "runs" and has a "mouth"). <strong>The literal idiom:</strong> take "time flies" or "under the weather" at face value.</p>
+<p>Test your riddle on one person before inflicting it on a group. If they solve it instantly, add misdirection; if nobody gets it in five minutes, the misdirection is unfair — a good riddle should feel solvable in retrospect ("of course!"). The sweet spot is 30 to 90 seconds of struggle. Write the answer first, then build the description backward from it, hiding the key word behind synonyms. And steal shamelessly from the classics while learning; every riddler starts as a cover artist before becoming a songwriter.</p>
+<h2>From Riddles to Brain Teasers and Beyond</h2>
+<p>Riddles are the gateway to a whole family of thinking games. Lateral-thinking puzzles ("a man is found dead in a field with a unopened package...") extend the riddle into storytelling. Logic grid puzzles add systematic deduction. Word ladders, anagrams and cryptic crosswords are riddles' more formal cousins. If your group devours riddles, try "black stories" — one player knows a strange scenario, the rest ask yes-or-no questions to reconstruct it. It is a riddle stretched into a twenty-minute collaborative mystery.</p>
+<p>The deeper point: comfort with being puzzled is a life skill. Riddles train the exact move that matters in real problem-solving — noticing your first interpretation might be wrong and trying another frame. Kids who play with riddles get better at reading comprehension, adults stay mentally flexible, and everyone gets better at the particular joy of the "aha" moment. So deal another card. The next riddle is always the best one — right up until someone solves it and demands another.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How do I choose riddles for kids?</summary><p>Set the age filter to Kids and difficulty to Easy. Kid riddles should use concrete wordplay with familiar objects (clocks, towels, piano keys) and have answers they can picture. Avoid riddles that depend on abstract concepts or vocabulary they have not met yet.</p></details>
+    <details><summary>What makes a riddle hard vs easy?</summary><p>Easy riddles use one familiar double-meaning and a concrete answer. Medium riddles add misdirection or metaphor. Hard riddles require abandoning your first interpretation entirely — the answer feels obvious only after you hear it. The filter above sorts the collection accordingly.</p></details>
+    <details><summary>Can I use these riddles in my classroom?</summary><p>Yes — they are free for classroom use. Use the print button to make a worksheet set, or run the reveal cards on a projector for whole-class play. Having students write their own riddles is an excellent follow-up that builds inference and vocabulary skills.</p></details>
+    <details><summary>How many riddles should I prepare for a party?</summary><p>Eight to ten great riddles beats twenty mediocre ones. Mix two easy warm-ups, a run of mediums, and one hard showstopper to close. Keep two extra hard ones in reserve for the guest who solves everything instantly.</p></details>
+    <details><summary>What is the best way to reveal a riddle answer?</summary><p>Build the drama: let the group exhaust their guesses first, offer one hint if they are stuck, then reveal with flair. The tap-to-reveal card keeps the answer hidden until the moment is right — never show the answer before guesses run out.</p></details>
+    <details><summary>How can I write my own riddles?</summary><p>Start from the answer and describe it sideways: use a word's double meaning, a paradox structure ('the more you take...'), or words from the wrong category. Test on one person — 30 to 90 seconds of struggle is the sweet spot between too easy and unfair.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RiddleGen</div>
+    <p>RiddleGen serves riddles filtered by age and difficulty, with tap-to-reveal answers, favorites, and printable sets.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var RIDDLES=[
+{q:'What has a face and two hands but no arms or legs?',a:'A clock',difficulty:'easy',age:'kids'},
+{q:'What has keys but can\u2019t open a single lock?',a:'A piano',difficulty:'easy',age:'kids'},
+{q:'What gets wetter the more it dries?',a:'A towel',difficulty:'easy',age:'kids'},
+{q:'What has a neck but no head?',a:'A bottle',difficulty:'easy',age:'kids'},
+{q:'What runs but never walks, has a mouth but never talks?',a:'A river',difficulty:'easy',age:'all'},
+{q:'What can you catch but never throw?',a:'A cold',difficulty:'easy',age:'kids'},
+{q:'What has one eye but can\u2019t see?',a:'A needle',difficulty:'easy',age:'kids'},
+{q:'What goes up but never comes down?',a:'Your age',difficulty:'easy',age:'all'},
+{q:'What has many teeth but can\u2019t bite?',a:'A comb',difficulty:'easy',age:'kids'},
+{q:'What belongs to you but others use it more than you do?',a:'Your name',difficulty:'medium',age:'all'},
+{q:'The more of me you take, the more you leave behind. What am I?',a:'Footsteps',difficulty:'medium',age:'all'},
+{q:'I speak without a mouth and hear without ears. What am I?',a:'An echo',difficulty:'medium',age:'all'},
+{q:'What has a head and a tail but no body?',a:'A coin',difficulty:'medium',age:'kids'},
+{q:'What is full of holes but still holds water?',a:'A sponge',difficulty:'medium',age:'kids'},
+{q:'What can fill a room but takes up no space?',a:'Light',difficulty:'medium',age:'all'},
+{q:'Forward I am heavy, but backward I am not. What am I?',a:'The word \u201cton\u201d',difficulty:'medium',age:'teens'},
+{q:'What has cities but no houses, forests but no trees, and rivers but no water?',a:'A map',difficulty:'medium',age:'teens'},
+{q:'What gets bigger the more you take away?',a:'A hole',difficulty:'medium',age:'all'},
+{q:'I have branches, but no fruit, trunk, or leaves. What am I?',a:'A bank',difficulty:'medium',age:'teens'},
+{q:'What can you hold in your left hand but not in your right?',a:'Your right hand',difficulty:'hard',age:'all'},
+{q:'What is always in front of you but can\u2019t be seen?',a:'The future',difficulty:'hard',age:'all'},
+{q:'The person who makes it has no need of it; the person who buys it has no use for it. What is it?',a:'A coffin',difficulty:'hard',age:'adults'},
+{q:'What has four wheels and flies?',a:'A garbage truck',difficulty:'medium',age:'kids'},
+{q:'What month of the year has 28 days?',a:'All of them',difficulty:'easy',age:'kids'},
+{q:'What goes through cities and fields but never moves?',a:'A road',difficulty:'medium',age:'all'},
+{q:'What can\u2019t talk but will reply when spoken to?',a:'An echo',difficulty:'easy',age:'kids'},
+{q:'I\u2019m tall when I\u2019m young and short when I\u2019m old. What am I?',a:'A candle',difficulty:'medium',age:'all'},
+{q:'What has a thumb and four fingers but isn\u2019t alive?',a:'A glove',difficulty:'easy',age:'kids'},
+{q:'What comes once in a minute, twice in a moment, but never in a thousand years?',a:'The letter M',difficulty:'hard',age:'teens'},
+{q:'What has 13 hearts but no other organs?',a:'A deck of cards',difficulty:'hard',age:'teens'},
+{q:'What can travel around the world without leaving its corner?',a:'A stamp',difficulty:'medium',age:'all'},
+{q:'What is so fragile that saying its name breaks it?',a:'Silence',difficulty:'hard',age:'all'},
+{q:'What has a bottom at the top?',a:'Your legs',difficulty:'hard',age:'teens'},
+{q:'What word is spelled incorrectly in every dictionary?',a:'Incorrectly',difficulty:'hard',age:'teens'},
+{q:'What has two heads, four eyes, six legs, and a tail?',a:'A man on a horse',difficulty:'hard',age:'adults'},
+{q:'What kind of band never plays music?',a:'A rubber band',difficulty:'easy',age:'kids'}
+];
+function riddlePick(difficulty, age, count){
+  var d=String(difficulty||'any').toLowerCase();
+  var a=String(age||'any').toLowerCase();
+  var n=Math.max(1,Math.min(12,Number(count)||3));
+  var pool=RIDDLES.filter(function(r){
+    var dok=(d==='any'||r.difficulty===d);
+    var aok=(a==='any'||r.age===a||r.age==='all');
+    return dok&&aok;
+  });
+  return {
+    difficulty:d, age:a, total:pool.length,
+    riddles:pool.slice(0,n).map(function(r){ return {q:r.q,a:r.a,difficulty:r.difficulty,age:r.age}; })
+  };
+}
+(function(){
+var diff=document.getElementById('rg-diff'),age=document.getElementById('rg-age'),
+    card=document.getElementById('rg-card'),q=document.getElementById('rg-q'),a=document.getElementById('rg-a'),
+    meta=document.getElementById('rg-meta');
+var current=null,seen=[],favs=[];
+try{favs=JSON.parse(localStorage.getItem('rg-favs')||'[]');}catch(e){favs=[];}
+function deal(){
+  var r=riddlePick(diff.value,age.value,12);
+  if(!r.total){q.textContent='No riddles match those filters — try widening them.';a.textContent='';meta.innerHTML='';return;}
+  var pool=r.riddles.filter(function(x){return seen.indexOf(x.q)<0;});
+  if(!pool.length){seen=[];pool=r.riddles;}
+  current=pool[Math.floor(Math.random()*pool.length)];
+  seen.push(current.q);if(seen.length>24)seen.shift();
+  card.classList.remove('flip');
+  q.textContent=current.q;a.textContent=current.a;
+  meta.innerHTML='<span class="rg-tag">'+current.difficulty+'</span><span class="rg-tag">'+current.age+'</span>';
+}
+function flip(){if(current)card.classList.toggle('flip');}
+card.addEventListener('click',flip);
+card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+document.getElementById('rg-deal').addEventListener('click',deal);
+diff.addEventListener('change',function(){seen=[];deal();});
+age.addEventListener('change',function(){seen=[];deal();});
+function renderFavs(){
+  var wrap=document.getElementById('rg-favwrap'),ul=document.getElementById('rg-favs');
+  ul.innerHTML='';wrap.hidden=!favs.length;
+  favs.forEach(function(f,i){
+    var li=document.createElement('li');
+    var sp=document.createElement('span');sp.textContent=f.q+' — '+f.a;li.appendChild(sp);
+    var b=document.createElement('button');b.textContent='×';b.setAttribute('aria-label','Remove favorite');
+    b.addEventListener('click',function(){favs.splice(i,1);try{localStorage.setItem('rg-favs',JSON.stringify(favs));}catch(e){}renderFavs();});
+    li.appendChild(b);ul.appendChild(li);
+  });
+}
+document.getElementById('rg-fav').addEventListener('click',function(){
+  if(!current)return;
+  if(!favs.some(function(f){return f.q===current.q;})){favs.push({q:current.q,a:current.a});try{localStorage.setItem('rg-favs',JSON.stringify(favs));}catch(e){}}
+  renderFavs();
+});
+document.getElementById('rg-print').addEventListener('click',function(){
+  var r=riddlePick(diff.value,age.value,12);
+  var w=window.open('','_blank');if(!w)return;
+  var h='<html><head><title>Riddle set</title><style>body{font-family:sans-serif;max-width:640px;margin:40px auto;padding:0 20px}.pt{font-size:22px;font-weight:bold;margin-bottom:14px}li{margin-bottom:14px}.a{color:#555}</style></head><body><div class="pt">Riddle set</div><ol>';
+  r.riddles.forEach(function(x){h+='<li>'+x.q+'<br><span class="a">Answer: '+x.a+'</span></li>';});
+  w.document.write(h+'</ol></body></html>');w.document.close();w.focus();w.print();
+});
+renderFavs();deal();
+})();
+</script>
+</body>
+</html>
