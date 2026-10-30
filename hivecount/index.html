@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beehive Frame Calculator — Frames, Foundation &amp; Wax for Your Apiary</title>
+<meta name="description" content="Calculate total beehive frames, foundation sheets, and comb wax for any number of hives, boxes, and frames per box.">
+<link rel="canonical" href="https://fun.fixoraa.tech/hivecount/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Beehive Frame Calculator — Frames, Foundation &amp; Wax for Your Apiary">
+<meta property="og:description" content="Calculate total beehive frames, foundation sheets, and comb wax for any number of hives, boxes, and frames per box.">
+<meta property="og:url" content="https://fun.fixoraa.tech/hivecount/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "HiveCount",
+      "url": "https://fun.fixoraa.tech/hivecount/",
+      "applicationCategory": "Garden",
+      "operatingSystem": "Web",
+      "description": "Calculate total beehive frames, foundation sheets, and comb wax for any number of hives, boxes, and frames per box.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many frames are in a standard beehive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standard ten-frame Langstroth box holds ten frames, so a hive with two boxes has twenty frames. Eight-frame boxes are also common and give lighter boxes to lift."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much wax is in a fully drawn frame?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly eighty grams per deep frame, although the exact amount varies with frame size and how fully the bees have drawn the comb."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I add another super?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the bees have drawn about seventy to eighty percent of the frames in the top box, so the colony gets room just before it needs it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need one foundation sheet per frame?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as a planning figure. Each frame normally takes one sheet of foundation or one starter strip."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should brood comb be replaced?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rotate dark brood comb out every three to five years to reduce disease and residue build-up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I leave a frame out to give bees more room?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It usually backfires. Bees fill the wider gap with uneven brace comb that is hard to inspect and extract."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fff7e6; --surface:#ffffff; --accent:#7a4a00; --accent-ink:#ffffff;
+  --ink:#1c1c1c; --muted:#4a4038; --line:#e5d5b3;
+  --display:'Fraunces',serif; --body:'Public Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+.layout-ledger .formcard{border-left:8px solid var(--accent)} .layout-ledger .resultcard{margin-top:1rem} @media(min-width:760px){.layout-ledger{display:grid;grid-template-columns:1.1fr .9fr;gap:1.2rem}.layout-ledger h1,.layout-ledger .sub{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="HiveCount home">
+      <span class="fx-logo-tile" aria-hidden="true">🐝</span>
+      <span class="fx-brand">HiveCount</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-hive-frame" aria-label="HiveCount tool">
+<div class="layout-ledger">
+<h1>Beehive Frame Calculator</h1>
+<p class="sub">Work out total frames, foundation sheets, and comb wax for your apiary.</p>
+<div class="formcard">
+<label>Number of hives<input id="hives" type="number" value="2" step="1" min="0"></label><label>Boxes per hive<input id="boxes" type="number" value="2" step="1" min="0"></label><label>Frames per box<input id="frames" type="number" value="10" step="1" min="0"></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter your hive numbers to see frame totals.</p></div>
+<p class='muted'>Tip: count a spare frame allowance on top of the total before ordering.</p>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How many frames does a beehive really need?</h2>
+<p>A beehive is not one big box. It is a stack of boxes, and each box holds a row of removable frames on which bees build comb, store honey, and raise brood. When beekeepers talk about hive size, they usually mean the number of boxes and the number of frames in each box, because that decides how much room the colony has to grow, how much honey it can store, and how heavy the hive becomes to lift. A standard Langstroth hive in many countries uses ten frames per box, while eight-frame equipment is popular with beekeepers who want lighter boxes. Nucleus hives use fewer frames, and top-bar hives do not use frames in the same way at all. This calculator starts from the simple facts you already know, namely how many hives you keep, how many boxes each hive has, and how many frames fit in each box, and turns them into totals you can actually shop and plan around.</p>
+<p>The maths itself is deliberately simple so you can check it by hand. Total frames equal the number of hives multiplied by the number of boxes per hive multiplied by the number of frames per box. If you run two hives with two boxes each and ten frames per box, you have forty frames in total. That single number then drives everything else. Every frame normally needs one sheet of foundation or one starter strip, so foundation sheets equal total frames. Wax is trickier because a fully drawn deep frame holds roughly eighty grams of beeswax in its comb, although the exact figure varies with frame size, foundation type, and how fully the bees have drawn the comb. Multiplying frames by eighty grams gives a useful planning figure for wax, whether you are rendering cappings, making candles, or simply estimating what the colony has built.</p>
+<h2>Brood boxes, honey supers, and why the split matters</h2>
+<p>Not every box in a hive does the same job. The bottom boxes are usually brood boxes, where the queen lays eggs and workers raise young bees. Boxes added on top during a nectar flow are called honey supers, and they are where surplus honey is stored. A common beginner setup is one or two brood boxes plus one or two supers in the season, but strong colonies in a good year may need more. The calculator treats all boxes the same for frame totals, which keeps the arithmetic honest, but you should still think about the split when you order equipment. Brood frames are often wired and built to last for years, while super frames may be shallower and are handled more often during extraction. Keeping a few spare frames of each type avoids a frantic mid-season order when a colony suddenly needs room.</p>
+<p>Space is the beekeeper's main lever for colony health. Too little space and a strong colony will swarm, which means roughly half the bees leave with the old queen to find a new home, and your honey crop leaves with them. Too much empty space, especially in a weak colony or in cold weather, makes it harder for bees to keep the brood nest warm and defend against pests. The old rule of adding a super when the bees have drawn about seventy to eighty percent of the frames in the top box still works well. It gives the colony room just before it needs it, without drowning a small colony in empty comb. Checking frames every week or two in the active season is how you learn whether your hive count maths matches what the bees are actually doing.</p>
+<h2>Working through a real example</h2>
+<p>Imagine you keep five hives, each with three boxes of ten frames. That is one hundred and fifty frames, one hundred and fifty foundation sheets, and about twelve kilograms of comb wax once everything is fully drawn. If a foundation sheet costs a modest amount, you can immediately see why buying in bulk saves money, and why keeping a stock of spares matters. A ten percent spare allowance is sensible for breakages, frames damaged during extraction, and the odd frame that comes back from the apiary propolised beyond cleaning. Add that allowance to the calculator total rather than treating the total as a maximum. Frames are cheap compared with a lost swarm or a missed honey flow, and a small stock cupboard prevents most emergencies.</p>
+<p>Weight deserves attention too. A deep box full of honey can weigh twenty-five to thirty-five kilograms, and even a ten-frame super of capped honey is a serious lift. Eight-frame equipment reduces each lift by roughly a fifth, which is why many beekeepers switch as they get older or keep more hives. The frame count does not change the physics, but planning around it does: decide where full supers will go, keep a wheelbarrow or hive carrier handy, and never lift a full box with a twisted back. Foundation choice also affects weight and durability. Wired wax foundation is traditional and fully accepted by bees, while plastic foundation is tougher in the extractor but sometimes needs an extra coat of wax before bees draw it eagerly.</p>
+<h2>Frame sizes, spacing, and maintenance</h2>
+<p>Frame size is not universal. Deep, medium, and shallow frames differ in height, and a box built for one size will not accept another. Always match frames to the boxes you own, and keep the same frame size within a box so spacing stays even. Bees build comb with a natural gap called bee space, roughly six to nine millimetres, and frames are designed to preserve it. If frames are pushed too far apart, bees build brace comb in the gap. If they are squeezed too tight, you will crush bees when you move them. Ten frames in a ten-frame box sounds obvious, but the count matters: leaving a frame out to create room usually backfires, because bees fill the wider gap with fat, uneven comb that is hard to inspect.</p>
+<p>Maintenance is the unglamorous half of frame maths. Rotate out old, dark brood comb every three to five years, because old comb accumulates residues and disease spores. Mark the year on the top bar with a simple code, and cull the oldest frames each spring. Clean frames promptly after extraction, either by letting bees clean them or by washing and drying them before storage, and store spare frames where wax moth cannot reach them. A freezer treatment for stored comb kills wax moth eggs and is worth the effort. Counting frames once a year, in winter when colonies are quiet, gives you an honest inventory and a shopping list for spring, which is exactly what this calculator is for.</p>
+<h3>Quick reference</h3>
+<table><tr><th>Setup</th><th>Frames</th><th>Foundation sheets</th><th>Approx. wax</th></tr>
+<tr><td>1 hive, 2 boxes, 10 frames</td><td>20</td><td>20</td><td>1.6 kg</td></tr>
+<tr><td>2 hives, 2 boxes, 10 frames</td><td>40</td><td>40</td><td>3.2 kg</td></tr>
+<tr><td>5 hives, 3 boxes, 10 frames</td><td>150</td><td>150</td><td>12.0 kg</td></tr>
+<tr><td>10 hives, 4 boxes, 8 frames</td><td>320</td><td>320</td><td>25.6 kg</td></tr></table>
+<ul><li>Inspect brood frames every one to two weeks in the active season.</li><li>Add a super when about three quarters of the top box is drawn.</li><li>Keep at least ten percent spare frames and foundation.</li><li>Match frame size to the box, and keep spacing even.</li><li>Rotate brood comb out every three to five years.</li><li>Lift with care: a full honey box can exceed thirty kilograms.</li></ul>
+<p>Finally, remember that frame counts describe equipment, not bees. A hive with many empty frames is not a strong colony, and a hive bursting with bees in two boxes may outperform a quiet colony spread across four. Use the calculator to plan your kit, then let inspections tell you whether the colony needs more room, less room, or simply more time. Good beekeeping is mostly observation plus timely action, and the arithmetic just makes sure you have the boxes and frames ready when the moment arrives.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many frames are in a standard beehive?</summary><p>A standard ten-frame Langstroth box holds ten frames, so a hive with two boxes has twenty frames. Eight-frame boxes are also common and give lighter boxes to lift.</p></details>
+<details><summary>How much wax is in a fully drawn frame?</summary><p>Roughly eighty grams per deep frame, although the exact amount varies with frame size and how fully the bees have drawn the comb.</p></details>
+<details><summary>When should I add another super?</summary><p>When the bees have drawn about seventy to eighty percent of the frames in the top box, so the colony gets room just before it needs it.</p></details>
+<details><summary>Do I need one foundation sheet per frame?</summary><p>Yes, as a planning figure. Each frame normally takes one sheet of foundation or one starter strip.</p></details>
+<details><summary>How often should brood comb be replaced?</summary><p>Rotate dark brood comb out every three to five years to reduce disease and residue build-up.</p></details>
+<details><summary>Can I leave a frame out to give bees more room?</summary><p>It usually backfires. Bees fill the wider gap with uneven brace comb that is hard to inspect and extract.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">HiveCount</div>
+    <p>HiveCount helps beekeepers plan frames, foundation, and wax for hives of any size.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(hives,boxes,frames){if(hives<=0||boxes<=0||frames<=0)return{frames:0,sheets:0,wax:0};var f=hives*boxes*frames;return{frames:f,sheets:f,wax:Math.round(f*0.08*100)/100};}
+function fmt(r){return '<p class="big">'+r.frames+' frames</p><p>'+r.sheets+' foundation sheets &middot; about '+r.wax+' kg of comb wax</p><p class="muted">Add about 10% spare: '+Math.ceil(r.frames*1.1)+' frames in total.</p>';}
+function run(){var r=compute(+document.getElementById('hives').value,+document.getElementById('boxes').value,+document.getElementById('frames').value);document.getElementById('result').innerHTML=fmt(r);window._last='HiveCount: '+r.frames+' frames, '+r.sheets+' sheets, '+r.wax+' kg wax';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Beginner: 2 hives',[2,2,10]],['Growing apiary: 5 hives',[5,3,10]],['Eight-frame kit: 4 hives',[4,3,8]]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){var v=P[+b.dataset.i][1];document.getElementById('hives').value=v[0];document.getElementById('boxes').value=v[1];document.getElementById('frames').value=v[2];run();};});
+run();
+</script>
+</body>
+</html>
