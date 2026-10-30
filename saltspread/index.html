@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaltSpread — De-Icing Salt Calculator (Driveway, Paths &amp; Cost)</title>
+<meta name="description" content="How much de-icing salt do you need? Enter your driveway or path area and ice conditions to get salt weight, bags needed, cost and coverage guidance.">
+<link rel="canonical" href="https://fun.fixoraa.tech/saltspread/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "SaltSpread", "url": "https://fun.fixoraa.tech/saltspread/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "How much de-icing salt do you need? Enter your driveway or path area and ice conditions to get salt weight, bags needed, cost and coverage guidance.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much salt do I need per square metre?", "acceptedAnswer": {"@type": "Answer", "text": "About 10 g/m² for light frost, 20 g/m² for moderate ice, and 25–30 g/m² for thick, compacted ice. A 50 m² driveway at a moderate rate needs just 1 kg."}}, {"@type": "Question", "name": "Does salt work in very cold weather?", "acceptedAnswer": {"@type": "Answer", "text": "Rock salt works down to about −10°C. Below that, switch to calcium chloride, which works to about −25°C, or use sand for grip instead."}}, {"@type": "Question", "name": "Should I salt before or after snow?", "acceptedAnswer": {"@type": "Answer", "text": "Clear loose snow first, then salt the thin remaining layer. Pre-treating before a forecast frost prevents ice bonding and needs less salt than melting bonded ice."}}, {"@type": "Question", "name": "Does salt damage concrete?", "acceptedAnswer": {"@type": "Answer", "text": "It can, especially concrete less than a year old, by worsening freeze-thaw scaling. For new concrete, use sand for grip rather than salt."}}, {"@type": "Question", "name": "Is de-icing salt safe for pets?", "acceptedAnswer": {"@type": "Answer", "text": "It irritates paws and can make dogs ill if ingested. Wipe paws after walks, and consider pet-safe de-icers near entrances and paths pets use."}}, {"@type": "Question", "name": "How should I store de-icing salt?", "acceptedAnswer": {"@type": "Answer", "text": "Keep it dry in a sealed bin or heavy bag, off the ground. Stored dry it keeps indefinitely; stored damp it sets into an unusable solid block."}}]}</script>
+<style>
+  body{font-family:'Segoe UI', Tahoma, Geneva, sans-serif;background:#F0F9FF;color:#17233B}
+  .accent{background:#1D4ED8;color:#FFFFFF}
+  .accent-tx{color:#1E40AF}
+  .soft{background:#DBEAFE}
+  .card{background:#FFFFFF;border:1px solid #D1D5DB;border-radius:12px}
+  .logo-mark{background:#1D4ED8;color:#FFFFFF}
+  .faq{border:1px solid #D1D5DB;border-radius:12px;padding:14px 16px;margin:10px 0;background:#FFFFFF}
+  .faq summary{font-weight:700;cursor:pointer}
+  input,select{width:100%;padding:11px 12px;border:1.5px solid #D1D5DB;border-radius:10px;background:#fff;color:#1c1917;font-size:16px}
+  label{font-weight:700;font-size:14px;display:block;margin:12px 0 5px}
+  .btn{background:#1D4ED8;color:#FFFFFF;font-weight:800;padding:13px 22px;border-radius:999px;font-size:16px}
+  .btn2{border:1.5px solid #1E40AF;color:#1E40AF;font-weight:700;padding:9px 16px;border-radius:999px;font-size:14px}
+  @media (max-width:640px){ .stack{flex-direction:column !important} .grid2{grid-template-columns:1fr !important} .hero-pad{padding:22px 16px !important} }
+</style>
+</head>
+<body>
+<header class="mx-auto max-w-6xl px-4 sm:px-6 pt-5 pb-1 flex flex-wrap items-center gap-3 justify-between">
+  <div class="flex items-center gap-3">
+    <span class="logo-mark inline-flex items-center justify-center w-12 h-12 rounded-2xl text-2xl font-black" aria-hidden="true">❄</span>
+    <div><div class="text-2xl font-black leading-none">SaltSpread</div><div class="text-sm opacity-80 mt-1">De-ice the right amount</div></div>
+  </div>
+  <nav class="flex items-center gap-2">
+    <a class="btn2" href="https://fixoraa.tech">Home</a>
+    <a class="btn2" href="https://fixoraa.tech">More Tools</a>
+    <span class="soft accent-tx text-xs font-bold px-3 py-2 rounded-full">Unlimited Free Usage</span>
+  </nav>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-6">
+<section class="rounded-3xl soft">
+  <div class="hero-pad">
+    <h1 class="text-3xl sm:text-4xl font-black leading-tight">De-Icing Salt Calculator</h1>
+    <p class="mt-3 text-lg opacity-90">Too little salt leaves ice; too much wastes money and harms lawns, concrete and pets. SaltSpread works out exactly how much de-icing salt your driveway and paths need, plus bags and cost.</p>
+    <div class="card p-5 sm:p-6 mt-6">
+      
+<div class="grid2 grid grid-cols-2 gap-4">
+<div><label for="ss-area">Area to treat (m²)</label><input id="ss-area" type="number" value="50" min="0" step="1"></div>
+<div><label for="ss-rate">Ice severity</label><select id="ss-rate"><option value="10">Light frost — 10 g/m²</option><option value="20" selected>Moderate ice — 20 g/m²</option><option value="30">Thick ice — 30 g/m²</option></select></div>
+<div><label for="ss-bag">Bag size (kg)</label><input id="ss-bag" type="number" value="10" min="1" step="1"></div>
+<div><label for="ss-price">Price per kg</label><input id="ss-price" type="number" value="0.8" min="0" step="0.05"></div>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<button class="btn2" onclick="ssPreset(12,20)">Front path (12 m²)</button>
+<button class="btn2" onclick="ssPreset(50,20)">Driveway (50 m²)</button>
+<button class="btn2" onclick="ssPreset(120,30)">Large drive, thick ice</button>
+</div>
+<button class="btn mt-5" onclick="ssCalc()">Calculate salt needed</button>
+<div id="ss-res" class="soft rounded-2xl p-5 mt-5 text-lg leading-relaxed" aria-live="polite">Enter your values and press Calculate to see the result.</div><div class="flex flex-wrap gap-2 mt-4"><button class="btn2" onclick="copyResult('ss-res')">Copy result</button><button class="btn2" onclick="saveHist('ss-res')">Save to history</button></div><div id="ss-res-hist" class="text-sm mt-3 opacity-80"></div>
+<script>
+function ssPreset(a,r){document.getElementById('ss-area').value=a;document.getElementById('ss-rate').value=r;ssCalc();}
+function ssCalc(){var a=parseFloat(document.getElementById('ss-area').value)||0;var r=parseFloat(document.getElementById('ss-rate').value)||0;var b=parseFloat(document.getElementById('ss-bag').value)||10;var p=parseFloat(document.getElementById('ss-price').value)||0;document.getElementById('ss-res').innerHTML=saltResult(a,r,b,p);}
+</script>
+<script>
+function copyResult(id){var el=document.getElementById(id);if(!el)return;navigator.clipboard&&navigator.clipboard.writeText(el.innerText);}
+function saveHist(id){var el=document.getElementById(id);if(!el)return;var h=JSON.parse(localStorage.getItem('fx-hist')||'[]');h.unshift(el.innerText);localStorage.setItem('fx-hist',JSON.stringify(h.slice(0,5)));var box=document.getElementById(id+'-hist');if(box)box.innerText='Saved: '+h.slice(0,3).join('  |  ');}
+</script><script>
+/*PURE-START*/
+
+function saltKg(area,rate){return Math.round(area*rate/1000*100)/100;}
+function saltResult(area,rate,bag,price){var kg=saltKg(area,rate);if(kg===0)return 'Enter an area above zero to calculate salt needed.';var bags=Math.ceil(kg/bag);var cost=Math.round(kg*price*100)/100;return '<strong>Salt needed: '+kg+' kg</strong> &nbsp;·&nbsp; Bags ('+bag+' kg): '+bags+' &nbsp;·&nbsp; Cost: '+cost+' &nbsp;·&nbsp; Tip: shovel loose snow first, then salt the thin layer left behind — salting deep snow wastes salt.';}
+/*PURE-END*/
+</script>
+    </div>
+    <p class="text-sm mt-4 opacity-80">Rates are for rock salt (sodium chloride) on flat surfaces. For temperatures below −10°C, or for new concrete and pet areas, consider calcium chloride instead.</p>
+  </div>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pb-8">
+  <article class="card hero-pad p-6 sm:p-8 leading-relaxed text-[17px]">
+    <h2 class="text-2xl font-black mb-4">How Much Salt Does Ice Actually Need?</h2>
+    <p>Every winter, driveways across cold climates are treated with a ritual that is equal parts science and guesswork: a bag of salt is shaken across the ice, and everyone hopes it was the right amount. Too little, and the ice stays treacherous; too much, and the excess washes into lawns, kills grass, corrodes cars, pits concrete, and ends up in streams where it harms aquatic life. The surprising truth is that de-icing salt has a proper application rate, just like fertiliser, and it is measured in grams per square metre. Once you know your area and the severity of the ice, the right amount is a simple multiplication, and this calculator does it for you.</p>
+<p>Salt melts ice by freezing-point depression: when salt dissolves in the thin film of water on ice, it lowers the freezing point of that water, so ice melts at temperatures where pure water would stay frozen. Rock salt, which is sodium chloride, works down to about minus 10 degrees Celsius; below that it becomes ineffective, no matter how much you spread. Calcium chloride works down to about minus 25 degrees and acts faster, but it costs several times more and can still damage surfaces. Magnesium chloride sits between the two. Knowing which salt you have, and its temperature limit, matters as much as knowing how much to spread: no quantity of rock salt will melt ice at minus 20 degrees.</p>
+<p>Application rates depend on ice severity. A light frost or a thin dusting needs only about 10 grams per square metre, which is a light, even scattering you can barely see. Moderate ice and compacted snow need about 20 grams per square metre, a visible but not heavy covering. Thick ice, or ice that has been driven over and polished by tyres, needs 25 to 30 grams per square metre, and even then it needs time and often a second pass after the first layer has loosened the surface. For perspective, a typical two-car driveway of 50 square metres at a moderate rate needs just one kilogram of salt, which is far less than the half-bag many people scatter by habit.</p>
+<p>Area is the number most people get wrong, usually by overestimating. Measure your driveway and paths properly: a driveway 6 metres by 5 metres is 30 square metres, and a path 10 metres long by 1.2 metres wide is 12 square metres. Steps count too, but they need careful treatment because salt on steps is tracked indoors and can damage stone treads. SaltSpread adds your areas together and applies the rate once, which avoids the common error of salting the same patch twice: once from the bag and once from memory. If you salt regularly through a winter, keeping a note of how many kilograms you use per storm helps you buy the right number of bags in autumn, when salt is cheapest and most available.</p>
+<p>Timing matters as much as quantity. Salt works fastest when spread before ice bonds to the surface, which is why forecast-based pre-treatment is standard for roads: a light application before an overnight frost prevents the bond forming, and the morning's traffic or footfall clears the slush easily. Once ice has bonded hard to concrete, salt must melt its way down through the ice, which is slower and needs more salt. The best sequence for a home driveway is to clear loose snow first with a shovel, then salt the remaining thin layer, then wait 15 to 30 minutes before shovelling the loosened slush away. Salting deep snow is wasteful: salt cannot melt its way through centimetres of snow, and most of it ends up buried and useless.</p>
+<p>Surfaces and surroundings set the limits of salt use. New concrete, less than a year old, is vulnerable because salt increases freeze-thaw cycles in the surface layer, causing scaling and flaking; for new concrete, sand for grip is safer than salt for melting. Lawns and planting beds beside a driveway suffer when salty meltwater runs onto them, so keep salt off the grass, sweep excess back onto the drive, and consider a salt-tolerant ground cover near the edges. Cars suffer too: salty slush accelerates rust, especially on older vehicles, so a winter wash, including the underbody, is money well spent. Pets are the most sympathetic concern: salt irritates paws, and ingested salt can make dogs ill, so wipe paws after walks and consider pet-safe de-icers near entrances.</p>
+<p>Bags and cost are where the calculator pays for itself. Salt is usually sold in 10, 20 or 25 kilogram bags, and a household that salts a 50-square-metre driveway through a moderate winter may use only 20 to 40 kilograms all season, which is two to four small bags. Buying a pallet because it was on offer, then storing it damp through summer, wastes money and produces a solid, unusable block by November. Store salt dry, in a sealed bin or heavy bag, off the ground, and it will keep indefinitely. SaltSpread's bag count rounds up to whole bags, so you buy enough without the guesswork, and its cost estimate lets you compare rock salt with calcium chloride honestly: the premium product may be worth it for a few bitter nights, but not for an entire winter.</p>
+<p>Alternatives have their place, and honesty about them helps. Sand and grit do not melt ice, but they provide immediate grip, work at any temperature, and harm nothing; for steps and steep paths, grip matters more than melting, and a mix of sand with a little salt is often the best compromise. Ash from a wood stove provides grip and darkens ice so the sun melts it faster, though it tracks indoors badly. Beet-juice blends, increasingly used by highway agencies, lower salt's effective temperature and help it stick to surfaces, reducing bounce and waste. For a home, though, the simplest upgrade is a good spreader: a handheld or push spreader distributes salt evenly at the right rate, while scattering by hand almost always over-applies in some spots and misses others entirely.</p>
+<p>Safety around salt deserves a plain statement. Keep de-icing salt away from children and pets, store it labelled and out of reach, and never use it on wooden decks, where it can damage boards and fasteners. Wear gloves when spreading, because prolonged contact dries and cracks skin, and wash hands afterwards. When clearing ice from roofs or gutters, do not use salt: it damages roofing materials and gutters, and the meltwater refreezes at the eaves into dangerous icicles and ice dams. For roofs, the answer is insulation and ventilation in the loft, not chemicals on the shingles, and for gutters, a heated cable is the safe option where ice dams recur.</p>
+<p>Environmental responsibility is increasingly part of winter maintenance, and households can make a real difference. Road salt is one of the largest sources of chloride pollution in cold-climate streams, and chloride is almost impossible to remove from water once dissolved. Using the calculated rate, rather than the habitual heavy scattering, can cut a household's salt use by half or more without any loss of safety, because the calculated rate is already the rate that works. Sweeping up visible excess after a thaw, keeping salt off lawns and drains, and choosing sand for grip where melting is unnecessary are small habits that scale across a neighbourhood into a genuinely cleaner spring melt.</p>
+<p>SaltSpread is for homeowners facing the first frost, landlords maintaining rental paths, small businesses keeping entrances safe, and anyone who has ever stared at a bag of salt and wondered how far it should go. Enter your area, pick the ice severity, and it returns kilograms, bags, cost, and the practical notes that keep your concrete, plants, pets and wallet intact. Winter ice is not going away, but the guesswork can: the right amount of salt, in the right place, at the right time, is a small calculation with an outsized payoff in safety, savings and a healthier spring garden.</p>
+  </article>
+  <h2 class="text-2xl font-black mt-10 mb-2">Frequently Asked Questions</h2>
+  <details class="faq"><summary>How much salt do I need per square metre?</summary><p>About 10 g/m² for light frost, 20 g/m² for moderate ice, and 25–30 g/m² for thick, compacted ice. A 50 m² driveway at a moderate rate needs just 1 kg.</p></details>
+<details class="faq"><summary>Does salt work in very cold weather?</summary><p>Rock salt works down to about −10°C. Below that, switch to calcium chloride, which works to about −25°C, or use sand for grip instead.</p></details>
+<details class="faq"><summary>Should I salt before or after snow?</summary><p>Clear loose snow first, then salt the thin remaining layer. Pre-treating before a forecast frost prevents ice bonding and needs less salt than melting bonded ice.</p></details>
+<details class="faq"><summary>Does salt damage concrete?</summary><p>It can, especially concrete less than a year old, by worsening freeze-thaw scaling. For new concrete, use sand for grip rather than salt.</p></details>
+<details class="faq"><summary>Is de-icing salt safe for pets?</summary><p>It irritates paws and can make dogs ill if ingested. Wipe paws after walks, and consider pet-safe de-icers near entrances and paths pets use.</p></details>
+<details class="faq"><summary>How should I store de-icing salt?</summary><p>Keep it dry in a sealed bin or heavy bag, off the ground. Stored dry it keeps indefinitely; stored damp it sets into an unusable solid block.</p></details>
+</section>
+<footer class="mx-auto max-w-6xl px-4 sm:px-6 pb-10 pt-2 text-center text-sm">
+  <p class="font-bold text-base">SaltSpread — De-ice the right amount</p>
+  <p class="opacity-80 mt-1">SaltSpread calculates de-icing salt by area and ice severity, with bag counts, cost, and advice for concrete, plants and pets.</p>
+  <p class="mt-3"><a class="accent-tx font-bold" href="https://fixoraa.tech">Home</a> &nbsp;·&nbsp; <a class="accent-tx font-bold" href="https://fixoraa.tech">More Tools</a></p>
+  <p class="mt-3">Made by <a class="accent-tx font-bold underline" href="https://fixoraa.tech">Fixoraa</a></p>
+</footer>
+</body>
+</html>
