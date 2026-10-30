@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When Should I Change My Oil? — Interval Calculator | OilChange</title>
+<meta name="description" content="Your real oil-change interval from mileage, time, oil type and driving conditions.">
+<link rel="canonical" href="https://fun.fixoraa.tech/oilchange/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="When Should I Change My Oil? — Interval Calculator | OilChange">
+<meta property="og:description" content="Your real oil-change interval from mileage, time, oil type and driving conditions.">
+<meta property="og:url" content="https://fun.fixoraa.tech/oilchange/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "OilChange",
+      "url": "https://fun.fixoraa.tech/oilchange/",
+      "applicationCategory": "Automotive Tools",
+      "operatingSystem": "Web",
+      "description": "Your real oil-change interval from mileage, time, oil type and driving conditions.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How often should I really change my oil?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It depends on oil type and driving: conventional oil lasts about 3,000 miles or 3 months, synthetic blend about 5,000 miles or 6 months, and full synthetic about 7,500 miles or 12 months. Severe driving — short trips, towing, dust, extreme heat — shortens every interval. This calculator blends all four factors into your personal number." } },
+        { "@type": "Question", "name": "What counts as severe driving for oil changes?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Frequent trips under 10 miles, stop-and-go traffic, towing or hauling heavy loads, dusty or very hot conditions, and long idling all count as severe. Most owner's manuals say the majority of drivers qualify — if any of these describe your routine, use the severe-duty interval." } },
+        { "@type": "Question", "name": "Is the 3,000-mile oil change rule outdated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For modern full-synthetic oil, yes — 3,000 miles wastes good oil and money. But the rule still roughly fits conventional oil under severe conditions. Match the interval to your oil type and driving, not to a slogan from the 1970s." } },
+        { "@type": "Question", "name": "Does oil go bad with time even if I barely drive?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Moisture and combustion acids accumulate in oil that sits, and additives deplete. That is why every interval has a time limit — 3, 6 or 12 months depending on oil type. Low-mileage cars should change oil by the calendar, not the odometer." } },
+        { "@type": "Question", "name": "Is synthetic oil actually cheaper per mile?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Usually yes. A synthetic change costs more but lasts 2 to 2.5 times longer than conventional, so the cost per mile is typically 30 to 40 percent lower. The calculator shows your exact cost-per-mile comparison." } },
+        { "@type": "Question", "name": "What happens if I go overdue on an oil change?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oil thickens with sludge, additives deplete, and engine wear accelerates — especially at startup. A few hundred miles over is not catastrophic, but thousands of miles overdue risks sludge buildup that can starve bearings of oil. If you are overdue, change it this week, not next month." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#FAF5F2; --surface:#FFFFFF; --tint:#F4E6DD;
+  --accent:#A55B27; --accent-deep:#7C4218; --accent-ink:#FFFFFF;
+  --ink:#33271F; --muted:#786354; --line:#E8D3BE;
+  --ok:#2E7D4F; --warn:#B07A1E; --bad:#B03A2E;
+  --font:'Exo',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:linear-gradient(180deg,#fff,var(--bg));border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:50%;background:conic-gradient(from 200deg,var(--accent),var(--accent-deep),var(--accent));display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 0 3px var(--tint)}
+.fx-name{font-weight:800;font-size:21px;letter-spacing:-.02em}
+.fx-name small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.16em;text-transform:uppercase}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;font-family:var(--font)}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:10px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+/* hero */
+.oc-hero{padding:44px 0 6px}
+.oc-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);background:var(--tint);border:1px solid var(--line);padding:6px 14px;border-radius:8px;margin-bottom:14px}
+.oc-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(165,91,39,.18)}
+.oc-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:-.025em;font-weight:800;margin-bottom:10px;max-width:700px}
+.oc-hero p{font-size:18px;color:var(--muted);max-width:660px}
+/* console */
+.oc-console{margin:28px 0 10px;background:#2e2118;border-radius:22px;padding:10px;box-shadow:0 18px 40px rgba(124,66,24,.18)}
+.oc-screen{background:var(--surface);border-radius:14px;overflow:hidden}
+.oc-screen-head{padding:18px 26px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:12px}
+.oc-screen-head h2{font-size:19px;font-weight:800}
+.oc-lamp{width:14px;height:14px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);flex:none}
+.oc-lamp.warn{background:var(--warn);box-shadow:0 0 8px var(--warn)}
+.oc-lamp.bad{background:var(--bad);box-shadow:0 0 8px var(--bad)}
+.oc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0}
+.oc-inputs{padding:24px 26px}
+.oc-results{padding:24px 26px;background:linear-gradient(180deg,#FFFDFB,var(--tint));border-left:2px solid var(--line)}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.field .hint{font-weight:400;font-size:13px;color:var(--muted)}
+.field input[type=number],.field select{font:inherit;padding:11px 13px;border:2px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);width:100%;max-width:260px;font-family:var(--font)}
+.field input:focus,.field select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.sev{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sev label{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;background:#fff;border:2px solid var(--line);border-radius:10px;padding:9px 11px;cursor:pointer;margin:0}
+.sev input{accent-color:var(--accent);width:17px;height:17px;flex:none}
+.sev label.on{border-color:var(--accent);background:var(--tint)}
+.oc-count{background:var(--accent);color:var(--accent-ink);border-radius:14px;padding:20px;text-align:center;margin-bottom:16px;box-shadow:0 5px 0 var(--accent-deep)}
+.oc-count .n{font-size:46px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.oc-count .l{font-size:13px;font-weight:700;opacity:.92;margin-top:4px;letter-spacing:.08em;text-transform:uppercase}
+.oc-lines{list-style:none;font-size:15px}
+.oc-lines li{display:flex;justify-content:space-between;gap:12px;padding:9px 2px;border-bottom:1px dashed var(--line)}
+.oc-lines li:last-child{border-bottom:0}
+.oc-lines .k{color:var(--muted)}
+.oc-lines .v{font-weight:800;text-align:right}
+.oc-cmp{margin-top:16px;border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.oc-cmp .bar{padding:10px 14px;font-size:14px;font-weight:700;display:flex;justify-content:space-between}
+.oc-cmp .bar.conv{background:#fff}
+.oc-cmp .bar.synth{background:var(--tint);color:var(--accent-deep)}
+.oc-note{font-size:14px;color:var(--accent-deep);margin-top:14px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px}
+/* article */
+.article-sec{margin:42px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--accent-deep)}
+.article-sec p{margin-bottom:14px;color:#40342a}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#40342a}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent-deep)}
+.faq-sec details p{padding:14px 18px;color:#40342a;font-size:15px}
+/* footer */
+.fx-footer{background:#2b1f14;color:#f0e2d2;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#c9ae8d;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#eec48f;font-weight:700}
+@media(max-width:760px){
+  .oc-grid{grid-template-columns:1fr}
+  .oc-results{border-left:0;border-top:2px solid var(--line)}
+  .sev{grid-template-columns:1fr}
+  .fx-nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/oilchange/" aria-label="OilChange home">
+      <span class="fx-tile" aria-hidden="true">&#128663;</span>
+      <span class="fx-name">OilChange<small>Service console</small></span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="oc-hero">
+    <span class="oc-eyebrow"><span class="oc-dot"></span>Service interval computer</span>
+    <h1>When Should I Change My Oil? Get Your Real Interval</h1>
+    <p>Forget the flat 3,000-mile rule. Plug in your mileage, oil type, and driving conditions — the console computes your true interval, counts down to the next change, and prices synthetic against conventional.</p>
+  </section>
+
+  <div class="oc-console">
+    <div class="oc-screen">
+      <div class="oc-screen-head">
+        <span class="oc-lamp" id="oc-lamp"></span>
+        <h2>Interval dashboard</h2>
+      </div>
+      <div class="oc-grid">
+        <div class="oc-inputs">
+          <div class="field">
+            <label for="oc-miles">Miles since last change</label>
+            <input type="number" id="oc-miles" value="4200" min="0" max="30000" step="100">
+          </div>
+          <div class="field">
+            <label for="oc-months">Months since last change</label>
+            <input type="number" id="oc-months" value="5" min="0" max="36" step="0.5">
+          </div>
+          <div class="field">
+            <label for="oc-oil">Oil type</label>
+            <select id="oc-oil">
+              <option value="conventional">Conventional</option>
+              <option value="blend">Synthetic blend</option>
+              <option value="synthetic" selected>Full synthetic</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Severe-duty checklist <span class="hint">— tick all that apply</span></label>
+            <div class="sev" id="oc-sev">
+              <label><input type="checkbox" value="1"> Trips under 10 mi</label>
+              <label><input type="checkbox" value="1"> Stop-and-go traffic</label>
+              <label><input type="checkbox" value="1"> Towing / heavy loads</label>
+              <label><input type="checkbox" value="1"> Dusty conditions</label>
+              <label><input type="checkbox" value="1"> Extreme heat or cold</label>
+              <label><input type="checkbox" value="1"> Long idling</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="oc-convcost">Conventional change cost ($) <span class="hint">— for cost comparison</span></label>
+            <input type="number" id="oc-convcost" value="50" min="0" max="300" step="5">
+          </div>
+          <div class="field">
+            <label for="oc-synthcost">Synthetic change cost ($)</label>
+            <input type="number" id="oc-synthcost" value="80" min="0" max="300" step="5">
+          </div>
+        </div>
+        <div class="oc-results" aria-live="polite">
+          <div class="oc-count">
+            <div class="n" id="oc-due">—</div>
+            <div class="l" id="oc-duelabel">until next change</div>
+          </div>
+          <ul class="oc-lines">
+            <li><span class="k">Your interval</span><span class="v" id="oc-interval">7,500 mi / 12 mo</span></li>
+            <li><span class="k">Miles remaining</span><span class="v" id="oc-milesleft">3,300 mi</span></li>
+            <li><span class="k">Next change by</span><span class="v" id="oc-date">—</span></li>
+            <li><span class="k">Status</span><span class="v" id="oc-status">OK</span></li>
+          </ul>
+          <div class="oc-cmp">
+            <div class="bar conv"><span>Conventional cost / mile</span><span id="oc-convcpm">$0.0222</span></div>
+            <div class="bar synth"><span>Synthetic cost / mile</span><span id="oc-synthcpm">$0.0142</span></div>
+          </div>
+          <div class="oc-note" id="oc-note"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+    <h2>Why One Interval Does Not Fit Every Driver</h2>
+    <p>The 3,000-mile oil change is one of the most successful marketing slogans ever written — and for most modern cars, it is wrong. It was born in an era of carburetors, leaded gasoline, and straight mineral oil. Today's engines run cleaner, and today's oils — especially full synthetics — are engineered molecules that resist breakdown far longer than the dino-juice of 1975. Yet the quick-lube sticker on your windshield still says 3,000 miles, because frequent changes are profitable.</p>
+    <p>The truth is a matrix, not a number. Conventional oil under gentle highway use can stretch toward 5,000 miles; the same oil in severe city duty is done at 3,000. Full synthetic under gentle use runs 7,500 to 10,000 miles — but severe duty drags it back toward 5,000. Time matters independently of miles: oil that sits accumulates moisture and acids. Your real interval is the intersection of oil type, mileage, time, and how you drive. That is exactly what the console above computes.</p>
+    <h2>The Four Inputs That Set Your Interval</h2>
+    <p>Start with oil type, which sets the baseline. Conventional (mineral) oil: 3,000 miles or 3 months. Synthetic blend: 5,000 miles or 6 months. Full synthetic: 7,500 miles or 12 months. These are conservative, engine-safe figures that match what most manufacturers publish for normal service.</p>
+    <p>Then apply the severe-duty correction, which is where most drivers misjudge themselves. Carmakers define severe service broadly — frequent short trips, stop-and-go, towing, dusty roads, extreme temperatures, extended idling — and surveys suggest the majority of drivers qualify for at least one item. Each severe condition you tick shortens the interval: one or two conditions cut it to 75%, three or more cut it to 50%. A synthetic interval of 7,500 miles becomes 5,625 with a couple of severe habits, or 3,750 for a true severe-duty life of short trips and towing.</p>
+    <p>Mileage and time race each other, and whichever hits the limit first wins. A highway commuter hits the mileage cap with months to spare; a garage-kept weekend car hits the time cap with most of its miles unused. The console tracks both and flags whichever arrives first.</p>
+    <h2>What Severe Driving Does to Oil</h2>
+    <p>Short trips are the worst offender. An engine that never fully warms up never evaporates the fuel and moisture that condense into the oil, so the lubricant dilutes and acids accumulate. Stop-and-go traffic keeps the engine hot while airflow is low, cooking the oil. Towing raises bearing loads and oil temperatures far beyond cruising. Dust sneaks past even good air filters in tiny amounts and acts as an abrasive. Cold starts leave critical surfaces briefly unprotected — most engine wear happens in the seconds after startup, and short-trip cars repeat that punishment many times a day.</p>
+    <p>None of this means your car is fragile; it means the oil's additive package — detergents, dispersants, anti-wear agents — gets consumed faster. Be honest on the checklist. Ticking two boxes does not make you a bad driver; it makes your interval honest.</p>
+    <h2>Reading the Countdown</h2>
+    <p>The console's headline number is whichever limit arrives first: miles remaining or days remaining by the calendar. "Due soon" triggers at 500 miles or 30 days — that is your window to book the appointment, not to start worrying. "Overdue" means a limit has been crossed; schedule the change this week. A few hundred miles over is not engine death, but oil past its interval loses viscosity control and sludge resistance progressively, and the wear it permits is cumulative and invisible until it is expensive.</p>
+    <p>The "next change by" date is the calendar limit converted to a real date so you can put it in your phone. Pro tip: set the reminder for two weeks before the date. Future you, busy and forgetful, will appreciate the buffer.</p>
+    <h2>Synthetic vs. Conventional: The Cost-Per-Mile Truth</h2>
+    <p>Sticker shock keeps many drivers on conventional oil: $50 a change versus $80 for synthetic feels like a 60% tax. But cost per change is the wrong denominator — cost per mile is what matters. Conventional at $50 over a 3,000-mile interval costs about 1.7 cents per mile. Synthetic at $80 over 7,500 miles costs about 1.1 cents per mile. The "expensive" oil is roughly a third cheaper to run, and it protects better at startup and under heat.</p>
+    <p>The console prices both for your severe-duty-adjusted intervals, so the comparison reflects your driving, not a brochure's. Severe duty narrows synthetic's advantage (shorter intervals spread the fixed cost over fewer miles) but rarely erases it. The break-even usually survives unless synthetic changes in your area are wildly overpriced — in which case, price-shop the service, not the oil grade.</p>
+    <h2>The Time Limit Nobody Respects</h2>
+    <p>Low-mileage cars are where the calendar limit does its quiet work. A car driven 3,000 miles a year on synthetic still needs annual changes, because moisture from condensation and acids from combustion do not care about the odometer. This is the most commonly ignored maintenance rule in existence — the garage queen with two-year-old oil "because I've only driven 4,000 miles" is running depleted, acidic lubricant.</p>
+    <p>If you drive under 5,000 miles a year, simplify your life: change once a year on synthetic and stop thinking about it. The cost is trivial against the engine it protects.</p>
+    <h2>Checking Oil Between Changes</h2>
+    <p>Intervals assume the sump stays full, which is not automatic. Many healthy engines consume a quart every 2,000–3,000 miles; some turbocharged ones drink faster. Check the dipstick monthly — on level ground, engine off for a few minutes — and top up with the same grade. Running a quart low concentrates heat and contaminants in less oil, effectively shortening your interval without telling you.</p>
+    <p>While the hood is up, look at the oil's color on the dipstick. Fresh oil is amber; used oil darkens, which is normal — dark oil is doing its job suspending soot. Milky or frothy oil signals coolant contamination and needs a mechanic immediately, not at the next interval.</p>
+    <h2>What Actually Happens When You Go Overdue</h2>
+    <p>Past its interval, oil's detergent package depletes and sludge — the sticky varnish of oxidized oil — begins coating oil passages, the pickup screen, and variable-valve-timing solenoids. Cold-start wear rises because degraded oil flows poorly when cold. Fuel economy slips a percent or two. None of this announces itself; engines do not have a "my oil is tired" light (the maintenance minder estimates, and it estimates conservatively, but it cannot analyze chemistry).</p>
+    <p>Chronic neglect writes a different story: sludge severe enough to starve bearings, turbochargers cooked by coked oil, timing chains stretched by abrasive wear. These are four-figure repairs bought by skipping $80 services. The interval is the cheapest insurance your engine has.</p>
+    <h2>Putting It Together: Your Maintenance Habit</h2>
+    <p>Run your numbers in the console once, honestly. Write the resulting interval on the maintenance log — 5,625 miles or 9 months, or whatever your driving dictates — and set two reminders: one at 500 miles before, one at the date. Check the dipstick monthly. When the console says "due soon," book the appointment that week. That is the entire system, and it beats both the 3,000-mile anxiety tax and the "I'll get to it" neglect spiral. Your engine will never know the difference — which is exactly the point.</p>
+  <h2>The Filter Question</h2>
+    <p>Every oil change should include a fresh filter — the labor is already paid for, and a clogged filter bypasses unfiltered oil straight to your bearings. Match the filter to your interval: a premium extended-life filter for 7,500-mile synthetic runs, a standard one for shorter conventional intervals. The $5 saved by reusing a filter is the worst economy in car maintenance. And always check the old filter's gasket came off with it; a doubled gasket blows out under pressure and empties the sump in minutes. Prime the new filter with fresh oil when the mount allows, hand-tighten plus a quarter turn, and check for leaks at idle before you drive.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How often should I really change my oil?</summary><p>It depends on oil type and driving: conventional oil lasts about 3,000 miles or 3 months, synthetic blend about 5,000 miles or 6 months, and full synthetic about 7,500 miles or 12 months. Severe driving — short trips, towing, dust, extreme heat — shortens every interval. This calculator blends all four factors into your personal number.</p></details>
+    <details><summary>What counts as severe driving for oil changes?</summary><p>Frequent trips under 10 miles, stop-and-go traffic, towing or hauling heavy loads, dusty or very hot conditions, and long idling all count as severe. Most owner's manuals say the majority of drivers qualify — if any of these describe your routine, use the severe-duty interval.</p></details>
+    <details><summary>Is the 3,000-mile oil change rule outdated?</summary><p>For modern full-synthetic oil, yes — 3,000 miles wastes good oil and money. But the rule still roughly fits conventional oil under severe conditions. Match the interval to your oil type and driving, not to a slogan from the 1970s.</p></details>
+    <details><summary>Does oil go bad with time even if I barely drive?</summary><p>Yes. Moisture and combustion acids accumulate in oil that sits, and additives deplete. That is why every interval has a time limit — 3, 6 or 12 months depending on oil type. Low-mileage cars should change oil by the calendar, not the odometer.</p></details>
+    <details><summary>Is synthetic oil actually cheaper per mile?</summary><p>Usually yes. A synthetic change costs more but lasts 2 to 2.5 times longer than conventional, so the cost per mile is typically 30 to 40 percent lower. The calculator shows your exact cost-per-mile comparison.</p></details>
+    <details><summary>What happens if I go overdue on an oil change?</summary><p>Oil thickens with sludge, additives deplete, and engine wear accelerates — especially at startup. A few hundred miles over is not catastrophic, but thousands of miles overdue risks sludge buildup that can starve bearings of oil. If you are overdue, change it this week, not next month.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">OilChange</div>
+    <p>OilChange computes your real oil-change interval from mileage, time, oil type and driving conditions — with a countdown and synthetic-vs-conventional cost math.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+var bases={conventional:[3000,3],blend:[5000,6],synthetic:[7500,12]};
+function num(id){return parseFloat(document.getElementById(id).value)||0;}
+function money(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:4,maximumFractionDigits:4});}
+document.getElementById('oc-sev').addEventListener('change',function(e){
+  var lab=e.target.closest('label');if(lab){lab.classList.toggle('on',e.target.checked);}
+  calc();
+});
+['oc-miles','oc-months','oc-oil','oc-convcost','oc-synthcost'].forEach(function(id){
+  var el=document.getElementById(id);
+  el.addEventListener('input',calc);el.addEventListener('change',calc);
+});
+function calc(){
+  var miles=num('oc-miles'),months=num('oc-months');
+  var oil=document.getElementById('oc-oil').value;
+  var sev=document.querySelectorAll('#oc-sev input:checked').length;
+  var cc=num('oc-convcost'),sc=num('oc-synthcost');
+  var b=bases[oil]||bases.synthetic;
+  var sf=sev>=3?0.5:sev>=1?0.75:1.0;
+  var iMiles=b[0]*sf,iMonths=b[1]*sf;
+  var milesLeft=iMiles-miles, daysLeft=Math.round((iMonths-months)*30.44);
+  var status=(milesLeft<=0||daysLeft<=0)?'Overdue':(milesLeft<=500||daysLeft<=30)?'Due soon':'OK';
+  var lamp=document.getElementById('oc-lamp');
+  lamp.className='oc-lamp'+(status==='Overdue'?' bad':status==='Due soon'?' warn':'');
+  var headline,sub;
+  if(status==='Overdue'){headline='OVERDUE';sub='book the change now';}
+  else if(milesLeft/ (miles>0?miles:1) *30.44 < daysLeft && miles>0){headline=Math.round(milesLeft).toLocaleString()+' mi';sub='until next change';}
+  else{headline=Math.max(0,daysLeft)+' days';sub='until next change';}
+  document.getElementById('oc-due').textContent=headline;
+  document.getElementById('oc-duelabel').textContent=sub;
+  document.getElementById('oc-interval').textContent=iMiles.toLocaleString()+' mi / '+(Math.round(iMonths*10)/10)+' mo';
+  document.getElementById('oc-milesleft').textContent=Math.round(milesLeft).toLocaleString()+' mi';
+  var d=new Date();d.setDate(d.getDate()+Math.max(0,daysLeft));
+  document.getElementById('oc-date').textContent=d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  document.getElementById('oc-status').textContent=status;
+  document.getElementById('oc-convcpm').textContent=money(cc/(3000*sf));
+  document.getElementById('oc-synthcpm').textContent=money(sc/(7500*sf));
+  var note=document.getElementById('oc-note');
+  if(status==='Overdue'){note.textContent='You are past the interval. Book the oil change this week — every extra thousand miles adds sludge and wear.';}
+  else if(sev>=3){note.textContent='Severe duty cuts your interval in half. This is the honest number — your engine will thank you.';}
+  else if(oil==='synthetic'&&sev===0){note.textContent='Full synthetic, gentle duty: you are getting the maximum safe life from every change.';}
+  else{note.textContent='Whichever limit arrives first — miles or months — is the one that counts.';}
+}
+calc();
+})();
+</script>
+</body>
+</html>
