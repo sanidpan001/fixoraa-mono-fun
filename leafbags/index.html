@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaf Bag Calculator: How Many Bags for Fall Leaves?</title>
+<meta name="description" content="Calculate how many leaf bags you need from yard area, tree count, and leaf depth, with composting tips.">
+<link rel="canonical" href="https://fun.fixoraa.tech/leafbags/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Leaf Bag Calculator: How Many Bags for Fall Leaves?">
+<meta property="og:description" content="Calculate how many leaf bags you need from yard area, tree count, and leaf depth, with composting tips.">
+<meta property="og:url" content="https://fun.fixoraa.tech/leafbags/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "LeafBags",
+      "url": "https://fun.fixoraa.tech/leafbags/",
+      "applicationCategory": "Garden",
+      "operatingSystem": "Web",
+      "description": "Calculate how many leaf bags you need from yard area, tree count, and leaf depth, with composting tips.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many leaf bags do I need for my yard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply yard area by average leaf depth for volume, add about 150 litres per large tree, then divide by 120 litres per standard bag. The calculator does this for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How big is a standard leaf bag?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 120 litres, or 30 gallons, for a standard paper leaf bag. Large garden sacks hold 150 to 200 litres."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I reduce the number of bags needed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, mulch-mowing chops leaves finely and can cut volume by two thirds, and leaving mulch on the lawn feeds it for free."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do wet leaves weigh more?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Much more. A full 120 litre bag of wet leaves can weigh 15 to 20 kg, so fill bags to a weight you can lift comfortably."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I compost leaves instead of bagging them?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you have space, yes. Leaf mould improves soil structure and moisture retention, and it saves bags and collection fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I clear leaves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Little and often through autumn, prioritising paths, drains, and lawns. Leave quiet corners and beds for wildlife until spring."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are paper or plastic leaf bags better?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paper bags are compostable and council-friendly but tear when wet. Check your local collection rules before buying either type."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about leaves from a neighbour's tree?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Count overhanging trees in your tree total, since leaves are your problem once they land in your yard."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF8EC; --surface:#FFFFFF; --accent:#7A4A12; --accent-ink:#FFFFFF;
+  --ink:#2E2410; --muted:#6E5A3E; --line:#EBDDC0;
+  --display:'Merriweather',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.fld label{display:block;font-weight:600;margin-bottom:.3rem}
+.fld input,.fld select{width:100%;padding:.65rem .8rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:var(--surface);color:var(--ink);min-height:44px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.presets button{padding:.5rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.btn{background:var(--accent);color:var(--accent-ink);border:none;border-radius:999px;padding:.8rem 1.6rem;font-size:1rem;font-weight:700;cursor:pointer;min-height:48px}
+.btn2{background:transparent;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:.6rem 1.2rem;font-weight:600;cursor:pointer;min-height:44px}
+.result{margin-top:1.1rem;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:1rem;font-size:1.05rem}
+.result b{font-size:1.25rem}
+.hist{margin-top:.8rem;color:var(--muted);font-size:.9rem}
+@media (max-width:640px){.row{grid-template-columns:1fr}.tool-card{padding:1rem}.tool-card h1{font-size:1.4rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="LeafBags home">
+      <span class="fx-logo-tile" aria-hidden="true">🍂</span>
+      <span class="fx-brand">LeafBags</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-leaf-pile" aria-label="LeafBags tool">
+<div class="tool-card"><h1>Leaf Bag Calculator</h1><p class="sub">Estimate how many leaf bags you need from yard area, tree count, and leaf depth.</p>
+<div class="presets"><button type="button" data-preset="yardA:200,trees:3,depth:5">200 m2, 3 trees, 5 cm</button><button type="button" data-preset="yardA:100,trees:2,depth:3">100 m2, 2 trees, 3 cm</button><button type="button" data-preset="yardA:50,trees:0,depth:2">50 m2, no trees, 2 cm</button></div>
+<div class="row"><div class="fld"><label for="yardA">Yard area (m2)</label><input id="yardA" type="number" value="200" min="10" max="5000"></div>
+<div class="fld"><label for="trees">Large trees (count)</label><input id="trees" type="number" value="3" min="0" max="50"></div></div>
+<div class="row"><div class="fld"><label for="depth">Average leaf depth (cm)</label><input id="depth" type="number" value="5" min="1" max="30"></div>
+<div class="fld"><label>&nbsp;</label><button class="btn" id="calcBtn" type="button">Calculate leaf bags</button></div></div>
+<div class="result" id="res" aria-live="polite">Enter your yard area, tree count, and leaf depth to see your bag count.</div>
+<p><button class="btn2" id="copyBtn" type="button">Copy result</button></p><p class="hist" id="hist"></p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How many leaf bags do you need?</h2>
+<p>Leaf bag maths starts with volume: multiply your yard area by the average leaf depth to get the volume of leaves on the ground, then add an allowance for trees, since trees drop concentrated drifts that a simple area average misses. A 200 square metre yard with 5 centimetres of leaves holds about 10 cubic metres, or 10,000 litres, of leaves, and three trees add about 450 litres more, giving 10,450 litres in total. Divide by a standard 120 litre leaf bag and you need 88 bags. That number surprises most people, because leaves look light and fluffy, but they are mostly air, and a yard that looks moderately leafy can fill dozens of bags once you start raking.</p>
+<p>Leaf depth is the hardest number to estimate, because leaves do not fall evenly. Open lawn areas may have only 2 to 3 centimetres, while corners, fences, and the bases of hedges collect drifts 10 centimetres or deeper. Walk your yard and estimate an average, not the deepest drift, and remember that raking compresses leaves slightly, while bagging compresses them more, so the bag count from a loose volume estimate is usually close enough for planning. If you mulch leaves with a mower first, the volume drops dramatically, often by two thirds, which is why mulching is the smartest way to cut bag count before you buy a single bag.</p>
+<h2>Bag sizes and what they hold</h2>
+<p>Leaf bags are not all the same size, and the difference matters. A standard paper leaf bag holds about 110 to 120 litres, which is roughly 30 gallons, and it is the size most councils collect. Large garden sacks hold 150 to 200 litres, while reusable tarps and bins vary wildly. Paper bags are compostable and council-friendly, but they tear when wet and cannot be overfilled, since wet leaves are heavy. Plastic sacks hold more and resist tearing, but many councils will not collect them, and they are not compostable. Always check your local collection rules before buying bags, since a bag the council will not take is wasted money and effort.</p>
+<table><tr><th>Bag type</th><th>Capacity</th><th>Best for</th><th>Notes</th></tr>
+<tr><td>Paper leaf bag</td><td>120 L</td><td>Council collection</td><td>Compostable, tears when wet</td></tr>
+<tr><td>Large garden sack</td><td>180 L</td><td>Home composting</td><td>Reusable, check collection rules</td></tr>
+<tr><td>Wheelie bin (240 L)</td><td>240 L</td><td>Garden waste service</td><td>Two paper bags per bin approx.</td></tr>
+<tr><td>Tarp (3 x 3 m)</td><td>Varies</td><td>Moving leaves</td><td>Drag, do not carry</td></tr></table>
+<h2>Tree types and leaf volume</h2>
+<p>Not all trees drop the same volume of leaves. Large oaks, maples, and sycamores drop huge quantities of broad leaves that mat together and smother grass if left. Birch and willow drop smaller, lighter leaves that blow around and collect in corners. Evergreens drop needles year round in smaller quantities, but needles are acidic and break down slowly, so they need separate handling in compost. Fruit trees drop moderate leaf volumes plus fallen fruit, which adds weight and attracts pests if left. Count your large deciduous trees carefully, since one mature oak can fill more bags than a whole small yard of scattered leaves.</p>
+<h2>Raking, blowing, and mulching strategies</h2>
+<p>How you collect leaves changes how many bags you need. Raking by hand is slow but thorough, and it lets you pile leaves before bagging, which compresses them. Leaf blowers are fast for moving leaves into piles, especially on hard surfaces and large lawns, but they do not reduce volume, so bag count stays high. Mulch mowing, running a mower over leaves to chop them finely, reduces volume by up to two thirds and lets you leave the mulch on the lawn as free fertiliser, which is the best outcome for both your back and your soil. A combination works best: blow or rake leaves off paths and beds, mulch-mow the lawn areas, and bag only what remains.</p>
+<h2>Composting leaves: leaf mould gold</h2>
+<p>Leaves are not waste, they are one of the best soil improvers you can make for free. Leaf mould, made by piling damp leaves in a bin or bags and leaving them for one to two years, produces a dark, crumbly material that improves soil structure, retains moisture, and feeds soil life. It is not a fertiliser, but it transforms heavy clay and sandy soil alike. If you have space, composting your leaves instead of bagging them for collection saves money, saves bags, and gives you a product you would otherwise buy. Keep leaf piles damp, turn them occasionally, and be patient, since leaf mould takes longer than kitchen compost but rewards the wait.</p>
+<h2>Timing your leaf clearance</h2>
+<p>Leaves fall over several weeks, not all at once, so plan for multiple clearances rather than one heroic weekend. Clear paths and drains first, since wet leaves on paths are slippery and blocked drains cause flooding. Clear lawns regularly, since a thick leaf layer smothers grass, encourages disease, and kills patches over winter. Leave some leaves in beds and under hedges, since they shelter insects, hedgehogs, and other wildlife through winter, and they mulch the soil naturally. A wildlife-friendly garden clears the lawn and paths thoroughly but leaves quiet corners undisturbed until spring.</p>
+<h2>Weight, safety, and handling</h2>
+<p>Dry leaves are light, but wet leaves are surprisingly heavy, and a full 120 litre bag of wet leaves can weigh 15 to 20 kilograms, which is a lot to lift repeatedly. Fill bags only to a weight you can lift comfortably, use a tarp to drag leaves rather than carrying them, and take breaks, since raking and lifting are real exercise. Wear gloves, since leaf piles harbour mould spores and sharp twigs, and wear a dust mask if you are sensitive to mould, especially when handling leaves that have been sitting damp for weeks. Keep children and pets clear of large leaf piles near roads, since drivers cannot see them.</p>
+<h2>Council collection and disposal options</h2>
+<p>Check your local garden waste service before autumn, since rules, bag types, and collection dates vary widely. Some councils collect paper bags on a schedule, some provide wheelie bins, and some require booking a collection slot. Private garden waste services and local composting sites are alternatives if your council service is limited. Never dump leaves in woods, parks, or watercourses, since garden leaves can carry diseases and invasive seeds that harm natural habitats. If you have more leaves than your service takes, composting, mulching, and asking neighbours if they want leaf mould are all better than dumping.</p>
+<h2>Reducing leaf volume next year</h2>
+<p>You cannot stop trees dropping leaves, but you can reduce the work. Planting smaller trees, choosing species with smaller leaves, and positioning trees away from lawns and paths all help over time. Ground cover plants under trees catch leaves and let them rot in place, which eliminates bagging in those areas. A mower with a mulching kit pays for itself in saved bags within a season or two for a leafy garden. Finally, accept that some leaves are good for the garden: a thin layer on beds is mulch, not mess, and learning to see it that way cuts your bag count and your workload at the same time.</p>
+<h3>Small yards and courtyards</h3>
+<p>Small yards produce fewer leaves, but the same maths applies, and the bag count can still surprise you if a neighbour's large tree overhangs your space. Overhanging leaves are your problem once they land, so include overhanging trees in your tree count, not just trees you own. For courtyards, a blower or a stiff broom is often faster than a rake on hard surfaces, and a single large sack may hold the whole season's leaves if you mulch-mow the few grassy areas.</p>
+<h2>Leaf clearance checklist</h2>
+<p>Before autumn, check your rake, blower, and bags, confirm collection dates, and clear drains and gutters. During the fall, clear little and often, prioritising paths, drains, and lawns. After the last fall, do a final clear, compost what you can, and store tools clean and dry. A little planning turns leaf season from a dreaded chore into a manageable routine, and the calculator above gives you the bag count to plan around.</p>
+<ul><li>Volume equals yard area times average leaf depth.</li><li>Add about 150 litres per large tree for drifts.</li><li>Divide by bag size, usually 120 litres, and round up.</li><li>Mulch-mowing can cut bag count by two thirds.</li><li>Buy a few extra bags for the late-season fall.</li></ul>
+<p>Leaf season is predictable if you measure your yard, count your trees, and estimate depth honestly. Use the calculator above to get a bag count before you start raking, so you buy enough bags once instead of running out halfway through the job.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many leaf bags do I need for my yard?</summary><p>Multiply yard area by average leaf depth for volume, add about 150 litres per large tree, then divide by 120 litres per standard bag. The calculator does this for you.</p></details>
+<details><summary>How big is a standard leaf bag?</summary><p>About 120 litres, or 30 gallons, for a standard paper leaf bag. Large garden sacks hold 150 to 200 litres.</p></details>
+<details><summary>Can I reduce the number of bags needed?</summary><p>Yes, mulch-mowing chops leaves finely and can cut volume by two thirds, and leaving mulch on the lawn feeds it for free.</p></details>
+<details><summary>Do wet leaves weigh more?</summary><p>Much more. A full 120 litre bag of wet leaves can weigh 15 to 20 kg, so fill bags to a weight you can lift comfortably.</p></details>
+<details><summary>Should I compost leaves instead of bagging them?</summary><p>If you have space, yes. Leaf mould improves soil structure and moisture retention, and it saves bags and collection fees.</p></details>
+<details><summary>When should I clear leaves?</summary><p>Little and often through autumn, prioritising paths, drains, and lawns. Leave quiet corners and beds for wildlife until spring.</p></details>
+<details><summary>Are paper or plastic leaf bags better?</summary><p>Paper bags are compostable and council-friendly but tear when wet. Check your local collection rules before buying either type.</p></details>
+<details><summary>What about leaves from a neighbour&#x27;s tree?</summary><p>Count overhanging trees in your tree total, since leaves are your problem once they land in your yard.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">LeafBags</div>
+    <p>LeafBags estimates your autumn leaf bag count before you start raking.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcLeaf(area, trees, depthCm) {
+  var litres = Math.round(area * (depthCm / 100) * 1000 + trees * 150);
+  var bags = Math.ceil(litres / 120);
+  return { litres: litres, bags: bags };
+}
+
+if (typeof document !== 'undefined') {
+  var histKey = 'fxhist';
+  function showHist() {
+    try {
+      var h = JSON.parse(localStorage.getItem(histKey) || '[]');
+      var el = document.getElementById('hist');
+      if (el && h.length) { el.textContent = 'Recent: ' + h.slice(-3).join('  |  '); }
+    } catch (e) {}
+  }
+  function saveHist(s) {
+    try {
+      var h = JSON.parse(localStorage.getItem(histKey) || '[]');
+      h.push(s); if (h.length > 5) { h.shift(); }
+      localStorage.setItem(histKey, JSON.stringify(h));
+    } catch (e) {}
+  }
+  function copyRes() {
+    var el = document.getElementById('res');
+    if (!el) { return; }
+    var t = el.textContent || '';
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard) { navigator.clipboard.writeText(t); }
+    } catch (e) {}
+  }
+  var btn = document.getElementById('calcBtn');
+  if (btn) { btn.onclick = function () { 
+        var a = parseFloat(document.getElementById('yardA').value) || 0;
+        var t = parseFloat(document.getElementById('trees').value) || 0;
+        var d = parseFloat(document.getElementById('depth').value) || 0;
+        var r = calcLeaf(a, t, d);
+        var out = '<b>' + r.bags + ' leaf bags</b> (120 litre bags) for about ' + r.litres + ' litres of leaves. Buy a few extra bags for the late-season fall.';
+        document.getElementById('res').innerHTML = out;
+        saveHist(r.bags + ' bags, ' + r.litres + 'L');
+        showHist();
+ }; }
+  var cp = document.getElementById('copyBtn');
+  if (cp) { cp.onclick = copyRes; }
+  var ps = document.querySelectorAll('[data-preset]');
+  for (var i = 0; i < ps.length; i++) {
+    (function (b) {
+      b.onclick = function () {
+        var v = b.getAttribute('data-preset');
+        var parts = v.split(',');
+        for (var j = 0; j < parts.length; j++) {
+          var kv = parts[j].split(':');
+          var inp = document.getElementById(kv[0]);
+          if (inp) { inp.value = kv[1]; }
+        }
+        if (btn) { btn.click(); }
+      };
+    })(ps[i]);
+  }
+  showHist();
+}
+
+</script>
+</body>
+</html>
