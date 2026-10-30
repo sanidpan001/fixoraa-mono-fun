@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BPM to MS Calculator — Delay Times for Music Production | BpmMs</title>
+<meta name="description" content="BPM to milliseconds for every note value, with tap tempo.">
+<link rel="canonical" href="https://fun.fixoraa.tech/bpmms/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="BPM to MS Calculator — Delay Times for Music Production | BpmMs">
+<meta property="og:description" content="BPM to milliseconds for every note value, with tap tempo.">
+<meta property="og:url" content="https://fun.fixoraa.tech/bpmms/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BpmMs",
+      "url": "https://fun.fixoraa.tech/bpmms/",
+      "applicationCategory": "Music",
+      "operatingSystem": "Web",
+      "description": "BPM to milliseconds for every note value, with tap tempo.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I convert BPM to milliseconds?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide 60,000 by the BPM to get one beat (quarter note) in ms \u2014 at 120 BPM that is 500 ms. Then multiply or divide by the note value: half note doubles it, eighth note halves it, sixteenth quarters it. Dotted notes multiply by 1.5, triplets by 2/3."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a dotted eighth delay in ms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on tempo: a dotted eighth is 0.75 beats, so at 120 BPM it is 375 ms, at 100 BPM it is 450 ms, and at 140 BPM it is about 321 ms. Enter your tempo above for the exact value \u2014 this is the classic rhythmic rock delay sound."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What delay time should I use for vocals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with an eighth-note slap (around 250 ms at 120 BPM) with one repeat for thickness, or a dotted-eighth with 2\u20133 repeats for a rhythmic effect. Keep reverb pre-delay short \u2014 a 16th note \u2014 so the vocal stays intelligible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does tap tempo work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tap quarter notes in time with the music; the calculator averages the gaps between your taps and converts to BPM. Tap at least 4\u20138 times for a stable reading \u2014 longer tap runs average out your own timing wobble."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between triplet and dotted delay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dotted multiplies a note value by 1.5 (a dotted eighth is 3/4 of a beat) and creates syncopation against straight grooves. Triplet multiplies by 2/3, fitting three notes into two beats \u2014 use it when the drums swing or shuffle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert BPM to Hz for an LFO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide BPM by 60 for quarter-note Hz (120 BPM = 2 Hz), then scale by note value: eighth notes double it, half notes halve it. So an eighth-note tremolo at 120 BPM pulses at 4 Hz."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#E1E5F9; --surface:#FFFFFF; --tint:#D2D8F4;
+  --accent:#152784; --accent-deep:#565B14; --btn-ink:#FFFFFF;
+  --ink:#33331F; --muted:#62623F; --line:#E3E3C6;
+  --display:'Space Mono',ui-monospace,monospace; --body:'Space Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:var(--surface)}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--btn-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px;color:var(--ink)}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:var(--ink)}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--ink)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px;color:var(--ink)}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:var(--ink);font-size:15px}
+.fx-footer{background:var(--footbg,#26211c);color:#f0e6da;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#cbb9a8;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#ffd9a8;font-weight:700}
+.no-print{}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+
+.bm-hero{padding:46px 0 6px;text-align:center}
+.bm-eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.bm-hero h1{font-size:clamp(36px,5.4vw,56px);font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.bm-hero p{font-size:17px;color:var(--muted);max-width:640px;margin:0 auto}
+.bm-console{margin:28px auto 10px;max-width:880px;background:var(--surface);border:2px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 14px 34px rgba(110,116,27,.10)}
+.bm-strip{background:linear-gradient(180deg,var(--accent),var(--accent-deep));color:#fff;padding:26px 28px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.bm-readout{flex:1;min-width:200px}
+.bm-readout .big{font-size:64px;font-weight:700;line-height:1;letter-spacing:-.03em}
+.bm-readout .unit{font-size:15px;opacity:.85;font-weight:700;letter-spacing:.14em}
+.bm-readout .hz{font-size:14px;opacity:.9;margin-top:6px}
+.bm-tap{width:132px;height:132px;border-radius:50%;border:4px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);color:#fff;font:inherit;font-weight:700;font-size:18px;cursor:pointer;transition:transform .08s}
+.bm-tap:active{transform:scale(.93);background:rgba(255,255,255,.28)}
+.bm-sliderbox{padding:22px 28px;border-bottom:2px solid var(--line)}
+.bm-sliderbox label{font-weight:700;font-size:14px;display:block;margin-bottom:10px}
+.bm-row{display:flex;align-items:center;gap:14px}
+.bm-row input[type=range]{flex:1;accent-color:var(--accent)}
+.bm-nudge{font:inherit;font-weight:700;border:2px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:10px;width:44px;height:44px;cursor:pointer;font-size:18px}
+.bm-bpm-in{font:inherit;font-weight:700;font-size:20px;width:96px;text-align:center;border:2px solid var(--line);border-radius:10px;padding:8px;color:var(--ink)}
+.bm-grid{padding:22px 28px 28px}
+.bm-grid h2{font-size:17px;font-weight:700;margin-bottom:4px}
+.bm-grid .sub{font-size:13px;color:var(--muted);margin-bottom:14px}
+.bm-table{width:100%;border-collapse:collapse;font-size:15px}
+.bm-table th{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line)}
+.bm-table td{padding:10px;border-bottom:1px solid var(--line)}
+.bm-table td.n{font-weight:700;color:var(--accent)}
+.bm-table tr.hl td{background:var(--tint)}
+.bm-table td:first-child{font-weight:700}
+.bm-note{margin-top:16px;background:var(--tint);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--accent-deep)}
+@media(max-width:640px){.bm-strip{justify-content:center;text-align:center}.bm-table{font-size:13px}.bm-table td,.bm-table th{padding:7px 5px}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/bpmms/" aria-label="BpmMs home">
+      <span class="fx-tile" aria-hidden="true">♪</span>
+      <span class="fx-name">BpmMs</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="bm-hero">
+    <span class="bm-eyebrow">Studio console · Tempo tools</span>
+    <h1>BpmMs</h1>
+    <p>Set delays, reverbs, and LFOs to your tempo. Type a BPM or tap it in, and get millisecond times for every note value — dotted and triplet included.</p>
+  </section>
+
+  <section class="bm-console" aria-label="BpmMs tool">
+
+  <div class="bm-strip">
+    <div class="bm-readout" aria-live="polite">
+      <div class="big"><span id="bm-bpm-big">120</span></div>
+      <div class="unit">BPM</div>
+      <div class="hz" id="bm-hz">2 Hz &middot; quarter = 500 ms</div>
+    </div>
+    <button type="button" class="bm-tap" id="bm-tap" aria-label="Tap tempo">TAP</button>
+  </div>
+  <div class="bm-sliderbox">
+    <label for="bm-slider">Tempo</label>
+    <div class="bm-row">
+      <button type="button" class="bm-nudge" id="bm-minus" aria-label="Decrease tempo">&minus;</button>
+      <input type="range" id="bm-slider" min="40" max="240" step="1" value="120">
+      <button type="button" class="bm-nudge" id="bm-plus" aria-label="Increase tempo">+</button>
+      <input type="number" class="bm-bpm-in" id="bm-in" value="120" min="40" max="240" aria-label="BPM value">
+    </div>
+  </div>
+  <div class="bm-grid">
+    <h2>Note values in milliseconds</h2>
+    <p class="sub">Straight, dotted (&times;1.5) and triplet (&times;2&frasl;3) for the current tempo.</p>
+    <table class="bm-table" id="bm-table">
+      <thead><tr><th>Note</th><th>Straight</th><th>Dotted</th><th>Triplet</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="bm-note" id="bm-note">Tip: dotted-eighth delay with a touch of feedback is the classic Edge-style rhythmic echo. Triplets sit beautifully on swung grooves.</div>
+  </div>
+
+  </section>
+
+  <article class="article-sec" aria-label="Guide">
+
+<h2>Why Milliseconds Matter More Than BPM</h2>
+<p>Your DAW knows the tempo, but your ears hear <strong>time</strong>. When you dial 380 ms into a delay plugin, you are really asking for a dotted eighth note at 118 BPM — and if the song is actually at 124, that echo lands late, smearing the groove instead of driving it. Tempo-synced delay (1/8D, 1/4T) solves this inside the DAW, but hardware pedals, outboard delays, reverb pre-delay knobs, and LFO rate controls all speak <strong>milliseconds and hertz</strong>. This calculator is the translator.</p>
+<p>The core math is disarmingly simple: one beat lasts <strong>60,000 divided by BPM</strong> milliseconds. At 120 BPM a quarter note is exactly 500 ms; at 100 BPM it is 600 ms; at 140 it is about 428.6 ms. Every other note value is a multiple or fraction of that beat — a half note doubles it, an eighth halves it, a sixteenth quarters it. Dotted notes stretch any value by 1.5×; triplets squeeze three notes into the space of two, multiplying by 2/3.</p>
+<h2>The Note Values You Will Actually Use</h2>
+<p>In real sessions, five note values cover 95% of delay work. <strong>Quarter-note</strong> delay is the big spacious echo — think U2-style washes. <strong>Dotted eighth</strong> is the famous rhythmic delay: the echo lands <em>between</em> your notes, creating that galloping, interlocking pattern. <strong>Eighth note</strong> is the tight slapback that thickens vocals without obvious echo. <strong>Triplet eighth</strong> fits swung and shuffle grooves where straight divisions fight the feel. <strong>Sixteenth</strong> at higher feedback gives mechanical, almost reverb-like textures.</p>
+<p>The table above lists all seven standard values — whole through 64th — because sound design sometimes wants the extremes. A whole-note delay at 90 BPM is 2,667 ms of cavern; a 64th at 160 BPM is 23 ms, well into chorus/flange territory where "delay" becomes "tone".</p>
+<h2>Dotted vs Triplet: Feel the Difference</h2>
+<p>Dotted and triplet are not just math — they are <strong>groove decisions</strong>. A dotted eighth (0.75 beats) creates syncopation against straight playing: the echo answers in the gaps. That is why it defines entire genres of guitar music. A triplet eighth (0.333 beats) divides the beat into three equal parts, which locks with shuffles, swung hi-hats, and 6/8 feels where straight eighths would sound rushed.</p>
+<p>Quick rule of thumb: if the drums swing, reach for triplets; if they play straight, reach for dotted. Mixing a straight-eighth delay onto a swung track is one of the most common reasons "the delay sounds wrong but I can't say why."</p>
+<h2>Tap Tempo: Stealing the Tempo From the Room</h2>
+<p>Sometimes there is no BPM — a live band drifting, a vinyl sample, a drummer who "feels" 96 but plays 99. That is what the <strong>TAP</strong> pad is for: tap quarter notes along with the music (at least three or four taps) and the calculator averages your intervals into a BPM. Tap on the downbeats, keep your taps even, and ignore the first wobbly one — the average of the last several taps is what counts.</p>
+<p>Pro tip: tap for a full <strong>8 bars</strong> if you can. Short tap runs exaggerate your own timing wobble; longer runs average it out. And tap the subdivision you will delay — if you want quarter-note echo, tap quarters, not eighths.</p>
+<h2>Reverb Pre-Delay in Milliseconds</h2>
+<p>Pre-delay — the gap between the dry sound and the start of the reverb — is where mixes gain clarity. Set it to a <strong>16th or 32nd note</strong> of the tempo and the reverb breathes with the track instead of washing over it: vocals stay intelligible, snares stay punchy. At 120 BPM, try 125 ms (16th) for vocals and 62.5 ms (32nd) for drums. Too long and the reverb detaches into an audible echo; too short and it might as well be zero.</p>
+<p>A useful trick: set pre-delay to a <strong>dotted 16th</strong> for a subtle push — it lands just behind the grid, adding movement without obvious repetition. The calculator's dotted column gives you these odd-but-musical values instantly.</p>
+<h2>Hz for LFOs: The Other Direction</h2>
+<p>Tremolo, autopan, filter sweeps, and chorus LFOs are often calibrated in <strong>hertz</strong>, not note values. The conversion: Hz = BPM / 60, then divide by the note value in beats. A quarter-note LFO at 120 BPM is 2 Hz; an eighth-note LFO is 4 Hz; a half-note swell is 1 Hz. The readout above the table shows the quarter-note Hz for your tempo — multiply or divide by two per note value from there.</p>
+<p>Watch out for LFOs that only accept whole Hz: at 100 BPM a quarter-note pulse wants 1.667 Hz, which rounds to 2 Hz (120 BPM equivalent) on coarse knobs — close enough for tremolo, noticeably off for rhythmic gating. When precision matters, use the DAW's synced LFO instead.</p>
+<h2>Delay Without a DAW: Pedals and Hardware</h2>
+<p>Guitarists with analog delay pedals live in milliseconds: a single Time knob, no sync. Dial the table value for your song's tempo before the gig and mark it — many players keep a <strong>tempo card</strong> taped to the pedalboard with ms values for the setlist. Digital pedals with tap-tempo footswitches do the math for you, but knowing the ms value lets you sanity-check that the pedal heard you right (a double-time mis-tap is obvious when you know 500 ms was the target).</p>
+<p>For slapback on rockabilly guitar or vocals, start at <strong>80–140 ms</strong> regardless of tempo — slapback is a fixed psychoacoustic effect, not a rhythmic one. Tempo-synced slap (eighth or 16th) is a different, more modern sound; both are valid, they just do different jobs.</p>
+<h2>Common Mistakes</h2>
+<p>The classic error is <strong>delaying in the wrong subdivision</strong> — quarter-note echo on a busy 16th-note guitar part turns to mush; the busier the part, the shorter the subdivision should be. Second is <strong>too much feedback</strong> with long times: beyond 3–4 repeats, rhythmic delays become ambient washes, so commit to one identity or the other. Third is ignoring <strong>stereo</strong>: offsetting left and right delays by a few milliseconds (or a dotted vs straight pair) creates width that mono delays cannot.</p>
+<p>And the meta-mistake: calculating to three decimals and then not listening. The table gets you to the mathematically right neighborhood; nudge ±5–10 ms by ear from there. Groove lives in the nudge.</p>
+<h2>Syncing Hardware: MIDI Clock vs Milliseconds</h2>
+<p>Modern pedals and synths often accept <strong>MIDI clock</strong>, which syncs them to the DAW's tempo automatically — no math required. But plenty of beloved gear (analog delays, older rack units, guitar pedals) only speaks milliseconds, and even MIDI-synced devices drift when the clock source is a shaky live drummer. Knowing the ms values makes you the person who can dial in <em>anything</em>: read the table, set the knob, done.</p>
+<p>When syncing hardware to a DAW, set the DAW as clock master and the pedal as slave, then verify by ear — MIDI clock jitter of a few milliseconds is normal and usually inaudible on delays, but it can smear tight rhythmic gates. For critical parts, print the effect to audio: once it is a waveform, timing is frozen forever and your mix recalls perfectly next month.</p>
+<h2>Putting It All Together</h2>
+<p>The workflow that never fails: get the true tempo (tap it if you must), pick the subdivision that serves the part, read the ms value, dial it in, then nudge by ear. Dotted eighths for rhythm, eighths for slap, 16ths for pre-delay clarity, triplets for swing. Keep this page open in the studio and tempo math becomes a glance instead of a chore — which means you will actually do it, every time, instead of guessing 350 ms and hoping.</p>
+
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How do I convert BPM to milliseconds?</summary><p>Divide 60,000 by the BPM to get one beat (quarter note) in ms — at 120 BPM that is 500 ms. Then multiply or divide by the note value: half note doubles it, eighth note halves it, sixteenth quarters it. Dotted notes multiply by 1.5, triplets by 2/3.</p></details>
+    <details><summary>What is a dotted eighth delay in ms?</summary><p>It depends on tempo: a dotted eighth is 0.75 beats, so at 120 BPM it is 375 ms, at 100 BPM it is 450 ms, and at 140 BPM it is about 321 ms. Enter your tempo above for the exact value — this is the classic rhythmic rock delay sound.</p></details>
+    <details><summary>What delay time should I use for vocals?</summary><p>Start with an eighth-note slap (around 250 ms at 120 BPM) with one repeat for thickness, or a dotted-eighth with 2–3 repeats for a rhythmic effect. Keep reverb pre-delay short — a 16th note — so the vocal stays intelligible.</p></details>
+    <details><summary>How does tap tempo work?</summary><p>Tap quarter notes in time with the music; the calculator averages the gaps between your taps and converts to BPM. Tap at least 4–8 times for a stable reading — longer tap runs average out your own timing wobble.</p></details>
+    <details><summary>What is the difference between triplet and dotted delay?</summary><p>Dotted multiplies a note value by 1.5 (a dotted eighth is 3/4 of a beat) and creates syncopation against straight grooves. Triplet multiplies by 2/3, fitting three notes into two beats — use it when the drums swing or shuffle.</p></details>
+    <details><summary>How do I convert BPM to Hz for an LFO?</summary><p>Divide BPM by 60 for quarter-note Hz (120 BPM = 2 Hz), then scale by note value: eighth notes double it, half notes halve it. So an eighth-note tremolo at 120 BPM pulses at 4 Hz.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BpmMs</div>
+    <p>BpmMs converts BPM to milliseconds for every note value — whole to 64th, dotted and triplet — with tap tempo and an Hz readout for LFOs.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+
+function msPerBeat(bpm){ return 60000 / bpm; }
+var NOTE_BEATS = {whole:4, half:2, quarter:1, eighth:0.5, sixteenth:0.25, thirtysecond:0.125, sixtyfourth:0.0625};
+function noteMs(bpm, beats, dotted, triplet){
+  var m = msPerBeat(bpm) * beats;
+  if(dotted) m *= 1.5;
+  if(triplet) m *= 2/3;
+  return Math.round(m * 100) / 100;
+}
+function bpmToHz(bpm){ return Math.round(bpm / 60 * 1000) / 1000; }
+
+
+(function(){
+var bpm=120;
+var NAMES=[["whole",4],["half",2],["quarter",1],["eighth",0.5],["sixteenth",0.25],["thirtysecond",0.125],["sixtyfourth",0.0625]];
+var $=function(id){return document.getElementById(id);};
+function fmt(ms){ return (Math.round(ms*100)/100).toLocaleString('en-US',{maximumFractionDigits:2}); }
+function render(){
+  $('bm-bpm-big').textContent=bpm;
+  $('bm-hz').innerHTML=bpmToHz(bpm)+' Hz &middot; quarter = '+fmt(noteMs(bpm,1,false,false))+' ms';
+  var tb=$('bm-table').querySelector('tbody'); tb.innerHTML='';
+  NAMES.forEach(function(nm){
+    var tr=document.createElement('tr');
+    if(nm[0]==='quarter')tr.className='hl';
+    var s=noteMs(bpm,nm[1],false,false), d=noteMs(bpm,nm[1],true,false), t=noteMs(bpm,nm[1],false,true);
+    tr.innerHTML='<td>'+nm[0]+'</td><td class="n">'+fmt(s)+' ms</td><td>'+fmt(d)+' ms</td><td>'+fmt(t)+' ms</td>';
+    tb.appendChild(tr);
+  });
+  if($('bm-slider').value!=String(bpm))$('bm-slider').value=bpm;
+  if($('bm-in').value!=String(bpm))$('bm-in').value=bpm;
+}
+function setBpm(v){ bpm=Math.max(40,Math.min(240,Math.round(v)||120)); render(); }
+$('bm-slider').addEventListener('input',function(){setBpm(this.value);});
+$('bm-in').addEventListener('input',function(){setBpm(this.value);});
+$('bm-minus').addEventListener('click',function(){setBpm(bpm-1);});
+$('bm-plus').addEventListener('click',function(){setBpm(bpm+1);});
+var taps=[];
+$('bm-tap').addEventListener('click',function(){
+  var now=performance.now();
+  taps.push(now);
+  if(taps.length>8)taps.shift();
+  if(taps.length>=3){
+    var iv=[];for(var i=1;i<taps.length;i++)iv.push(taps[i]-taps[i-1]);
+    iv=iv.filter(function(x){return x<2000;});
+    if(iv.length){
+      var avg=iv.reduce(function(a,b){return a+b;})/iv.length;
+      setBpm(60000/avg);
+    }
+  }
+  this.style.transform='scale(.93)';
+  var self=this;setTimeout(function(){self.style.transform='';},90);
+});
+render();
+})();
+
+</script>
+</body>
+</html>
