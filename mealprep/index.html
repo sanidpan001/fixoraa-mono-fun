@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Meal Prep Planner — Plan + Grocery List | MealPrep</title>
+<meta name="description" content="Plan a week of meals on one grid and get your grocery list built automatically.">
+<link rel="canonical" href="https://fun.fixoraa.tech/mealprep/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Weekly Meal Prep Planner — Plan + Grocery List | MealPrep">
+<meta property="og:description" content="Plan a week of meals on one grid and get your grocery list built automatically.">
+<meta property="og:url" content="https://fun.fixoraa.tech/mealprep/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "MealPrep",
+      "url": "https://fun.fixoraa.tech/mealprep/",
+      "applicationCategory": "Food Tools",
+      "operatingSystem": "Web",
+      "description": "Plan a week of meals on one grid and get your grocery list built automatically.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I start meal prepping for the week?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pick 7 dinners on the grid above \u2014 the tool builds your grocery list automatically. Shop once, then cook in assembly-line order on prep day: start grains and proteins first, chop vegetables while they cook, then portion into containers. Start with 3\u20134 dinners plus planned leftovers if cooking for one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does prepped food last in the fridge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "3 to 4 days at or below 40\u00b0F \u2014 this is the hard food-safety limit. Plan Sunday prep for Sunday through Wednesday, and use freezer meals or a small midweek refresh for Thursday and Friday. Cool cooked food within 2 hours and label everything with the date."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the best meals for meal prep?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dishes that improve overnight: chili, curry, lentil soup, taco bowls, stir fries. Avoid crispy foods and delicate pasta for multi-day storage \u2014 they go soggy. Pick dinners that share ingredients (rice, beans, one sauce family) to keep the grocery list short and cheap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much money does meal prepping save?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A prepped dinner costs roughly $3 to $6 per serving versus $12 to $18 for takeout. Replacing five takeout dinners a week saves $200+ a month for a household, plus the grocery savings from shopping an aggregated list instead of from memory."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I keep meal prep from getting boring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maintain a rotation of 12\u201315 proven dishes and swap two new ones in monthly. Vary sauces and seasonings rather than whole recipes \u2014 the same chicken-and-rice base becomes three different meals with different sauces. And keep one planned eat-out night so the system has a pressure valve."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I meal prep for just one person?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but scale down: plan 3 to 4 dinners plus intentional leftovers rather than 7 full preps, or you will waste food. Halve the grocery quantities, freeze half of every batch-cooked dish (chili, soup, curry), and lean on versatile staples like eggs, oats and frozen vegetables."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#F2FAF2;--accent:#1F841F;--tint:#DDF4DD;--ink:#1F331F;--muted:#547854;--accent-ink:#FFFFFF;--paper:#FFFDF8}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Josefin Slab',Georgia,serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:1180px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--paper);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-headrow{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.2)}
+.fx-name{font-size:24px;font-weight:700}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 18px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:var(--paper);transition:transform .12s;font-family:system-ui}
+.fx-btn:hover{transform:translateY(-2px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--ink);font-size:13px;border:2px dashed var(--accent);font-family:system-ui}
+.hero{padding:44px 0 8px;display:grid;grid-template-columns:1.4fr .6fr;gap:30px;align-items:end}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:system-ui;font-weight:700}
+.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.08;margin-bottom:12px}
+.hero h1::first-letter{font-size:1.25em;color:var(--accent)}
+.lede{font-size:18px;color:var(--muted);font-family:system-ui}
+.hero-side{border-left:4px solid var(--accent);padding-left:18px;font-style:italic;color:var(--muted);font-size:16px}
+.tool{margin:28px 0 10px;display:grid;grid-template-columns:1.55fr .9fr;gap:24px;align-items:start}
+.mp-grid{background:var(--paper);border:2px solid var(--tint);border-radius:14px;padding:22px}
+.mp-grid h3{font-size:21px;margin-bottom:4px}
+.mp-grid .dek{font-family:system-ui;font-size:14px;color:var(--muted);margin-bottom:16px}
+.mp-day{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:center;margin-bottom:10px}
+.mp-day .dow{font-weight:700;font-size:15px;color:var(--accent);text-transform:uppercase;font-size:13px;letter-spacing:.08em}
+.mp-day select{font-family:system-ui;font-size:15px;padding:10px 12px;border:2px solid var(--tint);border-radius:8px;background:#fff;color:var(--ink);width:100%}
+.mp-day select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.mp-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.mp-actions button{font-family:system-ui;font-weight:700;font-size:14px;padding:10px 20px;border-radius:999px;cursor:pointer;border:2px solid var(--accent);background:#fff;color:var(--accent)}
+.mp-actions button.primary{background:var(--accent);color:var(--accent-ink)}
+.mp-side{display:flex;flex-direction:column;gap:18px}
+.mp-list{background:var(--paper);border:2px solid var(--tint);border-radius:14px;padding:22px}
+.mp-list h3{font-size:21px;margin-bottom:4px}
+.mp-list .dek{font-family:system-ui;font-size:14px;color:var(--muted);margin-bottom:12px}
+.mp-list ul{list-style:none;font-family:system-ui;font-size:15px;columns:1}
+.mp-list li{padding:7px 0;border-bottom:1px dotted var(--tint);display:flex;justify-content:space-between;gap:8px;break-inside:avoid}
+.mp-list li:last-child{border-bottom:0}
+.mp-list .qty{font-weight:700;color:var(--accent);white-space:nowrap}
+.mp-prep{background:var(--accent);color:#fff;border-radius:14px;padding:22px}
+.mp-prep h3{font-size:21px;margin-bottom:10px}
+.mp-prep ol{margin-left:20px;font-family:system-ui;font-size:15px}
+.mp-prep li{margin-bottom:8px}
+.mp-prep .time{font-size:14px;opacity:.9;margin-top:10px;font-family:system-ui}
+.mp-empty{font-family:system-ui;color:var(--muted);font-size:15px}
+.article-sec{margin:44px 0;max-width:780px}
+.article-sec h2{font-size:25px;margin:36px 0 12px}
+.article-sec p{margin-bottom:14px;color:#33452f;font-family:system-ui}
+.article-sec ul,.article-sec ol{margin:0 0 14px 24px;color:#33452f;font-family:system-ui}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0 10px;max-width:780px}
+.faq-sec h2{font-size:25px;margin-bottom:16px}
+.faq-sec details{background:var(--paper);border:2px solid var(--tint);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:15px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--tint);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#33452f;font-size:15px;font-family:system-ui}
+.fx-footer{background:#1e2b1e;color:#e4eee2;margin-top:48px;padding:42px 0 36px}
+.fx-footer .fx-brand{font-size:24px;font-weight:700;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#a9c2a4;max-width:640px;margin-bottom:14px;font-family:system-ui}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent);font-family:system-ui}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#b9e0ac;font-weight:700}
+@media(max-width:900px){.tool{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.hero-side{border-left:0;padding-left:0}.fx-nav{margin-left:0}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-headrow">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/mealprep/" aria-label="MealPrep home">
+      <span class="fx-tile" aria-hidden="true">🥗</span>
+      <span class="fx-name">MealPrep</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="hero">
+    <span class="eyebrow">One grid. One list. One calm Sunday.</span>
+    <h1>Weekly Meal Prep Planner</h1>
+    <p class="lede">Fill the 7-day grid with dinners (or any meals), and watch your grocery list build itself — aggregated, deduplicated, and ready to shop.</p>
+  </section>
+  <section class="tool" aria-label="MealPrep tool">
+<div class="mp-grid">
+      <h3>The week on one page</h3>
+      <p class="dek">Pick a dinner for each day — the grocery list writes itself. (Breakfasts &amp; lunches: repeat two staples all week.)</p>
+      <div id="mp-days"></div>
+      <div class="mp-actions">
+        <button type="button" class="primary" id="mp-sample">Fill a sample week</button>
+        <button type="button" id="mp-clear">Clear</button>
+      </div>
+    </div>
+    <div class="mp-side">
+      <div class="mp-list">
+        <h3>Grocery list</h3>
+        <p class="dek" id="mp-dek">Auto-built from your grid.</p>
+        <ul id="mp-groc"></ul>
+      </div>
+      <div class="mp-prep">
+        <h3>Prep-day order</h3>
+        <ol id="mp-steps"></ol>
+        <div class="time" id="mp-time"></div>
+      </div>
+    </div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>The Sunday Chaos (and How a Grid Fixes It)</h2>
+<p>Meal prep fails in exactly one place: the planning. Not the cooking — anyone can roast a tray of vegetables — but the Sunday-afternoon paralysis of deciding what to cook, realizing you are missing three ingredients, and ordering takeout instead. The grid above attacks that exact failure point. You make seven small decisions (dinner each night), and the tool does the tedious part: aggregating every ingredient across the week into one deduplicated grocery list, so "chicken breast" appears once with the total quantity instead of scattered across five mental notes.</p>
+<p>This works because it separates deciding from doing. Decision fatigue is real, and it peaks exactly when you need to plan: Sunday afternoon, already tired from the week. A grid constrains the decision beautifully — one dinner per day, chosen from a dozen proven dishes — instead of the infinite scroll of recipe sites. The grocery list then becomes a pure execution document. Shoppers who work from an aggregated list spend less (no duplicate buys, no forgotten items requiring a second trip) and waste less (quantities matched to the plan). The prep-day task order at the side turns Sunday cooking into an assembly line instead of improv.</p>
+<h2>Picking Your 7 Dinners</h2>
+<p>The dropdown dishes are chosen for prepability: they all scale, reheat well, and share ingredients so your grocery list stays short. Notice how rice appears in five dishes, black beans in three, soy sauce in two — that overlap is deliberate. The cheapest, lowest-waste meal plans are built from ingredient families, not from seven unrelated recipes. When you graduate to your own dishes, keep that principle: pick dinners that share a starch, a protein format, and a sauce family, and the week gets dramatically simpler.</p>
+<p>Balance the week across three axes. <strong>Effort:</strong> no more than two high-effort dinners; the rest should be 30-minute or one-pan meals. <strong>Protein variety:</strong> rotate chicken, beans/lentils, fish, eggs and turkey so nobody rebels by Thursday. <strong>Reheat behavior:</strong> at least half the dishes should be ones that improve overnight — chili, curry, lentil soup, braises. Pasta and crispy things are "cook fresh" dishes; they are fine for the night you cook them but sad on day three. The sample week button demonstrates the balance: stir fry, chili, pasta, salmon, tacos, curry, soup — varied, mostly reheatable, sharing a tight ingredient core.</p>
+<h2>The Grocery List Is the Real Product</h2>
+<p>A good grocery list has three properties: complete, deduplicated, and quantified. Complete means every ingredient for every meal — the tool guarantees this by deriving the list from the dishes rather than your memory. Deduplicated means "rice" appears once with 9 cups total, not five times across five mental entries. Quantified means real amounts, not "some rice." Shopping from a list like this cuts the average trip cost by 15 to 25 percent versus shopping from memory, mostly by eliminating the duplicate purchases and impulse fills that memory-shopping invites.</p>
+<p>Shop the list in store order mentally before you go: produce, meat, dairy, pantry, frozen. Group the list this way and you stop crisscrossing the store, which is where the impulse buys live. Buy the quantities listed, not your habits — the list already accounts for the week's cooking, and "extra just in case" is how refrigerators become compost bins. One pro move: photograph your pantry staples (oils, spices, soy sauce) before shopping so you can verify rather than guess whether you need them. The list handles the meals; the photo handles the staples.</p>
+<h2>The Prep-Day Assembly Line</h2>
+<p>The prep order on the side panel follows the golden rule of batch cooking: <strong>start what takes longest, then fill the gaps with knife work.</strong> Grains and proteins go on first (rice cooker on, sheet pans in the oven), because they cook unattended. While they run, you wash and chop all vegetables — every onion for the week, every carrot, everything. Then assemble: portion into containers, make sauces and dressings, and finish anything served fresh. The estimated time scales with unique dishes (about 20 active minutes each), not with days, because cooking seven portions of chili takes barely longer than cooking two.</p>
+<p>Sequence matters more than speed. Do not start by chopping — start by heating. Preheat the oven before you touch a knife; get water boiling before you open the fridge. Clean as you go in the gaps: while the curry simmers, wash the cutting board. The difference between a chaotic three-hour prep and a calm ninety-minute one is almost entirely this sequencing, not cooking skill. And put on a podcast. Prep day should feel like productive puttering, not a shift.</p>
+<h2>Containers, Storage, and Food Safety</h2>
+<p>Meal prep lives or dies on containers. Use glass or BPA-free containers with locking lids, in uniform sizes so they stack — the mismatched-container drawer is where good intentions go to die. Portion by meal, not by ingredient: a container that holds one complete dinner gets grabbed; a container of plain rice waits for someone to "do something with it." Label with the dish name and the prep date; masking tape and a marker beat any fancy system.</p>
+<p>The food safety rules are non-negotiable: cool cooked food within two hours (spread on sheet pans to cool fast, do not leave the pot on the counter "for a bit"), refrigerate at or below 40°F, and eat refrigerated prepped meals within 3 to 4 days. That last rule shapes the whole system — it is why the grid plans Sunday prep for Sunday through Wednesday and a tiny midweek refresh (or freezer meals) for Thursday and Friday. Freeze anything you will not eat in four days; most prepped dishes freeze beautifully for up to three months. When in doubt, throw it out — the $4 of chili is not worth the gamble.</p>
+<h2>Breakfasts and Lunches: The Boring System</h2>
+<p>The grid focuses on dinners because dinners have the most variety — but breakfasts and lunches need a system too, and the system is: be boring on purpose. Pick two breakfasts (overnight oats; eggs and toast) and two lunches (grain bowls from dinner leftovers; big salads with prepped protein) and rotate them all week. Decision fatigue applies doubly at 7 a.m.; a boring, automatic breakfast you actually eat beats an exciting plan you skip.</p>
+<p>The elegant trick is making lunch from dinner: cook 1.5x portions of the reheat-friendly dinners (chili, curry, taco bowls) and the extra half becomes tomorrow's lunch with zero additional cooking. This is why the dish list skews toward bowls, chilis and curries — they are lunch-native formats. Pack lunches at the same time as dinner prep, in the same containers, and the entire week's food is handled in one session. Boring is a feature. Boring is what makes it sustainable past week two.</p>
+<h2>Adapting the System to Real Life</h2>
+<p>No plan survives contact with the week unchanged, so build the flex in. Keep two "emergency" meals in the freezer at all times (a frozen lasagna, soup portions) for the nights cooking does not happen. Allow one planned eat-out night — usually Friday — and do not prep for it; planning the exception prevents the exception from wrecking the plan. If a dinner flops, swap it next week; the grid is a draft, not a contract.</p>
+<p>Scale the system to your household honestly. Cooking for one? Halve the quantities in the list mentally and plan 3 to 4 dinners plus planned leftovers — a full 7-dinner prep for one person generates waste, not efficiency. Cooking for a family of five? Double the proteins and starches, keep the vegetable quantities roughly as listed (kids' vegetable consumption is aspirational). Dietary restrictions slot in cleanly: the dish list is already heavy on naturally gluten-free and vegetarian-flexible options, and swapping a protein within a dish (chickpeas for chicken in the curry) rarely breaks the grocery math.</p>
+<h2>Week Two and Beyond: The Compound Effect</h2>
+<p>The first prep week feels like work. The fourth feels like a superpower — and the benefits compound. Financially, a prepped week costs $3 to $6 per serving versus $12 to $18 for takeout; a household replacing five takeout dinners a week saves $200+ monthly. Nutritionally, you control the salt, oil and portions without thinking about it. Temporally, you buy back roughly five hours a week of weeknight cooking and cleaning, which is the real prize.</p>
+<p>Keep it fresh with a simple rotation: maintain a list of 12 to 15 proven dishes (the dropdown is your starter set) and swap two new ones in each month. Save the grids that worked — the week everyone loved is a template, not a memory. Within two months you will have a personal cookbook of preppable dinners, a grocery list you could shop blindfolded, and a Sunday rhythm that runs itself. The grid above is week one. The compound effect is everything after.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How do I start meal prepping for the week?</summary><p>Pick 7 dinners on the grid above — the tool builds your grocery list automatically. Shop once, then cook in assembly-line order on prep day: start grains and proteins first, chop vegetables while they cook, then portion into containers. Start with 3–4 dinners plus planned leftovers if cooking for one.</p></details>
+    <details><summary>How long does prepped food last in the fridge?</summary><p>3 to 4 days at or below 40°F — this is the hard food-safety limit. Plan Sunday prep for Sunday through Wednesday, and use freezer meals or a small midweek refresh for Thursday and Friday. Cool cooked food within 2 hours and label everything with the date.</p></details>
+    <details><summary>What are the best meals for meal prep?</summary><p>Dishes that improve overnight: chili, curry, lentil soup, taco bowls, stir fries. Avoid crispy foods and delicate pasta for multi-day storage — they go soggy. Pick dinners that share ingredients (rice, beans, one sauce family) to keep the grocery list short and cheap.</p></details>
+    <details><summary>How much money does meal prepping save?</summary><p>A prepped dinner costs roughly $3 to $6 per serving versus $12 to $18 for takeout. Replacing five takeout dinners a week saves $200+ a month for a household, plus the grocery savings from shopping an aggregated list instead of from memory.</p></details>
+    <details><summary>How do I keep meal prep from getting boring?</summary><p>Maintain a rotation of 12–15 proven dishes and swap two new ones in monthly. Vary sauces and seasonings rather than whole recipes — the same chicken-and-rice base becomes three different meals with different sauces. And keep one planned eat-out night so the system has a pressure valve.</p></details>
+    <details><summary>Can I meal prep for just one person?</summary><p>Yes, but scale down: plan 3 to 4 dinners plus intentional leftovers rather than 7 full preps, or you will waste food. Halve the grocery quantities, freeze half of every batch-cooked dish (chili, soup, curry), and lean on versatile staples like eggs, oats and frozen vegetables.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">MealPrep</div>
+    <p>MealPrep turns a 7-day meal grid into an automatic aggregated grocery list plus an ordered prep-day task plan.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function mealPrep(meals){
+  var agg={};
+  var dishes=[];
+  (meals||[]).forEach(function(m){
+    if(m && m.dish && dishes.indexOf(m.dish)<0){ dishes.push(m.dish); }
+    ((m&&m.ingredients)||[]).forEach(function(g){
+      var key=(String(g.item)+'|'+String(g.unit||'')).toLowerCase();
+      if(!agg[key]){ agg[key]={item:g.item, unit:g.unit||'', qty:0}; }
+      agg[key].qty+=Number(g.qty)||0;
+    });
+  });
+  var list=Object.keys(agg).sort().map(function(k){
+    var x=agg[k];
+    return {item:x.item, qty:Math.round(x.qty*100)/100, unit:x.unit};
+  });
+  var prepMin=dishes.length*20;
+  return {
+    meals:(meals||[]).length, uniqueDishes:dishes.length,
+    groceryList:list, estPrepMin:prepMin,
+    prepSteps:[
+      'Wash and chop all vegetables (about '+Math.round(prepMin*0.3)+' min)',
+      'Cook grains and proteins (about '+Math.round(prepMin*0.4)+' min)',
+      'Assemble and portion containers (about '+Math.round(prepMin*0.3)+' min)'
+    ]
+  };
+}
+(function(){
+var DISHES={"Chicken Stir Fry": [["Chicken breast", 1.5, "lb"], ["Rice", 2, "cups"], ["Broccoli", 2, "cups"], ["Soy sauce", 0.25, "cup"]], "Bean Chili": [["Black beans", 2, "cans"], ["Crushed tomatoes", 1, "can"], ["Onion", 1, ""], ["Rice", 2, "cups"]], "Pasta Marinara": [["Pasta", 1, "lb"], ["Marinara sauce", 1, "jar"], ["Parmesan", 0.5, "cup"]], "Sheet Pan Salmon": [["Salmon fillets", 1.5, "lb"], ["Asparagus", 1, "bunch"], ["Lemon", 1, ""], ["Rice", 2, "cups"]], "Taco Bowls": [["Ground turkey", 1.5, "lb"], ["Black beans", 1, "can"], ["Rice", 2, "cups"], ["Salsa", 1, "cup"]], "Veggie Curry": [["Chickpeas", 2, "cans"], ["Coconut milk", 1, "can"], ["Sweet potato", 2, ""], ["Rice", 2, "cups"]], "Greek Salad": [["Cucumber", 2, ""], ["Tomatoes", 4, ""], ["Feta", 0.5, "cup"], ["Olives", 0.5, "cup"]], "Omelets": [["Eggs", 8, ""], ["Cheese", 1, "cup"], ["Bell pepper", 2, ""], ["Bread", 4, "slices"]], "Overnight Oats": [["Oats", 2, "cups"], ["Milk", 2, "cups"], ["Berries", 1, "cup"], ["Honey", 0.25, "cup"]], "Fried Rice": [["Rice", 3, "cups"], ["Eggs", 4, ""], ["Peas & carrots", 2, "cups"], ["Soy sauce", 0.25, "cup"]], "Lentil Soup": [["Red lentils", 2, "cups"], ["Carrots", 3, ""], ["Onion", 1, ""], ["Vegetable broth", 4, "cups"]], "Quesadillas": [["Tortillas", 8, ""], ["Cheese", 2, "cups"], ["Black beans", 1, "can"], ["Salsa", 1, "cup"]]};
+var days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+var wrap=document.getElementById('mp-days');
+var selects=[];
+days.forEach(function(d){
+  var row=document.createElement('div');row.className='mp-day';
+  var lab=document.createElement('div');lab.className='dow';lab.textContent=d;row.appendChild(lab);
+  var sel=document.createElement('select');sel.setAttribute('aria-label',d+' dinner');
+  var opt0=document.createElement('option');opt0.value='';opt0.textContent='— pick a dinner —';sel.appendChild(opt0);
+  Object.keys(DISHES).forEach(function(name){var o=document.createElement('option');o.value=name;o.textContent=name;sel.appendChild(o);});
+  sel.addEventListener('change',render);
+  selects.push(sel);row.appendChild(sel);wrap.appendChild(row);
+});
+function render(){
+  var meals=[];
+  selects.forEach(function(sel,i){
+    var name=sel.value;if(!name)return;
+    meals.push({day:days[i],slot:'Dinner',dish:name,
+      ingredients:DISHES[name].map(function(g){return {item:g[0],qty:g[1],unit:g[2]};})});
+  });
+  var r=mealPrep(meals);
+  var ul=document.getElementById('mp-groc');ul.innerHTML='';
+  if(!r.groceryList.length){ul.innerHTML='<li class="mp-empty">Your list appears here once you pick dinners.</li>';}
+  r.groceryList.forEach(function(g){
+    var li=document.createElement('li');
+    var nm=document.createElement('span');nm.textContent=g.item;
+    var q=document.createElement('span');q.className='qty';q.textContent=g.qty+(g.unit?' '+g.unit:'');
+    li.appendChild(nm);li.appendChild(q);ul.appendChild(li);
+  });
+  document.getElementById('mp-dek').textContent=r.uniqueDishes?r.groceryList.length+' items · '+r.uniqueDishes+' unique dishes':'Auto-built from your grid.';
+  var ol=document.getElementById('mp-steps');ol.innerHTML='';
+  r.prepSteps.forEach(function(s){var li=document.createElement('li');li.textContent=s;ol.appendChild(li);});
+  document.getElementById('mp-time').textContent=r.uniqueDishes?('Estimated active prep: about '+r.estPrepMin+' minutes for '+r.uniqueDishes+' dishes.'):'Pick dinners to get your prep plan.';
+}
+document.getElementById('mp-sample').addEventListener('click',function(){
+  var sample=['Chicken Stir Fry','Bean Chili','Pasta Marinara','Sheet Pan Salmon','Taco Bowls','Veggie Curry','Lentil Soup'];
+  selects.forEach(function(sel,i){sel.value=sample[i];});render();
+});
+document.getElementById('mp-clear').addEventListener('click',function(){selects.forEach(function(sel){sel.value='';});render();});
+render();
+})();
+</script>
+</body>
+</html>
