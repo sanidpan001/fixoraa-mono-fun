@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pond Liner Calculator — Size + Water Volume | PondCalc</title>
+<meta name="description" content="Pond liner size, water volume, pump sizing and fish capacity for your garden pond.">
+<link rel="canonical" href="https://fun.fixoraa.tech/pondcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Pond Liner Calculator — Size + Water Volume | PondCalc">
+<meta property="og:description" content="Pond liner size, water volume, pump sizing and fish capacity for your garden pond.">
+<meta property="og:url" content="https://fun.fixoraa.tech/pondcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PondCalc",
+      "url": "https://fun.fixoraa.tech/pondcalc/",
+      "applicationCategory": "Garden Tools",
+      "operatingSystem": "Web",
+      "description": "Pond liner size, water volume, pump sizing and fish capacity for your garden pond.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What size pond liner do I need?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Add twice the maximum depth plus two feet of overlap to both the length and width: liner length = pond length + (2 × depth) + 2 ft, and the same for width. Plant shelves add roughly a foot per shelf level. This calculator does the shelf-aware math and rounds up to whole feet." } },
+        { "@type": "Question", "name": "How do I calculate my pond's water volume?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Multiply length × width × depth in feet to get cubic feet, then multiply by 7.48 gallons per cubic foot. Irregular shapes and plant shelves reduce the true volume — this calculator applies a shelf adjustment so pump and fish numbers stay realistic." } },
+        { "@type": "Question", "name": "What size pump does my pond need?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Size the pump to circulate the pond's full volume every 1 to 2 hours: a 1,000-gallon pond wants 500–1,000 GPH. Go toward the high end for fish ponds and waterfalls, which need extra flow for height. The calculator gives you a range plus a recommended midpoint." } },
+        { "@type": "Question", "name": "How deep should a garden pond be?",
+          "acceptedAnswer": { "@type": "Answer", "text": "At least 2 feet deep in most climates so fish survive winter ice and summer heat; 3 feet is better for koi and for cold regions. Shallow marginal shelves of 6–12 inches around the edges are ideal for bog plants." } },
+        { "@type": "Question", "name": "How many fish can my pond hold?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A safe rule is about 1 inch of fish per 10 gallons of pond water — ponds are more forgiving than aquariums thanks to plants and surface area, but overstocking still crashes water quality. Koi grow large and need far more room per fish than goldfish." } },
+        { "@type": "Question", "name": "EPDM vs PVC pond liner — which should I buy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "EPDM rubber (45 mil) is the premium choice: flexible in cold, UV-resistant, and 20+ year lifespan. PVC is cheaper but stiffer, harder to fold neatly, and degrades faster in sun. For a pond you dig once, EPDM is worth the premium." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F2FAF9; --surface:#FFFFFF; --tint:#DDF4F2;
+  --accent:#1D7C74; --accent-deep:#125A54; --accent-ink:#FFFFFF;
+  --ink:#1F3331; --muted:#547875; --line:#BFDCD9;
+  --font:'EB Garamond',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.7;font-size:17px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:rgba(255,255,255,.94);border-bottom:2px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:50%;border:2px solid var(--accent);background:radial-gradient(circle at 35% 35%,var(--tint),#fff);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px}
+.fx-name{font-weight:700;font-size:22px;letter-spacing:.01em}
+.fx-name small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;font-family:var(--font)}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 18px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--accent);color:var(--accent);transition:transform .12s ease;font-family:var(--font)}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:600;font-size:13.5px;border:1.5px dashed var(--accent)}
+/* hero */
+.pc-hero{padding:46px 0 6px;position:relative}
+.pc-hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:repeating-radial-gradient(ellipse at 85% 20%,transparent 0 34px,rgba(29,124,116,.07) 34px 35px);}
+.pc-compass{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+.pc-hero h1{font-size:clamp(32px,4.8vw,50px);line-height:1.1;letter-spacing:0;font-weight:700;margin-bottom:12px;max-width:720px}
+.pc-hero h1 em{color:var(--accent);font-style:italic}
+.pc-hero p{font-size:19px;color:var(--muted);max-width:660px;font-style:italic}
+/* survey chart tool */
+.pc-chart{margin:28px 0 10px;background:var(--surface);border:2px solid var(--accent);border-radius:4px;box-shadow:0 14px 30px rgba(29,124,116,.10);overflow:hidden}
+.pc-chart-head{padding:18px 28px 6px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.pc-chart-head h2{font-size:22px;font-weight:700}
+.pc-chart-head span{font-size:14px;color:var(--muted);font-style:italic;margin-left:auto}
+.pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pc-inputs{padding:24px 28px}
+.pc-results{padding:24px 28px;background:linear-gradient(180deg,#FCFEFE,var(--tint));border-left:1px solid var(--line)}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:600;font-size:16px;margin-bottom:8px}
+.field .hint{font-weight:400;font-size:14px;color:var(--muted);font-style:italic}
+.field input[type=number]{font:inherit;padding:10px 13px;border:1.5px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);width:100%;max-width:220px}
+.field input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.pc-section{border-top:1px dashed var(--line);padding-top:16px;margin-top:4px}
+.pc-section:first-child{border-top:0;padding-top:0;margin-top:0}
+.pc-section h3{font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px;font-weight:700}
+.pc-liner{font-size:40px;font-weight:700;letter-spacing:-.01em;color:var(--accent-deep);line-height:1.1}
+.pc-liner small{font-size:17px;color:var(--muted);font-weight:500;font-style:italic}
+.pc-lines{list-style:none;font-size:16.5px;margin-top:10px}
+.pc-lines li{display:flex;justify-content:space-between;gap:12px;padding:8px 2px;border-bottom:1px dotted var(--line)}
+.pc-lines li:last-child{border-bottom:0}
+.pc-lines .k{color:var(--muted);font-style:italic}
+.pc-lines .v{font-weight:700;text-align:right}
+.pc-xsec{margin-top:14px;border:1.5px solid var(--line);border-radius:6px;background:#fff;padding:10px}
+.pc-xsec svg{width:100%;height:auto;display:block}
+.pc-note{font-size:14.5px;color:var(--accent-deep);font-style:italic;margin-top:12px}
+/* article */
+.article-sec{margin:42px 0;max-width:780px}
+.article-sec h2{font-size:27px;margin:38px 0 12px;font-weight:700;color:var(--accent-deep)}
+.article-sec p{margin-bottom:15px;color:#2b423f}
+.article-sec ul,.article-sec ol{margin:0 0 15px 22px;color:#2b423f}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:27px;font-weight:700;margin-bottom:16px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:600;cursor:pointer;list-style:none;font-size:17px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:1.5px solid var(--line);color:var(--accent-deep)}
+.faq-sec details p{padding:14px 18px;color:#2b423f;font-size:16px}
+/* footer */
+.fx-footer{background:#122e2b;color:#dcecea;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:23px;font-weight:700;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:16px;color:#a4c4bf;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:600;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#9fd9d2;font-weight:700}
+@media(max-width:760px){
+  .pc-grid{grid-template-columns:1fr}
+  .pc-results{border-left:0;border-top:1px solid var(--line)}
+  .fx-nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/pondcalc/" aria-label="PondCalc home">
+      <span class="fx-tile" aria-hidden="true">&#8776;</span>
+      <span class="fx-name">PondCalc<small>Survey office</small></span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="pc-hero">
+    <div class="pc-compass">&#9678; Chart No. 7 &middot; Garden waters</div>
+    <h1>Pond Liner Size, Water Volume <em>&amp;</em> Pump, Charted</h1>
+    <p>Survey your pond before you dig: shelf-aware liner dimensions, true gallons, the right pump, and a sane fish capacity — all on one chart.</p>
+  </section>
+
+  <section class="pc-chart" aria-label="PondCalc tool">
+    <div class="pc-chart-head"><h2>Survey of the intended waters</h2><span>all measures in feet</span></div>
+    <div class="pc-grid">
+      <div class="pc-inputs">
+        <div class="field">
+          <label for="pc-l">Length <span class="hint">— longest dimension, ft</span></label>
+          <input type="number" id="pc-l" value="10" min="1" max="200" step="0.5">
+        </div>
+        <div class="field">
+          <label for="pc-w">Width <span class="hint">— widest dimension, ft</span></label>
+          <input type="number" id="pc-w" value="8" min="1" max="200" step="0.5">
+        </div>
+        <div class="field">
+          <label for="pc-d">Maximum depth <span class="hint">— ft, at the deepest point</span></label>
+          <input type="number" id="pc-d" value="2" min="0.5" max="12" step="0.5">
+        </div>
+        <div class="field">
+          <label for="pc-s">Plant shelf levels <span class="hint">— stepped shallow ledges, 0–3</span></label>
+          <input type="number" id="pc-s" value="1" min="0" max="3" step="1">
+        </div>
+        <div class="pc-xsec" aria-hidden="true">
+          <svg viewBox="0 0 300 120">
+            <rect x="10" y="10" width="280" height="100" fill="#F2FAF9" stroke="#1D7C74" stroke-width="1.5" rx="4"/>
+            <path d="M30 40 H90 V70 H150 V95 H210 V70 H270 V40" fill="none" stroke="#1D7C74" stroke-width="2.5"/>
+            <path d="M30 40 H270" stroke="#547875" stroke-width="1" stroke-dasharray="5 4"/>
+            <text x="150" y="30" text-anchor="middle" font-size="10" fill="#547875" font-style="italic">water surface</text>
+            <text x="150" y="112" text-anchor="middle" font-size="10" fill="#547875" font-style="italic">liner follows every shelf</text>
+            <line x1="282" y1="40" x2="282" y2="95" stroke="#A52727" stroke-width="1.5"/>
+            <text x="292" y="70" font-size="10" fill="#A52727">D</text>
+          </svg>
+        </div>
+      </div>
+      <div class="pc-results" aria-live="polite">
+        <div class="pc-section">
+          <h3>Liner to order</h3>
+          <div class="pc-liner"><span id="pc-liner">17 &times; 15</span> <small>ft</small></div>
+          <ul class="pc-lines">
+            <li><span class="k">Formula</span><span class="v">L + 2D + 2, per side</span></li>
+            <li><span class="k">Shelf allowance</span><span class="v" id="pc-shelf">+1 ft per side</span></li>
+          </ul>
+        </div>
+        <div class="pc-section">
+          <h3>Water &amp; equipment</h3>
+          <ul class="pc-lines">
+            <li><span class="k">Volume</span><span class="v" id="pc-vol">1,017 gallons</span></li>
+            <li><span class="k">Pump range</span><span class="v" id="pc-pump">509 – 1,017 GPH</span></li>
+            <li><span class="k">Recommended pump</span><span class="v" id="pc-pumprec">≈ 750 GPH</span></li>
+            <li><span class="k">Fish capacity</span><span class="v" id="pc-fish">≈ 102 in of fish</span></li>
+          </ul>
+        </div>
+        <p class="pc-note" id="pc-note">A pump turning the pond every 1–2 hours keeps water clear and oxygenated.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+    <h2>The Liner Formula, and Why Shelves Change It</h2>
+    <p>Every pond liner calculation starts from the same honest geometry: the liner must travel down one side, across the bottom, and up the other side, with extra left over to anchor under the edging. Hence the classic formula — liner length equals pond length plus twice the depth plus two feet of overlap, and likewise for width. A 10-by-8-foot pond, 2 feet deep, needs a 16-by-14 liner by the naive math. Simple, and wrong the moment your pond has any character at all.</p>
+    <p>Real ponds have plant shelves: stepped ledges 6 to 12 inches deep ringing the edges where marginal plants sit in pots. Each shelf is a horizontal detour the liner must follow — down to the shelf, across it, and down again to the next level. Ignore the shelves and the liner comes up short exactly where it must tuck under the edging, the one place a shortfall cannot be hidden. This calculator adds roughly a foot per shelf level to each dimension, which matches what installers actually order. The cross-section sketch above shows why: the liner is not a rectangle draped over a bowl, but a contour following every step.</p>
+    <h2>Measuring the Pond You Intend</h2>
+    <p>Measure the hole you plan to dig, not the water surface you imagine. Length and width are the maximum excavated dimensions at the top edge; depth is the maximum at the deepest point, where the pump or bottom drain will sit. If the shape is irregular — a kidney, a figure-eight — use the bounding rectangle (the longest length and widest width) and accept that the liner will have generous folds. Folds are forgivable; shortfalls are not. Round every result up to the next whole foot, because liners are sold in whole-foot sizes and a foot of extra liner disappears harmlessly under the edging.</p>
+    <p>Mark the outline on the ground with a garden hose before measuring. Walk around it, sight along it from the patio and the upstairs window, live with it for a day. Ponds almost always end up feeling smaller once filled than they looked as a hose outline — when in doubt, add a foot to each dimension now rather than wishing later.</p>
+    <h2>Volume: Gallons From Geometry</h2>
+    <p>A cubic foot of water is 7.48 gallons, so length times width times depth times 7.48 gives the rectangular volume. But shelves, sloping sides, and irregular shapes all remove water compared to the perfect box, so the calculator discounts volume by 15% when shelves are present. The result is the working volume your pump and fish calculations should use — the honest number, not the flattering one.</p>
+    <p>Why does precision matter? Because everything downstream keys off volume: pump sizing, filter sizing, fish capacity, and treatment dosing. Algaecides and dechlorinators dosed for 1,200 gallons in a true 1,000-gallon pond are overdosed by 20%. A pump sized for the fantasy volume short-cycles the real one. Measure twice, stock once.</p>
+    <h2>Sizing the Pump: The 1-to-2-Hour Rule</h2>
+    <p>Pond pumps are rated in GPH — gallons per hour — and the rule is to circulate the pond's entire volume every one to two hours. A 1,000-gallon pond therefore wants 500 to 1,000 GPH at the pump's actual operating head (the height it must lift water to a waterfall or filter). The calculator shows the full range and recommends the 75% point as a balanced choice: strong circulation with margin for filter clogging and hot weather, when oxygen demand peaks.</p>
+    <p>Two subtleties deserve attention. First, head height: a pump rated 1,000 GPH at zero head may deliver 600 GPH lifting water three feet to a waterfall — read the pump curve, not the headline number. Second, fish load: ponds with koi or heavy goldfish stocking should run toward the one-hour end of the range, because fish are oxygen-hungry and waste-heavy. A planted wildlife pond with few fish is perfectly happy at the two-hour end.</p>
+    <h2>Fish Capacity: An Inch Per Ten Gallons</h2>
+    <p>Ponds forgive more than aquariums — sunlight grows oxygenating plants, surface area is generous, and rainwater dilutes waste — so the stocking rule relaxes to roughly one inch of fish per ten gallons. A 1,000-gallon pond thus supports about 100 inches of fish: twenty 5-inch goldfish, for example, or a modest handful of koi with room to grow. Koi deserve special caution: they grow to two feet or more and are waste factories, so count each koi as needing 250+ gallons of eventual room, not merely its current inches.</p>
+    <p>Stock gradually, as with aquariums — a new pond's biology needs weeks to colonize the filter media. And remember that every fish grows: the pond stocked "perfectly" this spring is overstocked in three years if the fish double in size. Re-run the numbers annually, and have a rehoming plan before you need one.</p>
+    <h2>Depth: The Climate Decision</h2>
+    <p>Two feet of depth is the practical minimum in most climates: deep enough that summer heat cannot cook the whole water column and winter ice cannot freeze it solid. Three feet is better for koi ponds and for regions with hard freezes, giving fish a stable thermal refuge at the bottom. Shelves complicate the picture slightly — they are shallow by design — so keep at least 40% of the pond's footprint at full depth rather than terracing the entire thing.</p>
+    <p>Depth also stabilizes everything else: temperature swings, pH swings, and predator access all moderate with depth. Herons hunt in inches, not feet. The extra digging is the cheapest insurance the pond gets.</p>
+    <h2>EPDM vs. PVC: Buy Once</h2>
+    <p>You will dig this hole once, so the liner is no place to economize. EPDM rubber at 45 mil is the professional standard: it stays flexible in freezing weather, resists UV for decades, folds into shelves without memory creases, and patches easily. Expect 20+ years. PVC is cheaper upfront but stiffer — it fights you on every fold — and sunlight embrittles it within a decade. The price gap on a typical garden pond is often under a hundred dollars; the lifespan gap is a decade or more. Buy the EPDM.</p>
+    <p>Whatever the material, bed it on 2–3 inches of sand or proper underlayment fabric. One sharp stone under 1,000 gallons of water pressure will find the liner eventually. Underlayment is cheap; leaks are not.</p>
+    <h2>The Build Sequence</h2>
+    <p>With numbers in hand, the order of operations is: mark the outline, excavate deepest zone first, carve shelves, remove sharp stones and roots, lay underlayment, drape the liner with generous slack (never stretch it taut — water weight will tension it), fill slowly while adjusting folds, trim edging with a foot of excess tucked under stone, then install pump and filter. Fill, dechlorinate, and run the system fish-free for a week or two while bacteria colonize. Then stock gradually, test water weekly for the first month, and enjoy the single best thing a garden can have: moving water.</p>
+  <h2>Winterizing the Pond</h2>
+    <p>In freezing climates, the pond you charted in spring needs a winter plan. Fish survive under ice as long as toxic gases can escape — keep a hole open with a floating de-icer or an air pump, never by smashing ice, which shocks the fish. Remove the pump before hard freezes unless it is rated for winter operation; store it submerged in a bucket of water so seals do not dry out. Cut back dead marginal foliage, net out falling leaves before they sink and rot, and stop feeding fish once water drops below 50°F — their metabolism cannot process food. A pond that is 2–3 feet deep, as charted above, gives fish the stable thermal refuge they need. Come spring, restart the pump, test the water, and the system wakes up on its own.</p>
+    <h2>Algae: The Green Reality</h2>
+    <p>Every new pond goes through an algae bloom in its first season — the water turns pea-soup green as nutrients cycle. Resist the urge to nuke it with chemicals: the bloom usually clears on its own as plants establish and the filter matures. Long-term clarity comes from balance, not bottles — cover 50–60% of the surface with plants (lilies, floaters) to starve algae of light, avoid overfeeding fish, and let the pump and filter run 24/7. Barley straw extract and beneficial bacteria seedings are gentle aids with real track records. A UV clarifier is the mechanical shortcut for persistent green water, sized to your pump's flow rate from the chart above.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What size pond liner do I need?</summary><p>Add twice the maximum depth plus two feet of overlap to both the length and width: liner length = pond length + (2 × depth) + 2 ft, and the same for width. Plant shelves add roughly a foot per shelf level. This calculator does the shelf-aware math and rounds up to whole feet.</p></details>
+    <details><summary>How do I calculate my pond's water volume?</summary><p>Multiply length × width × depth in feet to get cubic feet, then multiply by 7.48 gallons per cubic foot. Irregular shapes and plant shelves reduce the true volume — this calculator applies a shelf adjustment so pump and fish numbers stay realistic.</p></details>
+    <details><summary>What size pump does my pond need?</summary><p>Size the pump to circulate the pond's full volume every 1 to 2 hours: a 1,000-gallon pond wants 500–1,000 GPH. Go toward the high end for fish ponds and waterfalls, which need extra flow for height. The calculator gives you a range plus a recommended midpoint.</p></details>
+    <details><summary>How deep should a garden pond be?</summary><p>At least 2 feet deep in most climates so fish survive winter ice and summer heat; 3 feet is better for koi and for cold regions. Shallow marginal shelves of 6–12 inches around the edges are ideal for bog plants.</p></details>
+    <details><summary>How many fish can my pond hold?</summary><p>A safe rule is about 1 inch of fish per 10 gallons of pond water — ponds are more forgiving than aquariums thanks to plants and surface area, but overstocking still crashes water quality. Koi grow large and need far more room per fish than goldfish.</p></details>
+    <details><summary>EPDM vs PVC pond liner — which should I buy?</summary><p>EPDM rubber (45 mil) is the premium choice: flexible in cold, UV-resistant, and 20+ year lifespan. PVC is cheaper but stiffer, harder to fold neatly, and degrades faster in sun. For a pond you dig once, EPDM is worth the premium.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PondCalc</div>
+    <p>PondCalc charts your garden pond — shelf-aware liner size, true water volume, pump sizing and fish capacity.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+function num(id){return parseFloat(document.getElementById(id).value)||0;}
+['pc-l','pc-w','pc-d','pc-s'].forEach(function(id){
+  document.getElementById(id).addEventListener('input',calc);
+});
+function calc(){
+  var L=num('pc-l'),W=num('pc-w'),D=num('pc-d'),S=Math.round(num('pc-s'));
+  if(L<=0||W<=0||D<=0)return;
+  var linerL=Math.ceil(L+2*D+2+S), linerW=Math.ceil(W+2*D+2+S);
+  var vol=Math.round(L*W*D*7.48052*(S>0?0.85:1));
+  document.getElementById('pc-liner').textContent=linerL+' \u00D7 '+linerW;
+  document.getElementById('pc-shelf').textContent=S>0?('+'+S+' ft per side'):('none — true rectangle');
+  document.getElementById('pc-vol').textContent=vol.toLocaleString('en-US')+' gallons';
+  document.getElementById('pc-pump').textContent=Math.round(vol/2).toLocaleString('en-US')+' – '+vol.toLocaleString('en-US')+' GPH';
+  document.getElementById('pc-pumprec').textContent='\u2248 '+(Math.round(vol*0.75/50)*50).toLocaleString('en-US')+' GPH';
+  document.getElementById('pc-fish').textContent='\u2248 '+Math.round(vol/10).toLocaleString('en-US')+' in of fish';
+  var note=document.getElementById('pc-note');
+  if(D<2){note.textContent='Under 2 ft deep: fine for a wildlife pond, but fish will struggle with winter ice and summer heat.';}
+  else if(vol>3000){note.textContent='A large pond — consider two smaller pumps for redundancy rather than one giant one.';}
+  else{note.textContent='A pump turning the pond every 1–2 hours keeps water clear and oxygenated.';}
+}
+calc();
+})();
+</script>
+</body>
+</html>
