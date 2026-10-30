@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Badminton Scoring Tracker — 21-Point Rally Scoring</title>
+<meta name="description" content="Track badminton scores with correct 21-point rally scoring, deuce rules and the 30-point cap, plus sets and match summary.">
+<link rel="canonical" href="https://fun.fixoraa.tech/badminton/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Badminton Scoring Tracker — 21-Point Rally Scoring">
+<meta property="og:description" content="Track badminton scores with correct 21-point rally scoring, deuce rules and the 30-point cap, plus sets and match summary.">
+<meta property="og:url" content="https://fun.fixoraa.tech/badminton/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Badminton",
+      "url": "https://fun.fixoraa.tech/badminton/",
+      "applicationCategory": "Sports",
+      "operatingSystem": "Web",
+      "description": "Track badminton scores with correct 21-point rally scoring, deuce rules and the 30-point cap, plus sets and match summary.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many points win a badminton game?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Twenty-one points with a lead of at least two. At 21\u201320 the game continues."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens at 20\u201320 in badminton?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The game enters deuce: the first player to lead by two wins, unless the score reaches 29\u201329."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 30-point cap in badminton?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At 29\u201329, the next point wins the game 30\u201329. No game goes beyond 30 points."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is badminton rally scoring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every rally scores a point, whether or not the player served."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many games win a badminton match?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Matches are usually best of three games, so two game wins take the match."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which side serves in singles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The server serves from the right court when their score is even and from the left court when it is odd."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#ecfdf5; --surface:#ffffff; --accent:#065f46; --accent-ink:#ffffff;
+  --ink:#052e1b; --muted:#14532d; --line:#a7f3d0;
+  --display:'Archivo',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.bd-sub{color:var(--muted);margin:.4rem 0 1.2rem}.bd-board{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:stretch}.bd-player{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem;text-align:center}.bd-player strong{font-size:3.2rem;display:block}.bd-player button,.bd-btns button{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.6rem 1.1rem;font-weight:700;cursor:pointer;margin-top:.5rem}.bd-mid{text-align:center;align-self:center}.bd-mid span{font-weight:800;font-size:1.4rem}.bd-btns{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}@media(max-width:640px){.bd-board{grid-template-columns:1fr}.bd-mid{order:-1}.bd-player strong{font-size:2.6rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="Badminton home">
+      <span class="fx-logo-tile" aria-hidden="true">🏸</span>
+      <span class="fx-brand">Badminton</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-shuttle-court" aria-label="Badminton tool">
+<h1>Badminton Scoring Tracker</h1><p class="bd-sub">Tap the winner of each rally. The tracker enforces 21-point, deuce and 30-point rules.</p><div class="bd-board"><div class="bd-player"><h2>Player A</h2><strong id="bd-a">0</strong><p>Games won: <span id="bd-ga">0</span></p><button id="bd-pa">+1 Player A</button></div><div class="bd-mid"><span>VS</span><p id="bd-status">Game in progress</p><p id="bd-serve"></p></div><div class="bd-player"><h2>Player B</h2><strong id="bd-b">0</strong><p>Games won: <span id="bd-gb">0</span></p><button id="bd-pb">+1 Player B</button></div></div><div class="bd-btns"><button id="bd-undo">Undo last point</button><button id="bd-newgame">New game</button><button id="bd-reset">Reset match</button><button id="bd-copy">Copy score</button></div><p id="bd-note"></p>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How badminton rally scoring works</h2>
+<p>Modern badminton uses rally scoring, which means every rally scores a point regardless of who served, and games are normally played to twenty-one points. A player wins a game by reaching twenty-one points with a lead of at least two points, so a score of twenty-one to nineteen wins the game, while twenty-one to twenty is not enough and play continues. If the score reaches twenty-all, the game enters a deuce phase in which the first player to lead by two points wins, and if the score reaches twenty-nine-all, the next point wins the game outright at thirty to twenty-nine. This cap at thirty is the only exception to the two-point rule, and it prevents games from running indefinitely while still rewarding the player who handles the pressure of the final rally. Matches are usually best of three games, so winning two games wins the match, and players change ends at the start of each game and during the deciding game when a player first reaches eleven points.</p>
+<p>Rally scoring replaced the older side-out system, in which only the serving player could score, and it changed the sport by making every rally matter and every match length more predictable for scheduling and television. Under rally scoring, a service fault, a shuttle landing out, or a fault at the net all give a point to the opponent as well as the serve, which keeps the score moving and punishes unforced errors immediately. The server serves from the right service court when their score is even and from the left service court when their score is odd, in singles, and service alternates between partners in doubles according to a pattern that follows the same even and odd logic. This tracker focuses on the score itself, which is the part most club players need during a friendly match, and it enforces the twenty-one, deuce, and thirty-point rules automatically so you never have to argue about whether a game is over.</p>
+<h2>How to use the scoring tracker</h2>
+<p>Tap the plus button for the player who won the rally, and the score, the set count, and the game status update instantly. The tracker shows the current game score in large numbers, the games won by each player, and a status line that tells you whether the game is in progress, at game point, in the deuce zone, or finished. If you tap the wrong player by mistake, the undo button removes the last point, and the reset button clears the current game without affecting the match score unless you choose to reset the whole match. The set buttons record a finished game: when a game ends, the winner's game count increases automatically, and the new game button starts the next game at love-all while keeping the match score intact, which mirrors how a real match flows from one game to the next.</p>
+<p>The tracker also handles the practical details that cause disputes in club games, such as whether a game at twenty-one to twenty is over, which it is not, and whether a game at thirty to twenty-nine is over, which it is. The service indicator shows which side should serve next based on the server's score, using the even-score-right and odd-score-left rule for singles, and it is a helpful prompt when players lose track during a long rally exchange. For doubles, use the same score logic and agree the serving rotation with your partners before the match, since the tracker records points rather than enforcing doubles service order. The copy-score button produces a short text summary of the match state, which is handy for reporting results to a league organiser or a group chat.</p>
+<h2>Deuce, game point and the thirty-point cap</h2>
+<p>Deuce in badminton is not a single score but a zone: once both players reach twenty points, the game can only be won by a two-point lead, so twenty-two to twenty, twenty-four to twenty-two, and twenty-eight to twenty-six are all possible winning scores. This phase is where mental strength matters most, because a player who leads by one point at twenty-four to twenty-three has not yet won and must win one more rally, while a player who trails can level the game with a single good rally. The pressure compounds because every rally in the deuce zone feels like a match point even when it is not, and players who stay calm and play high-percentage shots usually fare better than players who attempt low-percentage winners. The tracker labels this phase clearly, so spectators and players can see at a glance that the normal twenty-one-point finish no longer applies.</p>
+<p>The thirty-point cap is the safety valve that keeps deuce games finite: at twenty-nine-all, the next point wins, so the game can never go beyond thirty to twenty-nine. This means a game that reaches twenty-nine-all is decided by a single rally, which is one of the most dramatic moments in the sport, and it also means that a player leading twenty-nine to twenty-eight has a genuine match point that cannot be extended by further deuces. Game point is a simpler idea: it means the player needs one more point to win the game under the normal rules, which first occurs at twenty points when the opponent is below twenty, and it is worth announcing clearly so both players know the stakes of the next rally. The tracker shows game point, deuce, and cap situations in plain language, which removes the most common source of arguments in friendly matches.</p>
+<h2>Singles, doubles and match format</h2>
+<p>A standard match is best of three games, and the player or pair that wins two games wins the match, with a third game played only if the first two are split. In the deciding game, players change ends when a player first reaches eleven points, which balances any advantage from sun, draughts, or court conditions, and the tracker can be reset for the third game while keeping the one-all match score. Doubles scoring follows exactly the same twenty-one-point rules, with the only differences being the service rotation, the wider court, and the fact that a pair's score determines service position rather than an individual's score. The same tracker therefore works for doubles if you treat each pair as one player for scoring purposes, which is how most club score sheets are kept.</p>
+<p>Some social games use different formats, such as a single game to twenty-one, games to fifteen for younger players, or timed sessions where the leading player wins when time expires, and the tracker can be adapted to those formats by simply ignoring the automatic game-end message and using the raw score display. For league and tournament play, however, always use the standard twenty-one-point, best-of-three format, because handicaps and shortened formats change the strategy of the game significantly. Interval breaks are allowed when a player first reaches eleven points in a game, and a two-minute break is allowed between games, which are useful moments to check the tracker, hydrate, and reset mentally. Keeping an accurate score is part of sportsmanship, and a shared tracker visible to both sides is the simplest way to ensure it.</p>
+<h2>Worked examples and common mistakes</h2>
+<p>Consider three worked examples that cover the whole rule set. At twenty-one to nineteen, the game is over, because the winner reached twenty-one with a two-point lead. At twenty-one to twenty, the game is not over, because the lead is only one point, and play continues until someone leads by two or the score reaches twenty-nine-all. At thirty to twenty-nine, the game is over, because the first player to thirty wins regardless of the lead, and no further rally is played. A fourth example, twenty to twenty, is the start of the deuce zone, where the next point gives a one-point lead but does not win the game, and the game continues until a two-point lead or the thirty-point cap is reached. These four cases are exactly the tests this tracker was built against, and they resolve almost every dispute about game endings.</p>
+<p>The most common badminton scoring mistakes are declaring a game over at twenty-one to twenty, forgetting the thirty-point cap and playing beyond thirty, and losing track of the server's court position after a long rally. Another frequent error is carrying a game's score into the next game instead of resetting to love-all, which inflates the match score and confuses everyone. Finally, players sometimes confuse game point with match point: game point wins the current game, while match point wins the match, and a player can face game point in the first game without facing match point at all. The tracker separates games won from the current game score precisely to avoid this confusion, and using it consistently will make your matches run more smoothly and more fairly.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many points win a badminton game?</summary><p>Twenty-one points with a lead of at least two. At 21–20 the game continues.</p></details>
+<details><summary>What happens at 20–20 in badminton?</summary><p>The game enters deuce: the first player to lead by two wins, unless the score reaches 29–29.</p></details>
+<details><summary>What is the 30-point cap in badminton?</summary><p>At 29–29, the next point wins the game 30–29. No game goes beyond 30 points.</p></details>
+<details><summary>Is badminton rally scoring?</summary><p>Yes. Every rally scores a point, whether or not the player served.</p></details>
+<details><summary>How many games win a badminton match?</summary><p>Matches are usually best of three games, so two game wins take the match.</p></details>
+<details><summary>Which side serves in singles?</summary><p>The server serves from the right court when their score is even and from the left court when it is odd.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">Badminton</div>
+    <p>Badminton tracks rally scores, sets and match state under official 21-point scoring with deuce and the 30-point cap.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function badmintonStatus(a,b){a=+a||0;b=+b||0;if(a>=30)return{winner:'A',over:true,label:'Player A wins the game 30–'+b};if(b>=30)return{winner:'B',over:true,label:'Player B wins the game '+a+'–30'};if(a>=21&&a-b>=2)return{winner:'A',over:true,label:'Player A wins the game '+a+'–'+b};if(b>=21&&b-a>=2)return{winner:'B',over:true,label:'Player B wins the game '+a+'–'+b};if(a>=20&&b>=20)return{winner:null,over:false,label:'Deuce zone: first to lead by 2 wins, capped at 30'};if(a===20||b===20)return{winner:null,over:false,label:'Game point for '+(a===20?'Player A':'Player B')};return{winner:null,over:false,label:'Game in progress'};}
+var A=0,B=0,GA=0,GB=0,hist=[];
+function bdRender(){document.getElementById('bd-a').textContent=A;document.getElementById('bd-b').textContent=B;document.getElementById('bd-ga').textContent=GA;document.getElementById('bd-gb').textContent=GB;var s=badmintonStatus(A,B);document.getElementById('bd-status').textContent=s.label;document.getElementById('bd-serve').textContent='Service: '+(A%2===0?'A serves from the right':'A serves from the left')+' (singles rule, based on A score)';document.getElementById('bd-note').textContent=s.over?'Game over. Start a new game to continue the match.':(GA===2||GB===2?'Match won by '+(GA===2?'Player A':'Player B')+'.':'First to 2 games wins the match.');}
+function bdPoint(p){var s=badmintonStatus(A,B);if(s.over)return;hist.push([A,B]);if(p==='A')A++;else B++;var s2=badmintonStatus(A,B);if(s2.over){if(s2.winner==='A')GA++;else GB++;}bdRender();}
+document.getElementById('bd-pa').onclick=function(){bdPoint('A');};
+document.getElementById('bd-pb').onclick=function(){bdPoint('B');};
+document.getElementById('bd-undo').onclick=function(){if(hist.length){var h=hist.pop();A=h[0];B=h[1];}bdRender();};
+document.getElementById('bd-newgame').onclick=function(){A=0;B=0;hist=[];bdRender();};
+document.getElementById('bd-reset').onclick=function(){A=0;B=0;GA=0;GB=0;hist=[];bdRender();};
+document.getElementById('bd-copy').onclick=function(){var t='Badminton: A '+A+'–'+B+' B, games '+GA+'–'+GB;if(navigator.clipboard)navigator.clipboard.writeText(t);};
+bdRender();
+</script>
+</body>
+</html>
