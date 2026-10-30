@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shiplap Calculator — Boards Needed for Your Wall | ShiplapCalc</title>
+<meta name="description" content="Shiplap boards for any wall with stagger layout, waste and cutouts.">
+<link rel="canonical" href="https://fun.fixoraa.tech/shiplapcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Shiplap Calculator — Boards Needed for Your Wall | ShiplapCalc">
+<meta property="og:description" content="Shiplap boards for any wall with stagger layout, waste and cutouts.">
+<meta property="og:url" content="https://fun.fixoraa.tech/shiplapcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ShiplapCalc",
+      "url": "https://fun.fixoraa.tech/shiplapcalc/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Shiplap boards for any wall with stagger layout, waste and cutouts.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many shiplap boards do I need for a 12x8 wall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With 6-inch boards, a nickel gap and 8-ft lengths: 16 courses × 2 boards per course = 32 boards, plus 10% waste = 36 boards to buy. The top course will be a ~4-inch rip, which looks intentional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the nickel gap in shiplap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's the classic 1/8-inch shadow gap between boards — literally the width of a nickel, which installers use as a spacer. It gives the signature shadow line and allows for seasonal wood movement. Each course's height is the board face plus the gap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should shiplap seams be staggered?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — offset end joints at least 16 inches from the course below and never stack them vertically. Aligned seams form a visible ladder pattern and concentrate wood movement. Alternate each course's starting point using the previous course's offcut to minimize waste."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you cut shiplap around outlets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Turn off power, remove the cover, measure from the board edges to the box on all four sides, and transfer to the board. Drill starter holes and jigsaw just inside the line — the cover plate hides about 1/4 inch. Use box extenders so outlets sit flush with the new 3/4-in. surface."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you start shiplap at the top or bottom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start at the bottom for horizontal installs (groove facing down so dust doesn't collect), checking level every couple of courses. The final rip cut lands at the ceiling, where it's least noticeable. For ceilings, start at the most visible edge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much extra shiplap should I buy for waste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ten percent for straight horizontal runs; 15% for walls with many outlets, diagonal patterns, or stain-grade boards. Buy one extra board beyond the math for test cuts and future repairs — and get it all from the same lot."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9EDE1; --tint:#F4E2D2; --accent:#844A15; --accent-deep:#155059;
+  --ink:#1E3033; --muted:#556B6E; --line:#B4D4D8;
+  --display:'Sora',system-ui,sans-serif; --body:'Sora',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:#fff;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:#fff}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:#fff}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:#fff;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:#1d1d1d;color:#e8e8e8;margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bdbdbd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--tint);font-weight:700}
+input,select,button{font:inherit}
+
+
+.sl-hero{text-align:center;padding:52px 0 4px}
+.sl-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:2px solid var(--line);padding:7px 16px;border-radius:999px;margin-bottom:16px}
+.sl-hero h1{font-size:clamp(34px,5vw,52px);letter-spacing:-.03em;font-weight:800;margin-bottom:12px}
+.sl-hero p{font-size:18px;color:var(--muted);max-width:620px;margin:0 auto}
+.sl-tool{background:#fff;border:2px solid var(--line);border-radius:24px;margin:26px 0 8px;overflow:hidden;box-shadow:0 14px 34px rgba(31,119,132,.10)}
+.sl-preview{background:var(--tint);border-bottom:2px solid var(--line);padding:24px 24px 14px}
+.sl-preview svg{width:100%;height:auto;display:block;background:#fff;border:2px solid var(--line);border-radius:16px}
+.sl-cap{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:12px;font-size:13px;font-weight:700;color:var(--accent)}
+.sl-cap .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.5}
+.sl-panel{display:grid;grid-template-columns:1.25fr .75fr}
+.sl-inputs{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:26px;border-right:2px dashed var(--line)}
+.field label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}
+.field input,.field select{width:100%;padding:11px 13px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.field input:focus,.field select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.sl-out{padding:26px;background:linear-gradient(180deg,#fff,var(--bg))}
+.sl-big{background:var(--accent);color:#fff;border-radius:18px;text-align:center;padding:24px;margin-bottom:18px;box-shadow:0 6px 0 var(--accent-deep)}
+.sl-big .n{font-size:58px;font-weight:800;line-height:1}
+.sl-big .l{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.92;margin-top:8px}
+.sl-lines{list-style:none;font-size:15px}
+.sl-lines li{display:flex;justify-content:space-between;padding:9px 2px;border-bottom:1px dashed var(--line)}
+.sl-lines li:last-child{border:0}
+.sl-lines .k{color:var(--muted)}
+.sl-lines .v{font-weight:800;color:var(--ink)}
+@media(max-width:760px){.sl-panel{grid-template-columns:1fr}.sl-inputs{border-right:0;border-bottom:2px dashed var(--line);grid-template-columns:1fr 1fr}}
+
+</style>
+</head>
+<body>
+<header class="fx-header shiplapcalc-hdr">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/shiplapcalc/" aria-label="ShiplapCalc home">
+      <span class="fx-tile" aria-hidden="true">S</span>
+      <span class="fx-name">ShiplapCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="sl-hero">
+    <span class="sl-eyebrow">Wall math</span>
+    <h1>Shiplap Calculator</h1>
+    <p>Every board on your wall, planned before you buy — courses, stagger seams, outlet cutouts and all.</p>
+  </section>
+  <section class="sl-tool" aria-label="ShiplapCalc tool">
+    <div class="sl-preview">
+      <svg id="sl-svg" viewBox="0 0 600 300" role="img" aria-label="Shiplap wall preview"></svg>
+      <div class="sl-cap"><span id="sl-courses">16 courses</span><span class="dot"></span><span id="sl-seams">staggered seams</span><span class="dot"></span><span id="sl-rip">4.1 in. rip at top</span></div>
+    </div>
+    <div class="sl-panel">
+      <div class="sl-inputs">
+        <div class="field"><label for="sl-w">Wall width (ft)</label><input type="number" id="sl-w" value="12" min="1" max="60" step="0.5"></div>
+        <div class="field"><label for="sl-h">Wall height (ft)</label><input type="number" id="sl-h" value="8" min="1" max="20" step="0.5"></div>
+        <div class="field"><label for="sl-bw">Board face width</label><select id="sl-bw">
+          <option value="5.5">5.5 in. (1x6)</option><option value="6" selected>6 in.</option>
+          <option value="7.25">7.25 in. (1x8)</option><option value="3.5">3.5 in. (1x4)</option></select></div>
+        <div class="field"><label for="sl-gap">Reveal / gap</label><select id="sl-gap">
+          <option value="0.125" selected>Nickel gap (1/8 in.)</option><option value="0">Tight (no gap)</option>
+          <option value="0.25">Wide (1/4 in.)</option></select></div>
+        <div class="field"><label for="sl-bl">Board length</label><select id="sl-bl">
+          <option value="8" selected>8 ft</option><option value="12">12 ft</option><option value="16">16 ft</option></select></div>
+        <div class="field"><label for="sl-out">Outlets / switches</label><input type="number" id="sl-out" value="2" min="0" max="20" step="1"></div>
+        <div class="field"><label for="sl-waste">Waste</label><select id="sl-waste">
+          <option value="0.05">5%</option><option value="0.10" selected>10%</option><option value="0.15">15%</option></select></div>
+      </div>
+      <div class="sl-out" aria-live="polite">
+        <div class="sl-big"><div class="n" id="sl-n">36</div><div class="l">boards to buy</div></div>
+        <ul class="sl-lines">
+          <li><span class="k">Courses up the wall</span><span class="v" id="sl-c">16</span></li>
+          <li><span class="k">Boards per course</span><span class="v" id="sl-p">2</span></li>
+          <li><span class="k">Exact boards</span><span class="v" id="sl-e">32</span></li>
+          <li><span class="k">Cutouts to plan</span><span class="v" id="sl-o">2 outlets</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+    <h2>Start With the Reveal, Not the Boards</h2>
+    <p>Shiplap's look lives in the <strong>reveal</strong> — the thin shadow gap between boards. A nickel's width (1/8 inch) is the classic: enough shadow to read as shiplap, tight enough to look crisp. That gap also sets your math, because each course of the wall consumes the board's face width <strong>plus</strong> the gap. A 6-inch board with a nickel gap covers 6.125 inches of wall height per course, not 6.</p>
+    <p>This is where square-footage estimates go wrong: they divide wall area by board area and ignore the gap entirely, then the last course lands as a sliver. The calculator works course by course — wall height divided by course height, rounded up — so you see exactly how many rows climb your wall and how wide the final <strong>rip cut</strong> at the top will be. A 4-inch rip looks intentional; a 1-inch sliver looks like a mistake you get to stare at forever.</p>
+    <p>If the rip comes out awkwardly thin, cheat the layout: widen every gap a hair, or start with a ripped board at the <strong>bottom</strong> behind furniture where nobody looks. Pros hide the compromise low; amateurs discover it at the ceiling.</p>
+    <h2>Board Width Sets the Mood</h2>
+    <p>Narrow boards (1x4, 3.5-inch face) read busy and cottage-like — more seams, more shadow lines, more farmhouse. Standard 1x6 (5.5 to 6-inch face) is the all-rounder that suits most rooms. Wide 1x8 planks (7.25-inch face) feel modern and calm, with fewer courses and faster installs. There is no wrong answer, only the room you are building toward.</p>
+    <p>Wider boards also mean fewer courses, which means fewer seams to stagger and less cutting overall — a real consideration on a 16-foot wall. But wide boards show wall waves more honestly; if your drywall rolls like the sea, narrower boards forgive more.</p>
+    <p>Buy <strong>one profile</strong> for the whole wall. Mixing 1x6 and 1x8, or boards from different mills with different edge details, creates reveals that vary course to course. Check the edge: true shiplap has a rabbet (an L-shaped overlap); plain square-edge boards with a gap are “shiplap style” and look fine painted, but the rabbet hides seasonal movement better.</p>
+    <h2>The Stagger: Why Seams Can't Line Up</h2>
+    <p>End joints where two boards meet in the same course must be <strong>staggered</strong> — never stacked vertically course after course. Aligned seams draw the eye into a ladder pattern and, worse, they concentrate movement: every seam opens a hair with humidity, and a column of them reads as a crack.</p>
+    <p>The rule: offset each course's seams by at least <strong>16 inches</strong> (one stud bay) from the course below, and never let a seam land within a few inches of an outlet cutout. The classic pattern alternates: full board, then a board starting with the previous course's offcut — which is also how you minimize waste, since offcuts become starters.</p>
+    <p>Cut seams at 45-degree <strong>scarf joints</strong> rather than square butts when the wall is stained; for painted walls, square butts glued and filled are invisible. Either way, land every seam on a stud and nail both board ends. A floating seam will telegraph through paint within a year.</p>
+    <h2>Outlets and Switches: Measure Twice, Cut Once</h2>
+    <p>Every outlet and switch on the wall means a <strong>cutout</strong> in one board — the fussiest cut of the project. Kill the power, pull the cover plate, and measure from the board's edges to the box: left, right, top, bottom. Transfer those measurements, drill starter holes in the waste area, and cut with a jigsaw. Cut <strong>inside</strong> the line and sneak up on it; the cover plate hides about 1/4 inch of forgiveness around the box.</p>
+    <p>Plan the layout so cutouts do not collide with seams — shift the course's starting point if needed. And note: boxes sit at drywall depth, but shiplap adds 3/4 inch of wood in front. Use <strong>box extenders</strong> (box extenders / goof rings) so the outlet sits flush with the new surface; buried boxes are a code violation and a fire concern, not just an aesthetic issue.</p>
+    <p>Count every device before you buy: outlets, switches, thermostats, cable plates. Each one costs you one careful cut and about ten unhurried minutes. The calculator's outlet count reminds you to plan them; the wall reminds you if you forget.</p>
+    <h2>Direction: Horizontal, Vertical, or Ceiling</h2>
+    <p>Horizontal is the classic — it makes walls feel wider and the install is straightforward, one course stacked on the next. <strong>Vertical</strong> shiplap makes low ceilings feel taller and suits entryways and bathrooms; the math is identical, just rotated (courses become columns). <strong>Ceilings</strong> are the showpiece: start at the most visible edge and work toward the least, because the final rip hides best where nobody looks.</p>
+    <p>For horizontal runs, start at the <strong>bottom</strong> with the groove facing down so dust does not collect in the laps, and check level every two courses — floors slope, and a 1/4-inch drift over 12 feet becomes very visible at the ceiling. For vertical, start at a corner or doorway and work outward, keeping the first board dead plumb.</p>
+    <p>Diagonal and herringbone layouts exist and look stunning in photos; they also roughly double your waste and quadruple your cutting time. Budget 20 percent waste and a full extra weekend before committing.</p>
+    <h2>Nailing: Where the Boards Actually Hold</h2>
+    <p>Shiplap must hit <strong>studs</strong>. Mark every stud with painter's tape up the whole wall before the first board goes up — finding studs through installed boards is miserable. Nail through the board face near the top edge (hidden by the next course's overlap) or face-nail and fill; construction adhesive alone is not a fastening method, though a bead of it plus nails makes a wall that will outlive the house.</p>
+    <p>Use <strong>2-inch 18-gauge brad nails</strong> or 15-gauge finish nails for 3/4-inch boards into drywall-over-stud. Two nails per stud per board, kept 3/4 inch from board ends to prevent splitting. On masonry or plaster, add adhesive and consider tapcons through the boards at the studs — or fur out the wall with 1x strapping first.</p>
+    <p>Leave a <strong>1/4-inch expansion gap</strong> at the floor, ceiling and side walls, hidden behind baseboard and casing. Wood moves; the gap is where it moves to. Caulk the perimeter after install for a finished look that still flexes.</p>
+    <h2>Paint or Stain: Decide Before You Hang</h2>
+    <p>Painting after install is standard: one coat of primer, two coats of quality acrylic, worked into the reveals with a brush before rolling the faces. The shadow gaps drink paint — budget 30 percent more paint than the wall's square footage suggests. <strong>Pre-priming</strong> boards on sawhorses before hanging saves the worst of the brush-into-gap labor and seals the backs against moisture.</p>
+    <p>Staining demands better boards and better joints: every seam shows, so scarf joints and tight reveals matter. Condition soft pine before staining or it blotches. And know that stain-grade shiplap costs roughly double paint-grade — the calculator's board count times the price difference is worth seeing before you fall in love with a photo.</p>
+    <p>Whitewashing and limewash sit between: they mute grain while keeping texture. Whatever the finish, finish <strong>both faces</strong> of boards in bathrooms and kitchens — one-sided finishing invites cupping where steam hits the unfinished back.</p>
+    <h2>Waste: 10 Percent, More for Drama</h2>
+    <p>Ten percent waste covers straight horizontal runs with simple stagger. The waste comes from offcuts too short to start a course, ripped boards, outlet cutouts gone slightly wrong, and the occasional board with a twist you did not catch at the store. Stair-stepping offcuts into course starters — the standard technique — already assumes you are thinking ahead; the 10 percent covers the rest.</p>
+    <p>Go to 15 percent for walls with many outlets, diagonal layouts, or stain-grade boards where defects cannot be hidden. Buy it all from the <strong>same lot</strong> if you can — stain lots vary, and even paint-grade boards vary in milling between batches.</p>
+    <p>And the oldest advice in trim carpentry: buy one extra board beyond the math. It becomes the test piece for outlet cutouts, the sacrificial board for dialing in the jigsaw, and eventually the attic stock that saves you when a future picture-hanging mishap needs patching.</p>
+    <h2>The Weekend Game Plan</h2>
+    <p>Day one: clear the wall, mark studs full-height with tape, remove cover plates and baseboard, and pre-prime boards if you are painting. Snap a level line at your starting course and dry-lay the first two courses to confirm the stagger rhythm and outlet positions. Fix the layout on the floor, not on the wall.</p>
+    <p>Day two: hang. Work course by course, checking level every two rows, cutting outlets as you reach them rather than batching (walls teach you their quirks as you go). Keep a damp rag handy for adhesive squeeze-out and a nail set for proud heads.</p>
+    <p>Day three: fill, caulk, and paint. Fill nail holes, caulk the perimeter gaps and the top reveal against the ceiling, then prime and paint. Stand back at dusk with a lamp raking across the wall — raking light shows every flaw while there is still time to fix it. Then put the furniture back and enjoy the one wall everyone photographs.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many shiplap boards do I need for a 12x8 wall?</summary><p>With 6-inch boards, a nickel gap and 8-ft lengths: 16 courses × 2 boards per course = 32 boards, plus 10% waste = 36 boards to buy. The top course will be a ~4-inch rip, which looks intentional.</p></details>
+    <details><summary>What is the nickel gap in shiplap?</summary><p>It's the classic 1/8-inch shadow gap between boards — literally the width of a nickel, which installers use as a spacer. It gives the signature shadow line and allows for seasonal wood movement. Each course's height is the board face plus the gap.</p></details>
+    <details><summary>Should shiplap seams be staggered?</summary><p>Yes — offset end joints at least 16 inches from the course below and never stack them vertically. Aligned seams form a visible ladder pattern and concentrate wood movement. Alternate each course's starting point using the previous course's offcut to minimize waste.</p></details>
+    <details><summary>How do you cut shiplap around outlets?</summary><p>Turn off power, remove the cover, measure from the board edges to the box on all four sides, and transfer to the board. Drill starter holes and jigsaw just inside the line — the cover plate hides about 1/4 inch. Use box extenders so outlets sit flush with the new 3/4-in. surface.</p></details>
+    <details><summary>Do you start shiplap at the top or bottom?</summary><p>Start at the bottom for horizontal installs (groove facing down so dust doesn't collect), checking level every couple of courses. The final rip cut lands at the ceiling, where it's least noticeable. For ceilings, start at the most visible edge.</p></details>
+    <details><summary>How much extra shiplap should I buy for waste?</summary><p>Ten percent for straight horizontal runs; 15% for walls with many outlets, diagonal patterns, or stain-grade boards. Buy one extra board beyond the math for test cuts and future repairs — and get it all from the same lot.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ShiplapCalc</div>
+    <p>ShiplapCalc plans your accent wall board by board — courses, stagger seams, outlet cutouts, waste and the final board count.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TOOLJS */
+function computeShiplap(o){
+  var courseH=o.boardW+o.gap;
+  var courses=Math.ceil(o.h*12/courseH-1e-9);
+  var perCourse=Math.ceil(o.w/o.boardLen-1e-9);
+  var boards=courses*perCourse;
+  var withW=Math.ceil(boards*(1+o.waste)-1e-9);
+  var rip=o.h*12-(courses-1)*courseH;
+  return{courses:courses,perCourse:perCourse,boards:boards,withWaste:withW,rip:rip};
+}
+if(typeof document!=='undefined'){
+(function(){
+  function val(id){return parseFloat(document.getElementById(id).value)||0;}
+  function fmt(n,d){return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});}
+  ['sl-w','sl-h','sl-bw','sl-gap','sl-bl','sl-out','sl-waste'].forEach(function(id){
+    var el=document.getElementById(id);el.addEventListener('input',calc);el.addEventListener('change',calc);});
+  function draw(r,W,H){
+    var svg=document.getElementById('sl-svg'),NS='http://www.w3.org/2000/svg';
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    var maxC=Math.min(r.courses,14),ch=280/maxC,bw=560/r.perCourse;
+    for(var i=0;i<maxC;i++){
+      var y=10+i*ch,off=(i%2)*bw/2;
+      for(var j=-1;j<r.perCourse+1;j++){
+        var x=20+j*bw+off;
+        var rect=document.createElementNS(NS,'rect');
+        rect.setAttribute('x',x);rect.setAttribute('y',y);
+        rect.setAttribute('width',bw-3);rect.setAttribute('height',ch-3);
+        rect.setAttribute('rx',3);rect.setAttribute('fill',i%2?'#EAF6F8':'#F4FAEF');
+        rect.setAttribute('stroke','#844A15');rect.setAttribute('stroke-width',1.4);
+        svg.appendChild(rect);
+      }
+    }
+    var nOut=Math.min(3,Math.round(val('sl-out')));
+    for(var k=0;k<nOut;k++){
+      var ox=120+k*170,oy=70+((k*53)%160);
+      var o=document.createElementNS(NS,'rect');
+      o.setAttribute('x',ox);o.setAttribute('y',oy);o.setAttribute('width',34);o.setAttribute('height',48);
+      o.setAttribute('rx',5);o.setAttribute('fill','#fff');o.setAttribute('stroke','#8B3E23');
+      o.setAttribute('stroke-width',2.5);o.setAttribute('stroke-dasharray','6 4');
+      svg.appendChild(o);
+    }
+    var t=document.createElementNS(NS,'text');
+    t.setAttribute('x',300);t.setAttribute('y',296);t.setAttribute('text-anchor','middle');
+    t.setAttribute('font-size',12);t.setAttribute('fill','#556B6E');t.setAttribute('font-weight',700);
+    t.textContent=W+' ft wide × '+H+' ft tall — stagger seams every other course';
+    svg.appendChild(t);
+  }
+  function calc(){
+    var o={w:val('sl-w'),h:val('sl-h'),boardW:parseFloat(document.getElementById('sl-bw').value),
+      gap:parseFloat(document.getElementById('sl-gap').value),boardLen:parseFloat(document.getElementById('sl-bl').value),
+      outlets:Math.round(val('sl-out')),waste:parseFloat(document.getElementById('sl-waste').value)};
+    var r=computeShiplap(o);
+    document.getElementById('sl-n').textContent=r.withWaste;
+    document.getElementById('sl-c').textContent=r.courses;
+    document.getElementById('sl-p').textContent=r.perCourse;
+    document.getElementById('sl-e').textContent=r.boards;
+    document.getElementById('sl-o').textContent=o.outlets+(o.outlets===1?' outlet':' outlets');
+    document.getElementById('sl-courses').textContent=r.courses+' courses';
+    document.getElementById('sl-rip').textContent=fmt(r.rip,1)+' in. rip at top';
+    draw(r,o.w,o.h);
+  }
+  calc();
+})();
+}
+</script>
+</body>
+</html>
