@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yahtzee Scorecard Calculator — Score All 13 Categories</title>
+<meta name="description" content="Enter five dice and instantly score all 13 Yahtzee categories, including the upper section bonus and straights.">
+<link rel="canonical" href="https://fun.fixoraa.tech/yahtzee/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Yahtzee Scorecard Calculator — Score All 13 Categories">
+<meta property="og:description" content="Enter five dice and instantly score all 13 Yahtzee categories, including the upper section bonus and straights.">
+<meta property="og:url" content="https://fun.fixoraa.tech/yahtzee/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Yahtzee",
+      "url": "https://fun.fixoraa.tech/yahtzee/",
+      "applicationCategory": "Games",
+      "operatingSystem": "Web",
+      "description": "Enter five dice and instantly score all 13 Yahtzee categories, including the upper section bonus and straights.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many points is a full house in Yahtzee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A full house, three of one number plus two of another, always scores 25 points."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the upper section bonus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If your upper section totals 63 or more, you receive a 35-point bonus. Three of each number totals exactly 63."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a large straight also count as a small straight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, five consecutive numbers contain a four-number sequence, so a large straight qualifies for the small straight box too, though you should usually take the 40-point large straight."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much is a Yahtzee worth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Five of a kind scores 50 points in the Yahtzee box."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does three of a kind score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It scores the total of all five dice, not just the three matching dice, provided at least three dice match."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I score a Yahtzee as a full house?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By common house rules a Yahtzee may be scored as a full house for 25 points if the Yahtzee box is already filled, but this calculator shows the Yahtzee box value first."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fffbeb; --surface:#fffdf5; --accent:#92400e; --accent-ink:#ffffff;
+  --ink:#292018; --muted:#5b4a33; --line:#e7d3a8;
+  --display:'Bricolage Grotesque',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.yz-sub{color:var(--muted);margin:.4rem 0 1.2rem}.yz-dice{display:flex;gap:.7rem;flex-wrap:wrap}.yz-dice label{font-weight:600}.yz-dice input{width:64px;padding:.6rem;border:1px solid var(--line);border-radius:12px;margin-top:.25rem;text-align:center;font-size:1.2rem}.yz-btns{display:flex;gap:.5rem;margin:1rem 0;flex-wrap:wrap}.yz-btns button{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.55rem 1rem;font-weight:700;cursor:pointer}.yz-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}.yz-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.1rem}.yz-card h2{font-size:1.15rem;margin-bottom:.6rem}.yz-card div div{display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px dashed var(--line)}@media(max-width:640px){.yz-grid{grid-template-columns:1fr}.yz-dice input{width:56px}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="Yahtzee home">
+      <span class="fx-logo-tile" aria-hidden="true">🎲</span>
+      <span class="fx-brand">Yahtzee</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-dice-cup" aria-label="Yahtzee tool">
+<h1>Yahtzee Scorecard Calculator</h1><p class="yz-sub">Enter five dice, or roll, and see every category scored at once.</p><div class="yz-dice"><label>Die 1 <input id="yz-d1" type="number" min="1" max="6" value="1"></label><label>Die 2 <input id="yz-d2" type="number" min="1" max="6" value="1"></label><label>Die 3 <input id="yz-d3" type="number" min="1" max="6" value="1"></label><label>Die 4 <input id="yz-d4" type="number" min="1" max="6" value="2"></label><label>Die 5 <input id="yz-d5" type="number" min="1" max="6" value="2"></label></div><div class="yz-btns"><button id="yz-score">Score dice</button><button id="yz-roll">Roll dice</button><button id="yz-preset">Full house example</button></div><div class="yz-grid"><div class="yz-card"><h2>Upper section</h2><div id="yz-upper"></div><p id="yz-bonus"></p></div><div class="yz-card"><h2>Lower section</h2><div id="yz-lower"></div><p id="yz-total"></p></div></div><p id="yz-best"></p>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Yahtzee scoring actually rewards</h2>
+<p>Yahtzee looks like a luck game because it starts with five dice, but the scorecard is really a puzzle about choices, and the player who understands the thirteen categories usually beats the player who just chases big rolls. The upper section rewards collecting matching numbers, from ones through sixes, and it pays a thirty-five point bonus if those six boxes total sixty-three or more, which is the equivalent of three of each number on average. That bonus is the quiet engine of a good score, because it turns steady, unglamorous collecting into a meaningful reward, and players who ignore it to chase a Yahtzee often finish behind players who simply filled the upper section sensibly. The lower section then rewards patterns: three of a kind, four of a kind, a full house, straights, a Yahtzee, and chance, each with its own fixed or total-based value.</p>
+<p>The tension of the game comes from the fact that every roll must eventually be scored somewhere, and a box used for a poor score can never be reclaimed. You get up to three rolls per turn, you may keep any dice and re-roll the rest, and after the final roll you must choose a category, even if the dice fit none of them well, which forces a zero somewhere in most games. This calculator removes the arithmetic burden so you can focus on the decision itself: enter your five dice and instantly see what every category would score, including the upper total and the bonus position, rather than working out each box by hand and risking a miscount under time pressure. It is a practice and scoring companion, not a replacement for the physical game, and it works just as well for settling a score dispute at the table as for planning your next move.</p>
+<h2>How to use the scorecard calculator</h2>
+<p>Enter your five dice values, each between one and six, and press score to see all thirteen categories filled in at once. The upper section shows ones through sixes with their individual totals, the running upper total, and whether you have reached the sixty-three point bonus threshold, while the lower section shows three of a kind, four of a kind, full house, small straight, large straight, Yahtzee, and chance. The roll button generates a random set of five dice, which is useful for practice rounds, teaching new players, or testing what a particular combination would score without owning a set of dice. The keep-and-reroll helper lets you hold chosen dice and roll only the rest, mimicking the real turn structure and helping you judge whether chasing a straight or a full house is actually realistic.</p>
+<p>Use the results as a decision aid rather than an instruction, because the best category for a roll depends on which boxes you still have open and how many turns remain. A full house scored early is satisfying, but if your upper section is still empty, the same dice might be worth more as three of a kind in the upper boxes later, and only the full scorecard picture reveals that trade-off. The calculator also totals a hypothetical grand total if every category were scored from this single roll, which is not a real game total but a useful way to compare rolls: a roll whose best boxes sum highly is simply a stronger roll than one whose boxes are mostly small. Keep the focus on learning the patterns, and the arithmetic will soon become second nature even when you play without the tool.</p>
+<h2>Understanding each category in detail</h2>
+<p>Three of a kind scores the total of all five dice when at least three match, and four of a kind works the same way with four matching dice, so both reward high dice more than low ones and are best used when the matching dice are fives or sixes. A full house is three of one number plus two of another and always scores twenty-five points, regardless of which numbers are involved, which makes it one of the most reliable mid-game targets. A small straight is any sequence of four consecutive numbers and scores thirty points, while a large straight is five consecutive numbers and scores forty, and both are easier to spot if you sort the dice first, which the calculator effectively does for you. Chance simply totals all five dice and can rescue an otherwise awkward roll, while Yahtzee, five of a kind, scores fifty points and is the rarest and most celebrated result in the game.</p>
+<p>The upper section deserves more attention than new players give it, because the bonus changes the value of every upper box. Scoring three fives is fifteen points on its own, but it also moves you fifteen points closer to a bonus worth thirty-five, so its true contribution to a strong game is larger than the box suggests. A common benchmark is to aim for at least three of each number across the game, which totals exactly sixty-three and secures the bonus, and players who fall short in one number can compensate with an extra four or five in another. The calculator shows your upper total from the current dice only, so for a full game you should add each turn's upper score to your running total yourself, or use the tool turn by turn and track the cumulative upper score on paper alongside it.</p>
+<h2>Strategy: when to take a zero and when to gamble</h2>
+<p>Every Yahtzee game eventually forces a difficult choice, and the difference between good and great players is mostly about which box absorbs the damage. Taking a zero in ones or twos early hurts less than wasting a full house or large straight box on a mediocre roll, because the fixed-value lower boxes cannot be recovered once they are gone. Conversely, holding out for a Yahtzee when you already have a strong full house can cost you twenty-five guaranteed points for a roughly one-in-twenty chance at fifty, which is poor value unless the Yahtzee box is your only realistic route to winning a close game. The calculator helps here by showing the exact value of the safe option next to the gamble, so the decision becomes a clear comparison of points rather than a feeling about luck.</p>
+<p>Re-roll strategy follows the same logic: keep dice that are already part of a valuable pattern and re-roll only the dice that cannot help you. If you hold four dice of a straight and re-roll one die, you have a reasonable chance of completing it, whereas re-rolling three dice to chase a Yahtzee from a pair is a long shot that usually wastes a turn. Think in terms of how many faces help you on the next roll: a single die that completes a straight has several helpful faces, while a die that must match a specific number has only one. Practising with the roll button and the scorecard together builds this intuition quickly, because you can test dozens of situations in minutes and see which choices the numbers actually favour.</p>
+<h2>Worked examples and common mistakes</h2>
+<p>Consider the dice one, one, one, two, two. The upper section gives three points for ones and four points for twos, three of a kind totals seven, and the full house scores twenty-five, which is clearly the best use of this roll if the full house box is open. Now consider one, two, three, four, five: the small straight and large straight both apply, with the large straight worth forty, so the large straight box is the obvious choice and the small straight should be saved for a later roll. A third example, five, five, five, five, five, is a Yahtzee worth fifty, but it also scores twenty-five as five of a kind in the upper section and twenty-five as a full house by the standard house rule, so the Yahtzee box is again the best choice unless it is already filled. Working through examples like these is the fastest way to learn the scorecard.</p>
+<p>The most common mistakes are counting a Yahtzee as a full house when the Yahtzee box is still open, missing a small straight hidden inside a large straight, and forgetting that three and four of a kind score the total of all dice rather than just the matching dice. Another frequent error is scoring the upper bonus too early: the bonus is only awarded when the upper total reaches sixty-three at the end of the game, not midway through, although tracking progress toward it is still useful. Finally, remember that dice must be entered as numbers from one to six, and that the calculator treats each die independently, so duplicate values are expected and correct. With those points clear, the scorecard becomes a straightforward tool for better decisions rather than a source of arguments.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many points is a full house in Yahtzee?</summary><p>A full house, three of one number plus two of another, always scores 25 points.</p></details>
+<details><summary>What is the upper section bonus?</summary><p>If your upper section totals 63 or more, you receive a 35-point bonus. Three of each number totals exactly 63.</p></details>
+<details><summary>Does a large straight also count as a small straight?</summary><p>Yes, five consecutive numbers contain a four-number sequence, so a large straight qualifies for the small straight box too, though you should usually take the 40-point large straight.</p></details>
+<details><summary>How much is a Yahtzee worth?</summary><p>Five of a kind scores 50 points in the Yahtzee box.</p></details>
+<details><summary>How does three of a kind score?</summary><p>It scores the total of all five dice, not just the three matching dice, provided at least three dice match.</p></details>
+<details><summary>Can I score a Yahtzee as a full house?</summary><p>By common house rules a Yahtzee may be scored as a full house for 25 points if the Yahtzee box is already filled, but this calculator shows the Yahtzee box value first.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">Yahtzee</div>
+    <p>Yahtzee scores any five dice across all thirteen categories and tracks the upper-section bonus.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function scoreYahtzee(d){var c=[0,0,0,0,0,0,0];d.forEach(function(v){c[v]++;});var upper={};var ut=0;for(var i=1;i<=6;i++){upper[['ones','twos','threes','fours','fives','sixes'][i-1]]=c[i]*i;ut+=c[i]*i;}var three=0,four=0;for(var i=1;i<=6;i++){if(c[i]>=3)three=d.reduce(function(a,b){return a+b;},0);if(c[i]>=4)four=d.reduce(function(a,b){return a+b;},0);}var has3=false,has2=false;for(var i=1;i<=6;i++){if(c[i]===3)has3=true;if(c[i]===2)has2=true;}var full=(has3&&has2)||c.indexOf(5)>0?25:0;var set={};d.forEach(function(v){set[v]=1;});function seq(n){for(var s=1;s<=7-n;s++){var ok=true;for(var k=0;k<n;k++){if(!set[s+k])ok=false;}if(ok)return true;}return false;}var small=seq(4)?30:0,large=seq(5)?40:0;var yah=0;for(var i=1;i<=6;i++){if(c[i]===5)yah=50;}var chance=d.reduce(function(a,b){return a+b;},0);var r={upper:upper,upperTotal:ut,upperBonus:ut>=63?35:0,three:three,four:four,full:full,small:small,large:large,yahtzee:yah,chance:chance};r.grand=ut+r.upperBonus+three+four+full+small+large+yah+chance;return r;}
+function yzRender(){var d=[];for(var i=1;i<=5;i++){var v=+document.getElementById('yz-d'+i).value||1;v=Math.max(1,Math.min(6,v));d.push(v);}var r=scoreYahtzee(d);var u='';Object.keys(r.upper).forEach(function(k){u+='<div><span>'+k+'</span><strong>'+r.upper[k]+'</strong></div>';});document.getElementById('yz-upper').innerHTML=u;document.getElementById('yz-bonus').textContent='Upper total from this roll: '+r.upperTotal+' (bonus needs 63 across a game; this roll alone '+(r.upperTotal>=63?'reaches':'does not reach')+' it).';var l=[['Three of a kind',r.three],['Four of a kind',r.four],['Full house',r.full],['Small straight',r.small],['Large straight',r.large],['Yahtzee',r.yahtzee],['Chance',r.chance]];var lh='';l.forEach(function(x){lh+='<div><span>'+x[0]+'</span><strong>'+x[1]+'</strong></div>';});document.getElementById('yz-lower').innerHTML=lh;document.getElementById('yz-total').textContent='Best single category here: '+Math.max(r.three,r.four,r.full,r.small,r.large,r.yahtzee,r.chance)+' points.';document.getElementById('yz-best').textContent='Dice: '+d.join(', ')+' — chance totals '+r.chance+'.';}
+document.getElementById('yz-score').onclick=yzRender;
+document.getElementById('yz-roll').onclick=function(){for(var i=1;i<=5;i++){document.getElementById('yz-d'+i).value=1+Math.floor(Math.random()*6);}yzRender();};
+document.getElementById('yz-preset').onclick=function(){var v=[1,1,1,2,2];v.forEach(function(x,i){document.getElementById('yz-d'+(i+1)).value=x;});yzRender();};
+yzRender();
+</script>
+</body>
+</html>
