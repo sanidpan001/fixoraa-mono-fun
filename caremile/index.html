@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Car Maintenance Schedule by Mileage — Service Planner | CareMile</title>
+<meta name="description" content="Car maintenance schedule planner: enter your mileage to see what is due now and coming up — oil, filters, brakes, timing belt — with a service history log. Free.">
+<link rel="canonical" href="https://fun.fixoraa.tech/caremile/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Car Maintenance Schedule by Mileage — Service Planner | CareMile">
+<meta property="og:description" content="Car maintenance schedule planner: enter your mileage to see what is due now and coming up — oil, filters, brakes, timing belt — with a service history log. Free.">
+<meta property="og:url" content="https://fun.fixoraa.tech/caremile/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CareMile",
+      "url": "https://fun.fixoraa.tech/caremile/",
+      "applicationCategory": "Automotive Tools",
+      "operatingSystem": "Web",
+      "description": "Car maintenance schedule planner: enter your mileage to see what is due now and coming up \u2014 oil, filters, brakes, timing belt \u2014 with a service history log. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a normal car maintenance schedule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As general guidelines: oil and filter every 5,000\u20137,500 miles, tyre rotation at the same time, air and cabin filters every 15,000\u201330,000, brake fluid every ~2 years, transmission fluid every 30,000\u201360,000, timing belt every 60,000\u2013100,000, coolant every 3\u20134 years. Your owner's manual has the exact figures for your car."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if I need the severe-duty schedule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If most of your trips are under 10 miles, you idle a lot, sit in stop-and-go traffic, tow, or drive in dust or extreme temperatures \u2014 that is severe duty, and it describes most city drivers. Halve the oil interval and shorten other intervals by about a third."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the timing belt interval so important?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because it is the one failure with no warning that destroys the engine: a snapped belt lets pistons hit valves. Replace it in its 60,000\u2013100,000-mile window (check your manual), and if you do not know when it was last done, do it now."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does brake fluid really need changing every 2 years?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 brake fluid absorbs moisture from the air, which lowers its boiling point and can cause brake fade under hard use. Replace it about every 2 years regardless of mileage. It is one of the cheapest safety-critical services."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What driving habits wear a car out fastest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Short trips are the main killer: the engine never fully warms up, fuel dilutes the oil and condensation never burns off. Frequent cold starts, idling, towing, dusty roads and extreme temperatures all accelerate wear \u2014 which is why the severe schedule exists."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do service records really affect resale value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A documented service history measurably raises resale value \u2014 buyers pay for certainty. Keep every receipt, note the next due mileage on each, and use the service log in this planner as your digital backup."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EFF7F5; --surface:#FFFFFF; --accent:#0F766E; --accent-ink:#FFFFFF;
+  --ink:#1D2A28; --muted:#54706B; --line:#D3E5E1;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.cm-wrap{font-family:'Sora',Inter,system-ui,sans-serif;background:#EFF7F5;color:#1D2A28;padding:56px 20px 72px;}.cm-inner{max-width:1020px;margin:0 auto;}.cm-hero{display:grid;grid-template-columns:1fr 300px;gap:26px;align-items:center;margin-bottom:28px;}@media(max-width:800px){.cm-hero{grid-template-columns:1fr;}}.cm-inner h1{font-size:clamp(32px,4.6vw,50px);font-weight:800;letter-spacing:-.02em;margin:0 0 8px;line-height:1.05;}.cm-tag{color:#54706B;font-size:18px;margin:0;font-family:Inter,system-ui,sans-serif;}.cm-odo{background:#FFFFFF;border:1px solid #D3E5E1;border-radius:20px;padding:22px;box-shadow:0 14px 34px rgba(15,118,110,.08);font-family:Inter,system-ui,sans-serif;}.cm-odo label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#54706B;margin-bottom:8px;}.cm-odorow{display:flex;gap:8px;margin-bottom:12px;}.cm-odorow input{flex:1;min-width:0;padding:12px 14px;font-size:22px;font-weight:700;border:2px solid #D3E5E1;border-radius:12px;font-family:inherit;color:#1D2A28;}.cm-odorow input:focus{outline:none;border-color:#0F766E;}.cm-unit{display:flex;border:2px solid #D3E5E1;border-radius:12px;overflow:hidden;flex-shrink:0;}.cm-unit button{border:none;background:#fff;padding:12px 13px;font-size:13.5px;font-weight:700;cursor:pointer;color:#54706B;font-family:inherit;}.cm-unit button.on{background:#0F766E;color:#fff;}.cm-toggle{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;cursor:pointer;}.cm-toggle input{width:20px;height:20px;accent-color:#0F766E;}.cm-route{background:#FFFFFF;border:1px solid #D3E5E1;border-radius:20px;padding:26px 26px 20px;margin-bottom:22px;box-shadow:0 14px 34px rgba(15,118,110,.07);}.cm-route h2{font-size:17px;margin:0 0 4px;font-weight:800;}.cm-route .cm-sub{color:#54706B;font-size:13.5px;margin:0 0 6px;font-family:Inter,system-ui,sans-serif;}.cm-track{position:relative;height:150px;margin:26px 0 10px;}.cm-line{position:absolute;left:0;right:0;top:64px;height:6px;border-radius:6px;background:linear-gradient(90deg,#0F766E,#99D5CF);}.cm-you{position:absolute;top:44px;transform:translateX(-50%);font-size:30px;z-index:2;}.cm-youlbl{position:absolute;top:88px;transform:translateX(-50%);font-size:11px;font-weight:800;color:#0F766E;white-space:nowrap;font-family:Inter,system-ui,sans-serif;}.cm-mark{position:absolute;top:56px;transform:translateX(-50%);text-align:center;z-index:1;}.cm-pin{width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid #F59E0B;margin:0 auto 4px;box-shadow:0 4px 10px rgba(0,0,0,.15);}.cm-mark.due .cm-pin{border-color:#DC2626;animation:cm-pulse 1.6s infinite;}.cm-mark .cm-ml{font-size:10.5px;font-weight:700;color:#1D2A28;white-space:nowrap;font-family:Inter,system-ui,sans-serif;background:#EFF7F5;border-radius:6px;padding:2px 6px;}.cm-mark.flip .cm-ml{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);}.@keyframes cm-pulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.4);}50%{box-shadow:0 0 0 8px rgba(220,38,38,0);}}.cm-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;}@media(max-width:800px){.cm-cols{grid-template-columns:1fr;}}.cm-card{background:#FFFFFF;border:1px solid #D3E5E1;border-radius:20px;padding:24px;box-shadow:0 14px 34px rgba(15,118,110,.07);}.cm-card h2{font-size:17px;margin:0 0 12px;font-weight:800;}.cm-svc{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #E7F0EE;font-size:14px;font-family:Inter,system-ui,sans-serif;}.cm-svc:last-child{border-bottom:none;}.cm-svc .cm-n{font-weight:600;}.cm-svc .cm-d{font-size:12.5px;font-weight:700;white-space:nowrap;}.cm-svc .cm-d.now{color:#DC2626;}.cm-svc .cm-d.soon{color:#B45309;}.cm-svc .cm-d.ok{color:#54706B;}.cm-table{width:100%;border-collapse:collapse;font-size:13.5px;font-family:Inter,system-ui,sans-serif;}.cm-table th,.cm-table td{padding:9px 8px;border-bottom:1px solid #E7F0EE;text-align:left;}.cm-table th{color:#0F766E;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;}.cm-logform{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;font-family:Inter,system-ui,sans-serif;}.cm-logform input,.cm-logform select{padding:10px 12px;font-size:14px;border:2px solid #D3E5E1;border-radius:10px;font-family:inherit;color:#1D2A28;}.cm-logform button{background:#0F766E;color:#fff;border:none;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}.cm-loglist{font-size:13.5px;font-family:Inter,system-ui,sans-serif;}.cm-logitem{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #E7F0EE;}.cm-logitem button{background:none;border:none;color:#DC2626;cursor:pointer;font-size:14px;}.cm-empty{color:#54706B;font-size:13.5px;}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="CareMile home">
+      <span class="fx-logo-tile" aria-hidden="true">🔧</span>
+      <span class="fx-brand">CareMile</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-atlas-map" aria-label="CareMile tool">
+<section class='cm-wrap'><div class='cm-inner'><div class='cm-hero'><div><h1>Car Maintenance Schedule Planner</h1><p class='cm-tag'>Every service, plotted on your odometer.</p></div><div class='cm-odo'><label for='cm-odo'>Current odometer</label><div class='cm-odorow'><input type='number' id='cm-odo' value='45000' min='0' step='100' inputmode='numeric'><div class='cm-unit' role='group' aria-label='Units'><button id='cm-mi' class='on' type='button'>mi</button><button id='cm-km' type='button'>km</button></div></div><label class='cm-toggle'><input type='checkbox' id='cm-severe'> Severe duty (short trips, towing, dust, extreme temps)</label></div></div><div class='cm-route'><h2>Your service route</h2><p class='cm-sub'>You are the 🚗 marker — flags show upcoming services, pulsing red means due now.</p><div class='cm-track' id='cm-track' aria-hidden='true'></div></div><div class='cm-cols'><div class='cm-card'><h2>📋 Due list</h2><div id='cm-duelist'></div></div><div class='cm-card'><h2>🗂️ Service history log</h2><div class='cm-logform'><input type='date' id='cm-date' aria-label='Date'><input type='number' id='cm-mi2' placeholder='Mileage' aria-label='Mileage' style='width:110px;'><select id='cm-what' aria-label='Service'><option>Oil & filter</option><option>Tire rotation</option><option>Brake inspection</option><option>Air filter</option><option>Cabin filter</option><option>Brake fluid</option><option>Transmission fluid</option><option>Coolant flush</option><option>Spark plugs</option><option>Timing belt</option><option>Other</option></select><button type='button' id='cm-add'>Add</button></div><div class='cm-loglist' id='cm-loglist'></div></div></div><div class='cm-card' style='margin-top:22px;'><h2>Full interval chart</h2><p class='cm-sub' style='color:#54706B;font-size:13px;margin:0 0 8px;font-family:Inter,system-ui,sans-serif;'>General manufacturer-guideline intervals. Your owner's manual is the final authority.</p><div style='overflow-x:auto;'><table class='cm-table'><thead><tr><th>Service</th><th>Normal</th><th>Severe</th></tr></thead><tbody id='cm-chart'></tbody></table></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why a Maintenance Schedule Beats a Memory</h2><p>Almost every expensive car repair starts life as a cheap skipped service. Oil that stayed in too long becomes sludge that starves bearings; a timing belt that missed its interval snaps and bends valves; old brake fluid absorbs water until a hard stop boils it into vapor. A maintenance schedule is simply a plan for replacing cheap parts <em>before</em> they destroy expensive ones — and cars that follow one routinely run past 200,000 miles while neglected ones die young. The intervals below are general guidelines drawn from manufacturer recommendations; your owner's manual is always the final authority for your exact model.</p><h2>The Core Intervals Every Driver Should Know</h2><p>Manufacturers build schedules around mileage bands. Here are the anchors this planner uses:</p><ul><li><strong>Every 5,000–7,500 miles:</strong> engine oil and filter (synthetic oil), tyre rotation, basic fluid top-offs, brake inspection.</li><li><strong>Every 15,000–20,000 miles:</strong> cabin air filter, brake inspection, wheel alignment check.</li><li><strong>Every 20,000–30,000 miles:</strong> engine air filter, brake fluid replacement.</li><li><strong>Every 30,000–60,000 miles:</strong> transmission fluid, spark plugs (copper/short-life types), fuel filter where applicable.</li><li><strong>Every 60,000–100,000 miles:</strong> timing belt, coolant flush, spark plugs (iridium/long-life), power steering fluid.</li></ul><p>Time matters too, not just miles: brake fluid should be replaced about every 2 years because it absorbs moisture from the air, coolant every 3–4 years, and batteries every 3–5 years regardless of mileage. A car that does 3,000 miles a year still needs annual oil changes — oil degrades sitting in the sump.</p><h2>The 30-60-90 Rule</h2><p>Many manufacturers frame major services around 30,000-mile milestones, and it is a handy mental model. At <strong>30k</strong>: filters, brake fluid, thorough inspection of belts and hoses. At <strong>60k</strong>: transmission service, coolant, spark plugs on many cars, suspension check. At <strong>90k</strong>: timing belt territory, water pump (often done with the belt since the labour overlaps), major fluid replacements. If you buy a used car near one of these milestones with no service history, budget for the milestone service immediately — the previous owner likely skipped exactly the expensive one.</p><h2>Severe vs Normal Duty: Which Are You?</h2><p>Every owner's manual has two schedules, and most drivers should be following the severe one without knowing it. You qualify for <strong>severe duty</strong> if most trips are under 10 miles (the engine never fully warms up), you idle extensively, drive in stop-and-go traffic, tow, drive on dusty or gravel roads, or live with extreme heat or cold. Short trips are the big one: cold engines run rich, fuel dilutes the oil, and condensation never burns off. Under severe duty, halve the oil-change interval and shorten everything else by roughly a third — this planner applies that automatically when you flip the toggle.</p><h2>The Timing Belt: The Interval You Cannot Miss</h2><p>The timing belt synchronizes the crankshaft and camshaft; if it snaps, pistons meet valves and the engine destroys itself in one revolution. Replacement typically falls between 60,000 and 100,000 miles (or 5–7 years) depending on the engine — and unlike brakes, a timing belt gives no warning before failure. If your car has a belt (many modern engines use chains, which last much longer — check your manual) and you do not know when it was last changed, change it. This is the single highest-stakes item on any schedule, and the reason this planner always surfaces it prominently near its window.</p><h2>Fluids: The Cheap Insurance</h2><p>Engine oil gets the attention, but the other fluids are equally schedule-driven. <strong>Brake fluid</strong> is hygroscopic — it pulls moisture from the air, lowering its boiling point until a long downhill or hard stop turns it to vapor (brake fade). <strong>Coolant</strong> contains corrosion inhibitors that deplete; old coolant lets the water pump, radiator and head gasket corrode from the inside. <strong>Transmission fluid</strong> shears down with heat and mileage; 'lifetime fill' claims deserve skepticism past 100,000 miles. <strong>Power steering fluid</strong> breaks down and takes the pump and rack with it. None of these are expensive to replace; all are expensive to ignore.</p><h2>Tyres, Brakes and the Monthly Five Minutes</h2><p>Between scheduled services, a monthly five-minute walkaround catches most developing problems: check tyre pressures (including the spare), look at tread and sidewalls, check all lights, test wipers and washers, and glance at fluid levels. Brake pads typically last 25,000–50,000 miles depending on driving style — city driving eats them, motorway cruising barely touches them. Listen for the wear-indicator squeal and feel for pulsing through the pedal, both of which mean the brakes want attention before the next scheduled look.</p><h2>Keeping Records: The Resale Multiplier</h2><p>A stamped service book or a folder of receipts measurably increases resale value — buyers pay for certainty. This planner's service log gives you a simple digital record: date, mileage and what was done. Keep receipts too, and note the <em>next</em> due mileage on each one. When you sell, that folder is worth real money; when you keep the car, it is the difference between guessing and knowing.</p><h2>What the Planner Does Not Replace</h2><p>Intervals are guidelines, not diagnostics. Unusual noises, smells, leaks, warning lights or changes in how the car drives always override the schedule — investigate immediately rather than waiting for the next milestone. And for anything involving the timing system, brakes hydraulics or airbags, a qualified technician is worth every penny: some jobs reward DIY, but the ones where a mistake totals the engine or compromises safety are not among them.</p><h2>Annual Service vs Mileage Service</h2><p>Low-mileage drivers face a different question: the manual says 7,500 miles <em>or</em> 12 months, whichever comes first — and the 'whichever comes first' is doing real work. Engine oil oxidizes and accumulates acids and moisture just sitting in the sump; brake fluid absorbs water from the atmosphere whether you drive or not; coolant inhibitors deplete on a chemical clock. A car doing 3,000 miles a year needs an annual oil change, a two-year brake-fluid change and a battery check far more than it needs a mileage-based schedule. If you barely drive, think in birthdays, not miles: annual service, annual inspection, and replace time-based items (fluids, belts, tyres — yes, tyres age out at about 6–10 years regardless of tread) on schedule.</p><h2>DIY vs Shop: What to Do Yourself</h2><p>The easy wins are genuinely easy and save real money: engine air filter (usually tool-free, five minutes), cabin filter (behind the glovebox on most cars), wiper blades, tyre pressures and rotations with a jack and stands, battery terminal cleaning, and topping up washer fluid and coolant. Oil changes sit in the middle — straightforward but messy, with disposal to handle. Leave to professionals: anything inside the timing cover, brake hydraulics (a mistake compromises safety), airbag and SRS components, air-conditioning refrigerant (legally restricted in many places), and transmission services on sealed units. A good rule: DIY the maintenance, outsource the repairs.</p><h2>Seasonal Checks Worth Doing</h2><p>Twice a year, spend twenty minutes on season-specific items. <strong>Before winter:</strong> test the battery (cold kills weak ones), check antifreeze strength, switch to winter washer fluid, inspect wipers and consider winter tyres below 7°C — the rubber compound matters more than tread in cold. <strong>Before summer:</strong> confirm the AC blows cold, check coolant level and the radiator for debris, inspect belts for cracking (heat finishes old rubber), and check tyre pressures more often since heat raises blowout risk on under-inflated tyres. Seasonal checks catch the failures that strand people at the worst moments.</p><h2>The 200,000-Mile Club: What High-Mileage Heroes Have in Common</h2><p>Cars that pass 200,000 miles are not lucky — they are maintained. Their owners share habits: oil changes on time or early, cooling system serviced before it fails (the #1 killer of high-mileage engines is overheating, not wear), transmission fluid changed despite 'lifetime fill' claims, and small problems fixed promptly before they cascade. They also drive smoothly — gentle warm-ups, no redline cold starts, coasting to stops. If you are buying at high mileage, the service folder matters more than the odometer: a 180,000-mile car with full history is a better bet than a 90,000-mile car with none. And if you own one, this planner's history log is how you join the club deliberately rather than accidentally.</p><h2>What About 'Lifetime' Fluids?</h2><p>'Lifetime fill' or 'sealed for life' appears in many manuals for transmission fluid and sometimes coolant. Read it as 'lifetime of the warranty', not lifetime of the car. Transmission fluid shears and oxidizes with heat cycles; independent specialists overwhelmingly recommend a first change at 60,000–80,000 miles and every 40,000–60,000 after, using the exact specification fluid. The exception: some CVTs and sealed units where the manufacturer genuinely intends no service — even then, a fluid <em>inspection</em> at high mileage is cheap reassurance. When a manufacturer and every independent specialist disagree, bet on the specialists.</p><h2>Building Your Own Schedule Habit</h2><p>The best schedule is the one you actually follow, which means making it frictionless. Set a calendar reminder for the monthly five-minute walkaround and tie the annual service to something memorable like your registration renewal. Keep a small notebook or use this planner's log for every fill-up anomaly, new noise and service visit — patterns emerge in writing that memory misses. Photograph receipts before they fade; thermal paper goes blank within a couple of years. Finally, find a trustworthy independent shop before you need one: ask enthusiast friends, read reviews for diagnostic honesty rather than low prices, and try them with a small job first. A good mechanic who knows your car's history is worth more than any schedule printout, because they will spot the thing that is about to fail while they are in there for the thing that already did.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is a normal car maintenance schedule?</summary><p>As general guidelines: oil and filter every 5,000–7,500 miles, tyre rotation at the same time, air and cabin filters every 15,000–30,000, brake fluid every ~2 years, transmission fluid every 30,000–60,000, timing belt every 60,000–100,000, coolant every 3–4 years. Your owner's manual has the exact figures for your car.</p></details>
+<details><summary>How do I know if I need the severe-duty schedule?</summary><p>If most of your trips are under 10 miles, you idle a lot, sit in stop-and-go traffic, tow, or drive in dust or extreme temperatures — that is severe duty, and it describes most city drivers. Halve the oil interval and shorten other intervals by about a third.</p></details>
+<details><summary>Why is the timing belt interval so important?</summary><p>Because it is the one failure with no warning that destroys the engine: a snapped belt lets pistons hit valves. Replace it in its 60,000–100,000-mile window (check your manual), and if you do not know when it was last done, do it now.</p></details>
+<details><summary>Does brake fluid really need changing every 2 years?</summary><p>Yes — brake fluid absorbs moisture from the air, which lowers its boiling point and can cause brake fade under hard use. Replace it about every 2 years regardless of mileage. It is one of the cheapest safety-critical services.</p></details>
+<details><summary>What driving habits wear a car out fastest?</summary><p>Short trips are the main killer: the engine never fully warms up, fuel dilutes the oil and condensation never burns off. Frequent cold starts, idling, towing, dusty roads and extreme temperatures all accelerate wear — which is why the severe schedule exists.</p></details>
+<details><summary>Do service records really affect resale value?</summary><p>A documented service history measurably raises resale value — buyers pay for certainty. Keep every receipt, note the next due mileage on each, and use the service log in this planner as your digital backup.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CareMile</div>
+    <p>CareMile plots every service on your odometer — enter your mileage to see what is due now, what is coming up, and keep a service history log.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function nextDue(odo,interval){return (Math.floor(odo/interval)+1)*interval-odo;}
+var SVCS=[['Engine oil & filter',7500],['Tire rotation',7500],['Brake inspection',15000],['Cabin air filter',20000],['Engine air filter',30000],['Brake fluid',30000],['Transmission fluid',60000],['Timing belt',90000],['Coolant flush',100000],['Spark plugs',100000]];
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var odo=document.getElementById('cm-odo'),miB=document.getElementById('cm-mi'),kmB=document.getElementById('cm-km'),sev=document.getElementById('cm-severe'),track=document.getElementById('cm-track'),duelist=document.getElementById('cm-duelist'),chart=document.getElementById('cm-chart');if(!odo)return;var unit='mi';var KM=1.60934;function iv(miles){var m=sev.checked?Math.round(miles*0.6/500)*500:miles;return m;}function toU(miles){return unit==='km'?miles*KM:miles;}function fmtU(miles){return Math.round(toU(miles)).toLocaleString('en-US')+' '+unit;}function odoMi(){var v=parseFloat(odo.value)||0;return unit==='km'?v/KM:v;}function render(){var o=odoMi();var items=SVCS.map(function(s){var interval=iv(s[1]);var due=nextDue(o,interval);var done=o-(interval-due);return {name:s[0],interval:interval,due:due,over:o>=interval&&due===interval};});items.sort(function(a,b){return a.due-b.due;});var maxDue=Math.max.apply(null,items.map(function(i){return i.due;}));var html='<div class="cm-line"></div><div class="cm-you" style="left:4%">🚗</div><div class="cm-youlbl" style="left:4%">YOU · '+fmtU(o)+'</div>';items.slice(0,6).forEach(function(it,ix){var pos=4+(it.due/Math.max(maxDue,1))*88;html+='<div class="cm-mark'+(it.due<=500?' due':'')+(ix%2?' flip':'')+'" style="left:'+pos.toFixed(1)+'%" title="'+it.name+'"><div class="cm-pin"></div><div class="cm-ml">'+it.name.split(' ')[0]+'<br>'+fmtU(it.due)+'</div></div>';});track.innerHTML=html;var dl='';items.forEach(function(it){var cls=it.due<=500?'now':it.due<=2000?'soon':'ok';var lbl=it.due<=500?'DUE NOW':'in '+fmtU(it.due);dl+='<div class="cm-svc"><span class="cm-n">'+it.name+'</span><span class="cm-d '+cls+'">'+lbl+'</span></div>';});duelist.innerHTML=dl;var ch='';SVCS.forEach(function(s){ch+='<tr><td>'+s[0]+'</td><td>'+Math.round(toU(s[1])).toLocaleString('en-US')+' '+unit+'</td><td>'+Math.round(toU(Math.round(s[1]*0.6/500)*500)).toLocaleString('en-US')+' '+unit+'</td></tr>';});chart.innerHTML=ch;}function setUnit(u){unit=u;miB.classList.toggle('on',u==='mi');kmB.classList.toggle('on',u==='km');render();}miB.addEventListener('click',function(){setUnit('mi');});kmB.addEventListener('click',function(){setUnit('km');});odo.addEventListener('input',render);sev.addEventListener('change',render);var dateI=document.getElementById('cm-date'),mi2=document.getElementById('cm-mi2'),what=document.getElementById('cm-what'),add=document.getElementById('cm-add'),loglist=document.getElementById('cm-loglist');var KEY='caremile-log';function getLog(){try{return JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){return[];}}function setLog(l){try{localStorage.setItem(KEY,JSON.stringify(l));}catch(e){}}function renderLog(){var l=getLog();if(!l.length){loglist.innerHTML='<p class="cm-empty">No entries yet — log each service to build your history.</p>';return;}loglist.innerHTML=l.map(function(e,i){return '<div class="cm-logitem"><span>'+e.date+' · '+e.mi+' '+unit+' · '+e.what+'</span><button type="button" data-i="'+i+'" aria-label="Delete">✕</button></div>';}).join('');var btns=loglist.querySelectorAll('button');for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){var l2=getLog();l2.splice(parseInt(this.getAttribute('data-i'),10),1);setLog(l2);renderLog();});}}add.addEventListener('click',function(){var l=getLog();l.unshift({date:dateI.value||new Date().toISOString().slice(0,10),mi:mi2.value||odo.value,what:what.value});setLog(l);mi2.value='';renderLog();});renderLog();render();});}
+</script>
+</body>
+</html>
