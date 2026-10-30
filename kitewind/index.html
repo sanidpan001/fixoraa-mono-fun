@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kite Size Wind Speed Calculator — Pick the Right Kite</title>
+<meta name="description" content="Calculate a starting kite size from rider weight and wind speed in knots, with quiver neighbours.">
+<link rel="canonical" href="https://fun.fixoraa.tech/kitewind/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Kite Size Wind Speed Calculator — Pick the Right Kite">
+<meta property="og:description" content="Calculate a starting kite size from rider weight and wind speed in knots, with quiver neighbours.">
+<meta property="og:url" content="https://fun.fixoraa.tech/kitewind/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "KiteWind",
+      "url": "https://fun.fixoraa.tech/kitewind/",
+      "applicationCategory": "Outdoor",
+      "operatingSystem": "Web",
+      "description": "Calculate a starting kite size from rider weight and wind speed in knots, with quiver neighbours.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What kite size do I need for 20 knots?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An eighty kilogram rider typically uses about a seven metre kite in twenty knots, while lighter riders use smaller kites and heavier riders use larger ones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I size for gusts or average wind?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Size for the gusts on gusty days. You must survive the strongest gusts, not just enjoy the lulls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert knots to km/h?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply knots by about 1.85. Twenty knots is roughly thirty-seven kilometres per hour."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does board size affect kite size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A larger board planes earlier, so you can ride a smaller kite in light wind."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do foilers use smaller kites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A hydrofoil lifts the board clear of the water, so it needs far less power, often two to three kite sizes less."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this calculator enough for a beginner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It gives a starting size, but beginners should take lessons and confirm the size with an instructor on the beach."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fdf6ec; --surface:#ffffff; --accent:#9a3412; --accent-ink:#ffffff;
+  --ink:#1f1a17; --muted:#4d4238; --line:#eed9c2;
+  --display:'Space Grotesk',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+.layout-cards .kitecards{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1rem} .layout-cards .kitecards span{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.7rem;font-size:.9rem} @media(max-width:640px){.layout-cards .kitecards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="KiteWind home">
+      <span class="fx-logo-tile" aria-hidden="true">🪁</span>
+      <span class="fx-brand">KiteWind</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-wind-kite" aria-label="KiteWind tool">
+<div class="layout-cards">
+<h1>Kite Size Wind Speed Calculator</h1>
+<p class="sub">Find a starting kite size from your weight and today's wind.</p>
+<div class="formcard">
+<label>Rider weight (kg)<input id="wt" type="number" value="80" step="1" min="0"></label><label>Wind speed (knots)<input id="wind" type="number" value="20" step="1" min="0"></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter weight and wind to see a starting kite size.</p></div>
+<div class='kitecards'><span>Light wind: bigger kite</span><span>Moderate: mid size</span><span>Strong: smaller kite</span></div>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What size kite do you need for the wind today?</h2>
+<p>Kitesurfing starts with a simple question that has no single answer: given your weight and today's wind, which kite size keeps you powered without being overpowered? A kite that is too small will leave you slogging through the water, unable to get upwind. A kite that is too large will drag you downwind, yank you off your edge, and turn a fun session into a fight. This calculator uses a well-known rule of thumb that relates rider weight and wind speed to kite area, giving you a starting size to compare against your own quiver. It is a planning aid, not a replacement for local knowledge, because gusts, water state, board size, and your skill level all shift the right answer by a size or more.</p>
+<p>The rule behind the calculator is easy to follow. Required kite area rises with rider weight and falls as wind speed rises, because a heavier rider needs more pull and stronger wind delivers more power from the same kite. In round terms, an eighty kilogram rider is often comfortable on roughly a nine metre kite in about twenty knots, a twelve metre in about fifteen knots, and a seven metre in about twenty-five knots. Lighter riders shift down a size or two, and heavier riders shift up. The calculator expresses this as kite size equals rider weight divided by wind speed multiplied by a factor of about 1.8, then rounds to the nearest half metre, which matches how kites are actually sold. Check the result against the table below and against what other riders of similar weight are rigging on the beach.</p>
+<h2>Wind speed, gusts, and why the average lies</h2>
+<p>Average wind speed is only half the story. Gusty wind, where the speed jumps ten knots or more between lulls and peaks, demands a smaller kite than steady wind at the same average, because you must survive the gusts, not just enjoy the lulls. If the forecast shows a wide gust range, size for the gusts or wait for steadier conditions. Offshore wind deserves special caution: it blows away from the beach, so a problem with your kite or board can carry you out to sea, and many spots are unsafe or forbidden in offshore wind. Onshore wind pushes you back toward land, which is safer for beginners but can make launching and landing trickier in shore break. Side-onshore wind is the classic beginner-friendly direction, and it is no accident that most schools choose beaches with exactly that wind.</p>
+<p>Wind units trip up newcomers too. Kitesurfers usually talk in knots, while weather forecasts may give kilometres per hour or metres per second. One knot is about 1.85 kilometres per hour and about 0.51 metres per second, so twenty knots is roughly thirty-seven kilometres per hour. Always confirm which unit your forecast uses before choosing a kite, because confusing knots with kilometres per hour can put you on a kite several sizes too big. Wind meters on the beach, often called anemometers, give a live reading that beats any forecast, and watching the water helps too: whitecaps start to appear around twelve knots, and small breaking waves become common above twenty knots.</p>
+<h2>A worked example and a quiver plan</h2>
+<p>Consider a ninety kilogram rider in twenty-five knots. The calculator gives about six and a half metres, so a seven metre kite is the sensible choice from a typical quiver, with a nine metre as the next size down in wind. A sixty kilogram rider in fifteen knots gets about seven metres, so a seven or eight metre kite works, depending on board and skill. Most regular riders end up with two or three kites, such as seven, nine, and twelve metres, which covers a wide wind range without buying every size. Beginners should start at the smaller, safer end of any recommendation and take lessons, because a kite's power surprises everyone the first few times, and good instruction covers launching, landing, self-rescue, and the quick-release safety system.</p>
+<p>Board choice changes the answer as well. A larger board with more surface area gets you going earlier and lets you ride a smaller kite in light wind, while a small board needs more kite power to stay planing. Twin-tip boards are the standard learning and freeride choice, while directional surfboards suit waves and strapless riding. Foil boards change the maths dramatically, because a hydrofoil lifts the board clear of the water and needs far less kite power, so foilers often ride kites two or three sizes smaller than twin-tip riders in the same wind. If you ride a foil, treat this calculator as an upper bound and ask local foilers what they use. Skill matters just as much: an experienced rider holds an edge better, depowers the kite more effectively, and can comfortably ride a size larger than a beginner of the same weight.</p>
+<h2>Safety checks before every session</h2>
+<p>Before launching, check your lines for tangles and wear, test your quick release, confirm your leash is attached, and make sure your harness fits snugly. Launch with an experienced helper when possible, keep clear downwind space, and never launch near trees, power lines, or crowded beach areas. A helmet and impact vest add protection, especially while learning, and a wetsuit suited to the water temperature prevents cold from cutting a session short or impairing your swimming. If you feel overpowered, depower the kite, edge harder, or come in and change down a size. There is no prize for surviving the biggest kite on the beach, and the riders having the most fun are usually the ones correctly powered, not maximally powered.</p>
+<p>Finally, respect local rules and other beach users. Some beaches have designated kite zones, seasonal restrictions, or bans during busy swimming hours. Keep your lines clear of swimmers and other kiters, follow the right-of-way conventions you learned in lessons, and help beginners launch and land safely. Kitesurfing is a community sport, and a beach where everyone looks out for each other is a beach where everyone gets more time on the water. Use the calculator to pick a sensible starting size, confirm it against the beach, and then enjoy the session.</p>
+<h3>Starting-size guide</h3>
+<table><tr><th>Rider weight</th><th>15 knots</th><th>20 knots</th><th>25 knots</th></tr>
+<tr><td>60 kg</td><td>7 m</td><td>5.5 m</td><td>4.5 m</td></tr>
+<tr><td>80 kg</td><td>9.5 m</td><td>7 m</td><td>6 m</td></tr>
+<tr><td>90 kg</td><td>11 m</td><td>8 m</td><td>6.5 m</td></tr>
+<tr><td>100 kg</td><td>12 m</td><td>9 m</td><td>7 m</td></tr></table>
+<ul><li>Size for gusts, not just the average wind, on gusty days.</li><li>Confirm forecast units: knots, km/h, and m/s are easily confused.</li><li>A bigger board lets you ride a smaller kite in light wind.</li><li>Foilers typically need kites two to three sizes smaller.</li><li>Test your quick release before every session.</li><li>When in doubt, rig smaller and take a lesson.</li></ul>
+<p>The right kite size is the one that lets you ride upwind comfortably, jump when you want to, and come back to the beach smiling. Start with the calculation, sanity-check it on the sand, and adjust a size at a time as you learn how your weight, board, and local wind interact.</p><p>Progress in kitesurfing comes from sessions, not equipment alone. Keep a simple log of date, spot, wind speed and gusts, kite size, board, and how powered you felt. After twenty sessions, patterns emerge: you will see which size you reach for most often, which conditions left you underpowered, and where a new kite would genuinely add range rather than duplicate what you own. That log also helps when travelling, because a new spot with similar wind statistics becomes easy to pack for. Buy kites for the wind you actually ride in, not the wind you dream about, and your quiver will stay small, useful, and fun.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What kite size do I need for 20 knots?</summary><p>An eighty kilogram rider typically uses about a seven metre kite in twenty knots, while lighter riders use smaller kites and heavier riders use larger ones.</p></details>
+<details><summary>Should I size for gusts or average wind?</summary><p>Size for the gusts on gusty days. You must survive the strongest gusts, not just enjoy the lulls.</p></details>
+<details><summary>How do I convert knots to km/h?</summary><p>Multiply knots by about 1.85. Twenty knots is roughly thirty-seven kilometres per hour.</p></details>
+<details><summary>Does board size affect kite size?</summary><p>Yes. A larger board planes earlier, so you can ride a smaller kite in light wind.</p></details>
+<details><summary>Why do foilers use smaller kites?</summary><p>A hydrofoil lifts the board clear of the water, so it needs far less power, often two to three kite sizes less.</p></details>
+<details><summary>Is this calculator enough for a beginner?</summary><p>It gives a starting size, but beginners should take lessons and confirm the size with an instructor on the beach.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">KiteWind</div>
+    <p>KiteWind matches rider weight and wind speed to a sensible starting kite size.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(weight,wind){if(weight<=0||wind<=0)return{size:0,lower:0,upper:0};var s=Math.round(weight/wind*1.8*2)/2;return{size:s,lower:Math.max(3,s-2),upper:s+2};}
+function run(){var r=compute(+document.getElementById('wt').value,+document.getElementById('wind').value);document.getElementById('result').innerHTML='<p class="big">About '+r.size+' m kite</p><p>Typical quiver neighbours: '+r.lower+' m to '+r.upper+' m</p><p class="muted">Gusty day? Size down half a size from this figure.</p>';window._last='KiteWind: about '+r.size+' m kite for '+document.getElementById('wt').value+' kg in '+document.getElementById('wind').value+' knots';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Light rider, moderate wind',[60,15]],['Average: 80 kg, 20 kt',[80,20]],['Heavy rider, strong wind',[100,25]]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){var v=P[+b.dataset.i][1];document.getElementById('wt').value=v[0];document.getElementById('wind').value=v[1];run();};});
+run();
+</script>
+</body>
+</html>
