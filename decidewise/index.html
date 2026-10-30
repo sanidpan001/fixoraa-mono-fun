@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+<link rel="canonical" href="https://fun.fixoraa.tech/decidewise/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DecideWise — Weighted Decision Matrix Calculator | Pros &amp; Cons Decision Tool</title>
+<meta name="description" content="DecideWise is a free weighted decision matrix calculator. Score options against weighted criteria, run sensitivity analysis, share matrices by link, and export ADR-style decision records.">
+<meta name="keywords" content="decision matrix calculator, weighted decision matrix, pros and cons decision tool, decision matrix template, sensitivity analysis decision">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root { --bg:#0e1116; --primary:#22d3ee; --accent:#f472b6; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:#e5e7eb; font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  .mono { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+  .grid-bg {
+    background-image:linear-gradient(rgba(34,211,238,.05) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(34,211,238,.05) 1px,transparent 1px);
+    background-size:28px 28px;
+  }
+  .corner { position:relative; }
+  .corner::before, .corner::after {
+    content:""; position:absolute; width:14px; height:14px; border:2px solid var(--primary); opacity:.8;
+  }
+  .corner::before { top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .corner::after { bottom:-1px; right:-1px; border-left:none; border-top:none; }
+  .card { background:#141a22; border:1px solid #233042; border-radius:14px; }
+  .inp { background:#0b0f14; border:1px solid #2b3a4e; border-radius:8px; padding:.5rem .7rem; color:#e5e7eb; width:100%; }
+  .inp:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 2px rgba(34,211,238,.25); }
+  .btn-primary { background:var(--primary); color:#062a33; font-weight:700; border-radius:10px; padding:.65rem 1.2rem; transition:.15s; }
+  .btn-primary:hover { filter:brightness(1.1); transform:translateY(-1px); }
+  .btn-ghost { border:1px solid #334155; border-radius:10px; padding:.6rem 1rem; color:#cbd5e1; transition:.15s; }
+  .btn-ghost:hover { border-color:var(--primary); color:var(--primary); }
+  .btn-accent { background:var(--accent); color:#3b0a24; font-weight:700; border-radius:10px; padding:.65rem 1.2rem; transition:.15s; }
+  .btn-accent:hover { filter:brightness(1.1); transform:translateY(-1px); }
+  .chip { display:inline-block; font-size:.7rem; border-radius:999px; padding:.1rem .55rem; border:1px solid #334155; color:#94a3b8; }
+  .chip-lib { border-color:var(--accent); color:var(--accent); }
+  .chip-hib { border-color:var(--primary); color:var(--primary); }
+  table.matrix th, table.matrix td { border:1px solid #223046; padding:.35rem; }
+  table.matrix thead th { background:#10161e; color:var(--primary); font-size:.78rem; }
+  table.matrix tbody th { background:#10161e; text-align:left; font-weight:600; font-size:.85rem; }
+  .score-inp { width:4.2rem; text-align:center; background:#0b0f14; border:1px solid #2b3a4e; border-radius:6px; padding:.3rem .2rem; }
+  .score-inp:focus { outline:none; border-color:var(--primary); }
+  .bar-track { height:10px; border-radius:999px; background:#0b0f14; overflow:hidden; border:1px solid #223046; }
+  .bar-fill { height:100%; background:linear-gradient(90deg,var(--primary),var(--accent)); border-radius:999px; transition:width .8s cubic-bezier(.2,.8,.2,1); }
+  .faq { background:#141a22; border:1px solid #233042; border-radius:12px; padding:1rem 1.25rem; }
+  .faq summary { cursor:pointer; font-weight:600; color:#f1f5f9; list-style:none; }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary::before { content:"+ "; color:var(--primary); font-weight:700; }
+  .faq[open] summary::before { content:"– "; }
+  .faq p { margin-top:.6rem; color:#94a3b8; line-height:1.7; }
+  .glow { text-shadow:0 0 18px rgba(34,211,238,.45); }
+  details.pw-panel summary { cursor:pointer; }
+  @media (max-width:640px){ .score-inp{ width:3.4rem; } }
+</style>
+</head>
+<body class="grid-bg min-h-screen">
+
+<!-- STICKY HEADER -->
+<header class="sticky top-0 z-40 border-b border-[#1d2836] bg-[#0e1116]/90 backdrop-blur">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2">
+      <span class="mono text-xl font-bold text-[#22d3ee] glow">⌁</span>
+      <span class="text-lg font-extrabold tracking-tight text-white">Decide<span class="text-[#22d3ee]">Wise</span></span>
+    </a>
+    <nav class="flex items-center gap-5 text-sm font-medium">
+      <a href="#top" class="text-slate-300 hover:text-[#22d3ee] transition">Home</a>
+      <a href="https://fixoraa.tech" class="text-slate-300 hover:text-[#22d3ee] transition">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- TOP AD (verbatim) -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-8">
+
+  <!-- HERO -->
+  <div class="text-center mb-8">
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-3">
+      Weighted <span class="text-[#22d3ee] glow">Decision Matrix</span> Calculator
+    </h1>
+    <p class="text-slate-400 max-w-2xl mx-auto">List your options, weight your criteria, score the matrix — DecideWise ranks every choice for you and stress-tests the winner with sensitivity analysis.</p>
+    <div class="mt-4 inline-flex items-center gap-2">
+      <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#062a33] bg-[#22d3ee] rounded-full px-4 py-1.5">Unlimited Free Usage</span>
+      <span class="text-xs text-slate-500">no signup · no paywall · runs 100% in your browser</span>
+    </div>
+  </div>
+
+  <!-- STEP 1: SETUP -->
+  <section class="corner card p-5 sm:p-6 mb-6">
+    <h2 class="text-lg font-bold text-white mb-1"><span class="mono text-[#22d3ee]">01</span> · Define options &amp; criteria</h2>
+    <p class="text-sm text-slate-400 mb-5">Weights are auto-normalized to 100%. Tick <span class="chip chip-lib">lower-is-better</span> for cost-like criteria and scores invert automatically.</p>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="font-semibold text-[#f472b6] mb-3">Options <span class="text-xs text-slate-500 font-normal" id="dw-options-count"></span></h3>
+        <div class="flex gap-2 mb-3">
+          <input id="dw-option-name" class="inp" type="text" placeholder="e.g. MacBook Air, Job offer A…" maxlength="60">
+          <button id="dw-add-option" class="btn-ghost shrink-0">+ Add</button>
+        </div>
+        <ul id="dw-options-list" class="space-y-2"></ul>
+      </div>
+      <div>
+        <h3 class="font-semibold text-[#22d3ee] mb-3">Criteria <span class="text-xs text-slate-500 font-normal" id="dw-criteria-count"></span></h3>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <input id="dw-criterion-name" class="inp flex-1 min-w-[140px]" type="text" placeholder="e.g. Price, Battery life…" maxlength="60">
+          <input id="dw-criterion-weight" class="inp mono" style="width:5.5rem" type="number" min="0" max="100" value="25" title="Weight">
+          <label class="flex items-center gap-1.5 text-xs text-slate-300 border border-[#2b3a4e] rounded-lg px-2.5" title="Lower score is better (auto-inverts)">
+            <input id="dw-criterion-lower" type="checkbox" class="accent-[#f472b6]"> ↓ better
+          </label>
+          <button id="dw-add-criterion" class="btn-ghost shrink-0">+ Add</button>
+        </div>
+        <ul id="dw-criteria-list" class="space-y-2"></ul>
+        <p id="dw-weights-note" class="text-xs text-slate-500 mt-2 mono"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2: MATRIX -->
+  <section class="corner card p-5 sm:p-6 mb-6">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <h2 class="text-lg font-bold text-white"><span class="mono text-[#22d3ee]">02</span> · Score the matrix <span class="text-sm font-normal text-slate-400">(1–10)</span></h2>
+      <div class="flex gap-2">
+        <button id="dw-sample" class="btn-ghost text-sm">Load sample</button>
+        <button id="dw-reset" class="btn-ghost text-sm">Clear all</button>
+      </div>
+    </div>
+    <div class="overflow-x-auto">
+      <table id="dw-matrix" class="matrix w-full text-sm" aria-label="Decision matrix"></table>
+    </div>
+    <p class="text-xs text-slate-500 mt-3">Score every cell 1–10. For <span class="chip chip-lib">↓ lower-is-better</span> criteria a low raw score is good — DecideWise flips it automatically (shown as <span class="mono text-[#f472b6]">inv</span> in results).</p>
+  </section>
+
+  <!-- STEP 3: ACTIONS -->
+  <section class="card p-5 sm:p-6 mb-6">
+    <h2 class="text-lg font-bold text-white mb-4"><span class="mono text-[#22d3ee]">03</span> · Analyze</h2>
+    <div class="flex flex-wrap gap-3">
+      <button id="dw-analyze" class="btn-primary text-base">⚡ Rank options</button>
+      <button id="dw-sensitivity" class="btn-accent text-base">🔥 Sensitivity analysis</button>
+      <button id="dw-share-link" class="btn-ghost">🔗 Copy share link</button>
+      <button id="dw-copy-adr" class="btn-ghost">📄 Copy ADR markdown</button>
+    </div>
+    <p id="dw-analyze-msg" class="text-sm text-slate-400 mt-3 min-h-[1.25rem]"></p>
+    <input id="dw-share-url" class="inp mono text-xs mt-1" readonly placeholder="Your shareable link will appear here after ranking…" aria-label="Shareable link">
+  </section>
+
+  <!-- STEP 4: RESULTS -->
+  <section id="dw-results" class="corner card p-5 sm:p-6 mb-6 hidden">
+    <h2 class="text-lg font-bold text-white mb-4"><span class="mono text-[#22d3ee]">04</span> · Ranking</h2>
+    <div id="dw-ranking-list" class="space-y-4"></div>
+  </section>
+
+  <!-- SENSITIVITY -->
+  <section id="dw-sensitivity-panel" class="card p-5 sm:p-6 mb-6 hidden" style="border-color:#f472b6">
+    <h2 class="text-lg font-bold text-white mb-2">🔥 Sensitivity analysis <span class="text-sm font-normal text-slate-400">— what would flip the winner?</span></h2>
+    <p class="text-sm text-slate-400 mb-4">Each row shows the <em>smallest single weight change</em> (other weights re-balanced proportionally) that would crown a different winner. Criteria with small Δ values are your decision's pressure points.</p>
+    <div id="dw-sensitivity-list" class="space-y-3"></div>
+  </section>
+
+  <!-- PAIRWISE QUICK MODE -->
+  <section class="card p-5 sm:p-6 mb-6">
+    <details class="pw-panel" id="dw-pairwise-toggle">
+      <summary class="text-lg font-bold text-white"><span class="mono text-[#22d3ee]">05</span> · ⚡ Pairwise quick mode <span class="text-sm font-normal text-slate-400">— pick winners head-to-head instead of typing scores</span></summary>
+      <div class="mt-4">
+        <p class="text-sm text-slate-400 mb-3">Choose a criterion, then click the better option in each pair (or Tie). Apply converts win-tallies into 1–10 scores for that column.</p>
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <select id="dw-pairwise-criterion" class="inp" style="width:auto"></select>
+          <button id="dw-pairwise-apply" class="btn-primary text-sm">Apply to matrix</button>
+          <button id="dw-pairwise-clear" class="btn-ghost text-sm">Clear picks</button>
+        </div>
+        <div id="dw-pairwise-pairs" class="space-y-2"></div>
+      </div>
+    </details>
+  </section>
+</main>
+
+<!-- BOTTOM AD (verbatim) -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+
+<!-- SEO ARTICLE -->
+<article class="mx-auto max-w-6xl px-4 sm:px-6 pb-12 text-slate-300 leading-7">
+  <h2 class="text-2xl font-bold text-white mb-4">The Weighted Decision Matrix: A Smarter Way to Make Hard Choices</h2>
+
+  <p class="mb-4">Every hard decision feels the same. You have three job offers, four laptops, or two cities to move to, and a swirl of pros and cons in your head that never quite settles. A plain pros-and-cons list helps, but it treats every factor as equal — and in real life, factors are never equal. Salary matters more than commute time for some people and less for others. A <strong>decision matrix calculator</strong> fixes this by forcing you to say exactly how much each factor matters, and then doing the arithmetic for you.</p>
+
+  <p class="mb-4">The tool is simple in structure and powerful in practice. It is sometimes called a Pugh matrix, after the engineer Stuart Pugh who popularized a version of it in the 1990s for product design. Today, a <strong>weighted decision matrix</strong> is used for hiring, vendor selection, university choice, real-estate shortlists, feature prioritization in software teams, and countless everyday dilemmas. Instead of relying on gut feel — or a pros and cons decision tool that counts every "pro" as one point regardless of importance — you assign each criterion a weight, score each option against each criterion, and let the math surface the winner.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">Why plain pros-and-cons lists mislead you</h3>
+
+  <p class="mb-4">A classic pros-and-cons list has a hidden flaw: it assumes all pros are equal. "Great battery life" and "nice color" each count as one bullet. If one option has six trivial advantages and another has two decisive ones, the list recommends the wrong thing. Behavioral research on decision-making consistently shows that people overweight the number of attributes and underweight their importance — a bias sometimes called "attribute count bias." A weighted matrix corrects it by design. When you give "total cost" a weight of 30 percent and "aesthetics" a weight of 5 percent, you have made your priorities explicit, and no amount of minor perks can quietly outvote what actually matters to you.</p>
+
+  <p class="mb-4">There is a second flaw that weighted scoring fixes: recency and emotion. The last argument you heard tends to dominate your thinking, and the option you "fell in love with" tends to collect charitable scores. Scoring every option on every criterion — before you see the totals — creates a separation between judgment and arithmetic that measurably improves consistency. You still bring your judgment to each individual cell; the matrix simply stops you from moving the goalposts after the fact.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">How a weighted decision matrix works, step by step</h3>
+
+  <p class="mb-4"><strong>Step 1 — List the real options.</strong> Write down only the options you would genuinely consider. Three to six is the sweet spot. Two options make the matrix trivial (though still useful for documentation); more than eight makes scoring exhausting and the differences noisy. Be honest: if an option is not truly on the table, including it as a "straw man" just flatters the others.</p>
+
+  <p class="mb-4"><strong>Step 2 — Choose 4–7 criteria.</strong> These are the dimensions that actually drive the decision: cost, quality, time, risk, reversibility, growth potential. Fewer than four and you are probably ignoring something important; more than seven and the weights get so thin that the matrix becomes decorative. Watch out for overlapping criteria — "price" and "monthly cost" will double-count the same money and quietly distort the result. Each criterion should capture something genuinely distinct.</p>
+
+  <p class="mb-4"><strong>Step 3 — Set the weights.</strong> This is the most important step and the one people rush. Weights are your values, quantified. A common technique is to distribute 100 points across the criteria by asking: "If I could be perfect on only one criterion, which would it be?" That criterion gets the biggest share. In DecideWise, weights are normalized automatically, so you can enter any numbers — 30/25/20/15/10 or rough guesses like 5/4/3/2/1 — and the tool scales them to 100 percent.</p>
+
+  <p class="mb-4"><strong>Step 4 — Score each option 1–10 per criterion.</strong> Be disciplined: score one criterion at a time across all options rather than one option across all criteria. This keeps your scale honest — you are comparing the options against each other on the same dimension instead of comparing dimensions inside one option. Anchor your scale with real reference points: 10 means "best I could realistically hope for," 1 means "unacceptable but on the list," 5 means "average for what I am considering."</p>
+
+  <p class="mb-4"><strong>Step 5 — Read the ranking, then interrogate it.</strong> The totals are a starting point, not a verdict. If the winner surprises you, do not just accept or reject it — ask which input is doing the work. Is one weight carrying the decision? Is one optimistic score? That interrogation is where the real value lies, and it is exactly what the sensitivity analysis below automates.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">The lower-is-better trick: why costs need inverting</h3>
+
+  <p class="mb-4">Not every criterion points the same way. For performance, battery life, or salary, higher is better. For price, commute time, weight, or risk, lower is better — a cheaper option should score higher. Mixing the two directions without care is the most common arithmetic error people make in hand-built matrices: they score price 1–10 "where 10 is expensive" and then add it to the total, which rewards the most expensive option. DecideWise eliminates this entire class of error. Mark a criterion as lower-is-better and the tool auto-inverts every score on a fixed 1–10 scale (a raw 2 becomes an effective 9, a raw 8 becomes an effective 3). The results panel shows both the raw and inverted values so you can audit exactly what happened.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">Sensitivity analysis: stress-test your winner</h3>
+
+  <p class="mb-4">Here is the question most decision tools never ask: <em>how wrong would my weights have to be before a different option wins?</em> If bumping "price" from 20 to 25 percent flips the winner, your decision is fragile — it depends on a judgment call you made in thirty seconds. If no single weight change between 0 and 100 percent changes the outcome, your decision is robust, and you can proceed with confidence.</p>
+
+  <p class="mb-4">DecideWise runs this check with one click. For each criterion, it sweeps that criterion's weight up and down — re-balancing the others proportionally so the math stays honest — and finds the smallest change that crowns a new winner. The results are sorted so the most sensitive criterion comes first. Think of each row as a pressure point: "Battery life is your pressure point. Increase its weight from 20% to 39% and the MacBook Air wins instead." That sentence is worth more than the ranking itself, because it tells you exactly where to spend your remaining deliberation. If the sensitive criterion is one you feel shaky about, go research it. If it is one you feel certain about, the decision is as solid as it gets.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">Pairwise quick mode: decide without numbers</h3>
+
+  <p class="mb-4">Some people freeze when asked to type a number. Is this candidate's communication a 7 or an 8? Pairwise comparison sidesteps the problem entirely: instead of assigning absolute scores, you answer a series of easy questions — "For battery life, do you prefer A or B?" Humans are far more reliable at relative judgments than absolute ones, a finding replicated across decades of psychology research. In pairwise quick mode, pick a criterion, click through each head-to-head matchup (ties allowed), and the tool converts win tallies into 1–10 scores automatically. An option that beats everything scores near 10; one that loses everything scores near 1. It is the fastest way to fill a column, and for many people the scores feel more trustworthy than numbers typed from thin air.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">Sharing the matrix: decisions are team sports</h3>
+
+  <p class="mb-4">Big decisions rarely belong to one person. A cofounder, partner, or hiring committee needs to see not just your conclusion but your reasoning. DecideWise encodes the entire matrix — options, criteria, weights, and scores — into a shareable link. Send it to anyone and they open your exact matrix in their browser, ready to tweak weights and argue about scores. No accounts, no uploads, no data leaving your browser except the link itself. For high-stakes decisions, this is transformative: instead of debating conclusions ("I think we should hire Priya"), the team debates inputs ("is 'culture fit' really worth 25%?"), which is a far more productive argument.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">Document it: ADR-style decision records</h3>
+
+  <p class="mb-4">In engineering, major choices are recorded as Architecture Decision Records (ADRs) — short documents capturing the context, the options considered, and why one won. It is a practice worth stealing for life decisions. DecideWise exports your matrix as ADR-style Markdown with one click: the decision drivers and their weights, a full score table, the outcome and margin of victory, and a sensitivity note. Paste it into your notes app, your team's wiki, or a decision journal. Six months later, when you wonder "why did we pick this vendor?", you will have the answer instead of a vague memory. Decision journals are one of the few habits with solid evidence behind them: reviewing past reasoning — not just past outcomes — is how judgment actually improves.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">Real-world examples</h3>
+
+  <p class="mb-4"><strong>Choosing a laptop.</strong> Criteria: price (lower-is-better, 30%), performance (25%), battery life (20%), weight (lower-is-better, 15%), warranty (10%). Three contenders. The matrix often reveals that the "obvious" choice wins only because of one heavily weighted criterion — and the sensitivity check tells you whether that criterion deserves its weight. This is the exact sample matrix loaded in the tool above; change the weights and watch the winner move.</p>
+
+  <p class="mb-4"><strong>Hiring.</strong> Criteria: technical skill (30%), communication (25%), experience (20%), culture add (15%), salary expectation (lower-is-better, 10%). Score candidates right after each interview, before discussing with the panel — then share the link so the panel debates scores, not gut feelings. Anchoring and halo effects drop dramatically when everyone commits to scores first.</p>
+
+  <p class="mb-4"><strong>Choosing a city or apartment.</strong> Criteria: rent (lower-is-better, 35%), commute time (lower-is-better, 20%), safety (15%), space (15%), amenities (10%), noise (lower-is-better, 5%). Relocation decisions are emotional; the matrix does not remove emotion, but it forces the trade-offs into the open where you can look at them.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">Common mistakes to avoid</h3>
+
+  <p class="mb-4"><strong>Weight-stuffing.</strong> Spreading weights evenly "to be fair" is not fair — it is abdication. If everything matters equally, nothing matters. Force yourself to rank the criteria first, then assign weights.</p>
+
+  <p class="mb-4"><strong>Double-counting.</strong> Overlapping criteria ("price" and "affordability") inflate whatever they measure. Merge them or drop one.</p>
+
+  <p class="mb-4"><strong>False precision.</strong> A total of 7.42 versus 7.38 is not a meaningful difference — it is noise from your scoring. Treat near-ties as ties and break them with the criterion you care about most, or gather more information.</p>
+
+  <p class="mb-4"><strong>Scoring after peeking.</strong> If you compute totals as you go, you will unconsciously nudge scores to favor your favorite. Score the whole grid first, then rank.</p>
+
+  <p class="mb-4"><strong>Ignoring reversibility.</strong> The matrix ranks options by expected value, but it does not capture how easily you can undo the choice. A slightly lower-scoring but easily reversible option is often the better bet. Add "reversibility" as a criterion when it matters.</p>
+
+  <h3 class="text-xl font-bold text-white mt-8 mb-3">The bottom line</h3>
+
+  <p class="mb-4">A weighted decision matrix will not make the decision for you — and it should not. What it does is far more valuable: it separates your values (weights) from your judgments (scores), does the arithmetic without bias, stress-tests the result, and leaves a written record you can defend and revisit. Use this <strong>decision matrix calculator</strong> the next time a choice keeps you up at night. Fill the grid honestly, run the sensitivity analysis, share the link with someone whose judgment you trust, and export the ADR. The answer that survives that process is one you can commit to — and that, more than the score itself, is the point.</p>
+</article>
+
+<!-- FAQs -->
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pb-10">
+  <h2 class="text-2xl font-bold text-white mb-5">Frequently asked questions</h2>
+  <div class="space-y-3">
+    <details class="faq">
+      <summary>What is a weighted decision matrix?</summary>
+      <p>A weighted decision matrix is a table that compares options against weighted criteria. Each criterion gets a weight (how much it matters), each option gets a score per criterion, and the option with the highest weighted total wins. Unlike a simple pros-and-cons list, it accounts for the fact that some factors matter far more than others.</p>
+    </details>
+    <details class="faq">
+      <summary>How do I choose weights for my criteria?</summary>
+      <p>Start by ranking your criteria from most to least important, then distribute 100 points across them. Ask yourself: "If I could be perfect on only one criterion, which would it be?" That one deserves the largest weight. DecideWise normalizes any numbers you enter, so rough guesses like 5/3/2/1 work fine — and the sensitivity analysis shows you exactly how much each weight matters.</p>
+    </details>
+    <details class="faq">
+      <summary>What does "lower-is-better" mean, and why does it invert scores?</summary>
+      <p>Some criteria are "lower is better" — price, commute time, risk, weight. A cheap option should score high, so DecideWise auto-inverts those scores on the same 1–10 scale (a raw 2 becomes an effective 9). This prevents the classic spreadsheet error of adding "expensive = 10" into a total where higher should win.</p>
+    </details>
+    <details class="faq">
+      <summary>What is sensitivity analysis in a decision matrix?</summary>
+      <p>Sensitivity analysis finds how much each criterion's weight would need to change before a different option becomes the winner. If a tiny weight tweak flips the result, your decision is fragile and you should scrutinize that criterion. If nothing flips it, the decision is robust. DecideWise runs this with one click and sorts criteria by sensitivity.</p>
+    </details>
+    <details class="faq">
+      <summary>Is my data private? Where is it stored?</summary>
+      <p>Everything runs 100% in your browser — your options, criteria, and scores never leave your device. The share link encodes the matrix in the URL hash itself (not on any server), so sharing is safe, and no account or signup is ever required.</p>
+    </details>
+    <details class="faq">
+      <summary>What is an ADR, and why export one?</summary>
+      <p>An Architecture Decision Record is a short document capturing a decision's context, options considered, and rationale. DecideWise exports your matrix as ADR-style Markdown — decision drivers, the full score table, the winner and margin, plus a sensitivity note. Paste it into a wiki or decision journal so future-you knows exactly why the choice was made.</p>
+    </details>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is a weighted decision matrix?", "acceptedAnswer": { "@type": "Answer", "text": "A weighted decision matrix compares options against weighted criteria. Each criterion gets a weight for importance, each option gets a score per criterion, and the option with the highest weighted total wins — unlike a simple pros-and-cons list, it accounts for some factors mattering far more than others." } },
+    { "@type": "Question", "name": "How do I choose weights for my criteria?", "acceptedAnswer": { "@type": "Answer", "text": "Rank criteria from most to least important, then distribute 100 points across them. Ask: 'If I could be perfect on only one criterion, which would it be?' DecideWise normalizes any numbers entered, and sensitivity analysis shows how much each weight matters." } },
+    { "@type": "Question", "name": "What does lower-is-better mean, and why does it invert scores?", "acceptedAnswer": { "@type": "Answer", "text": "Some criteria are lower-is-better: price, commute time, risk. DecideWise auto-inverts those scores on the 1-10 scale (a raw 2 becomes an effective 9), preventing the classic error of adding 'expensive = 10' into a total where higher should win." } },
+    { "@type": "Question", "name": "What is sensitivity analysis in a decision matrix?", "acceptedAnswer": { "@type": "Answer", "text": "Sensitivity analysis finds how much each criterion's weight must change before a different option wins. A tiny flip means a fragile decision; no flip means a robust one. DecideWise runs this in one click and sorts criteria by sensitivity." } },
+    { "@type": "Question", "name": "Is my data private? Where is it stored?", "acceptedAnswer": { "@type": "Answer", "text": "Everything runs 100% in your browser; nothing leaves your device. The share link encodes the matrix in the URL hash itself, not on any server. No account or signup is ever required." } },
+    { "@type": "Question", "name": "What is an ADR, and why export one?", "acceptedAnswer": { "@type": "Answer", "text": "An Architecture Decision Record captures a decision's context, options considered, and rationale. DecideWise exports your matrix as ADR-style Markdown with drivers, the score table, the winner and margin, and a sensitivity note for your wiki or decision journal." } }
+  ]
+}
+</script>
+
+<!-- DECIDEWISE LOGIC LIB (inlined at build time) -->
+<script id="v3-decidewise-decision-matrix-lib">
+// DecideWiseLogic — pure logic for the DecideWise weighted decision matrix.
+// No DOM/document/window access. Runs in Node and in the browser.
+var DecideWiseLogic = (function () {
+  'use strict';
+
+  var SCALE_MAX = 10;
+  var HASH_PREFIX = '#m=';
+  var STATE_VERSION = 1;
+
+  function clean(s) { return (s === undefined || s === null) ? '' : String(s).trim(); }
+
+  function num(v, fallback) {
+    var n = Number(v);
+    return (isFinite(n) ? n : (fallback === undefined ? 0 : fallback));
+  }
+
+  // Deep-clone a model so pure functions never mutate caller state.
+  function cloneModel(model) {
+    return JSON.parse(JSON.stringify(model));
+  }
+
+  function emptyModel() {
+    return { criteria: [], options: [], scores: {} };
+  }
+
+  // Validate a model. Returns { ok: bool, errors: [strings] }.
+  function validateModel(model) {
+    var errors = [];
+    if (!model || !Array.isArray(model.options) || !Array.isArray(model.criteria)) {
+      return { ok: false, errors: ['Invalid model shape.'] };
+    }
+    if (model.options.length < 1) errors.push('Add at least one option.');
+    if (model.criteria.length < 1) errors.push('Add at least one criterion.');
+    var seenOpt = {}, seenCrit = {};
+    model.options.forEach(function (o) {
+      var n = clean(o);
+      if (!n) errors.push('An option has an empty name.');
+      else if (seenOpt[n.toLowerCase()]) errors.push('Duplicate option name: ' + n);
+      seenOpt[n.toLowerCase()] = true;
+    });
+    model.criteria.forEach(function (c) {
+      var n = clean(c.name);
+      if (!n) errors.push('A criterion has an empty name.');
+      else if (seenCrit[n.toLowerCase()]) errors.push('Duplicate criterion name: ' + n);
+      seenCrit[n.toLowerCase()] = true;
+      if (num(c.weight) < 0) errors.push('Negative weight on criterion: ' + (n || '(unnamed)'));
+    });
+    var total = model.criteria.reduce(function (s, c) { return s + Math.max(0, num(c.weight)); }, 0);
+    if (model.criteria.length > 0 && total <= 0) errors.push('Criterion weights must add up to more than zero.');
+    model.options.forEach(function (o) {
+      model.criteria.forEach(function (c) {
+        var v = model.scores && model.scores[o] && model.scores[o][c.name];
+        if (v !== undefined && v !== null && v !== '' && !isFinite(Number(v))) {
+          errors.push('Score for "' + o + '" on "' + c.name + '" is not a number.');
+        }
+      });
+    });
+    return { ok: errors.length === 0, errors: errors };
+  }
+
+  // Normalize criterion weights so they sum to exactly 100. Returns new array.
+  function normalizeWeights(criteria) {
+    var crits = criteria.map(function (c) {
+      return { name: c.name, weight: Math.max(0, num(c.weight)), lowerIsBetter: !!c.lowerIsBetter };
+    });
+    var total = crits.reduce(function (s, c) { return s + c.weight; }, 0);
+    if (total <= 0) {
+      var eq = Math.round((100 / crits.length) * 100) / 100;
+      return crits.map(function (c) { return { name: c.name, weight: eq, lowerIsBetter: c.lowerIsBetter }; });
+    }
+    return crits.map(function (c) {
+      return { name: c.name, weight: Math.round((c.weight / total) * 10000) / 100, lowerIsBetter: c.lowerIsBetter };
+    });
+  }
+
+  // Effective score on a higher-is-better scale. For lower-is-better criteria
+  // the raw score is auto-inverted on the same scale: inv = (maxScale + 1) - raw.
+  function effectiveScore(raw, criterion, maxScale) {
+    var ms = maxScale || SCALE_MAX;
+    var r = num(raw, 1);
+    if (r < 1) r = 1;
+    if (r > ms) r = ms;
+    if (criterion && criterion.lowerIsBetter) return (ms + 1) - r;
+    return r;
+  }
+
+  // Rank options by weighted score. Returns array sorted desc:
+  // [{ option, total, pct, rank, breakdown: [{ criterion, raw, effective, weight, weighted }] }]
+  function rank(model, maxScale) {
+    var ms = maxScale || SCALE_MAX;
+    var crits = normalizeWeights(model.criteria);
+    var out = model.options.map(function (opt) {
+      var breakdown = crits.map(function (c) {
+        var raw = model.scores && model.scores[opt] && model.scores[opt][c.name] !== undefined &&
+          model.scores[opt][c.name] !== null && model.scores[opt][c.name] !== ''
+          ? num(model.scores[opt][c.name], 1) : 1;
+        var eff = effectiveScore(raw, c, ms);
+        var weighted = (eff * c.weight) / 100;
+        return { criterion: c.name, raw: raw, effective: Math.round(eff * 100) / 100, weight: c.weight, lowerIsBetter: c.lowerIsBetter, weighted: Math.round(weighted * 100) / 100 };
+      });
+      var total = breakdown.reduce(function (s, b) { return s + b.weighted; }, 0);
+      return {
+        option: opt,
+        total: Math.round(total * 100) / 100,
+        pct: Math.round((total / ms) * 1000) / 10,
+        rank: 0,
+        breakdown: breakdown
+      };
+    });
+    out.sort(function (a, b) { return b.total - a.total; });
+    out.forEach(function (r, i) { r.rank = i + 1; });
+    return out;
+  }
+
+  // Build a model identical to `model` but with criterion `criterionName`
+  // set to `newWeight` and all others scaled proportionally so weights sum to 100.
+  function rescaleWeight(criteria, criterionName, newWeight) {
+    var current = normalizeWeights(criteria);
+    var target = current.filter(function (c) { return c.name === criterionName; })[0];
+    if (!target) return current;
+    var nw = Math.max(0, Math.min(100, num(newWeight)));
+    var rest = current.filter(function (c) { return c.name !== criterionName; });
+    var restOldTotal = rest.reduce(function (s, c) { return s + c.weight; }, 0);
+    var scaled = rest.map(function (c) {
+      var w = restOldTotal > 0 ? (c.weight / restOldTotal) * (100 - nw) : (100 - nw) / Math.max(1, rest.length);
+      return { name: c.name, weight: w, lowerIsBetter: c.lowerIsBetter };
+    });
+    return [{ name: target.name, weight: nw, lowerIsBetter: target.lowerIsBetter }].concat(scaled);
+  }
+
+  function winnerName(model, maxScale) {
+    var r = rank(model, maxScale);
+    return r.length ? r[0].option : null;
+  }
+
+  // Sweep one criterion's weight up and down (others scaled proportionally) to
+  // find the smallest change that flips the winner. Returns sorted by |change|.
+  // [{ criterion, currentWeight, flipWeight, direction, change, newWinner }]
+  function sensitivity(model, maxScale) {
+    var ms = maxScale || SCALE_MAX;
+    var base = winnerName(model, ms);
+    if (!base) return [];
+    var crits = normalizeWeights(model.criteria);
+    var results = [];
+    crits.forEach(function (c) {
+      var cur = c.weight;
+      var best = null;
+      ['down', 'up'].forEach(function (dir) {
+        var step = dir === 'down' ? -1 : 1;
+        var w = cur;
+        for (var i = 1; i <= 100; i++) {
+          w = cur + step * i;
+          if (w < 0 || w > 100) break;
+          var tweaked = cloneModel(model);
+          tweaked.criteria = rescaleWeight(model.criteria, c.name, w);
+          var win = winnerName(tweaked, ms);
+          if (win !== base) {
+            var change = Math.abs(w - cur);
+            var cand = {
+              criterion: c.name,
+              currentWeight: Math.round(cur * 100) / 100,
+              flipWeight: Math.round(w * 100) / 100,
+              direction: dir === 'down' ? 'decrease' : 'increase',
+              change: Math.round(change * 100) / 100,
+              newWinner: win
+            };
+            if (!best || cand.change < best.change) best = cand;
+            break; // smallest change in this direction found
+          }
+        }
+      });
+      if (best) results.push(best);
+    });
+    results.sort(function (a, b) { return a.change - b.change; });
+    return results;
+  }
+
+  // ---- shareable URL hash (base64url JSON) ----
+  function b64encode(str) {
+    var utf8;
+    if (typeof Buffer !== 'undefined') {
+      return Buffer.from(str, 'utf8').toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+    utf8 = unescape(encodeURIComponent(str));
+    return btoa(utf8).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function b64decode(str) {
+    var s = String(str).replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    if (typeof Buffer !== 'undefined') return Buffer.from(s, 'base64').toString('utf8');
+    return decodeURIComponent(escape(atob(s)));
+  }
+
+  function encodeState(model) {
+    var payload = { v: STATE_VERSION, model: { criteria: model.criteria, options: model.options, scores: model.scores || {} } };
+    return HASH_PREFIX + b64encode(JSON.stringify(payload));
+  }
+
+  function decodeState(hash) {
+    var h = clean(hash);
+    if (h.charAt(0) !== '#') throw new Error('Hash must start with #');
+    if (h.indexOf(HASH_PREFIX) !== 0) throw new Error('Not a DecideWise hash (expected ' + HASH_PREFIX + ')');
+    var json = b64decode(h.slice(HASH_PREFIX.length));
+    var payload = JSON.parse(json);
+    if (!payload || payload.v !== STATE_VERSION || !payload.model) throw new Error('Unsupported state version or corrupt payload');
+    var m = payload.model;
+    return { criteria: m.criteria || [], options: m.options || [], scores: m.scores || {} };
+  }
+
+  // ---- pairwise quick mode: win tallies -> 1..scale scores ----
+  // results: [{ a, b, winner: 'a' | 'b' | 'tie' }]
+  function pairwiseToScores(options, results, maxScale) {
+    var ms = maxScale || SCALE_MAX;
+    var tally = {};
+    options.forEach(function (o) { tally[o] = 0; });
+    (results || []).forEach(function (r) {
+      if (options.indexOf(r.a) < 0 || options.indexOf(r.b) < 0 || r.a === r.b) return;
+      if (r.winner === 'a') tally[r.a] += 1;
+      else if (r.winner === 'b') tally[r.b] += 1;
+      else { tally[r.a] += 0.5; tally[r.b] += 0.5; } // tie counts for both
+    });
+    var maxWins = Math.max(1, options.length - 1);
+    var out = {};
+    options.forEach(function (o) {
+      var s = 1 + (9 * tally[o]) / maxWins;
+      out[o] = Math.round(s * 10) / 10;
+    });
+    return out;
+  }
+
+  function allPairs(options) {
+    var pairs = [];
+    for (var i = 0; i < options.length; i++) {
+      for (var j = i + 1; j < options.length; j++) pairs.push({ a: options[i], b: options[j] });
+    }
+    return pairs;
+  }
+
+  // ---- ADR-style Markdown export ----
+  function pad(s, n) {
+    s = String(s);
+    while (s.length < n) s += ' ';
+    return s;
+  }
+
+  function exportADR(model, ranking, meta) {
+    meta = meta || {};
+    var title = clean(meta.title) || 'Untitled decision';
+    var date = clean(meta.date) || '';
+    var win = ranking && ranking.length ? ranking[0] : null;
+    var lines = [];
+    lines.push('# ADR: ' + title);
+    lines.push('');
+    lines.push('**Status:** Decided');
+    lines.push('**Date:** ' + date);
+    lines.push('**Tool:** DecideWise weighted decision matrix');
+    lines.push('');
+    lines.push('## Context');
+    lines.push('');
+    lines.push('A weighted decision matrix was used to compare ' + model.options.length +
+      ' option(s) across ' + model.criteria.length + ' weighted criterion/criteria, ' +
+      'scoring each option 1-' + SCALE_MAX + ' per criterion (higher is better after ' +
+      'auto-inversion of lower-is-better criteria).');
+    lines.push('');
+    lines.push('## Decision drivers');
+    lines.push('');
+    normalizeWeights(model.criteria).forEach(function (c) {
+      lines.push('- **' + c.name + '** — weight ' + c.weight + '%' +
+        (c.lowerIsBetter ? ' (lower is better, auto-inverted)' : ' (higher is better)'));
+    });
+    lines.push('');
+    lines.push('## Considered options');
+    lines.push('');
+    var head = ['Option'].concat(normalizeWeights(model.criteria).map(function (c) { return c.name; })).concat(['Weighted score']);
+    lines.push('| ' + head.join(' | ') + ' |');
+    lines.push('|' + head.map(function () { return '---'; }).join('|') + '|');
+    (ranking || []).forEach(function (r) {
+      var row = [r.option].concat(r.breakdown.map(function (b) {
+        return String(b.raw) + (b.lowerIsBetter ? ' (inv ' + b.effective + ')' : '');
+      })).concat([String(r.total) + ' (' + r.pct + '%)']);
+      lines.push('| ' + row.join(' | ') + ' |');
+    });
+    lines.push('');
+    lines.push('## Decision outcome');
+    lines.push('');
+    if (win) {
+      lines.push('**' + win.option + '** ranks #1 with a weighted score of ' + win.total +
+        ' out of ' + SCALE_MAX + ' (' + win.pct + '%).');
+      if (ranking.length > 1) {
+        var margin = Math.round((win.total - ranking[1].total) * 100) / 100;
+        lines.push('Runner-up **' + ranking[1].option + '** trails by ' + margin + ' points.');
+      }
+    } else {
+      lines.push('No options were scored.');
+    }
+    lines.push('');
+    lines.push('## Sensitivity note');
+    lines.push('');
+    var sens = sensitivity(model, SCALE_MAX);
+    if (sens.length) {
+      var s0 = sens[0];
+      lines.push('The ranking is most sensitive to **' + s0.criterion + '**: changing its weight from ' +
+        s0.currentWeight + '% to ' + s0.flipWeight + '% (' + s0.direction + ') would make **' +
+        s0.newWinner + '** the new winner.');
+    } else {
+      lines.push('No single-criterion weight change between 0% and 100% flips the winner — the decision is robust.');
+    }
+    lines.push('');
+    lines.push('## Consequences');
+    lines.push('');
+    lines.push('- Proceed with the top-ranked option above.');
+    lines.push('- Re-run the matrix if any criterion weight or score changes.');
+    lines.push('');
+    return lines.join('\n');
+  }
+
+  // A sensible starter example used by the UI's "Load sample" button.
+  function sampleModel() {
+    return {
+      criteria: [
+        { name: 'Price (USD)', weight: 30, lowerIsBetter: true },
+        { name: 'Performance', weight: 25, lowerIsBetter: false },
+        { name: 'Battery life', weight: 20, lowerIsBetter: false },
+        { name: 'Weight', weight: 15, lowerIsBetter: true },
+        { name: 'Warranty', weight: 10, lowerIsBetter: false }
+      ],
+      options: ['MacBook Air', 'ThinkPad X1', 'Dell XPS 13'],
+      scores: {
+        'MacBook Air': { 'Price (USD)': 6, 'Performance': 8, 'Battery life': 10, 'Weight': 9, 'Warranty': 6 },
+        'ThinkPad X1': { 'Price (USD)': 5, 'Performance': 9, 'Battery life': 8, 'Weight': 8, 'Warranty': 9 },
+        'Dell XPS 13': { 'Price (USD)': 7, 'Performance': 8, 'Battery life': 7, 'Weight': 9, 'Warranty': 7 }
+      }
+    };
+  }
+
+  return {
+    SCALE_MAX: SCALE_MAX,
+    HASH_PREFIX: HASH_PREFIX,
+    clean: clean,
+    emptyModel: emptyModel,
+    sampleModel: sampleModel,
+    validateModel: validateModel,
+    normalizeWeights: normalizeWeights,
+    effectiveScore: effectiveScore,
+    rank: rank,
+    rescaleWeight: rescaleWeight,
+    sensitivity: sensitivity,
+    encodeState: encodeState,
+    decodeState: decodeState,
+    pairwiseToScores: pairwiseToScores,
+    allPairs: allPairs,
+    exportADR: exportADR
+  };
+})();
+
+</script>
+
+<script>
+(function () {
+  'use strict';
+  var L = DecideWiseLogic;
+
+  var state = L.sampleModel();
+  var pwPicks = {}; // criterion -> { pairKey: 'a'|'b'|'tie' }
+  var lastRanking = null, lastModel = null;
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s === undefined || s === null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function msg(t, bad) {
+    var el = $('dw-analyze-msg');
+    el.textContent = t;
+    el.className = 'text-sm mt-3 min-h-[1.25rem] ' + (bad ? 'text-[#f472b6]' : 'text-slate-400');
+  }
+  function normCrits() { return L.normalizeWeights(state.criteria); }
+
+  // ---------- render: options ----------
+  function renderOptions() {
+    var ul = $('dw-options-list');
+    ul.innerHTML = '';
+    state.options.forEach(function (o, i) {
+      var li = document.createElement('li');
+      li.className = 'flex items-center justify-between gap-2 bg-[#0b0f14] border border-[#223046] rounded-lg px-3 py-2';
+      li.innerHTML = '<span class="mono text-[#22d3ee] text-xs">O' + (i + 1) + '</span>' +
+        '<span class="flex-1 text-sm text-slate-200 truncate">' + esc(o) + '</span>' +
+        '<button class="text-slate-500 hover:text-[#f472b6] text-lg leading-none" data-i="' + i + '" aria-label="Remove option">×</button>';
+      li.querySelector('button').addEventListener('click', function () {
+        state.options.splice(i, 1);
+        delete state.scores[o];
+        renderAll();
+      });
+      ul.appendChild(li);
+    });
+    $('dw-options-count').textContent = '(' + state.options.length + ')';
+  }
+
+  // ---------- render: criteria ----------
+  function renderCriteria() {
+    var ul = $('dw-criteria-list');
+    ul.innerHTML = '';
+    var nc = normCrits();
+    state.criteria.forEach(function (c, i) {
+      var li = document.createElement('li');
+      li.className = 'flex items-center gap-2 bg-[#0b0f14] border border-[#223046] rounded-lg px-3 py-2';
+      li.innerHTML =
+        '<span class="chip ' + (c.lowerIsBetter ? 'chip-lib' : 'chip-hib') + '">' + (c.lowerIsBetter ? '↓ lower' : '↑ higher') + '</span>' +
+        '<span class="flex-1 text-sm text-slate-200 truncate">' + esc(c.name) + '</span>' +
+        '<span class="mono text-xs text-[#22d3ee]">' + nc[i].weight + '%</span>' +
+        '<button class="text-slate-500 hover:text-[#f472b6] text-lg leading-none" data-i="' + i + '" aria-label="Remove criterion">×</button>';
+      li.querySelector('button').addEventListener('click', function () {
+        var name = state.criteria[i].name;
+        state.criteria.splice(i, 1);
+        Object.keys(state.scores).forEach(function (o) { delete state.scores[o][name]; });
+        delete pwPicks[name];
+        renderAll();
+      });
+      ul.appendChild(li);
+    });
+    var total = state.criteria.reduce(function (s, c) { return s + Math.max(0, Number(c.weight) || 0); }, 0);
+    $('dw-weights-note').textContent = state.criteria.length
+      ? 'entered total: ' + (Math.round(total * 100) / 100) + ' → normalized to 100%'
+      : 'add your first criterion above';
+    $('dw-criteria-count').textContent = '(' + state.criteria.length + ')';
+  }
+
+  // ---------- render: matrix ----------
+  function renderMatrix() {
+    var t = $('dw-matrix');
+    t.innerHTML = '';
+    if (!state.options.length || !state.criteria.length) {
+      t.innerHTML = '<tbody><tr><td class="text-slate-500 text-sm p-4">Add at least one option and one criterion to build the matrix.</td></tr></tbody>';
+      return;
+    }
+    var thead = document.createElement('thead');
+    var hr = document.createElement('tr');
+    var corner = document.createElement('th');
+    corner.textContent = '⇄';
+    hr.appendChild(corner);
+    normCrits().forEach(function (c) {
+      var th = document.createElement('th');
+      th.innerHTML = '<div class="font-semibold">' + esc(c.name) + '</div>' +
+        '<div class="mono font-normal text-[11px]">' + c.weight + '% ' +
+        '<span class="chip ' + (c.lowerIsBetter ? 'chip-lib' : 'chip-hib') + ' ml-1">' + (c.lowerIsBetter ? '↓' : '↑') + '</span></div>';
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+    t.appendChild(thead);
+    var tbody = document.createElement('tbody');
+    state.options.forEach(function (o) {
+      var tr = document.createElement('tr');
+      var th = document.createElement('th');
+      th.textContent = o;
+      tr.appendChild(th);
+      state.criteria.forEach(function (c) {
+        var td = document.createElement('td');
+        td.className = 'text-center';
+        var inp = document.createElement('input');
+        inp.type = 'number'; inp.min = '1'; inp.max = '10'; inp.step = '0.5';
+        inp.className = 'score-inp mono';
+        inp.setAttribute('aria-label', 'Score ' + o + ' on ' + c.name);
+        var v = state.scores[o] && state.scores[o][c.name];
+        inp.value = (v === undefined || v === null) ? 5 : v;
+        inp.dataset.opt = o; inp.dataset.crit = c.name;
+        td.appendChild(inp);
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    t.appendChild(tbody);
+  }
+
+  function readMatrix() {
+    var inputs = document.querySelectorAll('#dw-matrix .score-inp');
+    inputs.forEach(function (inp) {
+      var o = inp.dataset.opt, c = inp.dataset.crit;
+      var v = Number(inp.value);
+      if (!isFinite(v)) v = 5;
+      if (v < 1) v = 1; if (v > 10) v = 10;
+      if (!state.scores[o]) state.scores[o] = {};
+      state.scores[o][c] = v;
+    });
+  }
+
+  // ---------- analyze + results ----------
+  function buildModel() {
+    return {
+      criteria: state.criteria.map(function (c) { return { name: c.name, weight: c.weight, lowerIsBetter: c.lowerIsBetter }; }),
+      options: state.options.slice(),
+      scores: JSON.parse(JSON.stringify(state.scores))
+    };
+  }
+
+  function analyze() {
+    readMatrix();
+    var model = buildModel();
+    var v = L.validateModel(model);
+    if (!v.ok) { msg('⚠ ' + v.errors[0], true); return false; }
+    var ranking = L.rank(model);
+    lastRanking = ranking; lastModel = model;
+    renderRanking(ranking);
+    try { location.hash = L.encodeState(model); } catch (e) { /* hash too long or unsupported */ }
+    msg('✓ Ranked ' + model.options.length + ' options across ' + model.criteria.length + ' criteria. Share link updated.');
+    return true;
+  }
+
+  function renderRanking(ranking) {
+    var sec = $('dw-results');
+    var list = $('dw-ranking-list');
+    list.innerHTML = '';
+    ranking.forEach(function (r, i) {
+      var card = document.createElement('div');
+      var isWin = i === 0;
+      card.className = 'bg-[#0b0f14] border rounded-xl p-4 ' + (isWin ? 'border-[#22d3ee]' : 'border-[#223046]');
+      var medal = i === 0 ? '🏆' : i === 1 ? '🥈' : i === 2 ? '🥉' : '#' + r.rank;
+      var chips = r.breakdown.map(function (b) {
+        var scoreTxt = b.lowerIsBetter ? b.raw + '→<span class="text-[#f472b6]">' + b.effective + '</span>' : String(b.raw);
+        return '<span class="chip mr-1 mb-1" title="weighted contribution: ' + b.weighted + '">' + esc(b.criterion) +
+          ' <span class="mono">' + scoreTxt + '</span> · ' + b.weight + '%</span>';
+      }).join('');
+      card.innerHTML =
+        '<div class="flex flex-wrap items-center gap-3 mb-2">' +
+          '<span class="text-xl">' + medal + '</span>' +
+          '<span class="text-lg font-bold ' + (isWin ? 'text-[#22d3ee]' : 'text-white') + '">' + esc(r.option) + '</span>' +
+          (isWin ? '<span class="chip chip-hib font-bold">WINNER</span>' : '') +
+          '<span class="mono text-sm text-slate-300 ml-auto">' + r.total + ' / 10 · ' + r.pct + '%</span>' +
+        '</div>' +
+        '<div class="bar-track mb-3"><div class="bar-fill" style="width:0%"></div></div>' +
+        '<div>' + chips + '</div>';
+      list.appendChild(card);
+      var bar = card.querySelector('.bar-fill');
+      requestAnimationFrame(function () { requestAnimationFrame(function () { bar.style.width = r.pct + '%'; }); });
+    });
+    sec.classList.remove('hidden');
+    sec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ---------- sensitivity ----------
+  function runSensitivity() {
+    if (!analyze()) return;
+    var sens = L.sensitivity(lastModel);
+    var panel = $('dw-sensitivity-panel');
+    var list = $('dw-sensitivity-list');
+    list.innerHTML = '';
+    if (!sens.length) {
+      list.innerHTML = '<p class="text-[#22d3ee] text-sm">✅ Robust decision: no single-criterion weight change (0–100%) flips the winner <strong>' +
+        esc(lastRanking[0].option) + '</strong>.</p>';
+    } else {
+      sens.forEach(function (s) {
+        var row = document.createElement('div');
+        row.className = 'bg-[#0b0f14] border border-[#3a2333] rounded-xl p-4';
+        row.innerHTML =
+          '<div class="flex flex-wrap items-center gap-2">' +
+            '<span class="font-bold text-[#f472b6]">' + esc(s.criterion) + '</span>' +
+            '<span class="chip">Δ ' + (s.direction === 'increase' ? '+' : '−') + s.change + ' pts</span>' +
+            '<span class="text-sm text-slate-300">' + s.direction + ' weight <span class="mono">' + s.currentWeight + '% → ' + s.flipWeight + '%</span></span>' +
+          '</div>' +
+          '<p class="text-sm text-slate-400 mt-1">…and <strong class="text-white">' + esc(s.newWinner) + '</strong> becomes the winner instead of <strong class="text-white">' + esc(lastRanking[0].option) + '</strong>.</p>';
+        list.appendChild(row);
+      });
+    }
+    panel.classList.remove('hidden');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ---------- share / ADR ----------
+  function copyText(txt, okMsg) {
+    function done() { msg('✓ ' + okMsg); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(done, function () { fallback(); });
+    } else fallback();
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { msg('⚠ Copy failed — select the text manually.', true); }
+      document.body.removeChild(ta);
+    }
+  }
+
+  function shareLink() {
+    if (!analyze()) return;
+    var url = location.href.split('#')[0] + L.encodeState(lastModel);
+    $('dw-share-url').value = url;
+    copyText(url, 'Share link copied — anyone opening it sees your exact matrix.');
+  }
+
+  function copyADR() {
+    if (!analyze()) return;
+    var title = prompt('Decision title for the ADR (e.g. "Pick a laptop"):', 'My decision');
+    if (title === null) return;
+    var date = new Date().toISOString().slice(0, 10);
+    copyText(L.exportADR(lastModel, lastRanking, { title: title, date: date }), 'ADR markdown copied to clipboard.');
+  }
+
+  // ---------- pairwise quick mode ----------
+  function renderPairwise() {
+    var sel = $('dw-pairwise-criterion');
+    sel.innerHTML = '';
+    state.criteria.forEach(function (c) {
+      var o = document.createElement('option');
+      o.value = c.name; o.textContent = c.name;
+      sel.appendChild(o);
+    });
+    renderPairs();
+  }
+
+  function pairKey(a, b) { return a + ' ||| ' + b; }
+
+  function renderPairs() {
+    var box = $('dw-pairwise-pairs');
+    box.innerHTML = '';
+    var crit = $('dw-pairwise-criterion').value;
+    if (!crit || state.options.length < 2) {
+      box.innerHTML = '<p class="text-sm text-slate-500">Need at least 2 options and 1 criterion to run pairwise mode.</p>';
+      return;
+    }
+    if (!pwPicks[crit]) pwPicks[crit] = {};
+    var picks = pwPicks[crit];
+    L.allPairs(state.options).forEach(function (p) {
+      var key = pairKey(p.a, p.b);
+      var cur = picks[key];
+      var row = document.createElement('div');
+      row.className = 'flex flex-wrap items-center gap-2 bg-[#0b0f14] border border-[#223046] rounded-lg px-3 py-2';
+      function btn(label, val) {
+        var active = cur === val;
+        return '<button data-v="' + val + '" class="text-sm px-3 py-1.5 rounded-lg border transition ' +
+          (active ? 'border-[#22d3ee] text-[#22d3ee] font-bold' : 'border-[#334155] text-slate-300 hover:border-[#22d3ee]') + '">' + esc(label) + '</button>';
+      }
+      row.innerHTML = '<span class="text-xs text-slate-500 mono">for ' + esc(crit) + '</span>' +
+        btn(p.a, 'a') + '<span class="text-slate-500 text-xs">vs</span>' + btn(p.b, 'b') + btn('Tie', 'tie');
+      row.querySelectorAll('button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          picks[key] = b.dataset.v;
+          renderPairs();
+        });
+      });
+      box.appendChild(row);
+    });
+  }
+
+  function applyPairwise() {
+    var crit = $('dw-pairwise-criterion').value;
+    if (!crit) { msg('⚠ Add a criterion first.', true); return; }
+    var picks = pwPicks[crit] || {};
+    var results = L.allPairs(state.options).map(function (p) {
+      return { a: p.a, b: p.b, winner: picks[pairKey(p.a, p.b)] || 'tie' };
+    });
+    var scores = L.pairwiseToScores(state.options, results);
+    state.options.forEach(function (o) {
+      if (!state.scores[o]) state.scores[o] = {};
+      state.scores[o][crit] = scores[o];
+    });
+    renderMatrix();
+    msg('✓ Pairwise tallies applied to "' + crit + '" as 1–10 scores.');
+  }
+
+  function renderAll() {
+    renderOptions(); renderCriteria(); renderMatrix(); renderPairwise();
+  }
+
+  // ---------- events ----------
+  $('dw-add-option').addEventListener('click', function () {
+    var name = L.clean($('dw-option-name').value);
+    if (!name) { msg('⚠ Type an option name first.', true); return; }
+    if (state.options.some(function (o) { return o.toLowerCase() === name.toLowerCase(); })) { msg('⚠ That option already exists.', true); return; }
+    state.options.push(name);
+    $('dw-option-name').value = '';
+    renderAll();
+  });
+  $('dw-option-name').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('dw-add-option').click(); });
+
+  $('dw-add-criterion').addEventListener('click', function () {
+    var name = L.clean($('dw-criterion-name').value);
+    var w = Number($('dw-criterion-weight').value);
+    if (!name) { msg('⚠ Type a criterion name first.', true); return; }
+    if (!isFinite(w) || w < 0) { msg('⚠ Weight must be a non-negative number.', true); return; }
+    if (state.criteria.some(function (c) { return c.name.toLowerCase() === name.toLowerCase(); })) { msg('⚠ That criterion already exists.', true); return; }
+    state.criteria.push({ name: name, weight: w, lowerIsBetter: $('dw-criterion-lower').checked });
+    $('dw-criterion-name').value = '';
+    $('dw-criterion-lower').checked = false;
+    renderAll();
+  });
+  $('dw-criterion-name').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('dw-add-criterion').click(); });
+
+  $('dw-analyze').addEventListener('click', analyze);
+  $('dw-sensitivity').addEventListener('click', runSensitivity);
+  $('dw-share-link').addEventListener('click', shareLink);
+  $('dw-copy-adr').addEventListener('click', copyADR);
+  $('dw-sample').addEventListener('click', function () {
+    state = L.sampleModel(); pwPicks = {};
+    $('dw-results').classList.add('hidden');
+    $('dw-sensitivity-panel').classList.add('hidden');
+    renderAll(); msg('✓ Sample matrix loaded — hit "Rank options".');
+  });
+  $('dw-reset').addEventListener('click', function () {
+    state = L.emptyModel(); pwPicks = {}; lastRanking = null; lastModel = null;
+    $('dw-results').classList.add('hidden');
+    $('dw-sensitivity-panel').classList.add('hidden');
+    renderAll(); msg('✓ Cleared. Add your own options and criteria.');
+  });
+  $('dw-pairwise-criterion').addEventListener('change', renderPairs);
+  $('dw-pairwise-apply').addEventListener('click', applyPairwise);
+  $('dw-pairwise-clear').addEventListener('click', function () {
+    var crit = $('dw-pairwise-criterion').value;
+    if (crit) pwPicks[crit] = {};
+    renderPairs();
+  });
+
+  // ---------- init: restore from hash or load sample ----------
+  (function init() {
+    var loaded = false;
+    if (location.hash && location.hash.indexOf(L.HASH_PREFIX) === 0) {
+      try {
+        var m = L.decodeState(location.hash);
+        if (L.validateModel(m).ok) { state = m; loaded = true; msg('✓ Matrix restored from shared link.'); }
+      } catch (e) { /* fall through to sample */ }
+    }
+    renderAll();
+    if (!loaded) msg('Sample matrix loaded — edit it, or hit "Clear all" and start fresh.');
+  })();
+})();
+</script>
+<footer style="padding:18px 12px 26px"><p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p></footer>
+</body>
+</html>
