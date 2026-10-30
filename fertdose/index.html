@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fertilizer Dose Calculator: NPK Grams &amp; Dilution</title>
+<meta name="description" content="How much fertilizer per square metre? Turn NPK percentages into exact product grams, with liquid dilution ratios and a seasonal feeding schedule.">
+<link rel="canonical" href="https://fun.fixoraa.tech/fertdose/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Fertilizer Dose Calculator: NPK Grams &amp; Dilution">
+<meta property="og:description" content="How much fertilizer per square metre? Turn NPK percentages into exact product grams, with liquid dilution ratios and a seasonal feeding schedule.">
+<meta property="og:url" content="https://fun.fixoraa.tech/fertdose/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "FertDose",
+      "url": "https://fun.fixoraa.tech/fertdose/",
+      "applicationCategory": "Garden & Lawn",
+      "operatingSystem": "Web",
+      "description": "How much fertilizer per square metre? Turn NPK percentages into exact product grams, with liquid dilution ratios and a seasonal feeding schedule.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate how much fertilizer to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Grams of product = (nitrogen needed per m\u00b2 \u00d7 area) \u00f7 (N% \u00f7 100). For 5 g N/m\u00b2 over 10 m\u00b2 with 20% N fertilizer: (5\u00d710) \u00f7 0.20 = 250 g."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do the three numbers on fertilizer mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "20-10-10 means 20% nitrogen, 10% phosphate (P\u2082O\u2085) and 10% potash (K\u2082O) by weight. The rest is carrier material."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if my plants need nitrogen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nitrogen shows as uniform yellowing of older lower leaves plus stunted growth. Confirm with a soil test before treating."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can too much fertilizer burn plants?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 excess fertilizer salts pull water from roots and scorch foliage. Never exceed label rates, water granules in immediately, and halve doses for seedlings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I fertilize in winter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stop feeding most houseplants in winter when growth slows; resume in spring. Lawns and outdoor beds also rest \u2014 feed autumn lawns once, then nothing until spring."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is organic fertilizer better than synthetic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Synthetics give exact, fast nutrition for specific deficiencies; organics feed soil biology and rarely burn. Many gardeners use compost as the base plus targeted synthetics."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F4FAF0; --surface:#FFFFFF; --accent:#2E7A2E; --accent-ink:#FFFFFF;
+  --ink:#23301E; --muted:#5A654E; --line:#DEE7D1;
+  --display:'Epilogue',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.fe-wrap{max-width:960px;margin:0 auto;padding:28px 18px 56px;color:#23301E;font-family:Inter,system-ui,sans-serif}
+.fe-hero{text-align:center;margin-bottom:20px}
+.fe-hero h1{font-family:Epilogue,sans-serif;font-weight:800;font-size:clamp(32px,6vw,48px);margin:0 0 8px;color:#23301E;letter-spacing:-.5px}
+.fe-tagline{font-size:16px;color:#5A654E;margin:0}
+.fe-body{display:grid;grid-template-columns:210px 1fr;gap:16px;margin-top:8px}
+.fe-rail{background:#fff;border:1px solid #DEE7D1;border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:8px;align-self:start;position:sticky;top:12px}
+.fe-mode{border:1px solid #DEE7D1;background:#F4FAF0;border-radius:14px;padding:14px 12px;cursor:pointer;text-align:left;font:inherit;min-height:64px}
+.fe-mode .fe-ico{font-size:22px;display:block}
+.fe-mode .fe-lbl{font-size:14px;font-weight:700;color:#5A654E}
+.fe-mode.fe-on{background:#2E7A2E;border-color:#2E7A2E}
+.fe-mode.fe-on .fe-lbl{color:#fff}
+.fe-work{background:#fff;border:1px solid #DEE7D1;border-radius:20px;padding:24px;min-height:380px}
+.fe-h2{font-family:Epilogue,sans-serif;font-size:24px;font-weight:800;margin:0 0 6px;color:#23301E}
+.fe-sub{font-size:14px;color:#5A654E;margin:0 0 16px}
+.fe-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fe-field{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#5A654E}
+.fe-field input,.fe-field select{font:inherit;font-size:16px;color:#23301E;border:1px solid #DEE7D1;border-radius:12px;padding:12px;background:#F4FAF0;min-height:48px;width:100%;box-sizing:border-box}
+.fe-npk{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fe-big{margin-top:18px;background:#2E7A2E;border-radius:16px;color:#fff;text-align:center;padding:20px}
+.fe-big small{display:block;font-size:12px;letter-spacing:1px;text-transform:uppercase;opacity:.9}
+.fe-big b{font-family:Epilogue,sans-serif;font-size:52px}
+.fe-break{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.fe-break div{background:#F4FAF0;border:1px solid #DEE7D1;border-radius:14px;padding:12px 8px;text-align:center}
+.fe-break dt{font-size:12px;font-weight:700;color:#5A654E}
+.fe-break dd{margin:4px 0 0;font-weight:800;font-size:18px;color:#2E7A2E}
+.fe-sched{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
+.fe-sched th,.fe-sched td{text-align:left;padding:9px 8px;border-bottom:1px solid #DEE7D1}
+.fe-sched th{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:#5A654E}
+.fe-warn{font-size:13.5px;color:#5A654E;background:#FFF8E8;border-radius:12px;padding:10px 14px;margin:14px 0 0}
+@media(max-width:700px){
+.fe-body{grid-template-columns:1fr}
+.fe-rail{position:static;flex-direction:row;overflow-x:auto}
+.fe-mode{flex:1;min-width:110px}
+.fe-grid{grid-template-columns:1fr}
+.fe-break{grid-template-columns:1fr 1fr 1fr}
+.fe-wrap{padding:20px 12px 44px}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="FertDose home">
+      <span class="fx-logo-tile" aria-hidden="true">🌱</span>
+      <span class="fx-brand">FertDose</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-side-rail" aria-label="FertDose tool">
+<section class="fe-wrap" aria-label="Fertilizer dose calculator">
+  <div class="fe-hero">
+    <h1>🌱 Fertilizer Dose Calculator</h1>
+    <p class="fe-tagline">NPK in, grams out: dose fertilizer like a professional grower.</p>
+  </div>
+  <div class="fe-body">
+    <nav class="fe-rail" aria-label="Calculator modes">
+      <button class="fe-mode fe-on" data-mode="granular"><span class="fe-ico">🟤</span><span class="fe-lbl">Granular</span></button>
+      <button class="fe-mode" data-mode="liquid"><span class="fe-ico">💧</span><span class="fe-lbl">Liquid</span></button>
+      <button class="fe-mode" data-mode="schedule"><span class="fe-ico">📅</span><span class="fe-lbl">Schedule</span></button>
+    </nav>
+    <div class="fe-work">
+      <div id="fe-granular">
+        <h2 class="fe-h2">Granular dose</h2>
+        <p class="fe-sub">Dose by the nutrient, not the scoop.</p>
+        <div class="fe-grid">
+          <label class="fe-field">Area (m²)<input id="feArea" type="number" min="0.5" step="0.5" value="10" inputmode="decimal"></label>
+          <label class="fe-field">Nitrogen needed (g/m²)<input id="feN" type="number" min="0.5" step="0.5" value="5" inputmode="decimal"></label>
+        </div>
+        <div class="fe-field" style="margin-top:14px">Fertilizer NPK (%)
+          <div class="fe-npk">
+            <input id="feNpkN" type="number" min="1" max="50" value="20" aria-label="Nitrogen percent" inputmode="numeric">
+            <input id="feNpkP" type="number" min="0" max="50" value="10" aria-label="Phosphorus percent" inputmode="numeric">
+            <input id="feNpkK" type="number" min="0" max="50" value="10" aria-label="Potassium percent" inputmode="numeric">
+          </div>
+        </div>
+        <div class="fe-big"><small>Product needed</small><b><span id="feGrams">250</span> g</b></div>
+        <dl class="fe-break">
+          <div><dt>Nitrogen</dt><dd><span id="feBN">50</span> g</dd></div>
+          <div><dt>Phosphate</dt><dd><span id="feBP">25</span> g</dd></div>
+          <div><dt>Potash</dt><dd><span id="feBK">25</span> g</dd></div>
+        </dl>
+        <p class="fe-warn">⚠️ Never exceed label rates. Water granules in immediately and keep off wet foliage to avoid burn.</p>
+      </div>
+      <div id="fe-liquid" style="display:none">
+        <h2 class="fe-h2">Liquid dilution</h2>
+        <p class="fe-sub">Mix concentrate into water — never the reverse.</p>
+        <div class="fe-grid">
+          <label class="fe-field">Target N per litre (g)<input id="feLiqN" type="number" min="0.1" step="0.1" value="0.5" inputmode="decimal"></label>
+          <label class="fe-field">Concentrate N (%)<input id="feLiqPct" type="number" min="1" max="40" value="10" inputmode="numeric"></label>
+          <label class="fe-field">Water (litres)<input id="feLiqL" type="number" min="0.5" step="0.5" value="1" inputmode="decimal"></label>
+        </div>
+        <div class="fe-big"><small>Add to water</small><b><span id="feMl">5</span> ml</b></div>
+        <p class="fe-warn">⚠️ Apply to moist soil, never dry roots. Halve the dose for seedlings.</p>
+      </div>
+      <div id="fe-schedule" style="display:none">
+        <h2 class="fe-h2">Feeding schedule</h2>
+        <p class="fe-sub">Pick a plant type for the year's plan.</p>
+        <label class="fe-field">Plant type
+          <select id="fePlant">
+            <option value="lawn">Lawn</option>
+            <option value="veg">Vegetables</option>
+            <option value="house">Houseplants</option>
+          </select>
+        </label>
+        <table class="fe-sched"><tbody id="feSchedBody"></tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What NPK numbers actually mean</h2><p>Every fertilizer bag carries three numbers — N-P-K — representing the percentage by weight of nitrogen (N), phosphorus (as P₂O₅) and potassium (as K₂O). A bag labelled 20-10-10 contains 20% nitrogen, 10% phosphate and 10% potash. The rest is filler and carrier. This is why two bags can look similar but dose very differently: 250 g of a 20% nitrogen fertilizer delivers the same nitrogen as 500 g of a 10% one. <strong>Always dose by the nutrient, not by the product weight.</strong></p><h2>The core formula</h2><p>Grams of product = (target nutrient grams per m² × area in m²) ÷ (NPK percentage ÷ 100). Example: your lawn needs 5 g of nitrogen per m², the area is 10 m², and your fertilizer is 20% nitrogen → (5 × 10) ÷ 0.20 = 250 g of product. That is the entire maths of fertilizing. Everything else — spreader settings, liquid dilution, schedules — is logistics around this number.</p><h2>How much nitrogen do plants need?</h2><table><thead><tr><th>Plant / area</th><th>Nitrogen per application</th><th>Applications per year</th></tr></thead><tbody><tr><td>Lawn (maintenance)</td><td>3–5 g N/m²</td><td>3–4</td></tr><tr><td>Lawn (renovation)</td><td>5–8 g N/m²</td><td>1–2</td></tr><tr><td>Vegetable beds</td><td>5–10 g N/m²</td><td>2–3</td></tr><tr><td>Roses / flowering shrubs</td><td>5 g N/m²</td><td>2–3</td></tr><tr><td>Houseplants (per litre of soil)</td><td>0.2–0.5 g N</td><td>Every 2–4 weeks in growth</td></tr></tbody></table><h2>Granular vs liquid fertilizer</h2><p><strong>Granular</strong> fertilizer is cheap, slow to moderately fast acting, and ideal for lawns and beds — but it must be spread evenly and watered in, or it burns patches. <strong>Liquid</strong> fertilizer acts within days and doses precisely, perfect for houseplants and foliar feeding, but it leaches faster so you feed more often. <strong>Slow-release</strong> granules (often polymer-coated) feed for 2–6 months and are the most forgiving for beginners: one application per season, minimal burn risk.</p><h3>Liquid dilution made simple</h3><p>Liquid concentrates list their NPK too. To make a watering-can mix: decide the nitrogen dose (say 0.5 g N per litre for houseplants), then divide by the product's nitrogen fraction. A 10% N liquid needs 5 ml-equivalent per litre... precisely: 0.5 ÷ 0.10 = 5 g of product per litre of water (roughly 5 ml for most liquids). Always add concentrate to water, never the reverse, and apply to moist soil — never to dry roots, which burn easily.</p><h2>A seasonal feeding schedule</h2><table><thead><tr><th>Season</th><th>Lawn</th><th>Vegetables</th><th>Houseplants</th></tr></thead><tbody><tr><td>Early spring</td><td>First feed, balanced NPK</td><td>Base dressing before planting</td><td>Resume feeding as growth starts</td></tr><tr><td>Late spring</td><td>High-nitrogen feed</td><td>Side-dress heavy feeders</td><td>Every 2 weeks</td></tr><tr><td>Summer</td><td>Light feed or iron-only</td><td>Tomato/flower feed (high K)</td><td>Every 2 weeks</td></tr><tr><td>Autumn</td><td>Autumn feed (low N, high K)</td><td>Compost, no fresh N</td><td>Reduce to monthly</td></tr><tr><td>Winter</td><td>Nothing</td><td>Nothing</td><td>Stop (most species)</td></tr></tbody></table><h2>Reading the plant: deficiency signs</h2><ul><li><strong>Nitrogen:</strong> uniform yellowing of older, lower leaves; stunted growth.</li><li><strong>Phosphorus:</strong> purplish tints, poor flowering and root growth.</li><li><strong>Potassium:</strong> brown scorched leaf edges, weak stems.</li><li><strong>Iron:</strong> yellowing between veins on new leaves (common in alkaline soils).</li></ul><p>Confirm with a soil test before treating — over-fertilizing based on a guess causes more damage than the deficiency.</p><h2>Avoiding fertilizer burn</h2><p>Burn happens when fertilizer salts draw water out of roots or leaf tissue. The rules: never exceed the label rate, water granular fertilizer in immediately, do not fertilize drought-stressed plants, keep granules off wet foliage, and halve the dose for seedlings and new transplants. If you over-apply, flood the area with water to leach excess salts away. Slow-release products and organic options (compost, well-rotted manure) are far more forgiving because nutrients release gradually.</p><h2>Organic vs synthetic</h2><p>Synthetic fertilizers deliver exact, fast nutrients — ideal when a soil test shows a specific shortfall. Organics (compost, manure, bone meal, seaweed) feed soil biology as well as plants, improve structure, and rarely burn — but their NPK is low and imprecise (compost is roughly 1-1-1). Many gardeners use both: compost as the foundation, synthetics as targeted corrections.</p><p>Dose by the nutrient, water it in, feed on schedule — and let the NPK maths do the rest.</p><h2>Soil testing: the $20 decision-maker</h2><p>Guessing fertilizer needs is the most expensive mistake in gardening — wrong guesses waste product and damage plants. A basic soil test ($15–30 from agricultural extensions or garden centres) reports pH, nitrogen, phosphorus, potassium and organic matter, with exact amendment recommendations. Test every 2–3 years, or before any major planting. The results often surprise: many gardens are already high in phosphorus from years of balanced fertilizer, and adding more only pollutes runoff. Test first, then dose only what is missing.</p><h2>The micronutrients that matter</h2><p>Beyond NPK, plants need iron, manganese, zinc, copper, boron and molybdenum in tiny amounts. Deficiencies show distinct signatures: iron chlorosis (yellow new leaves, green veins) in alkaline soils; boron causing hollow stems in brassicas; zinc stunting in corn. Most quality fertilizers include a micronutrient package — check the label's fine print. Container plants are most vulnerable since potting mix has no mineral reserves; a complete liquid feed with trace elements prevents most issues.</p><h2>Feeding a new lawn from seed</h2><p>New seed needs phosphorus for root establishment — use a starter fertilizer (high middle number, e.g. 10-18-10) at seeding, roughly 5 g N/m² equivalent. Keep the seedbed consistently moist until germination; fertilizer without water burns tender seedlings. Once the grass is 3 inches tall and mowed twice, switch to a regular high-nitrogen program. Avoid weed-and-feed products on new lawns — the herbicide component damages seedlings. Patience beats product: a well-watered new lawn with modest feeding outperforms an over-fertilized one.</p><h2>Foliar feeding: spraying leaves</h2><p>Plants absorb nutrients through leaves as well as roots, and foliar feeding delivers corrections in days rather than weeks — ideal for iron chlorosis or a mid-season boost. Mix at <strong>half the soil-drench strength</strong> to avoid leaf burn, spray in the cool of evening (stomata open, evaporation slow), and coat leaf undersides where most stomata live. Foliar feeding supplements but never replaces soil feeding: leaves cannot take up the volumes roots can. Think of it as an IV drip versus a meal — fast, targeted, and temporary.</p><h2>Compost tea and organic boosters</h2><p>Compost tea — compost steeped in aerated water for 24–36 hours — delivers biology more than nutrition: beneficial microbes that colonise leaf surfaces and root zones, suppressing some diseases. The nutrient content is low and variable, so treat it as a supplement, not a fertilizer replacement. Seaweed extract is the more reliable organic booster, supplying potassium, trace minerals and natural growth hormones that help transplants establish and stressed plants recover. Neither replaces the NPK maths — they sit on top of a sound feeding program.</p><h2>Reading fertilizer labels fully</h2><p>Beyond NPK, labels list derived-from sources, guaranteed analysis of secondary nutrients (calcium, magnesium, sulphur) and sometimes chlorine content — high-chloride fertilizers harm chloride-sensitive crops like tobacco, berries and some ornamentals. "Slow-release" percentages tell you how much nitrogen is coated; 50%+ slow-release means one application feeds for months. Watch for filler claims like "contains biosolids" if you garden organically. The label is a legal document — the guaranteed analysis is the most trustworthy text on the bag.</p><h2>Calibrating a broadcast spreader</h2><p>Even the perfect calculated dose fails through an uncalibrated spreader. The catch-pan method: mark a 100 sq ft test area, load a weighed amount, spread at your normal pace, then weigh what remains — the difference over the test area scales to your per-1000-sq-ft rate. Adjust the gate and repeat until it matches your target. Walk at a steady pace with slight overlap between passes; most striping complaints trace to inconsistent walking speed, not the product. Calibrate whenever you switch products — granule size changes flow rate dramatically.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate how much fertilizer to use?</summary><p>Grams of product = (nitrogen needed per m² × area) ÷ (N% ÷ 100). For 5 g N/m² over 10 m² with 20% N fertilizer: (5×10) ÷ 0.20 = 250 g.</p></details>
+<details><summary>What do the three numbers on fertilizer mean?</summary><p>20-10-10 means 20% nitrogen, 10% phosphate (P₂O₅) and 10% potash (K₂O) by weight. The rest is carrier material.</p></details>
+<details><summary>How do I know if my plants need nitrogen?</summary><p>Nitrogen shows as uniform yellowing of older lower leaves plus stunted growth. Confirm with a soil test before treating.</p></details>
+<details><summary>Can too much fertilizer burn plants?</summary><p>Yes — excess fertilizer salts pull water from roots and scorch foliage. Never exceed label rates, water granules in immediately, and halve doses for seedlings.</p></details>
+<details><summary>Should I fertilize in winter?</summary><p>Stop feeding most houseplants in winter when growth slows; resume in spring. Lawns and outdoor beds also rest — feed autumn lawns once, then nothing until spring.</p></details>
+<details><summary>Is organic fertilizer better than synthetic?</summary><p>Synthetics give exact, fast nutrition for specific deficiencies; organics feed soil biology and rarely burn. Many gardeners use compost as the base plus targeted synthetics.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">FertDose</div>
+    <p>FertDose converts NPK percentages into exact grams of fertilizer per area, plus liquid dilution and feeding schedules.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function fertDose(areaM2, n_g_per_m2, npkN_pct){
+  if(!(areaM2 > 0) || !(n_g_per_m2 > 0) || !(npkN_pct > 0)) return NaN;
+  return Math.round((n_g_per_m2 * areaM2) / (npkN_pct/100) * 10) / 10;
+}
+if(typeof document !== 'undefined'){
+document.addEventListener('DOMContentLoaded', function(){
+  var schedules = {
+    lawn: [['Early spring','Balanced feed, 4 g N/m²'],['Late spring','High-nitrogen feed, 5 g N/m²'],['Autumn','Autumn feed — low N, high K'],['Winter','Nothing']],
+    veg: [['Early spring','Base dressing before planting'],['Late spring','Side-dress heavy feeders'],['Summer','High-potassium tomato/flower feed'],['Autumn','Compost only — no fresh nitrogen']],
+    house: [['Spring','Resume feeding every 2–4 weeks'],['Summer','Feed every 2 weeks'],['Autumn','Reduce to monthly'],['Winter','Stop feeding (most species)']]
+  };
+  function refresh(){
+    var a = parseFloat(document.getElementById('feArea').value) || 0;
+    var n = parseFloat(document.getElementById('feN').value) || 0;
+    var pN = parseFloat(document.getElementById('feNpkN').value) || 0;
+    var pP = parseFloat(document.getElementById('feNpkP').value) || 0;
+    var pK = parseFloat(document.getElementById('feNpkK').value) || 0;
+    var g = fertDose(a, n, pN);
+    if(isNaN(g)) g = 0;
+    document.getElementById('feGrams').textContent = Math.round(g);
+    document.getElementById('feBN').textContent = Math.round(g * pN/100);
+    document.getElementById('feBP').textContent = Math.round(g * pP/100);
+    document.getElementById('feBK').textContent = Math.round(g * pK/100);
+    var ln = parseFloat(document.getElementById('feLiqN').value) || 0;
+    var lp = parseFloat(document.getElementById('feLiqPct').value) || 1;
+    var ll = parseFloat(document.getElementById('feLiqL').value) || 0;
+    var ml = (ln * ll) / (lp/100);
+    document.getElementById('feMl').textContent = (Math.round(ml*10)/10);
+    var pl = document.getElementById('fePlant').value;
+    document.getElementById('feSchedBody').innerHTML = schedules[pl].map(function(r){
+      return '<tr><th>' + r[0] + '</th><td>' + r[1] + '</td></tr>';
+    }).join('');
+  }
+  document.querySelectorAll('.fe-mode').forEach(function(m){
+    m.addEventListener('click', function(){
+      document.querySelectorAll('.fe-mode').forEach(function(x){ x.classList.remove('fe-on'); });
+      m.classList.add('fe-on');
+      var mode = m.getAttribute('data-mode');
+      ['granular','liquid','schedule'].forEach(function(k){
+        document.getElementById('fe-' + k).style.display = (k === mode) ? 'block' : 'none';
+      });
+    });
+  });
+  ['feArea','feN','feNpkN','feNpkP','feNpkK','feLiqN','feLiqPct','feLiqL'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', refresh);
+  });
+  document.getElementById('fePlant').addEventListener('change', refresh);
+  refresh();
+});}
+</script>
+</body>
+</html>
