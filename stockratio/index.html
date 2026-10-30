@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homemade Stock Ratio &amp; Simmer Calculator | StockRatio</title>
+<meta name="description" content="Homemade stock ratio calculator: bones-to-water ratios, simmer times and yields for chicken, beef, fish and veg stock, plus pressure-cooker mode.">
+<link rel="canonical" href="https://fun.fixoraa.tech/stockratio/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Homemade Stock Ratio &amp; Simmer Calculator | StockRatio">
+<meta property="og:description" content="Homemade stock ratio calculator: bones-to-water ratios, simmer times and yields for chicken, beef, fish and veg stock, plus pressure-cooker mode.">
+<meta property="og:url" content="https://fun.fixoraa.tech/stockratio/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "StockRatio",
+      "url": "https://fun.fixoraa.tech/stockratio/",
+      "applicationCategory": "Cooking",
+      "operatingSystem": "Web",
+      "description": "Homemade stock ratio calculator: bones-to-water ratios, simmer times and yields for chicken, beef, fish and veg stock, plus pressure-cooker mode.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the correct bones-to-water ratio for stock?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 1 pound of bones per 4 cups (1 quart) of water \u2014 the ratio this calculator uses. More water gives thin, weak stock; much less crowds the pot and can make extraction uneven. Joint-heavy bones (necks, wings, feet) gel better than bare marrow bones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if my stock gelled properly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chill a spoonful: if it sets into a trembling jelly, extraction worked \u2014 that gel is dissolved collagen. No gel means too much water, too few joint bones, or too short a simmer. It is still usable; reduce it by half for more body."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should stock boil or simmer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A bare simmer \u2014 a bubble every few seconds, around 180-200\u00b0F. Boiling emulsifies fat and impurities into the liquid, making stock cloudy and greasy with muddy flavor. Start with cold water, skim the first 30 minutes, then leave it alone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long for stock in a pressure cooker?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "45-60 minutes at high pressure for chicken (versus 4-6 hours simmered), 2-2.5 hours for beef. Use slightly less water since nothing evaporates, and do a natural release. Skip the pressure cooker for fish stock \u2014 30 minutes simmered is already fast."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does homemade stock keep?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "4-5 days refrigerated (leave the fat cap on as a natural preservative), 6+ months frozen. Cool it fast in an ice bath, freeze in varied portions \u2014 ice cubes for sauces, quarts for soups. Discard anything sour-smelling or moldy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my homemade stock taste bland?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually under-reduced or under-salted. Reduce it further to concentrate flavor, salt the finished stock properly (never salt before reducing), and add a splash of lemon juice or vinegar \u2014 acid wakes up flat stock dramatically."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F0F6F8; --surface:#FFFFFF; --accent:#0E7490; --accent-ink:#FFFFFF;
+  --ink:#1C1917; --muted:#57606E; --line:#D3E5EB;
+  --display:'Vollkorn',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.sk-wrap{font-family:Inter,system-ui,sans-serif;background:#F0F6F8;color:#1C1917;padding:56px 20px 76px;}.sk-inner{max-width:1020px;margin:0 auto;}.sk-head{display:flex;align-items:center;gap:18px;margin-bottom:28px;}.sk-logo{width:66px;height:66px;border-radius:20px;background:linear-gradient(135deg,#0E7490,#3aa7c4);color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 12px 26px rgba(14,116,144,.25);}.sk-head h1{font-family:Vollkorn,Georgia,serif;font-size:clamp(28px,4.4vw,42px);margin:0;}.sk-head p{margin:4px 0 0;color:#57606E;font-size:15.5px;}.sk-layout{display:grid;grid-template-columns:230px 1fr;gap:20px;}.sk-rail{background:#FFFFFF;border:1px solid #D3E5EB;border-radius:20px;padding:18px;box-shadow:0 14px 36px rgba(14,116,144,.08);align-self:start;}.sk-rail p{font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#57606E;margin:0 0 12px;}.sk-tab{display:block;width:100%;text-align:left;border:2px solid transparent;background:#F0F6F8;border-radius:14px;padding:13px 15px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;color:#1C1917;margin-bottom:8px;box-sizing:border-box;}.sk-tab small{display:block;font-weight:400;color:#57606E;font-size:12.5px;margin-top:2px;}.sk-tab.on{border-color:#0E7490;background:#fff;}.sk-main{background:#FFFFFF;border:1px solid #D3E5EB;border-radius:20px;padding:30px;box-shadow:0 14px 36px rgba(14,116,144,.08);}.sk-main h2{font-family:Vollkorn,Georgia,serif;font-size:24px;margin:0 0 4px;}.sk-main .sk-sub{color:#57606E;font-size:14.5px;margin:0 0 20px;}.sk-field{margin-bottom:16px;}.sk-field label{display:block;font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#57606E;margin-bottom:8px;}.sk-field input{width:100%;max-width:280px;padding:13px;font-size:16px;border:2px solid #D3E5EB;border-radius:12px;font-family:inherit;color:#1C1917;background:#F0F6F8;box-sizing:border-box;min-height:52px;}.sk-field input:focus{outline:none;border-color:#0E7490;}.sk-check{display:flex;align-items:center;gap:10px;font-size:15px;margin:6px 0 18px;}.sk-check input{width:20px;height:20px;accent-color:#0E7490;}.sk-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}.sk-card{background:#F0F6F8;border:1px solid #D3E5EB;border-radius:16px;padding:18px;text-align:center;}.sk-card .sk-v{font-family:Vollkorn,Georgia,serif;font-size:30px;color:#0E7490;}.sk-card .sk-l{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#57606E;font-weight:700;margin-top:6px;}.sk-tips{margin-top:22px;border-top:1px solid #D3E5EB;padding-top:18px;font-size:14.5px;color:#57606E;line-height:1.7;}.sk-tips strong{color:#1C1917;}@media (max-width:760px){.sk-layout{grid-template-columns:1fr;}.sk-cards{grid-template-columns:1fr 1fr;}.sk-head{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="StockRatio home">
+      <span class="fx-logo-tile" aria-hidden="true">🍲</span>
+      <span class="fx-brand">StockRatio</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-side-rail" aria-label="StockRatio tool">
+<section class='sk-wrap'><div class='sk-inner'><div class='sk-head'><div class='sk-logo' aria-hidden='true'>🍲</div><div><h1>Homemade Stock Ratio Calculator</h1><p>Perfect stock, from bones to bowl.</p></div></div><div class='sk-layout'><aside class='sk-rail' aria-label='Stock type'><p>Stock type</p><div id='sk-tabs'></div></aside><div class='sk-main'><h2 id='sk-title'>Chicken stock</h2><p class='sk-sub' id='sk-sub'></p><div class='sk-field'><label for='sk-bones'>Bones (pounds)</label><input id='sk-bones' type='number' min='0' step='0.5' value='4' inputmode='decimal'></div><label class='sk-check'><input type='checkbox' id='sk-pc'> Pressure-cooker mode</label><div class='sk-cards'><div class='sk-card'><div class='sk-v' id='sk-water'>–</div><div class='sk-l'>Water (cups)</div></div><div class='sk-card'><div class='sk-v' id='sk-time'>–</div><div class='sk-l'>Simmer time</div></div><div class='sk-card'><div class='sk-v' id='sk-yield'>–</div><div class='sk-l'>Yield (cups)</div></div></div><div class='sk-tips' id='sk-tips'></div></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Homemade Stock Beats the Box</h2><p>Store-bought stock is seasoned water with flavoring. Real stock is an extraction — bones, connective tissue, and aromatics simmered until collagen melts into gelatin, minerals dissolve, and the liquid turns into something that coats a spoon and sets like jelly in the fridge. That gelatin is the difference between a soup that tastes thin and one that tastes luxurious, and no carton on a shelf can replicate it. The good news: stock is one of the highest-return cooking projects that exists. The ingredients are scraps, the method is nearly foolproof, and the calculator above handles the only part that requires math — the bones-to-water ratio.</p><p>The fundamental ratio is simple: about <strong>1 pound of bones to 4 cups (1 quart) of water</strong>. That is the ratio the tool uses, and it is the ratio behind every test batch that gels properly. More water than that gives thin, weak stock; much less gives a pot so crowded the bones cannot circulate and extract evenly.</p><h2>The Bones-to-Water Ratio, Explained</h2><p>Extraction is a concentration problem. Collagen needs to dissolve into the water, and water can only hold so much. At 1 pound of bones per quart of water, you land in the zone where gelatin concentration is high enough to gel when chilled but the pot is not so crowded that circulation stops. Go to 2 quarts per pound and your stock will taste like vaguely meaty water; go to half a quart per pound and you are making demi-glace whether you planned to or not.</p><p>Two refinements matter. First, <strong>joint-heavy bones gel better</strong> — knuckles, necks, backs, feet, and wings are collagen-rich, while bare marrow bones contribute richness but little gelatin. A mix is ideal. Second, <strong>roast the bones</strong> for brown stock (beef especially): 45 minutes at 425°F deepens flavor through the Maillard reaction. For white stock (classic chicken), keep bones unroasted for a cleaner flavor.</p><h2>Stock Types: Ratios, Times, and Yields</h2><table><thead><tr><th>Stock</th><th>Bones</th><th>Water per lb</th><th>Simmer time</th><th>Yield per lb</th></tr></thead><tbody><tr><td>Chicken</td><td>Carcasses, backs, necks, wings</td><td>4 cups</td><td>4–6 hours</td><td>~3.5 cups</td></tr><tr><td>Beef / veal</td><td>Knuckles, shanks, oxtail (roasted)</td><td>4 cups</td><td>8–12 hours</td><td>~3.5 cups</td></tr><tr><td>Fish</td><td>Heads, frames of white fish</td><td>4 cups</td><td>30–45 min</td><td>~3.5 cups</td></tr><tr><td>Vegetable</td><td>N/A — 2 lb veg</td><td>6 cups per 2 lb</td><td>1–2 hours</td><td>~5 cups</td></tr></tbody></table><p>Fish stock is the outlier: past 45 minutes it turns bitter as the delicate bones over-extract. Use only non-oily white fish — salmon or mackerel frames make stock that tastes like low tide. Vegetable stock needs no bones at all, but it needs the same discipline about time: past two hours the vegetables go muddy and sweet in the wrong way.</p><h2>The Simmer, Not the Boil</h2><p>The single biggest technical rule of stock: <strong>never let it boil</strong>. A rolling boil emulsifies fat and impurities into the liquid, producing cloudy, greasy stock with a muddy flavor. A bare simmer — a bubble breaking the surface every few seconds, around 180–200°F — extracts everything while leaving impurities easy to skim. Start with cold water (it draws out more proteins and minerals than hot), bring slowly to a simmer, skim the foam in the first 30 minutes, then leave it alone.</p><p>Skimming deserves emphasis because the first foam looks alarming. It is just denatured protein — harmless, but leaving it makes stock cloudy. Skim for the first half hour and you are done; after that the pot mostly tends itself.</p><h3>Aromatics: the classic formula</h3><p>The traditional mirepoix ratio is 2 parts onion to 1 part carrot to 1 part celery, added for roughly the last half of the simmer (2 hours for chicken, 3–4 for beef). Add them too early and they disintegrate into murk. The standard sachet: bay leaf, a few peppercorns, parsley stems, thyme. Salt lightly during cooking or not at all — you will reduce the stock later, and salt concentrates. Season the finished dish, not the pot.</p><h2>Pressure-Cooker Mode</h2><p>A pressure cooker makes stock in about a third of the time with arguably better extraction, because the higher temperature (around 250°F) melts collagen faster. The tool's pressure-cooker mode converts times automatically:</p><ul><li><strong>Chicken:</strong> 45–60 minutes at high pressure (vs 4–6 hours simmered)</li><li><strong>Beef:</strong> 2–2.5 hours at high pressure (vs 8–12 hours)</li><li><strong>Fish:</strong> skip the pressure cooker — 30 minutes simmered is already fast</li><li><strong>Vegetable:</strong> 15–20 minutes at high pressure</li></ul><p>Use slightly less water in a pressure cooker (no evaporation), do a natural pressure release for 15–20 minutes, and strain as usual. The one downside: you cannot skim during cooking, so start with well-trimmed bones and accept marginally less clarity — a fair trade for stock on a weeknight.</p><h2>The Reduction Planner</h2><p>Reduction is how thin stock becomes intense stock. Simmering uncovered evaporates water and concentrates gelatin and flavor. Reducing by half roughly doubles body; reducing to a quarter makes a glaze-like demi that you can freeze in ice-cube trays and deploy as instant sauce enrichment. The planner in the tool works backward from your target: want 4 cups of double-strength stock? Start with 8 cups of water per 2 pounds of bones and reduce by half.</p><p>Watch the pot as it reduces — the last 20 percent goes fast, and scorched stock is ruined stock. And remember the salt rule: never salt stock you plan to reduce. Reduce first, salt the finished reduction to taste.</p><h2>The Gel Test: Reading Your Stock's Quality</h2><p>Chill a spoonful of finished stock. If it sets into a trembling jelly, you extracted properly — that gel is dissolved collagen, the entire point of the exercise. If it stays liquid, the stock is still usable but thin; causes include too much water, too few joint bones, or too short a simmer. Fixes for next time: add chicken feet or wings (collagen bombs), reduce the water ratio slightly, or simmer longer. A stock that gels at fridge temperature will melt back to liquid when heated and give sauces and soups their body.</p><ul><li><strong>Perfect gel:</strong> firm jiggle, spoon stands briefly — ideal.</li><li><strong>Soft gel:</strong> loose set — good for soups, reduce a bit for sauces.</li><li><strong>No gel:</strong> flavorful but thin — fine for cooking grains, reduce by half for soup use.</li></ul><h2>Storage and Safety</h2><p>Cool stock fast — an ice bath in the sink beats the counter, and never put a giant hot pot straight in the fridge. Refrigerated, stock keeps 4–5 days; the fat cap that forms on top is a natural preservative, so leave it until you use the stock. Frozen, it keeps 6 months or more; freeze in varied portions (ice cubes for sauces, quarts for soups). Reboil refrigerated stock every few days if you are stretching it, and discard anything that smells sour or shows mold. When in doubt, throw it out — stock is cheap, food poisoning is not.</p><h2>Troubleshooting</h2><ul><li><strong>Cloudy stock:</strong> it boiled, or was stirred. Next time: bare simmer, no stirring, skim early. (Cloudy stock still tastes fine — clarity is cosmetic.)</li><li><strong>Greasy stock:</strong> chill it and lift off the solidified fat cap. A paper towel dragged across the surface grabs the last film.</li><li><strong>Bland stock:</strong> usually under-reduced or under-salted at serving. Reduce further, salt properly, add a splash of acid (lemon or vinegar) to wake it up.</li><li><strong>Bitter stock:</strong> simmered too long (especially fish), or scorched on the bottom. Fish past 45 minutes is the classic cause.</li></ul><p>Stock is the foundation everything else stands on — soup, risotto, pan sauces, braises. Make it once with the right ratio and a bare simmer, run the gel test, and you will understand why cooks guard their stockpots like treasure.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is the correct bones-to-water ratio for stock?</summary><p>About 1 pound of bones per 4 cups (1 quart) of water — the ratio this calculator uses. More water gives thin, weak stock; much less crowds the pot and can make extraction uneven. Joint-heavy bones (necks, wings, feet) gel better than bare marrow bones.</p></details>
+<details><summary>How do I know if my stock gelled properly?</summary><p>Chill a spoonful: if it sets into a trembling jelly, extraction worked — that gel is dissolved collagen. No gel means too much water, too few joint bones, or too short a simmer. It is still usable; reduce it by half for more body.</p></details>
+<details><summary>Should stock boil or simmer?</summary><p>A bare simmer — a bubble every few seconds, around 180-200°F. Boiling emulsifies fat and impurities into the liquid, making stock cloudy and greasy with muddy flavor. Start with cold water, skim the first 30 minutes, then leave it alone.</p></details>
+<details><summary>How long for stock in a pressure cooker?</summary><p>45-60 minutes at high pressure for chicken (versus 4-6 hours simmered), 2-2.5 hours for beef. Use slightly less water since nothing evaporates, and do a natural release. Skip the pressure cooker for fish stock — 30 minutes simmered is already fast.</p></details>
+<details><summary>How long does homemade stock keep?</summary><p>4-5 days refrigerated (leave the fat cap on as a natural preservative), 6+ months frozen. Cool it fast in an ice bath, freeze in varied portions — ice cubes for sauces, quarts for soups. Discard anything sour-smelling or moldy.</p></details>
+<details><summary>Why does my homemade stock taste bland?</summary><p>Usually under-reduced or under-salted. Reduce it further to concentrate flavor, salt the finished stock properly (never salt before reducing), and add a splash of lemon juice or vinegar — acid wakes up flat stock dramatically.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">StockRatio</div>
+    <p>StockRatio computes bones-to-water ratios, simmer times and yield for chicken, beef, vegetable and fish stock.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function stockCups(bonesLbs){var b=Number(bonesLbs);if(!(b>=0))return 0;return Math.round(b*4*10)/10;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){function el(id){return document.getElementById(id);}var TYPES={chicken:{name:'Chicken stock',bones:'Carcasses, backs, necks, wings',time:'4–6 hours',pc:'45–60 min at high pressure',tip:'<strong>Gel test:</strong> chill a spoonful — it should set like jelly. No gel? Add wings or feet next time, or reduce further.'},beef:{name:'Beef stock',bones:'Knuckles, shanks, oxtail — roasted 45 min at 425°F',time:'8–12 hours',pc:'2–2.5 hours at high pressure',tip:'<strong>Roast first:</strong> browning the bones builds the deep flavor that defines beef stock. Never let it boil — a bare simmer keeps it clear.'},fish:{name:'Fish stock',bones:'Heads and frames of white fish only',time:'30–45 min',pc:'Not recommended — simmer only',tip:'<strong>Watch the clock:</strong> past 45 minutes fish stock turns bitter. Never use oily fish like salmon or mackerel.'},veg:{name:'Vegetable stock',bones:'2 lb mixed veg (onion, carrot, celery)',time:'1–2 hours',pc:'15–20 min at high pressure',tip:'<strong>Keep it clean:</strong> skip cruciferous veg (cabbage, broccoli) — they turn stock sulfurous. Mushroom stems add great depth.'}};var cur='chicken';var tabs=el('sk-tabs');Object.keys(TYPES).forEach(function(k){var b=document.createElement('button');b.className='sk-tab'+(k===cur?' on':'');b.type='button';b.innerHTML=TYPES[k].name+'<small>'+TYPES[k].bones+'</small>';b.addEventListener('click',function(){cur=k;var all=tabs.querySelectorAll('.sk-tab');for(var i=0;i<all.length;i++)all[i].classList.remove('on');b.classList.add('on');render();});tabs.appendChild(b);});function render(){var bones=el('sk-bones'),pc=el('sk-pc');if(!bones)return;var lb=Number(bones.value);var t=TYPES[cur];el('sk-title').textContent=t.name;el('sk-sub').textContent=t.bones+' · ratio: 1 lb bones → 4 cups water';var w=cur==='veg'?(lb>0?Math.round(lb*3*10)/10:0):stockCups(lb);var usePc=pc&&pc.checked;el('sk-water').textContent=(lb>0||cur==='veg')?w:'–';el('sk-time').textContent=usePc?t.pc:t.time;el('sk-yield').textContent=w?Math.round(w*0.88*10)/10:'–';el('sk-tips').innerHTML=t.tip+(usePc?' <strong>Pressure tip:</strong> use a touch less water (no evaporation) and natural-release 15–20 min.':'')+' <strong>Reduction planner:</strong> simmer uncovered to halve the volume and double the body — freeze the concentrate in ice-cube trays.';}var bi=el('sk-bones');if(bi)bi.addEventListener('input',render);var pc=el('sk-pc');if(pc)pc.addEventListener('change',render);render();});}
+</script>
+</body>
+</html>
