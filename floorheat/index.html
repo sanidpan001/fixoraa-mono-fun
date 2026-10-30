@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Underfloor Heating Calculator: Watts by Room Area and Floor Type</title>
+<meta name="description" content="Calculate underfloor heating watts for your room from area and floor covering, with temperature limits.">
+<link rel="canonical" href="https://fun.fixoraa.tech/floorheat/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Underfloor Heating Calculator: Watts by Room Area and Floor Type">
+<meta property="og:description" content="Calculate underfloor heating watts for your room from area and floor covering, with temperature limits.">
+<meta property="og:url" content="https://fun.fixoraa.tech/floorheat/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "FloorHeat",
+      "url": "https://fun.fixoraa.tech/floorheat/",
+      "applicationCategory": "Home",
+      "operatingSystem": "Web",
+      "description": "Calculate underfloor heating watts for your room from area and floor covering, with temperature limits.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many watts per square metre for underfloor heating?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 150 W/m2 for tile and stone, 130 for laminate, 110 for engineered wood, and 90 for carpet. Multiply by your room area for the total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can underfloor heating be the only heat source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In a well-insulated modern home, yes. In a draughty older home, it may need a radiator or other top-up heat on the coldest days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the maximum temperature for laminate over underfloor heating?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually 27 C surface temperature. Exceeding it risks warping and gapping, so use a floor-sensing thermostat with a limit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is electric or water underfloor heating cheaper?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Electric is cheaper to install and suits single rooms, while water costs less to run and suits whole houses, especially with a heat pump."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I heat the whole floor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, heat 70 to 85 percent of the floor, leaving fixed units like baths, kitchen cabinets, and toilet pedestals unheated."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is insulation under underfloor heating important?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Without it, much of your heat escapes downward into the slab. Insulation boards send almost all the heat upward into the room."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does underfloor heating take to warm up?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often 60 to 90 minutes from cold, which is why programmable schedules and setback temperatures matter more than with radiators."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I put carpet over underfloor heating?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, if the combined tog of carpet plus underlay stays below 2.5, so heat can pass through. Thick, high-tog carpets block the heat."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF3ED; --surface:#FFFFFF; --accent:#A63D1F; --accent-ink:#FFFFFF;
+  --ink:#331D15; --muted:#7A554A; --line:#EED5C8;
+  --display:'Manrope',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.fld label{display:block;font-weight:600;margin-bottom:.3rem}
+.fld input,.fld select{width:100%;padding:.65rem .8rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:var(--surface);color:var(--ink);min-height:44px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.presets button{padding:.5rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.btn{background:var(--accent);color:var(--accent-ink);border:none;border-radius:999px;padding:.8rem 1.6rem;font-size:1rem;font-weight:700;cursor:pointer;min-height:48px}
+.btn2{background:transparent;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:.6rem 1.2rem;font-weight:600;cursor:pointer;min-height:44px}
+.result{margin-top:1.1rem;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:1rem;font-size:1.05rem}
+.result b{font-size:1.25rem}
+.hist{margin-top:.8rem;color:var(--muted);font-size:.9rem}
+@media (max-width:640px){.row{grid-template-columns:1fr}.tool-card{padding:1rem}.tool-card h1{font-size:1.4rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="FloorHeat home">
+      <span class="fx-logo-tile" aria-hidden="true">🔥</span>
+      <span class="fx-brand">FloorHeat</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-floor-warm" aria-label="FloorHeat tool">
+<div class="tool-card"><h1>Underfloor Heating Calculator</h1><p class="sub">Estimate heating watts for your room by area and floor type.</p>
+<div class="presets"><button type="button" data-preset="roomA:12,floorT:tile">Bathroom 12 m2, tile</button><button type="button" data-preset="roomA:20,floorT:wood">Living room 20 m2, wood</button><button type="button" data-preset="roomA:8,floorT:carpet">Bedroom 8 m2, carpet</button></div>
+<div class="row"><div class="fld"><label for="roomA">Room area (m2)</label><input id="roomA" type="number" value="12" min="1" max="200" step="0.5"></div>
+<div class="fld"><label for="floorT">Floor type</label><select id="floorT"><option value="tile" selected>Tile / stone</option><option value="laminate">Laminate</option><option value="wood">Engineered wood</option><option value="carpet">Carpet</option></select></div></div>
+<div class="row"><div class="fld"><label>&nbsp;</label><button class="btn" id="calcBtn" type="button">Calculate heating watts</button></div><div></div></div>
+<div class="result" id="res" aria-live="polite">Enter your room area and floor type to see your heating requirement.</div>
+<p><button class="btn2" id="copyBtn" type="button">Copy result</button></p><p class="hist" id="hist"></p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How much underfloor heating do you need?</h2>
+<p>Underfloor heating output is measured in watts per square metre, and the figure you need depends mainly on your floor covering, because different materials conduct heat differently and tolerate different temperatures. Tile and stone conduct heat superbly and can take high outputs of around 150 watts per square metre, which makes them the ideal partners for underfloor heating. Laminate needs around 130 watts per square metre, engineered wood around 110, and carpet, which insulates against heat flow, needs only about 90 watts per square metre, and must not be overheated. Multiply your room area by the right figure and you have your total heating requirement: a 12 square metre tiled bathroom needs about 1,800 watts, while the same room carpeted needs only about 1,080 watts.</p>
+<p>That headline figure is a starting point, not a finished heating design. Room heat loss also depends on insulation, window area, ceiling height, and whether the room is above an unheated space or has an exposed wall. A poorly insulated conservatory or a ground-floor room over a cold cellar will need more output than a well-insulated middle floor room of the same size. Underfloor heating also behaves differently from radiators: it warms the whole floor gently and evenly, so it feels comfortable at a lower air temperature, but it responds slowly, taking an hour or more to warm up from cold. That slow response is why good controls and a sensible schedule matter as much as the wattage figure.</p>
+<h2>Floor types and temperature limits</h2>
+<p>Every floor covering has a maximum surface temperature it can tolerate without damage. Tile and stone are the most forgiving, happily running at 29 degrees or more, which is why they pair so well with high-output systems. Laminate and engineered wood usually cap at 27 degrees, and exceeding that risks warping, gapping, and delamination, so the system must be limited accordingly. Solid wood is generally unsuitable for underfloor heating, since it moves too much with temperature and humidity changes. Carpet is limited by its tog value: the combined tog of carpet plus underlay should stay below 2.5, or heat simply cannot get through, and the system will run inefficiently no matter how much power you install.</p>
+<table><tr><th>Floor covering</th><th>Typical output</th><th>Max surface temp</th><th>Suitability</th></tr>
+<tr><td>Tile / stone</td><td>150 W/m2</td><td>29 C or higher</td><td>Excellent</td></tr>
+<tr><td>Laminate</td><td>130 W/m2</td><td>27 C</td><td>Good, with limits</td></tr>
+<tr><td>Engineered wood</td><td>110 W/m2</td><td>27 C</td><td>Good, check maker</td></tr>
+<tr><td>Vinyl (LVT)</td><td>120 W/m2</td><td>27 C</td><td>Good, check maker</td></tr>
+<tr><td>Carpet (low tog)</td><td>90 W/m2</td><td>27 C</td><td>Fair, keep tog under 2.5</td></tr></table>
+<h2>Electric mats versus water systems</h2>
+<p>Electric underfloor heating uses heating mats or loose cables under the floor, and it suits smaller areas, retrofits, and single rooms, since it is thin, quick to install, and easy to control room by room. It costs more to run per unit of heat than a water system, but the installation cost is far lower, so it wins for bathrooms and kitchens. Water-based systems circulate warm water through pipes in the floor, and they suit whole houses and new builds, since they connect to a boiler or heat pump and cost less to run at scale. Water systems are thicker, need a manifold and controls, and are harder to retrofit, but they are the right choice when you are heating a large area or building from scratch.</p>
+<h2>Coverage: how much of the floor to heat</h2>
+<p>You do not heat 100 percent of the floor. Fixed furniture, baths, kitchen units, and toilet pedestals all sit on unheated areas, since heating under them wastes energy and can damage the units. A realistic heated coverage is 70 to 85 percent of the room area, depending on layout. Plan the heated area around where people actually walk and stand: the open floor of a bathroom, the working area of a kitchen, the seating area of a living room. Measure the free floor area, not the whole room, when you are close to the limits, and remember that a mat that is too large cannot be cut down, while a mat that is too small leaves cold patches exactly where you stand barefoot.</p>
+<h2>Insulation underneath: the hidden multiplier</h2>
+<p>Insulation below the heating layer is the single most effective upgrade for underfloor heating, especially on ground floors. Without it, a large share of your heat escapes downward into the slab or the ground, warming the earth instead of your feet. With proper insulation boards, almost all the heat goes upward into the room, which means faster warm-up, lower running costs, and a system that can be smaller. On upper floors, insulation still helps by stopping heat leaking into the room below, though it matters less than on a ground floor. If you are retrofitting and cannot raise the floor much, use the thinnest effective insulation boards available and accept a slightly slower warm-up rather than skipping insulation altogether.</p>
+<h2>Controls, thermostats, and scheduling</h2>
+<p>Underfloor heating rewards good controls more than any other heating system, because of its slow response. A programmable thermostat with floor sensing, not just air sensing, keeps the floor at a safe temperature for your covering while maintaining comfort. Set the schedule to start warming well before you need the room, often 60 to 90 minutes ahead, and use setback temperatures rather than switching fully off, since reheating a cold slab takes far longer than maintaining a mild temperature. Smart thermostats with learning and weather compensation can optimise this automatically, but even a basic programmable thermostat beats a simple on-off switch by a wide margin for both comfort and cost.</p>
+<h2>Running costs: what to expect</h2>
+<p>Running cost depends on your electricity or gas price, your insulation, and how many hours the system runs, but a rough estimate helps with budgeting. A 1,800 watt electric mat running for 4 hours a day uses 7.2 kilowatt-hours, which at 25 pence per unit costs about 1.80 pounds per day for that room. In practice, thermostats cycle the system, so it does not draw full power continuously, and real costs are often 30 to 50 percent lower than the simple multiplication suggests. Water systems fed by a heat pump cost less per unit of heat, which is why they suit whole-house installations. Always compare running costs across systems before committing, not just installation quotes.</p>
+<h2>Installation pitfalls to avoid</h2>
+<p>The most common installation mistake is damaging the heating cable or mat during tiling, since a nicked cable fails and finding the break under a finished floor is painful. Test the resistance of electric mats before, during, and after installation, and record the readings, since a change indicates damage while it is still fixable. The second mistake is skipping the floor sensor, which is cheap to install during the build and almost impossible to add later. The third is poor edge insulation, which lets heat escape sideways into walls. Hire an installer who tests and documents the system, and keep the documentation with your house records for future buyers and future repairs.</p>
+<h2>Underfloor heating in bathrooms and kitchens</h2>
+<p>Bathrooms are the most popular room for underfloor heating, because warm tiles under bare feet are a daily pleasure and the small area keeps costs low. In bathrooms, plan the heated area around the open floor and in front of the bath and basin, not under the bath itself or the toilet. Kitchens benefit too, since the open working area stays warm and there are no radiators taking wall space, but keep heating away from under fridge-freezers and ovens, which have their own heat to manage. In both rooms, tile or stone floors make the most of the system, and a separate thermostat per room lets you heat the bathroom in the morning without heating the whole house.</p>
+<h3>Retrofitting in older homes</h3>
+<p>Older homes can absolutely use underfloor heating, but floor height is the constraint. Electric mats add only a few millimetres plus tile adhesive, so they suit retrofits where door clearances and thresholds are tight. Water systems need more depth, often 50 millimetres or more, which may mean trimming doors and adjusting thresholds. Check joist strength on upper floors, since a tiled floor plus a water system adds significant weight. A structural check is cheap insurance before you commit to a whole-floor retrofit in an older property.</p>
+<h2>Comfort and health benefits</h2>
+<p>Underfloor heating warms from the ground up, which matches how the body likes to feel warm: warm feet, cooler head, even temperature throughout the room, with no cold spots near windows or hot blasts near radiators. It also reduces air movement, since there is no hot radiator driving convection currents, which means less dust circulation, a benefit for allergy sufferers. The even temperature also reduces condensation on cold surfaces, which helps with damp in bathrooms and kitchens. These comfort benefits are hard to put a price on, but they are the reason most people who install underfloor heating say they would do it again.</p>
+<ul><li>Multiply room area by watts per square metre for your floor type.</li><li>Tile and stone suit 150 W/m2; carpet needs only about 90 W/m2.</li><li>Heat 70 to 85 percent of the floor, not under fixed units.</li><li>Insulate underneath, especially on ground floors.</li><li>Use a floor-sensing programmable thermostat.</li></ul>
+<p>Underfloor heating is a comfort upgrade that rewards careful sizing. Work out your room area, know your floor type, and use the calculator above to get a wattage figure you can discuss with your installer, rather than guessing from a brochure.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many watts per square metre for underfloor heating?</summary><p>About 150 W/m2 for tile and stone, 130 for laminate, 110 for engineered wood, and 90 for carpet. Multiply by your room area for the total.</p></details>
+<details><summary>Can underfloor heating be the only heat source?</summary><p>In a well-insulated modern home, yes. In a draughty older home, it may need a radiator or other top-up heat on the coldest days.</p></details>
+<details><summary>What is the maximum temperature for laminate over underfloor heating?</summary><p>Usually 27 C surface temperature. Exceeding it risks warping and gapping, so use a floor-sensing thermostat with a limit.</p></details>
+<details><summary>Is electric or water underfloor heating cheaper?</summary><p>Electric is cheaper to install and suits single rooms, while water costs less to run and suits whole houses, especially with a heat pump.</p></details>
+<details><summary>Do I heat the whole floor?</summary><p>No, heat 70 to 85 percent of the floor, leaving fixed units like baths, kitchen cabinets, and toilet pedestals unheated.</p></details>
+<details><summary>Why is insulation under underfloor heating important?</summary><p>Without it, much of your heat escapes downward into the slab. Insulation boards send almost all the heat upward into the room.</p></details>
+<details><summary>How long does underfloor heating take to warm up?</summary><p>Often 60 to 90 minutes from cold, which is why programmable schedules and setback temperatures matter more than with radiators.</p></details>
+<details><summary>Can I put carpet over underfloor heating?</summary><p>Yes, if the combined tog of carpet plus underlay stays below 2.5, so heat can pass through. Thick, high-tog carpets block the heat.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">FloorHeat</div>
+    <p>FloorHeat estimates the underfloor heating watts your room needs for its floor type.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcHeat(area, floor) {
+  var f = { tile: 150, stone: 150, laminate: 130, wood: 110, carpet: 90 };
+  var w = f[floor] || 120;
+  var watts = area * w;
+  var kw = Math.round(watts / 100) / 10;
+  return { watts: watts, kw: kw };
+}
+
+if (typeof document !== 'undefined') {
+  var histKey = 'fxhist';
+  function showHist() {
+    try {
+      var h = JSON.parse(localStorage.getItem(histKey) || '[]');
+      var el = document.getElementById('hist');
+      if (el && h.length) { el.textContent = 'Recent: ' + h.slice(-3).join('  |  '); }
+    } catch (e) {}
+  }
+  function saveHist(s) {
+    try {
+      var h = JSON.parse(localStorage.getItem(histKey) || '[]');
+      h.push(s); if (h.length > 5) { h.shift(); }
+      localStorage.setItem(histKey, JSON.stringify(h));
+    } catch (e) {}
+  }
+  function copyRes() {
+    var el = document.getElementById('res');
+    if (!el) { return; }
+    var t = el.textContent || '';
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard) { navigator.clipboard.writeText(t); }
+    } catch (e) {}
+  }
+  var btn = document.getElementById('calcBtn');
+  if (btn) { btn.onclick = function () { 
+        var a = parseFloat(document.getElementById('roomA').value) || 0;
+        var fl = document.getElementById('floorT').value;
+        var r = calcHeat(a, fl);
+        var out = '<b>' + r.watts + ' watts (' + r.kw + ' kW)</b> of underfloor heating for your ' + a + ' m\u00b2 room with ' + fl + ' flooring. This is a planning estimate; confirm with your heating installer.';
+        document.getElementById('res').innerHTML = out;
+        saveHist(r.watts + 'W, ' + a + 'm2 ' + fl);
+        showHist();
+ }; }
+  var cp = document.getElementById('copyBtn');
+  if (cp) { cp.onclick = copyRes; }
+  var ps = document.querySelectorAll('[data-preset]');
+  for (var i = 0; i < ps.length; i++) {
+    (function (b) {
+      b.onclick = function () {
+        var v = b.getAttribute('data-preset');
+        var parts = v.split(',');
+        for (var j = 0; j < parts.length; j++) {
+          var kv = parts[j].split(':');
+          var inp = document.getElementById(kv[0]);
+          if (inp) { inp.value = kv[1]; }
+        }
+        if (btn) { btn.click(); }
+      };
+    })(ps[i]);
+  }
+  showHist();
+}
+
+</script>
+</body>
+</html>
