@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Companion Planting Chart — What Grows Well Together | CompanionPlant</title>
+<meta name="description" content="Which plants help each other — and which to keep apart — in a searchable chart.">
+<link rel="canonical" href="https://fun.fixoraa.tech/companionplant/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Companion Planting Chart — What Grows Well Together | CompanionPlant">
+<meta property="og:description" content="Which plants help each other — and which to keep apart — in a searchable chart.">
+<meta property="og:url" content="https://fun.fixoraa.tech/companionplant/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lustria&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CompanionPlant",
+      "url": "https://fun.fixoraa.tech/companionplant/",
+      "applicationCategory": "Garden Tools",
+      "operatingSystem": "Web",
+      "description": "Which plants help each other — and which to keep apart — in a searchable chart.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is companion planting?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Growing plants together so they help each other — repelling pests, attracting pollinators, fixing nitrogen, or providing shade and support. The classic example is the Three Sisters: corn gives beans a pole, beans feed the soil nitrogen, and squash shades out weeds." } },
+        { "@type": "Question", "name": "What should not be planted next to tomatoes?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Keep tomatoes away from corn (shared pests), potatoes (blight travels between them), fennel (inhibits tomato growth), and mature cabbage. Their best neighbors are basil, marigolds, carrots, onions and parsley." } },
+        { "@type": "Question", "name": "Do marigolds really repel pests?",
+          "acceptedAnswer": { "@type": "Answer", "text": "French marigolds genuinely suppress root-knot nematodes and their strong scent confuses several flying pests, which is why they are the most-planted companion in vegetable gardens. They work best interplanted through the bed, not as a single border row." } },
+        { "@type": "Question", "name": "Why can't I plant onions near beans?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Alliums like onions and garlic inhibit the growth of legumes — beans and peas. The chemistry that makes alliums pest-repellent also stunts legume roots and nitrogen-fixing nodules. Keep the onion family and the bean family in separate beds." } },
+        { "@type": "Question", "name": "How far apart do enemies need to be?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For pest and disease enemies like tomatoes and potatoes, separate beds or at least 3–4 feet with other plants between them. For growth inhibitors like fennel, keep them in their own corner — fennel suppresses most vegetables nearby." } },
+        { "@type": "Question", "name": "Can I trust companion planting charts?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The well-known pairings — basil with tomatoes, onions with carrots, the Three Sisters — rest on generations of gardener observation plus real mechanisms like pest confusion and nitrogen fixing. Treat charts as strong starting guidance, and observe what works in your own soil." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F3FAF2; --surface:#FFFFFF; --tint:#E0F4DD;
+  --accent:#2E801E; --accent-deep:#1F5A13; --accent-ink:#FFFFFF;
+  --ink:#22331F; --muted:#5A7854; --line:#BFE0B8;
+  --bad:#A53C27;
+  --font:'Lustria',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:rgba(255,255,255,.94);border-bottom:2px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px}
+.fx-name{font-size:21px}
+.fx-name small{display:block;font-size:11px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;font-family:var(--font)}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-size:13px;border:1.5px dashed var(--accent)}
+/* hero */
+.cp-hero{padding:44px 0 6px;text-align:center}
+.cp-eyebrow{display:inline-block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-deep);background:var(--tint);border:1px solid var(--line);padding:6px 16px;border-radius:999px;margin-bottom:14px}
+.cp-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.15;margin-bottom:10px;max-width:760px;margin-left:auto;margin-right:auto}
+.cp-hero p{font-size:18px;color:var(--muted);max-width:660px;margin:0 auto}
+/* gallery tool */
+.cp-gallery{margin:28px 0 10px}
+.cp-search{max-width:520px;margin:0 auto 18px;position:relative}
+.cp-search input{width:100%;font:inherit;font-size:17px;padding:13px 18px 13px 48px;border:2px solid var(--line);border-radius:999px;background:#fff;color:var(--ink)}
+.cp-search input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.cp-search .mag{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:19px;color:var(--muted)}
+.cp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:22px}
+.cp-card{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:16px 10px;text-align:center;cursor:pointer;transition:all .14s}
+.cp-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.cp-card.on{border-color:var(--accent);background:var(--tint);box-shadow:0 6px 14px rgba(46,128,30,.16)}
+.cp-card .e{font-size:34px;display:block;margin-bottom:6px}
+.cp-card .n{font-size:15px;text-transform:capitalize}
+.cp-detail{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:24px 28px;margin-bottom:22px;display:none}
+.cp-detail.show{display:block}
+.cp-detail h2{text-transform:capitalize;font-size:26px;margin-bottom:4px}
+.cp-detail .tip{font-style:italic;color:var(--muted);margin-bottom:14px}
+.cp-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cp-col h3{font-size:15px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.cp-col.good h3{color:var(--accent-deep)}
+.cp-col.bad h3{color:var(--bad)}
+.cp-col ul{list-style:none}
+.cp-col li{background:var(--bg);border-radius:10px;padding:8px 12px;margin-bottom:6px;font-size:15px;text-transform:capitalize;border:1px solid var(--line)}
+.cp-col.bad li{border-color:#E4BFBF;background:#FDF6F4}
+/* bed planner */
+.cp-bed{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:24px 28px}
+.cp-bed h2{font-size:22px;margin-bottom:4px}
+.cp-bed p{font-size:14.5px;color:var(--muted);margin-bottom:14px}
+.cp-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.cp-slot{border:2px dashed var(--line);border-radius:14px;min-height:86px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:8px;cursor:pointer;background:var(--bg)}
+.cp-slot .e{font-size:26px}
+.cp-slot .n{font-size:13px;text-transform:capitalize}
+.cp-slot .x{font-size:11px;color:var(--muted)}
+.cp-slot.filled{border-style:solid;border-color:var(--accent);background:#fff}
+.cp-slot.conflict{border-color:var(--bad);background:#FDF0ED}
+.cp-verdict{font-size:15px;border-radius:12px;padding:12px 16px;display:none}
+.cp-verdict.ok{display:block;background:var(--tint);color:var(--accent-deep);border:1.5px solid var(--line)}
+.cp-verdict.warn{display:block;background:#FDF0ED;color:#8C2B20;border:1.5px solid #E4BFBF}
+/* article */
+.article-sec{margin:42px 0;max-width:780px}
+.article-sec h2{font-size:25px;margin:36px 0 12px;color:var(--accent-deep)}
+.article-sec p{margin-bottom:14px;color:#2e3d2a}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#2e3d2a}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:25px;margin-bottom:16px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent-deep)}
+.faq-sec details p{padding:14px 18px;color:#2e3d2a;font-size:15px}
+/* footer */
+.fx-footer{background:#1c2e1a;color:#dcebd8;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#a9c6a2;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#a8e09a;font-weight:700}
+@media(max-width:760px){
+  .cp-cols{grid-template-columns:1fr}
+  .cp-slots{grid-template-columns:repeat(2,1fr)}
+  .fx-nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/companionplant/" aria-label="CompanionPlant home">
+      <span class="fx-tile" aria-hidden="true">&#127793;</span>
+      <span class="fx-name">CompanionPlant<small>Bedfellows guide</small></span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="cp-hero">
+    <span class="cp-eyebrow">The living chart</span>
+    <h1>Companion Planting Chart: What Grows Well Together</h1>
+    <p>Search any plant for its friends and enemies, then lay out your bed — the planner warns you before rivals share soil.</p>
+  </section>
+
+  <section class="cp-gallery" aria-label="CompanionPlant tool">
+    <div class="cp-search">
+      <span class="mag" aria-hidden="true">&#128269;</span>
+      <input type="text" id="cp-q" placeholder="Search a plant — try tomato, basil, carrot…" aria-label="Search plants">
+    </div>
+    <div class="cp-grid" id="cp-grid"></div>
+    <div class="cp-detail" id="cp-detail" aria-live="polite">
+      <h2 id="cp-dname">Tomato</h2>
+      <p class="tip" id="cp-dtip"></p>
+      <div class="cp-cols">
+        <div class="cp-col good"><h3>&#10003; Good companions</h3><ul id="cp-good"></ul></div>
+        <div class="cp-col bad"><h3>&#10005; Keep apart</h3><ul id="cp-bad"></ul></div>
+      </div>
+    </div>
+    <div class="cp-bed">
+      <h2>Bed planner — six slots</h2>
+      <p>Tap a slot, then tap a plant card above to place it. Enemies planted together get flagged instantly.</p>
+      <div class="cp-slots" id="cp-slots"></div>
+      <div class="cp-verdict" id="cp-verdict"></div>
+    </div>
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+    <h2>Why Plants Care About Their Neighbors</h2>
+    <p>A vegetable bed is not a collection of isolated plants; it is a neighborhood, and neighborhoods have dynamics. Some plants release scents that confuse pests hunting their neighbors. Some fix nitrogen that hungry feeders devour. Some grow tall and cast the shade that lettuce craves, while others exude chemicals that stunt everything nearby. Companion planting is the practice of arranging these relationships deliberately — and it is one of the oldest forms of agricultural technology, older than the plow.</p>
+    <p>The most famous example is the Three Sisters, grown together by Indigenous peoples of the Americas for millennia: corn provides a living pole for beans to climb, beans fix nitrogen that feeds the hungry corn, and squash sprawls below, shading out weeds with its big leaves. No single plant does all three jobs. The bed does, because the combination was designed.</p>
+    <h2>How Companions Actually Help</h2>
+    <p>The mechanisms are concrete, not mystical. Pest confusion is the biggest: strong-scented plants like basil, rosemary, and onions mask the chemical signals pests use to find their host crops — plant onions with carrots and the carrot fly literally cannot find the carrots. Trap cropping sacrifices a decoy: radishes lure cucumber beetles away from cucumbers, nasturtiums draw aphids off everything else.</p>
+    <p>Nutrient partnerships are the second mechanism. Legumes — beans and peas — host bacteria that pull nitrogen from the air into the soil, feeding neighbors like corn that are nitrogen gluttons. Dynamic accumulators with deep roots, like comfrey, mine minerals from the subsoil. And physical partnerships matter: tall corn shades heat-sensitive lettuce, while low squash mulch cools the soil for everyone.</p>
+    <h2>The Enemies List: Pairings to Avoid</h2>
+    <p>Just as real as the friendships are the feuds. Tomatoes and potatoes share blight and several pests — planting them together builds a disease bridge. Onions and garlic stunt beans and peas by interfering with their root nodules. Fennel is the garden's notorious allelopath: it secretes compounds that inhibit most vegetables, so it earns permanent solitary confinement in its own corner.</p>
+    <p>Some enmities are about competition rather than chemistry. Cabbage family plants are heavy feeders that will starve delicate neighbors; strawberries and cabbage clash for the same reason. The bed planner above flags the documented enemies automatically, but the principle generalizes: heavy feeders want their own space, and anything known to host a neighbor's disease should be kept at bed's length.</p>
+    <h2>Reading the Chart: A Plant-by-Plant Tour</h2>
+    <p>Start with the heavy hitters. Tomatoes love basil (which may even improve their flavor), marigolds, carrots, onions, and parsley — and hate corn, potatoes, fennel, and cabbage. Carrots pair with onions, tomatoes, lettuce, and rosemary, but keep dill and parsnips away. Beans climb corn happily and enjoy cucumbers and radishes, yet sulk near any allium. Cucumbers welcome beans, corn, radishes, and dill while avoiding potatoes and sage.</p>
+    <p>Lettuce is the easy guest — happy near carrots, onions, radishes, and strawberries, shaded by taller neighbors — with only parsley as a real enemy. Peppers mirror tomatoes' friendships with basil and onions. Potatoes get along with beans, corn, and cabbage but must stay far from tomatoes and cucumbers. Cabbage itself likes onions, potatoes, and rosemary (which confuses cabbage moths) while avoiding tomatoes and strawberries. And marigolds, the garden's bodyguard, go everywhere: their roots suppress nematodes and their scent muddles pests, with no documented enemies at all.</p>
+    <h2>Designing a Bed That Works</h2>
+    <p>Good bed design layers three considerations: friendships, spacing needs, and sun. Put tall plants (corn, trellised beans, tomatoes) on the north side so they do not shade shorter crops. Interplant pest-confusers like basil and marigolds through the bed rather than in a single border row — scent works at close range. Group heavy feeders (tomatoes, cabbage, corn) where you can side-dress compost, and let light feeders (lettuce, carrots, herbs) fill the gaps.</p>
+    <p>Use the planner above as a sketchpad: place your six main crops, check for enemy flags, then rearrange until the verdict is clean. Then sanity-check sun and spacing — companionship never overrides a plant's need for six hours of light or its mature footprint.</p>
+    <h2>Rotation: This Year's Friends, Next Year's Strangers</h2>
+    <p>Companion planting has a time dimension too: crop rotation. Never follow tomatoes with potatoes (or vice versa) — shared soil diseases persist for years. Do not plant cabbage family crops in the same bed two years running; clubroot and other brassica problems build up. The classic rotation moves heavy feeders, then light feeders, then nitrogen-fixing legumes through each bed over three to four years, with companions arranged fresh each season inside that framework.</p>
+    <p>Keep a simple garden journal — even a phone note — of what grew where. Memory is unreliable across winters, and the best companion plan in the world fails if it repeats last year's disease host in the same soil.</p>
+    <h2>What the Science Says</h2>
+    <p>Skeptics ask whether companion planting survives scrutiny, and the fair answer is: the famous pairings do, the exotic claims often do not. Intercropping's pest-reduction effects are well documented in agricultural research — diverse plantings confuse specialist pests, and that is a measured effect, not folklore. Nitrogen fixation by legumes is textbook biochemistry. Marigold nematode suppression has replicated studies behind it.</p>
+    <p>What is weaker is the long tail of specific claims ("this herb improves that vegetable's flavor") — plausible, traditionally reported, but rarely tested rigorously. Treat the chart's core pairings as reliable, the tips as traditional wisdom worth trying, and your own garden's results as the final authority. Observe, note, repeat what works.</p>
+    <h2>Common Companion Mistakes</h2>
+    <p>The classic error is planting one token marigold and declaring the bed "companion planted" — interplanting works by proximity and density, so scatter companions through the crop, not around its edges. Second is ignoring the enemies while chasing the friendships; a tomato-basil pairing does not survive a potato planted on the other side. Third is letting companions compete: basil near tomatoes is lovely until the basil shades the tomato's lower leaves — give every plant its mature spacing regardless of friendship. And fourth is treating the chart as law rather than guidance: your soil, your pests, and your microclimate get a vote. The chart proposes; the garden disposes.</p>
+  <h2>Herbs: The Companion Backbone</h2>
+    <p>If companion planting had a special forces unit, it would be the herbs. Basil guards tomatoes against hornworms and thrips while possibly improving their flavor. Rosemary confuses cabbage moths and bean beetles with its piney intensity. Dill attracts the predatory wasps that eat aphids and caterpillars — plant it near cucumbers and brassicas, but never near carrots, its feuding cousin. Oregano and thyme form low, flowering mats that shelter ground beetles, the nocturnal predators of slugs and cutworms. Sage protects carrots and cabbage but antagonizes cucumbers, so place it thoughtfully.</p>
+    <p>The herb strategy is density and distribution: tuck herbs into every gap rather than giving them their own bed. A tomato bed with basil at its feet, rosemary at the corner, and marigolds scattered through is a fortress; a herb bed across the garden is just seasoning. Let some herbs flower — the blossoms feed the beneficial insects that do your pest control for free.</p>
+    <h2>Flowers Beyond Marigolds</h2>
+    <p>Marigolds get the fame, but the companion flower bench runs deep. Nasturtiums are the ultimate trap crop — aphids prefer them to everything, so plant them as a sacrificial perimeter and let them take the hit. Sweet alyssum's tiny flowers feed hoverflies whose larvae devour aphids by the hundred. Sunflowers act as trellises for cucumbers and pole beans while their heavy shade is perfect for lettuce sown at their feet. Borage draws pollinators to strawberries and squash, and its deep roots mine minerals. Cosmos and zinnias keep the beneficial insect workforce fed all season. A vegetable garden with 10% flowers is not less productive — it is defended.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What is companion planting?</summary><p>Growing plants together so they help each other — repelling pests, attracting pollinators, fixing nitrogen, or providing shade and support. The classic example is the Three Sisters: corn gives beans a pole, beans feed the soil nitrogen, and squash shades out weeds.</p></details>
+    <details><summary>What should not be planted next to tomatoes?</summary><p>Keep tomatoes away from corn (shared pests), potatoes (blight travels between them), fennel (inhibits tomato growth), and mature cabbage. Their best neighbors are basil, marigolds, carrots, onions and parsley.</p></details>
+    <details><summary>Do marigolds really repel pests?</summary><p>French marigolds genuinely suppress root-knot nematodes and their strong scent confuses several flying pests, which is why they are the most-planted companion in vegetable gardens. They work best interplanted through the bed, not as a single border row.</p></details>
+    <details><summary>Why can't I plant onions near beans?</summary><p>Alliums like onions and garlic inhibit the growth of legumes — beans and peas. The chemistry that makes alliums pest-repellent also stunts legume roots and nitrogen-fixing nodules. Keep the onion family and the bean family in separate beds.</p></details>
+    <details><summary>How far apart do enemies need to be?</summary><p>For pest and disease enemies like tomatoes and potatoes, separate beds or at least 3–4 feet with other plants between them. For growth inhibitors like fennel, keep them in their own corner — fennel suppresses most vegetables nearby.</p></details>
+    <details><summary>Can I trust companion planting charts?</summary><p>The well-known pairings — basil with tomatoes, onions with carrots, the Three Sisters — rest on generations of gardener observation plus real mechanisms like pest confusion and nitrogen fixing. Treat charts as strong starting guidance, and observe what works in your own soil.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CompanionPlant</div>
+    <p>CompanionPlant shows which plants help each other and which to keep apart — searchable chart plus a bed planner with enemy warnings.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+var EMOJI={tomato:'🍅',basil:'🌿',carrot:'🥕',onion:'🧅',beans:'🫘',corn:'🌽',cucumber:'🥒',lettuce:'🥬',pepper:'🫑',potato:'🥔',cabbage:'🥬',marigold:'🌼'};
+var DATA={
+tomato:{good:['basil','marigold','carrot','onion','parsley'],bad:['corn','fennel','potato','cabbage'],tip:'Basil is tomato\u2019s best friend \u2014 it may even improve flavor.'},
+basil:{good:['tomato','pepper','oregano'],bad:['rue','sage'],tip:'Plant basil near tomatoes, never near rue.'},
+carrot:{good:['onion','tomato','lettuce','rosemary'],bad:['dill','parsnip'],tip:'Onions mask carrots from carrot fly.'},
+onion:{good:['carrot','lettuce','tomato','cabbage'],bad:['beans','peas'],tip:'Onions and legumes are sworn enemies.'},
+beans:{good:['corn','cucumber','radish','carrot'],bad:['onion','garlic'],tip:'The classic Three Sisters: beans climb corn.'},
+corn:{good:['beans','squash','cucumber'],bad:['tomato'],tip:'Corn gives beans a pole; beans feed corn nitrogen.'},
+cucumber:{good:['beans','corn','radish','dill'],bad:['potato','sage'],tip:'Radishes lure cucumber beetles away.'},
+lettuce:{good:['carrot','onion','radish','strawberry'],bad:['parsley'],tip:'Lettuce loves the shade of taller neighbors.'},
+pepper:{good:['basil','onion','tomato'],bad:['fennel','beans'],tip:'Basil repels pepper\u2019s aphids and thrips.'},
+potato:{good:['beans','corn','cabbage'],bad:['tomato','cucumber','pumpkin'],tip:'Never plant potatoes near tomatoes \u2014 blight travels.'},
+cabbage:{good:['onion','potato','rosemary'],bad:['tomato','strawberry'],tip:'Rosemary and onion confuse cabbage moths.'},
+marigold:{good:['tomato','cucumber','pepper'],bad:[],tip:'The garden bodyguard \u2014 plant it everywhere.'}
+};
+var grid=document.getElementById('cp-grid'),q=document.getElementById('cp-q');
+var detail=document.getElementById('cp-detail'),verdict=document.getElementById('cp-verdict');
+var slotsEl=document.getElementById('cp-slots');
+var slots=[null,null,null,null,null,null],activeSlot=-1,selected=null;
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+function renderGrid(filter){
+  grid.innerHTML='';
+  Object.keys(DATA).forEach(function(k){
+    if(filter&&k.indexOf(filter.toLowerCase())<0)return;
+    var d=document.createElement('div');
+    d.className='cp-card'+(selected===k?' on':'');
+    d.innerHTML='<span class="e">'+(EMOJI[k]||'🌱')+'</span><span class="n">'+k+'</span>';
+    d.addEventListener('click',function(){
+      if(activeSlot>=0){slots[activeSlot]=k;activeSlot=-1;renderSlots();checkBed();}
+      select(k);
+    });
+    grid.appendChild(d);
+  });
+  if(!grid.children.length){grid.innerHTML='<p style="color:var(--muted);grid-column:1/-1;text-align:center">No plant found — try tomato, basil or carrot.</p>';}
+}
+function select(k){
+  selected=k;renderGrid(q.value);
+  document.getElementById('cp-dname').textContent=cap(k);
+  document.getElementById('cp-dtip').textContent=DATA[k].tip;
+  var g=document.getElementById('cp-good'),b=document.getElementById('cp-bad');
+  g.innerHTML='';b.innerHTML='';
+  DATA[k].good.forEach(function(x){var li=document.createElement('li');li.textContent=x;g.appendChild(li);});
+  if(DATA[k].bad.length){DATA[k].bad.forEach(function(x){var li=document.createElement('li');li.textContent=x;b.appendChild(li);});}
+  else{b.innerHTML='<li style="color:var(--muted)">No known enemies — plant freely.</li>';}
+  detail.classList.add('show');
+}
+q.addEventListener('input',function(){renderGrid(q.value);});
+function renderSlots(){
+  slotsEl.innerHTML='';
+  slots.forEach(function(p,i){
+    var s=document.createElement('div');
+    s.className='cp-slot'+(p?' filled':'')+(activeSlot===i?' conflict':'');
+    s.innerHTML=p?('<span class="e">'+(EMOJI[p]||'🌱')+'</span><span class="n">'+p+'</span><span class="x">tap to clear</span>'):('<span class="n" style="color:var(--muted)">'+(activeSlot===i?'pick a plant ↑':'slot '+(i+1)+'<br>tap to fill')+'</span>');
+    s.addEventListener('click',function(){
+      if(slots[i]){slots[i]=null;}
+      else{activeSlot=(activeSlot===i?-1:i);}
+      renderSlots();checkBed();
+    });
+    slotsEl.appendChild(s);
+  });
+}
+function checkBed(){
+  var filled=slots.filter(Boolean);
+  verdict.className='cp-verdict';verdict.textContent='';
+  if(filled.length<2)return;
+  var conflicts=[];
+  for(var i=0;i<slots.length;i++)for(var j=i+1;j<slots.length;j++){
+    var a=slots[i],b=slots[j];
+    if(!a||!b)continue;
+    if(DATA[a]&&DATA[a].bad.indexOf(b)>=0)conflicts.push(cap(a)+' × '+cap(b));
+    else if(DATA[b]&&DATA[b].bad.indexOf(a)>=0)conflicts.push(cap(b)+' × '+cap(a));
+  }
+  if(conflicts.length){
+    verdict.classList.add('warn');
+    verdict.textContent='⚠ Enemy pairing in this bed: '+conflicts.join('; ')+'. Move one of each pair apart.';
+  }else{
+    verdict.classList.add('ok');
+    verdict.textContent='✓ No enemy pairings — this bed layout looks companion-friendly.';
+  }
+}
+renderGrid('');renderSlots();select('tomato');
+})();
+</script>
+</body>
+</html>
