@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Candle Burn Time Calculator — Hours, Cost &amp; Wick Guide | CandleBurn</title>
+<meta name="description" content="Candle burn time calculator: estimate hours from wax weight and wicks, cost per hour, container matcher, and session planner. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/candleburn/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Candle Burn Time Calculator — Hours, Cost &amp; Wick Guide | CandleBurn">
+<meta property="og:description" content="Candle burn time calculator: estimate hours from wax weight and wicks, cost per hour, container matcher, and session planner. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/candleburn/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CandleBurn",
+      "url": "https://fun.fixoraa.tech/candleburn/",
+      "applicationCategory": "Fun & Lifestyle",
+      "operatingSystem": "Web",
+      "description": "Candle burn time calculator: estimate hours from wax weight and wicks, cost per hour, container matcher, and session planner. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many hours does a candle burn per ounce of wax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 7 hours per ounce of soy wax, per wick. An 8 oz single-wick candle gives roughly 56 hours; a 14 oz two-wick candle gives about 49 hours (14 \u00d7 7 \u00f7 2). Paraffin burns a bit faster (~6 h/oz) and beeswax slower (~8 h/oz)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do 3-wick candles burn out faster than single-wick ones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because each wick burns wax independently \u2014 two wicks consume the wax roughly twice as fast. You get more flame and a wider scent pool per hour, but fewer total hours. Compare candles by cost-per-hour, not by wick count."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I stop my candle from tunneling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Let the melt pool reach the full edge of the container on the first burn (2\u20134 hours for a standard jar). A short first burn sets a narrow 'memory' crater and the candle will tunnel \u2014 wasting most of its wax on the walls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I trim a candle wick?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trim the wick to 1/4 inch before every light. Long wicks cause tall dancing flames, soot on the jar, and carbon 'mushrooming' at the tip. A well-trimmed wick gives a steady teardrop flame about an inch tall."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate a candle's cost per hour?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide the price by the estimated burn hours. A $30 candle lasting 60 hours costs $0.50/hour \u2014 better value than an $18 candle lasting 25 hours ($0.72/hour). This tool computes it automatically from wax weight, wicks, and price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it safe to burn a candle all the way down?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stop at about half an inch of wax. Burning to the very bottom overheats the container \u2014 it can crack glass or scorch the surface underneath. Freeze the jar, pop out the last wax, and reuse the vessel."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F4F4F4; --surface:#FFFFFF; --accent:#57534E; --accent-ink:#FFFFFF;
+  --ink:#1C1917; --muted:#57606E; --line:#E0E0DF;
+  --display:'Rozha One',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.cb-wrap{font-family:'Rozha One',serif;background:#F4F4F4;color:#1C1917;padding:56px 20px 72px;}.cb-head{max-width:1000px;margin:0 auto 26px;text-align:center;}.cb-logo{font-size:48px;}.cb-head h1{font-size:clamp(32px,5vw,50px);margin:10px 0 8px;font-weight:400;}.cb-tag{font-family:Inter,system-ui,sans-serif;color:#57606E;font-size:17px;margin:0;}.cb-dash{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}.cb-stat{background:#FFFFFF;border:1px solid #E0E0DF;border-radius:20px;padding:24px 18px;text-align:center;box-shadow:0 14px 34px rgba(87,83,78,.07);}.cb-stat .cb-v{font-size:40px;color:#57534E;line-height:1.1;}.cb-stat .cb-l{font-family:Inter,system-ui,sans-serif;font-size:12.5px;text-transform:uppercase;letter-spacing:.07em;color:#57606E;margin-top:8px;}.cb-stat.hero{grid-column:span 2;background:#57534E;color:#fff;border-color:#57534E;}.cb-stat.hero .cb-v{color:#fff;font-size:56px;}.cb-stat.hero .cb-l{color:#E0E0DF;}.cb-panel{max-width:1000px;margin:18px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:16px;}.cb-card{background:#FFFFFF;border:1px solid #E0E0DF;border-radius:20px;padding:28px;}.cb-card h2{font-size:23px;margin:0 0 4px;font-weight:400;}.cb-sub{font-family:Inter,system-ui,sans-serif;color:#57606E;font-size:14px;margin:0 0 16px;}.cb-field{margin-bottom:14px;font-family:Inter,system-ui,sans-serif;}.cb-field label{display:block;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#57606E;margin-bottom:7px;}.cb-field input,.cb-field select{width:100%;padding:12px 14px;font-size:16px;border:2px solid #E0E0DF;border-radius:12px;font-family:inherit;box-sizing:border-box;}.cb-field input:focus{outline:none;border-color:#57534E;}.cb-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}.cb-btn{width:100%;background:#57534E;color:#fff;border:none;border-radius:14px;padding:15px;font-size:17px;cursor:pointer;font-family:'Rozha One',serif;margin-top:4px;}.cb-btn:hover{filter:brightness(1.12);}.cb-match{font-family:Inter,system-ui,sans-serif;font-size:14.5px;line-height:1.7;color:#1C1917;}.cb-match b{color:#57534E;}@media (max-width:860px){.cb-dash{grid-template-columns:1fr 1fr;}.cb-stat.hero{grid-column:span 2;}.cb-panel{grid-template-columns:1fr;}}@media (max-width:480px){.cb-dash{grid-template-columns:1fr;}.cb-stat.hero{grid-column:span 1;}.cb-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="CandleBurn home">
+      <span class="fx-logo-tile" aria-hidden="true">🕯️</span>
+      <span class="fx-brand">CandleBurn</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-stat-dash" aria-label="CandleBurn tool">
+<section class='cb-wrap'><div class='cb-head'><div class='cb-logo' aria-hidden='true'>🕯️</div><h1>Candle Burn Time Calculator</h1><p class='cb-tag'>Wax in, wicks in — honest burn hours out.</p></div><div class='cb-dash'><div class='cb-stat hero'><div class='cb-v' id='cb-hours'>–</div><div class='cb-l'>Estimated burn hours</div></div><div class='cb-stat'><div class='cb-v' id='cb-cph'>–</div><div class='cb-l'>Cost per hour</div></div><div class='cb-stat'><div class='cb-v' id='cb-weeks'>–</div><div class='cb-l'>Weeks of evenings</div></div><div class='cb-stat'><div class='cb-v' id='cb-perwick'>–</div><div class='cb-l'>Hours per wick share</div></div></div><div class='cb-panel'><div class='cb-card'><h2>Your candle</h2><p class='cb-sub'>Soy-wax baseline: ~7 hours per ounce, per wick.</p><div class='cb-row'><div class='cb-field'><label for='cb-wax'>Wax weight</label><input type='number' id='cb-wax' value='8' min='0.5' max='200' step='0.5'></div><div class='cb-field'><label for='cb-unit'>Unit</label><select id='cb-unit'><option value='oz'>ounces (oz)</option><option value='g'>grams (g)</option></select></div></div><div class='cb-row'><div class='cb-field'><label for='cb-wicks'>Wick count</label><input type='number' id='cb-wicks' value='1' min='1' max='8' step='1'></div><div class='cb-field'><label for='cb-price'>Price (optional)</label><input type='number' id='cb-price' value='24' min='0' step='0.5' placeholder='24.00'></div></div><div class='cb-field'><label for='cb-sessions'>Burn sessions per week (2–4 h each)</label><input type='number' id='cb-sessions' value='3' min='1' max='14' step='1'></div><button class='cb-btn' id='cb-go' type='button'>Calculate burn time</button></div><div class='cb-card'><h2>Container size matcher</h2><p class='cb-sub'>Right wicks for the vessel diameter.</p><div class='cb-field'><label for='cb-dia'>Container diameter (inches)</label><input type='number' id='cb-dia' value='3' min='1' max='12' step='0.5'></div><div class='cb-match' id='cb-match'></div><h2 style='margin-top:22px'>Scent-throw note</h2><p class='cb-sub'>Fragrance evaporates from the melt-pool surface.</p><div class='cb-match' id='cb-throw'></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How Long Will This Candle Actually Burn?</h2><p>Flip a candle over and you will often find a proud claim: '55-hour burn time.' Sometimes it is true, sometimes it is marketing. The honest answer depends on three things: <strong>how much wax there is</strong>, <strong>how many wicks are burning it</strong>, and <strong>what the wax is made of</strong>. This tool's core rule is the industry's workhorse estimate for soy wax: about <strong>7 hours of burn per ounce of wax, per wick</strong> — so an 8 oz single-wick candle gives roughly 56 hours, and a 14 oz double-wick candle gives about 49 hours (14 × 7 ÷ 2).</p><p>That 7-hour figure is not arbitrary. It comes from the burn rate of container soy wax under a properly sized wick: roughly 4–5 grams of wax consumed per hour per wick, and an ounce is 28.35 grams. Paraffin burns a little faster (closer to 6 hours per ounce), beeswax a little slower (up to 8), and coconut blends sit in between. The tool uses the soy baseline — the most common container-candle wax — and the differences between waxes are smaller than the difference one extra wick makes.</p><h2>The Physics of a Candle Flame</h2><p>A candle is a tiny, self-regulating oil lamp. The flame's heat melts wax into a liquid pool; capillary action draws the liquid up the wick; the heat vaporizes it; and the vapor is what actually burns. The wick is not the fuel — it is the delivery system. This is why <strong>wick size controls everything</strong>: an oversized wick draws more fuel, makes a bigger flame, melts a wider pool, and burns the candle down fast (with soot). An undersized wick cannot melt edge-to-edge, tunnels down the middle, and drowns in its own wax pool.</p><p>The visible flame is only about 1,000°C at its hottest point (the blue zone at the base), while the glowing wick tip — the ember — runs hotter. A well-tuned candle flame is teardrop-shaped, about an inch tall, and nearly smokeless. If your flame is dancing, smoking, or taller than an inch and a half, trim the wick — the flame is telling you the fuel delivery is out of balance.</p><h2>Wicks: The Most Underrated Variable</h2><table><thead><tr><th>Container diameter</th><th>Typical wick setup</th><th>Why</th></tr></thead><tbody><tr><td>Under 2 in (votive, tealight)</td><td>1 small wick</td><td>Melt pool reaches the edge easily</td></tr><tr><td>2–3 in (standard tumbler)</td><td>1 medium wick</td><td>The classic single-wick candle</td></tr><tr><td>3–4 in (large jar)</td><td>1 large / 2 small wicks</td><td>Two wicks give a more even pool</td></tr><tr><td>4 in+ (dough bowls, wide vessels)</td><td>2–3+ wicks</td><td>One wick cannot span the width</td></tr></tbody></table><p>Each additional wick roughly <strong>divides the total burn time</strong> — two wicks burn the wax about twice as fast, three wicks three times as fast. That is why a dramatic 3-wick 14 oz candle (about 33 hours) can burn out sooner than a modest single-wick 8 oz candle (about 56 hours). More wicks mean more ambiance per hour, not more hours. When you compare candles by value, always divide the price by the burn hours <em>and</em> account for wick count — this tool's cost-per-hour stat does exactly that.</p><h2>Wax Types Compared</h2><ul><li><strong>Soy wax:</strong> the baseline (~7 h/oz). Clean-burning, excellent scent throw, slower than paraffin. The default for most artisan container candles.</li><li><strong>Paraffin:</strong> ~6 h/oz. The traditional wax — cheapest, holds scent and color brilliantly, but derived from petroleum and sootier when wicked poorly.</li><li><strong>Beeswax:</strong> ~8 h/oz. Densest and slowest-burning, with a natural honey scent that can fight added fragrance. Rarely used in large containers due to cost.</li><li><strong>Coconut-soy blends:</strong> ~7 h/oz. Creamy texture, superb scent throw, popular in luxury candles.</li><li><strong>Palm wax:</strong> ~6.5 h/oz. Crystalline appearance, but check for sustainably sourced (RSPO) palm.</li></ul><p>Scent load matters too: fragrance oil is typically 6–12% of the wax weight. Higher loads smell stronger but can slightly <em>reduce</em> burn time, since fragrance oil burns faster than wax. A 12%-load candle might lose 5–10% of its hours versus an unscented twin — the price of a powerful throw.</p><h2>The First Burn Rule (and Why Tunneling Happens)</h2><p>Candles have memory. On the <strong>first burn</strong>, let the melt pool reach the full diameter of the container before blowing it out — typically 2–4 hours for a standard jar. If you burn for only 30 minutes, the wax sets with a narrow crater, and every later burn will follow that crater downward: <strong>tunneling</strong>. A tunneled candle wastes most of its wax on the walls and burns for a fraction of its rated hours.</p><p>The fix for a mildly tunneled candle is the 'foil hug': wrap aluminum foil around the top of the jar, leaving a hole over the flame, and burn for an hour — the reflected heat melts the walls back into the pool. Prevention, though, is everything: the first burn sets the pattern for the candle's whole life. This is also why the tool's burn-session planner defaults to 2–4 hour sessions — it is the sweet spot for both enjoyment and wax economy.</p><h2>Candle Safety: The Non-Negotiables</h2><ul><li><strong>Trim the wick to 1/4 inch</strong> before every burn. Long wicks cause tall flames, soot, and mushrooming (carbon buildup).</li><li><strong>Never burn more than 4 hours at a stretch.</strong> The container overheats, the scent degrades, and the wick mushrooms.</li><li><strong>Keep the melt pool free of debris</strong> — trimmed wick bits, matches, and dried flowers are all fuel you did not plan for.</li><li><strong>Stop at half an inch of wax.</strong> Burning to the bottom overheats the container and can crack glass or scorch surfaces.</li><li><strong>Never leave a burning candle unattended</strong>, and keep candles away from drafts, curtains, pets, and the edges of shelves.</li></ul><h2>Reading Candle Labels Like a Pro</h2><p>Net weight is the number that matters — it is the wax weight, usually printed in ounces or grams near the bottom of the label. 'Burn time' claims are unregulated, so treat them as optimistic: they are typically measured under laboratory conditions (draft-free, ideal wick, full edge-to-edge first burn) that your living room will not replicate. Divide the price by this tool's estimated hours for the true cost-per-hour, and compare <em>that</em> across candles. A $30 candle with 60 honest hours ($0.50/hour) is better value than a $18 candle with 25 hours ($0.72/hour) — the sticker price lies; the hourly rate tells the truth.</p><h2>Scent Throw: Why Some Candles Fill a Room and Others Do Not</h2><p>Throw — how far the scent travels — depends on the <strong>melt pool diameter</strong> more than the candle's size. Fragrance evaporates from the surface of the liquid pool, so a wide, hot pool throws further than a deep, narrow one. This is the real reason multi-wick candles smell stronger: three pools (or one big merged pool) mean far more evaporating surface. Room size matters too: a single-wick 8 oz candle scents a bedroom beautifully and disappears in an open-plan living room. Match the pool to the room — the container-size matcher in this tool nudges you toward the right diameter for your space.</p><h2>Reusing the Vessel</h2><p>When the wax hits half an inch, the candle is done — but the vessel is not. Freeze the jar for a few hours and the remaining wax usually pops out in one piece; wash with hot soapy water and you have a tumbler, planter, or cotton-ball holder. High-end candle vessels are deliberately designed for second lives, which softens the cost-per-hour math further. Just never try to 'top up' a finished candle with new wax unless you know what you are doing — mismatched waxes and the old wick stub make for unreliable, often unsafe burns.</p><h2>Candle Math for Makers</h2><p>If you make candles, the 7-hours-per-ounce rule becomes a costing tool. A 10 oz candle at $3 of wax and fragrance, in a $2 vessel, with $1 of wick and labor overhead, costs roughly $6 to produce and burns about 70 hours — a production cost near nine cents an hour. Price it at $24 retail and your margin per burn-hour is the number that actually compares across your product line: the big 3-wick showpiece and the humble 8 oz tumbler suddenly speak the same language. Makers who track cost-per-hour per SKU spot their real winners fast — it is rarely the candle with the highest sticker price.</p><p>Wick testing is where the rule meets reality. The same wax in the same jar can burn 10–15% longer or shorter depending on wick series and size, because a wick that is one size too large consumes fuel faster without improving the melt pool. Professional chandlers burn-test every wax–wick–vessel–fragrance combination and log the actual hours; the 7-hour baseline tells you what to expect, and your test burns tell you what you got. Keep the gap small and your label claims honest.</p><h2>Burn Time and Sustainability</h2><p>Longer burn time is, quietly, a sustainability feature. A candle that delivers 60 hours instead of 40 spreads its vessel, packaging, and shipping footprint over 50% more use. Soy and coconut-soy waxes add biodegradability to the story, and reusing the vessel — as a planter, tumbler, or storage jar — extends the lifecycle further. When you compare two candles, the one with more honest burn hours per dollar is usually also the lighter footprint per evening of ambiance. Burn it fully, trim the wick, and let the last half-inch go — the planet and your wallet both prefer the long, clean burn.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many hours does a candle burn per ounce of wax?</summary><p>About 7 hours per ounce of soy wax, per wick. An 8 oz single-wick candle gives roughly 56 hours; a 14 oz two-wick candle gives about 49 hours (14 × 7 ÷ 2). Paraffin burns a bit faster (~6 h/oz) and beeswax slower (~8 h/oz).</p></details>
+<details><summary>Why do 3-wick candles burn out faster than single-wick ones?</summary><p>Because each wick burns wax independently — two wicks consume the wax roughly twice as fast. You get more flame and a wider scent pool per hour, but fewer total hours. Compare candles by cost-per-hour, not by wick count.</p></details>
+<details><summary>How do I stop my candle from tunneling?</summary><p>Let the melt pool reach the full edge of the container on the first burn (2–4 hours for a standard jar). A short first burn sets a narrow 'memory' crater and the candle will tunnel — wasting most of its wax on the walls.</p></details>
+<details><summary>How often should I trim a candle wick?</summary><p>Trim the wick to 1/4 inch before every light. Long wicks cause tall dancing flames, soot on the jar, and carbon 'mushrooming' at the tip. A well-trimmed wick gives a steady teardrop flame about an inch tall.</p></details>
+<details><summary>How do I calculate a candle&#x27;s cost per hour?</summary><p>Divide the price by the estimated burn hours. A $30 candle lasting 60 hours costs $0.50/hour — better value than an $18 candle lasting 25 hours ($0.72/hour). This tool computes it automatically from wax weight, wicks, and price.</p></details>
+<details><summary>Is it safe to burn a candle all the way down?</summary><p>Stop at about half an inch of wax. Burning to the very bottom overheats the container — it can crack glass or scorch the surface underneath. Freeze the jar, pop out the last wax, and reuse the vessel.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CandleBurn</div>
+    <p>CandleBurn estimates total burn hours from wax weight and wick count, with cost-per-hour, container matching, and a burn-session planner.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function burnHours(waxOz,wicks){return 7*waxOz/wicks;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var wax=document.getElementById('cb-wax'),unit=document.getElementById('cb-unit'),wicks=document.getElementById('cb-wicks'),price=document.getElementById('cb-price'),sessions=document.getElementById('cb-sessions'),go=document.getElementById('cb-go'),hoursEl=document.getElementById('cb-hours'),cph=document.getElementById('cb-cph'),weeks=document.getElementById('cb-weeks'),perwick=document.getElementById('cb-perwick'),dia=document.getElementById('cb-dia'),match=document.getElementById('cb-match'),throwEl=document.getElementById('cb-throw');if(!wax||!go)return;function calc(){var w=parseFloat(wax.value);if(isNaN(w)||w<=0)w=8;var oz=unit&&unit.value==='g'?w/28.3495:w;var k=parseInt(wicks.value,10);if(isNaN(k)||k<1)k=1;var hrs=burnHours(oz,k);if(hoursEl)hoursEl.textContent=Math.round(hrs);var p=parseFloat(price.value);if(cph)cph.textContent=(!isNaN(p)&&p>0)?'$'+(p/hrs).toFixed(2):'—';var s=parseInt(sessions.value,10);if(isNaN(s)||s<1)s=3;if(weeks)weeks.textContent=Math.floor(hrs/(s*3))+'';if(perwick)perwick.textContent=Math.round(hrs*k)+'';}function matcher(){var d=parseFloat(dia.value);if(isNaN(d)||d<=0){if(match)match.textContent='Enter a diameter.';return;}var rec=d<2?'1 small wick — the pool reaches the edge easily.':d<=3?'1 medium wick — the classic single-wick setup.':d<=4?'1 large wick or 2 small wicks — twin flames melt more evenly.':'2–3+ wicks — a single flame cannot span this width.';if(match)match.innerHTML='<b>'+d+'″ vessel:</b> '+rec;if(throwEl)throwEl.innerHTML=d<2.5?'Best for bedrooms and desks — intimate throw.':d<=3.5?'Good for average living rooms — solid mid-size throw.':'Made for open-plan spaces — wide pool, big throw.';}go.addEventListener('click',calc);if(dia)dia.addEventListener('input',matcher);calc();matcher();});}
+</script>
+</body>
+</html>
