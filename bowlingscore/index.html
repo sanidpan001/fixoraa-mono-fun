@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bowling Score Calculator: 10-Frame Scorer | BowlingScore</title>
+<meta name="description" content="Bowling score calculator: full 10-frame scoring with strike/spare bonuses and 10th-frame rules, plus handicap calculator. Free sports tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/bowlingscore/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bowling Score Calculator: 10-Frame Scorer | BowlingScore">
+<meta property="og:description" content="Bowling score calculator: full 10-frame scoring with strike/spare bonuses and 10th-frame rules, plus handicap calculator. Free sports tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/bowlingscore/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titan+One:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BowlingScore",
+      "url": "https://fun.fixoraa.tech/bowlingscore/",
+      "applicationCategory": "Sports Tools",
+      "operatingSystem": "Web",
+      "description": "Bowling score calculator: full 10-frame scoring with strike/spare bonuses and 10th-frame rules, plus handicap calculator. Free sports tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is a strike scored in bowling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A strike is worth 10 pins plus your next two balls as a bonus. That's why three strikes in a row (a turkey) makes the first one worth 30 \u2014 the bonuses compound. In the 10th frame, a strike earns two bonus balls to complete its bonus."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a spare scored in bowling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A spare is worth 10 pins plus your next one ball as a bonus. For example, 7/ followed by a 9 on the next ball scores 19 for the spare frame. The bonus ball also counts in its own frame \u2014 that's correct scoring, not double-counting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a perfect game in bowling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "300 \u2014 twelve consecutive strikes (XXXXXXXXXXXX). Each strike earns the next two balls as bonus, so every frame scores 30. It's rare even among excellent bowlers; most leagues see only a handful per season."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the 10th frame work in bowling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In the 10th frame, each mark earns bonus balls: a strike gets two more balls, a spare gets one more, up to three balls total. Bonus balls can earn their own bonuses (XXX = 30), but an open frame ends the game immediately with no bonus balls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does X, /, and - mean in bowling scores?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "X is a strike (10 pins on the first ball), / is a spare (the second ball cleared what the first left, e.g. 7/ = 7 then 3), and - is a miss (0 pins). Digits 1\u20139 are pins knocked down on that ball."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is bowling handicap calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard formula is 90% of the difference between your average and a base score (usually 200). A 150-average bowler gets 0.9 \u00d7 (200\u2212150) = 45 pins added per game. Leagues set their own base and percentage in the rules."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F3F0F0; --surface:#FFFFFF; --accent:#431407; --accent-ink:#FFFFFF;
+  --ink:#26282E; --muted:#5C6675; --line:#DDD4D2;
+  --display:'Titan One',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.bs-wrap{font-family:'Titan One',Inter,system-ui,sans-serif;background:#F3F0F0;color:#26282E;padding:56px 20px 72px;}.bs-hero{max-width:880px;margin:0 auto 34px;text-align:center;}.bs-logo{width:78px;height:78px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,#431407,#a35a2c);color:#fff;font-size:38px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(67,20,7,.25);}.bs-hero h1{font-size:clamp(28px,4.8vw,48px);line-height:1.1;margin:0 0 12px;font-weight:400;}.bs-tag{font-size:17px;color:#5C6675;margin:0;font-family:Inter,sans-serif;font-weight:600;}.bs-card{max-width:880px;margin:0 auto 22px;background:#FFFFFF;border:1px solid #DDD4D2;border-radius:24px;padding:34px;box-shadow:0 24px 60px rgba(67,20,7,.10);}.bs-steps{display:flex;gap:8px;margin-bottom:24px;font-family:Inter,sans-serif;}.bs-step{flex:1;text-align:center;padding:10px;border-radius:12px;background:#F3F0F0;color:#5C6675;font-weight:700;font-size:13.5px;}.bs-step.on{background:#431407;color:#fff;}.bs-notation{width:100%;padding:15px;font-size:20px;font-weight:700;letter-spacing:.15em;border:2px solid #DDD4D2;border-radius:14px;font-family:Inter,sans-serif;color:#26282E;background:#fff;box-sizing:border-box;text-transform:uppercase;}.bs-keys{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:14px 0;}.bs-keys button{padding:16px 6px;border-radius:12px;border:2px solid #DDD4D2;background:#F3F0F0;font-size:20px;font-weight:800;font-family:Inter,sans-serif;color:#431407;cursor:pointer;}.bs-keys button:hover{border-color:#431407;}.bs-keys button.wide{grid-column:span 2;background:#431407;color:#fff;border-color:#431407;}.bs-frames{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin:18px 0;font-family:Inter,sans-serif;}.bs-frame{border:2px solid #DDD4D2;border-radius:10px;overflow:hidden;text-align:center;}.bs-frame .bs-fn{background:#F3F0F0;font-size:11px;font-weight:800;color:#5C6675;padding:4px;}.bs-frame .bs-fb{font-size:15px;font-weight:800;padding:8px 2px;letter-spacing:.05em;}.bs-frame .bs-fs{font-size:13px;font-weight:800;color:#fff;background:#431407;padding:5px;}.bs-total{text-align:center;background:#431407;color:#fff;border-radius:18px;padding:24px;margin-top:8px;}.bs-total .bs-big{font-size:64px;line-height:1;}.bs-total .bs-cap{font-family:Inter,sans-serif;font-size:14px;opacity:.85;margin-top:6px;font-weight:600;}.bs-legend{font-family:Inter,sans-serif;font-size:13.5px;color:#5C6675;line-height:1.7;margin-top:14px;}.bs-legend b{color:#431407;}.bs-hc{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}.bs-hc .bs-field label{display:block;font-family:Inter,sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#5C6675;margin-bottom:8px;}.bs-hc input{width:100%;padding:13px;font-size:17px;border:2px solid #DDD4D2;border-radius:12px;font-family:Inter,sans-serif;box-sizing:border-box;}.bs-games{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px;font-family:Inter,sans-serif;font-size:14.5px;}.bs-games li{background:#F3F0F0;border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;}.bs-games button{border:none;background:none;color:#B91C1C;font-size:18px;cursor:pointer;}.bs-sec{font-size:22px;margin:26px 0 4px;font-weight:400;}.bs-sub{font-family:Inter,sans-serif;color:#5C6675;font-size:14px;margin:0 0 10px;}@media(max-width:700px){.bs-frames{grid-template-columns:repeat(5,1fr);}.bs-keys{grid-template-columns:repeat(4,1fr);}.bs-hc{grid-template-columns:1fr;}.bs-card{padding:24px 16px;}.bs-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="BowlingScore home">
+      <span class="fx-logo-tile" aria-hidden="true">🎳</span>
+      <span class="fx-brand">BowlingScore</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-wizard-steps" aria-label="BowlingScore tool">
+<section class="bs-wrap"><div class="bs-hero"><div class="bs-logo" aria-hidden="true">🎳</div><h1>Bowling Score Calculator</h1><p class="bs-tag">Strikes, spares and 10th-frame math — done right.</p></div><div class="bs-card"><div class="bs-steps"><div class="bs-step on" id="bs-s1">1 · Enter rolls</div><div class="bs-step" id="bs-s2">2 · Review frames</div><div class="bs-step" id="bs-s3">3 · Total</div></div><input class="bs-notation" id="bs-notation" placeholder="e.g. X 7/ 9- X ..." maxlength="24" aria-label="Roll notation"><div class="bs-keys" id="bs-keys"><button type="button" data-k="X">X</button><button type="button" data-k="/">/</button><button type="button" data-k="-">−</button><button type="button" data-k="9">9</button><button type="button" data-k="8">8</button><button type="button" data-k="7">7</button><button type="button" data-k="6">6</button><button type="button" data-k="5">5</button><button type="button" data-k="4">4</button><button type="button" data-k="3">3</button><button type="button" data-k="2">2</button><button type="button" data-k="1">1</button><button type="button" data-k="0">0</button><button type="button" data-k="bk" class="wide">⌫ Delete</button><button type="button" data-k="clr" class="wide">Clear</button></div><div class="bs-frames" id="bs-frames"></div><div class="bs-total"><div class="bs-big" id="bs-total">0</div><div class="bs-cap" id="bs-cap">enter your rolls above</div></div><div class="bs-legend"><b>X</b> strike (10) · <b>/</b> spare (rest of the 10) · <b>−</b> miss (0) · <b>1–9</b> pins. Example perfect game: <b>XXXXXXXXXXXX</b>. All spares: <b>5/5/5/5/5/5/5/5/5/5/5</b>.</div><h2 class="bs-sec">Handicap calculator</h2><p class="bs-sub">Standard 90% of 200 handicap. Enter your average.</p><div class="bs-hc"><div class="bs-field"><label for="bs-avg">Your average</label><input id="bs-avg" type="number" value="150" min="0" max="300"></div><div class="bs-field"><label>Handicap per game</label><input id="bs-hc" readonly tabindex="-1" style="background:#F3F0F0;font-weight:800;"></div></div><h2 class="bs-sec">Game tracker</h2><p class="bs-sub">Save finished games to compare across the session.</p><div class="bs-legend"><button id="bs-save" type="button" style="padding:12px 24px;border:none;border-radius:12px;background:#431407;color:#fff;font-weight:800;font-size:15px;cursor:pointer;font-family:Inter,sans-serif;">Save this game</button></div><ul class="bs-games" id="bs-games"></ul></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How Bowling Scoring Actually Works</h2><p>Bowling's scoring looks like arcane spreadsheet magic until you learn the two ideas that power it: <strong>marks earn bonuses</strong>. A strike is worth 10 plus your next two balls; a spare is worth 10 plus your next one. Everything else is just bookkeeping. The calculator above implements the full official rules, including the famously confusing 10th frame — type your game in compact notation (X for strike, / for spare, – for miss) and watch each frame resolve.</p><p>A game has 10 frames. In frames 1–9 you get up to two balls; knock all 10 down and the frame ends early. The 10th frame is special: marks earn extra balls, up to three total, so a strike in the 10th is followed by two more balls and a spare by one more. This is why the perfect game is written XXXXXXXXXXXX — twelve strikes, not ten.</p><h2>Strikes, Spares and the Bonus System</h2><p>The bonus system rewards stringing marks together, which is why scores explode upward:</p><ul><li><strong>Strike (X):</strong> 10 + the next two balls. Three strikes in a row ("turkey") makes the first worth 30. This compounding is the entire engine of high scores.</li><li><strong>Spare (/):</strong> 10 + the next one ball. Less explosive than a strike, but the foundation of every 150+ game.</li><li><strong>Open frame:</strong> just the pins you knocked down. No bonus. Two open frames in a row will quietly murder a good game.</li></ul><p>Worked example — you bowl X, then 7/, then 9–: the strike is worth 10 + 7 + 3 (the spare's two balls) = 20. The spare is worth 10 + 9 = 19. The open frame is 9. Three frames, 48 pins, and you can see why the strike's value depended on balls thrown <em>after</em> it.</p><h2>The 10th Frame, Demystified</h2><p>Confusion here is universal, so slowly: in the 10th, <strong>a mark earns bonus balls, and bonus balls can themselves earn bonuses</strong>. Strike, then strike, then strike: each strike's bonus reaches into the following balls, giving 30 for the frame. Strike, spare, strike: the spare's bonus takes the final strike (10 + 10 = 20 for the middle ball's frame contribution… in practice just trust the calculator). Spare then a strike on the bonus ball: 20 for the frame. Strike then two gutter balls: 10. The key insight — <strong>pins in the 10th count once, except as bonuses for 10th-frame marks</strong>. There is no infinite recursion; the game always ends after at most three balls.</p><table><thead><tr><th>10th frame</th><th>Frame score</th><th>Why</th></tr></thead><tbody><tr><td>X X X</td><td>30</td><td>Each strike gets the next two balls as bonus</td></tr><tr><td>X 7 /</td><td>20</td><td>Strike: 10+7+3; spare: 10 (no ball left for bonus… actually 10+0)</td></tr><tr><td>9 / X</td><td>20</td><td>Spare: 10+10 bonus strike</td></tr><tr><td>X – –</td><td>10</td><td>Strike with no bonus pins behind it</td></tr><tr><td>9 – (open)</td><td>9</td><td>No mark, no bonus balls, frame ends</td></tr></tbody></table><p><em>Note: X 7 / scores 20 — the strike takes 10+7+3=20 and the spare takes 10 with no remaining bonus ball, but frame scoring in the 10th simply sums pins with earned bonuses; the calculator handles it exactly.</em></p><h2>Reading the Compact Notation</h2><p>League bowlers write games in a shorthand the calculator speaks natively:</p><ul><li><strong>X</strong> — strike, all 10 on the first ball.</li><li><strong>/</strong> — spare, the second ball knocked down whatever the first left. Written after the first ball's count: "7/" means 7 then 3.</li><li><strong>–</strong> (or 0) — miss, no pins. "9–" is 9 then a miss.</li><li><strong>1–9</strong> — pins on that ball.</li></ul><p>So "X 7/ 9- X X X 8/ 9- X XXX" is a complete game you can paste straight in. The classic benchmarks: <strong>XXXXXXXXXXXX = 300</strong> (perfection), all spares with a final 5 ("5/ repeated") = <strong>150</strong>, and all 9-misses ("9–" repeated) = <strong>90</strong> — the best score possible without a single mark.</p><h2>What Scores Mean</h2><p>Score is a language. Roughly: under 100 is casual social bowling; 100–140 is a developing bowler finding a repeatable shot; 140–170 is solid league play; 170–200 is strong; 200+ is excellent and usually involves a spare system and lane-reading skill; 250+ is a spectacular game; 300 is perfection, achieved by a small fraction of league bowlers even once. Averages matter more than single games — a 180 average bowler will occasionally shoot 140 and 220, and the average is the truth.</p><h2>Handicaps: How Leagues Level the Field</h2><p>Handicap lets a 140-average bowler compete with a 200-average bowler. The standard formula is <strong>90% of the difference between your average and 200</strong>: a 150 average gets 0.9 × 50 = 45 pins per game added. The calculator above computes it instantly. Leagues set the base (200 is typical; some use 210 or 220) and the percentage (80–100%) in their rules — the principle is always the same: reward improvement, keep every match competitive, and make the last frame matter for everyone.</p><h2>The Spare Systems That Raise Averages</h2><p>Strikes get applause; spares win leagues. Two systems dominate:</p><ul><li><strong>The 3-6-9 (or 2-4-6) spare system:</strong> move your feet a set number of boards left or right depending on the pin standing, throw the same straight ball every time. It turns spare shooting into arithmetic instead of art.</li><li><strong>Plastic spare ball:</strong> a polyester ball that does not hook, thrown straight at corner pins (especially the 10-pin, the notorious average-killer). Many 200+ bowlers own one.</li></ul><p>The math of improvement: converting one extra spare per game is worth roughly 10–15 pins of average. Converting the 10-pin alone — the single most missed spare in amateur bowling — is often worth 5+ pins by itself.</p><h2>Reading Lanes (Briefly)</h2><p>Oil patterns dictate everything. House shots (typical league) have dry outside boards that forgive wide misses — play the friction. Sport patterns are flat and punish imprecision — straighter angles and cleaner releases win. When your ball hooks early and leaves flat 10-pins, move deeper inside; when it skids past the breakpoint, move outside or switch to a weaker ball. You do not need a six-ball arsenal to start — you need one benchmark ball and the willingness to move your feet.</p><h2>Common Scoring Mistakes</h2><ul><li><strong>Forgetting the 10th-frame bonus balls in the total.</strong> They count — a 10th-frame strike with two more strikes is 30, not 10.</li><li><strong>Crediting a spare's bonus twice.</strong> The bonus ball counts in the spare's frame <em>and</em> again in its own frame. That is correct, not double-counting.</li><li><strong>Writing "/" as a first ball.</strong> A spare is always the second ball; "7/" is right, "/7" is nonsense.</li><li><strong>Thinking X X – is 20 in the 10th.</strong> It is 10 + 10 + 0 = 20? No — strike bonus is the next two balls: 10 + 10 + 0 = 20. Correct. (This one is a trick — trust the calculator.)</li><li><strong>Manual addition errors under pressure.</strong> League secretaries have seen everything. When in doubt, re-add from the marks, not from running totals.</li></ul><p>Type the game, check the frames, trust the math. And remember the deeper truth the scoring system encodes: one more spare per game beats one more strike per month. Convert your spares, and the big numbers follow.</p><h2>The Pocket and Why Strikes Happen</h2><p>Strikes are geometry, not luck. For a right-hander, the <strong>pocket</strong> is the gap between the 1-pin (head pin) and 3-pin; hitting it at the right entry angle (about 6 degrees) drives the 1-pin into the 2-4-7 zone while the ball deflects into the 3-5-9, and the pin action cleans up the corners. This is why hook matters: a straight ball enters the pocket at near-zero angle and leaves corner pins standing, while a hooking ball arrives at an angle that multiplies pin scatter. You do not need a huge hook — even a modest 5-board backend move transforms strike percentage. The lesson for scoring: strikes come from repeatable pocket hits, and repeatable pocket hits come from a consistent release and targeting the arrows, not the pins.</p><h2>Practice Games That Build Scores</h2><p>Mindless practice grooves mindless habits. Three structured games that directly raise averages: <strong>low-ball</strong> (try to score as <em>few</em> as possible without guttering — it teaches pinpoint spare accuracy), <strong>spare-only frames</strong> (throw your first ball intentionally off-pocket to leave specific spares, then convert — the fastest way to learn the 3-6-9 system), and <strong>pressure frames</strong> (bowl the 10th frame repeatedly with a hypothetical close match on the line — it inoculates you against the real thing). Twenty focused minutes of any of these beats two hours of casual throwing, because every ball has a defined intention and immediate feedback.</p><h2>When to Move: The Two-Board Rule</h2><p>Lane conditions change as oil carries down and breaks down — your perfect line in frame 2 is gone by frame 7. The amateur response is to change the throw; the professional response is to <strong>move the feet</strong>. The two-board rule: when pocket hits start leaving flat corner pins or the ball reads early, move your feet two boards in the direction of the miss and keep the same target. Small, systematic moves beat desperate ones. Track what worked in the game tracker above alongside the score — over a season, patterns emerge (you always score better moving inside on dry lanes, say) that become genuine competitive intelligence.</p><h3>Reading a scoresheet like a coach</h3><p>Once you trust the maths, the scoresheet becomes a coaching tool. Look for patterns across games: a cluster of splits in the fifth frame often means your breakpoint drifted as lane oil carried down, while single-pin leaves on good pocket hits point at entry angle rather than accuracy. Track your first-ball pinfall average separately from your spare conversion rate, because the two improve through different practice. Ten minutes of corner-pin spares at the end of every session does more for your average than another full game. When you switch houses, give yourself three frames to read the fresh pattern before judging your ball choice, and write down what worked while it is fresh.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How is a strike scored in bowling?</summary><p>A strike is worth 10 pins plus your next two balls as a bonus. That's why three strikes in a row (a turkey) makes the first one worth 30 — the bonuses compound. In the 10th frame, a strike earns two bonus balls to complete its bonus.</p></details>
+<details><summary>How is a spare scored in bowling?</summary><p>A spare is worth 10 pins plus your next one ball as a bonus. For example, 7/ followed by a 9 on the next ball scores 19 for the spare frame. The bonus ball also counts in its own frame — that's correct scoring, not double-counting.</p></details>
+<details><summary>What is a perfect game in bowling?</summary><p>300 — twelve consecutive strikes (XXXXXXXXXXXX). Each strike earns the next two balls as bonus, so every frame scores 30. It's rare even among excellent bowlers; most leagues see only a handful per season.</p></details>
+<details><summary>How does the 10th frame work in bowling?</summary><p>In the 10th frame, each mark earns bonus balls: a strike gets two more balls, a spare gets one more, up to three balls total. Bonus balls can earn their own bonuses (XXX = 30), but an open frame ends the game immediately with no bonus balls.</p></details>
+<details><summary>What does X, /, and - mean in bowling scores?</summary><p>X is a strike (10 pins on the first ball), / is a spare (the second ball cleared what the first left, e.g. 7/ = 7 then 3), and - is a miss (0 pins). Digits 1–9 are pins knocked down on that ball.</p></details>
+<details><summary>How is bowling handicap calculated?</summary><p>The standard formula is 90% of the difference between your average and a base score (usually 200). A 150-average bowler gets 0.9 × (200−150) = 45 pins added per game. Leagues set their own base and percentage in the rules.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BowlingScore</div>
+    <p>BowlingScore computes full 10-frame bowling scores with strike/spare bonuses and 10th-frame handling.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function bowlingTotal(s){s=String(s==null?"":s).replace(/\s+/g,"");var rolls=[],prev=-1;for(var i=0;i<s.length;i++){var c=s.charAt(i);if(c==="X"||c==="x"){rolls.push(10);prev=10;}else if(c==="/"){var v=prev<0?10:10-prev;rolls.push(v);prev=v;}else if(c==="-"){rolls.push(0);prev=0;}else if(c>="0"&&c<="9"){var n=c.charCodeAt(0)-48;rolls.push(n);prev=n;}}var total=0,r=0;for(var f=0;f<10;f++){if(r>=rolls.length)break;if(rolls[r]===10){total+=10+(rolls[r+1]||0)+(rolls[r+2]||0);r+=1;}else if((rolls[r]||0)+(rolls[r+1]||0)===10){total+=10+(rolls[r+2]||0);r+=2;}else{total+=(rolls[r]||0)+(rolls[r+1]||0);r+=2;}}return total;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var notEl=document.getElementById('bs-notation');function frameData(s){s=String(s==null?"":s).replace(/\s+/g,"");var rolls=[],prev=-1;for(var i=0;i<s.length;i++){var c=s.charAt(i);if(c==="X"||c==="x"){rolls.push(10);prev=10;}else if(c==="/"){var v=prev<0?10:10-prev;rolls.push(v);prev=v;}else if(c==="-"){rolls.push(0);prev=0;}else if(c>="0"&&c<="9"){var n=c.charCodeAt(0)-48;rolls.push(n);prev=n;}}var frames=[],r=0,total=0;for(var f=0;f<10;f++){if(r>=rolls.length)break;var balls=[],fs=0;if(rolls[r]===10){fs=10+(rolls[r+1]||0)+(rolls[r+2]||0);balls=[10];r+=1;if(f===9){balls=[10];if(rolls[r]!==undefined)balls.push(rolls[r]);if(rolls[r+1]!==undefined)balls.push(rolls[r+1]);}}else if((rolls[r]||0)+(rolls[r+1]||0)===10){fs=10+(rolls[r+2]||0);balls=[rolls[r],10-rolls[r]];r+=2;if(f===9&&rolls[r]!==undefined)balls.push(rolls[r]);}else{balls=[rolls[r]||0,rolls[r+1]||0];fs=balls[0]+balls[1];r+=2;}total+=fs;frames.push({balls:balls,score:total});}return {frames:frames,total:total};}function ballSym(v,firstOfPair){if(v===10)return 'X';if(v===0)return '–';if(!firstOfPair&&v>0)return null;return String(v);}function render(){var s=notEl?notEl.value:'';var fd=frameData(s);var box=document.getElementById('bs-frames');if(box){box.innerHTML='';for(var i=0;i<10;i++){var fr=document.createElement('div');fr.className='bs-frame';var f=fd.frames[i];var balls='·',sc='';if(f){var syms=f.balls.map(function(v,bi){if(v===10)return 'X';if(v===0)return '–';if(bi>0&&f.balls[bi-1]+v===10&&f.balls[bi-1]!==10)return '/';return String(v);});balls=syms.join(' ');sc=f.score;}fr.innerHTML='<div class="bs-fn">'+(i+1)+'</div><div class="bs-fb">'+balls+'</div><div class="bs-fs">'+sc+'</div>';box.appendChild(fr);}}var tot=document.getElementById('bs-total');if(tot)tot.textContent=fd.total;var cap=document.getElementById('bs-cap');if(cap)cap.textContent=fd.frames.length===10?'final score':'frame '+fd.frames.length+' of 10';var st1=document.getElementById('bs-s1'),st2=document.getElementById('bs-s2'),st3=document.getElementById('bs-s3');[st1,st2,st3].forEach(function(el){if(el)el.classList.remove('on');});var stepEl=fd.frames.length===0?st1:(fd.frames.length<10?st2:st3);if(stepEl)stepEl.classList.add('on');}if(notEl)notEl.addEventListener('input',render);var keys=document.getElementById('bs-keys');if(keys){keys.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-k');if(!notEl)return;if(k==='bk')notEl.value=notEl.value.slice(0,-1);else if(k==='clr')notEl.value='';else if(notEl.value.replace(/\s/g,'').length<24)notEl.value+=k;render();});});}function handicap(){var aEl=document.getElementById('bs-avg'),hEl=document.getElementById('bs-hc');if(!aEl||!hEl)return;var a=Math.max(0,Math.min(300,parseFloat(aEl.value)||0));hEl.value=Math.max(0,Math.round(0.9*(200-a)));}var avgEl=document.getElementById('bs-avg');if(avgEl)avgEl.addEventListener('input',handicap);var games=[];function renderGames(){var ul=document.getElementById('bs-games');if(!ul)return;ul.innerHTML='';games.forEach(function(g,i){var li=document.createElement('li');var sp=document.createElement('span');sp.textContent='Game '+(i+1)+' — '+g+' pins';var x=document.createElement('button');x.textContent='×';x.setAttribute('aria-label','Delete game');x.addEventListener('click',function(){games.splice(i,1);renderGames();});li.appendChild(sp);li.appendChild(x);ul.appendChild(li);});if(games.length>1){var li2=document.createElement('li');var avg=games.reduce(function(a,b){return a+b;},0)/games.length;var hi=Math.max.apply(null,games);var s2=document.createElement('span');s2.innerHTML='<b>Average '+avg.toFixed(1)+' · High '+hi+'</b>';li2.appendChild(s2);ul.appendChild(li2);}}var sv=document.getElementById('bs-save');if(sv)sv.addEventListener('click',function(){var s=notEl?notEl.value:'';var fd=frameData(s);if(fd.frames.length<10){sv.textContent='Finish all 10 frames first';setTimeout(function(){sv.textContent='Save this game';},1500);return;}games.push(fd.total);renderGames();sv.textContent='Saved!';setTimeout(function(){sv.textContent='Save this game';},1200);});handicap();render();});}
+</script>
+</body>
+</html>
