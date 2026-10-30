@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hiking Time Calculator — Naismith's Rule | HikeTime</title>
+<meta name="description" content="Realistic hiking time from distance, elevation, fitness and breaks — plan your turnaround.">
+<link rel="canonical" href="https://fun.fixoraa.tech/hiketime/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Hiking Time Calculator — Naismith's Rule | HikeTime">
+<meta property="og:description" content="Realistic hiking time from distance, elevation, fitness and breaks — plan your turnaround.">
+<meta property="og:url" content="https://fun.fixoraa.tech/hiketime/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "HikeTime",
+      "url": "https://fun.fixoraa.tech/hiketime/",
+      "applicationCategory": "Outdoor Tools",
+      "operatingSystem": "Web",
+      "description": "Realistic hiking time from distance, elevation, fitness and breaks — plan your turnaround.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Naismith's rule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Allow one hour for every 3 miles of distance plus 30 minutes for every 1,000 feet of ascent. It was proposed by Scottish mountaineer William Naismith in 1892 and remains the standard quick estimate for hiking time. This calculator adds fitness and break adjustments on top."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long will a 10-mile hike with 2,000 feet of gain take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 4 hours 20 minutes of moving time for a moderate hiker (3 h 20 min for distance + 1 h for climbing), plus breaks — realistically 5 to 5.5 hours on trail. Enter your fitness and break minutes above for your exact number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator include the way back down?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter round-trip miles for a full out-and-back estimate. Descent on good trail runs near flat-ground pace, but steep or technical descents can take as long as the climb — budget the easier fitness setting if the descent is rough."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is turnaround time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The latest time you can head down and still finish in daylight. A common method: turnaround = start time + half your estimated total + a buffer. Enter your daylight hours above and the calculator warns you if the route does not fit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why was my hike slower than the estimate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The usual culprits: heavy pack, heat, altitude, rough terrain, bigger group, or optimistic fitness setting. Any one of those can add 15–25% — stack two and an \"easy\" day becomes a grind. Recalibrate with the easier fitness level next time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much should I add for breaks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Plan at least 10 minutes per hour of moving time plus 20–30 minutes for lunch on long days. Groups of four or more should add 50% more break time. The calculator adds your break minutes directly to moving time."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#F6FAF2;--surface:#FFFFFF;--tint:#E8F4DD;--accent:#4D7C1D;--accent-deep:#3A5E14;--accent-ink:#FFFFFF;--ink:#29331F;--muted:#667854;--line:#D8E6C6;--display:'Prompt',system-ui,sans-serif;--body:'Prompt',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+.fx-wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;transform:rotate(-6deg)}
+.fx-name{font-weight:800;font-size:20px}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.ht-hero{padding:44px 0 6px}
+.ht-eyebrow{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--tint);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.ht-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:10px}
+.ht-hero p{font-size:18px;color:var(--muted);max-width:640px}
+.ht-log{margin:26px 0 8px;background:var(--surface);border:2px solid var(--line);border-radius:20px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;box-shadow:0 12px 30px rgba(77,124,29,.10)}
+.ht-fields{padding:28px;border-right:2px dashed var(--line)}
+.ht-field{margin-bottom:18px}
+.ht-field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.ht-field .hint{font-weight:400;font-size:13px;color:var(--muted)}
+.ht-field input,.ht-field select{font:inherit;width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.ht-field input:focus,.ht-field select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.ht-dial{padding:28px;background:radial-gradient(circle at 50% 30%,#F2F9E8,var(--tint));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ht-ring{width:210px;height:210px;border-radius:50%;border:10px solid var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;box-shadow:0 8px 20px rgba(77,124,29,.15);margin-bottom:16px}
+.ht-ring .t{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.ht-ring .c{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ht-meta{font-size:15px;color:var(--muted)}
+.ht-meta b{color:var(--ink)}
+.ht-warn{display:none;margin-top:14px;background:#FBEEDF;border:2px solid #C77B1F;color:#7A4A12;border-radius:12px;padding:12px 16px;font-size:14px;font-weight:600;max-width:420px}
+.article-sec{margin:40px 0;max-width:780px}.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800}
+.article-sec p{margin-bottom:14px;color:#3c4732}.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#3c4732}.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:780px}.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#3c4732;font-size:15px}
+.fx-footer{background:#222b18;color:#e6efdb;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#b3c49b;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}.fx-credit a{color:#c9e29a;font-weight:700}
+@media(max-width:760px){.ht-log{grid-template-columns:1fr}.ht-fields{border-right:0;border-bottom:2px dashed var(--line)}.fx-nav{margin-left:0}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-wrap">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/hiketime/" aria-label="HikeTime home">
+      <span class="fx-tile" aria-hidden="true">H</span>
+      <span class="fx-name">HikeTime</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-wrap">
+  <section class="ht-hero">
+    <span class="ht-eyebrow">Naismith’s rule, done right</span>
+      <h1>Hiking Time Calculator</h1>
+      <p>Distance alone lies. Enter your miles, elevation gain, fitness and breaks — get a realistic trail time and a daylight turnaround warning.</p>
+  </section>
+
+<section class="ht-log" aria-label="HikeTime tool">
+  <div class="ht-fields">
+    <div class="ht-field"><label for="ht-miles">Distance <span class="hint">— one-way miles</span></label><input type="number" id="ht-miles" value="6" min="0" max="100" step="0.5"></div>
+    <div class="ht-field"><label for="ht-elev">Elevation gain <span class="hint">— feet of climbing</span></label><input type="number" id="ht-elev" value="2000" min="0" max="30000" step="50"></div>
+    <div class="ht-field"><label for="ht-fit">Fitness level</label><select id="ht-fit"><option value="easy">Taking it easy</option><option value="moderate" selected>Moderate hiker</option><option value="athletic">Athletic / trail-fit</option></select></div>
+    <div class="ht-field"><label for="ht-break">Breaks <span class="hint">— total rest minutes</span></label><input type="number" id="ht-break" value="30" min="0" max="600" step="5"></div>
+    <div class="ht-field"><label for="ht-daylight">Daylight available <span class="hint">— hours, for turnaround check</span></label><input type="number" id="ht-daylight" value="8" min="0" max="24" step="0.5"></div>
+  </div>
+  <div class="ht-dial" aria-live="polite">
+    <div class="ht-ring"><span class="t" id="ht-total">3 h 30 min</span><span class="c">trail time</span></div>
+    <div class="ht-meta"><b id="ht-moving">3 h 0 min moving</b> · <span id="ht-pace">30 min/mi pace</span></div>
+    <div class="ht-warn" id="ht-warn"></div>
+  </div>
+</section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>Naismith's Rule, Explained</h2>
+<p>In 1892, Scottish mountaineer William Naismith proposed a beautifully simple formula: allow <strong>one hour for every 3 miles</strong> of distance, plus <strong>30 minutes for every 1,000 feet</strong> of ascent. Over a century later, it remains the default math behind almost every hiking time estimate — because it works. It captures the two things that actually determine how long a trail takes: how far you walk and how much you climb.</p><p>The rule assumes a reasonably fit hiker on decent terrain with a light pack. It was designed for the Scottish hills, but hikers have validated it on trails worldwide. Its genius is that it treats climbing as a separate cost from distance — a flat 6-miler and a 6-miler with 2,000 feet of gain are entirely different days, and Naismith’s rule is one of the few quick methods that prices the difference correctly.</p><p>This calculator starts from Naismith’s base and adds the two adjustments the original never had: your fitness level and your breaks. The result is a number you can actually plan a day around, not a theoretical minimum.</p>
+<h2>The Math Behind the Calculator</h2>
+<p>Here is the arithmetic, fully visible. Take your one-way miles and divide by 3 — that is your flat-ground hours. Take your elevation gain in feet, divide by 1,000, and multiply by 0.5 — those are your climbing hours. Add them. That is Naismith’s moving time.</p><p>Then the calculator applies a fitness multiplier: <strong>1.25×</strong> if you are taking it easy or carrying a heavy pack, <strong>1.0×</strong> for a moderate hiker, and <strong>0.85×</strong> if you are trail-fit. Finally it adds your planned break minutes on top, untouched by the multiplier — resting is resting. The headline number is the sum: realistic trail time, door to summit to door if you entered round-trip miles.</p><p>A concrete example: 6 miles with 2,000 feet of gain. Distance gives 2 hours, climbing gives 1 hour — 3 hours moving for a moderate hiker. Add 30 minutes of breaks and you get 3.5 hours. Anyone who has hiked that profile will nod: it feels exactly right.</p>
+<h2>Fitness: Why the Same Trail Takes Different Times</h2>
+<p>Two hikers, same trail, wildly different days — fitness is the variable most time estimates ignore. A trail-fit hiker genuinely moves 15–20 percent faster than a moderate one on the same terrain, and a casual hiker with a heavy overnight pack can be 25 percent slower. The multiplier in this calculator is deliberately modest; it reflects sustainable all-day pace, not your best mile ever.</p><p>Be honest with the fitness setting on unfamiliar terrain. Altitude, heat, and a pack you have not trained with all push you toward the "taking it easy" end. It is far better to finish an hour early than to discover at 4 p.m. that your estimate assumed someone fitter than you.</p><p>One more subtlety: fitness matters more on the climbs than the flats. If your route is mostly gentle with one brutal ascent, consider bumping one fitness level easier — the climbing portion dominates your day, and that is where the gap between fitness levels shows up.</p>
+<h2>Breaks, Photos and Lunch</h2>
+<p>Beginners consistently underestimate breaks. A "quick" summit stop is 20 minutes once you eat, photograph, filter water, and adjust layers. On a full day, <strong>plan 10 minutes of break per hour of moving time</strong> as a floor, plus 20–30 for lunch on longer hikes. The calculator adds your break minutes straight onto moving time, which is exactly how they behave in real life.</p><p>Group size multiplies breaks. Every additional person adds faff — bathroom stops, gear adjustments, pace negotiations. For groups of 4+, add 50 percent to your break estimate. Solo hikers can trim it, but should not zero it: fatigue without rest compounds into slower miles later.</p><p>Pro move: schedule breaks <em>before</em> the hard parts, not during. A five-minute breather at the base of the big climb pays back more than ten minutes slumped halfway up it.</p>
+<h2>Turnaround Time and Daylight</h2>
+<p>The most important number on a hike is not the summit time — it is the <strong>turnaround time</strong>, the latest moment you can start descending and still finish in daylight. Enter your available daylight hours and this calculator warns you when the route does not fit. A route that needs 9 hours with 8 hours of daylight is not a challenge; it is a plan to hike the last hour by headlamp.</p><p>Set turnaround as half your total time plus a buffer, and honor it like a law. Mountains are patient; they will be there next weekend. The classic mountaineering disasters share one trait: a party that pushed past turnaround chasing a summit that was "only 30 more minutes."</p><p>Remember that descent is slower than you think in the dark, on tired legs, or on technical terrain. If any of those apply, give yourself an extra hour of margin beyond the calculator’s warning.</p>
+<h2>Descent: The Forgotten Half</h2>
+<p>Naismith’s rule prices ascent; descent is the silent budget-killer. On good trail, most hikers descend at roughly their flat-ground pace, but steep, loose, or technical descents can take <strong>as long as the climb</strong>. Knees, not lungs, become the limit.</p><p>If your route descends the same steep ground you climbed, a practical fudge is to enter the elevation gain and then mentally add 30–50 percent of the climbing time for the way down — or simply enter round-trip miles with the full gain and let the distance term carry the descent. For out-and-back routes, doubling one-way miles in the calculator with the full elevation gain gives a solid full-day estimate.</p><p>Trekking poles genuinely help here: they offload the knees and add confidence on loose descents, often worth 10–15 percent of descent time. If your knees complain on stairs, bring poles and budget the easier fitness setting.</p>
+<h2>Weather, Terrain and Pack Weight</h2>
+<p>Three things quietly tax your pace. <strong>Terrain:</strong> rocky, muddy, or off-trail ground can halve your flat-ground speed — Naismith assumed decent paths. <strong>Pack weight:</strong> every 10 pounds over a daypack costs roughly 5–10 percent of your pace on climbs. <strong>Weather:</strong> heat above 85&deg;F, high wind, or rain each deserve one easier fitness notch.</p><p>Altitude deserves special mention. Above 8,000 feet, unacclimatized hikers slow dramatically — plan on the "taking it easy" multiplier for your first two days up high, and add extra breaks. The calculator cannot feel the thin air, so you have to.</p><p>When several of these stack — a hot day, heavy pack, rough trail — do not just pick "easy." Consider shortening the route. Multipliers compound; misery does too.</p>
+<h2>When to Turn Back</h2>
+<p>Decide your turnaround triggers before you start, not when you are tired and invested. The classics: a fixed clock time, thunderheads building before noon, anyone in the party bonking, or pace running 30+ minutes behind plan at the halfway point.</p><p>The 30-minutes-behind rule is the most useful. Check your watch at the halfway distance: if you are half an hour behind the calculator’s estimate, your finish will be an hour late, because fatigue slows the second half more than the first. That is your signal to shorten the day — skip the side summit, take the cutoff trail, or simply turn around.</p><p>None of this is pessimism; it is how you get to hike for decades. The summit is optional, the parking lot is mandatory. Plan with the calculator, then protect the plan with a turnaround time you actually obey.</p><p>One last habit separates experienced hikers from lucky ones: tell someone your route and your expected return time, and carry the ten essentials even on "short" day hikes. Most rescues are not dramatic mountaineering epics — they are day hikers caught by darkness, weather, or a twisted ankle a mile farther than their plan allowed. A headlamp, a layer, and a charged phone weigh almost nothing and rewrite the ending of a bad day.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is Naismith's rule?</summary><p>Allow one hour for every 3 miles of distance plus 30 minutes for every 1,000 feet of ascent. It was proposed by Scottish mountaineer William Naismith in 1892 and remains the standard quick estimate for hiking time. This calculator adds fitness and break adjustments on top.</p></details>
+<details><summary>How long will a 10-mile hike with 2,000 feet of gain take?</summary><p>About 4 hours 20 minutes of moving time for a moderate hiker (3 h 20 min for distance + 1 h for climbing), plus breaks — realistically 5 to 5.5 hours on trail. Enter your fitness and break minutes above for your exact number.</p></details>
+<details><summary>Does the calculator include the way back down?</summary><p>Enter round-trip miles for a full out-and-back estimate. Descent on good trail runs near flat-ground pace, but steep or technical descents can take as long as the climb — budget the easier fitness setting if the descent is rough.</p></details>
+<details><summary>What is turnaround time?</summary><p>The latest time you can head down and still finish in daylight. A common method: turnaround = start time + half your estimated total + a buffer. Enter your daylight hours above and the calculator warns you if the route does not fit.</p></details>
+<details><summary>Why was my hike slower than the estimate?</summary><p>The usual culprits: heavy pack, heat, altitude, rough terrain, bigger group, or optimistic fitness setting. Any one of those can add 15–25% — stack two and an "easy" day becomes a grind. Recalibrate with the easier fitness level next time.</p></details>
+<details><summary>How much should I add for breaks?</summary><p>Plan at least 10 minutes per hour of moving time plus 20–30 minutes for lunch on long days. Groups of four or more should add 50% more break time. The calculator adds your break minutes directly to moving time.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-wrap">
+    <div class="fx-brand">HikeTime</div>
+    <p>HikeTime applies Naismith’s rule with fitness and break adjustments, so your route plan matches reality — and flags turnaround time.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function _r(n, d) { var p = Math.pow(10, d); return Math.round(n * p) / p; }
+
+// Naismith's rule: 1 hour per 3 miles + 30 min per 1,000 ft of ascent,
+// scaled by fitness and with rest breaks added on top.
+// fitness: 'easy' | 'moderate' | 'athletic'
+function hikeTime(miles, elevFt, fitness, breakMin) {
+  var factors = { easy: 1.25, moderate: 1.0, athletic: 0.85 };
+  var k = factors[fitness] || 1.0;
+  var m = miles > 0 ? miles : 0, e = elevFt > 0 ? elevFt : 0;
+  var movingMin = (m / 3 * 60 + e / 1000 * 30) * k;
+  var totalMin = movingMin + (breakMin > 0 ? breakMin : 0);
+  function fmt(min) {
+    min = Math.round(min);
+    var h = Math.floor(min / 60), mm = min % 60;
+    return h > 0 ? h + ' h ' + mm + ' min' : mm + ' min';
+  }
+  return {
+    movingMin: _r(movingMin, 1),
+    totalMin: _r(totalMin, 1),
+    movingLabel: fmt(movingMin),
+    totalLabel: fmt(totalMin),
+    paceMinPerMile: m > 0 ? _r(movingMin / m, 1) : 0,
+    elevGainFt: Math.round(e)
+  };
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', function () {
+    var miles = document.getElementById('ht-miles'),
+        elev = document.getElementById('ht-elev'),
+        fit = document.getElementById('ht-fit'),
+        brk = document.getElementById('ht-break'),
+        day = document.getElementById('ht-daylight');
+    if (!miles) return;
+    function run() {
+      var r = hikeTime(parseFloat(miles.value) || 0, parseFloat(elev.value) || 0, fit.value, parseFloat(brk.value) || 0);
+      document.getElementById('ht-total').textContent = r.totalLabel;
+      document.getElementById('ht-moving').textContent = r.movingLabel + ' moving';
+      document.getElementById('ht-pace').textContent = r.paceMinPerMile > 0 ? r.paceMinPerMile + ' min/mi pace' : '—';
+      var dl = parseFloat(day.value) || 0, warn = document.getElementById('ht-warn');
+      if (dl > 0 && r.totalMin / 60 > dl) {
+        warn.textContent = 'Turnaround warning: this hike needs ' + r.totalLabel + ' but you only have ' + dl + ' h of daylight. Start earlier, shorten the route, or carry a headlamp.';
+        warn.style.display = 'block';
+      } else {
+        warn.style.display = 'none';
+      }
+    }
+    [miles, elev, fit, brk, day].forEach(function (el) {
+      el.addEventListener('input', run);
+      el.addEventListener('change', run);
+    });
+    run();
+  });
+}
+
+</script>
+</body>
+</html>
