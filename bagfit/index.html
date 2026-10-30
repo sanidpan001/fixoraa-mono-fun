@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+<link rel="canonical" href="https://fun.fixoraa.tech/bagfit/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BagFit — Will My Bag Fit as Carry-On? Check 44 Airlines' Size Limits</title>
+<meta name="description" content="Free carry-on fit checker: enter your bag dimensions and check fit against carry on size limits by airline for 44 airlines, plus personal item sizes, multi-leg strictest mode, and gate-check fee estimates.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0d1526; --panel:#131e36; --panel2:#182740; --primary:#60a5fa; --accent:#a3e635; --ink:#e8eefb; --muted:#93a3c4; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:'Archivo',system-ui,sans-serif; }
+  .mono { font-family:'JetBrains Mono',ui-monospace,monospace; }
+  .blueprint {
+    background-image:
+      linear-gradient(rgba(96,165,250,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96,165,250,.06) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .gate-card {
+    background:linear-gradient(180deg, rgba(96,165,250,.06), rgba(96,165,250,.015)), var(--panel);
+    border:1px solid rgba(96,165,250,.28);
+    border-radius:1rem;
+    box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05);
+    position:relative;
+  }
+  .gate-card::before, .gate-card::after {
+    content:''; position:absolute; top:50%; width:14px; height:28px; transform:translateY(-50%);
+    background:var(--bg); border:1px solid rgba(96,165,250,.28); z-index:1;
+  }
+  .gate-card::before { left:-8px; border-radius:0 14px 14px 0; border-left:none; }
+  .gate-card::after { right:-8px; border-radius:14px 0 0 14px; border-right:none; }
+  .plain-card { background:var(--panel); border:1px solid rgba(96,165,250,.22); border-radius:1rem; }
+  .field { background:#0a1120; border:1px solid rgba(96,165,250,.35); border-radius:.65rem; color:var(--ink); padding:.6rem .85rem; width:100%; }
+  .field:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(163,230,53,.18); }
+  select.field option { background:#131e36; }
+  .btn-primary { background:linear-gradient(135deg,#60a5fa,#3b82f6); color:#0d1526; font-weight:800; border-radius:.75rem; padding:.75rem 1.5rem; box-shadow:0 6px 24px rgba(96,165,250,.35); transition:transform .15s ease, box-shadow .15s ease; }
+  .btn-primary:hover { transform:translateY(-1px); box-shadow:0 10px 30px rgba(96,165,250,.5); }
+  .btn-lime { background:linear-gradient(135deg,#a3e635,#65a30d); color:#0d1526; font-weight:800; border-radius:.75rem; padding:.75rem 1.5rem; box-shadow:0 6px 24px rgba(163,230,53,.3); transition:transform .15s ease; }
+  .btn-lime:hover { transform:translateY(-1px); }
+  .btn-ghost { border:1px solid rgba(96,165,250,.45); color:var(--primary); border-radius:.75rem; padding:.6rem 1.1rem; font-weight:600; transition:background .15s ease; }
+  .btn-ghost:hover { background:rgba(96,165,250,.12); }
+  .unit-btn { padding:.5rem 1.1rem; border-radius:.6rem; font-weight:700; font-size:.85rem; border:1px solid rgba(96,165,250,.35); color:var(--muted); cursor:pointer; }
+  .unit-btn.active { background:var(--primary); color:#0d1526; border-color:var(--primary); }
+  .chip { border:1px solid rgba(96,165,250,.35); border-radius:.55rem; padding:.4rem .65rem; font-size:.75rem; font-weight:600; color:var(--muted); cursor:pointer; transition:all .12s ease; user-select:none; }
+  .chip:hover { border-color:var(--accent); color:var(--accent); }
+  .chip.active { background:rgba(163,230,53,.14); border-color:var(--accent); color:var(--accent); }
+  .badge-fit { background:rgba(163,230,53,.15); border:1px solid #a3e635; color:#a3e635; font-weight:800; border-radius:.5rem; padding:.2rem .6rem; font-size:.72rem; letter-spacing:.06em; }
+  .badge-nofit { background:rgba(248,113,113,.12); border:1px solid #f87171; color:#f87171; font-weight:800; border-radius:.5rem; padding:.2rem .6rem; font-size:.72rem; letter-spacing:.06em; }
+  .air-card { background:var(--panel2); border:1px solid rgba(96,165,250,.18); border-radius:.75rem; padding:.7rem .8rem; transition:border-color .15s ease, transform .15s ease; }
+  .air-card:hover { transform:translateY(-2px); }
+  .air-card.fit { border-color:rgba(163,230,53,.55); }
+  .air-card.nofit { border-color:rgba(248,113,113,.4); opacity:.92; }
+  .perforation { border-top:2px dashed rgba(96,165,250,.3); }
+  .stamp { transform:rotate(-6deg); border:2px solid currentColor; border-radius:.4rem; padding:.15rem .55rem; font-weight:800; font-size:.7rem; letter-spacing:.12em; }
+  details.faq { background:var(--panel); border:1px solid rgba(96,165,250,.22); border-radius:.75rem; }
+  details.faq summary { cursor:pointer; padding:1rem 1.25rem; font-weight:600; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+  details.faq summary::-webkit-details-marker { display:none; }
+  details.faq summary::after { content:'+'; color:var(--accent); font-size:1.5rem; font-weight:700; flex:none; }
+  details.faq[open] summary::after { content:'−'; }
+  details.faq .faq-body { padding:0 1.25rem 1.25rem; color:var(--muted); line-height:1.7; }
+  .article-prose h2 { color:var(--primary); font-size:1.5rem; font-weight:800; margin:2.2rem 0 .9rem; }
+  .article-prose h3 { color:var(--accent); font-size:1.15rem; font-weight:700; margin:1.6rem 0 .6rem; }
+  .article-prose p { margin:.9rem 0; line-height:1.8; color:#c4d0ea; }
+  .article-prose ul { margin:.9rem 0; padding-left:1.4rem; list-style:disc; color:#c4d0ea; line-height:1.8; }
+  .article-prose li { margin:.4rem 0; }
+  ::-webkit-scrollbar { width:10px; height:10px; }
+  ::-webkit-scrollbar-track { background:#0a1120; }
+  ::-webkit-scrollbar-thumb { background:rgba(96,165,250,.4); border-radius:9999px; }
+</style>
+</head>
+<body class="min-h-screen blueprint">
+
+<!-- Sticky header -->
+<header class="sticky top-0 z-50" style="background:rgba(13,21,38,.93); backdrop-filter:blur(10px); border-bottom:1px solid rgba(96,165,250,.3);">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <svg width="34" height="34" viewBox="0 0 36 36" aria-hidden="true">
+        <rect x="9" y="6" width="18" height="24" rx="2.5" fill="none" stroke="#60a5fa" stroke-width="2.4"/>
+        <line x1="9" y1="13" x2="27" y2="13" stroke="#60a5fa" stroke-width="2.4"/>
+        <rect x="15" y="3.5" width="6" height="4" rx="1" fill="none" stroke="#a3e635" stroke-width="2"/>
+        <path d="M13 22l3 3 5-6" fill="none" stroke="#a3e635" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="text-2xl font-extrabold tracking-tight">Bag<span style="color:#60a5fa">Fit</span></span>
+    </a>
+    <nav class="flex items-center gap-5 text-sm font-semibold">
+      <a href="#top" class="hover:text-[#a3e635] transition-colors">Home</a>
+      <a href="https://fixoraa.tech" class="hover:text-[#a3e635] transition-colors">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-6 text-center">
+  <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">Will My Bag Fit as <span style="color:#60a5fa">Carry-On?</span></h1>
+  <p class="mt-3 max-w-2xl mx-auto text-[#93a3c4]">Enter your suitcase dimensions once — BagFit checks them against the carry-on and personal-item size limits of 44 airlines, finds your strictest airline on multi-leg trips, and estimates gate-check fees. No signup, no app, no guesswork.</p>
+  <div class="mt-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-bold" style="background:rgba(163,230,53,.1); border:1px solid rgba(163,230,53,.5); color:#a3e635;">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+    Unlimited Free Usage — no signup, no paywall
+  </div>
+</section>
+
+<!-- TOP AD (verbatim) -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOL -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+  <!-- ===== PANEL 1: YOUR BAG + REVERSE LOOKUP ===== -->
+  <section class="gate-card p-5 sm:p-7 mb-8" aria-label="Bag dimension input and airline fit check">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-1">
+      <h2 class="text-2xl font-extrabold">🧳 Step 1 — Measure Your Bag</h2>
+      <div class="flex gap-2" role="group" aria-label="Units">
+        <button id="unit-cm" class="unit-btn active" type="button">cm</button>
+        <button id="unit-in" class="unit-btn" type="button">inches</button>
+      </div>
+    </div>
+    <p class="text-sm text-[#93a3c4] mb-4">Measure the <strong class="text-white">longest points</strong> — include wheels, handles and side pockets. BagFit checks every rotation, so the order of your three numbers does not matter.</p>
+    <div class="grid grid-cols-3 gap-3 sm:gap-4">
+      <div>
+        <label for="bag-l" class="block text-xs font-bold uppercase tracking-wider text-[#93a3c4] mb-1.5">Length</label>
+        <input id="bag-l" type="number" min="0" step="0.5" placeholder="55" class="field mono text-lg text-center">
+      </div>
+      <div>
+        <label for="bag-w" class="block text-xs font-bold uppercase tracking-wider text-[#93a3c4] mb-1.5">Width</label>
+        <input id="bag-w" type="number" min="0" step="0.5" placeholder="40" class="field mono text-lg text-center">
+      </div>
+      <div>
+        <label for="bag-h" class="block text-xs font-bold uppercase tracking-wider text-[#93a3c4] mb-1.5">Height</label>
+        <input id="bag-h" type="number" min="0" step="0.5" placeholder="20" class="field mono text-lg text-center">
+      </div>
+    </div>
+    <div class="mt-4 grid sm:grid-cols-2 gap-3">
+      <div>
+        <label for="bag-weight" class="block text-xs font-bold uppercase tracking-wider text-[#93a3c4] mb-1.5">Bag weight (kg) — optional, for the weight check</label>
+        <input id="bag-weight" type="number" min="0" step="0.1" placeholder="7.0" class="field mono">
+      </div>
+      <div class="flex items-end">
+        <button id="check-all-btn" class="btn-lime w-full" type="button">✈️ Check Against All 44 Airlines</button>
+      </div>
+    </div>
+    <div id="results-summary" class="mt-5 hidden"></div>
+    <div id="fit-grid" class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3" aria-live="polite"></div>
+    <p class="mt-4 text-xs text-[#93a3c4] leading-relaxed">📋 Limits are compiled from publicly published airline baggage pages. Airlines change rules by fare class, route and aircraft — <strong class="text-white">always verify with your airline before you fly.</strong></p>
+  </section>
+
+  <!-- ===== PANEL 2: DUAL CHECK (carry-on + personal item) ===== -->
+  <section class="plain-card p-5 sm:p-7 mb-8" aria-label="Personal item and carry-on dual check">
+    <h2 class="text-2xl font-extrabold mb-1">🎒 Step 2 — Dual Check: Carry-On + Personal Item</h2>
+    <p class="text-sm text-[#93a3c4] mb-4">Most airlines allow <strong class="text-white">one cabin bag plus one personal item</strong> (backpack, tote or laptop bag) that must fit under the seat. Enter both and check them together.</p>
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-[#93a3c4] mb-1.5">Personal item — L × W × H</label>
+        <div class="grid grid-cols-3 gap-2">
+          <input id="personal-l" type="number" min="0" step="0.5" placeholder="40" class="field mono text-center" aria-label="Personal item length">
+          <input id="personal-w" type="number" min="0" step="0.5" placeholder="30" class="field mono text-center" aria-label="Personal item width">
+          <input id="personal-h" type="number" min="0" step="0.5" placeholder="15" class="field mono text-center" aria-label="Personal item height">
+        </div>
+      </div>
+      <div>
+        <label for="dual-airline" class="block text-xs font-bold uppercase tracking-wider text-[#93a3c4] mb-1.5">Airline</label>
+        <select id="dual-airline" class="field"></select>
+      </div>
+    </div>
+    <button id="dual-check-btn" class="btn-primary mt-4 w-full sm:w-auto" type="button">Check Both Bags</button>
+    <div id="dual-result" class="mt-4 hidden" aria-live="polite"></div>
+  </section>
+
+  <!-- ===== PANEL 3: MULTI-LEG STRICTEST MODE ===== -->
+  <section class="plain-card p-5 sm:p-7 mb-8" aria-label="Multi-leg strictest airline mode">
+    <h2 class="text-2xl font-extrabold mb-1">🔗 Step 3 — Multi-Leg Trip: Strictest Airline Wins</h2>
+    <p class="text-sm text-[#93a3c4] mb-4">Flying two or more airlines on one itinerary? Select every leg. BagFit takes the <strong class="text-white">smallest limit on each axis</strong> across your legs — because the strictest airline on your route decides whether your bag flies free.</p>
+    <div id="leg-list" class="flex flex-wrap gap-2 mb-4" role="group" aria-label="Select airlines for your trip legs"></div>
+    <div class="flex flex-wrap gap-3">
+      <button id="multileg-btn" class="btn-primary" type="button">Find My Strictest Limits</button>
+      <button id="multileg-clear" class="btn-ghost" type="button">Clear legs</button>
+    </div>
+    <div id="strictest-result" class="mt-4 hidden" aria-live="polite"></div>
+  </section>
+
+  <!-- ===== PANEL 4: WEIGHT ENFORCEMENT + GATE FEE ESTIMATOR ===== -->
+  <section class="plain-card p-5 sm:p-7 mb-8" aria-label="Weight enforcement notes and gate-check fee estimator">
+    <h2 class="text-2xl font-extrabold mb-1">⚖️ Step 4 — Weight Rules &amp; Gate-Check Fee Estimator</h2>
+    <p class="text-sm text-[#93a3c4] mb-4">Size is only half the battle — many airlines <strong class="text-white">weigh cabin bags at check-in</strong>. Pick an airline to see its enforcement notes, and estimate what an oversize bag would cost at the gate.</p>
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div>
+        <label for="airline-select" class="block text-xs font-bold uppercase tracking-wider text-[#93a3c4] mb-1.5">Airline</label>
+        <select id="airline-select" class="field"></select>
+      </div>
+      <div>
+        <label for="fee-airline-note" class="block text-xs font-bold uppercase tracking-wider text-[#93a3c4] mb-1.5">Your bag's biggest overshoot (cm)</label>
+        <input id="fee-over" type="number" min="0" step="0.5" placeholder="3" class="field mono">
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div id="weight-note" class="rounded-xl p-4 text-sm leading-relaxed" style="background:rgba(96,165,250,.07); border:1px solid rgba(96,165,250,.3);" aria-live="polite"></div>
+      <div id="fee-estimate" class="rounded-xl p-4 text-sm leading-relaxed" style="background:rgba(163,230,53,.06); border:1px solid rgba(163,230,53,.35);" aria-live="polite"></div>
+    </div>
+    <p class="mt-3 text-xs text-[#93a3c4]">Fee ranges are rough USD-equivalent estimates for guidance only — actual fees depend on route, fare class and currency, and can be higher on low-cost carriers.</p>
+  </section>
+
+</main>
+
+<!-- BOTTOM AD (verbatim) -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+
+<!-- SEO ARTICLE -->
+<article id="seo-article" class="article-prose max-w-6xl mx-auto px-4 sm:px-6 pb-10">
+  <h2>Carry-On Size Limits by Airline: The Complete Guide</h2>
+  <p>Every year, millions of travelers ask the same anxious question at the departure gate: <strong>will my bag fit as carry on?</strong> The honest answer is that there is no single global carry-on size. Each airline publishes its own maximum dimensions, its own weight limit, and its own rules about what counts as a "personal item" — and the differences are big enough to ruin a trip. A suitcase that glides through a US domestic sizer can fail spectacularly on a European budget carrier, and a bag that is fine on a full-service airline can be overweight on a Gulf carrier that weighs every cabin bag at check-in. That is why carry on size limits by airline have become one of the most-searched travel topics in the world, and why BagFit exists: to check your bag against 44 airlines in one click, before you pack, not after you are arguing with a gate agent.</p>
+  <p>The core problem is fragmentation. The International Air Transport Association once suggested a guideline of 55 × 35 × 20 cm for cabin bags, and many airlines cluster near it — but it was only ever a suggestion, and plenty of carriers deviate. US legacy airlines such as American, Delta and United allow roughly 56 × 35 × 23 cm, while Southwest and Alaska stretch to 61 × 41 × 25 cm, among the most generous allowances anywhere. Cross the Atlantic and the picture changes: Lufthansa, SWISS, Austrian, SAS and Finnair converge on 55 × 40 × 23 cm with an 8 kg weight limit, while Air France and KLM shave the width to 55 × 35 × 25 cm — one centimeter narrower than most hard-shell rollers on the market. Budget carriers play a different game entirely. Ryanair's free allowance is only a 40 × 30 × 20 cm small bag; the larger 55 × 40 × 20 cm cabin bag requires a paid Priority upgrade. Wizz Air and easyJet follow the same two-tier model, and in Asia, AirAsia enforces a strict 7 kg combined limit for your cabin bag and personal item together. The Gulf carriers — Emirates, Qatar Airways and Etihad — all cap economy cabin bags at 7 kg and weigh them routinely, and Qatar's 50 cm maximum length is the shortest of any major carrier, which disqualifies a surprising number of "international carry-on" suitcases sold in the United States.</p>
+
+  <h3>How Airlines Actually Measure Your Bag</h3>
+  <p>Before you ask "will my bag fit as carry on," you need to know what airlines measure — because it is almost certainly more than the number printed on the retail tag. Airlines measure the bag's <strong>longest points in every dimension, including wheels, handles, feet and bulging side pockets</strong>. That sleek 55 cm suitcase with 4 cm spinner wheels is really a 59 cm suitcase, and the gate sizer does not care what the manufacturer claimed. Retractable handles that protrude, expandable zippers left open, and overstuffed front pockets all add centimeters that count against the limit. Hard-shell bags fail most often on the depth axis: a 20 cm limit is unforgiving when the handle housing sticks out the back. Soft duffels and backpacks have the opposite advantage — staff sometimes allow a soft bag that compresses into the sizer, though you should never count on discretion. When you measure, stand the bag exactly as it will be presented at the gate, extend nothing, zip everything, and measure with a rigid tape across the widest points. Then add a one-centimeter safety margin in your head, because sizers are manufactured to the published limit with zero tolerance, and a bag that is exactly 56.0 cm in a 56 cm sizer is a coin flip.</p>
+
+  <h3>Will My Bag Fit as Carry On? The Three-Minute Method</h3>
+  <p>The fastest reliable way to answer "will my bag fit as carry on" takes three minutes and a tape measure. First, measure length, width and height at the widest points, wheels and handles included, and note the bag's packed weight on a bathroom scale. Second, enter those numbers into BagFit and run the reverse lookup against all 44 airlines — the result grid tells you instantly which carriers your bag fits and which it does not, and by how many centimeters on each axis. Third, check the one axis that usually fails: depth. Across the dataset, the depth limit is the most common deal-breaker, because US bags are built around 9-inch (23 cm) depths while much of Europe and Asia caps depth at 20 cm. If your bag is a 56 × 36 × 23 cm US-standard roller, it fits American, Delta and Southwest, but it fails Lufthansa's 8 kg-adjacent world only on weight — and it flatly fails Ryanair's 20 cm depth, Korean Air's 20 cm depth, and Emirates' 20 cm depth. Fourth, remember rotation: a bag fits if it fits in <em>any</em> orientation, which is exactly how BagFit compares dimensions — your three numbers are sorted against the airline's three sorted limits, so you never have to guess which side goes where in the sizer. Finally, re-measure after packing. A bag that measured 19 cm empty can measure 23 cm stuffed with souvenirs, and that transformation happens on the return leg, when you are least prepared for a gate fee.</p>
+
+  <h3>Airline Personal Item Size: The Free Bag Most Travelers Waste</h3>
+  <p>Here is the travel hack hiding in plain sight: almost every airline lets you bring a second bag for free. The airline personal item size — the backpack, tote, laptop bag or large purse that must fit under the seat in front of you — is a separate allowance on top of your carry-on, and most travelers underuse it. Typical airline personal item size limits run 40 × 30 × 15 cm on European and Asian full-service carriers, 43 × 25 × 22 cm on United, 45 × 36 × 20 cm on easyJet, and a generous 46 × 43 × 20 cm on Spirit. The under-seat space is genuinely smaller than the overhead bin, which is why the limits are tighter, but a well-chosen 35–40 liter travel backpack fits almost every personal-item sizer in the world while swallowing a laptop, a change of clothes, toiletries and snacks. There are traps, though. On Ryanair, Wizz Air and Vueling basic fares, the personal item is your <em>only</em> free bag — the full-size cabin bag costs extra. On AirAsia and Scoot, the 7–10 kg weight limit covers your carry-on and personal item <em>combined</em>, so loading the backpack does not dodge the scale. And ANA, JAL and Qantas apply the same combined-weight logic. BagFit's dual check exists for exactly this: enter both bags, pick your airline, and see both verdicts side by side, because the personal item that fits under a US seat can be too tall for a European one.</p>
+
+  <h3>Multi-Leg Trips: The Strictest Airline Always Wins</h3>
+  <p>The most expensive carry-on mistake is not checking the wrong airline — it is checking only the <em>first</em> airline. On a multi-leg itinerary, your bag must satisfy <strong>every</strong> carrier on the ticket, and the strictest airline on your route is the one that decides whether your bag flies free. Consider a common booking: New York to Bangkok with a US legacy carrier across the Atlantic and a Gulf or Asian carrier onward. Your 56 × 36 × 23 cm bag clears the US leg comfortably, then meets Qatar Airways' 50 × 37 × 25 cm limit and 7 kg scale — and fails on length by six centimeters. Or picture London to Sydney via the Middle East: the European leg tolerates 55 × 40 × 23 cm, but the onward carrier's 20 cm depth limit ends the discussion. BagFit's multi-leg mode automates this by taking the element-wise minimum across every leg you select: the smallest allowed length, the smallest allowed width, the smallest allowed depth, and the lowest weight limit — each labeled with the airline that imposes it. If your bag clears that composite limit, it clears your whole trip. If it does not, you know exactly which leg is the problem and can plan around it: check the bag through, repack into a smaller case, or choose a different routing. One more subtlety: code-shares. The operating carrier's rules apply, not the airline whose logo is on your ticket, so always verify which metal you are actually flying.</p>
+
+  <h3>Carry-On Weight Limits: The Rule Nobody Reads</h3>
+  <p>Travelers obsess over dimensions and ignore weight, which is backwards on half the world's airlines. US and Canadian carriers generally publish <strong>no</strong> carry-on weight limit — if you can lift it into the overhead bin, it flies. But step outside North America and weight enforcement is real and routine. The 8 kg club — Lufthansa, SWISS, Austrian, SAS, Finnair, TAP — weighs cabin bags at check-in counters on a large share of flights. The 7 kg club — Emirates, Qatar, Etihad, Singapore Airlines, Cathay Pacific, Air India, IndiGo, AirAsia — is stricter still, and on AirAsia and Scoot the limit covers both bags combined. British Airways is the famous exception at 23 kg, which is effectively unlimited for any sane packing job, while Hawaiian enforces 11.3 kg (25 lb) per piece, a quirk of its inter-island operation. Where is the scale? Usually at the check-in counter, sometimes at the gate on full flights, and almost always when your bag <em>looks</em> heavy. The counter-move is simple: wear your heaviest items, put dense electronics and books in your personal item or coat pockets during weighing, and know your airline's number before you arrive. BagFit shows each airline's weight rule and enforcement note alongside the size verdict, because a bag that fits the sizer but fails the scale still ends up in the hold — and still costs you.</p>
+
+  <h3>Oversize Bags, Gate Checks and Fees</h3>
+  <p>When a bag fails the sizer at the gate, the airline gate-checks it: a tag is printed, the bag goes into the hold, and you pay. Gate-check fees are the most painful kind because they are set at the moment you have zero leverage, and they are almost always higher than pre-booked hold luggage. On US legacy carriers, expect roughly $30–$75 for an oversize gate check; on European low-cost carriers, €30–€60 at the gate versus half that online; and Spirit and Frontier can charge $65–$100+ when the fee is assessed at the boarding door. The pattern is consistent: the cheaper the ticket, the more aggressive the enforcement and the steeper the fee, because ancillary revenue is the business model. There is also the "borderline" zone — a bag 1–2 cm over — where outcomes depend on the agent, the fullness of the flight, and whether the sizer is even out that day. BagFit's fee estimator models this honestly: a fitting bag costs nothing, a borderline bag is flagged as agent's discretion, and clearly oversize bags get an estimated range with the caveat that low-cost carriers multiply everything. The cheapest strategy is boring but unbeatable: measure before you buy the bag, check every leg of the trip, pre-book hold luggage online if you are over, and never discover your bag is oversize at the gate.</p>
+
+  <h3>Soft Duffels vs Hard-Shell Rollers</h3>
+  <p>Your bag's construction changes the odds. Hard-shell rollers protect contents and roll beautifully, but they are dimensionally honest: what you measure is what the sizer sees, and the handle housing plus spinner wheels silently add 3–5 cm beyond the shell size. Soft duffels and travel backpacks compress, which buys forgiveness at the sizer — a 58 cm duffel cinched to 55 cm often passes where a 58 cm hard case cannot. The trade-off is that soft bags expand when overpacked, and an overstuffed duffel can fail worse than a hard case. Wheels deserve special attention: two-wheel rollers hide their wheels in the body profile and measure truer to the tag size, while four-wheel spinners add height that counts. If you fly budget carriers regularly, consider a "sizer-proof" bag: a soft-sided 55 × 40 × 20 cm case with recessed wheels. It is the largest rectangle that fits Ryanair, easyJet's paid cabin bag, Korean Air, Emirates and Air India simultaneously — the closest thing to a universal carry-on that exists. And whatever you buy, the manufacturer's "cabin size" or "carry-on approved" label is marketing, not a guarantee: it usually means "fits <em>some</em> airlines," and BagFit's reverse lookup will tell you exactly which ones.</p>
+
+  <h3>How to Use BagFit Before You Pack</h3>
+  <p>BagFit is built around the order real travelers think in: dimensions first, airlines second. Start by measuring your bag at its widest points — wheels, handles and pockets included — and enter the three numbers in centimeters or inches. Hit "Check Against All 44 Airlines" for the reverse lookup: a grid of every carrier, each stamped FIT or NO FIT with the exact overshoot on each axis, so you can see at a glance whether your bag is a world traveler or a single-airline specialist. Add your personal item dimensions and run the dual check against your airline to confirm both bags. Planning connections? Select each leg in multi-leg mode and let BagFit compute your strictest composite limit, labeled with the airline that sets each axis. Finally, open the weight and fee panel: read your airline's enforcement note, enter your packed weight if you know it, and get an honest estimate of what an oversize bag would cost at the gate. Then — and this is the one step no tool can do for you — verify with your airline before you fly. Limits in this database are compiled from publicly published baggage pages, but airlines adjust rules by fare class, route, aircraft type and season. A two-minute check on the airline's own baggage page is the cheapest travel insurance you will ever buy, and it is the difference between breezing through the gate and funding the airline's ancillary-revenue target.</p>
+</article>
+
+<!-- FAQs -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 pb-10" aria-label="Frequently asked questions">
+  <h2 class="text-2xl font-extrabold mb-4" style="color:#60a5fa">Frequently Asked Questions</h2>
+  <div class="grid gap-3">
+    <details class="faq">
+      <summary>What is the standard carry-on size for international flights?</summary>
+      <div class="faq-body">There is no single global standard, but 55 × 40 × 20 cm is the closest thing to a universal safe size — it fits Ryanair, easyJet's paid cabin bag, Korean Air, Emirates and Air India. US carriers are more generous (typically 56 × 35 × 23 cm), while Qatar Airways allows only 50 cm in length. BagFit checks your exact bag against 44 airlines so you do not have to memorize any of this.</div>
+    </details>
+    <details class="faq">
+      <summary>Do airlines measure wheels and handles in carry-on dimensions?</summary>
+      <div class="faq-body">Yes — airlines measure the bag's longest points including wheels, handles, feet and protruding pockets. A suitcase tagged "55 cm" with 4 cm spinner wheels is really 59 cm, and the gate sizer will catch it. Always measure the bag as it will be presented at the gate, fully zipped, and include every protrusion.</div>
+    </details>
+    <details class="faq">
+      <summary>What is the difference between a carry-on and a personal item?</summary>
+      <div class="faq-body">A carry-on goes in the overhead bin (typically up to 55–56 cm long); a personal item must fit under the seat in front of you (typically 40 × 30 × 15 cm). Most airlines allow one of each. On budget carriers like Ryanair and Wizz Air, the personal item may be your only free bag — the full-size cabin bag costs extra.</div>
+    </details>
+    <details class="faq">
+      <summary>What happens if my bag is 1 cm over the limit?</summary>
+      <div class="faq-body">A bag 1–2 cm over is in the "agent's discretion" zone: on a quiet day it may pass, on a full flight it will be gate-checked and you will pay the oversize fee. Sizers are built to the published limit with zero tolerance. BagFit flags borderline results separately so you know you are gambling, not guessing.</div>
+    </details>
+    <details class="faq">
+      <summary>Do connecting flights use the strictest airline's baggage rules?</summary>
+      <div class="faq-body">Effectively, yes — your bag must satisfy every carrier on your itinerary, so the smallest limit on each axis governs. A bag that fits your US domestic leg can fail on the onward Gulf or Asian leg. BagFit's multi-leg mode computes the strictest composite limit across all your legs and names the airline that sets each one.</div>
+    </details>
+    <details class="faq">
+      <summary>How accurate is BagFit's airline size database?</summary>
+      <div class="faq-body">Limits are compiled from publicly published airline baggage pages covering 44 airlines' carry-on and personal-item dimensions plus weight rules. Airlines change policies by fare class, route and aircraft, so always verify with your airline before flying — BagFit shows this reminder next to every result.</div>
+    </details>
+  </div>
+</section>
+
+<!-- JSON-LD FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the standard carry-on size for international flights?",
+      "acceptedAnswer": { "@type": "Answer", "text": "There is no single global standard, but 55 x 40 x 20 cm is the closest thing to a universal safe size — it fits Ryanair, easyJet's paid cabin bag, Korean Air, Emirates and Air India. US carriers are more generous (typically 56 x 35 x 23 cm), while Qatar Airways allows only 50 cm in length. BagFit checks your exact bag against 44 airlines so you do not have to memorize any of this." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do airlines measure wheels and handles in carry-on dimensions?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — airlines measure the bag's longest points including wheels, handles, feet and protruding pockets. A suitcase tagged 55 cm with 4 cm spinner wheels is really 59 cm, and the gate sizer will catch it. Always measure the bag as it will be presented at the gate, fully zipped, and include every protrusion." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a carry-on and a personal item?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A carry-on goes in the overhead bin (typically up to 55-56 cm long); a personal item must fit under the seat in front of you (typically 40 x 30 x 15 cm). Most airlines allow one of each. On budget carriers like Ryanair and Wizz Air, the personal item may be your only free bag — the full-size cabin bag costs extra." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if my bag is 1 cm over the limit?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A bag 1-2 cm over is in the agent's discretion zone: on a quiet day it may pass, on a full flight it will be gate-checked and you will pay the oversize fee. Sizers are built to the published limit with zero tolerance. BagFit flags borderline results separately so you know you are gambling, not guessing." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do connecting flights use the strictest airline's baggage rules?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Effectively, yes — your bag must satisfy every carrier on your itinerary, so the smallest limit on each axis governs. A bag that fits your US domestic leg can fail on the onward Gulf or Asian leg. BagFit's multi-leg mode computes the strictest composite limit across all your legs and names the airline that sets each one." }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is BagFit's airline size database?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Limits are compiled from publicly published airline baggage pages covering 44 airlines' carry-on and personal-item dimensions plus weight rules. Airlines change policies by fare class, route and aircraft, so always verify with your airline before flying — BagFit shows this reminder next to every result." }
+    }
+  ]
+}
+</script>
+
+<footer class="max-w-6xl mx-auto px-4 sm:px-6 pb-10 text-center text-xs text-[#93a3c4]">
+  <div class="perforation pt-6">
+    <p>BagFit — carry-on fit checker for 44 airlines. Limits compiled from public sources; always verify with your airline before flying.</p>
+    <p class="mt-2">Free to use. No signup. Your bag dimensions never leave your browser.</p>
+  </div>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+
+<!-- Inlined pure-logic lib -->
+<script id="v3-bagfit-carryon-fit-checker-lib">
+/* BagFit pure logic — carry-on fit checker.
+ * Pure functions only: no document/window access, no DOM, no network.
+ * Airline limits are compiled from publicly published airline baggage pages
+ * (carry-on + personal-item max dimensions, weight limits where published).
+ * Rules change by fare, route and aircraft — the tool always tells users to
+ * verify with their airline before flying.
+ *
+ * Dimension model: every bag/airline limit is [length, width, height] in cm.
+ * Fit uses rotation-friendly comparison: both bags' dimensions are sorted
+ * before comparison, so a bag fits if it fits in ANY orientation.
+ */
+var BagFit = (function () {
+  'use strict';
+
+  var CM_PER_IN = 2.54;
+
+  /* ------------------------------------------------------------------ */
+  /* Airline database — 44 airlines.                                    */
+  /* co = carry-on max [l, w, h] cm, pi = personal item max [l, w, h]   */
+  /* cm, w = weight limit kg (null = no published weight limit),        */
+  /* lc = low-cost carrier (higher gate fees, stricter enforcement).    */
+  /* ------------------------------------------------------------------ */
+  var AIRLINES = [
+    /* ---- North America ---- */
+    { id: 'american-airlines', name: 'American Airlines', region: 'North America',
+      co: [56, 36, 23], pi: [46, 36, 20], w: null, lc: false,
+      wn: 'No published weight limit for carry-ons on most routes; the bag must fit in the sizer and you must be able to lift it into the overhead bin yourself.',
+      fn: 'Oversize bags are gate-checked to your final destination. Typical gate-check fees on US domestic routes run $30–$75.' },
+    { id: 'delta-air-lines', name: 'Delta Air Lines', region: 'North America',
+      co: [56, 35, 23], pi: [43, 33, 20], w: null, lc: false,
+      wn: 'No published weight limit; carry-ons must fit the sizer at the gate. Delta agents commonly ask to test bags that look oversized.',
+      fn: 'Oversize bags are checked at the gate, usually for $30–$75 on domestic routes.' },
+    { id: 'united-airlines', name: 'United Airlines', region: 'North America',
+      co: [56, 35, 22], pi: [43, 25, 22], w: null, lc: false,
+      wn: 'No published weight limit. Basic Economy tickets do NOT include a full-size carry-on on many routes — only a personal item — so check your fare class.',
+      fn: 'Gate-checked oversize bags typically cost $35–$65 on domestic routes.' },
+    { id: 'southwest-airlines', name: 'Southwest Airlines', region: 'North America',
+      co: [61, 41, 25], pi: [47, 34, 22], w: null, lc: false,
+      wn: 'No published weight limit; Southwest allows the roomiest carry-on of any major US carrier (24 x 16 x 10 in). Bags must fit in the overhead bin or under the seat.',
+      fn: 'Oversize bags are gate-checked, usually $35–$65.' },
+    { id: 'alaska-airlines', name: 'Alaska Airlines', region: 'North America',
+      co: [61, 43, 25], pi: [43, 33, 25], w: null, lc: false,
+      wn: 'No published weight limit; one of the most generous carry-on allowances among US carriers. Your bag must fit in the overhead compartment.',
+      fn: 'Gate-checked oversize bags typically $35–$65 on domestic routes.' },
+    { id: 'jetblue', name: 'JetBlue', region: 'North America',
+      co: [56, 36, 23], pi: [43, 33, 20], w: null, lc: false,
+      wn: 'No published weight limit on standard fares. Blue Basic fares may restrict you to a personal item only — verify your fare.',
+      fn: 'Oversize bags are gate-checked, usually $35–$65.' },
+    { id: 'spirit-airlines', name: 'Spirit Airlines', region: 'North America',
+      co: [56, 46, 25], pi: [46, 43, 20], w: null, lc: true,
+      wn: 'No published weight limit, but Spirit is famous for strict sizer checks at the gate — fees double at the gate versus pre-purchase.',
+      fn: 'Full-size carry-ons are a paid add-on on Spirit. An oversize bag at the gate can cost $65–$99+; pre-paying online is far cheaper.' },
+    { id: 'frontier-airlines', name: 'Frontier Airlines', region: 'North America',
+      co: [61, 41, 25], pi: [46, 36, 20], w: null, lc: true,
+      wn: 'No published weight limit, but Frontier enforces the personal-item sizer aggressively — a bag 1 cm too tall routinely gets flagged.',
+      fn: 'Full-size carry-ons are paid extras. Gate fees for oversize bags run $60–$100; buy the allowance online beforehand.' },
+    { id: 'hawaiian-airlines', name: 'Hawaiian Airlines', region: 'North America',
+      co: [56, 36, 25], pi: [43, 33, 25], w: 11.3, lc: false,
+      wn: 'Carry-ons are limited to 11.3 kg (25 lb) per piece — one of the few US carriers with a hard carry-on weight limit. Bags are weighed at check-in on inter-island routes.',
+      fn: 'Overweight or oversize bags are checked; typical fees $25–$60.' },
+    { id: 'air-canada', name: 'Air Canada', region: 'North America',
+      co: [55, 40, 23], pi: [43, 33, 16], w: null, lc: false,
+      wn: 'No published weight limit, but Air Canada sizer-frames every bag that looks borderline at major hubs.',
+      fn: 'Oversize bags are gate-checked, typically CAD $35–$75.' },
+    { id: 'westjet', name: 'WestJet', region: 'North America',
+      co: [53, 38, 23], pi: [41, 33, 15], w: null, lc: false,
+      wn: 'No published weight limit; WestJet carry-ons run slightly smaller than the US average (21 x 15 x 9 in) — a common surprise for cross-border flyers.',
+      fn: 'Gate-checked oversize bags typically CAD $35–$75.' },
+    { id: 'porter-airlines', name: 'Porter Airlines', region: 'North America',
+      co: [55, 40, 23], pi: [43, 33, 16], w: 9, lc: false,
+      wn: '9 kg (20 lb) carry-on weight limit applies. Porters regional Dash 8 aircraft have smaller overhead bins, so enforcement is strict.',
+      fn: 'Oversize bags are checked to your destination; expect CAD $40–$80.' },
+
+    /* ---- Europe ---- */
+    { id: 'british-airways', name: 'British Airways', region: 'Europe',
+      co: [56, 45, 25], pi: [40, 30, 15], w: 23, lc: false,
+      wn: '23 kg combined limit for cabin bags on most fares — generous, but the combined weight of your carry-on AND personal item must stay under it.',
+      fn: 'Oversize bags are checked into the hold; expect £35–£65 at the gate.' },
+    { id: 'easyjet', name: 'easyJet', region: 'Europe',
+      co: [56, 45, 25], pi: [45, 36, 20], w: null, lc: true,
+      wn: 'No weight limit, but the free allowance is only the small under-seat bag (45 x 36 x 20 cm). The large cabin bag is a paid add-on and must still be liftable into the overhead bin.',
+      fn: 'Bags that do not fit the sizer are checked for £24–£48 at the gate; pre-booking hold luggage is cheaper.' },
+    { id: 'ryanair', name: 'Ryanair', region: 'Europe',
+      co: [55, 40, 20], pi: [40, 30, 20], w: 10, lc: true,
+      wn: 'The free fare includes ONLY the small personal bag (40 x 30 x 20 cm). The 55 x 40 x 20 cm cabin bag requires Priority boarding. The 10 kg combined limit applies to the cabin bag.',
+      fn: 'Non-priority passengers with a second bag pay €/£30–€/£50 at the gate. Ryanair sizers are the most notorious in Europe — measure twice.' },
+    { id: 'wizz-air', name: 'Wizz Air', region: 'Europe',
+      co: [55, 40, 23], pi: [40, 30, 20], w: 10, lc: true,
+      wn: 'Free allowance is only the small under-seat bag (40 x 30 x 20 cm, 10 kg max). The 55 x 40 x 23 cm cabin bag is a paid extra (WIZZ Priority).',
+      fn: 'Oversize cabin bags at the gate cost roughly €30–€60; pre-purchase online.' },
+    { id: 'lufthansa', name: 'Lufthansa', region: 'Europe',
+      co: [55, 40, 23], pi: [40, 30, 10], w: 8, lc: false,
+      wn: 'Strict 8 kg carry-on limit, and Lufthansa weighs bags at check-in on a large share of flights. Personal items (40 x 30 x 10 cm) are small — laptop sleeves, not backpacks.',
+      fn: 'Overweight bags are checked to the hold for roughly €25–€70 depending on route.' },
+    { id: 'air-france', name: 'Air France', region: 'Europe',
+      co: [55, 35, 25], pi: [40, 30, 15], w: 12, lc: false,
+      wn: '12 kg combined limit for carry-on + personal item together. Air France staff weigh cabin bags at check-in counters on many long-haul routes.',
+      fn: 'Oversize bags are checked; typical fees €30–€75.' },
+    { id: 'klm', name: 'KLM Royal Dutch Airlines', region: 'Europe',
+      co: [55, 35, 25], pi: [40, 30, 15], w: 12, lc: false,
+      wn: '12 kg combined limit for carry-on + personal item. Note the 35 cm width — one of the narrowest allowances in Europe, so wide roller bags often fail.',
+      fn: 'Gate-checked oversize bags cost roughly €30–€75.' },
+    { id: 'iberia', name: 'Iberia', region: 'Europe',
+      co: [56, 40, 25], pi: [40, 30, 15], w: 10, lc: false,
+      wn: '10 kg limit for the cabin bag. Iberia weighs cabin bags on many routes, especially at Madrid hub.',
+      fn: 'Oversize bags are checked for roughly €30–€70.' },
+    { id: 'vueling', name: 'Vueling', region: 'Europe',
+      co: [55, 40, 20], pi: [40, 30, 20], w: 10, lc: true,
+      wn: 'Free allowance is the small personal bag (40 x 30 x 20 cm). The 55 x 40 x 20 cm cabin bag with 10 kg limit is a paid add-on on basic fares.',
+      fn: 'Bags over the sizer are checked for €30–€60 at the gate.' },
+    { id: 'tap-air-portugal', name: 'TAP Air Portugal', region: 'Europe',
+      co: [55, 40, 20], pi: [40, 30, 15], w: 8, lc: false,
+      wn: 'Strict 8 kg limit on the cabin bag; TAP weighs carry-ons at check-in on many routes.',
+      fn: 'Overweight/oversize bags are checked for roughly €30–€70.' },
+    { id: 'sas', name: 'SAS Scandinavian Airlines', region: 'Europe',
+      co: [55, 40, 23], pi: [40, 30, 15], w: 8, lc: false,
+      wn: '8 kg carry-on limit. SAS enforces weight at check-in, particularly on intercontinental flights.',
+      fn: 'Checked at the gate or counter for roughly €30–€70.' },
+    { id: 'norwegian', name: 'Norwegian', region: 'Europe',
+      co: [55, 40, 23], pi: [38, 30, 20], w: 10, lc: true,
+      wn: '10 kg limit for the cabin bag on LowFare+ and above. The personal item (38 x 30 x 20 cm) is on the small side.',
+      fn: 'Oversize bags are checked for roughly €25–€60 at the gate.' },
+    { id: 'finnair', name: 'Finnair', region: 'Europe',
+      co: [55, 40, 23], pi: [40, 30, 15], w: 8, lc: false,
+      wn: '8 kg carry-on limit; Finnair checks cabin-bag weight at the counter on many routes.',
+      fn: 'Overweight bags are checked for roughly €30–€70.' },
+    { id: 'swiss', name: 'SWISS International Air Lines', region: 'Europe',
+      co: [55, 40, 23], pi: [40, 30, 10], w: 8, lc: false,
+      wn: 'Strict 8 kg limit; SWISS is consistent about weighing cabin bags at check-in. Personal items are limited to 40 x 30 x 10 cm.',
+      fn: 'Overweight bags go to the hold for roughly CHF 30–75.' },
+    { id: 'austrian-airlines', name: 'Austrian Airlines', region: 'Europe',
+      co: [55, 40, 23], pi: [40, 30, 10], w: 8, lc: false,
+      wn: '8 kg carry-on limit, weighed at check-in on many routes — same group policy as Lufthansa and SWISS.',
+      fn: 'Overweight bags are checked for roughly €25–€70.' },
+    { id: 'aer-lingus', name: 'Aer Lingus', region: 'Europe',
+      co: [55, 40, 24], pi: [40, 25, 20], w: 10, lc: false,
+      wn: '10 kg limit for the 55 x 40 x 24 cm cabin bag. The 40 x 25 x 20 cm personal item is narrower than most.',
+      fn: 'Oversize bags are checked for roughly €30–€70.' },
+    { id: 'ita-airways', name: 'ITA Airways', region: 'Europe',
+      co: [55, 35, 25], pi: [40, 30, 15], w: 8, lc: false,
+      wn: '8 kg carry-on limit. The 35 cm width matches KLM/Air France — wide suitcases are the usual failure.',
+      fn: 'Oversize bags are checked for roughly €30–€70.' },
+    { id: 'turkish-airlines', name: 'Turkish Airlines', region: 'Europe / Middle East',
+      co: [55, 40, 23], pi: [40, 30, 15], w: 8, lc: false,
+      wn: '8 kg carry-on limit, weighed at check-in on many routes through Istanbul.',
+      fn: 'Overweight/oversize bags are checked for roughly $25–$70.' },
+
+    /* ---- Middle East ---- */
+    { id: 'emirates', name: 'Emirates', region: 'Middle East',
+      co: [55, 38, 20], pi: [45, 35, 20], w: 7, lc: false,
+      wn: 'Strict 7 kg limit — Emirates weighs cabin bags at check-in on the majority of flights. The 20 cm depth is tighter than most carriers.',
+      fn: 'Overweight bags must be checked; excess baggage rates apply (roughly $30–$75 per piece on regional routes).' },
+    { id: 'qatar-airways', name: 'Qatar Airways', region: 'Middle East',
+      co: [50, 37, 25], pi: [40, 30, 15], w: 7, lc: false,
+      wn: 'Strict 7 kg limit, and the 50 cm length is the shortest standard carry-on allowance of any major carrier — many "cabin-size" suitcases sold in the US/EU fail here.',
+      fn: 'Overweight bags are checked; excess baggage charges apply (roughly $30–$75).' },
+    { id: 'etihad-airways', name: 'Etihad Airways', region: 'Middle East',
+      co: [56, 36, 23], pi: [40, 30, 15], w: 7, lc: false,
+      wn: 'Strict 7 kg limit; Etihad weighs cabin bags at check-in on most routes.',
+      fn: 'Overweight bags are checked; excess baggage rates apply (roughly $30–$75).' },
+    { id: 'saudia', name: 'Saudia', region: 'Middle East',
+      co: [56, 36, 23], pi: [40, 30, 15], w: 7, lc: false,
+      wn: '7 kg carry-on limit; bags are weighed at check-in on many routes.',
+      fn: 'Overweight bags are checked; excess baggage rates apply.' },
+
+    /* ---- Asia-Pacific ---- */
+    { id: 'singapore-airlines', name: 'Singapore Airlines', region: 'Asia-Pacific',
+      co: [56, 36, 23], pi: [40, 30, 15], w: 7, lc: false,
+      wn: 'Strict 7 kg limit; Singapore Airlines weighs cabin bags at check-in on most flights.',
+      fn: 'Overweight bags are checked; excess baggage charges apply (roughly $30–$80).' },
+    { id: 'cathay-pacific', name: 'Cathay Pacific', region: 'Asia-Pacific',
+      co: [56, 36, 23], pi: [40, 30, 15], w: 7, lc: false,
+      wn: '7 kg limit for economy cabin bags; weighing at check-in is common on Hong Kong departures.',
+      fn: 'Overweight bags are checked; excess baggage rates apply.' },
+    { id: 'ana', name: 'ANA (All Nippon Airways)', region: 'Asia-Pacific',
+      co: [55, 40, 25], pi: [40, 30, 10], w: 10, lc: false,
+      wn: '10 kg limit covers carry-on + personal item COMBINED. The personal item is limited to 40 x 30 x 10 cm.',
+      fn: 'Overweight bags are checked for roughly ¥3,000–¥7,000 on domestic routes.' },
+    { id: 'japan-airlines', name: 'Japan Airlines', region: 'Asia-Pacific',
+      co: [55, 40, 25], pi: [40, 30, 10], w: 10, lc: false,
+      wn: '10 kg combined limit for carry-on + personal item, like ANA. JAL staff check cabin-bag size carefully on domestic flights.',
+      fn: 'Overweight bags are checked for roughly ¥3,000–¥7,000 on domestic routes.' },
+    { id: 'korean-air', name: 'Korean Air', region: 'Asia-Pacific',
+      co: [55, 40, 20], pi: [40, 30, 15], w: 10, lc: false,
+      wn: '10 kg carry-on limit. The 20 cm depth is tight — hard-shell rollers with protruding handles often fail.',
+      fn: 'Overweight bags are checked; excess baggage rates apply.' },
+    { id: 'qantas', name: 'Qantas', region: 'Asia-Pacific',
+      co: [56, 36, 23], pi: [40, 30, 15], w: 7, lc: false,
+      wn: '7 kg limit covers carry-on + personal item COMBINED on economy fares. Qantas weighs cabin bags at check-in frequently.',
+      fn: 'Overweight bags are checked for roughly AUD $40–$90.' },
+    { id: 'air-india', name: 'Air India', region: 'Asia-Pacific',
+      co: [55, 40, 20], pi: [40, 30, 15], w: 7, lc: false,
+      wn: '7 kg carry-on limit; weighing at check-in is common on domestic and international routes.',
+      fn: 'Overweight bags are checked; excess baggage charges apply (roughly ₹500–₹2,500 domestic).' },
+    { id: 'indigo', name: 'IndiGo', region: 'Asia-Pacific',
+      co: [55, 35, 25], pi: [40, 30, 15], w: 7, lc: true,
+      wn: '7 kg carry-on limit, strictly weighed at check-in. The 35 cm width is narrower than the European standard — wide rollers fail the sizer.',
+      fn: 'Overweight bags are checked; excess baggage runs roughly ₹400–₹600 per kg on domestic routes.' },
+    { id: 'airasia', name: 'AirAsia', region: 'Asia-Pacific',
+      co: [56, 36, 23], pi: [40, 30, 15], w: 7, lc: true,
+      wn: '7 kg COMBINED limit for carry-on + personal item together, strictly enforced — AirAsia weighs cabin bags at the gate on busy routes.',
+      fn: 'Overweight bags are checked for roughly $20–$50 at the gate; pre-booking is cheaper.' },
+    { id: 'scoot', name: 'Scoot', region: 'Asia-Pacific',
+      co: [54, 38, 23], pi: [40, 30, 15], w: 10, lc: true,
+      wn: '10 kg COMBINED limit for carry-on + personal item. Scoot weighs cabin bags at check-in and the gate on many routes.',
+      fn: 'Oversize bags are checked for roughly $25–$60; pre-purchase online to save.' }
+  ];
+
+  /* ------------------------------------------------------------------ */
+  /* Helpers                                                            */
+  /* ------------------------------------------------------------------ */
+  function toCm(value, unit) {
+    var v = parseFloat(value);
+    if (!isFinite(v)) return NaN;
+    return unit === 'in' ? v * CM_PER_IN : v;
+  }
+
+  function cmToIn(cm) {
+    return cm / CM_PER_IN;
+  }
+
+  function sorted3(dims) {
+    return [dims[0], dims[1], dims[2]].sort(function (a, b) { return a - b; });
+  }
+
+  function airlineCount() {
+    return AIRLINES.length;
+  }
+
+  function getAirline(id) {
+    if (typeof id !== 'string') return null;
+    var key = id.trim().toLowerCase();
+    for (var i = 0; i < AIRLINES.length; i++) {
+      if (AIRLINES[i].id === key) return AIRLINES[i];
+    }
+    return null;
+  }
+
+  function listAirlines() {
+    return AIRLINES.slice();
+  }
+
+  /* Parse L/W/H inputs (any unit) into cm. */
+  function parseDims(l, w, h, unit) {
+    var errors = [];
+    var vals = [l, w, h].map(function (v) { return toCm(v, unit); });
+    var labels = ['Length', 'Width', 'Height'];
+    vals.forEach(function (v, i) {
+      if (!isFinite(v)) errors.push(labels[i] + ' must be a number.');
+      else if (v <= 0) errors.push(labels[i] + ' must be greater than zero.');
+      else if (v > 300) errors.push(labels[i] + ' looks unrealistic (over 300 cm).');
+    });
+    return { ok: errors.length === 0, dims: vals, errors: errors };
+  }
+
+  /* Core fit check: sorted (rotation-friendly) comparison.
+   * Bag fits iff every sorted bag dim <= the matching sorted limit dim. */
+  function checkDims(bagDims, limitDims) {
+    if (!bagDims || !limitDims ||
+        bagDims.length !== 3 || limitDims.length !== 3 ||
+        bagDims.some(function (v) { return !isFinite(v) || v <= 0; }) ||
+        limitDims.some(function (v) { return !isFinite(v) || v <= 0; })) {
+      return { fits: false, margins: [0, 0, 0], overBy: [0, 0, 0], valid: false,
+               reason: 'invalid-dimensions' };
+    }
+    var b = sorted3(bagDims);
+    var l = sorted3(limitDims);
+    var margins = [];
+    var overBy = [];
+    var fits = true;
+    for (var i = 0; i < 3; i++) {
+      var m = Math.round((l[i] - b[i]) * 10) / 10;
+      margins.push(m);
+      overBy.push(m < 0 ? Math.round(-m * 10) / 10 : 0);
+      if (m < 0) fits = false;
+    }
+    return { fits: fits, margins: margins, overBy: overBy, valid: true, reason: fits ? 'fits' : 'oversize' };
+  }
+
+  /* Max single-dimension overshoot, handy for fee estimates. */
+  function maxOverCm(result) {
+    if (!result || !result.valid) return 0;
+    return Math.max.apply(null, result.overBy);
+  }
+
+  /* Check one bag against one airline's carry-on limit. */
+  function checkAirline(airlineId, bagDims) {
+    var a = getAirline(airlineId);
+    if (!a) return { found: false, airline: null, carryOn: null };
+    return { found: true, airline: a, carryOn: checkDims(bagDims, a.co) };
+  }
+
+  /* Dual check: carry-on bag AND personal item against one airline. */
+  function dualCheck(airlineId, carryDims, personalDims) {
+    var a = getAirline(airlineId);
+    if (!a) return { found: false, airline: null, carryOn: null, personalItem: null };
+    return {
+      found: true,
+      airline: a,
+      carryOn: checkDims(carryDims, a.co),
+      personalItem: checkDims(personalDims, a.pi)
+    };
+  }
+
+  /* Reverse lookup: one bag checked against EVERY airline at once.
+   * Returns fits first, then no-fits, each with overshoot info. */
+  function reverseLookup(bagDims) {
+    var rows = AIRLINES.map(function (a) {
+      var r = checkDims(bagDims, a.co);
+      return {
+        airline: a,
+        fits: r.fits && r.valid,
+        valid: r.valid,
+        overMax: maxOverCm(r),
+        margins: r.margins
+      };
+    });
+    rows.sort(function (x, y) {
+      if (x.fits !== y.fits) return x.fits ? -1 : 1;
+      if (x.overMax !== y.overMax) return x.overMax - y.overMax;
+      return x.airline.name < y.airline.name ? -1 : 1;
+    });
+    return rows;
+  }
+
+  /* Multi-leg strictest mode: element-wise minimum across chosen legs
+   * (rotation-friendly: all limits are sorted first). Also picks the
+   * minimum weight limit and records WHICH airline limits each axis. */
+  function strictestAcross(airlineIds) {
+    var chosen = [];
+    var seen = {};
+    (airlineIds || []).forEach(function (id) {
+      var a = getAirline(id);
+      if (a && !seen[a.id]) { seen[a.id] = true; chosen.push(a); }
+    });
+    if (chosen.length === 0) {
+      return { ok: false, airlines: [], reason: 'no-valid-airlines' };
+    }
+    var limitDims = [Infinity, Infinity, Infinity];
+    var limiting = [null, null, null];
+    var weightKg = null;
+    var weightLimiting = null;
+    chosen.forEach(function (a) {
+      var s = sorted3(a.co);
+      for (var i = 0; i < 3; i++) {
+        if (s[i] < limitDims[i]) { limitDims[i] = s[i]; limiting[i] = a.name; }
+      }
+      if (typeof a.w === 'number') {
+        if (weightKg === null || a.w < weightKg) { weightKg = a.w; weightLimiting = a.name; }
+      }
+    });
+    return {
+      ok: true,
+      airlines: chosen,
+      limitDims: limitDims,
+      limiting: limiting,
+      weightKg: weightKg,
+      weightLimiting: weightLimiting
+    };
+  }
+
+  function checkMultiLeg(airlineIds, bagDims) {
+    var s = strictestAcross(airlineIds);
+    if (!s.ok) return { ok: false, reason: s.reason };
+    return { ok: true, strictest: s, result: checkDims(bagDims, s.limitDims) };
+  }
+
+  /* Weight enforcement check for one airline. */
+  function weightCheck(airlineId, weightKg) {
+    var a = getAirline(airlineId);
+    if (!a) return { found: false };
+    var wgt = parseFloat(weightKg);
+    if (!isFinite(wgt) || wgt < 0) {
+      return { found: true, airline: a, valid: false, reason: 'invalid-weight' };
+    }
+    if (typeof a.w !== 'number') {
+      return { found: true, airline: a, valid: true, hasLimit: false,
+               over: false, margin: null, note: a.wn };
+    }
+    var margin = Math.round((a.w - wgt) * 10) / 10;
+    return {
+      found: true, airline: a, valid: true, hasLimit: true,
+      limit: a.w, weight: wgt, over: wgt > a.w, margin: margin, note: a.wn
+    };
+  }
+
+  /* Oversize gate-check fee estimator. Rough USD-equivalent ranges —
+   * NOT a quote; actual fees depend on route, fare class and currency. */
+  function estimateGateFee(airlineId, overCm) {
+    var a = getAirline(airlineId);
+    if (!a) return { found: false };
+    var over = parseFloat(overCm);
+    if (!isFinite(over)) over = 0;
+    var min = 0, max = 0, tier;
+    if (over <= 0) { tier = 'fits'; min = 0; max = 0; }
+    else if (over <= 2) { tier = 'borderline'; min = 0; max = 35; }
+    else if (over <= 5) { tier = 'oversize'; min = 35; max = 75; }
+    else { tier = 'way-oversize'; min = 65; max = 150; }
+    if (a.lc && tier !== 'fits') {
+      /* Low-cost carriers charge the steepest gate fees. */
+      min = Math.round(min * 1.4);
+      max = Math.round(max * 1.4);
+    }
+    return {
+      found: true, airline: a, tier: tier, overCm: over,
+      minUSD: min, maxUSD: max,
+      note: a.fn + ' Estimates only — confirm the current fee table with the airline before you fly.'
+    };
+  }
+
+  /* Public API */
+  return {
+    AIRLINES: AIRLINES,
+    CM_PER_IN: CM_PER_IN,
+    airlineCount: airlineCount,
+    getAirline: getAirline,
+    listAirlines: listAirlines,
+    toCm: toCm,
+    cmToIn: cmToIn,
+    parseDims: parseDims,
+    checkDims: checkDims,
+    maxOverCm: maxOverCm,
+    checkAirline: checkAirline,
+    dualCheck: dualCheck,
+    reverseLookup: reverseLookup,
+    strictestAcross: strictestAcross,
+    checkMultiLeg: checkMultiLeg,
+    weightCheck: weightCheck,
+    estimateGateFee: estimateGateFee
+  };
+})();
+
+</script>
+
+<!-- UI wiring (DOM only, no logic here beyond presentation) -->
+<script>
+(function () {
+  'use strict';
+  var unit = 'cm';
+
+  function $(id) { return document.getElementById(id); }
+
+  function fmtDims(dims) {
+    if (unit === 'in') {
+      return dims.map(function (d) { return (BagFit.cmToIn(d)).toFixed(1); }).join(' × ') + ' in';
+    }
+    return dims.join(' × ') + ' cm';
+  }
+
+  /* Populate airline selects + leg chips */
+  var airlines = BagFit.listAirlines().sort(function (a, b) {
+    return a.name < b.name ? -1 : 1;
+  });
+  function fillSelect(sel) {
+    airlines.forEach(function (a) {
+      var o = document.createElement('option');
+      o.value = a.id;
+      o.textContent = a.name + ' (' + a.co.join('×') + ' cm)';
+      sel.appendChild(o);
+    });
+  }
+  fillSelect($('dual-airline'));
+  fillSelect($('airline-select'));
+  $('dual-airline').value = 'emirates';
+  $('airline-select').value = 'ryanair';
+
+  var legList = $('leg-list');
+  var selectedLegs = {};
+  airlines.forEach(function (a) {
+    var c = document.createElement('button');
+    c.type = 'button';
+    c.className = 'chip';
+    c.textContent = a.name;
+    c.dataset.id = a.id;
+    c.setAttribute('aria-pressed', 'false');
+    c.addEventListener('click', function () {
+      if (selectedLegs[a.id]) { delete selectedLegs[a.id]; c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); }
+      else { selectedLegs[a.id] = true; c.classList.add('active'); c.setAttribute('aria-pressed', 'true'); }
+    });
+    legList.appendChild(c);
+  });
+  /* Preselect a classic trouble itinerary: US legacy + Gulf carrier */
+  ['united-airlines', 'qatar-airways'].forEach(function (id) {
+    selectedLegs[id] = true;
+    var chip = legList.querySelector('[data-id="' + id + '"]');
+    if (chip) { chip.classList.add('active'); chip.setAttribute('aria-pressed', 'true'); }
+  });
+
+  /* Unit toggle */
+  function setUnit(u) {
+    unit = u;
+    $('unit-cm').classList.toggle('active', u === 'cm');
+    $('unit-in').classList.toggle('active', u === 'in');
+  }
+  $('unit-cm').addEventListener('click', function () { setUnit('cm'); });
+  $('unit-in').addEventListener('click', function () { setUnit('in'); });
+
+  function readBag() {
+    return BagFit.parseDims($('bag-l').value, $('bag-w').value, $('bag-h').value, unit);
+  }
+
+  function badge(fits) {
+    return fits ? '<span class="badge-fit">✓ FIT</span>' : '<span class="badge-nofit">✗ NO FIT</span>';
+  }
+
+  /* ---- Reverse lookup: bag vs all airlines ---- */
+  $('check-all-btn').addEventListener('click', function () {
+    var parsed = readBag();
+    var grid = $('fit-grid');
+    var summary = $('results-summary');
+    if (!parsed.ok) {
+      summary.classList.remove('hidden');
+      summary.innerHTML = '<div class="rounded-xl p-4 text-sm font-semibold" style="background:rgba(248,113,113,.1); border:1px solid rgba(248,113,113,.5); color:#f87171;">Please enter valid dimensions: ' + parsed.errors.join(' ') + '</div>';
+      grid.innerHTML = '';
+      return;
+    }
+    var rows = BagFit.reverseLookup(parsed.dims);
+    var fitCount = rows.filter(function (r) { return r.fits; }).length;
+    summary.classList.remove('hidden');
+    summary.innerHTML =
+      '<div class="rounded-xl p-4 flex flex-wrap items-center gap-3" style="background:rgba(163,230,53,.07); border:1px solid rgba(163,230,53,.4);">' +
+      '<span class="stamp" style="color:#a3e635">' + fitCount + ' / ' + rows.length + ' FIT</span>' +
+      '<span class="text-sm text-[#c4d0ea]">Your ' + fmtDims(parsed.dims) + ' bag fits <strong class="text-white">' + fitCount + '</strong> of ' + rows.length + ' airlines as a carry-on.</span>' +
+      '</div>';
+    grid.innerHTML = rows.map(function (r) {
+      var a = r.airline;
+      var overTxt = r.fits
+        ? '<span class="text-[#a3e635]">clears by up to ' + Math.max.apply(null, r.margins).toFixed(1) + ' cm</span>'
+        : '<span class="text-[#f87171]">over by ' + r.overMax.toFixed(1) + ' cm</span>';
+      return '<div class="air-card ' + (r.fits ? 'fit' : 'nofit') + '">' +
+        '<div class="flex items-start justify-between gap-2 mb-1">' +
+        '<div><div class="font-bold text-sm">' + a.name + '</div>' +
+        '<div class="text-[11px] text-[#93a3c4]">' + a.region + ' · ' + fmtDims(a.co) + '</div></div>' +
+        badge(r.fits) + '</div>' +
+        '<div class="text-xs text-[#93a3c4]">' + overTxt + (a.w ? ' · max ' + a.w + ' kg' : ' · no weight limit') + '</div>' +
+        '</div>';
+    }).join('');
+  });
+
+  /* ---- Dual check: carry-on + personal item ---- */
+  $('dual-check-btn').addEventListener('click', function () {
+    var carry = readBag();
+    var personal = BagFit.parseDims($('personal-l').value, $('personal-w').value, $('personal-h').value, unit);
+    var box = $('dual-result');
+    if (!carry.ok || !personal.ok) {
+      box.classList.remove('hidden');
+      box.innerHTML = '<div class="rounded-xl p-4 text-sm font-semibold" style="background:rgba(248,113,113,.1); border:1px solid rgba(248,113,113,.5); color:#f87171;">Enter both bags: ' + carry.errors.concat(personal.errors).join(' ') + '</div>';
+      return;
+    }
+    var r = BagFit.dualCheck($('dual-airline').value, carry.dims, personal.dims);
+    var a = r.airline;
+    function row(label, res, limit) {
+      return '<div class="flex flex-wrap items-center justify-between gap-2 py-2 perforation">' +
+        '<div><div class="font-bold text-sm">' + label + '</div>' +
+        '<div class="text-xs text-[#93a3c4]">limit ' + fmtDims(limit) + '</div></div>' +
+        badge(res.fits) + '</div>';
+    }
+    box.classList.remove('hidden');
+    box.innerHTML =
+      '<div class="rounded-xl p-4" style="background:rgba(96,165,250,.06); border:1px solid rgba(96,165,250,.35);">' +
+      '<div class="font-extrabold mb-1">' + a.name + '</div>' +
+      row('🧳 Carry-on (' + fmtDims(carry.dims) + ')', r.carryOn, a.co) +
+      row('🎒 Personal item (' + fmtDims(personal.dims) + ')', r.personalItem, a.pi) +
+      '<p class="text-xs text-[#93a3c4] mt-2">' + (r.carryOn.fits && r.personalItem.fits
+        ? 'Both bags fly free. Remember combined weight rules where they apply.'
+        : 'At least one bag fails — gate-check the failing bag or repack.') + '</p></div>';
+  });
+
+  /* ---- Multi-leg strictest mode ---- */
+  $('multileg-clear').addEventListener('click', function () {
+    selectedLegs = {};
+    Array.prototype.forEach.call(legList.children, function (c) {
+      c.classList.remove('active'); c.setAttribute('aria-pressed', 'false');
+    });
+    $('strictest-result').classList.add('hidden');
+  });
+  $('multileg-btn').addEventListener('click', function () {
+    var ids = Object.keys(selectedLegs);
+    var box = $('strictest-result');
+    var parsed = readBag();
+    if (ids.length === 0) {
+      box.classList.remove('hidden');
+      box.innerHTML = '<div class="rounded-xl p-4 text-sm font-semibold" style="background:rgba(248,113,113,.1); border:1px solid rgba(248,113,113,.5); color:#f87171;">Select at least one airline leg above.</div>';
+      return;
+    }
+    if (!parsed.ok) {
+      box.classList.remove('hidden');
+      box.innerHTML = '<div class="rounded-xl p-4 text-sm font-semibold" style="background:rgba(248,113,113,.1); border:1px solid rgba(248,113,113,.5); color:#f87171;">Enter your bag dimensions in Step 1 first: ' + parsed.errors.join(' ') + '</div>';
+      return;
+    }
+    var r = BagFit.checkMultiLeg(ids, parsed.dims);
+    var s = r.strictest;
+    var axisNames = ['Smallest axis', 'Middle axis', 'Longest axis'];
+    var limitingRows = s.limitDims.map(function (d, i) {
+      return '<div class="flex justify-between text-sm py-1"><span class="text-[#93a3c4]">' + axisNames[i] + '</span><span class="mono font-bold">' + d + ' cm <span class="text-[#93a3c4] font-normal">(' + s.limiting[i] + ')</span></span></div>';
+    }).join('');
+    box.classList.remove('hidden');
+    box.innerHTML =
+      '<div class="rounded-xl p-4" style="background:rgba(163,230,53,.06); border:1px solid rgba(163,230,53,.4);">' +
+      '<div class="flex flex-wrap items-center justify-between gap-2 mb-2">' +
+      '<div class="font-extrabold">Strictest limits across ' + s.airlines.length + ' legs</div>' + badge(r.result.fits) + '</div>' +
+      limitingRows +
+      '<div class="flex justify-between text-sm py-1"><span class="text-[#93a3c4]">Weight limit</span><span class="mono font-bold">' +
+      (s.weightKg === null ? 'none published' : s.weightKg + ' kg (' + s.weightLimiting + ')') + '</span></div>' +
+      '<p class="text-xs text-[#93a3c4] mt-2">Your ' + fmtDims(parsed.dims) + ' bag ' +
+      (r.result.fits ? '<strong class="text-[#a3e635]">clears every leg of your trip.</strong>' : '<strong class="text-[#f87171]">fails at least one leg — over by ' + BagFit.maxOverCm(r.result).toFixed(1) + ' cm.</strong>') +
+      ' The strictest airline on each axis decides.</p></div>';
+  });
+
+  /* ---- Weight notes + fee estimator ---- */
+  function refreshWeightFee() {
+    var id = $('airline-select').value;
+    var a = BagFit.getAirline(id);
+    var wBox = $('weight-note');
+    var fBox = $('fee-estimate');
+    if (!a) { wBox.innerHTML = ''; fBox.innerHTML = ''; return; }
+    var wInput = parseFloat($('bag-weight').value);
+    var wStatus = '';
+    if (isFinite(wInput) && wInput >= 0 && a.w !== null) {
+      wStatus = wInput > a.w
+        ? '<div class="mt-2 font-bold" style="color:#f87171;">✗ Your ' + wInput + ' kg bag is ' + (wInput - a.w).toFixed(1) + ' kg OVER the ' + a.w + ' kg limit.</div>'
+        : '<div class="mt-2 font-bold" style="color:#a3e635;">✓ Your ' + wInput + ' kg bag is within the ' + a.w + ' kg limit (' + (a.w - wInput).toFixed(1) + ' kg headroom).</div>';
+    }
+    wBox.innerHTML = '<div class="font-extrabold mb-1">⚖️ ' + a.name + ' weight rule</div>' +
+      '<div>' + (a.w === null ? 'No published carry-on weight limit.' : 'Limit: <strong class="mono">' + a.w + ' kg</strong>.') + '</div>' +
+      '<div class="mt-1 text-[#93a3c4]">' + a.wn + '</div>' + wStatus;
+
+    var over = parseFloat($('fee-over').value);
+    if (!isFinite(over) || over < 0) over = 0;
+    var fee = BagFit.estimateGateFee(id, over);
+    fBox.innerHTML = '<div class="font-extrabold mb-1">💸 Gate-check fee estimate</div>' +
+      (fee.tier === 'fits'
+        ? '<div style="color:#a3e635;" class="font-bold">No overshoot — no gate fee expected.</div>'
+        : '<div class="mono text-2xl font-bold" style="color:#a3e635;">$' + fee.minUSD + ' – $' + fee.maxUSD + '</div>' +
+          '<div class="text-[#93a3c4] mt-1">For a bag ' + over + ' cm over (' + fee.tier.replace('-', ' ') + '). ' + fee.note + '</div>');
+  }
+  $('airline-select').addEventListener('change', refreshWeightFee);
+  $('fee-over').addEventListener('input', refreshWeightFee);
+  $('bag-weight').addEventListener('input', refreshWeightFee);
+  refreshWeightFee();
+})();
+</script>
+</body>
+</html>
