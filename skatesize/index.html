@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkateSize - Skateboard Size Calculator: Deck Width &amp; Length by Shoe Size</title>
+<meta name="description" content="Find your ideal skateboard deck width and length with the SkateSize calculator, using your shoe size, height, and riding style, plus matching truck size.">
+<link rel="canonical" href="https://fun.fixoraa.tech/skatesize/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SkateSize - Skateboard Size Calculator: Deck Width &amp; Length by Shoe Size">
+<meta property="og:description" content="Find your ideal skateboard deck width and length with the SkateSize calculator, using your shoe size, height, and riding style, plus matching truck size.">
+<meta property="og:url" content="https://fun.fixoraa.tech/skatesize/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SkateSize",
+      "url": "https://fun.fixoraa.tech/skatesize/",
+      "applicationCategory": "Sports",
+      "operatingSystem": "Web",
+      "description": "Find your ideal skateboard deck width and length with the SkateSize calculator, using your shoe size, height, and riding style, plus matching truck size.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What skateboard deck width should I get for my shoe size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As a starting point, shoe size 7 and under suits 7.5 to 7.75 inches, size 8 to 9 suits 8.0 inches, size 9.5 to 11 suits 8.25 inches, and size 11.5 and up suits 8.5 inches or wider. Adjust a quarter inch narrower for technical street tricks or wider for park, cruising, and extra stability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does height matter when choosing a skateboard size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Height matters less than shoe size, because taller riders usually have bigger feet anyway. Height still fine-tunes the choice: riders under 160 cm suit slightly narrower and shorter decks, and riders over 180 cm suit slightly wider and longer decks for a natural stance and extra stability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best skateboard size for beginners?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most adult beginners are happy on an 8.0 inch wide deck around 31.5 inches long, which balances stability with easy turning. Beginners with larger feet should start at 8.25 inches, and smaller riders should start at 7.75 inches. A mid-size deck forgives landings while still flipping easily."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I get a wider deck for park skating than for street?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, usually a quarter inch wider. Park skating involves speed, bowls, and bigger landings, where extra width adds stability. Street skating rewards quick flips, where a narrower deck feels lighter. If you do both, a park-leaning width is a good compromise."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What truck size matches my deck width?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Match truck axle width to deck width: decks under 7.75 inches pair with 129 mm trucks, decks from 7.75 to 8.25 inches pair with 139 mm trucks, and decks wider than 8.25 inches pair with 149 mm trucks. Trucks much narrower than the deck feel tippy, and much wider trucks stick out and catch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What deck size is best for cruising?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cruisers suit wide decks, typically 8.5 to 9.0 inches or more, with lengths around 32 inches and up, plus soft, larger wheels. The wide platform and soft wheels smooth out cracks and rough pavement and give your feet room to shift during long pushes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I measure my shoe size for skateboard sizing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use your usual US men shoe size, which is the size printed in your everyday shoes. If you are between sizes, use the larger one. If your feet are notably wide, lean a quarter inch wider than your size band suggests, since foot width affects how much platform you need."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this calculator for kids?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as a rough guide, but kids under 140 cm tall usually need mini decks from 7.0 to 7.5 inches wide, which are smaller than adult recommendations. Enter the child's height and shoe size, then lean toward the narrower end of the result and check that the board is not too heavy for them to carry and control."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FFF8EC; --surface:#FFFFFF; --accent:#0F766E; --accent-ink:#FFFFFF;
+  --ink:#1C1917; --muted:#57534E; --line:#E8DFCE;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.sk-wrap{max-width:44rem;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.6rem}
+.sk-wrap h1{font-family:var(--display);font-size:1.9rem;line-height:1.2;margin-bottom:.6rem}
+.sk-intro{color:var(--muted);margin-bottom:1.4rem}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.2rem}
+.sk-field label{display:block;font-weight:600;margin-bottom:.35rem}
+.sk-field input,.sk-field select{width:100%;padding:.65rem .8rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:var(--bg);color:var(--ink);min-height:44px}
+.sk-btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.7rem 1.5rem;font-weight:700;font-size:1rem;cursor:pointer;min-height:44px}
+.sk-presets{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
+.sk-presets button{background:transparent;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:.5rem 1rem;font-weight:600;cursor:pointer;min-height:44px}
+.sk-result{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;font-weight:600;margin:1rem 0}
+.sk-copy{margin-bottom:1rem}
+.sk-h2{font-size:1.15rem;margin:1.2rem 0 .5rem}
+.sk-history,.sk-feats{padding-left:1.4rem}
+.sk-history li,.sk-feats li{margin-bottom:.5rem}
+@media (max-width:640px){.sk-wrap{padding:1.1rem}.sk-wrap h1{font-size:1.5rem}.sk-grid{grid-template-columns:1fr}.sk-presets button{flex:1 1 100%}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="SkateSize home">
+      <span class="fx-logo-tile" aria-hidden="true">🛹</span>
+      <span class="fx-brand">SkateSize</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-skate-deck" aria-label="SkateSize tool">
+<h1>SkateSize: Skateboard Size Calculator</h1>
+<p class='sk-intro'>Find the right skateboard deck width and length for your shoe size, height, and riding style, plus the truck size that matches your deck.</p>
+<div class='sk-wrap'>
+<div class='sk-grid'>
+<div class='sk-field'><label for='sk-shoe'>Shoe size (US men)</label><input id='sk-shoe' type='number' min='4' max='16' step='0.5' value='9'></div>
+<div class='sk-field'><label for='sk-height'>Height (cm)</label><input id='sk-height' type='number' min='120' max='210' value='175'></div>
+<div class='sk-field'><label for='sk-style'>Riding style</label><select id='sk-style'><option value='street' selected>Street</option><option value='park'>Park / transition</option><option value='cruiser'>Cruiser</option></select></div>
+</div>
+<button class='sk-btn' id='sk-calc' type='button'>Calculate my deck size</button>
+<div class='sk-presets' aria-label='Presets'>
+<button type='button' id='sk-pre1'>Beginner street</button>
+<button type='button' id='sk-pre2'>Park flow</button>
+<button type='button' id='sk-pre3'>Easy cruiser</button>
+</div>
+<div class='sk-result' id='sk-result' aria-live='polite'>Enter your details and press Calculate to see your recommended deck size.</div>
+<button class='sk-btn sk-copy' id='sk-copy' type='button'>Copy my result</button>
+<h2 class='sk-h2'>Recent results</h2>
+<ul class='sk-history' id='sk-history'></ul>
+<h2 class='sk-h2'>Built-in features</h2>
+<ul class='sk-feats'><li>One-tap presets for street, park, and cruiser setups.</li><li>A running history of your recent size calculations.</li><li>Copy your result to share it with a shop or a friend.</li></ul>
+</div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why deck size matters more than board brand</h2>
+<p>Walk into any skate shop and you will see a wall of decks that all look roughly the same, yet the difference between a 7.75 inch deck and an 8.5 inch deck is enormous once you stand on it. Deck width controls how stable the board feels under your feet, how easily it flips, and how much room your shoes have during tricks. A deck that is too narrow for your feet feels twitchy and unstable, and your toes and heels hang so far over the edges that landing tricks becomes a lottery. A deck that is too wide feels sluggish, takes noticeably more effort to flip, and can tire your ankles out during a long session. Getting the width right is the single biggest comfort upgrade available to a skater, and it costs nothing, because every width costs the same. Brand graphics, pro models, and fancy wood constructions matter far less than a deck that fits your body and the way you ride. This guide explains exactly how shoe size, height, and riding style combine to point at one sensible deck size, and the calculator above turns that logic into a concrete recommendation in seconds.</p>
+<p>The good news is that skateboard sizing is forgiving. There is no single perfect size, only a sweet spot, and most skaters are happy anywhere within a quarter inch of their ideal width. That means you should treat any recommendation, including the one from this calculator, as a starting point rather than a law. If you already ride a size you love, stick with it even if a chart says otherwise. If you are buying your first board or returning to skating after years away, though, a methodical recommendation saves you from the most common beginner error, which is buying whatever deck looks coolest without checking whether it fits your feet.</p>
+<h2>Start with your shoe size</h2>
+<p>Shoe size is the most reliable starting point for deck width because your feet are what actually contact the board. The wider your shoes, the wider the platform you need to stand comfortably and control the board. As a rule of thumb, smaller feet pair with narrower decks, and larger feet pair with wider decks. Riders with a US men size 7 or smaller usually feel at home on decks from 7.5 to 7.75 inches wide. Riders in the size 8 to 9 range, which covers a huge share of adult skaters, usually land on 8.0 inch decks. Riders wearing size 9.5 to 11 generally prefer 8.25 inch decks, and riders above size 11 usually want 8.5 inches or more. These bands overlap, because foot width, personal taste, and riding style all nudge the answer, but they are a trustworthy place to start.</p>
+<table>
+<tr><th>US men shoe size</th><th>Typical deck width</th><th>Who it suits</th></tr>
+<tr><td>6 to 7</td><td>7.5 to 7.75 in</td><td>Smaller feet, younger riders, technical street skating</td></tr>
+<tr><td>8 to 9</td><td>8.0 in</td><td>Most adult riders, all-round street and park</td></tr>
+<tr><td>9.5 to 11</td><td>8.25 in</td><td>Larger feet, transition skating, extra landing room</td></tr>
+<tr><td>11.5 and up</td><td>8.5 to 9.0 in</td><td>Very large feet, cruising, bowls and vert</td></tr>
+</table>
+<p>One important nuance is foot width. Two people can wear the same shoe size while one has narrow feet and the other has wide feet, and the wide-footed skater will usually prefer a deck a quarter inch wider. If your shoes regularly feel tight across the toes even in the right length, lean toward the wider end of your band. Similarly, if you skate in slim shoes, you may be comfortable a quarter inch narrower than the chart suggests. Skate shoes also vary: chunky cupsoles add effective foot width, while slim vulcanized shoes keep your footprint compact. When in doubt, stand on a deck in a shop, if you can, and check how much of your shoe hangs over each edge. A little overhang is normal and even helpful for flip tricks, but if half your toes dangle in the air, the deck is too narrow.</p>
+<h2>What your height actually changes</h2>
+<p>Height matters, but less than most sizing charts imply. Tall riders tend to have bigger feet anyway, so shoe size already captures much of the height effect. Height still earns its place in the calculation for two reasons. First, taller skaters have a higher center of gravity, so a slightly wider deck adds welcome stability, especially on ramps and at speed. Second, very tall riders often find short boards cramped, because their stance is naturally wider, and a longer deck gives their feet more room to sit comfortably apart. Shorter riders get the mirror image: a slightly narrower and shorter deck keeps the board light and flicky, which makes learning flip tricks less of a wrestling match.</p>
+<p>The calculator reflects this gently. Riders under 160 cm get a small step down in width and length, and riders over 180 cm get a small step up. Riders in between get no height adjustment at all, because for average-height adults, shoe size and style already determine the answer. This restraint is deliberate. Overweighting height leads to absurd recommendations, like telling a tall rider with small feet to buy a boat of a board. Your feet and your style do the heavy lifting; height just fine-tunes the result.</p>
+<h2>Street, park, or cruiser: pick your style first</h2>
+<p>Riding style is the third input, and it changes the answer more than height does, because each discipline asks different things of a deck.</p>
+<h3>Street skating</h3>
+<p>Street skating is about tricks on flat ground, ledges, rails, and stairs, so the deck needs to flip quickly and feel light underfoot. Street skaters usually choose the narrower end of their shoe-size band, often 7.75 to 8.25 inches, with a length around 31.5 inches. A narrower deck flips with less ankle effort, which matters when you are learning kickflips and heelflips, and it feels more precise for technical tricks. The trade-off is stability: narrow decks are less forgiving on landings, so street skaters accept a little wobble in exchange for flick.</p>
+<h3>Park and transition skating</h3>
+<p>Park skating mixes street tricks with bowls, ramps, and vert walls, where speed and stability matter more. Park riders usually go a quarter inch wider than a pure street setup, around 8.0 to 8.5 inches, with a slightly longer deck near 31.75 inches. The extra width gives a bigger landing platform when you come down from airs and helps the board hold its line through fast carves. If you split your time evenly between street obstacles and transition, a park-leaning width is the safer compromise, because it still flips fine while forgiving more landings.</p>
+<h3>Cruising</h3>
+<p>Cruisers are built for getting around town, carving paths, and rolling over rough pavement, not for flip tricks. Width and stability rule here, so cruiser decks run wide, often 8.5 to 9.0 inches or more, with lengths around 32 inches and up. Big soft wheels and a wide platform make cracks, pebbles, and sidewalk joints far less scary, and a wider deck gives your feet room to shift stance during long pushes. If your board is mainly transport and fun rather than tricks, do not be shy about going wide.</p>
+<h2>Deck length and wheelbase explained</h2>
+<p>Deck length gets less attention than width, but it shapes how the board feels. Most adult decks run between 31 and 32.5 inches long. Shorter decks turn quicker and feel more nimble, while longer decks feel more stable at speed and give tall riders a more natural stance. The distance between the two truck axles is called the wheelbase, and it is the number that most directly controls turning: a shorter wheelbase turns sharper, and a longer wheelbase feels steadier. When you buy a complete board, length and wheelbase come as a package with the deck shape, so you rarely choose them separately, but knowing the terms helps you read deck specifications and compare models. As a starting point, riders under 160 cm suit lengths near 31 inches, average adults suit 31.5 to 31.75 inches, and taller riders suit 32 inches and up.</p>
+<h2>Trucks and wheels that match your deck</h2>
+<p>A deck recommendation is only half a setup. Trucks should roughly match your deck width so the axles sit flush with the deck edges. Trucks that are much narrower than the deck make the board feel tippy, and trucks much wider than the deck stick out and catch on obstacles. As a guide, decks under 7.75 inches pair with 129 mm trucks, decks from 7.75 to 8.25 inches pair with 139 mm trucks, and decks wider than 8.25 inches pair with 149 mm trucks. The calculator uses exactly this rule, so your truck recommendation always matches your deck width.</p>
+<ul>
+<li>Match truck width to deck width using the 129, 139, and 149 mm bands above.</li>
+<li>Choose harder wheels, around 99a to 101a, for street and park tricks, and softer wheels, around 78a to 87a, for cruising over rough ground.</li>
+<li>Pick smaller wheels, 50 to 53 mm, for technical street skating, and larger wheels, 54 to 60 mm or more, for cruising and bowls.</li>
+<li>Use medium bushings if you are unsure; softer bushings turn easier, harder bushings feel more stable at speed.</li>
+<li>Replace worn bushings and pivot cups before blaming your deck for sloppy turning.</li>
+</ul>
+<h2>Five sizing mistakes beginners make</h2>
+<p>Most sizing regret comes from a handful of avoidable mistakes. First, buying a deck because a professional skater rides it: pros choose sizes for their bodies and their trick lists, not yours. Second, buying the cheapest complete without checking its width: many budget completes come in a single narrow size that suits only smaller riders. Third, confusing longboards with cruisers: a 40 inch longboard is a different sport from a 32 inch cruiser deck, and it will not fit in a locker or under a desk. Fourth, ignoring shoe width and only looking at shoe length. Fifth, changing two variables at once: if your current board feels wrong, change only the width first, ride it for a few sessions, and then judge. Changing width, length, wheel size, and bushings all at once makes it impossible to know what actually helped.</p>
+<h2>Skateboard sizing for kids and teens</h2>
+<p>Kids grow fast, so parents often face a dilemma: buy for now, or buy room to grow into. For skateboards, buy for now. A board that is too big for a child is hard to control and discourages practice, while a correctly sized board gets outgrown in a year or two anyway, which is normal. Kids under about 140 cm tall usually suit mini decks around 7.0 to 7.5 inches wide and 28 to 31 inches long. Kids between 140 and 160 cm usually suit 7.5 to 8.0 inch decks. Teenagers approaching adult height can simply use the adult guidance in this calculator, since their feet and stance are close to adult size. One exception is weight: very light kids may prefer softer bushings so the board actually turns under them, regardless of deck size.</p>
+<h2>How to use your result</h2>
+<p>Enter your shoe size, height, and riding style, then press Calculate. The result gives you a deck width, a deck length, and a matching truck size. Take those three numbers to a shop or an online listing and look for decks within a quarter inch of the recommended width, because exact sizes sell out constantly and the nearest quarter inch will feel nearly identical. If you sit between two sizes, choose the narrower one for street tricks and the wider one for park, cruising, or extra stability. Then ride the board for at least a few sessions before judging it: new decks always feel strange for the first hour, and your ankles need time to learn the new leverage. Keep the result with the copy button, share it with a shop assistant if you want a second opinion, and remember that the best deck size is ultimately the one you enjoy standing on. Charts and calculators can point you at the sweet spot, but your feet get the final vote.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What skateboard deck width should I get for my shoe size?</summary><p>As a starting point, shoe size 7 and under suits 7.5 to 7.75 inches, size 8 to 9 suits 8.0 inches, size 9.5 to 11 suits 8.25 inches, and size 11.5 and up suits 8.5 inches or wider. Adjust a quarter inch narrower for technical street tricks or wider for park, cruising, and extra stability.</p></details>
+<details><summary>Does height matter when choosing a skateboard size?</summary><p>Height matters less than shoe size, because taller riders usually have bigger feet anyway. Height still fine-tunes the choice: riders under 160 cm suit slightly narrower and shorter decks, and riders over 180 cm suit slightly wider and longer decks for a natural stance and extra stability.</p></details>
+<details><summary>What is the best skateboard size for beginners?</summary><p>Most adult beginners are happy on an 8.0 inch wide deck around 31.5 inches long, which balances stability with easy turning. Beginners with larger feet should start at 8.25 inches, and smaller riders should start at 7.75 inches. A mid-size deck forgives landings while still flipping easily.</p></details>
+<details><summary>Should I get a wider deck for park skating than for street?</summary><p>Yes, usually a quarter inch wider. Park skating involves speed, bowls, and bigger landings, where extra width adds stability. Street skating rewards quick flips, where a narrower deck feels lighter. If you do both, a park-leaning width is a good compromise.</p></details>
+<details><summary>What truck size matches my deck width?</summary><p>Match truck axle width to deck width: decks under 7.75 inches pair with 129 mm trucks, decks from 7.75 to 8.25 inches pair with 139 mm trucks, and decks wider than 8.25 inches pair with 149 mm trucks. Trucks much narrower than the deck feel tippy, and much wider trucks stick out and catch.</p></details>
+<details><summary>What deck size is best for cruising?</summary><p>Cruisers suit wide decks, typically 8.5 to 9.0 inches or more, with lengths around 32 inches and up, plus soft, larger wheels. The wide platform and soft wheels smooth out cracks and rough pavement and give your feet room to shift during long pushes.</p></details>
+<details><summary>How do I measure my shoe size for skateboard sizing?</summary><p>Use your usual US men shoe size, which is the size printed in your everyday shoes. If you are between sizes, use the larger one. If your feet are notably wide, lean a quarter inch wider than your size band suggests, since foot width affects how much platform you need.</p></details>
+<details><summary>Can I use this calculator for kids?</summary><p>Yes, as a rough guide, but kids under 140 cm tall usually need mini decks from 7.0 to 7.5 inches wide, which are smaller than adult recommendations. Enter the child's height and shoe size, then lean toward the narrower end of the result and check that the board is not too heavy for them to carry and control.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SkateSize</div>
+    <p>SkateSize recommends a skateboard deck width, length, and matching truck size from your shoe size, height, and riding style.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcSkateSize(shoe, heightCm, style) {
+  var base = 8.0;
+  if (shoe <= 7) { base = 7.5; }
+  else if (shoe <= 9) { base = 8.0; }
+  else if (shoe <= 11) { base = 8.25; }
+  else { base = 8.5; }
+  var hAdj = 0;
+  if (heightCm < 160) { hAdj = -0.25; }
+  else if (heightCm > 180) { hAdj = 0.25; }
+  var sAdj = 0;
+  var lenBase = 31.5;
+  if (style === 'park') { sAdj = 0.25; lenBase = 31.75; }
+  else if (style === 'cruiser') { sAdj = 0.5; lenBase = 32.0; }
+  var width = Math.round((base + hAdj + sAdj) * 4) / 4;
+  if (width < 7.5) { width = 7.5; }
+  if (width > 9.0) { width = 9.0; }
+  var lenAdj = 0;
+  if (heightCm < 160) { lenAdj = -0.5; }
+  else if (heightCm > 180) { lenAdj = 0.5; }
+  var length = Math.round((lenBase + lenAdj) * 100) / 100;
+  var trucks = 139;
+  if (width < 7.75) { trucks = 129; }
+  else if (width > 8.25) { trucks = 149; }
+  return { width: width, length: length, trucks: trucks };
+}
+if (typeof document !== 'undefined') {
+  var history = [];
+  function skRender() {
+    var shoe = parseFloat(document.getElementById('sk-shoe').value);
+    var height = parseFloat(document.getElementById('sk-height').value);
+    var style = document.getElementById('sk-style').value;
+    if (isNaN(shoe) || isNaN(height)) {
+      document.getElementById('sk-result').textContent = 'Please enter a valid shoe size and height.';
+      return;
+    }
+    var r = calcSkateSize(shoe, height, style);
+    var text = 'Recommended deck: ' + r.width.toFixed(2) + ' in wide, ' + r.length.toFixed(2) + ' in long, with ' + r.trucks + ' mm trucks (' + style + ' setup).';
+    document.getElementById('sk-result').textContent = text;
+    history.unshift(text);
+    if (history.length > 5) { history.pop(); }
+    var ul = document.getElementById('sk-history');
+    ul.innerHTML = '';
+    for (var i = 0; i < history.length; i++) {
+      var li = document.createElement('li');
+      li.textContent = history[i];
+      ul.appendChild(li);
+    }
+  }
+  function skPreset(shoe, height, style) {
+    document.getElementById('sk-shoe').value = shoe;
+    document.getElementById('sk-height').value = height;
+    document.getElementById('sk-style').value = style;
+    skRender();
+  }
+  document.getElementById('sk-calc').addEventListener('click', skRender);
+  document.getElementById('sk-pre1').addEventListener('click', function () { skPreset(9, 175, 'street'); });
+  document.getElementById('sk-pre2').addEventListener('click', function () { skPreset(10, 178, 'park'); });
+  document.getElementById('sk-pre3').addEventListener('click', function () { skPreset(11, 180, 'cruiser'); });
+  document.getElementById('sk-copy').addEventListener('click', function () {
+    var t = document.getElementById('sk-result').textContent;
+    if (typeof navigator !== 'undefined' && navigator.clipboard) { navigator.clipboard.writeText(t); }
+  });
+}
+</script>
+</body>
+</html>
