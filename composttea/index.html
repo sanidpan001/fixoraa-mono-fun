@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compost Tea Calculator — Brew, Dilute &amp; Cover Your Garden</title>
+<meta name="description" content="Calculate compost tea dilution, spray volume and garden coverage from your brew size, dilution ratio and application rate.">
+<link rel="canonical" href="https://fun.fixoraa.tech/composttea/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "CompostTea", "url": "https://fun.fixoraa.tech/composttea/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What dilution should I use for compost tea?", "acceptedAnswer": {"@type": "Answer", "text": "1:10 for foliar sprays and 1:4 to 1:5 for soil drenches are common starting points."}}, {"@type": "Question", "name": "How long does brewed compost tea last?", "acceptedAnswer": {"@type": "Answer", "text": "Use it within 24 hours of brewing, ideally the same day, while microbes are at peak levels."}}, {"@type": "Question", "name": "Can I use tap water for compost tea?", "acceptedAnswer": {"@type": "Answer", "text": "Let tap water stand uncovered for 24 hours first so chlorine dissipates, or use rainwater."}}, {"@type": "Question", "name": "Why does my compost tea smell bad?", "acceptedAnswer": {"@type": "Answer", "text": "A sour or rotten smell means anaerobic conditions — discard the batch, clean the brewer and aerate more strongly next time."}}, {"@type": "Question", "name": "Is compost tea safe on food crops?", "acceptedAnswer": {"@type": "Answer", "text": "Use only fully finished compost, wear gloves, and avoid spraying leafy crops within two weeks of harvest."}}, {"@type": "Question", "name": "Is compost tea a fertiliser?", "acceptedAnswer": {"@type": "Answer", "text": "Not mainly — its value is microbial. It supplements, but does not replace, compost and balanced feeding."}}]}</script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1F2937;line-height:1.6;background:#FEFCE8}
+header{background:#713F12;color:#fff;padding:18px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:52px;height:52px;border-radius:14px;background:#fff;color:#A16207D;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+.brand h1{margin:0;font-size:26px;line-height:1.1}.brand p{margin:2px 0 0;opacity:.9;font-size:14px}
+.btn{display:inline-block;background:#fff;color:#A16207D;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;border:0;cursor:pointer;font-size:15px}
+.btn.primary{background:#A16207;color:#fff}.badge{display:inline-block;background:#fff;color:#A16207D;border-radius:999px;padding:5px 12px;font-weight:700;font-size:13px}
+main{max-width:1020px;margin:0 auto;padding:8px 16px 30px}label{font-weight:700;display:block;margin:12px 0 4px}
+input,select{width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:16px;background:#fff;color:#1f2937}
+.result{margin-top:18px;background:#fff;border:2px solid #A16207;border-radius:14px;padding:18px;font-size:18px}
+.result b{font-size:26px}.small{font-size:14px;color:#4b5563}.hist{font-size:14px;background:#fff;border-radius:10px;padding:12px;margin-top:14px}
+article{max-width:1020px;margin:0 auto;padding:10px 20px 30px}article h2{font-size:24px}article h3{font-size:19px}
+.faq{max-width:1020px;margin:0 auto;padding:0 20px 30px}.faq details{background:#fff;border-radius:10px;padding:14px 18px;margin:10px 0}
+footer{background:#713F12;color:#fff;padding:28px 20px;text-align:center}footer a{color:#fff}
+@media(max-width:640px){.brand h1{font-size:21px}header{flex-direction:column;align-items:flex-start}.result b{font-size:22px}}
+.toolwrap{display:grid;grid-template-columns:1fr 1fr;gap:30px}.magcol{column-count:1}.magcol p{font-size:17px;line-height:1.8}.dropcap::first-letter{font-size:52px;float:left;line-height:.85;padding-right:8px;font-family:Georgia,serif}@media(max-width:640px){.toolwrap{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<header>
+<div class="brand"><div class="logo" aria-hidden="true">🫖</div><div><h1>CompostTea</h1><p>Liquid gold, measured properly.</p></div></div>
+<div><span class="badge">Unlimited Free Usage</span>&nbsp; <a class="btn" href="https://fixoraa.tech">Home</a> <a class="btn" href="https://fixoraa.tech">More Tools</a></div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<section aria-label="Tool">
+<div class="toolwrap"><div class="magcol"><p class="dropcap">Brew it, dilute it, spray it.</p><label for="brew">Compost tea brewed (litres)</label><input id="brew" type="number" value="5" ><label for="ratio">Dilution ratio (parts water : 1 tea)</label><input id="ratio" type="number" value="10" ></div><div class="magcol"><label for="rate">Application rate (litres per m²)</label><input id="rate" type="number" value="0.5" ><label for="area2">Garden area to cover (m²)</label><input id="area2" type="number" value="100" ><p><button class="btn primary" onclick="trun()">Calculate</button></p><div class="result" id="out">Enter brew size and dilution.</div></div></div>
+<div class="hist" id="hist">Recent results will appear here as you calculate.</div>
+<p><button class="btn primary" onclick="copyResult()">Copy result</button> <button class="btn" onclick="clearHist()">Clear history</button></p>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<article>
+<h2>About CompostTea</h2>
+<h2>What compost tea actually is</h2><p>Compost tea is water in which finished compost has been steeped and aerated, producing a liquid rich in microbes, soluble nutrients and humic compounds. It is not a fertiliser in the conventional sense: its main value is biological, adding diverse microbes to soil and leaf surfaces, where they compete with pathogens, improve nutrient cycling and support plant health. Aerated compost tea, brewed with an air pump for twelve to thirty-six hours, is the version most gardeners use, while a simple non-aerated steep, sometimes called compost extract, is quicker but less microbe-dense. Either way, the liquid must be used fresh, because the microbial population peaks at the end of brewing and declines quickly once aeration stops.</p><h2>Why dilution matters</h2><p>Undiluted compost tea is too concentrated for most uses and can leave residues on leaves, while over-diluted tea is little more than water and wastes the brewing effort. Common dilutions run from one part tea to four parts water for a strong soil drench, up to one to ten for a gentle foliar spray. This calculator takes your brewed volume and dilution ratio and gives the total spray volume, then divides by your application rate to show the area covered. That coverage figure is the planning number: it tells you whether one brew covers the vegetable patch, the whole garden, or only a single bed, before you start spraying.</p><h2>Brewing a good batch</h2><p>Start with mature, sweet-smelling compost, never unfinished material that still smells of ammonia. A typical recipe uses roughly one part compost to ten parts chlorine-free water, with a spoonful of unsulphured molasses as microbial food, aerated vigorously so the liquid stays oxygenated throughout. Chlorine in tap water harms microbes, so let tap water stand uncovered for twenty-four hours or use rainwater where possible. Brew at a mild temperature, between fifteen and twenty-five degrees, and stop if the tea smells sour or rotten, which signals anaerobic conditions and a batch that should be discarded rather than sprayed. Clean the brewer thoroughly between batches to prevent biofilm build-up.</p><h2>Soil drench versus foliar spray</h2><p>A soil drench applies tea directly to the root zone, where microbes join the soil food web and help release nutrients from organic matter. A foliar spray coats leaves with beneficial microbes that can outcompete disease organisms on the leaf surface, though results vary by crop and conditions. Foliar sprays should use a finer dilution, typically one to ten, and be applied in the cool of the morning or evening, never in hot sun, which kills microbes and can scorch wet leaves. Soil drenches can be stronger and are best applied to moist soil, so water first if the ground is dry. Both methods work best as part of regular compost use, not as a rescue treatment for a plant already in serious trouble.</p><h2>Application rates and timing</h2><p>Application rates of a quarter to half a litre per square metre are typical for garden spraying, giving good coverage without runoff. Spray until leaves are lightly wet, not dripping, and soil is evenly dampened. Apply every two to four weeks through the growing season for the best effect, and time applications to calm, cloudy days or evenings. Avoid spraying before heavy rain, which washes tea off leaves and dilutes soil applications, and avoid brewing or spraying in very cold weather, when microbial activity is low. Keep notes of brew size, dilution and date, so you can repeat a batch that gave visibly good results.</p><h2>Safety and common mistakes</h2><p>Compost tea made from manure-based compost carries a small risk of pathogens, so use only fully finished, hot-composted material, wear gloves, wash hands after handling, and avoid spraying tea onto leafy crops within two weeks of harvest. Never use tea that smells foul, and never store brewed tea for more than a day or two, since anaerobic storage breeds the wrong microbes. Do not add fertiliser salts or pesticides to the brew, which can kill the biology you worked to grow. If plants show leaf burn after spraying, dilute more next time and spray in cooler conditions. Compost tea is a supplement to good soil care, not a substitute for compost itself.</p><h2>Compost tea versus other liquid feeds</h2><p>Liquid seaweed feeds supply hormones and trace minerals but few microbes, while compost tea supplies microbes but modest nutrients, so the two complement rather than replace each other. Worm casting tea, made from vermicompost, is often richer in microbes and gentler on plants, and can be brewed the same way. Commercial microbial products offer consistency and convenience but cost far more per litre than home brewing. The cheapest improvement most gardeners can make is simply using more finished compost as mulch, with tea as an extra boost for prized plants. Judge any liquid feed by plant response over a season, not by a single application.</p><h2>Scaling up for larger gardens</h2><p>For gardens over a few hundred square metres, brewing in a single large drum with a strong air pump is more efficient than many small buckets, but oxygenation becomes critical: a large volume with a weak pump goes anaerobic in the centre. Use multiple air stones, keep the brew moving visibly, and scale molasses proportionally rather than guessing. This calculator helps here too: enter the total brew and the garden area, and it shows whether one drum covers the garden or whether you need two brews. Plan brewing days around calm weather, and brew in the morning so spraying happens the same day while microbes are at their peak.</p><h2>Measuring results honestly</h2><p>The hardest part of compost tea is knowing whether it worked, because gardens change with weather, watering and many other factors at once. Run a simple comparison: spray half a bed and leave the other half untreated, keeping everything else identical, and photograph both halves monthly. Look for differences in growth, leaf colour, disease pressure and soil structure rather than expecting dramatic overnight change. If no difference appears after a season of regular use, your soil may already be biologically healthy, which is a good outcome, and your effort is better spent on compost mulch. Honest comparison beats enthusiasm, and it makes the next season&#x27;s plan evidence-based.</p><h2>Using compost tea on lawns and containers</h2><p>Lawns respond well to compost tea applied as a soil drench, because turf roots benefit from the same microbial activity as garden beds, and a healthy soil web reduces thatch and improves drought tolerance. Apply lawn tea with a hose-end sprayer at a dilution of about one to five, covering evenly and watering lightly afterwards to wash microbes into the root zone. Container plants are a different case: their limited soil volume dries and heats quickly, and microbial populations in pots are smaller and more fragile than in open ground, so tea gives containers a proportionally bigger boost. Use a gentler dilution of one to ten for pots, apply to moist compost, and repeat every two weeks through the growing season. Avoid spraying tea on containers in the heat of the day, when small pots dry rapidly and leaf scorch is likely. For both lawns and containers, tea works best alongside regular compost topdressing, since the compost provides the food and habitat that tea microbes need to establish, rather than a one-off dose that fades within weeks. Keep a record of application dates and plant response, and compare treated and untreated containers to judge the benefit honestly.</p>
+</article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary><strong>What dilution should I use for compost tea?</strong></summary><p>1:10 for foliar sprays and 1:4 to 1:5 for soil drenches are common starting points.</p></details><details><summary><strong>How long does brewed compost tea last?</strong></summary><p>Use it within 24 hours of brewing, ideally the same day, while microbes are at peak levels.</p></details><details><summary><strong>Can I use tap water for compost tea?</strong></summary><p>Let tap water stand uncovered for 24 hours first so chlorine dissipates, or use rainwater.</p></details><details><summary><strong>Why does my compost tea smell bad?</strong></summary><p>A sour or rotten smell means anaerobic conditions — discard the batch, clean the brewer and aerate more strongly next time.</p></details><details><summary><strong>Is compost tea safe on food crops?</strong></summary><p>Use only fully finished compost, wear gloves, and avoid spraying leafy crops within two weeks of harvest.</p></details><details><summary><strong>Is compost tea a fertiliser?</strong></summary><p>Not mainly — its value is microbial. It supplements, but does not replace, compost and balanced feeding.</p></details></section>
+<footer>
+<p><strong>CompostTea</strong> — Liquid gold, measured properly.</p>
+<p>CompostTea turns a home-brewed batch into a spray plan: dilution, total spray volume and the area it covers, so every bed gets the right dose.</p>
+<p><a href="https://fixoraa.tech">Home</a> · <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p>
+</footer>
+<script>
+function compute(brew,ratio,rate,area){if(brew<=0||rate<=0)return{spray:0,cover:0,enough:false};var spray=brew*(ratio+1);var cover=spray/rate;return{spray:Math.round(spray*100)/100,cover:Math.round(cover*100)/100,enough:cover>=area};}
+function trun(){var r=compute(+document.getElementById('brew').value,+document.getElementById('ratio').value,+document.getElementById('rate').value,+document.getElementById('area2').value);var t='Diluted spray: <b>'+r.spray+' litres</b>, covering <b>'+r.cover+' m²</b> — '+(r.enough?'enough for your garden.':'not enough: brew more or dilute less.');document.getElementById('out').innerHTML=t;pushHist(t);}
+function copyResult(){var r=document.getElementById('out');if(r){navigator.clipboard.writeText(r.innerText);alert('Result copied!');}}
+function clearHist(){try{localStorage.removeItem('hist_composttea');}catch(e){}document.getElementById('hist').innerHTML='Recent results will appear here as you calculate.';}
+function pushHist(txt){try{var h=JSON.parse(localStorage.getItem('hist_composttea')||'[]');h.unshift(txt);h=h.slice(0,5);localStorage.setItem('hist_composttea',JSON.stringify(h));document.getElementById('hist').innerHTML='<strong>Recent:</strong><br>'+h.map(function(x){return x;}).join('<br>');}catch(e){}}
+</script>
+</body>
+</html>
