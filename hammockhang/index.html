@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HammockHang — Hammock Hang Calculator (Distance, Sag &amp; Strap Height)</title>
+<meta name="description" content="How high should hammock straps go? Enter tree distance, hammock length and seat height to get strap height, ridgeline length and suspension length.">
+<link rel="canonical" href="https://fun.fixoraa.tech/hammockhang/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "HammockHang", "url": "https://fun.fixoraa.tech/hammockhang/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "How high should hammock straps go? Enter tree distance, hammock length and seat height to get strap height, ridgeline length and suspension length.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How high should hammock straps be?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on tree distance: strap height = seat height + half the tree distance × tan(30°). For a 4-metre span and a 45 cm seat, straps go at about 1.6 metres."}}, {"@type": "Question", "name": "What is the 30-degree hang angle?", "acceptedAnswer": {"@type": "Answer", "text": "The angle of the suspension line below horizontal. At 30°, the bed lies flat and forces stay near body weight; tighter angles multiply forces dangerously, looser angles sag into a cocoon."}}, {"@type": "Question", "name": "What is a hammock ridgeline?", "acceptedAnswer": {"@type": "Answer", "text": "A cord between the hammock ends, ideally 83% of the hammock's length, that locks in the sag so the bed feels the same between any pair of trees."}}, {"@type": "Question", "name": "How far apart should hammock trees be?", "acceptedAnswer": {"@type": "Answer", "text": "Four to five metres suits most gathered-end hammocks. Closer trees may not fit the hammock; wider trees need higher straps and longer suspension."}}, {"@type": "Question", "name": "Do tree straps damage trees?", "acceptedAnswer": {"@type": "Answer", "text": "Wide straps (2.5 cm or more) spread the load and protect bark. Thin rope can cut into bark and kill a tree, so always use wide straps on healthy, living trees."}}, {"@type": "Question", "name": "Why does my hammock sag overnight?", "acceptedAnswer": {"@type": "Answer", "text": "Nylon stretches, especially when wet, and the hammock settles under load. Hang straps a few centimetres higher than calculated and re-tension after the first sit."}}]}</script>
+<style>
+  body{font-family:Verdana, Geneva, sans-serif;background:#F0FDF4;color:#1C2B1A}
+  .accent{background:#166534;color:#FFFFFF}
+  .accent-tx{color:#14532D}
+  .soft{background:#DCFCE7}
+  .card{background:#FFFFFF;border:1px solid #D1D5DB;border-radius:18px}
+  .logo-mark{background:#166534;color:#FFFFFF}
+  .faq{border:1px solid #D1D5DB;border-radius:12px;padding:14px 16px;margin:10px 0;background:#FFFFFF}
+  .faq summary{font-weight:700;cursor:pointer}
+  input,select{width:100%;padding:11px 12px;border:1.5px solid #D1D5DB;border-radius:10px;background:#fff;color:#1c1917;font-size:16px}
+  label{font-weight:700;font-size:14px;display:block;margin:12px 0 5px}
+  .btn{background:#166534;color:#FFFFFF;font-weight:800;padding:13px 22px;border-radius:999px;font-size:16px}
+  .btn2{border:1.5px solid #14532D;color:#14532D;font-weight:700;padding:9px 16px;border-radius:999px;font-size:14px}
+  @media (max-width:640px){ .stack{flex-direction:column !important} .grid2{grid-template-columns:1fr !important} .hero-pad{padding:22px 16px !important} }
+</style>
+</head>
+<body>
+<header class="mx-auto max-w-6xl px-4 sm:px-6 pt-5 pb-1 flex flex-wrap items-center gap-3 justify-between">
+  <div class="flex items-center gap-3">
+    <span class="logo-mark inline-flex items-center justify-center w-12 h-12 rounded-2xl text-2xl font-black" aria-hidden="true">⌒</span>
+    <div><div class="text-2xl font-black leading-none">HammockHang</div><div class="text-sm opacity-80 mt-1">Hang it right the first time</div></div>
+  </div>
+  <nav class="flex items-center gap-2">
+    <a class="btn2" href="https://fixoraa.tech">Home</a>
+    <a class="btn2" href="https://fixoraa.tech">More Tools</a>
+    <span class="soft accent-tx text-xs font-bold px-3 py-2 rounded-full">Unlimited Free Usage</span>
+  </nav>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-6">
+<section class="rounded-3xl soft">
+  <div class="hero-pad">
+    <h1 class="text-3xl sm:text-4xl font-black leading-tight">Hammock Hang Calculator</h1>
+    <p class="mt-3 text-lg opacity-90">No more sagging to the ground or straps that are a mile too high. HammockHang turns your tree distance and hammock length into exact strap heights and a comfortable 30-degree hang.</p>
+    <div class="card p-5 sm:p-6 mt-6">
+      
+<div class="grid2 grid grid-cols-2 gap-4">
+<div><label for="hh-span">Tree distance (metres)</label><input id="hh-span" type="number" value="4" min="0" step="0.1"></div>
+<div><label for="hh-len">Hammock length (metres)</label><input id="hh-len" type="number" value="3" min="0" step="0.1"></div>
+<div><label for="hh-seat">Seat height (metres)</label><input id="hh-seat" type="number" value="0.45" min="0" step="0.05"></div>
+<div><label for="hh-ang">Hang angle (degrees)</label><input id="hh-ang" type="number" value="30" min="5" max="60" step="1"></div>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<button class="btn2" onclick="hhPreset(4,3)">Garden pair (4 m)</button>
+<button class="btn2" onclick="hhPreset(5,3.3)">Wide camp pair (5 m)</button>
+</div>
+<button class="btn mt-5" onclick="hhCalc()">Calculate hang setup</button>
+<div id="hh-res" class="soft rounded-2xl p-5 mt-5 text-lg leading-relaxed" aria-live="polite">Enter your values and press Calculate to see the result.</div><div class="flex flex-wrap gap-2 mt-4"><button class="btn2" onclick="copyResult('hh-res')">Copy result</button><button class="btn2" onclick="saveHist('hh-res')">Save to history</button></div><div id="hh-res-hist" class="text-sm mt-3 opacity-80"></div>
+<script>
+function hhPreset(s,l){document.getElementById('hh-span').value=s;document.getElementById('hh-len').value=l;hhCalc();}
+function hhCalc(){var s=parseFloat(document.getElementById('hh-span').value)||0;var l=parseFloat(document.getElementById('hh-len').value)||0;var seat=parseFloat(document.getElementById('hh-seat').value)||0;var a=parseFloat(document.getElementById('hh-ang').value)||30;document.getElementById('hh-res').innerHTML=hangResult(s,l,seat,a);}
+</script>
+<script>
+function copyResult(id){var el=document.getElementById(id);if(!el)return;navigator.clipboard&&navigator.clipboard.writeText(el.innerText);}
+function saveHist(id){var el=document.getElementById(id);if(!el)return;var h=JSON.parse(localStorage.getItem('fx-hist')||'[]');h.unshift(el.innerText);localStorage.setItem('fx-hist',JSON.stringify(h.slice(0,5)));var box=document.getElementById(id+'-hist');if(box)box.innerText='Saved: '+h.slice(0,3).join('  |  ');}
+</script><script>
+/*PURE-START*/
+
+function hangHeight(span,seat,angDeg){var r=angDeg*Math.PI/180;return Math.round((seat+(span/2)*Math.tan(r))*100)/100;}
+function ridgeLen(hamLen){return Math.round(hamLen*0.83*100)/100;}
+function suspLen(span,hamLen){var r=ridgeLen(hamLen);return Math.max(0,Math.round((span-r)/2*100)/100);}
+function hangResult(span,hamLen,seat,ang){if(span<=0||hamLen<=0)return 'Enter a tree distance and hammock length above zero.';var h=hangHeight(span,seat,ang);var rl=ridgeLen(hamLen);var sl=suspLen(span,hamLen);var warn='';if(ang<20)warn='<br><strong>Warning:</strong> angles below 20° multiply suspension forces sharply — stay near 30°.';if(span<hamLen*0.9)warn+='<br>Note: trees are close together for this hammock; check it fits before hanging.';return '<strong>Strap height: '+h+' m</strong> &nbsp;·&nbsp; Ridgeline: '+rl+' m &nbsp;·&nbsp; Suspension per side: '+sl+' m &nbsp;·&nbsp; Seat height: '+seat+' m.'+warn;}
+/*PURE-END*/
+</script>
+    </div>
+    <p class="text-sm mt-4 opacity-80">Assumes a classic gathered-end hammock hung at a 30-degree sag angle. Check straps and trees before every hang, and never hang higher than you are happy to fall from.</p>
+  </div>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pb-8">
+  <article class="card hero-pad p-6 sm:p-8 leading-relaxed text-[17px]">
+    <h2 class="text-2xl font-black mb-4">The 30-Degree Rule: Why Hammock Geometry Matters</h2>
+    <p>Anyone who has ever hung a hammock knows the two classic failures: the hammock sags until its occupant touches the ground, or it is strung so tight that it feels like lying on a plank and the straps groan under impossible forces. Both failures come from the same mistake, which is hanging by guesswork. A hammock is a simple piece of geometry: two anchor points, a length of fabric, and a sag angle, and when those three numbers are right, the hammock feels flat, comfortable and safe. When they are wrong, no amount of fiddling with pillows will fix it. This calculator replaces guesswork with the correct geometry.</p>
+<p>The golden rule is the 30-degree hang angle. Imagine the suspension line leaving the tree: it should drop toward the hammock at roughly 30 degrees below horizontal. At this angle, the hammock bed lies relatively flat when you lie diagonally across it, which is the secret to comfort in a gathered-end hammock: you do not lie like a banana along the centre line, you lie at an angle across the fabric, and the bed opens flat beneath you. The forces are also kind at 30 degrees. The tension in each suspension line is roughly equal to your body weight, which trees, straps and hammock fabric can all handle comfortably for years.</p>
+<p>Hang the hammock tighter, and the forces explode. At 15 degrees the tension in each line is nearly double your body weight, and at 5 degrees it can be five times or more, which is how straps snap, trees are damaged, and hammock fabric tears at the gathered ends. Hang it looser, at 45 degrees or more, and the bed sags into a deep cocoon that squeezes your shoulders and dumps you toward the middle, while your backside may graze the ground. The 30-degree angle is therefore not a fussy preference: it is the sweet spot where comfort and safety overlap, and experienced hangers can judge it by eye, holding a hand up with thumb and finger spread to form roughly 30 degrees.</p>
+<p>Strap height follows from the angle and the distance between trees. The further apart the trees, the higher the straps must go, because the suspension has to drop further to reach the same seat height. The rule is simple: strap height equals seat height plus half the tree distance multiplied by the tangent of the hang angle. For a four-metre span and a seat height of 45 centimetres, that gives straps at about 1.6 metres, which is a comfortable reach for most adults. For a five-metre span, the same seat height needs straps at about 1.9 metres, which may need a small step or longer straps. This is why experienced campers carry adjustable straps: tree distance is never the same twice.</p>
+<p>The ridgeline is the second number that transforms a hang. A structural ridgeline is a cord strung between the two ends of the hammock, and its ideal length is about 83 percent of the hammock's total length. With a ridgeline fitted, the hammock's sag is locked in: you can hang between trees at different distances and the bed will feel the same every time, because the ridgeline, not the trees, decides the sag. Without a ridgeline, every new pair of trees is a new experiment. Many modern hammocks come with a ridgeline, and if yours does not, adding one is the single best upgrade for consistent comfort, especially for overnight sleeping.</p>
+<p>Seat height deserves attention of its own. The classic advice is chair height, about 45 centimetres, which lets you sit down into the hammock and swing your legs up easily, and lets you get out without a clumsy roll. For overnight camping, a slightly lower sit, around 40 centimetres, keeps you closer to the ground and warmer, since cold air under the hammock is the main source of nighttime chill. For lounging with a book, a slightly higher sit can be pleasant, but anything above knee height makes entry awkward and increases the distance of a fall. Whatever you choose, remember that an occupied hammock stretches and settles lower than an empty one, so set straps a few centimetres higher than the maths suggests and let the hammock settle.</p>
+<p>Tree protection is not optional for responsible hanging. Wide polyester tree straps, at least two and a half centimetres wide, spread the load and protect bark; thin rope cuts into bark, damages the cambium layer, and can kill a tree over time. Never screw bolts or nails into a living tree for a hammock, and choose healthy, living trees at least 15 centimetres in diameter. Dead trees, thin saplings and trees with visible rot can fail without warning. On campsites, use existing hammock posts where provided, and in parks, check the rules: some parks restrict hammock use to protect trees, and respecting those rules keeps hammocking welcome for everyone.</p>
+<p>Suspension length, the amount of strap or cord between tree and hammock end, is the final piece. It depends on tree distance, hammock length and ridgeline: roughly, it is half the difference between the tree distance and the ridgeline length, adjusted for the angle. When trees are close together, you may need almost no suspension at all, and the hammock may barely fit; when trees are far apart, you will need long straps or whoopie slings, which are adjustable cords that let you fine-tune length in seconds. Carrying a pair of whoopie slings or daisy-chain straps turns an awkward pair of trees into a workable hang, and they weigh almost nothing in a pack.</p>
+<p>Weather changes the equation in ways worth anticipating. Nylon hammocks stretch more when wet, so a hammock hung perfectly in the afternoon may sag toward the ground after rain. A rain tarp, hung on its own ridgeline above the hammock, keeps you dry, but it needs its own height calculation: the tarp ridgeline should sit about 30 centimetres above the hammock ridgeline, with the tarp's edges low enough to block wind-driven rain. In cold weather, insulation matters more than anything else: a sleeping pad inside the hammock, or better, an underquilt hung beneath it, prevents the cold-butt syndrome that surprises first-time hammock campers, because compressed sleeping bag insulation underneath you provides almost no warmth.</p>
+<p>For beginners, the setup sequence is simple. First, pick trees four to five metres apart, healthy and sturdy. Second, wrap straps at the calculated height, erring slightly high. Third, attach the hammock and check the 30-degree angle by eye. Fourth, sit in it, then lie diagonally, and adjust one side at a time until the bed feels flat and the seat height is right. Fifth, add the tarp if rain threatens. The whole process takes five minutes once practised, and a calculator like this one removes the trial and error from the first step, which is where most beginners get stuck and give up.</p>
+<p>HammockHang is for campers, gardeners, festival goers, and anyone with two trees and a free afternoon. Enter your tree distance, your hammock length and your preferred seat height, and it returns strap height, ridgeline length and suspension length, with the 30-degree rule built in. The result is a hang that feels flat, holds its height, and treats the trees kindly. A hammock hung right is one of the great simple pleasures: a bed in the open air, swaying gently, with nothing between you and the sky except a well-calculated triangle.</p>
+  </article>
+  <h2 class="text-2xl font-black mt-10 mb-2">Frequently Asked Questions</h2>
+  <details class="faq"><summary>How high should hammock straps be?</summary><p>It depends on tree distance: strap height = seat height + half the tree distance × tan(30°). For a 4-metre span and a 45 cm seat, straps go at about 1.6 metres.</p></details>
+<details class="faq"><summary>What is the 30-degree hang angle?</summary><p>The angle of the suspension line below horizontal. At 30°, the bed lies flat and forces stay near body weight; tighter angles multiply forces dangerously, looser angles sag into a cocoon.</p></details>
+<details class="faq"><summary>What is a hammock ridgeline?</summary><p>A cord between the hammock ends, ideally 83% of the hammock&#x27;s length, that locks in the sag so the bed feels the same between any pair of trees.</p></details>
+<details class="faq"><summary>How far apart should hammock trees be?</summary><p>Four to five metres suits most gathered-end hammocks. Closer trees may not fit the hammock; wider trees need higher straps and longer suspension.</p></details>
+<details class="faq"><summary>Do tree straps damage trees?</summary><p>Wide straps (2.5 cm or more) spread the load and protect bark. Thin rope can cut into bark and kill a tree, so always use wide straps on healthy, living trees.</p></details>
+<details class="faq"><summary>Why does my hammock sag overnight?</summary><p>Nylon stretches, especially when wet, and the hammock settles under load. Hang straps a few centimetres higher than calculated and re-tension after the first sit.</p></details>
+</section>
+<footer class="mx-auto max-w-6xl px-4 sm:px-6 pb-10 pt-2 text-center text-sm">
+  <p class="font-bold text-base">HammockHang — Hang it right the first time</p>
+  <p class="opacity-80 mt-1">HammockHang calculates strap height, ridgeline length and suspension length from tree distance and hammock size, using the classic 30-degree hang.</p>
+  <p class="mt-3"><a class="accent-tx font-bold" href="https://fixoraa.tech">Home</a> &nbsp;·&nbsp; <a class="accent-tx font-bold" href="https://fixoraa.tech">More Tools</a></p>
+  <p class="mt-3">Made by <a class="accent-tx font-bold underline" href="https://fixoraa.tech">Fixoraa</a></p>
+</footer>
+</body>
+</html>
