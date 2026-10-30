@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://fun.fixoraa.tech/amoramatch/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmoraMatch — Love Compatibility Test | FLAMES, Love Score & Zodiac Match</title>
+<meta name="description" content="AmoraMatch is a free love compatibility test: play the classic FLAMES letter game with an animated reveal, get a deterministic love score with a couple-type label, and add an optional zodiac compatibility overlay. No signup, unlimited free usage.">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{ --plum:#1E0A2E; --rose:#FB7185; --gold:#FBBF24; --cream:#FFF7ED; }
+  html{ scroll-behavior:smooth; }
+  body{ background:#1E0A2E; color:#FFF7ED; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .font-display{ font-family: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", serif; }
+  .candle{ position:absolute; border-radius:9999px; filter:blur(90px); opacity:.5; pointer-events:none; }
+  @keyframes floatUp{ 0%{ transform:translateY(20vh) rotate(0deg); opacity:0; } 12%{ opacity:.55; } 88%{ opacity:.4; } 100%{ transform:translateY(-115vh) rotate(28deg); opacity:0; } }
+  .float-heart{ position:fixed; bottom:-8vh; z-index:0; pointer-events:none; animation:floatUp linear infinite; color:#FB7185; }
+  @keyframes glowPulse{ 0%,100%{ box-shadow:0 0 24px 2px rgba(251,113,133,.45), 0 0 70px 8px rgba(251,191,36,.18);} 50%{ box-shadow:0 0 40px 6px rgba(251,113,133,.7), 0 0 110px 14px rgba(251,191,36,.3);} }
+  .glow-card{ animation:glowPulse 4.5s ease-in-out infinite; }
+  @keyframes popIn{ 0%{ transform:scale(.6); opacity:0;} 70%{ transform:scale(1.06); opacity:1;} 100%{ transform:scale(1); opacity:1;} }
+  .pop-in{ animation:popIn .55s cubic-bezier(.2,.9,.3,1.2) both; }
+  .l-tile{ position:relative; display:inline-flex; align-items:center; justify-content:center; width:2.4rem; height:2.9rem; margin:.18rem;
+    border-radius:.65rem; font-weight:800; font-size:1.25rem; text-transform:uppercase;
+    background:linear-gradient(160deg,#3B1248,#241038); border:1px solid rgba(251,191,36,.35); color:#FFF7ED;
+    transition:all .3s ease; }
+  @media (max-width:420px){ .l-tile{ width:1.9rem; height:2.4rem; font-size:1rem; } }
+  .l-tile.pair-hit{ background:linear-gradient(160deg,#FB7185,#e11d48); border-color:#FFF7ED; transform:scale(1.18) rotate(-4deg); color:#1E0A2E; }
+  .l-tile.crossed{ opacity:.32; transform:scale(.92); }
+  .l-tile.crossed::after{ content:""; position:absolute; left:8%; right:8%; top:50%; height:3px; border-radius:2px;
+    background:#FB7185; transform:rotate(-14deg); box-shadow:0 0 8px #FB7185; }
+  .f-tile{ position:relative; display:inline-flex; align-items:center; justify-content:center; width:3rem; height:3.6rem; margin:.25rem;
+    border-radius:.8rem; font-weight:900; font-size:1.6rem; background:linear-gradient(160deg,#4A1547,#2A0F3C);
+    border:2px solid rgba(251,191,36,.55); color:#FBBF24; transition:all .25s ease; }
+  .f-tile .sub{ position:absolute; bottom:2px; font-size:.55rem; font-weight:600; color:#FFF7ED; opacity:.75; letter-spacing:.02em; }
+  .f-tile.pointer{ border-color:#FFF7ED; color:#fff; transform:scale(1.22); box-shadow:0 0 26px 4px rgba(251,113,133,.85); background:linear-gradient(160deg,#FB7185,#be123c); }
+  .f-tile.out{ opacity:.22; transform:scale(.85); filter:grayscale(.6); }
+  .f-tile.out::after{ content:""; position:absolute; left:6%; right:6%; top:50%; height:3px; background:#FB7185; transform:rotate(-12deg); border-radius:2px; }
+  .f-tile.winner{ border-color:#FBBF24; color:#1E0A2E; background:linear-gradient(160deg,#FDE68A,#FBBF24); transform:scale(1.3);
+    box-shadow:0 0 40px 8px rgba(251,191,36,.75); animation:popIn .6s cubic-bezier(.2,.9,.3,1.2) both; }
+  .field{ width:100%; background:#2A0F3C; border:1px solid rgba(251,191,36,.3); border-radius:.9rem; padding:.85rem 1rem;
+    color:#FFF7ED; outline:none; transition:border-color .2s, box-shadow .2s; color-scheme:dark; }
+  .field:focus{ border-color:#FB7185; box-shadow:0 0 0 3px rgba(251,113,133,.25); }
+  .field::placeholder{ color:rgba(255,247,237,.35); }
+  .btn-love{ background:linear-gradient(135deg,#FB7185,#e11d48 60%,#9d174d); transition:transform .15s ease, box-shadow .2s ease;
+    box-shadow:0 8px 28px -6px rgba(251,113,133,.6); }
+  .btn-love:hover{ transform:translateY(-2px); box-shadow:0 14px 34px -6px rgba(251,113,133,.75); }
+  .btn-love:active{ transform:translateY(0); }
+  .btn-gold{ background:linear-gradient(135deg,#FDE68A,#FBBF24 60%,#d97706); color:#1E0A2E; transition:transform .15s ease; }
+  .btn-gold:hover{ transform:translateY(-2px); }
+  .btn-ghost{ border:1px solid rgba(251,191,36,.5); color:#FBBF24; transition:all .2s; }
+  .btn-ghost:hover{ background:rgba(251,191,36,.12); }
+  details.faq-item{ background:rgba(42,15,60,.7); border:1px solid rgba(251,191,36,.25); border-radius:1rem; overflow:hidden; }
+  details.faq-item summary{ cursor:pointer; list-style:none; padding:1.1rem 1.25rem; font-weight:700; color:#FDE68A; }
+  details.faq-item summary::-webkit-details-marker{ display:none; }
+  details.faq-item summary::after{ content:"+"; float:right; color:#FB7185; font-size:1.4rem; line-height:1; }
+  details.faq-item[open] summary::after{ content:"–"; }
+  details.faq-item .faq-body{ padding:0 1.25rem 1.25rem; color:rgba(255,247,237,.85); line-height:1.7; }
+  .prose-love h2{ color:#FBBF24; font-family:Georgia,"Palatino Linotype",serif; font-size:1.65rem; margin:2.2rem 0 .9rem; }
+  .prose-love h3{ color:#FB7185; font-family:Georgia,"Palatino Linotype",serif; font-size:1.25rem; margin:1.6rem 0 .6rem; }
+  .prose-love p{ margin:.85rem 0; line-height:1.85; color:rgba(255,247,237,.88); }
+  .prose-love ul, .prose-love ol{ margin:.85rem 0 .85rem 1.4rem; line-height:1.8; color:rgba(255,247,237,.88); }
+  .prose-love li{ margin:.4rem 0; }
+  .prose-love strong{ color:#FDE68A; }
+  .chip{ transition:all .2s; }
+  .chip:hover{ border-color:#FB7185; transform:translateY(-1px); }
+  @media print{ .no-print{ display:none !important; } }
+  @keyframes heartBurst{ 0%{ transform:translateY(0) scale(.5); opacity:1;} 100%{ transform:translateY(-46vh) scale(1.4) rotate(24deg); opacity:0;} }
+  .burst-heart{ position:absolute; animation:heartBurst 1.8s ease-out forwards; pointer-events:none; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is the FLAMES love calculator and how does it work?", "acceptedAnswer": { "@type": "Answer", "text": "FLAMES is a classic name game: common letters in two names are cancelled, the remaining count is used to eliminate letters from F-L-A-M-E-S until one survives — Friendship, Love, Affection, Marriage, Enemy or Sibling. AmoraMatch animates every step so you can watch it happen." } },
+    { "@type": "Question", "name": "Is the AmoraMatch love score accurate or real?", "acceptedAnswer": { "@type": "Answer", "text": "No — it is entertainment. The score is generated by a fixed, deterministic formula from the two names, not by any psychological or scientific measurement. Enjoy it as a playful ritual, not a verdict." } },
+    { "@type": "Question", "name": "Why do I always get the same score for the same two names?", "acceptedAnswer": { "@type": "Answer", "text": "AmoraMatch uses a hash-based formula (FNV-1a) instead of random numbers, so the same pair of names always produces the same score. That keeps shared result cards consistent — your partner will see the exact same number you saw." } },
+    { "@type": "Question", "name": "What do the letters F-L-A-M-E-S stand for?", "acceptedAnswer": { "@type": "Answer", "text": "F = Friendship, L = Love, A = Affection, M = Marriage, E = Enemy, S = Sibling. The surviving letter after the elimination rounds is your playful destiny for that pair of names." } },
+    { "@type": "Question", "name": "Do I need to enter birthdays? What does the zodiac overlay add?", "acceptedAnswer": { "@type": "Answer", "text": "Birthdays are optional. If you add both, AmoraMatch derives each Western zodiac sign and adds an element-based compatibility note (Fire, Earth, Air, Water) alongside the FLAMES result and love score." } },
+    { "@type": "Question", "name": "Can I share my AmoraMatch result with my partner?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every result can be copied as text or downloaded as a styled image card made on an in-browser canvas, then shared on any chat or social app. Nothing is uploaded anywhere." } }
+  ]
+}
+</script>
+</head>
+<body id="top" class="min-h-screen relative overflow-x-hidden">
+
+<!-- floating hearts background -->
+<div aria-hidden="true" id="heartsBg"></div>
+
+<!-- candle glow blobs -->
+<div aria-hidden="true" class="fixed inset-0 -z-10 overflow-hidden">
+  <div class="candle" style="width:44rem;height:44rem;left:-12rem;top:-10rem;background:radial-gradient(circle,rgba(251,113,133,.5),transparent 65%)"></div>
+  <div class="candle" style="width:38rem;height:38rem;right:-10rem;top:22%;background:radial-gradient(circle,rgba(251,191,36,.35),transparent 65%)"></div>
+  <div class="candle" style="width:40rem;height:40rem;left:20%;bottom:-14rem;background:radial-gradient(circle,rgba(190,24,93,.45),transparent 65%)"></div>
+</div>
+
+<header class="no-print sticky top-0 z-40 border-b border-rose-300/20" style="background:rgba(30,10,46,.88);backdrop-filter:blur(12px)">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <defs><linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FB7185"/><stop offset="1" stop-color="#FBBF24"/></linearGradient></defs>
+        <path d="M12 21s-7.5-4.9-9.7-9.2C.7 8.6 2.6 5 6 5c2 0 3.4 1.1 4.2 2.3h3.6C14.6 6.1 16 5 18 5c3.4 0 5.3 3.6 3.7 6.8C19.5 16.1 12 21 12 21Z" fill="url(#lg1)" transform="scale(.92) translate(1,1)"/>
+        <path d="M12 20.5S4.7 15.8 2.6 11.6C1.1 8.5 2.9 5.4 6 5.4c1.9 0 3.2 1 4 2.2h4c.8-1.2 2.1-2.2 4-2.2 3.1 0 4.9 3.1 3.4 6.2C19.3 15.8 12 20.5 12 20.5Z" fill="url(#lg1)" opacity=".9"/>
+      </svg>
+      <span class="font-display text-2xl font-bold tracking-wide" style="background:linear-gradient(120deg,#FB7185,#FBBF24);-webkit-background-clip:text;background-clip:text;color:transparent">AmoraMatch</span>
+    </a>
+    <nav class="flex items-center gap-5 sm:gap-8 text-sm font-semibold">
+      <a href="#top" class="text-[#FFF7ED]/80 hover:text-[#FBBF24] transition">Home</a>
+      <a href="https://fixoraa.tech" target="_blank" rel="noopener" class="text-[#FFF7ED]/80 hover:text-[#FBBF24] transition">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- TOP AD: exactly one ad block directly above the tool -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="relative z-10">
+  <!-- HERO -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pt-10 pb-6 text-center">
+    <span class="inline-flex items-center gap-2 rounded-full border border-amber-300/50 bg-amber-300/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-amber-200">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>
+      Unlimited Free Usage
+    </span>
+    <h1 class="font-display text-4xl sm:text-6xl font-bold mt-6 leading-tight">Will Your Names<br><span style="background:linear-gradient(120deg,#FB7185,#FBBF24);-webkit-background-clip:text;background-clip:text;color:transparent">Catch Fire?</span></h1>
+    <p class="mt-4 max-w-2xl mx-auto text-[#FFF7ED]/70 text-base sm:text-lg leading-relaxed">Type two names and watch the legendary FLAMES game play out letter by letter — then get a love score, a couple-type verdict, and an optional zodiac overlay. Pure candlelit fun, no signup.</p>
+  </section>
+
+  <!-- TOOL -->
+  <section id="tool" class="mx-auto max-w-4xl px-4 sm:px-6 pb-8">
+    <div class="glow-card rounded-3xl p-6 sm:p-10 border border-amber-200/30" style="background:linear-gradient(165deg,rgba(59,18,72,.92),rgba(36,16,56,.94))">
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label for="name1" class="block text-sm font-bold text-rose-200 mb-2 tracking-wide">YOUR NAME</label>
+          <input id="name1" type="text" maxlength="40" autocomplete="off" placeholder="e.g. Aarav" class="field text-lg">
+          <label for="dob1" class="block text-xs font-semibold text-[#FFF7ED]/50 mt-3 mb-1.5 tracking-wide">BIRTHDAY <span class="font-normal">(optional — for zodiac)</span></label>
+          <input id="dob1" type="date" class="field">
+        </div>
+        <div>
+          <label for="name2" class="block text-sm font-bold text-rose-200 mb-2 tracking-wide">THEIR NAME</label>
+          <input id="name2" type="text" maxlength="40" autocomplete="off" placeholder="e.g. Diya" class="field text-lg">
+          <label for="dob2" class="block text-xs font-semibold text-[#FFF7ED]/50 mt-3 mb-1.5 tracking-wide">BIRTHDAY <span class="font-normal">(optional — for zodiac)</span></label>
+          <input id="dob2" type="date" class="field">
+        </div>
+      </div>
+      <p id="errMsg" class="hidden mt-4 text-center text-sm font-semibold text-rose-300" role="alert"></p>
+      <div class="mt-7 text-center">
+        <button id="calcBtn" class="btn-love rounded-full px-10 py-4 text-lg font-extrabold text-white tracking-wide">Reveal Our Fate 💘</button>
+        <p class="mt-3 text-xs text-[#FFF7ED]/45">For entertainment only — the stars are playful, not precise.</p>
+      </div>
+    </div>
+
+    <!-- THEATER -->
+    <div id="theater" class="hidden mt-8">
+      <div class="rounded-3xl p-6 sm:p-8 border border-rose-300/25 relative overflow-hidden" style="background:rgba(26,8,40,.85)">
+        <div class="flex items-center justify-between mb-5">
+          <h2 class="font-display text-2xl font-bold text-amber-200">The Candlelit Theater</h2>
+          <div class="flex gap-2">
+            <button id="skipBtn" class="btn-ghost rounded-full px-4 py-1.5 text-xs font-bold">Skip ⏩</button>
+            <button id="replayBtn" class="btn-ghost rounded-full px-4 py-1.5 text-xs font-bold hidden">↻ Replay</button>
+          </div>
+        </div>
+
+        <!-- Stage 1: cancellation -->
+        <div id="stageCancel">
+          <p class="text-sm font-bold text-rose-200 tracking-wide mb-3">ACT I — COMMON LETTERS VANISH <span id="cancelCount" class="ml-2 text-amber-300"></span></p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+            <div class="text-center">
+              <div id="tiles1" class="flex flex-wrap justify-center max-w-[300px]"></div>
+              <p id="cap1" class="mt-2 text-xs text-[#FFF7ED]/50 font-semibold"></p>
+            </div>
+            <div class="font-display text-3xl text-rose-400 font-bold">×</div>
+            <div class="text-center">
+              <div id="tiles2" class="flex flex-wrap justify-center max-w-[300px]"></div>
+              <p id="cap2" class="mt-2 text-xs text-[#FFF7ED]/50 font-semibold"></p>
+            </div>
+          </div>
+          <p id="remainLine" class="text-center mt-4 text-sm text-[#FFF7ED]/70"></p>
+        </div>
+
+        <!-- Stage 2: FLAMES elimination -->
+        <div id="stageFlames" class="hidden mt-8 pt-6 border-t border-amber-200/20">
+          <p class="text-sm font-bold text-rose-200 tracking-wide mb-1 text-center">ACT II — THE COUNT BEGINS</p>
+          <p id="countLine" class="text-center text-xs text-[#FFF7ED]/55 mb-4"></p>
+          <div id="flamesTiles" class="flex flex-wrap justify-center"></div>
+          <p id="elimLog" class="text-center mt-4 text-sm text-amber-200/90 font-semibold min-h-[1.5rem]"></p>
+        </div>
+
+        <!-- Stage 3: result -->
+        <div id="stageResult" class="hidden mt-8 pt-6 border-t border-amber-200/20 relative">
+          <div id="burstZone" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+          <p class="text-sm font-bold text-rose-200 tracking-wide mb-4 text-center">ACT III — THE REVEAL</p>
+          <div class="flex flex-col items-center gap-5">
+            <div class="relative">
+              <svg width="190" height="190" viewBox="0 0 120 120" role="img" aria-label="Love score ring">
+                <defs>
+                  <linearGradient id="scoreGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#FB7185"/><stop offset="1" stop-color="#FBBF24"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="60" cy="60" r="54" fill="none" stroke="#3a1548" stroke-width="10"/>
+                <circle id="scoreArc" cx="60" cy="60" r="54" fill="none" stroke="url(#scoreGrad)" stroke-width="10" stroke-linecap="round"
+                        stroke-dasharray="339.292" stroke-dashoffset="339.292" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1.4s cubic-bezier(.3,.7,.3,1)"/>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="font-display text-5xl font-bold text-white"><span id="scoreNum">0</span><span class="text-2xl text-amber-300">%</span></span>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-[#FFF7ED]/50 mt-1">love score</span>
+              </div>
+            </div>
+            <div class="text-center pop-in" id="labelWrap">
+              <p id="coupleEmoji" class="text-4xl mb-1">💞</p>
+              <p id="coupleLabel" class="font-display text-3xl font-bold" style="background:linear-gradient(120deg,#FBBF24,#FB7185);-webkit-background-clip:text;background-clip:text;color:transparent"></p>
+              <p id="coupleBlurb" class="mt-2 max-w-md mx-auto text-sm text-[#FFF7ED]/70 leading-relaxed"></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3">
+              <span class="rounded-full bg-rose-400/15 border border-rose-300/40 px-4 py-1.5 text-sm font-bold text-rose-200">FLAMES: <span id="flamesWord" class="text-amber-300"></span></span>
+              <span id="zodiacChip" class="hidden rounded-full bg-amber-300/10 border border-amber-300/40 px-4 py-1.5 text-sm font-bold text-amber-200"></span>
+            </div>
+            <p id="zodiacNote" class="hidden max-w-lg text-center text-sm text-[#FFF7ED]/65 italic leading-relaxed"></p>
+            <div class="flex flex-wrap justify-center gap-3 mt-2">
+              <button id="copyBtn" class="btn-gold rounded-full px-6 py-2.5 text-sm font-extrabold">⧉ Copy as Text</button>
+              <button id="dlBtn" class="btn-ghost rounded-full px-6 py-2.5 text-sm font-extrabold">⬇ Download Card</button>
+            </div>
+            <p id="copyMsg" class="text-xs text-emerald-300 font-semibold h-4"></p>
+            <p class="text-[11px] text-[#FFF7ED]/40 max-w-md text-center">Just for fun — a playful game, not a verdict on your relationship. Names never leave your browser.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECENT PAIRS -->
+    <div id="recentWrap" class="hidden mt-6">
+      <h3 class="font-display text-lg font-bold text-amber-200 mb-3">🕯 Recent Pairs</h3>
+      <div id="recentList" class="flex flex-wrap gap-2"></div>
+      <button id="clearRecent" class="mt-3 text-xs text-[#FFF7ED]/40 underline hover:text-rose-300">clear history</button>
+    </div>
+  </section>
+
+<!-- BOTTOM AD: exactly one ad block directly below the tool -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+
+  <!-- SEO ARTICLE -->
+  <article id="seo-article" class="prose-love mx-auto max-w-4xl px-4 sm:px-6 py-10 relative z-10">
+    <h2 class="font-display">The FLAMES Love Game: How a Childhood Pastime Became the Internet's Favorite Compatibility Test</h2>
+    <p>Long before dating apps, compatibility quizzes, and astrology memes, there was a folded piece of notebook paper, a borrowed pen, and six mysterious letters: <strong>F-L-A-M-E-S</strong>. If you grew up anywhere in the world between the 1970s and the 2000s, you almost certainly played it — during a boring math class, at a sleepover, or on a long bus ride. Two names went in, common letters were crossed out with theatrical seriousness, and the universe (or at least the playground) delivered its verdict: Friendship, Love, Affection, Marriage, Enemy, or Sibling.</p>
+    <p>Decades later, the FLAMES game refuses to die. It has survived the jump from paper to pixels, from schoolyard whispers to viral social posts, and it remains one of the most searched love games on the internet. <strong>AmoraMatch</strong> exists to give this beloved ritual the stage it deserves: a candlelit, animated theater where every crossed-out letter and every elimination round plays out before your eyes — plus a love score, a couple-type label, and an optional zodiac overlay that the paper version never had.</p>
+
+    <h2>What Exactly Is the FLAMES Game?</h2>
+    <p>FLAMES is an acronym for six relationship outcomes: <strong>Friendship, Love, Affection, Marriage, Enemy, and Sibling</strong>. The game takes two names — yours and your crush's, your partner's, or honestly anyone's — and runs them through a two-phase ritual of cancellation and elimination. The surviving letter is treated as your playful destiny together.</p>
+    <p>Nobody knows precisely where FLAMES was invented. Like many playground traditions, it seems to have emerged organically and spread by imitation, with strong roots in South Asia, the Middle East, and parts of Europe. Some trace its popularity to the 1970s and 1980s, when it traveled through school notebooks the way memes travel through group chats today. What is certain is that the game filled a universal human need: a low-stakes, slightly magical way to ask the terrifying question, <em>"Do they like me back?"</em></p>
+    <p>The genius of FLAMES is that it is deterministic. Given the same two names, the classic rules always produce the same result — which is exactly why friends could argue about the "right" way to count, and why the game felt like it was revealing something real rather than rolling dice. AmoraMatch honors that determinism: our love score uses a fixed hash formula, so the same pair of names always earns the same score, and a shared result card will match what your partner sees.</p>
+
+    <h2>How the FLAMES Calculation Actually Works</h2>
+    <p>The ritual has two acts, and AmoraMatch animates both of them in its Candlelit Theater.</p>
+    <h3>Act I: Letter Cancellation</h3>
+    <p>Both names are lowercased and stripped of spaces and non-letters. Then, working through the first name letter by letter, each letter that also appears in the second name is cancelled — one occurrence from each side. In the classic playground version you would physically strike through matching pairs: the <strong>J</strong> in John and the <strong>J</strong> in Jane, the <strong>N</strong> and the <strong>N</strong>, until no more pairs remain. Whatever letters survive on both sides are counted together. That total is the magic number for Act II.</p>
+    <h3>Act II: The Elimination Count</h3>
+    <p>Write down F-L-A-M-E-S. Starting from F, count forward by the magic number; the letter you land on is eliminated. Continue counting from the next surviving letter, eliminate again, and repeat until a single letter stands alone. If your count is 4, for example, the first pass removes M (F-1, L-2, A-3, M-4), the next pass starting from E removes L, then F, then A, then S — leaving <strong>E: Enemy</strong>. Try it on paper sometime; watching the circle shrink is half the fun, and it is exactly what our animated theater recreates with glowing tiles.</p>
+    <p>A few quirks worth knowing: if the two names share every letter (identical names, for instance), the remaining count is zero and the classic game has no move — AmoraMatch playfully calls this a <strong>Mirror Match</strong>. And a remaining count of 1 always ends on S, because the count lands on the starting letter every single round.</p>
+
+    <h2>The Love Score: Where Does the Percentage Come From?</h2>
+    <p>Traditional FLAMES gives you a word, not a number — but modern players love a percentage they can screenshot. AmoraMatch computes a <strong>love score from 0 to 100</strong> using a deterministic hash of the two names (the FNV-1a algorithm, for the technically curious). Because the names are sorted before hashing, the order you type them in does not matter, and because hashing is fixed, the same pair always gets the same score.</p>
+    <p>Why does determinism matter? Two reasons. First, it preserves the soul of the original game: FLAMES was never random, and your score should not be either. Second, it makes sharing honest — when you send your result card to your partner and they run the same names, they will see the identical number. No "re-roll until it looks good" trickery, just one shared fate to laugh about.</p>
+    <p>Let us be completely clear, though: <strong>the love score measures nothing real</strong>. It does not analyze your personalities, your texts, or your star charts. It is a fixed mathematical transformation of two strings of letters, dressed up in candlelight. Treat a 97% the way you would treat a fortune cookie — delightful, not decisive.</p>
+
+    <h2>Couple Types: Reading Your Score Band</h2>
+    <p>A bare number is boring, so AmoraMatch translates your score into a <strong>couple-type label</strong>:</p>
+    <ul>
+      <li><strong>90–100: Soulmate Spark</strong> — the stuff of anniversary toasts and dramatic movie endings.</li>
+      <li><strong>75–89: Fated Flame</strong> — strong, warm, and a little bit destined.</li>
+      <li><strong>60–74: Playful Flame</strong> — sparks fly, mostly in the form of teasing.</li>
+      <li><strong>45–59: Sweet Spark</strong> — gentle warmth; friendship with excellent potential.</li>
+      <li><strong>30–44: Slow Burn</strong> — a candle that takes its time to catch.</li>
+      <li><strong>15–29: Friendly Ember</strong> — cozy, but the romance dimmer is low.</li>
+      <li><strong>0–14: Distant Star</strong> — beautiful from afar; admire the view.</li>
+    </ul>
+    <p>These bands are designed for sharing. "We got Playful Flame" is a far better caption than "we got 68%," which is precisely why every result card shows both.</p>
+
+    <h2>The Zodiac Overlay: What the Stars Add</h2>
+    <p>Birthdays are optional on AmoraMatch, but adding both unlocks a <strong>zodiac compatibility overlay</strong>. We derive each person's Western sun sign from standard date ranges — Aries begins March 21, Taurus April 20, and so on through Pisces — and then compare the signs' classical elements: Fire, Earth, Air, and Water.</p>
+    <p>The element logic follows the oldest rules in astrology. <strong>Same-element pairs</strong> (two Fires, two Waters) speak the same emotional language. <strong>Fire and Air</strong> is the classic power couple — air feeds fire. <strong>Earth and Water</strong> nourish each other like rain on soil. The spicier combos are <strong>Fire and Water</strong>, which can steam or scald, and <strong>Earth and Air</strong>, which often want different things at different speeds. Fire–Earth and Air–Water sit in the middle: workable, interesting, occasionally exasperating.</p>
+    <p>Same-sign couples get their own note, because dating your mirror image is its own special adventure — instant understanding, doubled strengths, and yes, doubled drama. As with everything here, read it as entertainment with a wink, not as relationship advice.</p>
+
+    <h2>Fun Ways to Play (Beyond Your Crush)</h2>
+    <p>FLAMES was never only about romance, and neither is AmoraMatch. Try it with your best friend to settle once and for all whether you are destined for Friendship or Sibling energy. Run celebrity couples through it at a party and watch the room divide into believers and skeptics. Test your pet's name against yours — the algorithm does not judge. Teachers have even used the cancellation phase to sneakily demonstrate set operations and modular counting to students who would never sit still for a lecture on either.</p>
+    <p>The <strong>shareable result card</strong> is built for these moments. One tap copies a tidy text summary; another downloads a styled image card rendered entirely in your browser on a canvas — plum-black background, candlelight gradients, your names, your score, your couple type. Post it, send it, print it and tape it inside a notebook like it is 1998 again.</p>
+
+    <h2>The Honest Truth: Why We Love Games Like This</h2>
+    <p>Psychologists have a name for part of the appeal: the <strong>Barnum effect</strong>, our tendency to find personal meaning in vague or playful statements. There is also simple nostalgia — for many players, FLAMES is a direct line back to being twelve years old and deliciously nervous. And there is the social function: a game gives two people permission to talk about feelings they would never raise directly. "The game says Marriage" is a much safer sentence than "I think about marrying you."</p>
+    <p>None of that makes the game "real," and AmoraMatch will never claim otherwise. Every result page carries a clear <strong>for-entertainment-only</strong> disclaimer, and we mean it. Real compatibility is built from conversations, kindness, shared values, and showing up on hard days — none of which fit inside an acronym. Use FLAMES as an icebreaker, a party trick, or a sweet little ritual with someone you like. Then put the phone down and go have the actual conversation.</p>
+
+    <h2>Tips for the Best AmoraMatch Experience</h2>
+    <ol>
+      <li><strong>Use full names or nicknames consistently.</strong> "Alex" and "Alexander" produce different counts — pick the version you actually call each other.</li>
+      <li><strong>Watch the theater, don't skip it.</strong> The step-by-step cancellation and the elimination sweep are the whole point; the reveal hits harder when you have watched the letters fall.</li>
+      <li><strong>Add both birthdays.</strong> The zodiac overlay adds a second layer of storytelling to your result card.</li>
+      <li><strong>Share generously.</strong> A result card with a 23% "Friendly Ember" is often funnier — and more shareable — than a 95%.</li>
+      <li><strong>Replay with variations.</strong> Try first names only, then full names, and compare destinies. Your recent pairs are saved locally so you can revisit them.</li>
+    </ol>
+    <p>So — light a candle, type two names, and let six little letters decide your fate. Whatever the theater reveals, remember the golden rule of every love game ever played: <strong>the game proposes, but the two of you dispose.</strong></p>
+  </article>
+
+  <!-- FAQS -->
+  <section class="mx-auto max-w-4xl px-4 sm:px-6 pb-14 relative z-10">
+    <h2 class="font-display text-3xl font-bold text-center text-amber-200 mb-8">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      <details class="faq-item">
+        <summary>What is the FLAMES love calculator and how does it work?</summary>
+        <div class="faq-body">FLAMES is a classic name game: common letters in two names are cancelled, the remaining count is used to eliminate letters from F-L-A-M-E-S one by one until a single letter survives — Friendship, Love, Affection, Marriage, Enemy, or Sibling. AmoraMatch animates every step so you can watch the cancellation and the elimination count play out like a little theater.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is the AmoraMatch love score accurate or real?</summary>
+        <div class="faq-body">No — it is pure entertainment. The score comes from a fixed, deterministic formula applied to the two names, not from any psychological or scientific measurement of your relationship. Enjoy it as a playful ritual, a party trick, or a sweet shareable moment — never as a verdict.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Why do I always get the same score for the same two names?</summary>
+        <div class="faq-body">AmoraMatch uses a hash-based formula (FNV-1a) instead of random numbers, so the same pair of names always produces the same score, regardless of the order you type them in. That keeps shared result cards consistent: your partner will see the exact same number you saw.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What do the letters F-L-A-M-E-S stand for?</summary>
+        <div class="faq-body">F = Friendship, L = Love, A = Affection, M = Marriage, E = Enemy, S = Sibling. After the common letters are cancelled and the elimination count runs its course, the one surviving letter is your playful destiny for that pair of names.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to enter birthdays? What does the zodiac overlay add?</summary>
+        <div class="faq-body">Birthdays are completely optional. If you add both, AmoraMatch derives each person's Western zodiac sign and adds an element-based compatibility note — Fire, Earth, Air, and Water pairings like "air feeds fire" or "water nourishes earth" — alongside your FLAMES result and love score.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I share my AmoraMatch result with my partner?</summary>
+        <div class="faq-body">Yes. Every result can be copied as plain text or downloaded as a styled image card that is drawn entirely in your browser on a canvas — no uploads, no servers. Share it on any chat or social app, and because the score is deterministic, your partner can verify the same result themselves.</div>
+      </details>
+    </div>
+  </section>
+
+<footer class="no-print relative z-10 border-t border-rose-300/15 mt-4">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-[#FFF7ED]/50">Crafted with ♥ by <span class="font-bold text-rose-300">AmoraMatch</span> — a playful love compatibility test. For entertainment only.</p>
+    <a href="https://fixoraa.tech" target="_blank" rel="noopener" class="text-sm font-bold text-amber-300 hover:text-amber-200">More Tools →</a>
+  </div>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+</main>
+<script>
+/*__PURE_START__*/
+function fnv1a32(str) {
+  var h = 0x811c9dc5;
+  for (var i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return h >>> 0;
+}
+function cleanName(name) {
+  return String(name == null ? '' : name).toLowerCase().replace(/[^a-z]/g, '');
+}
+function validateNames(n1, n2) {
+  var a = cleanName(n1), b = cleanName(n2);
+  if (!a || !b) return 'Please enter both names (letters A–Z).';
+  if (a.length > 40 || b.length > 40) return 'Names must be 40 letters or fewer.';
+  return '';
+}
+function pairKey(n1, n2) {
+  var a = cleanName(n1), b = cleanName(n2);
+  return a < b ? a + '|' + b : b + '|' + a;
+}
+function loveScore(n1, n2) {
+  return fnv1a32(pairKey(n1, n2)) % 101;
+}
+var FLAMES_WORDS = { F: 'Friendship', L: 'Love', A: 'Affection', M: 'Marriage', E: 'Enemy', S: 'Sibling' };
+function flamesCancellation(n1, n2) {
+  var a = cleanName(n1).split(''), b = cleanName(n2).split('');
+  var steps = [];
+  var usedB = [], removedA = [], i, j;
+  for (i = 0; i < b.length; i++) usedB.push(false);
+  for (i = 0; i < a.length; i++) removedA.push(false);
+  for (i = 0; i < a.length; i++) {
+    for (j = 0; j < b.length; j++) {
+      if (!usedB[j] && a[i] === b[j]) {
+        steps.push({ a: i, b: j, ch: a[i] });
+        usedB[j] = true; removedA[i] = true;
+        break;
+      }
+    }
+  }
+  var rest1 = '', rest2 = '';
+  for (i = 0; i < a.length; i++) if (!removedA[i]) rest1 += a[i];
+  for (j = 0; j < b.length; j++) if (!usedB[j]) rest2 += b[j];
+  return { steps: steps, rest1: rest1, rest2: rest2, remaining: rest1.length + rest2.length };
+}
+function flamesEliminate(count) {
+  var letters = ['F', 'L', 'A', 'M', 'E', 'S'];
+  var order = [];
+  if (!count || count < 1) return { letter: null, order: order };
+  var pos = 0;
+  while (letters.length > 1) {
+    var idx = (pos + count - 1) % letters.length;
+    order.push(letters[idx]);
+    letters.splice(idx, 1);
+    pos = idx % letters.length;
+  }
+  return { letter: letters[0], order: order };
+}
+function flamesResult(n1, n2) {
+  var c = flamesCancellation(n1, n2);
+  if (c.remaining === 0) return { letter: null, word: 'Mirror Match', remaining: 0, cancelled: c.steps.length };
+  var e = flamesEliminate(c.remaining);
+  return { letter: e.letter, word: FLAMES_WORDS[e.letter], remaining: c.remaining, cancelled: c.steps.length };
+}
+var COUPLE_BANDS = [
+  { min: 90, label: 'Soulmate Spark', emoji: '💞', blurb: 'The stuff of anniversary toasts and dramatic movie endings. The universe is clearly rooting for you two.' },
+  { min: 75, label: 'Fated Flame', emoji: '🔥', blurb: 'Strong, warm, and a little bit destined. This connection has main-character energy.' },
+  { min: 60, label: 'Playful Flame', emoji: '😉', blurb: 'Sparks fly — mostly in the form of teasing, laughter, and "wait, what did you just say?"' },
+  { min: 45, label: 'Sweet Spark', emoji: '🌸', blurb: 'Gentle warmth with excellent potential. Friendship first, fireworks possible.' },
+  { min: 30, label: 'Slow Burn', emoji: '🕯', blurb: 'A candle that takes its time to catch. Patience, dear hearts — the best fires start slow.' },
+  { min: 15, label: 'Friendly Ember', emoji: '🤗', blurb: 'Cozy and kind, though the romance dimmer is set low. Wonderful friends, gentle sparks.' },
+  { min: 0, label: 'Distant Star', emoji: '🌟', blurb: 'Beautiful from afar. Some connections are meant to be admired, not orbited.' }
+];
+function coupleLabel(score) {
+  var s = Math.max(0, Math.min(100, Math.round(score)));
+  for (var i = 0; i < COUPLE_BANDS.length; i++) {
+    if (s >= COUPLE_BANDS[i].min) return COUPLE_BANDS[i];
+  }
+  return COUPLE_BANDS[COUPLE_BANDS.length - 1];
+}
+var ZODIAC_CUTS = [
+  [1, 19, 'Capricorn'], [2, 18, 'Aquarius'], [3, 20, 'Pisces'], [4, 19, 'Aries'],
+  [5, 20, 'Taurus'], [6, 20, 'Gemini'], [7, 22, 'Cancer'], [8, 22, 'Leo'],
+  [9, 22, 'Virgo'], [10, 22, 'Libra'], [11, 21, 'Scorpio'],
+  [12, 21, 'Sagittarius'], [12, 31, 'Capricorn']
+];
+function zodiacSign(month, day) {
+  if (!month || !day || month < 1 || month > 12 || day < 1 || day > 31) return null;
+  for (var i = 0; i < ZODIAC_CUTS.length; i++) {
+    var c = ZODIAC_CUTS[i];
+    if (month < c[0] || (month === c[0] && day <= c[1])) return c[2];
+  }
+  return 'Capricorn';
+}
+function zodiacSignFromDate(iso) {
+  if (!iso || typeof iso !== 'string') return null;
+  var p = iso.split('-');
+  if (p.length !== 3) return null;
+  var m = parseInt(p[1], 10), d = parseInt(p[2], 10);
+  if (!p[0] || isNaN(m) || isNaN(d)) return null;
+  return zodiacSign(m, d);
+}
+var SIGN_ELEMENTS = {
+  Aries: 'Fire', Leo: 'Fire', Sagittarius: 'Fire',
+  Taurus: 'Earth', Virgo: 'Earth', Capricorn: 'Earth',
+  Gemini: 'Air', Libra: 'Air', Aquarius: 'Air',
+  Cancer: 'Water', Scorpio: 'Water', Pisces: 'Water'
+};
+function elementOfSign(sign) { return SIGN_ELEMENTS[sign] || null; }
+function zodiacNote(s1, s2) {
+  if (!s1 || !s2) return null;
+  if (s1 === s2) return { level: 'high', headline: 'Mirror souls',
+    note: s1 + ' + ' + s2 + ': dating your mirror image — instant understanding, doubled strengths, and yes, doubled drama.' };
+  var e1 = elementOfSign(s1), e2 = elementOfSign(s2);
+  if (!e1 || !e2) return null;
+  var key = [e1, e2].sort().join('+');
+  var table = {
+    'Fire+Fire': ['high', 'Twin flames', 'Two ' + e1 + ' signs burn brighter together — passion first, everything else second.'],
+    'Earth+Earth': ['high', 'Bedrock bond', 'Two ' + e1 + ' signs build slowly and last — loyalty you can set your watch by.'],
+    'Air+Air': ['high', 'Mind meld', 'Two ' + e1 + ' signs never run out of things to talk about at 2 a.m.'],
+    'Water+Water': ['high', 'Deep ocean', 'Two ' + e1 + ' signs feel everything together — an emotional tide that rarely ebbs.'],
+    'Air+Fire': ['high', 'Wildfire romance', 'Air feeds Fire: ' + s1 + ' and ' + s2 + ' ignite each other\u2019s boldest ideas.'],
+    'Earth+Water': ['high', 'Garden in bloom', 'Water nourishes Earth: ' + s1 + ' and ' + s2 + ' grow something lasting together.'],
+    'Fire+Water': ['low', 'Steam and sizzle', 'Fire meets Water: ' + s1 + ' and ' + s2 + ' can create beautiful steam — or put each other out. Handle with care.'],
+    'Air+Earth': ['low', 'Wind over stone', 'Air meets Earth: ' + s1 + ' dreams in clouds while ' + s2 + ' builds on rock. Fascinating, if you meet halfway.'],
+    'Earth+Fire': ['medium', 'Kiln and clay', 'Earth grounds Fire\u2019s sparks into something solid: steady warmth with occasional fireworks.'],
+    'Air+Water': ['medium', 'Mist and breeze', 'Air lifts Water\u2019s feelings into words: tender, dreamy, and beautifully hard to pin down.']
+  };
+  var t = table[key] || ['medium', 'Written in the stars', s1 + ' meets ' + s2 + ': the stars shrug playfully — your story is yours to write.'];
+  return { level: t[0], headline: t[1], note: t[2] };
+}
+function shareText(n1, n2, score, labelText, flamesWord, z1, z2, zHeadline) {
+  var lines = [
+    '\uD83D\uDC96 AmoraMatch \u2014 Love Compatibility',
+    n1 + ' \u2764 ' + n2,
+    'FLAMES says: ' + flamesWord + ' \u00B7 Love score: ' + score + '% \u2014 ' + labelText
+  ];
+  if (z1 && z2) lines.push('Stars: ' + z1 + ' + ' + z2 + (zHeadline ? ' \u2014 ' + zHeadline : ''));
+  lines.push('Just for fun \u2014 try your names free!');
+  return lines.join('\n');
+}
+/*__PURE_END__*/
+
+/* ---------------- DOM / animation (not part of pure tests) ---------------- */
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  var skipAnim = false;
+  var lastCalc = null;
+
+  // floating hearts background
+  (function hearts() {
+    var bg = $('heartsBg'), frag = document.createDocumentFragment();
+    var glyphs = ['\u2764', '\uD83D\uDC98', '\uD83D\uDC95', '\uD83D\uDC96'];
+    for (var i = 0; i < 14; i++) {
+      var s = document.createElement('span');
+      s.className = 'float-heart';
+      s.textContent = glyphs[i % glyphs.length];
+      s.style.left = (Math.random() * 96) + 'vw';
+      s.style.fontSize = (12 + Math.random() * 26) + 'px';
+      s.style.animationDuration = (9 + Math.random() * 10) + 's';
+      s.style.animationDelay = (-Math.random() * 16) + 's';
+      s.style.opacity = (0.25 + Math.random() * 0.3).toFixed(2);
+      frag.appendChild(s);
+    }
+    bg.appendChild(frag);
+  })();
+
+  function esc(ch) { return ch.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+  function renderNameTiles(el, letters) {
+    el.innerHTML = letters.split('').map(function (ch) {
+      return '<span class="l-tile">' + esc(ch) + '</span>';
+    }).join('');
+    return Array.prototype.slice.call(el.querySelectorAll('.l-tile'));
+  }
+
+  function renderFlamesTiles(count) {
+    var el = $('flamesTiles');
+    var subs = { F: 'Friendship', L: 'Love', A: 'Affection', M: 'Marriage', E: 'Enemy', S: 'Sibling' };
+    el.innerHTML = 'FLAMES'.split('').map(function (ch) {
+      return '<span class="f-tile" data-ch="' + ch + '">' + ch + '<span class="sub">' + subs[ch] + '</span></span>';
+    }).join('');
+    $('countLine').textContent = 'Counting by ' + count + ' through F-L-A-M-E-S, round after round, until one letter stands alone\u2026';
+    return Array.prototype.slice.call(el.querySelectorAll('.f-tile'));
+  }
+
+  async function playCancellation(c, t1, t2, capA, capB) {
+    $('cancelCount').textContent = '';
+    $('remainLine').textContent = '';
+    for (var k = 0; k < c.steps.length; k++) {
+      if (skipAnim) break;
+      var s = c.steps[k];
+      t1[s.a].classList.add('pair-hit');
+      t2[s.b].classList.add('pair-hit');
+      await sleep(430);
+      t1[s.a].classList.remove('pair-hit'); t1[s.a].classList.add('crossed');
+      t2[s.b].classList.remove('pair-hit'); t2[s.b].classList.add('crossed');
+      $('cancelCount').textContent = '\u2715 ' + (k + 1) + ' pair' + (k ? 's' : '') + ' crossed';
+      await sleep(210);
+    }
+    if (skipAnim) {
+      c.steps.forEach(function (s) { t1[s.a].classList.add('crossed'); t2[s.b].classList.add('crossed'); });
+      $('cancelCount').textContent = '\u2715 ' + c.steps.length + ' pairs crossed';
+    }
+    var rem = c.remaining;
+    $('remainLine').innerHTML = rem === 0
+      ? 'Every letter found its match \u2014 a <strong class="text-amber-300">Mirror Match</strong>. The count rests at zero.'
+      : '<strong class="text-amber-300">' + rem + '</strong> letter' + (rem === 1 ? '' : 's') + ' remain' + (rem === 1 ? 's' : '') + ' \u2014 the count begins\u2026';
+    await sleep(skipAnim ? 60 : 700);
+  }
+
+  async function playElimination(count) {
+    var live = renderFlamesTiles(count);
+    var log = $('elimLog');
+    var pos = 0;
+    var names = FLAMES_WORDS;
+    while (live.length > 1) {
+      var idx = (pos + count - 1) % live.length;
+      var sweep = Math.min(count, 12);
+      for (var k = 0; k < sweep; k++) {
+        if (skipAnim) break;
+        var t = live[(pos + k) % live.length];
+        t.classList.add('pointer');
+        await sleep(105);
+        t.classList.remove('pointer');
+      }
+      var out = live[idx];
+      out.classList.add('out');
+      log.textContent = names[out.dataset.ch] + ' is out\u2026';
+      await sleep(skipAnim ? 60 : 420);
+      live.splice(idx, 1);
+      pos = live.length ? idx % live.length : 0;
+      if (skipAnim) {
+        // finish instantly: mirror the pure algorithm on the remaining tiles
+        while (live.length > 1) {
+          var j = (pos + count - 1) % live.length;
+          live[j].classList.add('out');
+          live.splice(j, 1);
+          pos = live.length ? j % live.length : 0;
+        }
+        break;
+      }
+    }
+    if (live[0]) {
+      live[0].classList.add('winner');
+      log.innerHTML = 'One letter remains: <strong class="text-amber-300 text-lg">' + live[0].dataset.ch + ' \u2014 ' + names[live[0].dataset.ch] + '</strong>';
+    }
+    await sleep(skipAnim ? 60 : 650);
+  }
+
+  function countUpScore(score) {
+    var num = $('scoreNum'), arc = $('scoreArc');
+    var C = 339.292;
+    arc.style.strokeDashoffset = C;
+    var start = null, dur = 1400;
+    function frame(ts) {
+      if (!start) start = ts;
+      var p = Math.min(1, (ts - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      num.textContent = Math.round(eased * score);
+      arc.style.strokeDashoffset = (C * (1 - (eased * score) / 100)).toFixed(2);
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function burstHearts() {
+    var zone = $('burstZone');
+    zone.innerHTML = '';
+    var glyphs = ['\u2764', '\uD83D\uDC98', '\uD83D\uDC95', '\uD83D\uDC96', '\u2728'];
+    for (var i = 0; i < 22; i++) {
+      var s = document.createElement('span');
+      s.className = 'burst-heart';
+      s.textContent = glyphs[i % glyphs.length];
+      s.style.left = (8 + Math.random() * 84) + '%';
+      s.style.bottom = '6%';
+      s.style.fontSize = (14 + Math.random() * 22) + 'px';
+      s.style.animationDelay = (Math.random() * 0.5) + 's';
+      zone.appendChild(s);
+    }
+    setTimeout(function () { zone.innerHTML = ''; }, 2600);
+  }
+
+  function heartPath(ctx, x, y, s) {
+    ctx.beginPath();
+    ctx.moveTo(x, y + s * 0.35);
+    ctx.bezierCurveTo(x + s * 0.55, y - s * 0.1, x + s * 0.35, y - s * 0.55, x, y - s * 0.25);
+    ctx.bezierCurveTo(x - s * 0.35, y - s * 0.55, x - s * 0.55, y - s * 0.1, x, y + s * 0.35);
+    ctx.closePath();
+  }
+
+  function drawCard(d) {
+    var W = 1080, H = 1350;
+    var cv = document.createElement('canvas');
+    cv.width = W; cv.height = H;
+    var ctx = cv.getContext('2d');
+    var g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#2A0F3C'); g.addColorStop(0.55, '#1E0A2E'); g.addColorStop(1, '#3B0F1F');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    function glow(x, y, r, color) {
+      var rg = ctx.createRadialGradient(x, y, 0, x, y, r);
+      rg.addColorStop(0, color); rg.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = rg; ctx.fillRect(x - r, y - r, r * 2, r * 2);
+    }
+    glow(200, 260, 320, 'rgba(251,113,133,0.35)');
+    glow(900, 1100, 360, 'rgba(251,191,36,0.22)');
+    glow(880, 200, 260, 'rgba(190,24,93,0.30)');
+    var i, hx = [120, 950, 180, 900, 540, 90, 990], hy = [420, 480, 1000, 940, 1180, 800, 760];
+    for (i = 0; i < hx.length; i++) {
+      ctx.fillStyle = i % 2 ? 'rgba(251,191,36,0.20)' : 'rgba(251,113,133,0.22)';
+      heartPath(ctx, hx[i], hy[i], 46);
+      ctx.fill();
+    }
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#FBBF24';
+    ctx.font = '700 64px Georgia, serif';
+    ctx.fillText('AmoraMatch', W / 2, 170);
+    ctx.strokeStyle = 'rgba(251,191,36,0.5)';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(W / 2 - 180, 210); ctx.lineTo(W / 2 + 180, 210); ctx.stroke();
+    ctx.fillStyle = '#FFF7ED';
+    ctx.font = '700 72px Georgia, serif';
+    var n1w = ctx.measureText(d.a).width, n2w = ctx.measureText(d.b).width;
+    var gap = 110, total = n1w + gap + n2w;
+    var x0 = W / 2 - total / 2;
+    ctx.textAlign = 'left';
+    ctx.fillText(d.a, x0, 360);
+    ctx.fillStyle = '#FB7185';
+    heartPath(ctx, x0 + n1w + gap / 2, 336, 62);
+    ctx.fill();
+    ctx.fillStyle = '#FFF7ED';
+    ctx.fillText(d.b, x0 + n1w + gap, 360);
+    ctx.textAlign = 'center';
+    var sgrad = ctx.createLinearGradient(0, 430, 0, 640);
+    sgrad.addColorStop(0, '#FB7185'); sgrad.addColorStop(1, '#FBBF24');
+    ctx.fillStyle = sgrad;
+    ctx.font = '900 200px Georgia, serif';
+    ctx.fillText(d.score + '%', W / 2, 620);
+    ctx.fillStyle = 'rgba(255,247,237,0.6)';
+    ctx.font = '600 30px sans-serif';
+    ctx.fillText('L O V E   S C O R E', W / 2, 672);
+    ctx.fillStyle = '#FBBF24';
+    ctx.font = '700 62px Georgia, serif';
+    ctx.fillText(d.label, W / 2, 780);
+    ctx.fillStyle = '#FFF7ED';
+    ctx.font = '600 40px Georgia, serif';
+    ctx.fillText('FLAMES says: ' + d.word, W / 2, 870);
+    if (d.z1 && d.z2) {
+      ctx.fillStyle = 'rgba(255,247,237,0.85)';
+      ctx.font = 'italic 36px Georgia, serif';
+      var zl = d.z1 + ' + ' + d.z2 + (d.zHeadline ? ' \u2014 ' + d.zHeadline : '');
+      ctx.fillText(zl.length > 44 ? zl.slice(0, 44) + '\u2026' : zl, W / 2, 950);
+    }
+    ctx.fillStyle = 'rgba(255,247,237,0.45)';
+    ctx.font = '400 28px sans-serif';
+    ctx.fillText('For entertainment only \u2014 the stars are playful, not precise.', W / 2, 1230);
+    return cv;
+  }
+
+  var RECENT_KEY = 'amoramatch-recent-v1';
+  function loadRecent() {
+    try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); } catch (e) { return []; }
+  }
+  function saveRecent(entry) {
+    try {
+      var list = loadRecent().filter(function (r) {
+        return !(r.a === entry.a && r.b === entry.b);
+      });
+      list.unshift(entry);
+      localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 8)));
+    } catch (e) { /* storage unavailable */ }
+  }
+  function renderRecent() {
+    var list = loadRecent();
+    var wrap = $('recentWrap'), box = $('recentList');
+    if (!list.length) { wrap.classList.add('hidden'); return; }
+    wrap.classList.remove('hidden');
+    box.innerHTML = '';
+    list.forEach(function (r) {
+      var b = document.createElement('button');
+      b.className = 'chip rounded-full border border-amber-200/40 bg-amber-200/5 px-4 py-1.5 text-sm font-semibold text-amber-100';
+      b.textContent = r.a + ' \u2764 ' + r.b + ' \u00B7 ' + r.score + '%';
+      b.addEventListener('click', function () {
+        $('name1').value = r.a; $('name2').value = r.b;
+        if (r.d1) $('dob1').value = r.d1;
+        if (r.d2) $('dob2').value = r.d2;
+        runCalculation();
+        window.scrollTo({ top: $('tool').offsetTop - 70, behavior: 'smooth' });
+      });
+      box.appendChild(b);
+    });
+  }
+  $('clearRecent').addEventListener('click', function () {
+    try { localStorage.removeItem(RECENT_KEY); } catch (e) {}
+    renderRecent();
+  });
+
+  async function runCalculation() {
+    var n1 = $('name1').value.trim(), n2 = $('name2').value.trim();
+    var d1 = $('dob1').value, d2 = $('dob2').value;
+    var err = validateNames(n1, n2);
+    var errEl = $('errMsg');
+    if (err) {
+      errEl.textContent = err;
+      errEl.classList.remove('hidden');
+      return;
+    }
+    errEl.classList.add('hidden');
+
+    var c = flamesCancellation(n1, n2);
+    var res = flamesResult(n1, n2);
+    var score = loveScore(n1, n2);
+    var band = coupleLabel(score);
+    var z1 = zodiacSignFromDate(d1), z2 = zodiacSignFromDate(d2);
+    var znote = (z1 && z2) ? zodiacNote(z1, z2) : null;
+    var dispA = n1.length > 18 ? n1.slice(0, 18) + '\u2026' : n1;
+    var dispB = n2.length > 18 ? n2.slice(0, 18) + '\u2026' : n2;
+    lastCalc = { a: dispA, b: dispB, d1: d1, d2: d2, score: score, label: band.label, word: res.word, z1: z1, z2: z2, zHeadline: znote ? znote.headline : '' };
+
+    skipAnim = false;
+    $('skipBtn').classList.remove('hidden');
+    $('replayBtn').classList.add('hidden');
+    var theater = $('theater');
+    theater.classList.remove('hidden');
+    $('stageCancel').classList.remove('hidden');
+    $('stageFlames').classList.add('hidden');
+    $('stageResult').classList.add('hidden');
+
+    var t1 = renderNameTiles($('tiles1'), cleanName(n1));
+    var t2 = renderNameTiles($('tiles2'), cleanName(n2));
+    $('cap1').textContent = dispA;
+    $('cap2').textContent = dispB;
+    theater.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    await playCancellation(c, t1, t2);
+
+    if (res.letter === null) {
+      $('stageFlames').classList.remove('hidden');
+      $('countLine').textContent = 'No letters remain to count.';
+      $('flamesTiles').innerHTML = '<p class="font-display text-2xl text-amber-300 py-4">\uD83E\uDE9E Mirror Match \u2014 the same heart, twice.</p>';
+      $('elimLog').textContent = '';
+    } else {
+      $('stageFlames').classList.remove('hidden');
+      await playElimination(c.remaining);
+    }
+
+    // Reveal
+    $('stageResult').classList.remove('hidden');
+    $('stageResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    $('coupleEmoji').textContent = band.emoji;
+    $('coupleLabel').textContent = band.label;
+    $('coupleBlurb').textContent = band.blurb;
+    $('flamesWord').textContent = res.letter ? (res.letter + ' \u2014 ' + res.word) : res.word;
+    var zchip = $('zodiacChip'), zn = $('zodiacNote');
+    if (z1 && z2 && znote) {
+      zchip.classList.remove('hidden');
+      zchip.textContent = '\u2648 ' + z1 + ' + ' + z2;
+      zn.classList.remove('hidden');
+      zn.textContent = '\u2728 ' + znote.note + ' (For entertainment only.)';
+    } else if (z1 || z2) {
+      zchip.classList.remove('hidden');
+      zchip.textContent = '\u2648 ' + (z1 || z2) + ' \u2014 add both birthdays for the full zodiac overlay';
+      zn.classList.add('hidden');
+    } else {
+      zchip.classList.add('hidden');
+      zn.classList.add('hidden');
+    }
+    countUpScore(score);
+    if (score >= 75 && !skipAnim) burstHearts();
+    $('copyMsg').textContent = '';
+    $('skipBtn').classList.add('hidden');
+    $('replayBtn').classList.remove('hidden');
+
+    saveRecent({ a: dispA, b: dispB, d1: d1, d2: d2, score: score });
+    renderRecent();
+  }
+
+  $('calcBtn').addEventListener('click', runCalculation);
+  [$('name1'), $('name2')].forEach(function (inp) {
+    inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') runCalculation(); });
+  });
+  $('skipBtn').addEventListener('click', function () { skipAnim = true; });
+  $('replayBtn').addEventListener('click', runCalculation);
+
+  $('copyBtn').addEventListener('click', function () {
+    if (!lastCalc) return;
+    var t = shareText(lastCalc.a, lastCalc.b, lastCalc.score, lastCalc.label, lastCalc.word,
+      lastCalc.z1, lastCalc.z2, lastCalc.zHeadline);
+    function done() { $('copyMsg').textContent = '\u2713 Copied! Paste it anywhere.'; }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = t;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); }
+      catch (e) { $('copyMsg').textContent = 'Copy failed \u2014 long-press to copy manually.'; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(done, fallback);
+    } else { fallback(); }
+  });
+
+  $('dlBtn').addEventListener('click', function () {
+    if (!lastCalc) return;
+    var cv = drawCard(lastCalc);
+    var a = document.createElement('a');
+    a.download = 'amoramatch-love-card.png';
+    a.href = cv.toDataURL('image/png');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    $('copyMsg').textContent = '\u2713 Card downloaded! Share it anywhere.';
+  });
+
+  renderRecent();
+})();
+</script>
+</body>
+</html>
