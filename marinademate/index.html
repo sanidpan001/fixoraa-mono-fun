@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chicken Marinade Calculator — Ratio, Time &amp; Builder | MarinadeMate</title>
+<meta name="description" content="MarinadeMate builds the perfect marinade: pick your protein and flavor, get exact oil, acid and salt amounts plus the safe marinating time window. Free.">
+<link rel="canonical" href="https://fun.fixoraa.tech/marinademate/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Chicken Marinade Calculator — Ratio, Time &amp; Builder | MarinadeMate">
+<meta property="og:description" content="MarinadeMate builds the perfect marinade: pick your protein and flavor, get exact oil, acid and salt amounts plus the safe marinating time window. Free.">
+<meta property="og:url" content="https://fun.fixoraa.tech/marinademate/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "MarinadeMate",
+      "url": "https://fun.fixoraa.tech/marinademate/",
+      "applicationCategory": "Kitchen Tools",
+      "operatingSystem": "Web",
+      "description": "MarinadeMate builds the perfect marinade: pick your protein and flavor, get exact oil, acid and salt amounts plus the safe marinating time window. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long should you marinate chicken breast?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "30 minutes to 2 hours for boneless chicken breasts in an acid-based marinade. Longer is not better \u2014 past ~8 hours the acid turns the surface mushy and mealy. Low-acid or yogurt-based marinades can safely go up to 24 hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the basic marinade ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The reliable base is 3 parts oil to 1 part acid, plus salt and aromatics \u2014 roughly \u00bd cup total marinade per pound of meat. A tablespoon of Dijon per cup helps emulsify so the oil and acid do not separate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you marinate chicken overnight safely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 yogurt and buttermilk tenderize gently through enzymes and mild acidity instead of harsh acid attack. That is why tandoori chicken can marinate 24 hours and turn out silky, while the same time in straight lemon juice would make it mushy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you reuse marinade as a sauce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 not unless you boil it for a full 3 minutes first to kill bacteria from the raw meat. The safer move is to split the marinade before the meat goes in and reserve the clean half for serving."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should you marinate at room temperature or in the fridge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Always in the refrigerator, never at room temperature \u2014 raw meat in the danger zone (40\u2013140\u00b0F) grows bacteria fast. Use glass, ceramic, or food-safe plastic; avoid reactive metals like aluminum with acidic marinades."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you get a good sear on marinated meat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pat the surface dry with paper towels before it hits heat. Surface moisture steams instead of sears, so drying is what lets the flavors you built actually brown and caramelize."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F7F5EC; --surface:#FFFFFF; --accent:#854D0E; --accent-ink:#FFFFFF;
+  --ink:#2E2A1E; --muted:#6B6250; --line:#E2D6B8;
+  --display:'Bricolage Grotesque',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.mm-wrap{font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#F7F5EC;color:#2E2A1E;padding:56px 18px 72px;}.mm-card{max-width:960px;margin:0 auto;background:#FFFDF6;border:1px solid #E2D6B8;border-radius:20px;box-shadow:0 24px 60px rgba(120,80,10,.10);overflow:hidden;}.mm-head{text-align:center;padding:36px 24px 6px;}.mm-head h1{font-size:clamp(30px,4.6vw,44px);font-weight:700;margin:10px 0 6px;letter-spacing:-.015em;}.mm-emoji{font-size:46px;}.mm-tag{font-family:Inter,system-ui,sans-serif;color:#6B6250;font-size:16.5px;margin:0;}.mm-tabs{display:flex;gap:0;margin:26px 28px 0;border-bottom:3px solid #E2D6B8;font-family:Inter,system-ui,sans-serif;}.mm-tabs button{flex:1;border:none;background:none;padding:14px 8px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#6B6250;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-3px;font-family:Inter,system-ui,sans-serif;}.mm-tabs button.on{color:#854D0E;border-bottom-color:#854D0E;}.mm-pane{display:none;padding:26px 28px 30px;font-family:Inter,system-ui,sans-serif;}.mm-pane.on{display:block;}.mm-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}.mm-grid button{border:1.5px solid #E2D6B8;background:#fff;border-radius:12px;padding:14px 6px;font-size:13.5px;font-weight:600;cursor:pointer;color:#2E2A1E;font-family:Inter,system-ui,sans-serif;line-height:1.35;}.mm-grid button.on{background:#854D0E;border-color:#854D0E;color:#fff;}.mm-grid button small{display:block;font-weight:400;color:inherit;opacity:.75;font-size:11.5px;margin-top:3px;}.mm-field{margin-top:18px;max-width:340px;}.mm-field label{display:block;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6B6250;margin-bottom:8px;}.mm-field input{width:100%;padding:13px 14px;font-size:17px;border:1.5px solid #E2D6B8;border-radius:12px;font-family:Inter,system-ui,sans-serif;color:#2E2A1E;background:#fff;}.mm-field input:focus{outline:none;border-color:#854D0E;}.mm-formula{margin:0 28px 8px;border:1px solid #E2D6B8;border-radius:16px;overflow:hidden;font-family:Inter,system-ui,sans-serif;}.mm-formula table{width:100%;border-collapse:collapse;}.mm-formula th,.mm-formula td{padding:13px 18px;text-align:left;border-bottom:1px solid #EFE7CF;font-size:15px;}.mm-formula tr:last-child th,.mm-formula tr:last-child td{border-bottom:none;}.mm-formula th{color:#6B6250;font-weight:600;width:46%;font-size:14px;}.mm-formula td{font-weight:800;color:#2E2A1E;font-size:16.5px;}.mm-formula thead th{background:#854D0E;color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;width:auto;}.mm-time{display:flex;gap:12px;margin:18px 28px 28px;font-family:Inter,system-ui,sans-serif;}.mm-time div{flex:1;border:1.5px dashed #854D0E;border-radius:12px;padding:14px;text-align:center;}.mm-time .k{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#6B6250;}.mm-time .v{font-size:20px;font-weight:800;color:#854D0E;margin-top:4px;}.mm-safe{margin:0 28px 30px;background:#FFFBEB;border:1px solid #E2D6B8;border-radius:12px;padding:14px 16px;font-family:Inter,system-ui,sans-serif;font-size:13.5px;color:#6B6250;line-height:1.65;}.mm-safe strong{color:#854D0E;}@media(max-width:700px){.mm-grid{grid-template-columns:repeat(2,1fr);}.mm-tabs{margin:20px 16px 0;}.mm-pane{padding:20px 16px 24px;}.mm-formula{margin:0 16px 8px;}.mm-time{margin:14px 16px 20px;flex-direction:column;}.mm-safe{margin:0 16px 24px;}.mm-wrap{padding:40px 12px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="MarinadeMate home">
+      <span class="fx-logo-tile" aria-hidden="true">🥣</span>
+      <span class="fx-brand">MarinadeMate</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-ledger-lines" aria-label="MarinadeMate tool">
+<section class='mm-wrap'><div class='mm-card'><div class='mm-head'><div class='mm-emoji' aria-hidden='true'>🥣</div><h1>Marinade Builder &amp; Timer</h1><p class='mm-tag'>The right marinade, the right minutes.</p></div><div class='mm-tabs' role='tablist'><button class='on' data-p='0' type='button' role='tab'>1 · Protein</button><button data-p='1' type='button' role='tab'>2 · Flavor</button><button data-p='2' type='button' role='tab'>3 · Batch</button></div><div class='mm-pane on' id='mm-pane0'><div class='mm-grid' id='mm-proteins'></div></div><div class='mm-pane' id='mm-pane1'><div class='mm-grid' id='mm-flavors'></div></div><div class='mm-pane' id='mm-pane2'><div class='mm-field'><label for='mm-weight'>Protein weight (lb)</label><input type='number' id='mm-weight' value='2' min='0' step='0.25' inputmode='decimal'></div><div class='mm-field'><label>Formula scales at ½ cup marinade per lb · 3:1 oil to acid</label></div></div><div class='mm-formula'><table><thead><tr><th colspan='2' id='mm-title'>Your formula</th></tr></thead><tbody><tr><th>Oil</th><td id='mm-oil'>–</td></tr><tr><th>Acid</th><td id='mm-acid'>–</td></tr><tr><th>Kosher salt</th><td id='mm-salt'>–</td></tr><tr><th>Aromatics</th><td id='mm-arom'>–</td></tr><tr><th>Total marinade</th><td id='mm-total'>–</td></tr></tbody></table></div><div class='mm-time'><div><div class='k'>Marinate at least</div><div class='v' id='mm-min'>–</div></div><div><div class='k'>Never past</div><div class='v' id='mm-max'>–</div></div><div><div class='k'>Method</div><div class='v' style='font-size:15px' id='mm-method'>Fridge, sealed bag</div></div></div><div class='mm-safe'><strong>🛡 Safety:</strong> marinate in the fridge only — never at room temp. Never reuse marinade that touched raw meat (or boil it 3 full minutes). Split the batch before the meat goes in to reserve clean sauce.</div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What a Marinade Actually Does (and Does Not Do)</h2><p>A marinade has three jobs: <strong>flavor the surface</strong>, <strong>help the surface brown</strong>, and <strong>add a little tenderness</strong>. What it famously does <em>not</em> do is penetrate deep into the meat. Harold McGee and every controlled test since have shown the same thing: marinade penetrates only <strong>1–2 millimeters</strong> — the molecules are simply too large to travel through muscle fiber. A 24-hour soak does not "deep-marinate" a chicken breast; it over-treats the surface while the center tastes exactly as it would have anyway.</p><p>This is liberating, not disappointing. It means the formula matters more than the duration, and that thin or scored cuts respond dramatically while thick roasts barely notice. Salt is the one partial exception: being a tiny molecule, salt <em>does</em> migrate deeper over hours (this is why dry-brining works). So think of a marinade as <strong>seasoning plus surface chemistry</strong> — and build it accordingly.</p><h2>The 3:1:1 Formula</h2><p>Nearly every great marinade reduces to a ratio: <strong>3 parts oil, 1 part acid, plus salt and aromatics</strong>. The oil coats the meat, slows moisture loss over heat, and carries fat-soluble flavors; the acid (citrus juice, vinegar, wine) brightens and gently denatures surface proteins; the salt seasons past the surface given time. Some traditions run 2:1 (chicken.ca's classic) or even 4:1 for delicate fish — but 3:1:1 is the reliable center of the road.</p><p>Scale by protein weight, not by vibes: about <strong>½ cup of marinade per pound</strong> of meat is enough to coat everything in a zip-top bag with the air pressed out. For 2 pounds of chicken, that is 1 cup total — ¾ cup oil, ¼ cup acid, plus roughly 1 tablespoon of kosher salt (1½ teaspoons per pound) and your aromatics. Bags beat bowls: less marinade, full contact, easy flipping, minimal cleanup.</p><h2>Acid: Powerful, and Easy to Overdo</h2><p>Acid is the ingredient most cooks overdose. In the first 30–120 minutes, acid firms the outer millimeter of meat pleasantly and adds brightness. Past that — especially past 8 hours on chicken breast — the same chemistry turns the surface <strong>mushy, mealy, and gray</strong>: the proteins have denatured so thoroughly they can no longer hold moisture, and the cooked texture goes spongy. Thin cuts (cutlets, fish, shrimp) cross this line fastest; 15–30 minutes is their whole window.</p><p>The fix is not to fear acid but to <strong>match acid strength to time</strong>. Quick marinades (under 2 hours) can run full-strength citrus or vinegar. Overnight marinades should be <strong>low-acid and oil-forward</strong>, or dairy-based: yogurt and buttermilk tenderize gently through enzymes and mild acidity, which is why tandoori chicken can bathe 24 hours and emerge silky rather than mushy. If a recipe tells you to marinate chicken breasts in straight lemon juice overnight, the recipe is wrong about the chemistry.</p><h2>Time Windows by Protein</h2><table><thead><tr><th>Protein</th><th>Minimum</th><th>Maximum</th><th>Notes</th></tr></thead><tbody><tr><td>Chicken breast, boneless</td><td>30 min</td><td>2 hrs (acid) / 24 hrs (low-acid)</td><td>Over-marinates fastest; watch the clock</td></tr><tr><td>Chicken thighs / drumsticks</td><td>2 hrs</td><td>12 hrs</td><td>Bone-in, more forgiving</td></tr><tr><td>Whole chicken</td><td>4 hrs</td><td>24 hrs</td><td>Score thick areas ¼-inch deep</td></tr><tr><td>Fish fillets</td><td>15 min</td><td>30 min</td><td>Acid "cooks" fish — ceviche is the proof</td></tr><tr><td>Shrimp / scallops</td><td>15 min</td><td>30 min</td><td>Turn rubbery fast</td></tr><tr><td>Pork chops / tenderloin</td><td>2 hrs</td><td>8 hrs</td><td>Brine-like benefit from the salt</td></tr><tr><td>Steak (tender cuts)</td><td>30 min</td><td>4 hrs</td><td>Flavor only — do not expect tenderizing</td></tr><tr><td>Steak (tough cuts: flank, skirt)</td><td>2 hrs</td><td>24 hrs</td><td>Slice against the grain after</td></tr><tr><td>Tofu / tempeh</td><td>30 min</td><td>24 hrs</td><td>Press tofu first so it absorbs</td></tr><tr><td>Vegetables</td><td>30 min</td><td>2 hrs</td><td>Mushrooms drink marinade fast</td></tr></tbody></table><p>Minimums matter as much as maximums: under 30 minutes, even a great marinade barely registers on chicken — the flavors sit on top instead of bonding with the surface. If you have only 15 minutes, you are better off seasoning aggressively and searing hot than doing a token 10-minute soak.</p><h2>Six Flavor Profiles That Always Work</h2><p>Once the 3:1:1 base is set, the profile is just aromatics. Six that cover nearly every craving:</p><ul><li><strong>Mediterranean:</strong> olive oil, lemon juice, garlic, oregano, black pepper. The default weeknight hero.</li><li><strong>Asian sesame-soy:</strong> neutral oil, soy sauce (salt + acid role), rice vinegar, ginger, sesame oil finish. Watch the sugar for grill flare-ups.</li><li><strong>Smoky BBQ:</strong> oil, apple cider vinegar, smoked paprika, brown sugar (under 2 tbsp per cup), mustard, garlic. Sugar burns — keep it modest for direct heat.</li><li><strong>Tandoori yogurt:</strong> yogurt replaces most of the oil; turmeric, cumin, coriander, Kashmiri chili, ginger-garlic. The overnight-safe choice.</li><li><strong>Citrus herb:</strong> olive oil, lime juice, cilantro, cumin, jalapeño. Built for shrimp, fish, and chicken thighs.</li><li><strong>Honey mustard:</strong> oil, apple cider vinegar, Dijon (also an emulsifier — it keeps oil and acid from splitting), honey, thyme. Glazes beautifully.</li></ul><p>Dijon deserves its moment: a tablespoon per cup of marinade acts as an <strong>emulsifier</strong>, holding the oil-acid mixture together in the bag instead of separating into a slick and a puddle. Whisk room-temperature ingredients and drizzle the oil in slowly for the most stable emulsion.</p><h2>The Safety Rules (Non-Negotiable)</h2><ul><li><strong>Marinate in the fridge, always.</strong> Room-temperature marinating puts raw meat in the danger zone — the flavor is not worth the bacteria.</li><li><strong>Never reuse marinade</strong> that touched raw meat — unless you <strong>boil it a full 3 minutes</strong> first. Better: split the batch before the meat goes in, and keep the clean half for serving as sauce.</li><li><strong>Use glass, ceramic, or food-safe plastic</strong> — never reactive metal (aluminum, cast iron, copper) with acidic marinades; the acid reacts with the metal and tastes metallic.</li><li><strong>Pat the surface dry</strong> before searing. Marinade on the surface steams instead of sears — moisture is the enemy of browning. Dry meat, hot pan, then the flavor you built actually caramelizes.</li><li><strong>Discard, do not "save," used marinade.</strong> It has done its job; let it go.</li></ul><h2>Batch Math for Parties and Meal Prep</h2><p>Cooking for a crowd? Keep the <strong>ratios fixed and scale the volume</strong>: ½ cup per pound holds from 1 pound to 20. For meal prep, portion raw protein + marinade into individual freezer bags and freeze — the meat marinates as it thaws in the fridge, which is genuinely the highest-efficiency move in this entire article. Label with the protein, profile, and date; frozen marinated bags keep 2–3 months.</p><p>One more scaling note: salt does not scale perfectly linearly past about 6 pounds — very large batches need slightly less salt per pound because of how brine concentration equilibrates. When in doubt at party scale, mix the full batch, taste the marinade (it should taste <em>slightly</em> too salty — it seasons pounds of bland protein), and adjust before the meat goes in.</p><h2>When to Skip the Marinade Entirely</h2><p>Honest closing: some things should not be marinated. A great steak needs salt, pepper, and fire — marinade muddies what the beef already does perfectly. Delicate white fish for a light sauté is better with seasoning at the pan. And anything you plan to get a hard sear on benefits more from <strong>dry-brining</strong> (salt, uncovered, in the fridge for hours) than from any wet marinade — dry surfaces brown, wet surfaces steam. The marinade is a tool, not a religion; use it where its three jobs — surface flavor, browning help, gentle tenderness — are actually needed.</p><h2>Dry Brine vs Marinade: Picking the Right Tool</h2><p>For thick cuts — whole chickens, turkeys, pork loins, big steaks — consider skipping the wet marinade entirely and <strong>dry-brining</strong> instead. Dry brining means salting the meat generously (about 1 teaspoon of kosher salt per pound, or 1 tablespoon per 4–5 pounds) and resting it uncovered in the fridge for 12–48 hours. The salt draws out moisture, dissolves into it, and gets reabsorbed — seasoning the meat deeply in a way no surface marinade can match — while the uncovered rest dries the skin for dramatically better browning.</p><p>The trade-off is flavor range: a dry brine seasons; a marinade <em>flavors</em>. Garlic-herb butter under the skin of a dry-brined chicken, or a spice rub applied after the brine, closes most of that gap. As a rule of thumb: <strong>marinate thin cuts and quick cooks</strong> (breasts, thighs, shrimp, flank steak for tacos), <strong>dry-brine thick roasts and whole birds</strong> where penetration matters more than surface flavor. And you can combine them — dry-brine the bird for a day, then apply an oil-herb coating (not an acidic soak) in the final hours for the best of both.</p><p>One caution that applies to both: <strong>do not dry-brine enhanced or kosher meat</strong> that is already salted — you will overshoot into ham territory. Check the label for "contains up to X% solution" before adding any salt at all.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How long should you marinate chicken breast?</summary><p>30 minutes to 2 hours for boneless chicken breasts in an acid-based marinade. Longer is not better — past ~8 hours the acid turns the surface mushy and mealy. Low-acid or yogurt-based marinades can safely go up to 24 hours.</p></details>
+<details><summary>What is the basic marinade ratio?</summary><p>The reliable base is 3 parts oil to 1 part acid, plus salt and aromatics — roughly ½ cup total marinade per pound of meat. A tablespoon of Dijon per cup helps emulsify so the oil and acid do not separate.</p></details>
+<details><summary>Can you marinate chicken overnight safely?</summary><p>Yes — yogurt and buttermilk tenderize gently through enzymes and mild acidity instead of harsh acid attack. That is why tandoori chicken can marinate 24 hours and turn out silky, while the same time in straight lemon juice would make it mushy.</p></details>
+<details><summary>Can you reuse marinade as a sauce?</summary><p>No — not unless you boil it for a full 3 minutes first to kill bacteria from the raw meat. The safer move is to split the marinade before the meat goes in and reserve the clean half for serving.</p></details>
+<details><summary>Should you marinate at room temperature or in the fridge?</summary><p>Always in the refrigerator, never at room temperature — raw meat in the danger zone (40–140°F) grows bacteria fast. Use glass, ceramic, or food-safe plastic; avoid reactive metals like aluminum with acidic marinades.</p></details>
+<details><summary>How do you get a good sear on marinated meat?</summary><p>Pat the surface dry with paper towels before it hits heat. Surface moisture steams instead of sears, so drying is what lets the flavors you built actually brown and caramelize.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">MarinadeMate</div>
+    <p>MarinadeMate builds a balanced marinade for any protein: pick the meat, pick a flavor profile, enter the weight — get exact oil, acid, salt and seasoning amounts plus the safe time window.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var MM_PROTEINS=[{k:'chickenbreast',n:'Chicken breast',min:'30 min',max:'2 hrs'},{k:'chickenthigh',n:'Chicken thighs',min:'2 hrs',max:'12 hrs'},{k:'wholechicken',n:'Whole chicken',min:'4 hrs',max:'24 hrs'},{k:'fish',n:'Fish fillets',min:'15 min',max:'30 min'},{k:'shrimp',n:'Shrimp',min:'15 min',max:'30 min'},{k:'pork',n:'Pork chops',min:'2 hrs',max:'8 hrs'},{k:'steak',n:'Steak',min:'30 min',max:'8 hrs'},{k:'toughcut',n:'Flank / skirt',min:'2 hrs',max:'24 hrs'},{k:'tofu',n:'Tofu / tempeh',min:'30 min',max:'24 hrs'},{k:'veg',n:'Vegetables',min:'30 min',max:'2 hrs'}];
+var MM_FLAVORS=[{k:'med',n:'Mediterranean',oil:'Olive oil',acid:'Lemon juice',arom:'Garlic, oregano, black pepper'},{k:'asian',n:'Asian sesame-soy',oil:'Neutral oil',acid:'Rice vinegar + soy sauce',arom:'Ginger, garlic, sesame oil finish'},{k:'bbq',n:'Smoky BBQ',oil:'Neutral oil',acid:'Apple cider vinegar',arom:'Smoked paprika, brown sugar, mustard, garlic'},{k:'tandoori',n:'Tandoori yogurt',oil:'Yogurt (replaces most oil)',acid:'Lemon juice, light',arom:'Turmeric, cumin, coriander, chili, ginger-garlic'},{k:'citrus',n:'Citrus herb',oil:'Olive oil',acid:'Lime juice',arom:'Cilantro, cumin, jalape\u00F1o'},{k:'honey',n:'Honey mustard',oil:'Neutral oil',acid:'Apple cider vinegar',arom:'Dijon mustard, honey, thyme'}];
+function marinadeOil(w){w=Number(w);if(!(w>0))return 0;return Math.round(w*0.375*100)/100;}
+function marinadeAcid(w){w=Number(w);if(!(w>0))return 0;return Math.round(w*0.125*100)/100;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var pi=0,fi=0;var pg=document.getElementById('mm-proteins'),fg=document.getElementById('mm-flavors'),wEl=document.getElementById('mm-weight');function fmtCup(c){if(c===0)return'0';var whole=Math.floor(c+1e-9),frac=c-whole;var eighths=Math.round(frac*8);if(eighths===8){whole++;eighths=0;}var fr=eighths?['','\u215B','\u00BC','\u215C','\u00BD','\u215D','\u00BE','\u215E'][eighths]:'';if(whole===0)return fr+' cup';return (whole+(fr?' '+fr:''))+' cup'+(whole>1||fr?'s':'');}
+function buildGrid(el,items,cur,cb){el.innerHTML='';items.forEach(function(it,idx){var b=document.createElement('button');b.type='button';b.innerHTML=it.n+(it.min?'<small>'+it.min+' \u2013 '+it.max+'</small>':'<small>'+it.oil+' \u00B7 '+it.acid+'</small>');if(idx===cur)b.classList.add('on');b.addEventListener('click',function(){var bs=el.querySelectorAll('button');for(var j=0;j<bs.length;j++)bs[j].classList.remove('on');b.classList.add('on');cb(idx);});el.appendChild(b);});}
+function render(){var p=MM_PROTEINS[pi],f=MM_FLAVORS[fi];var w=parseFloat(wEl.value);var oil=marinadeOil(w),acid=marinadeAcid(w);var salt=w>0?(Math.round(w*1.5*2)/2):0;document.getElementById('mm-title').textContent='Your formula \u2014 '+p.n+' \u00B7 '+f.n;document.getElementById('mm-oil').textContent=w>0?fmtCup(oil)+' '+f.oil.toLowerCase():'\u2013';document.getElementById('mm-acid').textContent=w>0?fmtCup(acid)+' '+f.acid.toLowerCase():'\u2013';document.getElementById('mm-salt').textContent=w>0?salt+' tsp kosher salt':'\u2013';document.getElementById('mm-arom').textContent=f.arom;document.getElementById('mm-total').textContent=w>0?fmtCup(oil+acid)+' total':'\u2013';document.getElementById('mm-min').textContent=p.min;document.getElementById('mm-max').textContent=p.max;}
+buildGrid(pg,MM_PROTEINS,pi,function(i){pi=i;render();});buildGrid(fg,MM_FLAVORS,fi,function(i){fi=i;render();});
+wEl.addEventListener('input',render);
+var tabs=document.querySelectorAll('.mm-tabs button');for(var t=0;t<tabs.length;t++){tabs[t].addEventListener('click',function(){for(var j=0;j<tabs.length;j++){tabs[j].classList.remove('on');document.getElementById('mm-pane'+j).classList.remove('on');}this.classList.add('on');document.getElementById('mm-pane'+this.getAttribute('data-p')).classList.add('on');});}
+render();});}
+</script>
+</body>
+</html>
