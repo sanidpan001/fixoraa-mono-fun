@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gift Budget Planner — Split Your Gift Budget Fairly Across Recipients</title>
+<meta name="description" content="Split a gift budget across recipients by priority weight, so everyone gets a fair share and the total stays on budget.">
+<link rel="canonical" href="https://fun.fixoraa.tech/giftbudget/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Gift Budget Planner — Split Your Gift Budget Fairly Across Recipients">
+<meta property="og:description" content="Split a gift budget across recipients by priority weight, so everyone gets a fair share and the total stays on budget.">
+<meta property="og:url" content="https://fun.fixoraa.tech/giftbudget/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GiftBudget",
+      "url": "https://fun.fixoraa.tech/giftbudget/",
+      "applicationCategory": "Everyday",
+      "operatingSystem": "Web",
+      "description": "Split a gift budget across recipients by priority weight, so everyone gets a fair share and the total stays on budget.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I split a gift budget fairly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Set a total you can afford, assign a priority weight to each recipient, and divide the total in proportion to the weights. This planner does the division for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What weights should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Equal weights for equal treatment, or higher weights for closer recipients and main gifts. Round weights like 1, 2, and 3 are easy to manage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should wrapping and delivery count?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, unless you budget them separately. Include them in each recipient's share so the true total stays on budget."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if a recipient gets a weight of zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They receive no allocated budget, which is useful for handmade gifts, cards, or shared experiences instead of purchased gifts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I avoid January debt from gifts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Set the total from your wider budget, save monthly through the year if possible, and treat each share as a cap, not a target."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it fair to spend different amounts on children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It can be, if expectations, ages, and circumstances differ. Consider fairness over time, not just in a single occasion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a group gift?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A gift bought jointly by several contributors, each agreeing a share in advance, allowing a larger or more meaningful gift than any one person would buy alone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I handle a growing gift list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Decide deliberately who gets a purchased gift and who gets a card or handmade gift, and adjust the total or weights consciously rather than letting spending drift."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF4FF; --surface:#FFFFFF; --accent:#86198F; --accent-ink:#ffffff;
+  --ink:#2B102E; --muted:#475569; --line:#F5D0FE;
+  --display:'Playfair Display',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{max-width:720px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.2rem}
+.tool-card label{display:block;font-weight:600;margin:.9rem 0 .3rem}
+.tool-card input,.tool-card select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;font-size:1rem;background:#fff;color:#111;min-height:44px}
+.tool-card .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.calc-btn{width:100%;margin-top:1.2rem;padding:.85rem;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1.05rem;cursor:pointer;min-height:48px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+.presets button{padding:.5rem .9rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.result{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:14px;background:var(--bg);border:1px solid var(--line);font-size:1.05rem}
+.result .big{font-size:1.5rem;font-weight:800}
+.muted{color:var(--muted);font-size:.95rem}
+.hist{margin-top:1rem;font-size:.95rem}
+.hist li{margin:.3rem 0}
+.copy-btn{margin-top:.7rem;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer}
+.maze-grid{font-family:monospace;line-height:1;letter-spacing:0;white-space:pre;overflow-x:auto;font-size:14px}
+@media (max-width:640px){.tool-card{padding:1rem;border-radius:16px}.tool-card .row{grid-template-columns:1fr}.tool-card h1{font-size:1.35rem}.result .big{font-size:1.25rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="GiftBudget home">
+      <span class="fx-logo-tile" aria-hidden="true">🎁</span>
+      <span class="fx-brand">GiftBudget</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-gift-box" aria-label="GiftBudget tool">
+<div class="tool-card"><h1>Gift Budget Planner</h1><p class="sub">Enter your total budget and a priority weight for each recipient to split it fairly.</p>
+<label for="gb-total">Total gift budget</label><input id="gb-total" type="number" value="300" min="0">
+<div class="row"><div><label for="gb-w1">Recipient 1 weight</label><input id="gb-w1" type="number" value="3" min="0"></div><div><label for="gb-w2">Recipient 2 weight</label><input id="gb-w2" type="number" value="2" min="0"></div></div>
+<label for="gb-w3">Recipient 3 weight</label><input id="gb-w3" type="number" value="1" min="0">
+<div class="presets"><button type="button" data-preset="equal">Equal split</button><button type="button" data-preset="family">Family priority</button><button type="button" data-preset="partner">Partner priority</button></div>
+<button class="calc-btn" id="gb-calc" type="button">Split budget</button>
+<div class="result" id="gb-result" aria-live="polite">Enter your budget and press Split budget.</div>
+<button class="copy-btn" id="gb-copy" type="button">Copy result</button>
+<div class="hist"><strong>Recent calculations</strong><ul id="gb-hist"></ul></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why gift budgets go wrong</h2>
+<p>Gift-giving is one of the most joyful parts of a celebration, and also one of the most common causes of January debt. The problem is rarely a single extravagant gift; it is the accumulation of many small decisions made without a total in mind. A gift for a partner, gifts for children, gifts for parents, gifts for friends, and a few last-minute additions each seem reasonable on their own, but together they exceed what was intended. By the time the total is counted, the celebration is over and the budget is already spent. A gift budget planner reverses that order: it starts with the total you can afford, then divides it deliberately, so each gift is chosen within a limit rather than in ignorance of one.</p>
+<p>Fairness is the second problem a planner solves. Without a plan, the people you shop for first often receive more, simply because the budget was still full, while the people you shop for last receive less, because the money has run out. That is rarely intentional, but recipients notice, and the giver feels guilty. A weighted split avoids that accident. It assigns each recipient a share based on priority, closeness, or need, and it does so before shopping starts, when decisions are calm and fair. The weights are not a ranking of love; they are a practical way to reflect different expectations, such as a partner's main gift versus a colleague's token gift, and they ensure that the last person on the list is treated as fairly as the first.</p>
+<h2>How to use this planner</h2>
+<p>Enter the total amount you can afford to spend on gifts, not the amount you hope to spend, and be honest about it. Include everyone you plan to buy for, or use this planner for a group of three recipients at a time and repeat it for other groups. Assign a priority weight to each recipient: a higher weight means a larger share. Equal weights give equal shares, while weights of 3, 2, and 1 divide the budget into sixths, giving the first recipient half, the second a third, and the third a sixth. Press Split budget, and the planner shows each recipient's amount, the total, and the percentage each share represents. Use those amounts as spending caps while shopping, not as targets to exceed, and keep a small reserve for wrapping, cards, and delivery if those are not included in your total.</p>
+<h2>Example splits</h2>
+<table><tr><th>Total budget</th><th>Weights</th><th>Recipient 1</th><th>Recipient 2</th><th>Recipient 3</th></tr>
+<tr><td>120</td><td>1, 1, 1</td><td>40.00</td><td>40.00</td><td>40.00</td></tr>
+<tr><td>300</td><td>3, 2, 1</td><td>150.00</td><td>100.00</td><td>50.00</td></tr>
+<tr><td>200</td><td>2, 1, 1</td><td>100.00</td><td>50.00</td><td>50.00</td></tr>
+<tr><td>500</td><td>5, 3, 2</td><td>250.00</td><td>150.00</td><td>100.00</td></tr>
+<tr><td>90</td><td>2, 1, 0</td><td>60.00</td><td>30.00</td><td>0.00</td></tr></table>
+<p>The table shows how weights translate into money. Equal weights are the simplest and fairest choice for siblings, friends, or children of similar age, where equal treatment matters most. Unequal weights suit mixed groups: a partner, a parent, and a friend have different expectations, and a split that pretends otherwise will feel wrong in practice. A weight of zero is useful too: it lets you include someone in the planning list while allocating no gift budget, for example when you plan to give a handmade gift, a shared experience, or a card instead of a purchased gift. The planner handles zero weights gracefully, giving that recipient zero while dividing the rest fairly.</p>
+<h2>Setting a total you can actually afford</h2>
+<p>The most important number in gift planning is the total, and it should come from your wider budget, not from a list of hoped-for gifts. Look at your income and essential expenses for the month, decide what remains, and set aside a gift fund that does not require borrowing. If the celebration is annual, saving a small amount each month through the year is far less painful than finding the whole sum in December. A monthly saving of 25 builds a 300 gift fund over a year, with no debt and no January regret. If you are already close to the celebration, set a total that is slightly below what you think you can afford, because wrapping, delivery, and last-minute additions always appear, and a small buffer protects the plan.</p>
+<p>Be honest about who is on the list. Lists grow by accident: a new colleague, a neighbour, a teacher, or a distant relative can each add a gift that was not budgeted. Write the full list before setting the total, and decide deliberately who receives a purchased gift, who receives a card or handmade gift, and who receives a shared experience. Cutting the list is often kinder than cutting every gift's value, because a thoughtful card is better than a token gift chosen only to tick a box. If the list must grow, increase the total deliberately or reduce weights elsewhere, rather than letting the total drift upward unnoticed. A budget that is adjusted consciously is still a budget; a budget that is ignored is not.</p>
+<h2>Choosing weights fairly</h2>
+<p>Weights should reflect expectations, not affection. A partner usually expects a main gift, a child expects a gift chosen with care, and a colleague usually expects only a token. Parents and close family often fall in between, depending on tradition. Talk with your partner or family about expectations where appropriate, especially for shared occasions, because unspoken expectations are a common source of disappointment. For children, consider fairness over time rather than in a single occasion: a child who receives a larger gift this year might receive a smaller one next year, or the difference might be balanced by experiences rather than objects. The goal is not mathematical perfection but a sense that everyone has been considered, which is what recipients actually feel.</p>
+<p>Age and circumstance matter too. Young children value quantity and excitement, while older children and adults often value a single well-chosen gift. A recipient going through a difficult time may value thoughtfulness over value, while a recipient celebrating a milestone may expect something more substantial. Weights can reflect these differences without turning gift-giving into accounting. Use round weights such as 1, 2, and 3, which are easy to explain and easy to adjust, rather than precise weights that imply a false precision. If a weight feels uncomfortable, change it; the planner is a tool for fairness, not a judge of relationships.</p>
+<h2>Shopping within each share</h2>
+<ul><li>Treat each share as a cap, not a target: spending less is a success, not a failure.</li><li>Include wrapping, cards, and delivery in the share if they are not budgeted separately.</li><li>Shop early for the largest shares, where choice matters most.</li><li>Keep receipts and a running total per recipient to avoid drift.</li><li>Buy experiences or handmade gifts where they carry more meaning than objects.</li><li>Agree a spending limit with family members for mutual gifts to avoid an arms race.</li></ul>
+<p>Shopping within a share changes how you choose. Instead of browsing without a limit and falling in love with something unaffordable, you browse within a range and judge gifts by thoughtfulness rather than price. That often produces better gifts, because the constraint forces creativity: a personalised gift, a shared experience, or a carefully chosen book within budget beats an expensive generic gift chosen in haste. Keep a simple list, one line per recipient, with the allocated amount, the gift chosen, and the amount spent. Updating it as you shop takes minutes and prevents the end-of-season discovery that the budget has been exceeded.</p>
+<h2>Group gifts and shared occasions</h2>
+<p>Group gifts solve a common problem: several people want to give a larger gift together, but nobody wants to organise the money. A weighted split helps here too, because each contributor can agree a weight based on closeness or ability, and the total becomes the gift budget. Agree the total and the weights before shopping, collect contributions in advance, and appoint one person to buy, to avoid duplicate purchases. For shared occasions such as weddings, birthdays, and retirements, a group gift is often more appreciated than several small individual gifts, because it allows a single meaningful item or experience. The same fairness principles apply: agree openly, write down the shares, and keep the process transparent.</p>
+<p>For families, a gift budget discussion can be uncomfortable at first, but it usually brings relief. Many families secretly worry about gift costs, and an open conversation about limits often reveals that everyone would prefer smaller, more thoughtful gifts and less financial pressure. Some families adopt a limit per person, some draw names so each person buys for one other person, and some agree to experiences instead of objects. Any of these works, provided it is agreed in advance and applied fairly. The planner supports all of them: set the total, set the weights, and let the numbers carry the awkward part of the conversation.</p>
+<h2>After the celebration</h2>
+<p>When the celebration ends, review the plan against reality. Note which shares were easy to spend well, which were hard, and whether any recipient was over- or under-served. That review makes next year's plan better with almost no effort, because weights can be adjusted based on experience rather than guesswork. Note also the true total, including wrapping and delivery, so next year's total is realistic. Finally, remember that a budget is a means to an end, not the end itself. The purpose of gift-giving is to show care, and a plan that removes financial anxiety lets that care show more clearly. A well-planned gift, given without worry about debt, is worth more than an expensive gift given with regret.</p>
+<h3>A simple rule to remember</h3>
+<p>Set the total first, split it fairly, shop within each share, and keep a small reserve. Do that, and gift-giving stays joyful, which is the whole point of it.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I split a gift budget fairly?</summary><p>Set a total you can afford, assign a priority weight to each recipient, and divide the total in proportion to the weights. This planner does the division for you.</p></details>
+<details><summary>What weights should I use?</summary><p>Equal weights for equal treatment, or higher weights for closer recipients and main gifts. Round weights like 1, 2, and 3 are easy to manage.</p></details>
+<details><summary>Should wrapping and delivery count?</summary><p>Yes, unless you budget them separately. Include them in each recipient's share so the true total stays on budget.</p></details>
+<details><summary>What if a recipient gets a weight of zero?</summary><p>They receive no allocated budget, which is useful for handmade gifts, cards, or shared experiences instead of purchased gifts.</p></details>
+<details><summary>How do I avoid January debt from gifts?</summary><p>Set the total from your wider budget, save monthly through the year if possible, and treat each share as a cap, not a target.</p></details>
+<details><summary>Is it fair to spend different amounts on children?</summary><p>It can be, if expectations, ages, and circumstances differ. Consider fairness over time, not just in a single occasion.</p></details>
+<details><summary>What is a group gift?</summary><p>A gift bought jointly by several contributors, each agreeing a share in advance, allowing a larger or more meaningful gift than any one person would buy alone.</p></details>
+<details><summary>How do I handle a growing gift list?</summary><p>Decide deliberately who gets a purchased gift and who gets a card or handmade gift, and adjust the total or weights consciously rather than letting spending drift.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">GiftBudget</div>
+    <p>GiftBudget splits your total gift budget across recipients by priority.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcGiftSplit(total, w1, w2, w3){var sum=w1+w2+w3;if(total<=0||sum<=0)return [0,0,0];return [Math.round(total*w1/sum*100)/100,Math.round(total*w2/sum*100)/100,Math.round(total*w3/sum*100)/100];}
+if (typeof document !== 'undefined') {
+var hist9=[];
+function renderGB(){var t=+document.getElementById('gb-total').value,w1=+document.getElementById('gb-w1').value,w2=+document.getElementById('gb-w2').value,w3=+document.getElementById('gb-w3').value;var s=calcGiftSplit(t,w1,w2,w3);var sum=w1+w2+w3;document.getElementById('gb-result').innerHTML='<p class="big">Recipient 1: '+s[0].toFixed(2)+' &middot; Recipient 2: '+s[1].toFixed(2)+' &middot; Recipient 3: '+s[2].toFixed(2)+'</p><p>Total '+t.toFixed(2)+' &middot; shares '+(sum>0?Math.round(w1/sum*100):0)+'% / '+(sum>0?Math.round(w2/sum*100):0)+'% / '+(sum>0?Math.round(w3/sum*100):0)+'%</p>';hist9.unshift('Split '+t.toFixed(2));if(hist9.length>5)hist9.pop();document.getElementById('gb-hist').innerHTML=hist9.map(function(x){return '<li>'+x+'</li>';}).join('');}
+document.getElementById('gb-calc').onclick=renderGB;
+var ps9=document.querySelectorAll('[data-preset]');
+ps9.forEach(function(b){b.onclick=function(){if(b.dataset.preset==='equal'){document.getElementById('gb-w1').value=1;document.getElementById('gb-w2').value=1;document.getElementById('gb-w3').value=1;}if(b.dataset.preset==='family'){document.getElementById('gb-w1').value=3;document.getElementById('gb-w2').value=2;document.getElementById('gb-w3').value=1;}if(b.dataset.preset==='partner'){document.getElementById('gb-w1').value=5;document.getElementById('gb-w2').value=2;document.getElementById('gb-w3').value=1;}renderGB();};});
+document.getElementById('gb-copy').onclick=function(){var t=document.getElementById('gb-result').innerText||'';if(typeof navigator!=='undefined'&&navigator.clipboard){navigator.clipboard.writeText(t);} };
+}
+</script>
+</body>
+</html>
