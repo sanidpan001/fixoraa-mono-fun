@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email Inbox Clearing Time Calculator — How Long to Inbox Zero?</title>
+<meta name="description" content="Calculate how long it takes to clear your email inbox from unread count and handling time with the free InboxTime calculator.">
+<link rel="canonical" href="https://fun.fixoraa.tech/inboxtime/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Email Inbox Clearing Time Calculator — How Long to Inbox Zero?">
+<meta property="og:description" content="Calculate how long it takes to clear your email inbox from unread count and handling time with the free InboxTime calculator.">
+<meta property="og:url" content="https://fun.fixoraa.tech/inboxtime/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "InboxTime",
+      "url": "https://fun.fixoraa.tech/inboxtime/",
+      "applicationCategory": "Career",
+      "operatingSystem": "Web",
+      "description": "Calculate how long it takes to clear your email inbox from unread count and handling time with the free InboxTime calculator.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long will it take to clear my inbox?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply unread messages by your average handling time, then divide by the minutes per day you will spend clearing. This calculator does exactly that."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a realistic average handling time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Time twenty messages and divide. Typical averages run from 30 seconds for newsletter-heavy inboxes to 3 minutes for work inboxes full of requests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many minutes a day should I commit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose a figure you can truly sustain, such as 30 focused minutes. An unrealistic two-hour promise that fails helps nobody."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I clear oldest first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Triage first: delete or archive everything needing no action, answer the quick ones, then convert hard ones into tasks and move them out of the inbox."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is email bankruptcy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Archiving everything older than a month and asking senders with live issues to resend. It is rational when the calculated clear-out exceeds three weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I stop the pile rebuilding?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Process email in fixed windows, touch each message once, unsubscribe weekly, and filter automated mail out of the inbox."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator count new mail arriving during the clear-out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It measures the current pile. New mail is handled by your daily routine, not by the backlog calculation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is inbox zero realistic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As a daily habit, yes: clear each day's mail daily. As a permanent state including old mail, only after triage or bankruptcy."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDEFF3; --surface:#FFFFFF; --accent:#9D174D; --accent-ink:#FFFFFF;
+  --ink:#2E1220; --muted:#5E4350; --line:#F3CBD9;
+  --display:'Lora',serif; --body:'Public Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{max-width:46rem;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:0 10px 30px rgba(0,0,0,.07)}
+.tool-card h1{font-family:var(--display);font-size:1.9rem;line-height:1.2;margin-bottom:.4rem;letter-spacing:-.01em}
+.tool-card .lead{color:var(--muted);margin-bottom:1.2rem}
+.tool-card label{display:block;font-weight:600;margin:.9rem 0 .3rem}
+.tool-card input,.tool-card select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;font-size:1rem;background:var(--bg);color:var(--ink);min-height:44px}
+.tool-card .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.tool-card button.calc{margin-top:1.2rem;width:100%;padding:.85rem;border:none;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1.05rem;cursor:pointer;min-height:48px}
+.tool-card button.calc:hover{filter:brightness(.94)}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+.presets button{padding:.5rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.presets button:hover{background:var(--accent);color:var(--accent-ink)}
+.result{margin-top:1.2rem;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:1.1rem;font-size:1.05rem}
+.result strong{font-size:1.3rem}
+.mini-btn{margin-top:.7rem;padding:.55rem 1.1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-weight:600;cursor:pointer;min-height:40px}
+.hist{margin-top:1rem;color:var(--muted);font-size:.95rem}
+.hist ul{padding-left:1.2rem}
+@media (max-width:640px){.tool-card{padding:1rem;border-radius:16px}.tool-card h1{font-size:1.45rem}.tool-card .row{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="InboxTime home">
+      <span class="fx-logo-tile" aria-hidden="true">📥</span>
+      <span class="fx-brand">InboxTime</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-inbox-zero" aria-label="InboxTime tool">
+
+<div class="tool-card">
+<h1>Email Inbox Clearing Time Calculator</h1>
+<p class="lead">Turn an unread mountain into a plan: total minutes and days to inbox zero.</p>
+<div class="presets">
+<button type="button" data-preset='{"unread":"100","avg":"2","daily":"60"}'>Weekend backlog</button>
+<button type="button" data-preset='{"unread":"50","avg":"3","daily":"30"}'>Daily triage pile</button>
+</div>
+<div class="row">
+<div><label for="unread">Unread messages</label><input id="unread" type="number" value="100" min="0"></div>
+<div><label for="avg">Average minutes per message</label><input id="avg" type="number" value="2" min="0" step="0.5"></div>
+</div>
+<label for="daily">Minutes per day you will spend clearing</label>
+<input id="daily" type="number" value="60" min="1">
+<button class="calc" id="calcBtn" type="button">Calculate clearing time</button>
+<div class="result" id="result" aria-live="polite"></div>
+<button class="mini-btn" id="copyBtn" type="button">Copy result</button>
+<div class="hist" id="hist"></div>
+</div>
+
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+
+<h2>Why your inbox feels endless</h2>
+<p>An inbox with 1,000 unread messages feels overwhelming not because of the number itself, but because nobody has translated that number into time. Is it an afternoon's work, or a week's? Without that translation, the brain treats the pile as infinite, and avoidance takes over — which is how 200 unread becomes 2,000. This calculator performs that single translation: given your unread count, your average handling time per message, and the minutes per day you can realistically devote to clearing, it tells you the total time required and how many days the clear-out will take. The moment a mountain becomes "three hours over four days," it stops being frightening and starts being a plan.</p>
+<p>The psychology here is well documented. Large, vague tasks trigger procrastination; small, time-boxed tasks trigger action. Email is particularly prone to vagueness because messages vary wildly — a newsletter takes five seconds to delete, while a complex request can take twenty minutes of thought and drafting. Averaging is therefore essential: you do not need the time for each message, you need a realistic average across the pile, and that average, multiplied by the count, is a far better guide than intuition. Most people discover their backlog is smaller in hours than they feared, which is itself a relief that unlocks action.</p>
+<h2>How the calculation works</h2>
+<p>Multiply unread messages by average handling minutes to get total minutes. Then divide by the minutes per day you will actually spend on the clear-out to get the number of days. That second input is where honesty matters most: "I will spend two hours a day on email" is a fantasy for most people with meetings and real work, while 30 focused minutes a day is achievable and sustainable. The calculator deliberately uses your planned daily minutes rather than your total working day, because email clearing competes with everything else. If the resulting day count looks too long, the honest levers are: increase daily minutes, reduce the average handling time by batching deletions, or reduce the pile itself by archiving whole categories unread.</p>
+<p>Estimating average handling time takes a little calibration. Process twenty messages with a timer and divide: if twenty messages took forty minutes, your average is two minutes. Repeat the sample on a different day, because Monday's pile differs from Friday's. Typical averages run from 30 seconds for a newsletter-heavy inbox to 3 minutes for a work inbox full of requests, and 5 minutes or more for customer-service queues. If your pile mixes newsletters and real work, split it: count newsletters separately at a few seconds each, and apply the calculator to the real messages. A blended average across wildly different message types is the main source of error, and splitting the pile fixes it.</p>
+<h2>Reading your results</h2>
+<table><tr><th>Result</th><th>What it means</th><th>How to act</th></tr>
+<tr><td>Total minutes</td><td>The full effort hiding in the pile</td><td>Block it on your calendar like any other project</td></tr>
+<tr><td>Days to clear</td><td>Total minutes divided by daily minutes</td><td>If it exceeds two weeks, archive aggressively first</td></tr>
+<tr><td>Daily load</td><td>The minutes you committed per day</td><td>Protect that slot; email expands to fill any gap you allow</td></tr></table>
+<p>Worked example: 100 unread messages at an average of 2 minutes each total 200 minutes, which at 60 minutes a day clears in 3.33 days — roughly four working days once you round up to whole sessions. Fifty messages at 3 minutes each total 150 minutes, clearing in exactly 5 days at 30 minutes a day. And an empty inbox, naturally, takes zero minutes and zero days — the state this tool helps you reach and, with a daily habit, keep. Notice how the day count, not the total minutes, drives planning: 200 minutes sounds like a single long session, but spread at a realistic daily pace it is most of a working week, and knowing that prevents the failed promise of "I will clear it today."</p>
+<h2>The triage method that halves the pile</h2>
+<p>Before you start clearing chronologically, triage. First pass, delete or archive everything that needs no action: newsletters, notifications, automated reports, and anything older than a sensible threshold that nobody has chased — if it mattered, someone would have followed up. This pass alone often removes 40 to 60 percent of a backlog at a few seconds per message, which also drops your average handling time for the remainder. Second pass, answer the quick ones — anything under two minutes — immediately. Third pass, schedule the hard ones as tasks with deadlines, and move them out of the inbox entirely. What remains in the inbox after triage is only what genuinely awaits action, and the calculator's day count for that remainder is usually dramatically smaller than for the original pile.</p>
+<h3>A daily routine that prevents the next pile</h3>
+<ul>
+<li>Process email in two or three fixed windows, not continuously — constant checking fragments every other task.</li>
+<li>Touch each message once: delete, delegate, respond, or convert it to a task, and move on.</li>
+<li>Unsubscribe from five senders a week until newsletters stop being a category.</li>
+<li>Use filters so automated mail skips the inbox and lands in a folder you review weekly.</li>
+<li>End each day at inbox zero for that day's mail, even if older mail remains — the habit matters more than the backlog.</li>
+</ul>
+<h2>When clearing is not the goal</h2>
+<p>Sometimes the right answer is not to clear the pile but to declare email bankruptcy: archive everything older than a month, announce that senders with live issues should resend, and start clean. This is not laziness; it is triage at scale, and it is the rational choice when the calculated clear-out time exceeds the value of the messages — a 40-hour backlog of mostly stale mail is worth less than the week it would consume. Use the calculator to make that decision with numbers rather than guilt: if the day count exceeds three weeks at a realistic daily pace, archive and restart. Then protect the new inbox with the daily routine above, so you never need this tool for a crisis again — only for the occasional, manageable check that your inbox is still under control.</p>
+
+<h2>Filters and rules that do the triage for you</h2>
+<p>The most effective inbox system is the one that prevents mail from reaching the inbox in the first place. Email filters — rules that sort incoming mail automatically — can remove half the daily pile before you ever see it. Route newsletters to a reading folder you check once a week, receipts to a finance folder, automated notifications to a notifications folder, and social updates to a folder you may never open. The inbox then contains only mail from real people that needs a decision, which is usually a far smaller and less intimidating set. Setting up ten filters takes under an hour, and the daily time saved compounds forever. The key discipline is to treat filtered folders as optional: if a folder goes unread for a month without consequence, unsubscribe from its senders rather than letting it become a second inbox.</p>
+<p>Templates are the second automation that shrinks handling time. Most work inboxes contain the same dozen requests repeatedly — status updates, meeting scheduling, document requests, common questions — and each one can be answered from a template in under a minute instead of drafted fresh in five. Build a small library of templates for your most frequent replies, personalise the first line, and watch your average handling time fall, which directly shortens every future clear-out the calculator projects. Combine filters, templates, and fixed processing windows, and the inbox stops being a source of dread: it becomes a queue with a known processing rate, and a queue with a known rate is a problem already half solved.</p>
+
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How long will it take to clear my inbox?</summary><p>Multiply unread messages by your average handling time, then divide by the minutes per day you will spend clearing. This calculator does exactly that.</p></details>
+<details><summary>What is a realistic average handling time?</summary><p>Time twenty messages and divide. Typical averages run from 30 seconds for newsletter-heavy inboxes to 3 minutes for work inboxes full of requests.</p></details>
+<details><summary>How many minutes a day should I commit?</summary><p>Choose a figure you can truly sustain, such as 30 focused minutes. An unrealistic two-hour promise that fails helps nobody.</p></details>
+<details><summary>Should I clear oldest first?</summary><p>No. Triage first: delete or archive everything needing no action, answer the quick ones, then convert hard ones into tasks and move them out of the inbox.</p></details>
+<details><summary>What is email bankruptcy?</summary><p>Archiving everything older than a month and asking senders with live issues to resend. It is rational when the calculated clear-out exceeds three weeks.</p></details>
+<details><summary>How do I stop the pile rebuilding?</summary><p>Process email in fixed windows, touch each message once, unsubscribe weekly, and filter automated mail out of the inbox.</p></details>
+<details><summary>Does the calculator count new mail arriving during the clear-out?</summary><p>No. It measures the current pile. New mail is handled by your daily routine, not by the backlog calculation.</p></details>
+<details><summary>Is inbox zero realistic?</summary><p>As a daily habit, yes: clear each day's mail daily. As a permanent state including old mail, only after triage or bankruptcy.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">InboxTime</div>
+    <p>InboxTime turns your unread count into the days it takes to reach inbox zero.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+
+function calcInboxTime(unread, avgMinutes, dailyMinutes) {
+  var totalMin = unread * avgMinutes;
+  var days = dailyMinutes > 0 ? totalMin / dailyMinutes : 0;
+  return { totalMin: totalMin, days: Math.round(days * 100) / 100 };
+}
+if (typeof document !== 'undefined') {
+  function runCalc() {
+    var unread = parseFloat(document.getElementById('unread').value) || 0;
+    var avg = parseFloat(document.getElementById('avg').value) || 0;
+    var daily = parseFloat(document.getElementById('daily').value) || 0;
+    var r = calcInboxTime(unread, avg, daily);
+    var out = '<strong>' + r.totalMin + ' minutes total &mdash; about ' + r.days + ' day(s)</strong><br>At ' + daily + ' minutes a day, that is your path to inbox zero.';
+    document.getElementById('result').innerHTML = out;
+    try {
+      var h = JSON.parse(localStorage.getItem('fx_hist') || '[]');
+      h.unshift(out.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 140));
+      localStorage.setItem('fx_hist', JSON.stringify(h.slice(0, 5)));
+      document.getElementById('hist').innerHTML = '<strong>Recent:</strong><ul>' + h.map(function(x) { return '<li>' + x + '</li>'; }).join('') + '</ul>';
+    } catch (e) {}
+  }
+  document.getElementById('calcBtn').addEventListener('click', runCalc);
+  document.getElementById('copyBtn').addEventListener('click', function() {
+    var t = document.getElementById('result').innerText || '';
+    try { navigator.clipboard.writeText(t); } catch (e) {}
+  });
+  var ps = document.querySelectorAll('[data-preset]');
+  ps.forEach(function(b) {
+    b.addEventListener('click', function() {
+      var p = JSON.parse(b.getAttribute('data-preset'));
+      Object.keys(p).forEach(function(k) { var el = document.getElementById(k); if (el) el.value = p[k]; });
+      runCalc();
+    });
+  });
+  runCalc();
+}
+</script>
+</body>
+</html>
