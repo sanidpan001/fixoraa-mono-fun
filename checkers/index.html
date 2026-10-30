@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkers Game vs Computer — Play Free Online</title>
+<meta name="description" content="Play checkers against the computer: legal moves, captures, kings and a full board, free in your browser.">
+<link rel="canonical" href="https://fun.fixoraa.tech/checkers/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Checkers Game vs Computer — Play Free Online">
+<meta property="og:description" content="Play checkers against the computer: legal moves, captures, kings and a full board, free in your browser.">
+<meta property="og:url" content="https://fun.fixoraa.tech/checkers/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Checkers",
+      "url": "https://fun.fixoraa.tech/checkers/",
+      "applicationCategory": "Games",
+      "operatingSystem": "Web",
+      "description": "Play checkers against the computer: legal moves, captures, kings and a full board, free in your browser.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you win at checkers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Capture all of your opponent's pieces, or leave them with no legal moves. Either result wins the game."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a normal piece move backwards in checkers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Only kings move backwards. Men move diagonally forward only."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does a piece become a king?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When a piece reaches the far side of the board it is crowned king and may then move diagonally in both directions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you have to take a capture in this game?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Captures are available and the computer prefers them, but you are not forced to capture in this friendly version."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you make a double jump?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If the same piece can capture again from its landing square, select it again and make the next jump."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can I only move on dark squares?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Checkers pieces always stay on dark squares and move diagonally, so light squares are never used."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fefce8; --surface:#ffffff; --accent:#7c3aed; --accent-ink:#ffffff;
+  --ink:#1e1b4b; --muted:#4338ca; --line:#ddd6fe;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ck-sub{color:var(--muted);margin:.4rem 0 1.2rem}.ck-wrap{display:grid;grid-template-columns:400px 1fr;gap:1.4rem;align-items:start}#ck-board{display:grid;grid-template-columns:repeat(8,1fr);width:100%;max-width:400px;border:2px solid var(--line);border-radius:12px;overflow:hidden}.ck-sq{aspect-ratio:1;border:0;font-size:1.4rem;cursor:pointer;background:#f5f0e6}.ck-sq.dark{background:#cbb287}.ck-sq.sel{outline:3px solid var(--accent);outline-offset:-3px}.ck-sq.legal{box-shadow:inset 0 0 0 3px var(--accent)}.ck-side{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.1rem}.ck-side button{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.55rem 1rem;font-weight:700;cursor:pointer}.ck-tips{margin-top:1rem;padding-left:1.2rem;color:var(--muted)}@media(max-width:640px){.ck-wrap{grid-template-columns:1fr}#ck-board{max-width:100%}.ck-sq{font-size:1.1rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="Checkers home">
+      <span class="fx-logo-tile" aria-hidden="true">🔴</span>
+      <span class="fx-brand">Checkers</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-checker-board" aria-label="Checkers tool">
+<h1>Checkers Game vs Computer</h1><p class="ck-sub">You play red, moving up the board. Click a piece, then a highlighted square.</p><div class="ck-wrap"><div id="ck-board"></div><div class="ck-side"><p id="ck-status">Your turn (red).</p><p id="ck-count"></p><p id="ck-msg">Select a red piece to begin.</p><button id="ck-new">New game</button><ul class="ck-tips"><li>Red moves up; black moves down.</li><li>Jump an enemy piece to capture it.</li><li>Reach the top row to become a king.</li><li>Kings move diagonally in both directions.</li></ul></div></div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How checkers is played</h2>
+<p>Checkers, also called draughts, is played on an eight-by-eight board with twelve pieces per side, and the goal is to capture all of your opponent's pieces or to block them so they cannot move. Pieces start on the dark squares of the first three rows on each side, and they move diagonally forward, one square at a time, always staying on dark squares. When a piece reaches the far side of the board it is crowned as a king, and a king may move diagonally in both directions, which makes it far more powerful and far harder to trap. Captures are made by jumping over an adjacent opponent piece into the empty square beyond it, and in most casual rules a capture is not compulsory, although some formal rule sets require you to take a capture when one is available, so it is worth agreeing the rule before a serious game.</p>
+<p>The game rewards patience more than aggression, because a single careless advance can expose a piece to a double or triple jump that swings the whole board. Beginners often rush toward the far side hoping for a king, while experienced players build a solid wall of pieces, control the centre, and wait for the opponent to create a weakness. This playable version pits you, playing red and moving up the board, against a simple computer opponent playing black, and it enforces the basic rules for you: only legal diagonal moves are accepted, captures remove the jumped piece, and pieces that reach the far row become kings automatically. It is a complete, honest game rather than a demonstration, and a win here means you genuinely outplayed the computer's simple but legal strategy.</p>
+<h2>How to play against the computer</h2>
+<p>Click one of your red pieces to select it, then click a highlighted destination square to move. The board shows legal destinations once a piece is selected, and if you click an illegal square the game explains why the move was rejected, for example because the square is occupied, the move is not diagonal, or a man is trying to move backwards. After your move, the computer moves automatically after a short pause, preferring captures when it has them, which mirrors how a human opponent would play. Captured pieces disappear from the board immediately, and a piece that reaches the top row is crowned with a crown symbol and gains the ability to move backwards as well as forwards, which often changes the balance of the endgame dramatically.</p>
+<p>The status panel tracks how many pieces each side has left, whose turn it is, and what just happened, including captures and promotions, so you can follow the game without remembering the whole history. The new game button resets the board to the starting position at any time, which is useful if you want to practise openings or if a game goes badly wrong and you would rather start fresh. There is no undo button, deliberately, because part of checkers is living with the move you chose, and the computer's simplicity means that careful play will usually prevail even after a mistake. Take your time, look for captures before you move, and check whether your destination square is itself under attack before committing to it.</p>
+<h2>Captures, kings and forced moves</h2>
+<p>Captures are the heart of checkers, because a single jump can remove an opponent piece, open a line, and sometimes chain into multiple jumps in one turn when the landing square offers another capture. This version handles single jumps and lets you continue a multi-jump by selecting the same piece again when another capture is available, and the computer will take captures when it sees them, so leaving a piece undefended is genuinely punished. Kings change the game because they move in both directions, which means a king can attack from behind, escape traps that would catch a man, and control long diagonals that dominate the endgame. Getting a king early is valuable, but sacrificing two pieces to crown one piece is rarely worth it, and a king against several well-coordinated men can still be outmanoeuvred.</p>
+<p>The question of whether captures are forced divides casual and formal play, and this version takes the friendly approach: captures are available and encouraged, but you are not forced to take one, and the game will not penalise you for choosing a positional move instead. If you play with friends under formal rules, agree beforehand whether a missed capture forfeits the piece or simply must be taken, because that single house rule changes many middle-game decisions. Another rule worth agreeing is whether the game ends when a player has no pieces or no legal moves, since both are wins for the opponent in standard play, and this version declares a win in either case. Draws by repetition or by mutual agreement are possible in long endgames, and the new game button is the simplest way to handle a position that has clearly become unwinnable for both sides.</p>
+<h2>Strategy for beating the computer</h2>
+<p>The computer plays a simple strategy: it takes captures when available and otherwise picks a reasonable legal move, which means it will punish obvious blunders but will not lay deep traps. To beat it consistently, keep your pieces connected so that no single piece can be captured without a recapture, and avoid leaving pieces on the edge squares where they have fewer escape routes unless the position demands it. Advance in pairs where possible, so that a piece that moves forward is supported by a piece behind it, and use the back row as a defensive wall in the opening rather than rushing every piece forward at once. The centre of the board is valuable because pieces there control more diagonals, but central pieces are also more exposed, so central play should be backed by support rather than launched alone.</p>
+<p>In the endgame, kings matter more than numbers, and trading pieces to reach a king-and-pawn advantage is often the winning plan. If you are ahead in pieces, simplify by trading: exchange your pieces for the computer's whenever the trade is even, because a material advantage grows more decisive as the board empties. If you are behind, avoid trades and look for a double jump or a tactical shot that recovers material, and try to crown a piece quickly so the extra mobility compensates for the missing pieces. Counting pieces in the status panel helps you judge which plan fits: ahead means trade, behind means complicate, and level means improve your position slowly and wait for a mistake. With those principles, most players beat this computer opponent regularly within a few games.</p>
+<h2>Worked examples of legal and illegal moves</h2>
+<p>Consider a red man on row five, column zero, with an empty diagonal square on row four, column one: moving there is a simple legal move, one square diagonally forward. If a black piece sits on row four, column one, and row three, column two is empty, the red man may jump over the black piece to row three, column two, capturing it, which is a legal capture. If the red man instead tries to move backwards to row six, column one, the move is illegal, because men move forward only, and the game will reject it with that explanation. If the destination square is already occupied by any piece, the move is illegal regardless of direction, because checkers pieces never share a square. These four cases, simple move, capture, backwards move, and occupied destination, cover almost every rules question a new player asks, and the move validator in this game enforces exactly these rules.</p>
+<p>A king changes only the direction rule: a crowned red piece may move one square diagonally in any direction, and may capture in any diagonal direction, while all other rules remain identical. A common beginner error is moving a piece straight forward or sideways, which is never legal in checkers, since every move must be diagonal and must stay on dark squares. Another error is trying to jump over your own piece, which is also illegal, because captures only apply to opponent pieces. Finally, remember that pieces never move onto light squares at all, which is why the board's dark squares are the only playable ones, and why the starting position fills only those squares. Keep these rules in mind and the game will feel intuitive within a single sitting.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do you win at checkers?</summary><p>Capture all of your opponent's pieces, or leave them with no legal moves. Either result wins the game.</p></details>
+<details><summary>Can a normal piece move backwards in checkers?</summary><p>No. Only kings move backwards. Men move diagonally forward only.</p></details>
+<details><summary>How does a piece become a king?</summary><p>When a piece reaches the far side of the board it is crowned king and may then move diagonally in both directions.</p></details>
+<details><summary>Do you have to take a capture in this game?</summary><p>No. Captures are available and the computer prefers them, but you are not forced to capture in this friendly version.</p></details>
+<details><summary>Can you make a double jump?</summary><p>Yes. If the same piece can capture again from its landing square, select it again and make the next jump.</p></details>
+<details><summary>Why can I only move on dark squares?</summary><p>Checkers pieces always stay on dark squares and move diagonally, so light squares are never used.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">Checkers</div>
+    <p>Checkers is a fully playable game against a simple computer opponent, with legal moves, captures and kings.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function checkersMove(b,fr,fc,tr,tc,player){if(fr<0||fr>7||fc<0||fc>7||tr<0||tr>7||tc<0||tc>7)return{legal:false,capture:false,reason:'Off the board'};var p=b[fr][fc];if(!p)return{legal:false,capture:false,reason:'No piece there'};var owner=p.toLowerCase()==='r'?'red':'black';if(owner!==player)return{legal:false,capture:false,reason:'Not your piece'};if(b[tr][tc])return{legal:false,capture:false,reason:'Destination occupied'};var dr=tr-fr,dc=tc-fc;if(Math.abs(dc)!==1&&Math.abs(dc)!==2)return{legal:false,capture:false,reason:'Must move diagonally'};var king=p===p.toUpperCase();if(!king){if(player==='red'&&dr>0)return{legal:false,capture:false,reason:'Red men move up the board'};if(player==='black'&&dr<0)return{legal:false,capture:false,reason:'Black men move down the board'};}if(Math.abs(dr)===1&&Math.abs(dc)===1)return{legal:true,capture:false,reason:'Simple move'};if(Math.abs(dr)===2&&Math.abs(dc)===2){var mr=fr+dr/2,mc=fc+dc/2;var mid=b[mr][mc];if(!mid)return{legal:false,capture:false,reason:'Nothing to capture'};var midOwner=mid.toLowerCase()==='r'?'red':'black';if(midOwner===player)return{legal:false,capture:false,reason:'Cannot capture your own piece'};return{legal:true,capture:true,reason:'Capture'};}return{legal:false,capture:false,reason:'Illegal move'};}
+var board,sel=null,turn='red',over=false;
+function ckStart(){board=[];for(var r=0;r<8;r++){board.push([null,null,null,null,null,null,null,null]);}for(var r=0;r<3;r++)for(var c=0;c<8;c++)if((r+c)%2===1)board[r][c]='b';for(var r=5;r<8;r++)for(var c=0;c<8;c++)if((r+c)%2===1)board[r][c]='r';sel=null;turn='red';over=false;ckDraw();document.getElementById('ck-status').textContent='Your turn (red).';document.getElementById('ck-msg').textContent='Select a red piece to begin.';}
+function ckCounts(){var r=0,b=0;board.forEach(function(row){row.forEach(function(p){if(p==='r'||p==='R')r++;if(p==='b'||p==='B')b++;});});return{red:r,black:b};}
+function ckDraw(){var el=document.getElementById('ck-board');var h='';for(var r=0;r<8;r++)for(var c=0;c<8;c++){var dark=(r+c)%2===1;var p=board[r][c];var cls=dark?'dark':'light';if(sel&&sel[0]===r&&sel[1]===c)cls+=' sel';var legal=false;if(sel){var mv=checkersMove(board,sel[0],sel[1],r,c,'red');if(mv.legal)legal=true;}if(legal)cls+=' legal';var sym=p?(p==='r'?'🔴':p==='R'?'👑':p==='b'?'⚫':'♛'):'';h+='<button class="ck-sq '+cls+'" data-r="'+r+'" data-c="'+c+'" '+(dark?'':'disabled')+'>'+sym+'</button>';}el.innerHTML=h;el.querySelectorAll('.ck-sq').forEach(function(b){b.onclick=function(){ckClick(+b.dataset.r,+b.dataset.c);};});var n=ckCounts();document.getElementById('ck-count').textContent='Red: '+n.red+' pieces · Black: '+n.black+' pieces';if(n.red===0){document.getElementById('ck-status').textContent='Black wins.';over=true;}if(n.black===0){document.getElementById('ck-status').textContent='You win!';over=true;}}
+function ckDoMove(fr,fc,tr,tc,player){var mv=checkersMove(board,fr,fc,tr,tc,player);if(!mv.legal)return mv;var p=board[fr][fc];board[fr][fc]=null;if(mv.capture)board[fr+(tr-fr)/2][fc+(tc-fc)/2]=null;if(player==='red'&&tr===0)p='R';if(player==='black'&&tr===7)p='B';board[tr][tc]=p;return mv;}
+function ckClick(r,c){if(over||turn!=='red')return;var p=board[r][c];if(sel&&!(r===sel[0]&&c===sel[1])){var mv=ckDoMove(sel[0],sel[1],r,c,'red');if(mv.legal){document.getElementById('ck-msg').textContent=mv.capture?'Capture! Computer is thinking…':'Good move. Computer is thinking…';sel=null;turn='black';ckDraw();setTimeout(ckComputer,500);return;}else{document.getElementById('ck-msg').textContent='Illegal move: '+mv.reason;sel=null;ckDraw();return;}}if(p&&p.toLowerCase()==='r'){sel=[r,c];document.getElementById('ck-msg').textContent='Piece selected. Click a highlighted square.';ckDraw();}else{document.getElementById('ck-msg').textContent='Click one of your red pieces.';}}
+function ckComputer(){if(over)return;var moves=[];for(var r=0;r<8;r++)for(var c=0;c<8;c++){if(!board[r][c]||board[r][c].toLowerCase()!=='b')continue;for(var tr=0;tr<8;tr++)for(var tc=0;tc<8;tc++){var mv=checkersMove(board,r,c,tr,tc,'black');if(mv.legal)moves.push({fr:r,fc:c,tr:tr,tc:tc,cap:mv.capture});}}if(!moves.length){document.getElementById('ck-status').textContent='You win! Black has no moves.';over=true;ckDraw();return;}var caps=moves.filter(function(m){return m.cap;});var pool=caps.length?caps:moves;var m=pool[Math.floor(Math.random()*pool.length)];ckDoMove(m.fr,m.fc,m.tr,m.tc,'black');turn='red';document.getElementById('ck-status').textContent='Your turn (red).';document.getElementById('ck-msg').textContent=m.cap?'Computer captured a piece.':'Computer moved.';ckDraw();}
+document.getElementById('ck-new').onclick=ckStart;ckStart();
+</script>
+</body>
+</html>
