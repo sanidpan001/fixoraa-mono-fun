@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flying With Dog in Cabin — Weight Limit Checker | PetFly</title>
+<meta name="description" content="Free tool: can your pet fly in the cabin? Check weight limits, carrier fit and compare 8 airlines&#x27; pet policies. No signup.">
+<link rel="canonical" href="https://fun.fixoraa.tech/petfly/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Flying With Dog in Cabin — Weight Limit Checker | PetFly">
+<meta property="og:description" content="Free tool: can your pet fly in the cabin? Check weight limits, carrier fit and compare 8 airlines&#x27; pet policies. No signup.">
+<meta property="og:url" content="https://fun.fixoraa.tech/petfly/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PetFly",
+      "url": "https://fun.fixoraa.tech/petfly/",
+      "applicationCategory": "Travel Tools",
+      "operatingSystem": "Web",
+      "description": "Free tool: can your pet fly in the cabin? Check weight limits, carrier fit and compare 8 airlines' pet policies. No signup.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can my dog fly in the cabin with me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only if the pet plus its carrier weighs within the airline's limit \u2014 typically about 20 lbs (9 kg) total \u2014 and the carrier fits fully under the seat. A cat or small dog, yes; a Labrador, no. Use the checker above with your pet's and carrier's weights."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the weight limit for pets in the cabin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most airlines cap in-cabin pet-plus-carrier weight at about 20 lbs (8\u20139 kg). United is stricter at 16 lbs; Spirit is the most generous at 40 lbs combined. Always weigh pet and carrier together \u2014 the combined number is what the policy tests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does it cost to fly a pet in the cabin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly $95\u2013$150 each way per flight segment on US carriers \u2014 Alaska (~$100) and Southwest ($95) are typically cheapest. International in-cabin fees run higher. Fees are per segment and usually non-refundable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can pugs and bulldogs fly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most airlines refuse flat-faced breeds in cargo year-round because of breathing risk at altitude. Small ones that fit cabin weight and carrier rules can usually fly in the cabin; large ones typically need ground transport or a pet charter. Summer heat makes it riskier \u2014 talk to your vet first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to book my pet's spot in advance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most airlines limit in-cabin pets to 4\u20136 per flight, so you must reserve the pet's spot in advance \u2014 usually by calling the airline after you book your own ticket. Get a confirmation number; do not assume the spot is held."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I sedate my pet for the flight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 sedation is opposed by the AVMA and ASPCA, and airlines will refuse a visibly sedated pet. Sedated animals cannot regulate body temperature or brace for turbulence. Acclimate your pet to the carrier for weeks before the flight instead."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F9EFF3; --surface:#FFFFFF; --accent:#8E2A5C; --accent-ink:#FFFFFF;
+  --ink:#38182A; --muted:#6E5463; --line:#EAD5DF;
+  --display:'Baloo 2',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.pf-wrap{font-family:'Baloo 2',Inter,system-ui,sans-serif;background:linear-gradient(180deg,#F9EFF3 0%,#F5E6EE 100%);color:#38182A;padding:60px 20px 80px;}.pf-inner{max-width:1020px;margin:0 auto;}.pf-head{text-align:center;margin-bottom:32px;}.pf-logo{font-size:54px;}.pf-head h1{font-size:clamp(34px,5.2vw,54px);font-weight:700;letter-spacing:-.01em;margin:14px 0 10px;line-height:1.05;}.pf-tag{color:#6E5463;font-size:18px;margin:0;font-family:Inter,system-ui,sans-serif;}.pf-check{background:#fff;border:1px solid #EAD5DF;border-radius:26px;padding:32px;box-shadow:0 20px 48px rgba(142,42,92,.10);max-width:760px;margin:0 auto;font-family:Inter,system-ui,sans-serif;}.pf-check h2{font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:#8E2A5C;margin:0 0 18px;font-weight:700;}.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}.pf-field label{display:block;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#6E5463;margin-bottom:8px;}.pf-field input,.pf-field select{width:100%;box-sizing:border-box;padding:13px 14px;font-size:17px;border:2px solid #EAD5DF;border-radius:14px;font-family:inherit;color:#38182A;}.pf-field input:focus,.pf-field select:focus{outline:none;border-color:#8E2A5C;}.pf-row2{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:6px;}.pf-toggle{display:flex;border:2px solid #EAD5DF;border-radius:13px;overflow:hidden;}.pf-toggle button{border:none;background:#fff;padding:11px 18px;font-size:14px;font-weight:700;color:#6E5463;cursor:pointer;font-family:inherit;}.pf-toggle button.on{background:#8E2A5C;color:#fff;}.pf-flat{display:flex;gap:10px;align-items:center;font-size:15px;cursor:pointer;}.pf-flat input{width:20px;height:20px;accent-color:#8E2A5C;}.pf-btn{width:100%;margin-top:14px;background:#8E2A5C;color:#fff;border:none;border-radius:15px;padding:15px;font-size:18px;font-weight:700;cursor:pointer;font-family:'Baloo 2',sans-serif;}.pf-btn:hover{filter:brightness(1.08);}.pf-verdict{display:none;margin-top:20px;border-radius:18px;padding:22px;text-align:center;}.pf-verdict.show{display:block;}.pf-verdict.yes{background:#E4F2DF;border:1px solid #BFE3C8;}.pf-verdict.no{background:#FBE3E1;border:1px solid #F0BDB9;}.pf-verdict .big{font-size:26px;font-weight:800;font-family:'Baloo 2',sans-serif;}.pf-verdict.yes .big{color:#2F6123;}.pf-verdict.no .big{color:#8F1D16;}.pf-verdict p{margin:8px 0 0;font-size:14.5px;color:#38182A;line-height:1.6;}.pf-warn{display:none;margin-top:14px;background:#FFF6E5;border:1px solid #F0D9A8;border-radius:15px;padding:16px 18px;font-size:14.5px;line-height:1.6;}.pf-warn.show{display:block;}.pf-decksec{margin-top:46px;}.pf-decksec h3{font-size:25px;margin:0 0 6px;text-align:center;font-weight:700;}.pf-decksec p.sub{text-align:center;color:#6E5463;font-family:Inter,system-ui,sans-serif;font-size:15px;margin:0 0 20px;}.pf-deck{display:flex;gap:16px;overflow-x:auto;padding:10px 6px 22px;scroll-snap-type:x mandatory;}.pf-acard{flex:0 0 260px;scroll-snap-align:start;background:#fff;border:1px solid #EAD5DF;border-radius:20px;padding:22px;box-shadow:0 14px 32px rgba(142,42,92,.10);font-family:Inter,system-ui,sans-serif;transform:rotate(-.6deg);}.pf-acard:nth-child(even){transform:rotate(.6deg);}.pf-acard .an{font-weight:800;font-size:18px;font-family:'Baloo 2',sans-serif;}.pf-acard .fee{font-size:26px;font-weight:800;color:#8E2A5C;margin:8px 0 2px;}.pf-acard .fee small{font-size:13px;color:#6E5463;font-weight:600;}.pf-acard ul{list-style:none;margin:12px 0 0;padding:0;font-size:13.5px;color:#6E5463;line-height:1.7;}.pf-acard ul b{color:#38182A;}.pf-list{max-width:760px;margin:0 auto;}.pf-todo{background:#fff;border:1px solid #EAD5DF;border-radius:16px;padding:15px 20px;margin-bottom:-6px;display:flex;gap:12px;align-items:flex-start;font-family:Inter,system-ui,sans-serif;font-size:15px;box-shadow:0 8px 22px rgba(142,42,92,.07);position:relative;}.pf-todo:nth-child(odd){transform:translateX(8px);}.pf-todo input{width:20px;height:20px;margin-top:2px;accent-color:#8E2A5C;flex:0 0 auto;}.pf-todo.done span{text-decoration:line-through;color:#9A8494;}.pf-foot{text-align:center;font-family:Inter,system-ui,sans-serif;color:#6E5463;font-size:13px;margin-top:26px;max-width:660px;margin-left:auto;margin-right:auto;line-height:1.6;}@media (max-width:640px){.pf-grid{grid-template-columns:1fr;}.pf-check{padding:22px 18px;}.pf-acard{flex-basis:230px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PetFly home">
+      <span class="fx-logo-tile" aria-hidden="true">🐾</span>
+      <span class="fx-brand">PetFly</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-deck-stack" aria-label="PetFly tool">
+<section class='pf-wrap'><div class='pf-inner'><div class='pf-head'><div class='pf-logo' aria-hidden='true'>🐾</div><h1>Can My Pet Fly in the Cabin?</h1><p class='pf-tag'>Can your pet fly in the cabin? Weight, carrier and airline rules — checked.</p></div><div class='pf-check'><h2>Cabin eligibility check</h2><div class='pf-grid'><div class='pf-field'><label for='pf-pet'>Pet's weight</label><input type='number' id='pf-pet' value='6' min='0.5' max='60' step='0.5' inputmode='decimal'></div><div class='pf-field'><label for='pf-carrier'>Carrier's weight</label><input type='number' id='pf-carrier' value='1.5' min='0' max='10' step='0.5' inputmode='decimal'></div></div><div class='pf-row2'><div class='pf-toggle' role='group' aria-label='Units'><button type='button' data-u='kg' class='on'>kg</button><button type='button' data-u='lb'>lb</button></div><div class='pf-field' style='flex:1;min-width:180px'><label for='pf-airline'>Airline</label><select id='pf-airline'></select></div><label class='pf-flat'><input type='checkbox' id='pf-flat'> Flat-faced breed (pug, bulldog…)</label></div><button class='pf-btn' id='pf-go' type='button'>Check cabin eligibility</button><div class='pf-verdict' id='pf-verdict' role='status'></div><div class='pf-warn' id='pf-warn'>⚠️ <strong>Flat-faced breeds need extra care:</strong> most airlines refuse them in cargo year-round due to breathing risk. Small ones can usually fly in the cabin where you can monitor them — avoid summer heat, keep the carrier ventilated, and talk to your vet before booking.</div></div><div class='pf-decksec'><h3>Airline pet-policy deck</h3><p class='sub'>Swipe through — fees, limits and carrier sizes at a glance. Always verify on the airline's site.</p><div class='pf-deck' id='pf-deck'></div></div><div class='pf-decksec'><h3>Pre-flight checklist</h3><p class='sub'>Tap to tick off — saved on this device.</p><div class='pf-list' id='pf-list'></div></div><p class='pf-foot'>Policies reflect widely published 2026 figures and change often — the airline's own pet page is the source of truth before you book. Never sedate a pet for air travel.</p></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The 20-Pound Reality of Flying With Pets</h2><p>For most travelers, “flying the dog” now means exactly one thing: a pet small enough to ride in a carrier under the seat in front of you. The cargo-hold path that used to carry larger dogs has quietly closed on most major airlines, and the practical cutoff for the cabin is a <strong>combined pet-plus-carrier weight of roughly 20 pounds (9 kg)</strong>. If your dog plus its carrier weighs much more than that, the major-airline cabin door is closed — and for many of those same carriers, so is the hold.</p><p>This is the single number to internalize before you plan anything else. Weigh the pet, weigh the carrier, add them. That total — not the pet's weight alone — is what every airline policy is written against, and it is the number the checker on this page tests for you.</p><h2>Cabin Rules: The Carrier Is the Real Test</h2><p>Weight is only half the rule. The carrier must <strong>fit entirely under the seat in front of you</strong>, with the pet able to stand, turn around and lie down inside. Typical approved dimensions run about 17–19 inches long, 11–13 inches wide and 7.5–9 inches tall — soft-sided carriers are the norm because they compress slightly into the under-seat space. Hard-sided carriers that fit the published dimensions on paper often fail the squish test at the gate.</p><p>Pets must stay in the carrier for the entire flight — no lap time, no heads out. Only one pet per carrier, and most airlines allow one carrier per passenger. Because airlines cap the number of in-cabin pets per flight (usually 4–6), you must <strong>book the pet's spot in advance</strong> — buying your own ticket does not reserve theirs. Call the airline after booking; online pet reservations are still the exception.</p><h2>What It Costs</h2><p>In-cabin pet fees on major carriers run roughly <strong>$95–$150 each way</strong> per flight segment, usually non-refundable — Alaska Airlines (~$100) is typically the cheapest, Southwest ($95) close behind. International in-cabin fees climb higher. These fees are per segment, so a two-leg itinerary doubles them, and they are separate from any cargo or excess-baggage charges if your plans change.</p><p>The compare deck on this page lines up eight airlines' fees, weight limits and carrier dimensions so you can see the trade-offs: the cheapest fee is not always the best fit if its carrier dimensions are smaller or its pet-spot availability is tighter on your route.</p><h2>Flat-Faced Breeds: Special Rules</h2><p>Brachycephalic (“flat-faced”) breeds — pugs, bulldogs, French bulldogs, Persian cats among them — face the strictest restrictions in aviation. Their shortened airways make them vulnerable to respiratory distress and overheating at altitude, and most airlines <strong>refuse them in cargo entirely, year-round</strong>. A small flat-faced pet that fits the cabin weight and carrier rules can usually still fly in the cabin, where you can monitor it; a large one often has no airline option at all and needs ground transport or a pet-charter service.</p><p>Summer multiplies the risk: several carriers embargo even cabin-adjacent pet travel for snub-nosed breeds during heat months, and tarmac temperatures are the danger, not just the cabin. If you check the flat-faced box on this page, the warning is deliberate — have a real conversation with your vet before booking anything.</p><h2>Cargo: The Shrinking Second Option</h2><p>It used to be that a 50-pound dog simply flew in the pressurized hold. In 2026 that path has narrowed dramatically: Delta accepts no pets as cargo, American and United have effectively closed the hold to general pet travel, and Alaska remains the main US exception. Internationally, Lufthansa, KLM/Air France and Qatar Airways still run pet-cargo programs — but that is cargo, with IATA-crate requirements, health certificates and $300–$1,200+ per-leg costs, not a checked bag.</p><p>For large dogs, the realistic options today are: a pet-friendly cargo program on an international carrier, a private pet charter (K9 Jets, BARK Air and similar allow dogs of any size in the cabin, at charter prices), or driving. Fully trained service animals are the exception to size rules on commercial flights, with DOT paperwork filed 48 hours ahead — emotional support animals no longer get that access.</p><h2>Paperwork and Timing</h2><p>Domestic flights typically require a <strong>health certificate from your vet within 10 days of travel</strong> and current rabies vaccination. International travel multiplies the paperwork: USDA endorsement, destination-country import permits, microchips, titers and waiting periods that can stretch to months (the UK, Japan, Australia and Hawaii are famously strict). Start international pet paperwork <strong>at least 2–3 months</strong> before departure — this is the most common reason pet travel plans collapse.</p><p>Never sedate your pet for a flight. The AVMA and ASPCA oppose it, and most airlines will refuse a visibly sedated animal: sedated pets cannot regulate body temperature or brace for turbulence. Acclimate the pet to the carrier for weeks beforehand instead — meals, naps and treats inside it — so the carrier reads as a safe den, not a trap.</p><h2>International Pet Travel: The Long Game</h2><p>Domestic pet travel is paperwork-light; international is a project. The strictest destinations — the UK, Japan, Australia, New Zealand, Hawaii — require microchips, rabies titers drawn at approved labs, and waiting periods measured in months, not days. The EU needs an EU pet passport or an endorsed health certificate plus microchip. Many countries require USDA endorsement of the vet's certificate, which adds its own lead time and fee. Start <strong>three months before departure</strong> for strict destinations; six weeks is the minimum for lenient ones.</p><p>Breed bans add another layer: several countries restrict or ban pit-bull-type breeds, and some airlines extend those bans to their own policies regardless of destination. Layovers count too — a connection through London with a dog can trigger UK import rules even if you never leave the airport. Map every country on the itinerary, including connections, before you book.</p><h2>Carrier Shopping: What Actually Fits</h2><p>Carrier shopping is where cabin plans succeed or fail. Measure your pet standing, sitting and lying down, then compare against the <em>smallest</em> under-seat dimensions on your aircraft — not the airline's headline number, which is usually the maximum across its fleet. Soft-sided carriers win because they compress a half-inch into tight spaces; look for mesh ventilation on at least three sides, a waterproof base, seatbelt loops, and a top opening (top-loading is dramatically easier at security, where the pet must come out while the carrier goes through the X-ray).</p><p>Buy early and acclimate honestly: the carrier should live open in your home for weeks, collecting meals, treats and naps, until the pet walks in voluntarily. A pet encountering its carrier for the first time at the airport is a pet that will vocalize for six hours. The $60–$120 a good carrier costs is the cheapest part of flying with a pet — treat it as essential equipment, not an accessory.</p><h2>The Pre-Flight Checklist</h2><p>Two weeks out: confirm the pet's spot with the airline (get a confirmation number, not just an agent's assurance), verify the carrier fits your specific aircraft's under-seat dimensions (they vary), and visit the vet for the health certificate inside the 10-day window. Day of: exercise the dog before the airport, feed lightly 4–6 hours before departure, freeze a water dish so it melts gradually, and arrive early — pet check-in takes longer. Pack in your personal item: a leash, collapsible bowl, waste bags, a familiar-smelling blanket, and enough food for 24 hours in case of misconnection. The checklist on this page keeps all of it in one place.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>Can my dog fly in the cabin with me?</summary><p>Only if the pet plus its carrier weighs within the airline's limit — typically about 20 lbs (9 kg) total — and the carrier fits fully under the seat. A cat or small dog, yes; a Labrador, no. Use the checker above with your pet's and carrier's weights.</p></details>
+<details><summary>What is the weight limit for pets in the cabin?</summary><p>Most airlines cap in-cabin pet-plus-carrier weight at about 20 lbs (8–9 kg). United is stricter at 16 lbs; Spirit is the most generous at 40 lbs combined. Always weigh pet and carrier together — the combined number is what the policy tests.</p></details>
+<details><summary>How much does it cost to fly a pet in the cabin?</summary><p>Roughly $95–$150 each way per flight segment on US carriers — Alaska (~$100) and Southwest ($95) are typically cheapest. International in-cabin fees run higher. Fees are per segment and usually non-refundable.</p></details>
+<details><summary>Can pugs and bulldogs fly?</summary><p>Most airlines refuse flat-faced breeds in cargo year-round because of breathing risk at altitude. Small ones that fit cabin weight and carrier rules can usually fly in the cabin; large ones typically need ground transport or a pet charter. Summer heat makes it riskier — talk to your vet first.</p></details>
+<details><summary>Do I need to book my pet&#x27;s spot in advance?</summary><p>Most airlines limit in-cabin pets to 4–6 per flight, so you must reserve the pet's spot in advance — usually by calling the airline after you book your own ticket. Get a confirmation number; do not assume the spot is held.</p></details>
+<details><summary>Should I sedate my pet for the flight?</summary><p>No — sedation is opposed by the AVMA and ASPCA, and airlines will refuse a visibly sedated pet. Sedated animals cannot regulate body temperature or brace for turbulence. Acclimate your pet to the carrier for weeks before the flight instead.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PetFly</div>
+    <p>PetFly tells you whether your dog or cat can fly in the cabin — combined weight check, carrier fit, brachycephalic warnings — and compares 8 airlines' pet policies side by side.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function cabinOk(petKg,carrierKg,limitKg){return(+petKg+ +carrierKg)<=+limitKg;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var pet=document.getElementById('pf-pet'),car=document.getElementById('pf-carrier'),go=document.getElementById('pf-go'),sel=document.getElementById('pf-airline'),verdict=document.getElementById('pf-verdict'),warn=document.getElementById('pf-warn'),flat=document.getElementById('pf-flat');if(!pet||!go)return;var AIR=[['Alaska Airlines',100,9.1,'17 × 11 × 7.5 in','Cheapest US cabin fee'],['Southwest',95,9.1,'18.5 × 13.5 × 8.5 in','No cargo option'],['JetBlue',125,9.1,'17 × 12.5 × 8.5 in','Generous carrier height'],['American Airlines',125,9.1,'19 × 13 × 9 in','Largest carrier box'],['Delta',150,9.1,'Varies by aircraft','No pets as cargo'],['United',125,7.3,'17.5 × 12 × 7.5 in','Strictest weight limit'],['Spirit',125,18.1,'18 × 14 × 9 in approx','Most generous weight'],['Frontier',99,9.1,'18 × 14 × 8 in','Personal-item rules apply']];AIR.forEach(function(a,i){var o=document.createElement('option');o.value=i;o.textContent=a[0]+' — '+a[2]+' kg limit';sel.appendChild(o);});var unit='kg';document.querySelectorAll('.pf-toggle button').forEach(function(b){b.addEventListener('click',function(){var nu=b.getAttribute('data-u');if(nu===unit)return;var pv=parseFloat(pet.value)||0,cv=parseFloat(car.value)||0;if(nu==='lb'){pet.value=(pv*2.20462).toFixed(1);car.value=(cv*2.20462).toFixed(1);}else{pet.value=(pv/2.20462).toFixed(1);car.value=(cv/2.20462).toFixed(1);}unit=nu;document.querySelectorAll('.pf-toggle button').forEach(function(x){x.classList.toggle('on',x===b);});});});function toKg(v){return unit==='lb'?v/2.20462:v;}go.addEventListener('click',function(){var pk=toKg(parseFloat(pet.value)||0),ck=toKg(parseFloat(car.value)||0);var a=AIR[+sel.value];var total=pk+ck;var ok=cabinOk(pk,ck,a[2]);verdict.className='pf-verdict show '+(ok?'yes':'no');verdict.innerHTML='<div class="big">'+(ok?'✓ Cabin likely OK':'✕ Too heavy for the cabin')+'</div><p>'+a[0]+': pet + carrier = <b>'+total.toFixed(1)+' kg</b> vs limit <b>'+a[2]+' kg</b>.'+(ok?' Remember the carrier must also fit under the seat ('+a[3]+') and the pet\'s spot must be booked in advance (4–6 pets per flight).':' Options: a lighter carrier, a different airline, or ground/pet-charter transport for larger pets.')+'</p>';warn.classList.toggle('show',flat.checked);});flat.addEventListener('change',function(){warn.classList.toggle('show',flat.checked);});var deck=document.getElementById('pf-deck');AIR.forEach(function(a){var d=document.createElement('div');d.className='pf-acard';d.innerHTML='<div class="an">'+a[0]+'</div><div class="fee">$'+a[1]+' <small>each way</small></div><ul><li><b>Limit:</b> '+a[2]+' kg pet + carrier</li><li><b>Carrier:</b> '+a[3]+'</li><li>'+a[4]+'</li></ul>';deck.appendChild(d);});var TODOS=['Book the pet\'s spot with the airline — get a confirmation number','Check the carrier fits YOUR aircraft\'s under-seat space','Vet visit: health certificate within 10 days of travel','Confirm rabies vaccination is current','Acclimate pet to the carrier (meals & naps inside) for 2+ weeks','Exercise before the airport; feed lightly 4–6 hrs before','Freeze a water dish; pack leash, bowl, waste bags, blanket','Arrive early — pet check-in takes longer'];var KEY='pf_todos';var done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}var list=document.getElementById('pf-list');TODOS.forEach(function(t,i){var d=document.createElement('div');d.className='pf-todo'+(done[i]?' done':'');d.innerHTML='<input type="checkbox"'+(done[i]?' checked':'')+' aria-label="'+t.replace(/"/g,'')+'"><span>'+t+'</span>';var cb=d.querySelector('input');cb.addEventListener('change',function(){done[i]=cb.checked;d.classList.toggle('done',cb.checked);try{localStorage.setItem(KEY,JSON.stringify(done));}catch(e){}});list.appendChild(d);});});}
+</script>
+</body>
+</html>
