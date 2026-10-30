@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Humidifier Size Calculator: Pints Per Day by Room</title>
+<meta name="description" content="What size humidifier does your room need? Enter dimensions and climate dryness to get required pints per day, with a model-size recommendation.">
+<link rel="canonical" href="https://fun.fixoraa.tech/humidcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Humidifier Size Calculator: Pints Per Day by Room">
+<meta property="og:description" content="What size humidifier does your room need? Enter dimensions and climate dryness to get required pints per day, with a model-size recommendation.">
+<meta property="og:url" content="https://fun.fixoraa.tech/humidcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "HumidCalc",
+      "url": "https://fun.fixoraa.tech/humidcalc/",
+      "applicationCategory": "Home Comfort",
+      "operatingSystem": "Web",
+      "description": "What size humidifier does your room need? Enter dimensions and climate dryness to get required pints per day, with a model-size recommendation.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What size humidifier do I need for my bedroom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply room volume in cubic feet (L\u00d7W\u00d7H) by 0.0005, times a dryness factor of 1\u20133, times 8 for pints. A 12\u00d715\u00d78 ft room at average dryness needs about 11.5 pints/day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What humidity level is healthy indoors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "30\u201350% relative humidity. Below 30% causes dry skin, static and sore throats; above 50\u201360% encourages dust mites and mould."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a humidifier be too big for a room?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 evaporative humidifiers are self-regulating (output falls as air humidifies), while ultrasonic models keep pumping mist and can push a small room past 60%. Use a humidistat model to be safe."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my humidifier leaving white dust everywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evaporative models rarely produce it; ultrasonic models often do with hard tap water. Switch to distilled or demineralised water to eliminate white dust."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I clean my humidifier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Empty and rinse the tank weekly and descale monthly. Standing water grows bacteria and mould that the unit then sprays into the air."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where should I place my humidifier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elevated on a table near the room's centre, 2\u20133 feet from walls and away from electronics. Mist falls, so floor placement gives uneven coverage."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F1F7FD; --surface:#FFFFFF; --accent:#1B66C4; --accent-ink:#FFFFFF;
+  --ink:#1E2836; --muted:#55616F; --line:#DBE7F1;
+  --display:'Manrope',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.hu-wrap{max-width:920px;margin:0 auto;padding:28px 18px 56px;color:#1E2836;font-family:Inter,system-ui,sans-serif}
+.hu-hero{text-align:center;margin-bottom:20px}
+.hu-hero h1{font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(32px,6vw,48px);margin:0 0 8px;color:#1E2836;letter-spacing:-.5px}
+.hu-tagline{font-size:16px;color:#55616F;margin:0}
+.hu-bento{display:grid;grid-template-columns:1.1fr 1fr;gap:14px}
+.hu-card{background:#fff;border:1px solid #DBE7F1;border-radius:20px;padding:22px;box-shadow:0 2px 12px rgba(27,102,196,.06)}
+.hu-card.hu-wide{grid-column:1/-1}
+.hu-h2{font-family:Manrope,sans-serif;font-size:19px;font-weight:800;margin:0 0 4px;color:#1E2836}
+.hu-sub{font-size:13.5px;color:#55616F;margin:0 0 14px}
+.hu-dims{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hu-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#55616F}
+.hu-field input{font:inherit;font-size:16px;color:#1E2836;border:1px solid #DBE7F1;border-radius:12px;padding:12px;background:#F1F7FD;min-height:48px;width:100%;box-sizing:border-box}
+.hu-dry{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hu-dry button{border:1px solid #DBE7F1;background:#F1F7FD;border-radius:14px;padding:12px 6px;cursor:pointer;font:inherit;min-height:64px;display:flex;flex-direction:column;gap:2px;align-items:center}
+.hu-dry button b{font-size:14px;color:#1E2836}
+.hu-dry button span{font-size:12px;color:#55616F}
+.hu-dry button.hu-on{background:#1B66C4;border-color:#1B66C4}
+.hu-dry button.hu-on b,.hu-dry button.hu-on span{color:#fff}
+.hu-result{background:linear-gradient(135deg,#1B66C4,#3d8be0);border-radius:20px;color:#fff;padding:24px;text-align:center}
+.hu-result small{display:block;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:.9}
+.hu-result .hu-big{font-family:Manrope,sans-serif;font-size:56px;font-weight:800;line-height:1.1}
+.hu-result .hu-alt{font-size:14px;opacity:.95;margin-top:6px}
+.hu-rec{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.hu-rec div{background:#F1F7FD;border:1px solid #DBE7F1;border-radius:14px;padding:12px 8px;text-align:center}
+.hu-rec dt{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#55616F}
+.hu-rec dd{margin:4px 0 0;font-weight:800;font-size:17px;color:#1B66C4}
+.hu-tip{font-size:13.5px;color:#55616F;background:#EAF3FD;border-radius:12px;padding:10px 14px;margin:14px 0 0}
+@media(max-width:720px){
+.hu-bento{grid-template-columns:1fr}
+.hu-dims{grid-template-columns:repeat(3,1fr)}
+.hu-rec{grid-template-columns:1fr 1fr 1fr}
+.hu-wrap{padding:20px 12px 44px}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="HumidCalc home">
+      <span class="fx-logo-tile" aria-hidden="true">💧</span>
+      <span class="fx-brand">HumidCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-play-cards" aria-label="HumidCalc tool">
+<section class="hu-wrap" aria-label="Humidifier size calculator">
+  <div class="hu-hero">
+    <h1>💧 Humidifier Size Calculator</h1>
+    <p class="hu-tagline">Room volume in, pints per day out — buy the right humidifier first time.</p>
+  </div>
+  <div class="hu-bento">
+    <div class="hu-card">
+      <h2 class="hu-h2">Room dimensions</h2>
+      <p class="hu-sub">Measure in feet. We need volume, not just floor area.</p>
+      <div class="hu-dims">
+        <label class="hu-field">Length (ft)<input id="huL" type="number" min="4" value="12" inputmode="numeric"></label>
+        <label class="hu-field">Width (ft)<input id="huW" type="number" min="4" value="15" inputmode="numeric"></label>
+        <label class="hu-field">Height (ft)<input id="huH" type="number" min="7" max="20" value="8" inputmode="numeric"></label>
+      </div>
+    </div>
+    <div class="hu-card">
+      <h2 class="hu-h2">How dry is your climate?</h2>
+      <p class="hu-sub">Winter heating and high altitude dry air further.</p>
+      <div class="hu-dry" id="huDry">
+        <button data-d="1"><b>🌤️ Mild</b><span>Coastal / humid</span></button>
+        <button data-d="2" class="hu-on"><b>❄️ Average</b><span>Winter heating</span></button>
+        <button data-d="3"><b>🏜️ Very dry</b><span>Desert / altitude</span></button>
+      </div>
+    </div>
+    <div class="hu-card hu-wide">
+      <div class="hu-result">
+        <small>You need</small>
+        <div class="hu-big"><span id="huPints">11.5</span> pints/day</div>
+        <div class="hu-alt">≈ <span id="huGal">1.4</span> gallons/day · room volume <span id="huVol">1,440</span> ft³</div>
+      </div>
+      <dl class="hu-rec">
+        <div><dt>Shop for</dt><dd id="huShop">12+ pt/day</dd></div>
+        <div><dt>Tank refills</dt><dd id="huRefill">~2 / day</dd></div>
+        <div><dt>Target humidity</dt><dd>30–50%</dd></div>
+      </dl>
+      <p class="hu-tip">💡 Evaporative models self-regulate and suit bedrooms; ultrasonic models are silent but need distilled water. Clean the tank weekly.</p>
+    </div>
+  </div>
+</section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why humidifier size matters more than brand</h2><p>A humidifier that is too small will run constantly and never lift the humidity; one that is too large cycles off, wastes energy and can push a room past 60% relative humidity, where dust mites and mould thrive. Sizing is straightforward once you know the room's volume and how dry your climate is. Manufacturers rate output in <strong>pints (or gallons) per day</strong> — the amount of water the unit can evaporate in 24 hours — so matching that rating to your room is the whole game.</p><h2>The quick sizing formula</h2><p>Multiply the room's volume in cubic feet (length × width × height) by 0.0005, then multiply by a dryness factor: <strong>1</strong> for mildly dry climates, <strong>2</strong> for average winter heating dryness, <strong>3</strong> for very dry or high-altitude climates. Multiply by 8 to convert gallons to pints. A 12×15 ft bedroom with 8 ft ceilings in an average climate needs about 11.5 pints per day — so a unit rated 12+ pints/day is the right pick.</p><table><thead><tr><th>Room</th><th>Volume (ft³)</th><th>Mild (×1)</th><th>Average (×2)</th><th>Very dry (×3)</th></tr></thead><tbody><tr><td>10×10 ft bedroom</td><td>800</td><td>3.2 pt/day</td><td>6.4 pt/day</td><td>9.6 pt/day</td></tr><tr><td>12×15 ft bedroom</td><td>1,440</td><td>5.8 pt/day</td><td>11.5 pt/day</td><td>17.3 pt/day</td></tr><tr><td>15×20 ft living room</td><td>2,400</td><td>9.6 pt/day</td><td>19.2 pt/day</td><td>28.8 pt/day</td></tr><tr><td>20×20 ft great room</td><td>3,200</td><td>12.8 pt/day</td><td>25.6 pt/day</td><td>38.4 pt/day</td></tr></tbody></table><h2>What humidity should you target?</h2><p>The comfort and health sweet spot is <strong>30–50% relative humidity</strong>. Below 30%, you get dry skin, static shocks, sore throats and cracked wood furniture; viruses also survive longer in very dry air. Above 50–60%, dust mites multiply and mould risk climbs. A $10 hygrometer tells you where you stand — measure before you buy, because a room that already sits at 35% needs far less humidification than one at 20%.</p><h3>Evaporative vs ultrasonic</h3><table><thead><tr><th></th><th>Evaporative (wick)</th><th>Ultrasonic (cool mist)</th></tr></thead><tbody><tr><td>How it works</td><td>Fan blows air through a wet wick</td><td>Vibrating diaphragm makes fine mist</td></tr><td>Self-regulating?</td><td>Yes — output drops as air humidifies</td><td>No — can over-humidify</td></tr><tr><td>Noise</td><td>Fan hum</td><td>Near-silent</td></tr><tr><td>White dust</td><td>Rare</td><td>Common with hard water — use distilled</td></tr><tr><td>Maintenance</td><td>Replace wick every 1–3 months</td><td>Descale regularly</td></tr></tbody></table><p>Evaporative models are the safer default for bedrooms and living rooms because they cannot easily over-humidify. Ultrasonic models suit quiet offices and nurseries, but use distilled or demineralised water to avoid the fine white mineral dust they can leave on furniture.</p><h2>Placement and running tips</h2><ul><li><strong>Elevate it:</strong> mist falls, so place the unit on a table rather than the floor for even distribution.</li><li><strong>Keep it central:</strong> 2–3 feet from walls and away from electronics and wooden instruments.</li><li><strong>Close the room:</strong> humidifying with windows open or the whole house connected wastes output — size for one room.</li><li><strong>Clean weekly:</strong> empty, rinse and dry the tank; descale monthly. Dirty humidifiers can aerosolise bacteria and mould.</li><li><strong>Use a humidistat:</strong> models with built-in humidity sensors hold your target automatically and stop at 50%.</li></ul><h2>Whole-house vs portable</h2><p>If every room sits below 30% all winter, a furnace-mounted whole-house humidifier (rated in gallons per day for the home's square footage) is cheaper to run and needs refilling never. For renters or single problem rooms, a portable unit sized with the formula above is the practical answer. Do not try to humidify an open-plan downstairs with a bedroom-sized portable — you will just burn out the wick.</p><h2>Signs you actually need one</h2><p>Morning sore throats, static shocks from doorknobs, shrinking hardwood gaps, cracking guitar tops, and nosebleeds are the classic tells of indoor air below 30% humidity. Houseplants with browning leaf edges are another. If a hygrometer confirms it, size the unit to the room and re-measure after a week — you may need less output than the formula suggests once the target is reached.</p><p>Right-size the machine, aim for 40%, keep it clean, and winter air stops fighting you.</p><h2>Measure first: the $10 hygrometer</h2><p>Never buy a humidifier on symptoms alone. A cheap digital hygrometer left in the room for 24 hours tells you the real story — and the answer is often surprising. Kitchens and bathrooms may sit at 45% while the bedroom with the heating vent languishes at 22%. Measure each room you care about, note the overnight lows (heating runs hardest at night), and size the humidifier for the driest reading. Re-measure a week after installing: many rooms need less output than the formula suggests once furnishings and walls rehydrate.</p><h2>Humidity and health: what research actually says</h2><p>Studies consistently link 40–60% relative humidity to reduced survival of airborne viruses, including influenza — dry air both preserves viruses longer and dries out the mucous membranes that trap them. People with asthma, eczema and chronic sinus issues often report improvement in the 40–50% band. But the evidence cuts both ways: sustained humidity above 60% grows dust mites and mould, which are themselves asthma triggers. The takeaway is precision, not maximum moisture — hold 40–45% with a humidistat and you get the benefits without the risks.</p><h2>Beating hard water and white dust</h2><p>Ultrasonic humidifiers aerosolise whatever is dissolved in the water — including calcium and magnesium, which settle as fine white dust on furniture and can irritate airways. Three fixes, in order of effectiveness: use distilled or demineralised water (a countertop distiller pays for itself), switch to an evaporative model whose wick traps minerals, or add a demineralisation cartridge if your model supports one. Never add salt or "humidifier treatments" containing harsh chemicals to the tank; plain clean water plus regular descaling is the safe routine.</p><h2>Humidifiers for babies and nurseries</h2><p>Nurseries are the most common reason parents buy a humidifier — dry air irritates tiny nasal passages and worsens croupy coughs. Choose a <strong>cool-mist</strong> model only; warm-mist units are burn hazards around toddlers. Ultrasonic models are whisper-quiet for light sleepers but demand distilled water to avoid mineral dust near the crib. Size for the nursery alone with doors closed, target 40–50%, and clean the tank every few days — nurseries run humidifiers nightly for months, so hygiene matters more here than anywhere. Keep the unit out of reach and cords secured.</p><h2>Humidifier vs dehumidifier: which do you need?</h2><p>Symptoms overlap confusingly. You need a <strong>humidifier</strong> when: static shocks, dry skin, sore throats, shrinking wood gaps, and hygrometer readings below 30%. You need a <strong>dehumidifier</strong> when: condensation on windows, musty smells, visible mould, and readings above 60%. Between 40–50% you need neither. Seasonal swings are normal — many homes need humidification in winter and dehumidification in summer. A $10 hygrometer in each problem room, checked across seasons, settles the question definitively.</p><h2>Tank size and refill reality</h2><p>A humidifier's tank size determines your daily chore load, not its humidifying power — output rate (pints/day) and tank capacity are independent specs. A unit producing 12 pints/day with a 1-gallon tank needs refilling three times daily at full output; the same output with a 2-gallon tank needs half the attention. As a rule, pick a tank that covers at least 12 hours of your room's needs so you refill morning and night, not midday. Top-fill designs are dramatically easier to live with than bottom-fill tanks you must flip and wrestle.</p><h2>Travel and seasonal storage</h2><p>When heating season ends, do not just unplug and shelve the unit. Empty and dry the tank completely, discard the wick (storing a used wick grows mould), wipe all surfaces, and store disassembled with airflow. A vinegar soak for the base removes mineral scale before storage. Come autumn, start with a fresh wick and a cleaned tank — last year's damp-stored unit is a classic source of the musty smell people blame on "humidifier odour."</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What size humidifier do I need for my bedroom?</summary><p>Multiply room volume in cubic feet (L×W×H) by 0.0005, times a dryness factor of 1–3, times 8 for pints. A 12×15×8 ft room at average dryness needs about 11.5 pints/day.</p></details>
+<details><summary>What humidity level is healthy indoors?</summary><p>30–50% relative humidity. Below 30% causes dry skin, static and sore throats; above 50–60% encourages dust mites and mould.</p></details>
+<details><summary>Can a humidifier be too big for a room?</summary><p>Yes — evaporative humidifiers are self-regulating (output falls as air humidifies), while ultrasonic models keep pumping mist and can push a small room past 60%. Use a humidistat model to be safe.</p></details>
+<details><summary>Why is my humidifier leaving white dust everywhere?</summary><p>Evaporative models rarely produce it; ultrasonic models often do with hard tap water. Switch to distilled or demineralised water to eliminate white dust.</p></details>
+<details><summary>How often should I clean my humidifier?</summary><p>Empty and rinse the tank weekly and descale monthly. Standing water grows bacteria and mould that the unit then sprays into the air.</p></details>
+<details><summary>Where should I place my humidifier?</summary><p>Elevated on a table near the room's centre, 2–3 feet from walls and away from electronics. Mist falls, so floor placement gives uneven coverage.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">HumidCalc</div>
+    <p>HumidCalc sizes a humidifier from your room volume and climate dryness, in pints per day.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function humidNeed(lengthFt, widthFt, heightFt, dryness){
+  var vol = lengthFt * widthFt * heightFt;
+  if(!(vol > 0) || !(dryness >= 1 && dryness <= 3)) return NaN;
+  var pints = vol * 0.0005 * dryness * 8;
+  return Math.round(pints * 10) / 10;
+}
+if(typeof document !== 'undefined'){
+document.addEventListener('DOMContentLoaded', function(){
+  var dryness = 2;
+  function refresh(){
+    var l = parseFloat(document.getElementById('huL').value) || 0,
+        w = parseFloat(document.getElementById('huW').value) || 0,
+        h = parseFloat(document.getElementById('huH').value) || 0;
+    var pints = humidNeed(l, w, h, dryness);
+    if(isNaN(pints)) pints = 0;
+    var vol = l * w * h;
+    document.getElementById('huPints').textContent = pints.toFixed(1);
+    document.getElementById('huGal').textContent = (pints/8).toFixed(1);
+    document.getElementById('huVol').textContent = Math.round(vol).toLocaleString('en-US');
+    document.getElementById('huShop').textContent = Math.ceil(pints) + '+ pt/day';
+    var refills = Math.max(1, Math.round(pints / 6));
+    document.getElementById('huRefill').textContent = '~' + refills + ' / day';
+  }
+  ['huL','huW','huH'].forEach(function(id){ document.getElementById(id).addEventListener('input', refresh); });
+  document.querySelectorAll('#huDry button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#huDry button').forEach(function(x){ x.classList.remove('hu-on'); });
+      b.classList.add('hu-on');
+      dryness = parseInt(b.getAttribute('data-d'));
+      refresh();
+    });
+  });
+  refresh();
+});}
+</script>
+</body>
+</html>
