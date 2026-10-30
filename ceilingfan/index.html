@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ceiling Fan Size Calculator: Blade Span by Room Size</title>
+<meta name="description" content="Calculate the right ceiling fan blade span for your room area, plus downrod length for your ceiling height.">
+<link rel="canonical" href="https://fun.fixoraa.tech/ceilingfan/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Ceiling Fan Size Calculator: Blade Span by Room Size">
+<meta property="og:description" content="Calculate the right ceiling fan blade span for your room area, plus downrod length for your ceiling height.">
+<meta property="og:url" content="https://fun.fixoraa.tech/ceilingfan/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CeilingFan",
+      "url": "https://fun.fixoraa.tech/ceilingfan/",
+      "applicationCategory": "Home",
+      "operatingSystem": "Web",
+      "description": "Calculate the right ceiling fan blade span for your room area, plus downrod length for your ceiling height.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What size fan do I need for a 12x12 room?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 12x12 foot room is about 13 square metres, so a 42 to 52 inch fan suits it. Go 52 inches if the ceiling is high or the room is open plan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should a downrod be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Blades should sit 2.1 to 2.4 metres above the floor. Subtract that from your ceiling height: a 3 metre ceiling needs roughly a 40 to 60 cm downrod."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a bigger ceiling fan always better?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, an oversized fan in a small room feels draughty and looks out of proportion. Match blade span to room area, and use two fans for large rooms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do more blades move more air?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not much. Blade pitch and motor power matter more than blade count. A 3-blade fan with a 14 degree pitch can outperform a 5-blade fan with flat blades."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which way should a fan spin in summer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Counterclockwise viewed from below, pushing air down for a cooling breeze. Reverse it in winter to gently redistribute warm ceiling air."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my ceiling fan wobble?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually one blade is heavier or pitched differently. Use the balancing kit, check blade heights match, and tighten screws after the first week."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I put an indoor fan on a patio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only if it is damp-rated for covered patios or wet-rated for exposed spots. Standard indoor fans rust and warp outdoors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How high above the floor must fan blades be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At least 2.1 metres in rooms people walk through, and ideally 2.1 to 2.4 metres for the best breeze and safe clearance."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F0F7F7; --surface:#FFFFFF; --accent:#0F6B6B; --accent-ink:#FFFFFF;
+  --ink:#143232; --muted:#4A6B6B; --line:#CFE3E3;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.fld label{display:block;font-weight:600;margin-bottom:.3rem}
+.fld input,.fld select{width:100%;padding:.65rem .8rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:var(--surface);color:var(--ink);min-height:44px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.presets button{padding:.5rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.btn{background:var(--accent);color:var(--accent-ink);border:none;border-radius:999px;padding:.8rem 1.6rem;font-size:1rem;font-weight:700;cursor:pointer;min-height:48px}
+.btn2{background:transparent;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:.6rem 1.2rem;font-weight:600;cursor:pointer;min-height:44px}
+.result{margin-top:1.1rem;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:1rem;font-size:1.05rem}
+.result b{font-size:1.25rem}
+.hist{margin-top:.8rem;color:var(--muted);font-size:.9rem}
+@media (max-width:640px){.row{grid-template-columns:1fr}.tool-card{padding:1rem}.tool-card h1{font-size:1.4rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="CeilingFan home">
+      <span class="fx-logo-tile" aria-hidden="true">🌀</span>
+      <span class="fx-brand">CeilingFan</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-ceiling-spin" aria-label="CeilingFan tool">
+<div class="tool-card"><h1>Ceiling Fan Size Calculator</h1><p class="sub">Match blade span and downrod length to your room size and ceiling height.</p>
+<div class="presets"><button type="button" data-preset="roomL:4,roomW:3,ceilH:2.4">Bedroom 4 x 3 m</button><button type="button" data-preset="roomL:5,roomW:4,ceilH:2.7">Living room 5 x 4 m</button><button type="button" data-preset="roomL:6,roomW:5,ceilH:3">Large room 6 x 5 m</button></div>
+<div class="row"><div class="fld"><label for="roomL">Room length (m)</label><input id="roomL" type="number" value="4" min="1" max="20" step="0.1"></div>
+<div class="fld"><label for="roomW">Room width (m)</label><input id="roomW" type="number" value="3" min="1" max="20" step="0.1"></div></div>
+<div class="row"><div class="fld"><label for="ceilH">Ceiling height (m)</label><input id="ceilH" type="number" value="2.4" min="2.1" max="5" step="0.1"></div>
+<div class="fld"><label>&nbsp;</label><button class="btn" id="calcBtn" type="button">Calculate fan size</button></div></div>
+<div class="result" id="res" aria-live="polite">Enter your room size and ceiling height to see your ideal fan size.</div>
+<p><button class="btn2" id="copyBtn" type="button">Copy result</button></p><p class="hist" id="hist"></p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What size ceiling fan does your room need?</h2>
+<p>Ceiling fan size is measured by blade span, the diameter of the circle the blades sweep, and getting it right matters more than the number of blades or the motor style. A fan that is too small for the room will spin furiously without moving much air where you sit, while one that is too large can feel like a wind tunnel in a small bedroom and may even look out of proportion. The starting point is always floor area: measure the length and width of the room, multiply them, and match the result to a blade span. Rooms under 7 square metres suit a 36 inch fan, rooms of 7 to 14 square metres suit 42 inches, rooms of 14 to 20 square metres suit 52 inches, and larger rooms need 56 inches or more, or better still, two fans.</p>
+<p>Room shape matters as much as room size. A long, narrow room of 20 square metres does not behave like a square room of the same area, because air from a single central fan has to travel further to reach the ends. In that case two smaller fans, spaced evenly along the room, usually beat one large fan in the middle. The same applies to L-shaped rooms and open-plan spaces, where walls and furniture break up airflow. Place fans where people actually sit, not just in the geometric centre of the room, and remember that a fan cools people, not rooms: it works by moving air across skin, so a fan over an empty corner is wasted energy.</p>
+<h2>Ceiling height and downrod length</h2>
+<p>For a ceiling fan to work well, its blades should sit roughly 2.1 to 2.4 metres above the floor. That height is low enough for the breeze to reach you, but high enough to clear tall occupants safely. On a standard ceiling of 2.4 to 2.6 metres, a flush-mount or hugger fan is usually right, because there is no room for a downrod. On higher ceilings, a downrod lowers the fan into that effective zone: a 3 metre ceiling needs roughly a 40 centimetre downrod, and a 3.6 metre ceiling needs about a metre. Never install a fan with blades below 2.1 metres above the floor in a room people walk through, and check the manufacturer's minimum clearance for sloped ceilings, which need a special angled mount.</p>
+<table><tr><th>Room area</th><th>Blade span</th><th>Typical room</th></tr>
+<tr><td>Under 7 m2</td><td>29-36 in</td><td>Small bedroom, study</td></tr>
+<tr><td>7-14 m2</td><td>42 in</td><td>Average bedroom</td></tr>
+<tr><td>14-20 m2</td><td>52 in</td><td>Large bedroom, living room</td></tr>
+<tr><td>20-25 m2</td><td>56 in</td><td>Open living area</td></tr>
+<tr><td>Over 25 m2</td><td>Two fans</td><td>Great room, open plan</td></tr></table>
+<h2>Blade count, pitch, and motor power</h2>
+<p>Shoppers often assume more blades mean more air, but blade count is mostly about looks and noise. Three blades move air efficiently and are easy to balance, four or five blades run quieter and look more traditional, and the difference in airflow between them is small compared with blade pitch and motor power. Blade pitch, the angle of the blade, matters a lot: a pitch of 12 to 15 degrees moves far more air than a flat 8 degree blade, which is why cheap flat-bladed fans disappoint. Motor size matters too, especially for large spans, so check the airflow rating in cubic metres per minute rather than trusting blade count alone. A well-made 52 inch fan with a good motor will outperform a cheap 56 inch fan every time.</p>
+<h2>Airflow ratings: what the numbers mean</h2>
+<p>Fan airflow is rated in cubic feet per minute or cubic metres per hour, and it is the honest way to compare fans of the same span. A good 52 inch fan should deliver at least 5,000 cubic feet per minute on high speed, while a small 36 inch fan might deliver 2,500 to 3,500. Efficiency matters as well: airflow per watt tells you how much breeze you get for your electricity bill. Direct current motors are usually more efficient and quieter than alternating current motors, and they offer more speed settings, though they cost more upfront. If you run a fan for many hours a day, the efficiency saving can pay back the price difference within a couple of years.</p>
+<h2>Summer and winter modes</h2>
+<p>Most modern fans have a reverse switch, and using it correctly doubles the fan's value. In summer, blades should rotate counterclockwise when viewed from below, pushing air straight down to create a cooling breeze. In winter, reverse the direction so the fan pulls air upward, gently pushing warm air that has pooled at the ceiling back down the walls without creating a draught. Winter mode only helps if you have heating that warms the ceiling layer, which is common with high ceilings and warm-air systems. Run winter mode on low speed, or the gentle redistribution becomes an unwanted breeze, and switch back in spring before the first hot day catches you out.</p>
+<h2>Placement rules that make or break performance</h2>
+<p>Hang the fan in the centre of the seating area, not necessarily the centre of the room, and keep blades at least 45 centimetres from walls and 30 centimetres from any light fitting or beam. Fans too close to a wall create a noisy, uneven breeze and can wobble. If the room has a ceiling light, consider a fan with an integrated light kit so you do not have to choose between light and air, but check that the light does not flicker or strobe when the fan runs, which happens with some incompatible dimmers. In kitchens, keep fans away from cooking hobs, where grease coats the blades, and in bathrooms use only fans rated for damp locations.</p>
+<h2>Noise, wobble, and balancing</h2>
+<p>A new fan that wobbles usually has a blade that is slightly heavier or pitched differently from the rest, and most fans ship with a balancing kit for exactly this reason. Check that all blades are at the same height, tighten every screw after the first week of use, since new screws settle, and use the balancing clip to find the heavy blade before adding weights. Clicking noises often come from a loose canopy or a light kit that needs tightening, while humming usually points to a dimmer or speed control that is not compatible with the fan motor. A quality fan on a proper mount should be nearly silent on low and medium speeds, which are the speeds you will use most.</p>
+<h2>Outdoor and damp-rated fans</h2>
+<p>Covered patios and porches can use damp-rated fans, which resist humidity but must not be directly rained on, while fully exposed locations need wet-rated fans with sealed motors and weatherproof blades. Standard indoor fans will rust, warp, and fail outdoors, and using one outside usually voids the warranty. Outdoor fans need larger spans than indoor fans for the same area, because there are no walls to contain the airflow, so go one size up for a patio. Also consider blade material: wooden blades warp outdoors, while ABS plastic or aluminium blades hold up far better in heat and humidity.</p>
+<h3>Bedrooms: quiet matters most</h3>
+<p>In a bedroom, prioritise quiet operation and a good low-speed breeze over maximum airflow. A 42 inch fan in an average bedroom, run on low or medium overnight, gives a gentle breeze that improves sleep without drying out your eyes or making noise that wakes light sleepers. Choose a fan with a remote or wall control you can reach from bed, and a light kit with a warm colour temperature if you read in bed. Avoid fans with clicking pull chains if you are a light sleeper, and test the fan on every speed before the return window closes.</p>
+<h2>Running costs and energy savings</h2>
+<p>A ceiling fan typically uses 15 to 75 watts depending on speed and motor type, which is a fraction of an air conditioner's 1,000 watts or more. Used with air conditioning, a fan lets you raise the thermostat by 2 to 4 degrees without feeling warmer, which can cut cooling bills noticeably. Used alone on mild days, a fan may be all the cooling you need. The saving only works if you switch the fan off when you leave the room, since fans cool people, not air, and an empty room with a spinning fan is just wasting electricity. Pair the fan with a timer or smart control if you tend to forget.</p>
+<ul><li>Measure length and width, then match area to blade span.</li><li>Keep blades 2.1 to 2.4 metres above the floor.</li><li>Use downrods on ceilings above 2.6 metres.</li><li>Large or L-shaped rooms usually need two fans.</li><li>Compare airflow ratings, not just blade count.</li></ul>
+<p>The right ceiling fan is the one sized to your room, hung at the right height, and quiet enough to leave running. Measure your room, check your ceiling height, and use the calculator above to turn those numbers into a blade span and downrod length you can shop with, rather than guessing from a showroom display that tells you nothing about your own ceiling.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What size fan do I need for a 12x12 room?</summary><p>A 12x12 foot room is about 13 square metres, so a 42 to 52 inch fan suits it. Go 52 inches if the ceiling is high or the room is open plan.</p></details>
+<details><summary>How long should a downrod be?</summary><p>Blades should sit 2.1 to 2.4 metres above the floor. Subtract that from your ceiling height: a 3 metre ceiling needs roughly a 40 to 60 cm downrod.</p></details>
+<details><summary>Is a bigger ceiling fan always better?</summary><p>No, an oversized fan in a small room feels draughty and looks out of proportion. Match blade span to room area, and use two fans for large rooms.</p></details>
+<details><summary>Do more blades move more air?</summary><p>Not much. Blade pitch and motor power matter more than blade count. A 3-blade fan with a 14 degree pitch can outperform a 5-blade fan with flat blades.</p></details>
+<details><summary>Which way should a fan spin in summer?</summary><p>Counterclockwise viewed from below, pushing air down for a cooling breeze. Reverse it in winter to gently redistribute warm ceiling air.</p></details>
+<details><summary>Why does my ceiling fan wobble?</summary><p>Usually one blade is heavier or pitched differently. Use the balancing kit, check blade heights match, and tighten screws after the first week.</p></details>
+<details><summary>Can I put an indoor fan on a patio?</summary><p>Only if it is damp-rated for covered patios or wet-rated for exposed spots. Standard indoor fans rust and warp outdoors.</p></details>
+<details><summary>How high above the floor must fan blades be?</summary><p>At least 2.1 metres in rooms people walk through, and ideally 2.1 to 2.4 metres for the best breeze and safe clearance.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CeilingFan</div>
+    <p>CeilingFan matches blade span and downrod length to your room and ceiling.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcFan(len, wid, ceilH) {
+  var area = Math.round(len * wid * 10) / 10;
+  var span = area < 7 ? '36 in' : area < 14 ? '42 in' : area < 20 ? '52 in' : '56 in';
+  var fans = area > 25 ? 2 : 1;
+  var downrod = ceilH <= 2.6 ? 0 : Math.round((ceilH - 2.6) * 100);
+  return { area: area, span: span, fans: fans, downrod: downrod };
+}
+
+if (typeof document !== 'undefined') {
+  var histKey = 'fxhist';
+  function showHist() {
+    try {
+      var h = JSON.parse(localStorage.getItem(histKey) || '[]');
+      var el = document.getElementById('hist');
+      if (el && h.length) { el.textContent = 'Recent: ' + h.slice(-3).join('  |  '); }
+    } catch (e) {}
+  }
+  function saveHist(s) {
+    try {
+      var h = JSON.parse(localStorage.getItem(histKey) || '[]');
+      h.push(s); if (h.length > 5) { h.shift(); }
+      localStorage.setItem(histKey, JSON.stringify(h));
+    } catch (e) {}
+  }
+  function copyRes() {
+    var el = document.getElementById('res');
+    if (!el) { return; }
+    var t = el.textContent || '';
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard) { navigator.clipboard.writeText(t); }
+    } catch (e) {}
+  }
+  var btn = document.getElementById('calcBtn');
+  if (btn) { btn.onclick = function () { 
+        var l = parseFloat(document.getElementById('roomL').value) || 0;
+        var w = parseFloat(document.getElementById('roomW').value) || 0;
+        var h = parseFloat(document.getElementById('ceilH').value) || 0;
+        var r = calcFan(l, w, h);
+        var rod = r.downrod === 0 ? 'a flush mount (no downrod needed)' : 'a ' + r.downrod + ' cm downrod';
+        var out = '<b>' + r.span + ' fan</b> for your ' + r.area + ' m\u00b2 room &mdash; ' + r.fans + ' fan(s) recommended, with ' + rod + ' so the blades sit at a safe, effective height.';
+        document.getElementById('res').innerHTML = out;
+        saveHist(r.span + ' fan, ' + r.area + 'm2');
+        showHist();
+ }; }
+  var cp = document.getElementById('copyBtn');
+  if (cp) { cp.onclick = copyRes; }
+  var ps = document.querySelectorAll('[data-preset]');
+  for (var i = 0; i < ps.length; i++) {
+    (function (b) {
+      b.onclick = function () {
+        var v = b.getAttribute('data-preset');
+        var parts = v.split(',');
+        for (var j = 0; j < parts.length; j++) {
+          var kv = parts[j].split(':');
+          var inp = document.getElementById(kv[0]);
+          if (inp) { inp.value = kv[1]; }
+        }
+        if (btn) { btn.click(); }
+      };
+    })(ps[i]);
+  }
+  showHist();
+}
+
+</script>
+</body>
+</html>
