@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snowshoe Size Calculator — Length by Weight &amp; Snow Type</title>
+<meta name="description" content="Calculate snowshoe length from total weight including clothing and pack, adjusted for packed, mixed, or powder snow.">
+<link rel="canonical" href="https://fun.fixoraa.tech/snowshoe/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Snowshoe Size Calculator — Length by Weight &amp; Snow Type">
+<meta property="og:description" content="Calculate snowshoe length from total weight including clothing and pack, adjusted for packed, mixed, or powder snow.">
+<meta property="og:url" content="https://fun.fixoraa.tech/snowshoe/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SnowShoe",
+      "url": "https://fun.fixoraa.tech/snowshoe/",
+      "applicationCategory": "Outdoor",
+      "operatingSystem": "Web",
+      "description": "Calculate snowshoe length from total weight including clothing and pack, adjusted for packed, mixed, or powder snow.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What size snowshoes do I need for my weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on total weight including clothing and pack, and on snow type. An eighty kilogram walker typically needs about twenty-six inches on mixed snow."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I include my backpack weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Clothing, boots, and pack easily add five to fifteen kilograms, and that weight must be carried by the snowshoes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are bigger snowshoes always better?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not always. Bigger shoes float better in powder but are heavier and harder to manoeuvre on packed trails."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between packed and powder sizing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Powder needs about twenty percent more length for flotation, while packed trails allow about ten percent less for agility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do snowshoe bindings matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Bindings should hold your boot firmly, adjust easily with gloves on, and be tried with the boots you will actually wear."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can beginners use any size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Beginners do best with a size matched to their weight and snow, plus poles and a short practice walk on flat ground first."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#eef4fb; --surface:#ffffff; --accent:#1e3a5f; --accent-ink:#ffffff;
+  --ink:#16202c; --muted:#3e4f63; --line:#c3d4e6;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+@media(min-width:760px){.layout-side{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}.layout-side h1,.layout-side .sub{grid-column:1/-1}} .layout-side .resultcard{border-top:8px solid var(--accent)}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="SnowShoe home">
+      <span class="fx-logo-tile" aria-hidden="true">❄️</span>
+      <span class="fx-brand">SnowShoe</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-snow-tread" aria-label="SnowShoe tool">
+<div class="layout-side">
+<h1>Snowshoe Size Calculator</h1>
+<p class="sub">Find your snowshoe length from total weight and snow conditions.</p>
+<div class="formcard">
+<label>Total weight incl. clothing & pack (kg)<input id="wt" type="number" value="85" step="1" min="0"></label><label>Snow conditions<select id="snow"><option value="0.9">Packed trail (0.9)</option><option value="1.0">Mixed snow (1.0)</option><option value="1.2">Deep powder (1.2)</option></select></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter your total weight and snow type to see a size.</p></div>
+<p class='muted'>Tip: weigh yourself fully dressed with your pack for an honest figure.</p>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What size snowshoes do you actually need?</h2>
+<p>Snowshoes spread your weight over a larger area so you float on snow instead of sinking to your knees with every step. The right size depends mainly on your total weight, including clothing, boots, pack, and any gear you carry, and on the kind of snow you will walk in. Soft, deep powder demands more flotation, so bigger snowshoes, while firm, packed trails let you get away with smaller, nimbler shoes. This calculator combines those two factors into a recommended snowshoe length, which is the number most manufacturers use to size their models. Length is a useful shorthand, but width, shape, and binding fit matter too, and a good fit in the shop still beats any number on a screen.</p>
+<p>The sizing logic is straightforward. A heavier walker sinks deeper, so they need a longer shoe to spread the load. As a starting point, snowshoe length rises by roughly one to two inches for every ten kilograms of total weight, before adjusting for snow conditions. Deep powder typically adds about twenty percent to the recommended length, while hard-packed snow lets you drop about ten percent for easier manoeuvring. The calculator uses a base formula of sixteen inches plus twelve hundredths of an inch per kilogram of total weight, multiplied by a snow factor, which puts an eighty kilogram walker at about twenty-five to twenty-six inches on mixed snow. That sits comfortably inside the usual adult range of twenty-two to thirty inches, with children's models smaller and expedition models larger.</p>
+<h2>Total weight: the number people underestimate</h2>
+<p>The most common sizing mistake is entering body weight alone. Winter clothing, insulated boots, and a day pack easily add five to ten kilograms, and an overnight pack with food, water, and emergency kit can add fifteen kilograms or more. Weigh yourself fully dressed with your pack if you want an honest figure, or add a realistic allowance for clothing and kit. Water is heavy, at one kilogram per litre, and snowshoes themselves add weight to your feet, which matters for fatigue even though it does not count toward flotation in the same way. If your weight sits near the boundary between two sizes, and you often carry a pack or walk in powder, size up. Extra flotation is forgiving, while too little flotation means postholing, which is exhausting and slow.</p>
+<p>Snow type changes the answer more than most beginners expect. Fresh powder is light and deep, so a small shoe sinks straight through it. Spring snow that has melted and refrozen overnight may support your weight on a crust in the morning and collapse into slush by afternoon, which is why early starts matter in spring. Wind-packed snow on ridges can be surprisingly firm, while sheltered forest snow stays soft and deep. If you walk a mix of conditions, size for the softest snow you regularly meet rather than the firmest, because a shoe that floats in powder still works on a packed trail, just with a little less agility. On groomed winter trails, smaller shoes are genuinely nicer: they are easier to turn, less likely to clip each other, and lighter on long climbs.</p>
+<h2>Shape, bindings, and walking technique</h2>
+<p>Snowshoe shape affects how they feel. Round, wide shoes give maximum flotation and suit deep snow and gentle terrain. Tapered, teardrop shoes with a narrower tail track straighter, shed snow better, and suit rolling trails and steeper ground. Many modern shoes have metal crampons under the binding and a heel lift, sometimes called a climbing bar, that flips up on steep ascents to keep your foot flatter and save calf strain. Bindings should hold your boot firmly without cutting off circulation, and they should be easy to adjust with gloves on, because fiddling with frozen straps is miserable. Try bindings with the boots you will actually wear, including gaiters, before buying.</p>
+<p>Walking in snowshoes takes a slightly wider stance than normal walking, because the shoes are wider than your feet. Shorten your stride, lift your feet a little higher, and let the shoes do the work rather than forcing a normal gait. On slopes, traverse diagonally rather than heading straight up, and use poles for balance and rhythm, especially on descents. Poles with snow baskets stop them sinking too deep, and they save your knees on long downhills. If you step on your own shoe with the other foot, slow down and widen your stance slightly. Most people find a comfortable rhythm within the first kilometre, and the awkward phase passes quickly with a little practice on flat ground first.</p>
+<h2>A worked example</h2>
+<p>Take a walker whose total weight, including clothing and a day pack, is ninety kilograms, walking in deep powder with a factor of 1.2. The base length is sixteen plus ninety times 0.12, which is 26.8 inches, multiplied by 1.2 gives about 32 inches, so a thirty to thirty-two inch shoe is sensible. The same walker on a packed trail with a factor of 0.9 gets about 24 inches, which shows why a single pair cannot be perfect everywhere. If you buy one pair for mixed use, choose the powder-leaning size and accept slightly less agility on trails. Renting different sizes on a few outings before buying is the cheapest way to learn what suits your weight, terrain, and stride.</p>
+<p>Safety on winter walks deserves the same attention as sizing. Tell someone your route and expected return, carry a charged phone in a warm pocket, and pack extra layers, food, water, a headlamp, and a basic first aid kit. Avalanche terrain needs specialist training and equipment, including a transceiver, shovel, and probe, and is not a place to learn by trial and error. Even on gentle trails, weather can change fast in winter, navigation is harder when landmarks are buried, and daylight is short. Check the forecast, start early, and turn back if conditions deteriorate. The right snowshoe size helps you enjoy winter; good judgement keeps you safe in it.</p>
+<h3>Size guide by total weight</h3>
+<table><tr><th>Total weight</th><th>Packed trail</th><th>Mixed snow</th><th>Deep powder</th></tr>
+<tr><td>60 kg</td><td>21 in</td><td>23 in</td><td>28 in</td></tr>
+<tr><td>80 kg</td><td>23 in</td><td>26 in</td><td>31 in</td></tr>
+<tr><td>100 kg</td><td>25 in</td><td>28 in</td><td>34 in</td></tr>
+<tr><td>120 kg</td><td>27 in</td><td>30 in</td><td>36 in</td></tr></table>
+<ul><li>Include clothing, boots, and pack weight in your total.</li><li>Size up if you are near a boundary or often carry a pack.</li><li>Powder needs more flotation than packed trails.</li><li>Try bindings with your real winter boots.</li><li>Use poles with snow baskets for balance.</li><li>Start early: winter daylight is short.</li></ul>
+<p>Choose a size that floats you in the snow you actually walk in, check the fit with your own boots, and then get out and practise. Snowshoeing is one of the simplest winter sports to start, and the right size is mostly about honest weight, honest snow, and a little room to spare.</p><p>After your first few outings, review the size choice honestly. If you sank often on your usual trails, size up next time or rent a larger pair to compare. If you constantly clipped your own shoes or struggled to turn on packed trails, a smaller pair may suit your regular routes better. Snow conditions change through the season, so the ideal size in deep January powder may feel large on firm March crust. Many walkers keep one versatile pair for most days and rent a specialist pair for deep-snow trips, which is cheaper than owning two pairs and lets you match the shoe to the day.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What size snowshoes do I need for my weight?</summary><p>It depends on total weight including clothing and pack, and on snow type. An eighty kilogram walker typically needs about twenty-six inches on mixed snow.</p></details>
+<details><summary>Should I include my backpack weight?</summary><p>Yes. Clothing, boots, and pack easily add five to fifteen kilograms, and that weight must be carried by the snowshoes.</p></details>
+<details><summary>Are bigger snowshoes always better?</summary><p>Not always. Bigger shoes float better in powder but are heavier and harder to manoeuvre on packed trails.</p></details>
+<details><summary>What is the difference between packed and powder sizing?</summary><p>Powder needs about twenty percent more length for flotation, while packed trails allow about ten percent less for agility.</p></details>
+<details><summary>Do snowshoe bindings matter?</summary><p>Yes. Bindings should hold your boot firmly, adjust easily with gloves on, and be tried with the boots you will actually wear.</p></details>
+<details><summary>Can beginners use any size?</summary><p>Beginners do best with a size matched to their weight and snow, plus poles and a short practice walk on flat ground first.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SnowShoe</div>
+    <p>SnowShoe sizes snowshoes by total weight and snow conditions, so you float instead of postholing.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(wt,factor){if(wt<=0||factor<=0)return{len:0};var l=(16+wt*0.12)*factor;return{len:Math.round(l*10)/10};}
+function run(){var r=compute(+document.getElementById('wt').value,+document.getElementById('snow').value);document.getElementById('result').innerHTML='<p class="big">About '+r.len+' inches</p><p class="muted">Round to the nearest size sold: '+(Math.round(r.len/2)*2)+' inches is a common stock size.</p>';window._last='SnowShoe: about '+r.len+' inches';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Light walker, packed trail',[70,0.9]],['Average, mixed snow',[85,1.0]],['Heavy pack, powder',[105,1.2]]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){var v=P[+b.dataset.i][1];document.getElementById('wt').value=v[0];document.getElementById('snow').value=v[1];run();};});
+run();
+</script>
+</body>
+</html>
