@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reach-In Closet Planner — Layout Calculator | ClosetPlan</title>
+<meta name="description" content="Turn your wardrobe into a closet plan — rods, shelves and a cut list.">
+<link rel="canonical" href="https://fun.fixoraa.tech/closetplan/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Reach-In Closet Planner — Layout Calculator | ClosetPlan">
+<meta property="og:description" content="Turn your wardrobe into a closet plan — rods, shelves and a cut list.">
+<meta property="og:url" content="https://fun.fixoraa.tech/closetplan/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ClosetPlan",
+      "url": "https://fun.fixoraa.tech/closetplan/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Turn your wardrobe into a closet plan — rods, shelves and a cut list.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I plan a reach-in closet layout?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Count your clothes first: shirts, pants, dresses and shoes. Shirts and pants share a double-hang rod (about 1.1–1.2 inches of rod each); dresses need single hang (2 inches each); shoes need shelves. Enter the counts above and the calculator lays out rods and shelves for your width."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is double-hang in a closet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two closet rods stacked vertically — typically at 40 and 80 inches — so shirts and pants hang in two tiers within the same wall width. It roughly doubles hanging capacity and is the single best upgrade for a reach-in closet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much rod space do I need per shirt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 1.1 inches per shirt on standard hangers, 1.2 inches per pair of pants, and 2 inches per dress or coat. Twenty shirts need roughly 22 inches of rod — under two feet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How deep should closet shelves be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "11.5 inches deep for a standard 24-inch-deep closet, leaving an air gap behind. Space folded-clothes shelves 12–14 inches apart vertically; shoe shelves can be tighter at 8–10 inches."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How high should a closet rod be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Single-hang rods at 66–68 inches for dresses and coats; double-hang rods at 40 inches (lower) and 80 inches (upper) for shirts and pants. Mount the rod centered 12 inches from the back wall."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My closet is too small for my clothes — what helps most?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Edit first (off-season rotation, one-in-one-out), then double-hang everything short, move shoes to an over-door organizer, and use the floor under short hang for a rolling cart. Cascading hangers compress shirt width by about a third."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#FAF2F7;--surface:#FFFFFF;--tint:#F4DDEC;--accent:#A5277B;--accent-deep:#7C1D5D;--accent-ink:#FFFFFF;--ink:#331F2C;--muted:#78546C;--line:#EACFE0;--display:'Urbanist',system-ui,sans-serif;--body:'Urbanist',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+.fx-wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px}
+.fx-name{font-weight:800;font-size:20px}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.cp-hero{padding:44px 0 6px}
+.cp-eyebrow{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--tint);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.cp-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:10px}
+.cp-hero p{font-size:18px;color:var(--muted);max-width:640px}
+.cp-plan{margin:26px 0 8px;background:var(--surface);border:2px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 12px 30px rgba(165,39,123,.10)}
+.cp-inventory{padding:26px;border-bottom:2px dashed var(--line)}
+.cp-inventory h2{font-size:16px;font-weight:800;margin-bottom:14px}
+.cp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.cp-field label{display:block;font-weight:700;font-size:13px;margin-bottom:8px}
+.cp-field input{font:inherit;width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.cp-field input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.cp-results{padding:26px;background:linear-gradient(180deg,#FDF8FB,var(--tint))}
+.cp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+.cp-card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+.cp-card .n{font-size:26px;font-weight:800;color:var(--accent)}
+.cp-card .l{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.cp-diagram{background:#fff;border:2px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+.cp-bar-row{display:grid;grid-template-columns:110px 1fr 70px;gap:12px;align-items:center;margin-bottom:10px;font-size:14px}
+.cp-bar-row span{font-weight:700;color:var(--muted)}
+.cp-bar-row b{text-align:right}
+.cp-track{height:22px;background:var(--bg);border:1.5px solid var(--line);border-radius:999px;overflow:hidden}
+.cp-fill{height:100%;border-radius:999px}
+.cp-fill.d{background:linear-gradient(90deg,var(--accent),#C94F9B)}
+.cp-fill.s{background:linear-gradient(90deg,var(--accent-deep),var(--accent))}
+.cp-fits{font-size:15px;font-weight:700;background:#fff;border:2px solid var(--line);border-radius:12px;padding:14px 18px}
+.cp-fits.ok{border-color:#2F7D32;color:#2F7D32;background:#EFF7EF}
+.cp-fits.bad{border-color:#A53C27;color:#8E3220;background:#FBEEEA}
+.article-sec{margin:40px 0;max-width:780px}.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800}
+.article-sec p{margin-bottom:14px;color:#463141}.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#463141}.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:780px}.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#463141;font-size:15px}
+.fx-footer{background:#2c1a26;color:#f0d9e8;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bd93ad;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}.fx-credit a{color:#e89cc8;font-weight:700}
+@media(max-width:860px){.cp-grid{grid-template-columns:repeat(2,1fr)}.cp-cards{grid-template-columns:1fr}}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-wrap">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/closetplan/" aria-label="ClosetPlan home">
+      <span class="fx-tile" aria-hidden="true">C</span>
+      <span class="fx-name">ClosetPlan</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-wrap">
+  <section class="cp-hero">
+    <span class="cp-eyebrow">Wardrobe in, plan out</span>
+      <h1>Reach-In Closet Planner</h1>
+      <p>Count what you actually own — shirts, pants, dresses, shoes — and get the rod layout, shelf count and a cut list that fits your closet width.</p>
+  </section>
+
+<section class="cp-plan" aria-label="ClosetPlan tool">
+  <div class="cp-inventory">
+    <h2>Your wardrobe inventory</h2>
+    <div class="cp-grid">
+      <div class="cp-field"><label for="cp-width">Closet width (in)</label><input type="number" id="cp-width" value="72" min="12" max="240" step="1"></div>
+      <div class="cp-field"><label for="cp-shirts">Shirts &amp; blouses</label><input type="number" id="cp-shirts" value="20" min="0" max="200" step="1"></div>
+      <div class="cp-field"><label for="cp-pants">Pants &amp; skirts</label><input type="number" id="cp-pants" value="15" min="0" max="200" step="1"></div>
+      <div class="cp-field"><label for="cp-dresses">Dresses &amp; coats</label><input type="number" id="cp-dresses" value="4" min="0" max="100" step="1"></div>
+      <div class="cp-field"><label for="cp-shoes">Pairs of shoes</label><input type="number" id="cp-shoes" value="12" min="0" max="100" step="1"></div>
+    </div>
+  </div>
+  <div class="cp-results" aria-live="polite">
+    <div class="cp-cards">
+      <div class="cp-card"><div class="n" id="cp-double">—</div><div class="l">double-hang rod</div></div>
+      <div class="cp-card"><div class="n" id="cp-single">—</div><div class="l">single-hang rod</div></div>
+      <div class="cp-card"><div class="n" id="cp-shelves">—</div><div class="l">shelf boards</div></div>
+    </div>
+    <div class="cp-diagram" id="cp-diagram"></div>
+    <div class="cp-fits" id="cp-fits">Add your wardrobe counts to build the plan.</div>
+  </div>
+</section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>The Inventory-First Method</h2>
+<p>Most closet plans start with the closet. Better plans start with the <strong>clothes</strong>. A reach-in closet is a fixed box — usually 24 inches deep and somewhere between 4 and 8 feet wide — and the only variable that matters is what you need it to hold. Count your hanging clothes by category before you buy a single rod, because shirts, pants, and dresses consume closet width at very different rates.</p><p>The planning numbers: allow about <strong>1.1 inches of rod per shirt</strong>, <strong>1.2 inches per pair of pants</strong>, and <strong>2 inches per dress or coat</strong> (thicker hangers, bulkier shoulders). Twenty shirts and fifteen pants need 40 inches of rod — a little over 3 feet. Four dresses need 8 inches. Those two numbers already tell you more than any inspiration photo: your hanging load is 48 inches, and everything else is shelves.</p><p>Be honest about what "counts." Off-season coats in a guest closet do not belong in this math; the suit you wear twice a year does not need prime rod space. Plan for the wardrobe you actually reach for weekly, and the closet stops fighting you.</p>
+<h2>Double-Hang: The Space Doubler</h2>
+<p><strong>Double-hang</strong> is the highest-leverage trick in closet design: two rods stacked in the same vertical space, one at about 40 inches and one at 80 inches, doubling your hanging capacity without widening the closet an inch. Shirts, blouses, pants, and folded-over skirts all fit the 40-inch lower tier perfectly.</p><p>The geometry works because most hanging clothes are short. A shirt on a hanger occupies roughly 28–30 inches vertically; pants folded over a hanger about the same. Two tiers of 40 inches fit in an 80-inch-tall section with room to spare — which is why double-hang converts a mediocre closet into a generous one.</p><p>Plan your double-hang width from the inventory: shirts × 1.1″ + pants × 1.2″. That 40-inch example from above becomes one 40-inch double-hang section — or split it into two 20-inch sections flanking a dress section, which often lays out better in wide closets. The calculator shows the allocation so you can see the split before you drill.</p>
+<h2>Single Hang and Long Items</h2>
+<p>Dresses, long coats, and robes need <strong>single hang</strong>: one rod at about 66–68 inches with clear floor beneath. Measure your longest item — a maxi dress can need 60 inches from hanger to hem — and give it that plus a few inches of clearance. Nothing is sadder than a dress pooling on the closet floor because the rod went in at shirt height.</p><p>Single-hang sections are width-expensive (2 inches per garment) but vertically cheap — the space below a single-hang rod is dead air unless you use it. Put shoe shelves, a hamper, or a low dresser under the long-hang section and the "wasted" space becomes the most functional part of the closet.</p><p>If dresses are rare in your wardrobe, do not dedicate a full section to them. A short 12-inch single-hang segment at one end handles the occasional long item while the rest of the closet double-hangs. Flexibility beats symmetry.</p>
+<h2>Shelf Math for Shoes and Foldables</h2>
+<p>Shoes are shelf creatures. Plan <strong>one pair per 3 inches of shelf width</strong> — roughly 8 pairs per 2-foot shelf — and keep shelves 12 inches deep so heels do not tumble off the back. Angled shoe shelves look great in photos but waste vertical space; flat shelves with shoes heel-to-toe store more per inch.</p><p>Folded clothes — sweaters, jeans, t-shirts — want shelves 12–14 inches apart vertically. Taller stacks topple; the 12-inch rule keeps piles stable and visible. A full-width <strong>top shelf</strong> above the rods (at 80–84 inches) swallows luggage, off-season bins, and the things you need twice a year.</p><p>The calculator’s shelf count includes shoe shelves plus that top shelf. Cut shelf boards from 3/4-inch plywood or melamine at 11.5 inches deep for a 24-inch closet (leaving air space behind), and support any span over 30 inches with a middle bracket — sagging shelves are a slow-motion failure.</p>
+<h2>The 24-Inch Depth Rule</h2>
+<p>Reach-in closets are 24 inches deep for a reason: a standard hanger is about 17–18 inches wide, and you need clearance front and back so clothes do not scrape the doors or the wall. Mount the rod with its <strong>center 12 inches from the back wall</strong> — centered in the depth — and hangers clear both sides.</p><p>Resist the urge to mount rods deeper "for more space." Hangers wider than the depth bind on the doors; narrower wastes the back inches. Twelve inches from the back wall is the dimension every closet system assumes, and deviating from it causes a cascade of small annoyances.</p><p>Depth also sets your shelf depth: 11.5-inch boards leave a finger gap behind for air circulation, which matters in closets on exterior walls where condensation can mildew leather shoes. Small gap, big mildew prevention.</p>
+<h2>Lighting and Doors</h2>
+<p>The best closet layout in the world fails in the dark. A $15 battery LED strip or puck light under the top shelf transforms a cave into a closet — you cannot wear what you cannot see. If you own the home, a hardwired LED with a door jamb switch is a weekend project with outsized daily payoff.</p><p>Doors decide access. Bypass (sliding) doors block half the closet always — plan the most-used sections on the accessible half, or better, swap to bifolds. Bifold doors open nearly the full width and cost little. If the closet has no doors at all, a curtain on a tension rod is a fine interim that keeps dust off.</p><p>Mirrors on the back of a door or on the wall opposite turn the closet into a dressing area. A full-length mirror needs about 14 inches of width — plan it into the layout rather than leaning it precariously against the shoes.</p>
+<h2>Cut List Walkthrough</h2>
+<p>Translate the plan into lumber. For a 72-inch closet with the example inventory: <strong>rods</strong> — one 40-inch double-hang needs two 40-inch rods (upper and lower), plus one 8-inch single-hang rod; buy closet rod stock and cut to length, or buy pre-cut lengths. <strong>Shelves</strong> — two 24-inch shoe shelves plus one 72-inch top shelf, all 11.5 inches deep.</p><p><strong>Hardware:</strong> rod sockets (two per rod end), shelf brackets every 24–30 inches, and 1×2 cleats screwed to the studs along the back and side walls for the shelves to rest on. Cleats into studs — not just drywall — is what keeps loaded shelves up for a decade.</p><p>Buy rods and shelves 1/4 inch short of the measured width; walls are never perfectly square and a hair of clearance beats a forced fit. Sand and finish cut ends before installation — touching up paint inside an installed closet is miserable.</p>
+<h2>Small Closet Tricks</h2>
+<p>When the inventory does not fit the width, edit the inventory first: the one-in-one-out rule and off-season rotation free more inches than any hardware. Then deploy the tricks: <strong>cascading hangers</strong> (vertical chains) compress shirt width by a third; a <strong>second lower rod</strong> just for pants doubles that category; <strong>over-door organizers</strong> move shoes and accessories off shelves entirely.</p><p>Go vertical with the dead zones: the 12 inches above the top shelf fits flat bins; the floor under short hang holds a rolling cart. And decant ruthlessly — the sweater you have not worn in two winters is not a wardrobe, it is storage, and storage belongs elsewhere.</p><p>Finally, remember that a closet plan is a living document. Re-run your inventory yearly — wardrobes drift toward bulk, and a 20-minute recount plus a shelf adjustment keeps the system working instead of slowly reverting to chaos.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I plan a reach-in closet layout?</summary><p>Count your clothes first: shirts, pants, dresses and shoes. Shirts and pants share a double-hang rod (about 1.1–1.2 inches of rod each); dresses need single hang (2 inches each); shoes need shelves. Enter the counts above and the calculator lays out rods and shelves for your width.</p></details>
+<details><summary>What is double-hang in a closet?</summary><p>Two closet rods stacked vertically — typically at 40 and 80 inches — so shirts and pants hang in two tiers within the same wall width. It roughly doubles hanging capacity and is the single best upgrade for a reach-in closet.</p></details>
+<details><summary>How much rod space do I need per shirt?</summary><p>About 1.1 inches per shirt on standard hangers, 1.2 inches per pair of pants, and 2 inches per dress or coat. Twenty shirts need roughly 22 inches of rod — under two feet.</p></details>
+<details><summary>How deep should closet shelves be?</summary><p>11.5 inches deep for a standard 24-inch-deep closet, leaving an air gap behind. Space folded-clothes shelves 12–14 inches apart vertically; shoe shelves can be tighter at 8–10 inches.</p></details>
+<details><summary>How high should a closet rod be?</summary><p>Single-hang rods at 66–68 inches for dresses and coats; double-hang rods at 40 inches (lower) and 80 inches (upper) for shirts and pants. Mount the rod centered 12 inches from the back wall.</p></details>
+<details><summary>My closet is too small for my clothes — what helps most?</summary><p>Edit first (off-season rotation, one-in-one-out), then double-hang everything short, move shoes to an over-door organizer, and use the floor under short hang for a rolling cart. Cascading hangers compress shirt width by about a third.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-wrap">
+    <div class="fx-brand">ClosetPlan</div>
+    <p>ClosetPlan converts your wardrobe inventory into a reach-in closet layout: double-hang rods, single hang, shelves and a cut list.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function _r(n, d) { var p = Math.pow(10, d); return Math.round(n * p) / p; }
+
+// Reach-in closet plan from a wardrobe inventory.
+// Hanging widths: shirt 1.1", pants 1.2", dress 2.0". Shirts+pants share a
+// double-hang rod (two tiers in 80" of height); dresses need single hang.
+function closetPlan(widthIn, shirts, pants, dresses, shoes) {
+  var w = Math.max(0, widthIn || 0);
+  var sh = Math.max(0, Math.round(shirts) || 0),
+      pa = Math.max(0, Math.round(pants) || 0),
+      dr = Math.max(0, Math.round(dresses) || 0),
+      so = Math.max(0, Math.round(shoes) || 0);
+  var doubleIn = sh * 1.1 + pa * 1.2;
+  var singleIn = dr * 2.0;
+  var totalIn = doubleIn + singleIn;
+  var shoeShelves = Math.ceil(so / 8);            // ~8 pairs per shelf
+  var topShelf = totalIn > 0 || so > 0 ? 1 : 0;   // one full-width top shelf
+  return {
+    doubleHangIn: _r(doubleIn, 1),
+    doubleHangFt: _r(doubleIn / 12, 1),
+    singleHangIn: _r(singleIn, 1),
+    singleHangFt: _r(singleIn / 12, 1),
+    totalRodIn: _r(totalIn, 1),
+    totalRodFt: _r(totalIn / 12, 1),
+    shoeShelves: shoeShelves,
+    topShelf: topShelf,
+    shelfBoards: shoeShelves + topShelf,
+    fits: totalIn <= w,
+    leftoverIn: _r(Math.max(0, w - totalIn), 1)
+  };
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', function () {
+    var ids = ['cp-width', 'cp-shirts', 'cp-pants', 'cp-dresses', 'cp-shoes'];
+    var els = ids.map(function (id) { return document.getElementById(id); });
+    if (!els[0]) return;
+    function run() {
+      var r = closetPlan(parseFloat(els[0].value) || 0, parseFloat(els[1].value) || 0,
+                         parseFloat(els[2].value) || 0, parseFloat(els[3].value) || 0,
+                         parseFloat(els[4].value) || 0);
+      document.getElementById('cp-double').textContent = r.doubleHangFt + ' ft double-hang';
+      document.getElementById('cp-single').textContent = r.singleHangFt + ' ft single-hang';
+      document.getElementById('cp-shelves').textContent = r.shelfBoards + ' shelf boards (' + r.shoeShelves + ' shoe + ' + r.topShelf + ' top)';
+      var fit = document.getElementById('cp-fits');
+      if (r.totalRodIn === 0) {
+        fit.textContent = 'Add your wardrobe counts to build the plan.';
+        fit.className = 'cp-fits';
+      } else if (r.fits) {
+        fit.textContent = 'Fits with ' + r.leftoverIn + '″ to spare — use it for a hamper or shoe tower.';
+        fit.className = 'cp-fits ok';
+      } else {
+        fit.textContent = 'Too tight: you need ' + r.totalRodIn + '″ of rod in a ' + (parseFloat(els[0].value) || 0) + '″ closet. Move off-season clothes elsewhere or add a second closet.';
+        fit.className = 'cp-fits bad';
+      }
+      // rod diagram: double-hang bar + single-hang bar scaled to closet width
+      var W = parseFloat(els[0].value) || 1, dia = document.getElementById('cp-diagram');
+      function barPx(inches) { return Math.max(0, Math.min(100, inches / W * 100)); }
+      dia.innerHTML =
+        '<div class="cp-bar-row"><span>Double-hang</span><div class="cp-track"><div class="cp-fill d" style="width:' + barPx(r.doubleHangIn) + '%"></div></div><b>' + r.doubleHangIn + '″</b></div>' +
+        '<div class="cp-bar-row"><span>Single-hang</span><div class="cp-track"><div class="cp-fill s" style="width:' + barPx(r.singleHangIn) + '%"></div></div><b>' + r.singleHangIn + '″</b></div>';
+    }
+    els.forEach(function (el) { el.addEventListener('input', run); });
+    run();
+  });
+}
+
+</script>
+</body>
+</html>
