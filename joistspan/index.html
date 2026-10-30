@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floor Joist Span Calculator — How Far Can Joists Span? | JoistSpan</title>
+<meta name="description" content="Max floor joist span by lumber size, species, spacing and load, with deflection check.">
+<link rel="canonical" href="https://fun.fixoraa.tech/joistspan/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Floor Joist Span Calculator — How Far Can Joists Span? | JoistSpan">
+<meta property="og:description" content="Max floor joist span by lumber size, species, spacing and load, with deflection check.">
+<meta property="og:url" content="https://fun.fixoraa.tech/joistspan/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "JoistSpan",
+      "url": "https://fun.fixoraa.tech/joistspan/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Max floor joist span by lumber size, species, spacing and load, with deflection check.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How far can a 2x10 floor joist span?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 2x10 SPF #2 at 16 in. on center spans about 14 ft 7 in. under 40/10 psf living-area load. Southern Yellow Pine #1 stretches past 16 ft; tighter 12-in. spacing adds ~12%. Enter your exact lumber and load in the calculator for the verdict."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does L/360 deflection mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's the code limit on floor bounce: a joist's sag under live load must not exceed the span divided by 360. For a 14-ft span that's under 1/2 inch. Deflection usually governs over strength — floors feel bouncy long before lumber is overstressed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use 2x8 joists for a 14-foot span?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally no for living areas — a 2x8 SPF #2 at 16 in. o.c. maxes around 11 ft 6 in. under 40/10 load. You'd need 12-in. spacing plus a stronger species, bigger joists, or a mid-span beam. The calculator will give you the exact verdict and fix."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is sistering a joist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fastening a new full-length joist alongside an existing one (glue + nails or bolts), bearing on the same supports. It roughly doubles stiffness and is the standard fix for bouncy or over-spanned existing floors — no demolition required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does joist spacing affect span?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — each joist carries the floor area tributary to its spacing. Going from 16 to 12 in. o.c. cuts each joist's load by 25% and buys ~12% more span; 24 in. o.c. loses ~15% and usually demands thicker subfloor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an engineer for floor joists?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not for straightforward spans within IRC tables — the tables are prescriptive. Call one for beams, heavy point loads, notched or damaged joists, spans beyond the tables, or any sign of structural distress. A beam design typically costs a few hundred dollars."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9E4E1; --tint:#F4D6D2; --accent:#842315; --accent-deep:#594A15;
+  --ink:#33301C; --muted:#656148; --line:#D8D1B4;
+  --display:'IBM Plex Sans',system-ui,sans-serif; --body:'IBM Plex Sans',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:#fff;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:#fff}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:#fff}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:#fff;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:#1d1d1d;color:#e8e8e8;margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bdbdbd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--tint);font-weight:700}
+input,select,button{font:inherit}
+
+
+.js-hero{text-align:left;padding:52px 0 4px;max-width:760px}
+.js-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:1.5px solid var(--accent);padding:7px 16px;border-radius:4px;margin-bottom:16px}
+.js-hero h1{font-size:clamp(34px,5vw,50px);letter-spacing:-.02em;font-weight:800;margin-bottom:12px}
+.js-hero p{font-size:18px;color:var(--muted);max-width:640px}
+.js-tool{background:#fff;border:1.5px solid var(--accent);border-radius:6px;margin:26px 0 8px;overflow:hidden;box-shadow:0 14px 34px rgba(132,110,31,.10)}
+.js-spec{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-bottom:1.5px solid var(--accent)}
+.js-spec .field{padding:18px;border-right:1px dashed var(--line)}
+.js-spec .field:last-child{border-right:0}
+.field label{display:block;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;color:var(--accent)}
+.field input,.field select{width:100%;padding:10px 12px;border:1.5px solid var(--accent);border-radius:4px;background:#fff;color:var(--ink);font-variant-numeric:tabular-nums}
+.field input:focus,.field select:focus{outline:3px solid var(--tint)}
+#js-svg{width:100%;height:auto;display:block;background:var(--bg);border-bottom:1.5px solid var(--accent)}
+.js-verdict{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;padding:26px}
+.js-stamp{font-size:34px;font-weight:800;letter-spacing:.08em;border:4px solid var(--accent);color:var(--accent);border-radius:8px;padding:14px 26px;transform:rotate(-4deg);background:var(--tint)}
+.js-stamp.fail{color:#8B3E23;border-color:#8B3E23;background:#F5E6E0;transform:rotate(3deg)}
+.js-det{font-variant-numeric:tabular-nums}
+.js-row{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.js-row:last-child{border:0}
+.js-row span{color:var(--muted)}
+.js-row b{text-align:right}
+.js-disc{padding:0 26px 20px;font-size:12px;color:var(--muted)}
+@media(max-width:860px){.js-spec{grid-template-columns:1fr 1fr}.js-spec .field{border-bottom:1px dashed var(--line)}.js-verdict{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<header class="fx-header joistspan-hdr">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/joistspan/" aria-label="JoistSpan home">
+      <span class="fx-tile" aria-hidden="true">JS</span>
+      <span class="fx-name">JoistSpan</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="js-hero">
+    <span class="js-eyebrow">IRC-based tables</span>
+    <h1>Floor Joist Span Calculator</h1>
+    <p>Will your joists carry the span? Pick the lumber, spacing and load — get a verdict, not a PDF.</p>
+  </section>
+  <section class="js-tool" aria-label="JoistSpan tool">
+    <div class="js-spec">
+      <div class="field"><label for="js-span">Your span (ft)</label><input type="number" id="js-span" value="14" min="4" max="26" step="0.5"></div>
+      <div class="field"><label for="js-size">Joist size</label><select id="js-size">
+        <option>2x6</option><option>2x8</option><option selected>2x10</option><option>2x12</option></select></div>
+      <div class="field"><label for="js-sp">Species &amp; grade</label><select id="js-sp">
+        <option selected>SPF #2</option><option>SYP #1</option><option>Douglas Fir #2</option></select></div>
+      <div class="field"><label for="js-oc">Spacing</label><select id="js-oc">
+        <option value="12">12 in. o.c.</option><option value="16" selected>16 in. o.c.</option><option value="24">24 in. o.c.</option></select></div>
+      <div class="field"><label for="js-load">Load</label><select id="js-load">
+        <option value="40/10" selected>Living — 40/10 psf</option><option value="30/10">Bedroom — 30/10 psf</option>
+        <option value="20/10">Attic — 20/10 psf</option></select></div>
+    </div>
+    <svg id="js-svg" viewBox="0 0 640 210" role="img" aria-label="Joist span diagram"></svg>
+    <div class="js-verdict" aria-live="polite">
+      <div class="js-stamp" id="js-stamp">PASS</div>
+      <div class="js-det">
+        <div class="js-row"><span>Max span for this joist</span><b id="js-max">14 ft 7 in.</b></div>
+        <div class="js-row"><span>Deflection (L/360)</span><b id="js-defl">0.42 in. / 0.47 in. — OK</b></div>
+        <div class="js-row"><span>Recommendation</span><b id="js-rec">Good to build.</b></div>
+      </div>
+    </div>
+    <p class="js-disc">Simplified from IRC Table R502.3.1. Verify with local code and an engineer for final design.</p>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+    <h2>What a Span Table Is Really Telling You</h2>
+    <p>A span table answers one question: for this lumber, at this spacing, under this load, how far can the joist run between supports before it is overstressed or too bouncy? The answer comes from the <strong>International Residential Code (IRC) Table R502.3.1</strong>, which distills lumber engineering — bending strength, stiffness, shear — into a single lookup number builders can trust.</p>
+    <p>Two limits hide inside every table value. <strong>Strength</strong>: the joist must not break or take a permanent sag under full design load. <strong>Deflection</strong>: under everyday live load it must not flex more than the span divided by 360 — the L/360 rule — because humans notice bouncy floors long before they notice stressed lumber. For living areas, deflection usually governs: the joist that is strong enough still gets rejected for feeling like a trampoline.</p>
+    <p>This calculator uses IRC-style values for common species, grades, sizes and spacings, then runs the <strong>deflection math explicitly</strong> so you can see both checks. It is a planning tool, not a stamped design — final framing follows your local code and, for anything unusual, an engineer.</p>
+    <h2>Species and Grade: Not All 2x10s Are Equal</h2>
+    <p>A 2x10 is a dimension, not a strength. <strong>Southern Yellow Pine (SYP)</strong> is the strong stuff — dense, stiff, the default where it is available. <strong>Douglas Fir-Larch</strong> sits in the middle. <strong>Spruce-Pine-Fir (SPF)</strong> is lighter and weaker, common in many markets. Same size, different span: a 2x10 at 16 inches on center spans about 14 ft 7 in. in SPF #2 but over 16 ft in SYP #1.</p>
+    <p>Grade matters within species: <strong>#1, #2, Stud, #3</strong> rank the lumber by defects — knots, slope of grain, wane. #2 is the residential workhorse; #1 buys meaningful extra span for a modest premium and is worth it on long runs where the next size up would cost more. Utility and #3 grades belong in non-structural uses.</p>
+    <p>Buy the grade you designed for, and <strong>crown every joist</strong> the same way (crown up) — the natural bow becomes camber that flattens under load instead of a sag that deepens. Sight down each joist and mark the crown before it goes in; flipping one joist crown-down creates a permanent dip the subfloor will telegraph.</p>
+    <h2>Spacing: The Cheapest Structural Upgrade</h2>
+    <p>Joist spacing — 12, 16 or 24 inches on center — decides how much floor each joist carries. Tighten from 16 to 12 inches and each joist carries 25 percent less load, buying roughly <strong>12 percent more span</strong>. Loosen to 24 inches and you lose about 15 percent of span — plus the subfloor must span farther, which usually forces thicker sheathing.</p>
+    <p>The economics surprise people: going from 16 to 12 inches on center adds about 50 percent more joists, but it can let you <strong>drop a lumber size</strong> — and smaller joists at 12 inches often cost less than bigger joists at 16, while giving a stiffer floor. Run both options through the calculator before buying.</p>
+    <p>Sixteen inches on center remains the default because subfloor, insulation and drywall dimensions all assume it. Deviate deliberately: 12 for tile floors and long spans, 24 only for light attic or storage floors with appropriately thick decking.</p>
+    <h2>Load: Living, Sleeping, and Storage</h2>
+    <p>Code assigns <strong>live loads</strong> by use: 40 psf for living areas (people, furniture, the piano you swear you will move), 30 psf for sleeping rooms, 20 psf for attics with limited storage — plus a <strong>dead load</strong> around 10 psf for the structure itself. The calculator's three presets cover the common cases; heavier uses (tile, stone, waterbeds, grand pianos, aquariums) need engineering, not presets.</p>
+    <p>Note what live load really means: it is a <strong>uniform</strong> design load, but real life concentrates — a 400-pound safe on four small feet punishes one joist far beyond 40 psf. Heavy point loads want to sit over a bearing wall or beam, or on doubled joists with solid blocking spreading the load sideways.</p>
+    <p>Future-proofing is cheap at framing time: if a bedroom might become a living space, or an attic might gain storage, frame to the heavier load now. Upgrading joists after drywall is a renovation; upgrading before is a slightly bigger lumber order.</p>
+    <h2>Deflection: The Bounce You Can Calculate</h2>
+    <p>Deflection under uniform load follows <strong>Δ = 5wL⁴ / 384EI</strong> — five times the load per inch, times span to the fourth power, divided by stiffness. That fourth power is the drama: stretch a span 10 percent and deflection jumps <strong>46 percent</strong>. This is why a joist that “feels fine” at 14 feet feels like a diving board at 16.</p>
+    <p>The calculator runs this formula with real published stiffness (E) and moment of inertia (I) values and compares against <strong>L/360</strong> — span in inches divided by 360. For a 14-foot span, allowable deflection is under half an inch. The readout shows your actual versus allowable so the check is transparent, not a black box.</p>
+    <p>For tile and stone floors, many pros design to <strong>L/480 or L/720</strong> — tile cracks long before joists fail, and grout is an unforgiving deflection gauge. If stone or large-format tile is in the plan, beat L/360 by a comfortable margin or add a second layer of subfloor.</p>
+    <h2>When It Fails: Sistering vs. Beams</h2>
+    <p>A FAIL verdict gives you three honest options. <strong>Option one: bigger joists.</strong> Stepping from 2x8 to 2x10 buys roughly 25 percent more span — the calculator suggests the next size up when it works. This is the clean answer for new construction.</p>
+    <p><strong>Option two: sistering.</strong> Glue and nail (or bolt) a new joist alongside each existing one, full span, bearing on the same supports. Sistering roughly doubles stiffness and is the standard retrofit for bouncy existing floors — no demolition, just lumber, adhesive and a weekend in the crawlspace. The sister must bear fully on both supports; a sister floating mid-span is decoration.</p>
+    <p><strong>Option three: a mid-span beam.</strong> Cut the span in half with a beam on posts or a bearing wall, and deflection drops to one-sixteenth. Beams need proper footings and connections — point loads concentrate, and a beam on an inadequate footing just moves the problem downward. This is the point where the calculator hands off to an engineer, and that handoff is a feature, not a limitation.</p>
+    <h2>Bridging, Blocking, and the Details</h2>
+    <p>Joists deeper than about 2x10 want <strong>bridging or blocking</strong> at mid-span: solid 2x blocks or metal X-bridging between joists that keep them from twisting and share concentrated loads sideways. It is a small material cost that noticeably stiffens a floor — and code requires it in many configurations.</p>
+    <p>Bearing length matters: joists need at least <strong>1.5 inches</strong> of bearing on wood or metal, 3 inches on masonry. Rim joists cap the ends, tying the whole floor into a diaphragm that resists racking. And every joist end near a foundation should be kept dry — chronic moisture rots bearing ends first, which is exactly where strength matters most.</p>
+    <p>Subfloor is part of the system: 3/4-inch tongue-and-groove glued and screwed (not just nailed) turns individual joists into a composite floor. Glue alone adds astonishing stiffness — skip it and the floor squeaks within five years as nails work loose. Screw every 6 inches on edges, 12 in the field, into every joist.</p>
+    <h2>Reading Your Existing Floor</h2>
+    <p>Checking an existing floor? Measure the <strong>actual</strong> joist size (a “2x10” from 1960 is a full 2x10; modern is 1.5x9.25 — the old ones are stronger), the real spacing, and the span between bearing points — not the room dimension, the support-to-support distance. Species is harder; when in doubt, assume SPF #2 and be pleasantly surprised.</p>
+    <p>Signs of an over-spanned floor: a visible sag (sight along the joists or roll a marble), bouncy feel, cracked drywall at mid-span below, doors that rub after the floor loads up. A little seasonal bounce in an old house is character; a growing sag is a structural conversation.</p>
+    <p>If you are finishing a basement or adding a heavy load (aquarium, safe, tile), run the existing joists through the calculator <strong>before</strong> committing. Finding out at the tile-cracking stage is the expensive way to learn span tables.</p>
+    <h2>Code, Permits, and the Engineer Line</h2>
+    <p>Floor framing is structural work: most jurisdictions require a <strong>permit</strong> for new floors, additions and structural modifications, and inspectors check species, grade stamps, spacing, spans and connections against the IRC tables this calculator simplifies. The grade stamp on each joist is the inspector's proof — keep lumber stamped and visible until inspection.</p>
+    <p>Call an engineer when: spans exceed table limits and you are designing beams; point loads are heavy or unusual; you are cutting or notching existing joists (notches have strict location and size limits — never in the middle third, never deeper than 1/6 the depth); or the structure shows distress. Engineering for a beam typically costs a few hundred dollars — trivial against the cost of being wrong.</p>
+    <p>Use this calculator the way pros use span tables: to <strong>plan and sanity-check</strong>, then verify against the code book and local amendments before building. A calculator that agrees with the inspector is a good morning; one that disagrees is a redesigned afternoon.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How far can a 2x10 floor joist span?</summary><p>A 2x10 SPF #2 at 16 in. on center spans about 14 ft 7 in. under 40/10 psf living-area load. Southern Yellow Pine #1 stretches past 16 ft; tighter 12-in. spacing adds ~12%. Enter your exact lumber and load in the calculator for the verdict.</p></details>
+    <details><summary>What does L/360 deflection mean?</summary><p>It's the code limit on floor bounce: a joist's sag under live load must not exceed the span divided by 360. For a 14-ft span that's under 1/2 inch. Deflection usually governs over strength — floors feel bouncy long before lumber is overstressed.</p></details>
+    <details><summary>Can I use 2x8 joists for a 14-foot span?</summary><p>Generally no for living areas — a 2x8 SPF #2 at 16 in. o.c. maxes around 11 ft 6 in. under 40/10 load. You'd need 12-in. spacing plus a stronger species, bigger joists, or a mid-span beam. The calculator will give you the exact verdict and fix.</p></details>
+    <details><summary>What is sistering a joist?</summary><p>Fastening a new full-length joist alongside an existing one (glue + nails or bolts), bearing on the same supports. It roughly doubles stiffness and is the standard fix for bouncy or over-spanned existing floors — no demolition required.</p></details>
+    <details><summary>Does joist spacing affect span?</summary><p>Yes — each joist carries the floor area tributary to its spacing. Going from 16 to 12 in. o.c. cuts each joist's load by 25% and buys ~12% more span; 24 in. o.c. loses ~15% and usually demands thicker subfloor.</p></details>
+    <details><summary>Do I need an engineer for floor joists?</summary><p>Not for straightforward spans within IRC tables — the tables are prescriptive. Call one for beams, heavy point loads, notched or damaged joists, spans beyond the tables, or any sign of structural distress. A beam design typically costs a few hundred dollars.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">JoistSpan</div>
+    <p>JoistSpan checks your floor joists against IRC-style span tables — species, grade, spacing and load — with an L/360 deflection check and a fix when they fail.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TOOLJS */
+var JT={'SPF #2':{'2x6':8.83,'2x8':11.5,'2x10':14.58,'2x12':17.75},
+'SYP #1':{'2x6':9.75,'2x8':12.75,'2x10':16.08,'2x12':19.58},
+'Douglas Fir #2':{'2x6':9.25,'2x8':12.0,'2x10':15.33,'2x12':18.67}};
+var JF={12:1.12,16:1.0,24:0.85};
+var LF={'40/10':{f:1,live:40,dead:10},'30/10':{f:1.12,live:30,dead:10},'20/10':{f:1.25,live:20,dead:10}};
+var JE={'SPF #2':1.4e6,'SYP #1':1.6e6,'Douglas Fir #2':1.9e6};
+var JI={'2x6':20.8,'2x8':47.6,'2x10':98.9,'2x12':178.0};
+var SIZES=['2x6','2x8','2x10','2x12'];
+function computeJoist(o){
+  var max=JT[o.species][o.size]*JF[o.spacing]*LF[o.load].f;
+  var pass=o.span<=max+1e-9,rec='Good to build.';
+  if(!pass){var i=SIZES.indexOf(o.size);
+    if(i<SIZES.length-1){var ns=SIZES[i+1];
+      rec=(JT[o.species][ns]*JF[o.spacing]*LF[o.load].f>=o.span-1e-9)?('Step up to '+ns+' '+o.species+' at '+o.spacing+' in. o.c.'):'Add a mid-span beam or bearing wall';
+    }else{rec='Add a mid-span beam or bearing wall';}}
+  var E=JE[o.species],I=JI[o.size],L=o.span*12,w=(LF[o.load].live+LF[o.load].dead)*o.spacing/144;
+  var delta=5*w*Math.pow(L,4)/(384*E*I),allow=L/360;
+  return{max:max,pass:pass,rec:rec,delta:delta,allow:allow,deflPass:delta<=allow+1e-9};
+}
+if(typeof document!=='undefined'){
+(function(){
+  function val(id){return parseFloat(document.getElementById(id).value)||0;}
+  function fmt(n,d){return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});}
+  function ftin(f){var ft=Math.floor(f+1e-9),inch=Math.round((f-ft)*12);if(inch===12){ft++;inch=0;}return ft+' ft '+inch+' in.';}
+  ['js-span','js-size','js-sp','js-oc','js-load'].forEach(function(id){
+    var el=document.getElementById(id);el.addEventListener('input',calc);el.addEventListener('change',calc);});
+  function draw(span,max,pass){
+    var svg=document.getElementById('js-svg'),NS='http://www.w3.org/2000/svg';
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    var x0=70,x1=570,y=110;
+    function e(n,at){var el=document.createElementNS(NS,n);for(var k in at)el.setAttribute(k,at[k]);svg.appendChild(el);return el;}
+    e('line',{x1:x0,y1:y,x2:x1,y2:y,stroke:'#842315','stroke-width':10,'stroke-linecap':'round'});
+    for(var i=0;i<5;i++){var bx=x0+40+i*105;
+      e('rect',{x:bx-14,y:y-58,width:28,height:20,fill:'#fff',stroke:'#842315','stroke-width':1.5});}
+    e('rect',{x:x0-46,y:y-14,width:40,height:100,fill:'#F4D6D2',stroke:'#842315','stroke-width':2});
+    e('rect',{x:x1+6,y:y-14,width:40,height:100,fill:'#F4D6D2',stroke:'#842315','stroke-width':2});
+    e('line',{x1:x0,y1:y+52,x2:x1,y2:y+52,stroke:'#33301C','stroke-width':1.5});
+    e('line',{x1:x0,y1:y+44,x2:x0,y2:y+60,stroke:'#33301C','stroke-width':1.5});
+    e('line',{x1:x1,y1:y+44,x2:x1,y2:y+60,stroke:'#33301C','stroke-width':1.5});
+    var t=e('text',{x:(x0+x1)/2,y:y+44,'text-anchor':'middle','font-size':15,'font-weight':700,fill:'#33301C'});
+    t.textContent='span '+fmt(span,1)+' ft  —  max '+ftin(max);
+    var v=e('text',{x:(x0+x1)/2,y:y-72,'text-anchor':'middle','font-size':13,'font-weight':700,
+      fill:pass?'#842315':'#8B3E23'});
+    v.textContent=pass?'WITHIN TABLE LIMIT':'EXCEEDS TABLE LIMIT';
+  }
+  function calc(){
+    var o={span:val('js-span'),size:document.getElementById('js-size').value,
+      species:document.getElementById('js-sp').value,spacing:parseFloat(document.getElementById('js-oc').value),
+      load:document.getElementById('js-load').value};
+    var r=computeJoist(o);
+    var st=document.getElementById('js-stamp');
+    st.textContent=r.pass?'PASS':'FAIL';st.classList.toggle('fail',!r.pass);
+    document.getElementById('js-max').textContent=ftin(r.max);
+    document.getElementById('js-defl').textContent=fmt(r.delta,2)+' in. / '+fmt(r.allow,2)+' in. — '+(r.deflPass?'OK':'OVER');
+    document.getElementById('js-rec').textContent=r.rec;
+    draw(o.span,r.max,r.pass);
+  }
+  calc();
+})();
+}
+</script>
+</body>
+</html>
