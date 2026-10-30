@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hiking Water Needs Calculator — How Much Water to Carry</title>
+<meta name="description" content="Calculate hiking water needs from distance, walking time, and heat, with refill planning guidance.">
+<link rel="canonical" href="https://fun.fixoraa.tech/trailwater/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Hiking Water Needs Calculator — How Much Water to Carry">
+<meta property="og:description" content="Calculate hiking water needs from distance, walking time, and heat, with refill planning guidance.">
+<meta property="og:url" content="https://fun.fixoraa.tech/trailwater/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "TrailWater",
+      "url": "https://fun.fixoraa.tech/trailwater/",
+      "applicationCategory": "Outdoor",
+      "operatingSystem": "Web",
+      "description": "Calculate hiking water needs from distance, walking time, and heat, with refill planning guidance.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much water do I need for a day hike?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on distance, time, and heat. A ten kilometre, four hour hike in normal conditions needs about 5.2 litres in total, including refills."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I drink on a hike?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Little and often, every fifteen to twenty minutes, rather than waiting until you are very thirsty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I drink from streams on a hike?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only after filtering, purifying, or sterilising. Even clear mountain water can carry bacteria and parasites."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do I need salty snacks on a hot hike?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sweat loses salt as well as water. Salty food or electrolytes help on long, hot hikes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How heavy is hiking water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One litre weighs one kilogram, which is why refill planning matters for long hikes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are signs of dehydration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Thirst, dark urine, headache, tiredness, dizziness, and confusion. Stop in shade, drink, and seek help if symptoms persist."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#eef8ff; --surface:#ffffff; --accent:#0c4a6e; --accent-ink:#ffffff;
+  --ink:#14202a; --muted:#3d5265; --line:#bfdcf0;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+.layout-bottle .bottle{margin-top:1rem;border:2px solid var(--accent);border-radius:20px;padding:1rem;text-align:center;font-weight:700} @media(min-width:760px){.layout-bottle{display:grid;grid-template-columns:1.2fr .8fr;gap:1.2rem}.layout-bottle h1,.layout-bottle .sub{grid-column:1/-1}.layout-bottle .resultcard{grid-column:2}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="TrailWater home">
+      <span class="fx-logo-tile" aria-hidden="true">💧</span>
+      <span class="fx-brand">TrailWater</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-trail-canteen" aria-label="TrailWater tool">
+<div class="layout-bottle">
+<h1>Hiking Water Needs Calculator</h1>
+<p class="sub">Estimate how much water to carry or plan to refill on a hike.</p>
+<div class="formcard">
+<label>Distance (km)<input id="dist" type="number" value="10" step="1" min="0"></label><label>Walking time (hours)<input id="hrs" type="number" value="4" step="1" min="0"></label><label>Conditions<select id="heat"><option value="1.0">Normal (1.0)</option><option value="1.5">Hot / exposed (1.5)</option></select></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter distance, time, and conditions to see water needs.</p></div>
+<div class='bottle'><div class='fill'>💧 Carry + refill plan</div></div>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How much water do you need on a hike?</h2>
+<p>Water is the heaviest essential on a hike and the one you can least afford to run out of, which makes planning it a balancing act. Carry too little and you risk dehydration, headache, and poor judgement. Carry far too much and you haul unnecessary kilograms up every hill. This calculator estimates hiking water needs from distance, walking time, and heat, using a simple rule: about 0.4 litres per kilometre walked plus 0.3 litres per hour, multiplied by a heat factor. A ten kilometre, four hour hike in normal conditions needs about 5.2 litres by that rule, which sounds like a lot until you remember that a day's walking in warm weather genuinely uses several litres. The figure is for the whole hike, including water you drink at the start and refill along the way, so plan refill points as well as the total.</p>
+<p>Distance and time both matter because they capture different parts of effort. Distance reflects the work of moving your body over ground, while time reflects the hours your body spends sweating, even on slow, steep, or scenic sections where distance accumulates slowly. A short, steep hike can take as long as a longer, flat one, and both deserve water for the hours involved. The heat factor adjusts for conditions: normal weather uses a factor of one, while hot, humid, or exposed conditions use one and a half, because sweat losses rise sharply with temperature and sun. Altitude also increases water needs, because breathing dry mountain air and working harder at altitude both lose water, so add extra if you are walking high.</p>
+<h2>Dehydration, signs, and drinking strategy</h2>
+<p>Dehydration creeps up gradually. Early signs include thirst, darker urine, headache, and tiredness, and by the time you feel very thirsty you are already behind. More serious signs include dizziness, confusion, and nausea, which are reasons to stop, rest in shade, drink, and seek help if they do not improve. The best strategy is to drink little and often from the start, rather than waiting until you are thirsty and then drinking a large amount at once. Aim for regular sips every fifteen to twenty minutes, and eat salty snacks as well, because sweat loses salt as well as water, and drinking plain water without food on a very long, sweaty hike can dilute blood sodium. Electrolyte drinks or salty food help on long, hot hikes, but for most day hikes, water plus normal snacks is enough.</p>
+<p>Carrying water is a weight problem. One litre weighs one kilogram, so 5.2 litres weighs 5.2 kilograms before food, clothing, and kit. That weight affects pace, knees, and energy, which is why refill planning matters so much. Study the route for streams, springs, taps, and villages, and carry a filter, purification tablets, or a steriliser if you plan to refill from natural water. Never assume a stream is safe to drink untreated, because even clear mountain water can carry bacteria and parasites. In dry areas with no refills, you must carry the full amount, so choose a shorter route, start early to avoid the hottest hours, and consider caching water in advance if the route allows it and local rules permit.</p>
+<h2>Containers, carrying, and group planning</h2>
+<p>How you carry water affects comfort. A hydration bladder lets you sip without stopping and encourages regular drinking, while bottles are easier to refill, measure, and share, and they let you see exactly how much you have left. Many experienced hikers use both: a bladder for drinking on the move and a bottle for camp or cooking. Insulated bottles keep water cool in heat, which makes drinking more pleasant and encourages you to drink enough. In cold weather, keep a bottle inside your pack or jacket to stop it freezing, and carry a little extra because cold suppresses thirst even though you still lose water through breathing and exertion. Check all containers for leaks before a long hike, because a slow leak can lose litres unnoticed.</p>
+<p>Group water planning needs a safety margin. Calculate for each person separately, because body size, fitness, and pace affect needs, and children need careful attention because they dehydrate faster and may not say they are thirsty. Carry a small group reserve beyond individual totals, and agree who carries it. A group that shares water freely without tracking totals can run out together, so keep individual supplies identifiable and check levels at lunch and other stops. If anyone shows signs of heat illness, stop in shade, cool them, give small sips of water, and do not press on hoping it will pass. Heat exhaustion can progress to heatstroke, which is a medical emergency.</p>
+<h2>A worked example</h2>
+<p>Take a fifteen kilometre hike taking six hours in hot conditions, with a heat factor of 1.5. Distance contributes six litres and time contributes 1.8 litres, giving 7.8 litres before the heat factor and 11.7 litres after it. That is a very large amount to carry, which is exactly the point of calculating it: a hike of that length in heat either needs reliable refills, a very early start, or a shorter route. The same hike in normal conditions needs 7.8 litres, still a lot, so even a moderate day hike deserves a refill plan. Splitting water between a bladder and bottles, refilling at a stream halfway, and starting with a full drink before setting out all make the total manageable. Drink a good amount before you start, because starting hydrated gives you a buffer for the first hour.</p>
+<p>Season and terrain change the maths. Winter hikes need less water for sweat but still need regular drinking, and snow is not a reliable water source without melting and treating it. Desert and exposed ridge hikes need the most, with sun, wind, and heat all increasing losses. Forest hikes in shade need less, but humidity can still cause heavy sweating. After the hike, rehydrate properly with water and food, and check that urine returns to a pale straw colour. A calculator gives you a number, but your body gives you feedback, and learning to read both is what keeps hiking enjoyable and safe.</p>
+<h3>Water guide by hike length</h3>
+<table><tr><th>Hike</th><th>Normal conditions</th><th>Hot conditions</th></tr>
+<tr><td>10 km, 4 hours</td><td>5.2 L</td><td>7.8 L</td></tr>
+<tr><td>15 km, 6 hours</td><td>7.8 L</td><td>11.7 L</td></tr>
+<tr><td>20 km, 8 hours</td><td>10.4 L</td><td>15.6 L</td></tr></table>
+<ul><li>Drink little and often, starting before you feel thirsty.</li><li>Plan refill points and carry purification for natural water.</li><li>Eat salty snacks on long, hot hikes.</li><li>Carry a group reserve beyond individual totals.</li><li>Watch for headache, dark urine, and dizziness.</li><li>Start early to avoid the hottest hours.</li></ul>
+<p>Water planning is not about carrying the most water possible. It is about carrying enough, knowing where the next water is, and drinking steadily so you enjoy the walk instead of enduring it. Calculate the total, plan the refills, and walk happy.</p><p>Training your water judgement takes only a few hikes. Weigh your pack before and after a hike, note how much water you drank, and compare the result with the calculator's estimate for the same distance, time, and heat. You will quickly learn whether you drink more or less than average, and by how much, which lets you adjust future estimates with confidence. Experienced hikers often carry slightly less than a calculator suggests on familiar routes with known refills, and slightly more on unfamiliar routes in heat. Personal experience, plus a calculator, plus a refill plan, is the safest combination.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much water do I need for a day hike?</summary><p>It depends on distance, time, and heat. A ten kilometre, four hour hike in normal conditions needs about 5.2 litres in total, including refills.</p></details>
+<details><summary>How often should I drink on a hike?</summary><p>Little and often, every fifteen to twenty minutes, rather than waiting until you are very thirsty.</p></details>
+<details><summary>Can I drink from streams on a hike?</summary><p>Only after filtering, purifying, or sterilising. Even clear mountain water can carry bacteria and parasites.</p></details>
+<details><summary>Why do I need salty snacks on a hot hike?</summary><p>Sweat loses salt as well as water. Salty food or electrolytes help on long, hot hikes.</p></details>
+<details><summary>How heavy is hiking water?</summary><p>One litre weighs one kilogram, which is why refill planning matters for long hikes.</p></details>
+<details><summary>What are signs of dehydration?</summary><p>Thirst, dark urine, headache, tiredness, dizziness, and confusion. Stop in shade, drink, and seek help if symptoms persist.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">TrailWater</div>
+    <p>TrailWater estimates hiking water needs from distance, time, and heat, so you carry enough without overloading.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(dist,hours,heat){if(dist<=0||hours<=0)return{litres:0};var l=(dist*0.4+hours*0.3)*heat;return{litres:Math.round(l*100)/100};}
+function run(){var r=compute(+document.getElementById('dist').value,+document.getElementById('hrs').value,+document.getElementById('heat').value);document.getElementById('result').innerHTML='<p class="big">About '+r.litres+' litres</p><p class="muted">That weighs about '+r.litres+' kg. Plan refill points for totals over 3 litres.</p>';window._last='TrailWater: about '+r.litres+' litres';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Easy day: 10 km, 4 h, normal',[10,4,1.0]],['Long day: 15 km, 6 h, normal',[15,6,1.0]],['Hot day: 15 km, 6 h, hot',[15,6,1.5]]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){var v=P[+b.dataset.i][1];document.getElementById('dist').value=v[0];document.getElementById('hrs').value=v[1];document.getElementById('heat').value=v[2];run();};});
+run();
+</script>
+</body>
+</html>
