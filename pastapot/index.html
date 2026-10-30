@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pasta Water Ratio Calculator: Water &amp; Salt Per Serving</title>
+<meta name="description" content="Get perfect pasta every time with the 100g pasta, 1L water, 10g salt rule. Scale servings instantly and find the best sauce pairing for your pasta shape.">
+<link rel="canonical" href="https://fun.fixoraa.tech/pastapot/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Pasta Water Ratio Calculator: Water &amp; Salt Per Serving">
+<meta property="og:description" content="Get perfect pasta every time with the 100g pasta, 1L water, 10g salt rule. Scale servings instantly and find the best sauce pairing for your pasta shape.">
+<meta property="og:url" content="https://fun.fixoraa.tech/pastapot/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PastaPot",
+      "url": "https://fun.fixoraa.tech/pastapot/",
+      "applicationCategory": "Kitchen Tools",
+      "operatingSystem": "Web",
+      "description": "Get perfect pasta every time with the 100g pasta, 1L water, 10g salt rule. Scale servings instantly and find the best sauce pairing for your pasta shape.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much water do I need to boil pasta for 4 people?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use 4 litres of water, 400 g of dried pasta and 40 g of salt. The rule is 1 litre of water, 100 g pasta and 10 g salt per serving."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much salt should I put in pasta water per litre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "10 g per litre \u2014 about 2 teaspoons of fine salt or 1 tablespoon of coarse kosher salt. The water should taste like the sea."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I add oil to pasta water to stop sticking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Oil floats on the surface and then coats the pasta, which stops sauce from sticking to it. Use plenty of water and stir in the first minute instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I add salt before or after the water boils?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After it boils. Salted water takes longer to come to the boil, and undissolved salt can pit stainless steel pots over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I rinse pasta after draining?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, never rinse hot pasta \u2014 rinsing removes the surface starch that helps sauce cling. The only exception is pasta destined for a cold salad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do Italians save pasta water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The cooking water is full of dissolved starch, which emulsifies with oil or butter to make sauces glossy and help them coat every strand instead of pooling at the bottom."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF7F2; --surface:#FFFFFF; --accent:#B23A24; --accent-ink:#FFFFFF;
+  --ink:#2E211B; --muted:#65544A; --line:#EADFD2;
+  --display:'Oswald',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.pp-wrap{max-width:560px;margin:0 auto;padding:40px 20px 64px;text-align:center;color:#2E211B;font-family:Inter,system-ui,sans-serif}
+.pp-eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#B23A24;margin:0 0 10px}
+.pp-wrap h1{font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(38px,9vw,58px);line-height:1.05;margin:0 0 10px;color:#2E211B}
+.pp-tagline{font-size:17px;color:#65544A;margin:0 0 26px}
+.pp-servings{display:flex;align-items:center;justify-content:center;gap:22px;margin:0 0 24px}
+.pp-step{width:56px;height:56px;border-radius:50%;border:2px solid #B23A24;background:#fff;color:#B23A24;font-size:28px;line-height:1;cursor:pointer}
+.pp-step:active{background:#B23A24;color:#fff}
+.pp-count span{font-family:Oswald,sans-serif;font-size:56px;color:#B23A24;display:block;line-height:1}
+.pp-count small{font-size:13px;color:#65544A;letter-spacing:1px;text-transform:uppercase}
+.pp-pot{position:relative;width:170px;height:190px;margin:0 auto 26px;border:3px solid #2E211B;border-top:none;border-radius:0 0 90px 90px;overflow:hidden;background:#fff}
+.pp-water{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(#7fc4e8,#4a9fd4);transition:height .4s ease}
+.pp-pot-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#2E211B;text-shadow:0 1px 0 #fff}
+.pp-results{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 26px}
+.pp-results div{background:#fff;border:1px solid #EADFD2;border-radius:16px;padding:14px 6px}
+.pp-results dt{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#65544A;margin-bottom:6px}
+.pp-results dd{margin:0;font-family:Oswald,sans-serif;font-size:24px;color:#B23A24}
+.pp-card{background:#fff;border:1px solid #EADFD2;border-radius:20px;padding:20px;text-align:left;margin-bottom:16px}
+.pp-h2{font-family:Oswald,sans-serif;font-size:22px;margin:0 0 12px;color:#2E211B;font-weight:600}
+.pp-shapes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pp-shape{border:1px solid #EADFD2;background:#FDF7F2;border-radius:14px;padding:12px 6px;font-size:24px;cursor:pointer;display:flex;flex-direction:column;gap:4px;align-items:center;min-height:64px}
+.pp-shape span{font-size:12px;font-weight:600;color:#65544A}
+.pp-shape.pp-on{border:2px solid #B23A24;background:#fff}
+.pp-shape.pp-on span{color:#B23A24}
+.pp-pair{font-size:15px;color:#65544A;margin:14px 0 0;line-height:1.6}
+.pp-pair b{color:#2E211B}
+.pp-foot{font-size:14px;color:#65544A;background:#fff;border:1px dashed #EADFD2;border-radius:14px;padding:12px 16px;margin:0}
+@media(max-width:420px){
+.pp-results{grid-template-columns:repeat(2,1fr)}
+.pp-shapes{grid-template-columns:repeat(2,1fr)}
+.pp-wrap{padding:28px 14px 48px}
+.pp-step{width:52px;height:52px}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PastaPot home">
+      <span class="fx-logo-tile" aria-hidden="true">🍝</span>
+      <span class="fx-brand">PastaPot</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-zen-single" aria-label="PastaPot tool">
+<section class="pp-wrap" aria-label="Pasta water ratio calculator">
+  <p class="pp-eyebrow">🍝 The 10-100-1000 rule</p>
+  <h1>How much water for your pasta?</h1>
+  <p class="pp-tagline">The 10-100-1000 rule, made effortless: 10g salt, 100g pasta, 1000ml water.</p>
+  <div class="pp-servings">
+    <button class="pp-step" id="ppMinus" aria-label="Fewer servings">−</button>
+    <div class="pp-count"><span id="ppServNum">4</span><small>servings</small></div>
+    <button class="pp-step" id="ppPlus" aria-label="More servings">+</button>
+  </div>
+  <div class="pp-pot">
+    <div class="pp-water" id="ppWater" style="height:55%"></div>
+    <div class="pp-pot-label"><span id="ppWaterL">4.0</span> L water</div>
+  </div>
+  <dl class="pp-results">
+    <div><dt>Pasta</dt><dd><span id="ppPasta">400</span> g</dd></div>
+    <div><dt>Water</dt><dd><span id="ppWaterT">4.0</span> L</dd></div>
+    <div><dt>Salt</dt><dd><span id="ppSalt">40</span> g</dd></div>
+    <div><dt>Boil time</dt><dd><span id="ppTime">10</span> min</dd></div>
+  </dl>
+  <div class="pp-card">
+    <h2 class="pp-h2">Pick your shape</h2>
+    <div class="pp-shapes" id="ppShapes">
+      <button class="pp-shape pp-on" data-shape="spaghetti">🍝<span>Spaghetti</span></button>
+      <button class="pp-shape" data-shape="penne">🖊<span>Penne</span></button>
+      <button class="pp-shape" data-shape="fusilli">🌀<span>Fusilli</span></button>
+      <button class="pp-shape" data-shape="farfalle">🎀<span>Farfalle</span></button>
+      <button class="pp-shape" data-shape="rigatoni">🎺<span>Rigatoni</span></button>
+      <button class="pp-shape" data-shape="lasagne">🟧<span>Lasagne</span></button>
+    </div>
+    <p class="pp-pair" id="ppPair"><b>Spaghetti</b> — 9–11 min. Loves light, clinging sauces: aglio e olio, carbonara, cacio e pepe.</p>
+  </div>
+  <p class="pp-foot">💡 Salt the water once it boils — it should taste like the sea. Never add oil; it stops sauce sticking.</p>
+</section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The golden rule of pasta water: 10-100-1000</h2><p>Italian cooks summarise perfect pasta in three numbers: <strong>10</strong> grams of salt, <strong>100</strong> grams of dried pasta, <strong>1000</strong> millilitres of water — per person. That is roughly one litre of water and a generous tablespoon of coarse salt for every 100 g serving of pasta. The large volume of water does two jobs: it keeps the temperature from crashing when cold pasta hits the pot, and it dilutes the starch that leaches out so strands stay separate instead of gluing together. The salt does one job, but it is the most important one: it seasons the pasta from the inside as it hydrates, something no amount of sauce added later can fully fix.</p><h2>How much water per serving, exactly?</h2><p>For one serving (100 g dried pasta), bring 1 litre of water to a rolling boil and add 10 g of salt — about 2 teaspoons of fine salt or 1 tablespoon of coarse kosher salt. For four servings, that scales linearly to 4 litres of water and 40 g of salt. If your pot cannot comfortably hold that much, use the biggest pot you own and accept slightly stickier pasta rather than cutting the salt: under-salted pasta water is the single most common home-cooking mistake. As a sanity check, the water should taste like the sea — noticeably salty, not painfully so.</p><table><thead><tr><th>Servings</th><th>Dried pasta</th><th>Water</th><th>Salt</th><th>Minimum pot size</th></tr></thead><tbody><tr><td>1</td><td>100 g</td><td>1 L</td><td>10 g</td><td>2 L</td></tr><tr><td>2</td><td>200 g</td><td>2 L</td><td>20 g</td><td>3 L</td></tr><tr><td>4</td><td>400 g</td><td>4 L</td><td>40 g</td><td>6 L</td></tr><tr><td>6</td><td>600 g</td><td>6 L</td><td>60 g</td><td>8 L</td></tr><tr><td>8</td><td>800 g</td><td>8 L</td><td>80 g</td><td>10 L</td></tr></tbody></table><h2>When to add the salt</h2><p>Add salt after the water reaches a full boil, not before. There are two reasons: salted water takes slightly longer to boil, and salt sitting on the bottom of a pot can pit stainless steel over time. Once the water is boiling, add the salt, give it a swirl to dissolve, then add the pasta. For fresh pasta, which cooks in 2–4 minutes, the same ratio applies but you can be slightly more generous with water since fresh pasta releases starch faster.</p><h2>How long to boil pasta</h2><p>Most dried pasta cooks in 8–12 minutes, but the packet time is a starting point, not a law. Start tasting 2 minutes before the suggested time and aim for <em>al dente</em> — tender with a firm bite at the centre. Remember that pasta keeps cooking in the hot sauce, so drain it about 1 minute early and finish it in the pan with a ladle of pasta water. That starchy water is liquid gold: its dissolved starch emulsifies with fat to make sauces glossy and clinging instead of watery.</p><h3>Cooking times by shape</h3><table><thead><tr><th>Shape</th><th>Dried, minutes</th><th>Best sauce style</th></tr></thead><tbody><tr><td>Spaghetti / linguine</td><td>9–11</td><td>Light, oil- or egg-based: aglio e olio, carbonara</td></tr><tr><td>Penne / rigatoni</td><td>10–14</td><td>Chunky tomato or meat sauces that fill the tubes</td></tr><tr><td>Fusilli / rotini</td><td>10–12</td><td>Pesto, creamy sauces — spirals trap them</td></tr><tr><td>Farfalle</td><td>10–12</td><td>Light vegetable or cream sauces</td></tr><tr><td>Lasagne sheets</td><td>8–10 (or no-boil)</td><td>Layered ragù and béchamel</td></tr></tbody></table><h2>Matching pasta shapes to sauces</h2><p>The pairing rule is simple: <strong>smooth, thin pasta for smooth, thin sauces; ridged, hollow or twisted pasta for chunky, hearty sauces.</strong> Long strands like spaghetti are designed to be twirled through light coatings — heavy meatballs slide right off them. Tubes like rigatoni and penne catch chunks of tomato and sausage inside. Twists like fusilli grip pesto in their crevices. When in doubt, match the cuisine's home region: the shape and sauce evolved together over centuries.</p><h2>Five mistakes that ruin pasta</h2><ul><li><strong>Too little water.</strong> Pasta needs room to move. Crowded pasta releases concentrated starch and turns gummy.</li><li><strong>Adding oil to the water.</strong> It floats on top, does nothing for sticking, and coats the pasta so sauce slides off. Skip it.</li><li><strong>Not salting enough.</strong> If your pasta tastes bland no matter the sauce, this is why. Be brave with the salt.</li><li><strong>Rinsing after draining.</strong> Rinsing washes away the surface starch that helps sauce cling. Never rinse (except for cold pasta salads).</li><li><strong>Draining completely dry.</strong> Always save a cup of pasta water before draining, and finish the pasta in the sauce for the last minute.</li></ul><h2>Fresh vs dried pasta</h2><p>Dried pasta, made from durum wheat semolina and water, has a firm bite and nutty flavour and is the right choice for most everyday sauces. Fresh egg pasta is delicate, cooks in minutes, and suits butter-based or light cream sauces. Nutritionally they are close; the choice is about texture and tradition. Whatever you choose, the water ratio stays the same — only the timing changes.</p><p>Stick to 10-100-1000, taste early, finish in the sauce, and your pasta will taste like it came from a trattoria kitchen.</p><h2>The science of salty pasta water</h2><p>Salt does not just flavour the surface — as pasta hydrates in boiling water, dissolved salt travels into the starch matrix with the water. Pasta boiled in unsalted water tastes flat all the way through, and no sauce fully compensates because the blandness is inside every strand. The often-quoted "as salty as the sea" is slight hyperbole (seawater is about 3.5% salt; pasta water at 10 g per litre is 1%), but the direction is right: most home cooks under-salt by half. If you are on a low-sodium diet, 5–7 g per litre still transforms the result.</p><h2>Cooking pasta for a crowd</h2><p>The 10-100-1000 rule scales linearly, but pots do not. For more than 6 servings, cook in two batches rather than cramming — overcrowded pasta drops the water temperature, extends cooking time unevenly, and glues together. Alternatively, use a wide, shallow pan (like a large sauté pan) instead of a tall stockpot: more surface area means faster return to the boil and easier stirring. Restaurant kitchens often par-cook pasta to 80%, chill it in oiled trays, then finish portions to order in the sauce — a trick worth stealing for dinner parties.</p><h2>Gluten-free and wholegrain pasta</h2><p>Gluten-free pasta releases more surface starch and is more fragile: use the full water ratio, stir gently but often in the first two minutes, and expect a narrower window between al dente and mushy — start tasting early. Wholegrain pasta needs 1–2 minutes longer than white and benefits from an extra pinch of salt, as its bran mutes seasoning. Both types love being finished in the sauce, which evens out minor texture imperfections.</p><h2>One-pot pasta: does it work?</h2><p>One-pot recipes that cook pasta directly in the sauce with minimal water have a devoted following, and they do work — the concentrated starch thickens the sauce beautifully. But they break the 10-100-1000 rule deliberately: with little water, starch concentration is high, so you must stir constantly and accept a softer, less distinct texture. For the best of both worlds, boil pasta separately in properly salted water and finish it in the sauce for the final minute with a ladle of pasta water. You get perfect texture <em>and</em> a glossy, emulsified sauce.</p><h2>Storing and reheating leftover pasta</h2><p>Toss leftover plain pasta with a teaspoon of olive oil before refrigerating — it prevents clumping without the downsides of oiling cooking water. Refrigerate within two hours and use within 3–4 days. To reheat, drop portions into simmering salted water for 30–60 seconds rather than microwaving, which turns pasta rubbery. Interestingly, cooked pasta that is cooled and reheated develops more resistant starch, which blunts blood-sugar spikes — a small nutritional bonus for meal-preppers.</p><h2>Pasta water as an ingredient: sauces that depend on it</h2><p>Some sauces are <em>built</em> on starchy pasta water. For cacio e pepe, toss just-drained pasta with pecorino and add the water a splash at a time — about 120 ml per 400 g pasta — until the cheese melts into a glossy cream instead of clumping. Carbonara works the same way: the water tempers the egg mixture so it coats rather than scrambles. In both dishes under-salted water shows immediately, because there is no heavy sauce to hide behind.</p><h2>High altitude and induction quirks</h2><p>Above 1,500 m, water boils below 95°C, so pasta cooks a little slower — add 1–2 minutes and keep the lid on between stirs. On induction hobs, water returns to the boil remarkably fast, so you can use slightly less water than the 1-litre rule if your burner is powerful. Whatever the heat source, the salt ratio stays fixed at 10 g per litre.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much water do I need to boil pasta for 4 people?</summary><p>Use 4 litres of water, 400 g of dried pasta and 40 g of salt. The rule is 1 litre of water, 100 g pasta and 10 g salt per serving.</p></details>
+<details><summary>How much salt should I put in pasta water per litre?</summary><p>10 g per litre — about 2 teaspoons of fine salt or 1 tablespoon of coarse kosher salt. The water should taste like the sea.</p></details>
+<details><summary>Should I add oil to pasta water to stop sticking?</summary><p>No. Oil floats on the surface and then coats the pasta, which stops sauce from sticking to it. Use plenty of water and stir in the first minute instead.</p></details>
+<details><summary>Do I add salt before or after the water boils?</summary><p>After it boils. Salted water takes longer to come to the boil, and undissolved salt can pit stainless steel pots over time.</p></details>
+<details><summary>Should I rinse pasta after draining?</summary><p>No, never rinse hot pasta — rinsing removes the surface starch that helps sauce cling. The only exception is pasta destined for a cold salad.</p></details>
+<details><summary>Why do Italians save pasta water?</summary><p>The cooking water is full of dissolved starch, which emulsifies with oil or butter to make sauces glossy and help them coat every strand instead of pooling at the bottom.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PastaPot</div>
+    <p>PastaPot applies the classic 10-100-1000 rule to tell you exactly how much pasta, water and salt to use.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function pastaPlan(servings){
+  var s = Math.max(1, Math.round(servings));
+  return { pastaG: s * 100, waterL: s * 1, saltG: s * 10, timeMin: 10 };
+}
+if(typeof document !== 'undefined'){
+document.addEventListener('DOMContentLoaded', function(){
+  var servings = 4;
+  var pairs = {
+    spaghetti: '<b>Spaghetti</b> — 9–11 min. Loves light, clinging sauces: aglio e olio, carbonara, cacio e pepe.',
+    penne: '<b>Penne</b> — 10–12 min. Tubes trap chunky sauces: arrabbiata, vodka sauce, baked penne.',
+    fusilli: '<b>Fusilli</b> — 10–12 min. Spirals grab pesto and creamy sauces brilliantly.',
+    farfalle: '<b>Farfalle</b> — 10–12 min. Bows suit light tomato or pea-and-cream sauces.',
+    rigatoni: '<b>Rigatoni</b> — 12–14 min. Big ridged tubes made for ragù and hearty meat sauces.',
+    lasagne: '<b>Lasagne sheets</b> — 8–10 min (or no-boil). Layer with ragù, béchamel and parmesan.'
+  };
+  function render(){
+    var p = pastaPlan(servings);
+    document.getElementById('ppServNum').textContent = servings;
+    document.getElementById('ppPasta').textContent = p.pastaG;
+    document.getElementById('ppWaterT').textContent = p.waterL.toFixed(1);
+    document.getElementById('ppWaterL').textContent = p.waterL.toFixed(1);
+    document.getElementById('ppSalt').textContent = p.saltG;
+    document.getElementById('ppTime').textContent = p.timeMin;
+    var h = Math.min(92, 18 + servings * 9);
+    document.getElementById('ppWater').style.height = h + '%';
+  }
+  document.getElementById('ppMinus').addEventListener('click', function(){ if(servings > 1){ servings--; render(); } });
+  document.getElementById('ppPlus').addEventListener('click', function(){ if(servings < 12){ servings++; render(); } });
+  var btns = document.querySelectorAll('#ppShapes .pp-shape');
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      btns.forEach(function(x){ x.classList.remove('pp-on'); });
+      b.classList.add('pp-on');
+      document.getElementById('ppPair').innerHTML = pairs[b.getAttribute('data-shape')];
+    });
+  });
+  render();
+});}
+</script>
+</body>
+</html>
