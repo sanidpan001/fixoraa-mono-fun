@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giveaway Comment Picker — Fair Random Winner Draw</title>
+<meta name="description" content="Pick a fair giveaway winner from pasted comments. Duplicate filtering, animated draw, and a public winner log — free, no signup.">
+<link rel="canonical" href="https://fun.fixoraa.tech/commentpick/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Giveaway Comment Picker — Fair Random Winner Draw">
+<meta property="og:description" content="Pick a fair giveaway winner from pasted comments. Duplicate filtering, animated draw, and a public winner log — free, no signup.">
+<meta property="og:url" content="https://fun.fixoraa.tech/commentpick/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CommentPick",
+      "url": "https://fun.fixoraa.tech/commentpick/",
+      "applicationCategory": "Social & Fun",
+      "operatingSystem": "Web",
+      "description": "Pick a fair giveaway winner from pasted comments. Duplicate filtering, animated draw, and a public winner log \u2014 free, no signup.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "If someone comments five times, do they get five entries?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One entry per unique commenter after cleaning. If someone commented four times, they still get exactly one ticket \u2014 the duplicate filter keeps their first comment and drops the rest, so spamming cannot improve anyone's odds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I draw the winner live on stream?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 that is the strongest approach. Drawing on a livestream or posting a screen recording of the draw, plus the tool's winner history log showing the pool size and timestamp, makes the result verifiable and shuts down accusations of favouritism."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I run a full giveaway draw with this tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Copy the comments from your post or video, paste them into Step 1, enable duplicate and empty filtering in Step 2, review the cleaned count, then press Draw in Step 3. The animation runs, a winner is shown, and the result is added to the history log."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the winner never claims the prize?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Publish a redraw rule before you draw \u2014 for example, \u201cthe winner has 48 hours to claim; otherwise I redraw from the remaining pool.\u201d Never redraw just because you dislike the result; only redraw under the policy you announced in advance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my comment data sent to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nothing is uploaded \u2014 all processing happens in your browser. Pasted comments and the winner history stay on your device only, so screenshot important draws before clearing browser data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why not just pick a winner by scrolling and pointing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For casual, low-value giveaways among friends, pointing at a screen is fine. For anything public or valuable, use a real picker: it guarantees uniform randomness, documents the pool size, and gives you a log you can show anyone who questions the result."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF8EE; --surface:#FFFFFF; --accent:#db2777; --accent-ink:#FFFFFF;
+  --ink:#2E2113; --muted:#6B5B42; --line:#EFE3CC;
+  --display:'Instrument Serif',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.cp-wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px;font-family:Inter,system-ui,sans-serif;color:#2E2113}
+.cp-hero{text-align:center;margin:6px 0 26px}
+.cp-hero h1{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(30px,5vw,44px);margin:0 0 8px;font-weight:400}
+.cp-tag{color:#6B5B42;font-size:16px;margin:0}
+.cp-steps{display:flex;gap:8px;margin-bottom:22px}
+.cp-step-dot{flex:1;text-align:center;font-size:13px;color:#6B5B42;padding:10px 4px;border-radius:12px;background:#fff;border:1px solid #EFE3CC}
+.cp-step-dot.on{background:#db2777;color:#fff;border-color:#db2777;font-weight:700}
+.cp-card{background:#fff;border:1px solid #EFE3CC;border-radius:20px;padding:24px;box-shadow:0 6px 24px rgba(219,39,119,.07);display:none}
+.cp-card.on{display:block}
+.cp-card h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;margin:0 0 6px}
+.cp-sub{color:#6B5B42;font-size:14px;margin:0 0 14px}
+#cp-comments{width:100%;min-height:180px;box-sizing:border-box;border:1.5px solid #EFE3CC;border-radius:12px;padding:12px;font-size:14px;font-family:Inter,sans-serif;color:#2E2113;background:#FDF8EE;resize:vertical}
+.cp-count{font-size:15px;color:#6B5B42;background:#FDF8EE;border:1px dashed #EFE3CC;border-radius:12px;padding:14px;margin-top:6px}
+.cp-count b{color:#db2777;font-size:20px}
+.cp-nav{display:flex;gap:10px;margin-top:18px}
+.cp-nav button{min-height:50px;padding:0 22px;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer}
+.cp-back{background:#fff;border:2px solid #db2777;color:#db2777}
+.cp-next{flex:1;background:#db2777;color:#fff;border:0}
+#cp-draw{width:100%;min-height:60px;border-radius:16px;border:0;background:#db2777;color:#fff;font-size:19px;font-weight:800;cursor:pointer}
+#cp-stage{min-height:120px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#6B5B42;text-align:center;padding:20px}
+#cp-winner{font-family:'Instrument Serif',Georgia,serif;font-size:34px;color:#db2777;text-align:center;padding:8px}
+#cp-history{margin-top:18px;border-top:1px solid #EFE3CC;padding-top:14px}
+#cp-history h3{font-size:15px;margin:0 0 10px;color:#6B5B42}
+.cp-hist-item{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:9px 4px;border-bottom:1px solid #F3EAD6}
+.cp-hist-item .w{font-weight:700;color:#2E2113}
+.cp-hist-item .m{color:#6B5B42}
+@media (max-width:560px){.cp-card{padding:16px}.cp-nav{flex-direction:column}.cp-back{order:2}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="CommentPick home">
+      <span class="fx-logo-tile" aria-hidden="true">🎉</span>
+      <span class="fx-brand">CommentPick</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-wizard-steps" aria-label="CommentPick tool">
+<div class='cp-wrap'>
+<div class='cp-hero'><h1>Giveaway Comment Picker</h1><p class='cp-tag'>One fair winner from a hundred comments — drawn live, logged forever.</p></div>
+<div class='cp-steps'>
+<div class='cp-step-dot on' data-s='1'>1 · Comments</div>
+<div class='cp-step-dot' data-s='2'>2 · Clean</div>
+<div class='cp-step-dot' data-s='3'>3 · Draw</div>
+</div>
+<section class='cp-card on' id='cp-p1'>
+<h2>Paste the comments</h2>
+<p class='cp-sub'>One comment per line — copy them straight from your post or video.</p>
+<textarea id='cp-comments' placeholder='@priya — my favourite memory is…&#10;@arjun — count me in!&#10;@priya — count me in!&#10;…'></textarea>
+<div class='cp-nav'><span></span><button class='cp-next' data-go='2'>Clean the list →</button></div>
+</section>
+<section class='cp-card' id='cp-p2'>
+<h2>Clean the entries</h2>
+<p class='cp-sub'>Automatic fairness filter: one ticket per commenter, blanks removed.</p>
+<div class='cp-count' id='cp-count'></div>
+<div class='cp-count' id='cp-breakdown' style='margin-top:10px'></div>
+<div class='cp-nav'><button class='cp-back' data-go='1'>← Back</button><button class='cp-next' data-go='3'>Draw the winner →</button></div>
+</section>
+<section class='cp-card' id='cp-p3'>
+<h2>The draw</h2>
+<p class='cp-sub' id='cp-pool-note'></p>
+<div id='cp-stage'>Press the button — good luck to everyone.</div>
+<div id='cp-winner'></div>
+<button id='cp-draw'>🎲 Draw winner</button>
+<div id='cp-history'><h3>Winner history</h3><div id='cp-hist-list'><p class='cp-sub'>No draws yet.</p></div></div>
+<div class='cp-nav'><button class='cp-back' data-go='2'>← Back</button></div>
+</section>
+</div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why giveaways need a real picker</h2>
+<p>Running a giveaway looks simple: ask people to comment, then pick one. In practice, the moment a prize has value, the comments fill with duplicates, spam accounts, and friends posting five times “for luck”. Picking by scrolling and pointing is not random, not transparent, and not defensible when someone asks “how was the winner chosen?”. A dedicated <strong>giveaway comment picker</strong> solves all three problems at once: it cleans the entry list, draws with a uniform random method, and keeps a visible history so anyone can verify the result.</p>
+<h2>What “fair” actually means in a comment draw</h2>
+<p>Fairness has two parts. First, <strong>eligibility</strong>: every valid entry must have exactly one ticket in the draw. That means duplicates collapsed to a single entry, empty or deleted comments removed, and obvious spam filtered. Second, <strong>uniform randomness</strong>: each remaining entry must have an equal probability of winning. CommentPick does both — the cleaning step is visible (you see the entry count drop as duplicates are removed), and the draw picks uniformly from the cleaned list. The winner history log records each draw with a timestamp and the pool size, so the process is auditable after the fact.</p>
+<h2>Running a clean giveaway, step by step</h2>
+<ol>
+<li><strong>Set clear entry rules up front.</strong> “Comment your favourite memory — one entry per person” beats “comment to win” because it gives you a rule to enforce.</li>
+<li><strong>Export or copy the comments.</strong> On YouTube use the comment export or copy them manually; on Instagram copy from the post. Paste the raw list into CommentPick.</li>
+<li><strong>Clean the list.</strong> Turn on duplicate removal (one entry per username) and empty-comment filtering. Review the count: if you expected 200 entries and see 143 after cleaning, those 57 were duplicates or blanks.</li>
+<li><strong>Draw live or record it.</strong> Press Draw — the animated countdown builds suspense — and screenshot or screen-record the winner for your announcement post.</li>
+<li><strong>Verify and announce.</strong> Check the winner's comment against your rules (right hashtag? not a bot?), then announce publicly with the draw log as proof.</li>
+</ol>
+<h2>Handling duplicates and spam</h2>
+<p>Duplicate handling is where most informal draws go wrong. Common patterns: the same person commenting three times, copy-paste spam from giveaway-hunting accounts, and comments that are just an emoji or a tag with no content. A sensible policy: one entry per unique username, regardless of how many times they commented. CommentPick's duplicate filter keeps each commenter's first comment and drops the rest. For spam, there is no perfect automatic answer — skim the cleaned list before drawing, and remove entries that clearly violate your stated rules. Document removals briefly (“3 bot accounts removed”) so the process stays transparent.</p>
+<h2>Should you draw live?</h2>
+<p>Drawing on a livestream or a recorded video is the gold standard for trust, especially for prizes worth real money. It costs you nothing and eliminates every accusation of favouritism. If a live draw is impractical, a screen recording of the draw plus the public winner log is nearly as good. What undermines trust: announcing a winner with no evidence of how they were chosen, re-drawing silently because you “didn't like” the first result (never do this — it destroys credibility), or changing the rules after entries close.</p>
+<h2>Legal and platform notes</h2>
+<p>Giveaways sit at the intersection of platform rules and local law, and both vary. YouTube, Instagram, and TikTok each publish promotion guidelines — typically requiring you to state that the platform does not sponsor the giveaway and to follow their contest policies. Many jurisdictions distinguish a <strong>sweepstakes</strong> (winner by chance, often “no purchase necessary” is legally required) from a <strong>contest</strong> (winner by skill or judging). If your prize is valuable, a one-paragraph set of official rules — eligibility, entry period, how the winner is chosen, how they are notified, and what happens if they do not respond — protects you enormously. This page is not legal advice; for high-value prizes, check your local regulations.</p>
+<h2>After the draw: winner management</h2>
+<ul>
+<li><strong>Set a claim window.</strong> “Winner has 48 hours to reply” prevents prizes limboing forever. State it in the rules before you draw.</li>
+<li><strong>Contact privately, announce publicly.</strong> DM the winner first to confirm, then post the public announcement.</li>
+<li><strong>Keep the log.</strong> CommentPick's winner history stays in your browser — screenshot it for your records in case of disputes.</li>
+<li><strong>Redraw policy.</strong> Decide in advance: if the winner does not respond in 48 hours, do you redraw from the full pool or the remaining pool? Put it in the rules.</li>
+<li><strong>Thank everyone.</strong> A quick “thanks to all 300 who entered” post turns a giveaway into community goodwill instead of a one-off transaction.</li>
+</ul>
+<h2>Common giveaway mistakes</h2>
+<table>
+<thead><tr><th>Mistake</th><th>Why it hurts</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Counting duplicate comments as entries</td><td>Rewards spamming, angers honest entrants</td><td>One entry per unique commenter</td></tr>
+<tr><td>No written rules</td><td>Disputes you cannot resolve</td><td>Post rules before entries open</td></tr>
+<tr><td>Silent redraws</td><td>Looks rigged</td><td>Draw once; redraw only per published policy</td></tr>
+<tr><td>Winner never announced</td><td>Followers assume it was fake</td><td>Public announcement within 24 hours</td></tr>
+<tr><td>Prize ≠ what was advertised</td><td>Breaks trust and possibly the law</td><td>Award exactly what you promised</td></tr>
+</tbody>
+</table>
+<h2>Giveaway formats beyond “comment to win”</h2>
+<p>Comment draws are the simplest format, but not the only one. <strong>Like + comment</strong> combos raise engagement but complicate verification. <strong>Tag-a-friend</strong> mechanics grow reach fast but attract low-quality entries. <strong>UGC contests</strong> (best photo, best story) reward effort and produce content you can share, at the cost of subjective judging. <strong>Multi-platform draws</strong> pool entries from several networks — just normalise usernames first so one person does not get three tickets. Whatever the format, the principle is the same: clean the pool, draw uniformly, show your work.</p>
+<h2>Privacy note</h2>
+<p>CommentPick runs entirely in your browser. Pasted comments are never uploaded anywhere, and the winner history lives only on your device — which also means clearing browser data erases it, so screenshot important draws.</p>
+<h2>Multi-winner draws</h2>
+<p>Many giveaways have several prizes. The clean method: draw the grand prize first, then decide whether winners stay eligible for smaller prizes — and announce the rule before drawing. Most organisers remove each winner from the pool (one prize per person feels fairest to the audience). Draw prizes in descending order of value so the suspense builds. Log every draw separately; the history panel handles this naturally, giving you a complete audit trail of who won what, in which order, from how many entries.</p>
+<h2>Comment picker vs random number generator</h2>
+<p>A bare random-number generator (“pick a number between 1 and 300”) technically works, but it outsources fairness to your counting: you must number the comments yourself, handle duplicates manually, and prove you counted right. A comment picker does all three automatically — the cleaned entry list <em>is</em> the numbered pool, duplicates are already collapsed, and the pool size is displayed at draw time. For anything public, the picker's visible process beats a number generator's invisible one every time.</p>
+<h2>Growing entries without growing spam</h2>
+<p>More entries are only good if they're real. Entry mechanics that attract genuine participants: ask a question only real fans can answer (“which episode made you subscribe?”), require the comment to contain a specific word (easy to verify, hard to bot at scale), and cap the entry window — urgency drives real comments while spam accounts prefer evergreen posts. What backfires: “tag 5 friends” (fills your comments with strangers who don't care), repost-to-enter (spreads your post to bot networks), and vague “comment anything” prompts that invite single-emoji spam. Quality of entries matters as much as quantity — your winner announcement lands better when the comment section looks like a community, not a lottery queue.</p>
+<h2>Verifying winner eligibility</h2>
+<p>Drawing the name is only half the job — the winner must also qualify under your published rules. Before announcing, check the winning comment against every entry condition: did they use the required hashtag or keyword, is their account real and old enough to rule out a throwaway bot, and were they following the account if that was a condition? If the winner fails a check, document exactly which rule they broke, disqualify them openly, and redraw under your published redraw policy. Keep a runner-up protocol in your rules from the start (“if the winner is ineligible or unresponsive within 48 hours, I redraw from the remaining pool”) so the decision never looks personal. One more subtle case: the winning comment was deleted between entry close and the draw. Decide in advance whether deleted comments stay eligible — most organisers exclude them, since a deleted comment can't be verified publicly — and state it in the rules.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>If someone comments five times, do they get five entries?</summary><p>One entry per unique commenter after cleaning. If someone commented four times, they still get exactly one ticket — the duplicate filter keeps their first comment and drops the rest, so spamming cannot improve anyone's odds.</p></details>
+<details><summary>Can I draw the winner live on stream?</summary><p>Yes — that is the strongest approach. Drawing on a livestream or posting a screen recording of the draw, plus the tool's winner history log showing the pool size and timestamp, makes the result verifiable and shuts down accusations of favouritism.</p></details>
+<details><summary>How do I run a full giveaway draw with this tool?</summary><p>Copy the comments from your post or video, paste them into Step 1, enable duplicate and empty filtering in Step 2, review the cleaned count, then press Draw in Step 3. The animation runs, a winner is shown, and the result is added to the history log.</p></details>
+<details><summary>What if the winner never claims the prize?</summary><p>Publish a redraw rule before you draw — for example, “the winner has 48 hours to claim; otherwise I redraw from the remaining pool.” Never redraw just because you dislike the result; only redraw under the policy you announced in advance.</p></details>
+<details><summary>Is my comment data sent to a server?</summary><p>Nothing is uploaded — all processing happens in your browser. Pasted comments and the winner history stay on your device only, so screenshot important draws before clearing browser data.</p></details>
+<details><summary>Why not just pick a winner by scrolling and pointing?</summary><p>For casual, low-value giveaways among friends, pointing at a screen is fine. For anything public or valuable, use a real picker: it guarantees uniform randomness, documents the pool size, and gives you a log you can show anyone who questions the result.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CommentPick</div>
+    <p>CommentPick draws a fair, transparent winner from your giveaway comments — duplicates removed, every draw logged.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function pickWinner(comments,seedIndex){var seen={},clean=[];(comments||[]).forEach(function(c){var t=String(c==null?'':c).trim();if(t&&!seen[t]){seen[t]=1;clean.push(t);}});if(!clean.length)return{winner:null,total:0};var i=((seedIndex%clean.length)+clean.length)%clean.length;return{winner:clean[i],total:clean.length};}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var comments=document.getElementById('cp-comments'),countEl=document.getElementById('cp-count'),breakEl=document.getElementById('cp-breakdown');function rawLines(){return comments.value.split(/\n/);}function cleaned(){var seen={},out=[];rawLines().forEach(function(l){var t=l.trim();if(!t)return;if(seen[t])return;seen[t]=1;out.push(t);});return out;}function refreshCount(){var lines=rawLines();var blanks=lines.filter(function(l){return !l.trim();}).length;var nonBlank=lines.length-blanks;var clean=cleaned().length;var dupes=nonBlank-clean;countEl.innerHTML='Raw comments: <b>'+nonBlank+'</b> &nbsp;→&nbsp; eligible entries: <b>'+clean+'</b>';breakEl.innerHTML='🧹 Removed '+dupes+' duplicate'+(dupes===1?'':'s')+' and '+blanks+' blank line'+(blanks===1?'':'s')+'.';document.getElementById('cp-pool-note').textContent=clean+' eligible entries in the draw pool.';}function go(n){var cards=document.querySelectorAll('.cp-card');for(var i=0;i<cards.length;i++)cards[i].classList.remove('on');document.getElementById('cp-p'+n).classList.add('on');var dots=document.querySelectorAll('.cp-step-dot');for(var d=0;d<dots.length;d++)dots[d].classList.toggle('on',dots[d].getAttribute('data-s')==String(n));if(n===2)refreshCount();if(n===3)refreshCount();window.scrollTo({top:0,behavior:'smooth'});}var navs=document.querySelectorAll('[data-go]');for(var i=0;i<navs.length;i++){navs[i].addEventListener('click',function(){go(this.getAttribute('data-go'));});}comments.addEventListener('input',refreshCount);var hist=[];function renderHist(){var el=document.getElementById('cp-hist-list');if(!hist.length){el.innerHTML='<p class=\'cp-sub\'>No draws yet.</p>';return;}el.innerHTML=hist.map(function(h){return '<div class=\'cp-hist-item\'><span class=\'w\'>'+h.winner.replace(/</g,'&lt;')+'</span><span class=\'m\'>'+h.total+' entries · '+h.when+'</span></div>';}).join('');}var drawing=false;document.getElementById('cp-draw').addEventListener('click',function(){if(drawing)return;var pool=cleaned();if(!pool.length){alert('No eligible entries — paste some comments first.');return;}drawing=true;var stage=document.getElementById('cp-stage'),winEl=document.getElementById('cp-winner');winEl.textContent='';var seed=Math.floor(Math.random()*pool.length);var res=pickWinner(pool,seed);var ticks=0;var iv=setInterval(function(){stage.textContent='🎲 '+pool[Math.floor(Math.random()*pool.length)];ticks++;if(ticks>14){clearInterval(iv);stage.textContent='And the winner is…';setTimeout(function(){winEl.textContent='🏆 '+res.winner;stage.textContent='Congratulations!';hist.unshift({winner:res.winner,total:res.total,when:new Date().toLocaleString()});renderHist();drawing=false;},700);}},110);});refreshCount();renderHist();});}
+</script>
+</body>
+</html>
