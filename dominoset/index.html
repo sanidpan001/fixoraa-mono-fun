@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domino Set Calculator — How Many Tiles and Pips in a Double-N Domino Set?</title>
+<meta name="description" content="Work out the number of tiles and total pips in any double-N domino set, from double-6 to double-18, with the formulas explained.">
+<link rel="canonical" href="https://fun.fixoraa.tech/dominoset/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Domino Set Calculator — How Many Tiles and Pips in a Double-N Domino Set?">
+<meta property="og:description" content="Work out the number of tiles and total pips in any double-N domino set, from double-6 to double-18, with the formulas explained.">
+<meta property="og:url" content="https://fun.fixoraa.tech/dominoset/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "DominoSet",
+      "url": "https://fun.fixoraa.tech/dominoset/",
+      "applicationCategory": "Games",
+      "operatingSystem": "Web",
+      "description": "Work out the number of tiles and total pips in any double-N domino set, from double-6 to double-18, with the formulas explained.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many dominoes are in a double-6 set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "28 tiles. The formula (6+1)(6+2)/2 gives 28."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many pips are in a double-6 set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "168 pips in total, an average of 6 pips per tile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many tiles are in a double-12 set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "91 tiles, with 1,092 pips in total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do 3\u20135 and 5\u20133 count as one tile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because a domino tile has no fixed orientation; flipping it gives the same tile, so each unordered pair appears once."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many doubles are in a double-N set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "N + 1 doubles, one for each value from zero to N."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the largest common domino set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Double-12 is common for Mexican Train, and double-15 sets are sold for larger groups. Larger specialist sets exist up to double-18 and beyond."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I check if my set is complete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Count the tiles and compare with the calculator, then check that each value from zero to N appears on exactly N + 1 tiles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a bigger set make a better game?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. Match the set to your player count: double-6 for small groups, double-9 or double-12 for larger groups."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FFF7E6; --surface:#FFFFFF; --accent:#8A3B12; --accent-ink:#ffffff;
+  --ink:#2B1D10; --muted:#475569; --line:#E5D5B3;
+  --display:'DM Serif Display',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{max-width:720px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.2rem}
+.tool-card label{display:block;font-weight:600;margin:.9rem 0 .3rem}
+.tool-card input,.tool-card select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;font-size:1rem;background:#fff;color:#111;min-height:44px}
+.tool-card .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.calc-btn{width:100%;margin-top:1.2rem;padding:.85rem;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1.05rem;cursor:pointer;min-height:48px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+.presets button{padding:.5rem .9rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.result{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:14px;background:var(--bg);border:1px solid var(--line);font-size:1.05rem}
+.result .big{font-size:1.5rem;font-weight:800}
+.muted{color:var(--muted);font-size:.95rem}
+.hist{margin-top:1rem;font-size:.95rem}
+.hist li{margin:.3rem 0}
+.copy-btn{margin-top:.7rem;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer}
+.maze-grid{font-family:monospace;line-height:1;letter-spacing:0;white-space:pre;overflow-x:auto;font-size:14px}
+@media (max-width:640px){.tool-card{padding:1rem;border-radius:16px}.tool-card .row{grid-template-columns:1fr}.tool-card h1{font-size:1.35rem}.result .big{font-size:1.25rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="DominoSet home">
+      <span class="fx-logo-tile" aria-hidden="true">🎲</span>
+      <span class="fx-brand">DominoSet</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-domino-tile" aria-label="DominoSet tool">
+<div class="tool-card"><h1>Domino Set Calculator</h1><p class="sub">Enter the largest double in your set to find how many tiles it contains and how many pips they carry in total.</p>
+<label for="dm-n">Largest double (N)</label><input id="dm-n" type="number" value="6" min="0" max="30">
+<div class="presets"><button type="button" data-preset="6">Double-6</button><button type="button" data-preset="9">Double-9</button><button type="button" data-preset="12">Double-12</button></div>
+<button class="calc-btn" id="dm-calc" type="button">Calculate set</button>
+<div class="result" id="dm-result" aria-live="polite">Enter N and press Calculate.</div>
+<button class="copy-btn" id="dm-copy" type="button">Copy result</button>
+<div class="hist"><strong>Recent calculations</strong><ul id="dm-hist"></ul></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What is a double-N domino set?</h2>
+<p>A domino tile carries two ends, each showing a number of pips from zero up to some maximum. In a double-N set, that maximum is N, and the set contains every possible unordered pair of numbers from zero to N exactly once. The tile showing N on both ends is the double-N tile, and it gives the set its name. The familiar set sold in most shops is double-6, with numbers from zero to six, while larger sets such as double-9, double-12, and double-15 are popular for bigger games and longer tables. Because every combination appears exactly once, the size of the set follows a fixed mathematical pattern, and this calculator applies that pattern so you never have to count tiles by hand.</p>
+<p>The tile count formula is simple once you see it. For each possible first number, the second number can be equal to it or larger, because a tile with ends 3 and 5 is the same tile as one with ends 5 and 3. Counting those combinations gives the triangular number formula: the number of tiles equals (N + 1) times (N + 2) divided by 2. For a double-6 set, that is 7 times 8 divided by 2, which is 28 tiles, the number every domino player knows. For double-9, it is 10 times 11 divided by 2, or 55 tiles. For double-12, it is 13 times 14 divided by 2, or 91 tiles. The set grows quickly: each step up in N adds N + 2 new tiles, so moving from double-12 to double-15 adds 31 tiles and takes the total to 136.</p>
+<h2>Total pips in a set</h2>
+<p>The total pip count is the sum of all the dots on all the tiles, and it has its own neat formula: N times (N + 1) times (N + 2) divided by 2. For double-6, that is 6 times 7 times 8 divided by 2, which is 168 pips. For double-9, it is 9 times 10 times 11 divided by 2, or 495 pips. For double-12, it is 12 times 13 times 14 divided by 2, or 1,092 pips. Why does this matter? In many domino games, points are scored from the pips left in opponents' hands, and knowing the total helps you judge how a game is progressing. If most of the high tiles have already been played, the remaining total is small, and endgame strategy changes accordingly. Teachers also use pip totals for arithmetic practice, because counting a set is a hands-on way to meet triangular numbers.</p>
+<table><tr><th>Set</th><th>Tiles</th><th>Total pips</th><th>Average pips per tile</th><th>Common use</th></tr>
+<tr><td>Double-0</td><td>1</td><td>0</td><td>0</td><td>Curiosity, teaching</td></tr>
+<tr><td>Double-6</td><td>28</td><td>168</td><td>6.0</td><td>Standard family games</td></tr>
+<tr><td>Double-9</td><td>55</td><td>495</td><td>9.0</td><td>Larger groups, Mexican Train</td></tr>
+<tr><td>Double-12</td><td>91</td><td>1,092</td><td>12.0</td><td>Mexican Train, big tables</td></tr>
+<tr><td>Double-15</td><td>136</td><td>2,040</td><td>15.0</td><td>Large groups, tournaments</td></tr>
+<tr><td>Double-18</td><td>190</td><td>3,420</td><td>18.0</td><td>Specialist sets</td></tr></table>
+<p>Notice the elegant pattern in the last column: the average number of pips per tile in a double-N set is exactly N. That is no coincidence. Each number from zero to N appears the same number of times across the set when both ends are counted, so the average of the two ends averages out to N. This symmetry is a useful check: if you count a physical set and your average is far from N, a tile is probably missing or duplicated. It also gives a quick mental shortcut. If you know the tile count, multiplying by N gives the total pips immediately, which is often easier than remembering the longer formula.</p>
+<h2>How to use this calculator</h2>
+<p>Enter N, the largest number on any tile in your set, and press Calculate. The result shows the tile count, the total pips, the average pips per tile, and the number of tiles that are doubles, which is always N + 1, one for each value from zero to N. Use the preset buttons for the three most common sets. If you are checking a physical set you already own, count your tiles and compare with the calculator: a double-6 set with fewer than 28 tiles is incomplete, and a double-12 set with more than 91 tiles contains extras or tiles from another set. If you are buying a set, the tile count tells you whether the price is reasonable and whether the box is large enough for your usual group.</p>
+<h2>Choosing the right set size</h2>
+<p>Double-6 is the right choice for two to four players and for classic games such as Block, Draw, and All Fives. Games move quickly, hands are manageable, and the rules are easy to teach. Double-9 suits five to eight players and games where longer trains and more choices are welcome. Double-12 is the standard for Mexican Train with up to eight players, because the extra tiles keep the game going and give each player a full hand. Double-15 and larger sets are for big gatherings, tournaments, and enthusiasts who enjoy very long games. Larger is not always better: a set that is too big for your group produces slow games, crowded tables, and hands that are hard to hold, especially for children. Match the set to the number of players first, and let game length follow.</p>
+<p>Consider the physical tiles too. Larger sets often use smaller tiles to keep the box manageable, which can be hard for players with limited eyesight or dexterity. Jumbo tiles are easier to read and handle but take up more table space, so a double-12 jumbo set needs a genuinely large table. Colour-coded pips help children and new players recognise values quickly, while traditional black-and-white tiles suit purists. Whatever you choose, store the set with a printed tile list or keep this calculator bookmarked, so a missing tile can be identified in seconds rather than discovered halfway through a game.</p>
+<h2>Domino games that use these sets</h2>
+<p>In Block dominoes, players take turns laying tiles matching an open end, and the first player to empty their hand wins; a player who cannot move is blocked. In Draw dominoes, a player who cannot move draws from the boneyard until they can play or the boneyard is empty. In All Fives, points are scored whenever the open ends sum to a multiple of five, which makes pip values tactically important and rewards keeping track of which high tiles remain. Mexican Train uses a double-12 or double-15 set, with each player building a personal train and a shared Mexican train, and it is a social game that suits larger groups. Each game values the set differently: Block values tile count, All Fives values pip totals, and Mexican Train values both, which is why knowing both numbers from the calculator is genuinely useful rather than mere trivia.</p>
+<h2>Teaching maths with dominoes</h2>
+<ul><li>Triangular numbers: the tile count formula is a triangular number, and laying tiles out in rows shows why.</li><li>Combinations: ask why 3–5 and 5–3 count as one tile, introducing unordered pairs.</li><li>Averages: the average pips per tile equalling N is a surprising result to discover by counting.</li><li>Patterns: list tile counts for N from 0 to 10 and look for the differences increasing by one each time.</li><li>Probability: in a double-6 set, the chance of drawing a double is 7 in 28, or one in four.</li><li>Addition practice: scoring in All Fives turns pip counting into a game in itself.</li></ul>
+<h2>Checking a set for missing tiles</h2>
+<p>To audit a set, sort tiles by their lower end and count how many tiles start with each value. In a complete double-N set, the value zero appears on N + 1 tiles, the value one appears on N + 1 tiles, and so on for every value up to N. If any value appears fewer times, a tile is missing, and the missing partner can be identified by listing the pairs for that value and seeing which one is absent. This audit takes only a few minutes and is worth doing before a tournament or a gift is given. A complete set plays fairly; an incomplete set silently changes the odds, because some numbers become scarcer than others and strategies built on them fail for reasons nobody can see.</p>
+<h2>A short history of dominoes</h2>
+<p>Dominoes reached Europe from China in the eighteenth century, and the European set added blank tiles representing zero, which Chinese sets did not have. The game spread through parlours, pubs, and clubs, and regional variants developed their own scoring and set sizes. The double-6 set became the household standard because it balanced game length and table space, while larger sets grew alongside games designed for more players. Today dominoes remain popular worldwide, from Caribbean domino clubs where games are loud and fast to quiet family tables where the game is a gentle evening pastime. Whatever the setting, the mathematics of the set has not changed: the same formulas that count a double-6 set count a double-18 set, and this calculator simply does the arithmetic instantly.</p>
+<h3>Quick reference</h3>
+<p>Remember two formulas. Tiles equal (N + 1)(N + 2) divided by 2. Total pips equal N(N + 1)(N + 2) divided by 2. Average pips per tile equal N. Doubles equal N + 1. With those four facts, you can describe any domino set completely, check any box for completeness, and choose the right set for your next game night without counting a single tile by hand.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many dominoes are in a double-6 set?</summary><p>28 tiles. The formula (6+1)(6+2)/2 gives 28.</p></details>
+<details><summary>How many pips are in a double-6 set?</summary><p>168 pips in total, an average of 6 pips per tile.</p></details>
+<details><summary>How many tiles are in a double-12 set?</summary><p>91 tiles, with 1,092 pips in total.</p></details>
+<details><summary>Why do 3–5 and 5–3 count as one tile?</summary><p>Because a domino tile has no fixed orientation; flipping it gives the same tile, so each unordered pair appears once.</p></details>
+<details><summary>How many doubles are in a double-N set?</summary><p>N + 1 doubles, one for each value from zero to N.</p></details>
+<details><summary>What is the largest common domino set?</summary><p>Double-12 is common for Mexican Train, and double-15 sets are sold for larger groups. Larger specialist sets exist up to double-18 and beyond.</p></details>
+<details><summary>How can I check if my set is complete?</summary><p>Count the tiles and compare with the calculator, then check that each value from zero to N appears on exactly N + 1 tiles.</p></details>
+<details><summary>Does a bigger set make a better game?</summary><p>Not necessarily. Match the set to your player count: double-6 for small groups, double-9 or double-12 for larger groups.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">DominoSet</div>
+    <p>DominoSet counts the tiles and pips in any double-N domino set instantly.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcDominoSet(n){if(n<0)return{pieces:0,pips:0};var pieces=(n+1)*(n+2)/2;var pips=n*(n+1)*(n+2)/2;return{pieces:pieces,pips:pips};}
+if (typeof document !== 'undefined') {
+var hist3=[];
+function renderDM(){var n=+document.getElementById('dm-n').value;var r=calcDominoSet(n);var txt='<p class="big">'+r.pieces+' tiles &middot; '+r.pips+' pips</p><p>Average '+n+' pips per tile &middot; '+(n+1)+' doubles in the set</p>';document.getElementById('dm-result').innerHTML=txt;hist3.unshift('Double-'+n+': '+r.pieces+' tiles');if(hist3.length>5)hist3.pop();document.getElementById('dm-hist').innerHTML=hist3.map(function(x){return '<li>'+x+'</li>';}).join('');}
+document.getElementById('dm-calc').onclick=renderDM;
+var ps3=document.querySelectorAll('[data-preset]');
+ps3.forEach(function(b){b.onclick=function(){document.getElementById('dm-n').value=b.dataset.preset;renderDM();};});
+document.getElementById('dm-copy').onclick=function(){var t=document.getElementById('dm-result').innerText||'';if(typeof navigator!=='undefined'&&navigator.clipboard){navigator.clipboard.writeText(t);} };
+}
+</script>
+</body>
+</html>
