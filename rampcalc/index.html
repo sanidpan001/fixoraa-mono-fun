@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RampCalc: Wheelchair Ramp Calculator - 1:12 Slope, Run, Length &amp; Landings</title>
+<meta name="description" content="Calculate a wheelchair ramp by rise: 1:12 run, sloped length and landings for safe accessible access.">
+<link rel="canonical" href="https://fun.fixoraa.tech/rampcalc/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="RampCalc: Wheelchair Ramp Calculator - 1:12 Slope, Run, Length &amp; Landings">
+<meta property="og:description" content="Calculate a wheelchair ramp by rise: 1:12 run, sloped length and landings for safe accessible access.">
+<meta property="og:url" content="https://fun.fixoraa.tech/rampcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RampCalc",
+      "url": "https://fun.fixoraa.tech/rampcalc/",
+      "applicationCategory": "Home / DIY",
+      "operatingSystem": "Web",
+      "description": "Calculate a wheelchair ramp by rise: 1:12 run, sloped length and landings for safe accessible access.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What slope should a wheelchair ramp be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1:12 is the standard for accessible ramps: 12 cm of run for every 1 cm of rise. A 60 cm step needs a 720 cm ramp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long a ramp do I need for a 90 cm step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At 1:12, a 1080 cm run, about 1083.7 cm of sloped surface, plus one intermediate landing and level landings top and bottom."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do ramps need landings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Level landings are needed at the top and bottom, and intermediate landings on long ramps, so users can rest and turn safely."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How wide should a wheelchair ramp be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At least 90 cm clear width, and 120 cm is far more comfortable, especially on turns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use a steeper ramp for a small step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a short, assisted, temporary use, a portable ramp at 1:8 or 1:10 may be acceptable, but it is not a substitute for a permanent 1:12 ramp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need handrails on a home ramp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Handrails on both sides are strongly recommended, along with edge protection and a non-slip surface. Check local regulations before building."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FEFCE8; --surface:#FFFFFF; --accent:#854D0E; --accent-ink:#FFFFFF;
+  --ink:#1C1917; --muted:#57534E; --line:#FDE68A;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ra-ledger{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:1.2rem}.ra-diagram{background:#FEF3C7;border:1.5px solid var(--line);border-radius:16px;padding:1rem;position:relative;overflow:hidden}.ra-slope{height:80px;background:linear-gradient(to top right,transparent 49%,var(--accent) 49%,var(--accent) 52%,transparent 52%);margin:1rem 0}.ra-rows{display:flex;flex-direction:column;gap:.6rem}.ra-row{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:.8rem 1rem;display:flex;justify-content:space-between;gap:1rem}.ra-form{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:1.3rem;display:flex;flex-direction:column;gap:.9rem}.ra-form label{font-weight:600;display:flex;flex-direction:column;gap:.35rem}.ra-form input,.ra-form select{padding:.7rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;min-height:44px}.ra-go,.ra-copy{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.8rem 1.2rem;font-weight:700;min-height:44px;cursor:pointer}.ra-result{margin-top:1.2rem;background:#FEF3C7;border-radius:16px;padding:1.4rem}.ra-result .big{font-size:2.2rem;font-weight:800;font-family:var(--display)}.ra-sub{color:var(--muted);margin:.4rem 0 1.2rem}.ra-note{color:var(--muted);margin-top:1rem}@media(max-width:640px){.ra-ledger{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="RampCalc home">
+      <span class="fx-logo-tile" aria-hidden="true">♿</span>
+      <span class="fx-brand">RampCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-slope-ramp" aria-label="RampCalc tool">
+<h1>RampCalc: Wheelchair Ramp Calculator</h1><p class="ra-sub">The 1:12 ramp your step really needs: run, slope length and landings.</p><div class="ra-ledger"><div class="ra-diagram" aria-hidden="true"><div class="ra-slope"></div><p>rise &rarr; run (1:12)</p></div><div class="ra-rows"><div class="ra-row"><span>Vertical rise</span><strong id="vRise">60 cm</strong></div><div class="ra-row"><span>Horizontal run</span><strong id="vRun">720 cm</strong></div><div class="ra-row"><span>Sloped length</span><strong id="vLen">722.5 cm</strong></div><div class="ra-row"><span>Intermediate landings</span><strong id="vLand">0</strong></div></div></div><div class="ra-form"><label>Total rise (cm)<input id="rise" type="number" min="0" value="60"></label><label>Slope standard<select id="slope"><option value="12">1:12 accessible (recommended)</option><option value="10">1:10 short threshold only</option><option value="8">1:8 portable, assisted only</option></select></label><button class="ra-go" id="go">Calculate ramp</button></div><div class="ra-result" id="res"><p>Enter the step height to plan your ramp.</p></div><button class="ra-copy" id="copy">Copy plan</button><p class="ra-note">Check local building regulations before building. A proper ramp also needs level top and bottom landings, handrails and a non-slip surface.</p>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why wheelchair ramp geometry matters</h2><p>A wheelchair ramp is not just a sloping board: it is a piece of access infrastructure, and its slope decides whether it is safe, comfortable and actually usable. A ramp that is too steep is exhausting to push up, dangerous to come down, and unusable for many people in manual wheelchairs. A ramp that is too shallow takes up an enormous amount of space and may be impractical for a small home. The widely used accessibility standard is a slope of one unit of rise for every twelve units of run, known as 1:12, which balances effort, safety and space. RampCalc applies that standard to your step height, giving you the horizontal run, the true sloped length and the number of landings, so you can plan a ramp that works in the real space you have.</p><h2>How the ramp calculation works</h2><p>The calculator starts from the vertical rise: the height from the lower ground to the upper surface, such as a door threshold or a porch floor. Multiplying the rise by twelve gives the horizontal run, the length of ground the ramp covers. The sloped length, the length of the actual ramp surface, is slightly longer than the run, because it is the hypotenuse of the triangle formed by rise and run; for most home ramps the difference is small, but it matters when you order materials. Long ramps also need level landings, both at the top and bottom and at intervals along the ramp, so a wheelchair user can rest and turn safely. As a planning rule, this calculator adds an intermediate landing for every 900 centimetres of run beyond the first, which mirrors the common maximum-run guidance.</p><h2>Understanding the 1:12 standard and its limits</h2><p>The 1:12 slope means that a 60 centimetre step needs a 720 centimetre ramp, which surprises many people the first time they calculate it. That length is the point: at 1:12, most manual wheelchair users can ascend independently, and descent is controlled rather than a runaway. Steeper temporary ramps exist for short thresholds, and portable ramps are sometimes used at 1:8 or 1:10 for very small rises, but those are compromises for brief, assisted use, not a substitute for a proper permanent ramp. If your space cannot fit a 1:12 ramp in a straight line, the solution is usually a switchback ramp with a landing and a turn, or a platform lift, rather than a steeper slope. Always check your local building regulations and, for public buildings, the applicable accessibility standards before building, because handrails, edge protection and landing sizes are regulated as well as slope.</p><h2>Step by step: measuring and planning your ramp</h2><p>Measure the rise carefully from the finished lower surface to the finished upper surface, including any threshold strip, because a small measuring error multiplies by twelve in the run. Enter that rise into the calculator and note the run, the sloped length and the landing count. Then measure your available space: do you have a straight run of that length, or do you need a switchback with a landing in the middle? Sketch the ramp on paper, including the top landing, which must be level and large enough to open the door and manoeuvre, and the bottom landing, which must be clear of paths and parking. Check the route for drainage, because a ramp that collects water becomes slippery, and for overhead clearance, because a ramp under a low porch roof can be awkward for a standing assistant.</p><h2>Handrails, surfaces and edge protection</h2><p>A good ramp is more than a slope. Handrails on both sides, at a comfortable gripping height, help both wheelchair users and walking users, especially in wet weather. The surface must be firm, stable and slip-resistant: grooved timber, textured concrete, or a non-slip coating all work, while smooth wet timber or loose gravel does not. Edge protection, such as a low kerb or rail along the open side, prevents a wheel from slipping off the edge, which is a serious safety feature, not a decoration. Lighting matters too: a ramp used in the evening should be lit along its whole length, with no dark patches at the turn or at the landings. These features cost relatively little when planned from the start, and they are expensive and awkward to add afterwards.</p><h2>Materials: timber, concrete, aluminium and modular ramps</h2><p>Timber ramps are the most common home choice: they are affordable, adjustable and can be built to fit an awkward space, but they need regular maintenance and a genuinely non-slip surface. Concrete ramps are durable and permanent, ideal for a long-term home, but they are expensive and hard to change if needs change. Aluminium and modular ramps install quickly, need little maintenance and can be reconfigured or removed, which suits rented homes or changing needs, though they can look more utilitarian. Whichever material you choose, build the ramp on a firm, level foundation, protect timber from ground moisture, and plan for drainage so water runs off the surface rather than pooling on it. If in doubt, consult a builder experienced in accessible construction, because a ramp is a safety structure, not just a woodwork project.</p><h2>Common ramp planning mistakes</h2><p>The most common mistake is measuring the rise incorrectly, often by forgetting a threshold or measuring to an unfinished surface, which throws the whole ramp length out. The second is forgetting the landings: a ramp drawing that shows only the slope, with no level area at the top to open the door, will fail in practice even if the slope is correct. A third mistake is building a ramp that is too narrow: a wheelchair needs a clear width of at least 90 centimetres, and 120 centimetres is far more comfortable, especially on a turn. A fourth is ignoring the door itself: a ramp that arrives at a door with a high threshold, a heavy closer or no level landing outside it has not actually solved the access problem. Finally, do not build a ramp that blocks an emergency exit or a path used by others; access for one person should not create a hazard for another.</p><h2>Temporary ramps and portable options</h2><p>Not every situation needs a permanent ramp. For a short visit, a threshold ramp or a portable folding ramp can bridge a single small step safely, provided it is rated for the weight of the wheelchair and user combined, and it is placed on a firm, level surface. Portable ramps are not a long-term substitute for a proper ramp at a home entrance, but they are excellent for travel, for a temporary injury, or for testing whether a permanent ramp will actually be used in a particular spot. When using a portable ramp, check that it cannot slip, that its edges are visible, and that someone is available to assist if the slope is steeper than 1:12. For a permanent home, a well-planned fixed ramp, calculated properly and built with handrails and landings, is almost always the better investment.</p><h2>Planning for changing needs</h2><p>Access needs change over time, so plan a ramp with a little generosity: a slightly wider ramp, a slightly larger top landing and a solid foundation cost little extra now and make future changes much easier. If a powered wheelchair or scooter may be used later, allow extra width and turning space, because powered chairs turn differently from manual ones. Keep the route clear of bins, plant pots and parked bicycles, and maintain the surface, handrails and drainage as you would any other part of the home. A ramp calculated with RampCalc, built to the 1:12 standard, with level landings and safe handrails, does more than meet a regulation: it gives a person independence, dignity and easy access to their own home, which is the entire point of the exercise.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What slope should a wheelchair ramp be?</summary><p>1:12 is the standard for accessible ramps: 12 cm of run for every 1 cm of rise. A 60 cm step needs a 720 cm ramp.</p></details>
+<details><summary>How long a ramp do I need for a 90 cm step?</summary><p>At 1:12, a 1080 cm run, about 1083.7 cm of sloped surface, plus one intermediate landing and level landings top and bottom.</p></details>
+<details><summary>Do ramps need landings?</summary><p>Yes. Level landings are needed at the top and bottom, and intermediate landings on long ramps, so users can rest and turn safely.</p></details>
+<details><summary>How wide should a wheelchair ramp be?</summary><p>At least 90 cm clear width, and 120 cm is far more comfortable, especially on turns.</p></details>
+<details><summary>Can I use a steeper ramp for a small step?</summary><p>For a short, assisted, temporary use, a portable ramp at 1:8 or 1:10 may be acceptable, but it is not a substitute for a permanent 1:12 ramp.</p></details>
+<details><summary>Do I need handrails on a home ramp?</summary><p>Handrails on both sides are strongly recommended, along with edge protection and a non-slip surface. Check local regulations before building.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RampCalc</div>
+    <p>RampCalc plans wheelchair ramps by rise, using the 1:12 accessible slope with run, length and landings.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function computeRamp(rise,ratio){if(!(rise>0)||!(ratio>0))return{run:0,len:0,landings:0};var run=rise*ratio;var len=Math.sqrt(rise*rise+run*run);return{run:Math.round(run),len:Math.round(len*10)/10,landings:Math.max(0,Math.ceil(run/900)-1)};}
+function render(){var r=+document.getElementById('rise').value,s=+document.getElementById('slope').value;var o=computeRamp(r,s);document.getElementById('vRise').textContent=r+' cm';document.getElementById('vRun').textContent=o.run+' cm';document.getElementById('vLen').textContent=o.len+' cm';document.getElementById('vLand').textContent=o.landings;if(!o.run){document.getElementById('res').innerHTML='<p>Enter a rise above zero.</p>';return;}document.getElementById('res').innerHTML='<p class="big">'+o.run+' cm run</p><p>Sloped ramp surface '+o.len+' cm &middot; '+o.landings+' intermediate landing(s) &middot; Plus level top and bottom landings.</p><p>'+(s<12?' Steeper than 1:12 is for short, assisted use only, not a permanent accessible ramp.':' At 1:12 this ramp suits independent manual wheelchair use.')+'</p>';}
+document.getElementById('go').addEventListener('click',render);
+document.getElementById('copy').addEventListener('click',function(){var t=document.getElementById('res').innerText;navigator.clipboard&&navigator.clipboard.writeText(t);});
+render();
+</script>
+</body>
+</html>
