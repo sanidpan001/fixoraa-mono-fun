@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homebrew ABV Calculator — OG/FG to Alcohol Percent | HomeBrew</title>
+<meta name="description" content="Your homebrew's ABV, calories and priming sugar from original and final gravity.">
+<link rel="canonical" href="https://fun.fixoraa.tech/homebrew/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Homebrew ABV Calculator — OG/FG to Alcohol Percent | HomeBrew">
+<meta property="og:description" content="Your homebrew's ABV, calories and priming sugar from original and final gravity.">
+<meta property="og:url" content="https://fun.fixoraa.tech/homebrew/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "HomeBrew",
+      "url": "https://fun.fixoraa.tech/homebrew/",
+      "applicationCategory": "Food Tools",
+      "operatingSystem": "Web",
+      "description": "Your homebrew's ABV, calories and priming sugar from original and final gravity.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate ABV from gravity readings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subtract final gravity from original gravity and multiply by 131.25: ABV = (OG \u2212 FG) \u00d7 131.25. For example, 1.050 to 1.010 gives (0.040 \u00d7 131.25) = 5.25% ABV. The calculator above does this plus ABW, calories, attenuation and priming sugar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good attenuation for homebrew?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "65\u201385% is normal for most ale and lager yeasts; Belgian and saison strains can exceed 85%. Below 60% suggests a stuck fermentation (warm it up and rouse the yeast). Above 90% with a normal strain may indicate contamination \u2014 verify with a second reading."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much priming sugar per 5 gallons?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 4.5 oz of corn sugar for American ales, 3.5 oz for stouts, and 5.0\u20135.5 oz for wheat beers, Belgians and saisons. Dissolve in boiling water, cool, and rack the beer onto it for even mixing. Never bottle until two FG readings three days apart match."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my final gravity too high?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The usual causes: fermentation temperature too low, under-pitching or old yeast, or a recipe with lots of unfermentable sugars. Warm the fermenter to 68\u201372\u00b0F, swirl gently to rouse the yeast, and wait three days. Confirm with a second reading before taking action."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ABV vs ABW \u2014 what is the difference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ABV (alcohol by volume) and ABW (alcohol by weight) measure the same alcohol differently; ABW runs about 20% lower (5.25% ABV \u2248 4.11% ABW). US labels use ABV. Convert with ABW = ABV \u00d7 0.79 / FG."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many calories are in my homebrew?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most comes from the alcohol itself (~7 cal/g) plus residual carbs. A 5% pale ale runs roughly 170\u2013200 calories per 12 oz; an 8%+ strong ale can exceed 300. The calculator estimates from your gravity readings \u2014 treat it as accurate within about 10\u201320%."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#FAF6F2;--accent:#A16326;--tint:#F4E8DD;--ink:#33291F;--muted:#786654;--accent-ink:#FFFFFF;--board:#FFFDF9;--wood:#8A5A2B}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Arvo',Georgia,serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1060px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--board);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-headrow{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7A4A1B);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+.fx-name{font-size:23px;font-weight:700}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 18px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:var(--board);transition:transform .12s;font-family:system-ui}
+.fx-btn:hover{transform:translateY(-2px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--ink);font-size:13px;border:2px dashed var(--accent);font-family:system-ui}
+.hero{padding:42px 0 8px;text-align:center}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:system-ui;font-weight:700}
+.hero h1{font-size:clamp(32px,5vw,50px);line-height:1.12;margin-bottom:10px}
+.lede{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto;font-family:system-ui}
+.tool{margin:28px 0 10px;background:var(--board);border:10px solid var(--wood);border-radius:6px;box-shadow:0 14px 34px rgba(122,74,27,.20),inset 0 0 0 2px var(--tint);padding:30px}
+.hb-menu{text-align:center;margin-bottom:8px}
+.hb-menu h3{font-size:22px;letter-spacing:.06em;margin-bottom:4px}
+.hb-menu .rule{display:flex;align-items:center;gap:10px;margin:10px 0 20px;color:var(--muted);font-size:14px}
+.hb-menu .rule::before,.hb-menu .rule::after{content:'';flex:1;border-top:2px solid var(--tint)}
+.hb-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px}
+.hb-item label{display:block;font-size:15px;font-weight:700;margin-bottom:8px}
+.hb-item .sub{font-weight:400;font-size:13px;color:var(--muted);font-family:system-ui}
+.hb-item input,.hb-item select{font-family:inherit;font-size:19px;padding:11px 14px;border:2px solid var(--tint);border-radius:8px;background:#fff;color:var(--ink);width:100%}
+.hb-item input:focus,.hb-item select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.hb-special{border:3px dashed var(--accent);border-radius:16px;padding:24px;text-align:center;background:var(--bg);margin-bottom:20px}
+.hb-special .lbl{font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);font-family:system-ui;font-weight:700}
+.hb-special .abv{font-size:clamp(54px,8vw,84px);font-weight:700;color:var(--accent);line-height:1.05}
+.hb-special .style{font-size:16px;color:var(--muted);font-family:system-ui;margin-top:6px}
+.hb-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.hb-stat{background:#fff;border:2px solid var(--tint);border-radius:12px;padding:16px 12px;text-align:center}
+.hb-stat .v{font-size:26px;font-weight:700;color:var(--ink)}
+.hb-stat .k{font-size:13px;color:var(--muted);font-family:system-ui;margin-top:4px}
+.hb-note{margin-top:18px;font-family:system-ui;font-size:14px;color:var(--muted);text-align:center;max-width:620px;margin-left:auto;margin-right:auto}
+.article-sec{margin:44px 0;max-width:780px}
+.article-sec h2{font-size:24px;margin:36px 0 12px}
+.article-sec p{margin-bottom:14px;color:#4a3d2e;font-family:system-ui}
+.article-sec ul,.article-sec ol{margin:0 0 14px 24px;color:#4a3d2e;font-family:system-ui}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0 10px;max-width:780px}
+.faq-sec h2{font-size:24px;margin-bottom:16px}
+.faq-sec details{background:var(--board);border:2px solid var(--tint);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:15px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--tint);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#4a3d2e;font-size:15px;font-family:system-ui}
+.fx-footer{background:#2e241a;color:#f0e6d4;margin-top:48px;padding:42px 0 36px}
+.fx-footer .fx-brand{font-size:24px;font-weight:700;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#c4ad8a;max-width:640px;margin-bottom:14px;font-family:system-ui}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent);font-family:system-ui}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#e8c88a;font-weight:700}
+@media(max-width:760px){.hb-grid{grid-template-columns:1fr}.hb-stats{grid-template-columns:repeat(2,1fr)}.fx-nav{margin-left:0}.tool{border-width:6px;padding:20px}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-headrow">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/homebrew/" aria-label="HomeBrew home">
+      <span class="fx-tile" aria-hidden="true">🍺</span>
+      <span class="fx-name">HomeBrew</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="hero">
+    <span class="eyebrow">From gravity to glass</span>
+    <h1>Homebrew ABV Calculator</h1>
+    <p class="lede">Enter your original and final gravity to get ABV, ABW, calories, attenuation — plus the right priming sugar for your beer style.</p>
+  </section>
+  <section class="tool" aria-label="HomeBrew tool">
+<div class="hb-menu">
+      <h3>— Today's Brew —</h3>
+      <div class="rule"><span>enter your gravity readings</span></div>
+    </div>
+    <div class="hb-grid">
+      <div class="hb-item"><label for="hb-og">Original gravity <span class="sub">(before fermentation)</span></label><input type="number" id="hb-og" value="1.050" step="0.001" min="1.000" max="1.200"></div>
+      <div class="hb-item"><label for="hb-fg">Final gravity <span class="sub">(after fermentation)</span></label><input type="number" id="hb-fg" value="1.010" step="0.001" min="0.990" max="1.200"></div>
+      <div class="hb-item"><label for="hb-style">Beer style <span class="sub">(for priming sugar)</span></label>
+        <select id="hb-style"><option>American IPA</option><option selected>Pale Ale</option><option>Stout</option><option>Porter</option><option>Wheat Beer</option><option>Belgian Ale</option><option>Lager</option><option>Pilsner</option><option>Saison</option><option>Brown Ale</option></select></div>
+    </div>
+    <div class="hb-special">
+      <div class="lbl">Alcohol by volume</div>
+      <div class="abv" id="hb-abv">5.25%</div>
+      <div class="style" id="hb-styleline">Pale Ale · bottle-conditioned</div>
+    </div>
+    <div class="hb-stats">
+      <div class="hb-stat"><div class="v" id="hb-abw">4.11%</div><div class="k">Alcohol by weight</div></div>
+      <div class="hb-stat"><div class="v" id="hb-att">80%</div><div class="k">Attenuation</div></div>
+      <div class="hb-stat"><div class="v" id="hb-cal">162</div><div class="k">Calories / 12 oz</div></div>
+      <div class="hb-stat"><div class="v" id="hb-prim">4.5 oz</div><div class="k">Priming sugar / 5 gal</div></div>
+    </div>
+    <p class="hb-note" id="hb-note">Healthy fermentation: attenuation between 65–85% is normal for most ale yeasts.</p>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>What OG and FG Actually Measure</h2>
+<p>Original gravity (OG) and final gravity (FG) are density readings of your wort and beer compared to water, taken with a hydrometer or refractometer. OG measures the dissolved sugars before yeast gets to work — a typical pale ale starts around 1.050, meaning the wort is 5 percent denser than water. FG measures what is left after fermentation: the yeast ate most of the sugar and turned it into alcohol and CO2, so the beer is thinner, often landing near 1.010. The difference between the two is the story of your fermentation, and it tells you the alcohol content with simple arithmetic.</p>
+<p>Take the readings correctly or the math lies. Cool samples to the hydrometer's calibration temperature (usually 60°F/15.6°C) or apply a temperature correction — hot wort reads artificially low. Degas the FG sample by pouring it between glasses; dissolved CO2 clings to the hydrometer and inflates the reading. Spin the hydrometer to shake off bubbles, read at eye level at the bottom of the meniscus, and sanitize everything the beer touches. Two minutes of care here is the difference between a trustworthy ABV and a number you cannot believe.</p>
+<h2>The ABV Formula (and Why 131.25)</h2>
+<p>The standard homebrew formula is beautifully simple: <strong>ABV = (OG − FG) × 131.25</strong>. For our default example, (1.050 − 1.010) × 131.25 = 5.25%. The magic number 131.25 is an empirically derived constant that converts the gravity drop into alcohol percentage — it accounts for the fact that alcohol is less dense than water, so the density falls faster than the sugar content alone would suggest. It is accurate within about 0.1 to 0.2 percent for typical beer gravities, which is plenty for homebrew purposes.</p>
+<p>There is a more complex alternate formula for high-gravity beers (above ~1.070 OG), where the linear approximation drifts slightly, but for 95 percent of homebrew the simple version is what every calculator uses — including the one above. ABW (alcohol by weight) is the same alcohol expressed differently: ABW = ABV × 0.79 / FG, which runs about 20 percent lower than ABV (4.11% ABW for our 5.25% beer). American labels use ABV; a few states and older texts use ABW. Now you can convert between them whenever a recipe or label surprises you.</p>
+<h2>Attenuation: Your Fermentation Report Card</h2>
+<p>Attenuation — (OG − FG) / (OG − 1) × 100 — is the percentage of sugars the yeast consumed. Our example: (0.040 / 0.050) = 80%. This single number diagnoses your fermentation. Most ale yeasts attenuate 65 to 85 percent; lagers similar; saison and Belgian strains can push past 85. If your attenuation lands far outside your yeast's published range, something happened: under 60 percent suggests a stuck fermentation (too cold, under-pitched, or old yeast), while over 90 percent with a normal yeast hints at contamination by a super-attenuating wild yeast or bacteria.</p>
+<p>Do not confuse a low FG with success automatically. A beer can finish at the "right" FG through the wrong path — for example, a recipe with too many simple sugars attenuates high but tastes thin and cidery. Conversely, a big stout finishing at 1.020 with 68 percent attenuation is exactly right for the style; those residual sugars are body and sweetness, not failure. Judge attenuation against the yeast strain's range and the recipe's intent, not against an absolute number. The calculator flags readings outside the healthy band so you know when to investigate.</p>
+<h2>Calories: Where Beer Calories Come From</h2>
+<p>A 12-ounce beer has two calorie sources: the alcohol itself (about 7 calories per gram, nearly as energy-dense as fat) and the residual carbohydrates the yeast left behind. The calculator uses the brewing industry's standard formula combining both via real extract: calories = (6.9 × ABW + 4.0 × (RE − 0.1)) × FG × 3.55. For our default 5.25% pale ale that works out to about 162 calories per 12 ounces — right in line with commercial pale ales, which is a good sign the math is honest.</p>
+<p>The directional truth is what matters: alcohol dominates the calories, big beers are calorie bombs (an 8.5% saison at 1.080 runs about 260 per 12 ounces, and a 10% imperial stout can pass 350), and "light" beers are light mostly because they are weak. Treat the figure as accurate within 10 to 20 percent, which is the honest precision of homebrew calorie math — hydrometer error and recipe variation set the floor. If calories matter to you, brew session beers: a 3.5% mild delivers full flavor at roughly half the calories of a standard IPA, because the alcohol was never there to count.</p>
+<h2>Priming Sugar by Style</h2>
+<p>If you bottle-condition, the final step is priming: adding a measured dose of sugar at bottling so the remaining yeast carbonates the beer in the bottle. Too little and the beer is flat; too much and you get gushers — or bottle bombs, which are genuinely dangerous. The right amount depends on the style's target carbonation: British ales are soft (~2.0 volumes CO2), American ales lively (~2.5), wheat beers and saisons effervescent (~3.0+). The calculator's style selector maps each style to its classic priming rate in ounces of corn sugar per 5 gallons.</p>
+<p>Our defaults: 4.5 oz for American IPA and pale ale, 3.5 oz for stout (low carbonation suits the style), 5.0–5.5 oz for wheat beers, Belgians and saisons. Always dissolve the priming sugar in boiling water, cool it, and rack the beer onto it for even mixing — uneven mixing means some bottles flat, some volcanic. And use a priming sugar calculator (this one) rather than the old "3/4 cup per 5 gallons" rule of thumb; cup measurements of sugar vary 20 percent by how you scoop, and carbonation is the wrong place for 20 percent error.</p>
+<h2>When Readings Go Wrong</h2>
+<p>Every brewer eventually gets a reading that makes no sense, and the cause is almost always measurement, not magic. FG higher than OG? You mislabeled a sample or read the hydrometer upside-down — check your notes. FG that will not budge for a week at 1.030? Stuck fermentation: warm to 68–72°F, gently rouse the yeast by swirling the fermenter, and wait three days before considering repitching. FG below 1.000? Possible with very dry saison yeasts, but usually a misread — alcohol is less dense than water, so a fully attenuated strong beer can legitimately read 0.998.</p>
+<p>The two-sample rule prevents most heartbreak: never bottle based on a single FG reading. Take readings three days apart; if they match and are near your expected FG, fermentation is done. Bottling active beer is how bottle bombs happen — the priming sugar plus unfinished fermentation equals far more CO2 than glass can hold. Patience is a brewing ingredient. The beer will wait; the glass will not forgive.</p>
+<h2>From Numbers to Better Beer</h2>
+<p>Here is the brewer's payoff for all this arithmetic: your gravity readings, logged batch after batch, become a personal dataset that makes every future beer better. Note the OG, FG, attenuation, yeast strain, fermentation temperature and tasting notes for each batch. Within five batches you will know exactly how your setup and your favorite yeast behave — which recipes finish dry, which need mashing hotter for body, what attenuation to expect at 66°F versus 70°F.</p>
+<p>Run every batch through the calculator above and write the four numbers (ABV, attenuation, calories, priming sugar) on the batch label. Future you — the one deciding whether that IPA recipe is worth rebrewing, or explaining to a friend why this saison is so dangerously drinkable at 8.5% — will be grateful. Brewing is cooking with microbes and math in equal measure; the math is the easy half, and now it is done for you.</p>
+  <h2>Keep a Brew Log</h2>
+<p>The four numbers this calculator gives you — ABV, attenuation, calories, priming sugar — become far more valuable written down. A simple brew log with dates, original and final gravity, fermentation temperature, and yeast strain turns each batch into a lesson. When a beer comes out great, you can repeat it exactly; when it misses, the log shows you where.</p>
+<p>Attenuation is your best diagnostic. If it lands well below the yeast's rated range, suspect fermentation temperature first — too cold stalls yeast, too hot stresses it — then pitch rate and wort oxygenation. A batch that finished high and sweet is not a failure; it is data, and the next batch gets better because of it.</p>
+</article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How do you calculate ABV from gravity readings?</summary><p>Subtract final gravity from original gravity and multiply by 131.25: ABV = (OG − FG) × 131.25. For example, 1.050 to 1.010 gives (0.040 × 131.25) = 5.25% ABV. The calculator above does this plus ABW, calories, attenuation and priming sugar.</p></details>
+    <details><summary>What is a good attenuation for homebrew?</summary><p>65–85% is normal for most ale and lager yeasts; Belgian and saison strains can exceed 85%. Below 60% suggests a stuck fermentation (warm it up and rouse the yeast). Above 90% with a normal strain may indicate contamination — verify with a second reading.</p></details>
+    <details><summary>How much priming sugar per 5 gallons?</summary><p>About 4.5 oz of corn sugar for American ales, 3.5 oz for stouts, and 5.0–5.5 oz for wheat beers, Belgians and saisons. Dissolve in boiling water, cool, and rack the beer onto it for even mixing. Never bottle until two FG readings three days apart match.</p></details>
+    <details><summary>Why is my final gravity too high?</summary><p>The usual causes: fermentation temperature too low, under-pitching or old yeast, or a recipe with lots of unfermentable sugars. Warm the fermenter to 68–72°F, swirl gently to rouse the yeast, and wait three days. Confirm with a second reading before taking action.</p></details>
+    <details><summary>ABV vs ABW — what is the difference?</summary><p>ABV (alcohol by volume) and ABW (alcohol by weight) measure the same alcohol differently; ABW runs about 20% lower (5.25% ABV ≈ 4.11% ABW). US labels use ABV. Convert with ABW = ABV × 0.79 / FG.</p></details>
+    <details><summary>How many calories are in my homebrew?</summary><p>Most comes from the alcohol itself (~7 cal/g) plus residual carbs. A 5% pale ale runs roughly 170–200 calories per 12 oz; an 8%+ strong ale can exceed 300. The calculator estimates from your gravity readings — treat it as accurate within about 10–20%.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">HomeBrew</div>
+    <p>HomeBrew turns original and final gravity into ABV, calories and priming sugar — the complete fermentation readout for homebrewers.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function homebrew(og, fg, style){
+  var o=Math.max(1.000,Number(og)||1.000);
+  var f=Math.max(1.000,Number(fg)||1.000);
+  var primingTable={
+    'American IPA':4.5,'Pale Ale':4.5,'Stout':3.5,'Porter':4.0,'Wheat Beer':5.0,
+    'Belgian Ale':5.5,'Lager':4.5,'Pilsner':4.5,'Saison':5.5,'Brown Ale':4.0
+  };
+  var sty=String(style||'Pale Ale');
+  var primingOz = primingTable[sty]!=null ? primingTable[sty] : 4.5;
+  var abv=(o-f)*131.25;
+  var abw=f>0 ? 0.79*abv/f : 0;
+  var att=o>1 ? (o-f)/(o-1)*100 : 0;
+  function plato(sg){ return 259-259/sg; }
+  var oe=plato(o), fe=plato(f);
+  var re=0.1808*oe+0.8192*fe;
+  var cal=(6.9*abw+4.0*(re-0.1))*f*3.55;
+  var r2=function(x){ return Math.round(x*100)/100; };
+  return {
+    og:r2(o), fg:r2(f), style:sty,
+    abv:r2(abv), abw:r2(abw), attenuation:r2(att),
+    calories12oz:Math.max(0,Math.round(cal)),
+    primingSugarOz5gal:primingOz,
+    primingSugarG5gal:Math.round(primingOz*28.3495)
+  };
+}
+(function(){
+var og=document.getElementById('hb-og'),fg=document.getElementById('hb-fg'),style=document.getElementById('hb-style');
+function render(){
+  var r=homebrew(og.value,fg.value,style.value);
+  document.getElementById('hb-abv').textContent=r.abv.toFixed(2)+'%';
+  document.getElementById('hb-styleline').textContent=r.style+' · bottle-conditioned';
+  document.getElementById('hb-abw').textContent=r.abw.toFixed(2)+'%';
+  document.getElementById('hb-att').textContent=r.attenuation.toFixed(1)+'%';
+  document.getElementById('hb-cal').textContent=r.calories12oz;
+  document.getElementById('hb-prim').textContent=r.primingSugarOz5gal+' oz';
+  var note=document.getElementById('hb-note');
+  if(r.attenuation<60){note.textContent='Low attenuation — fermentation may be stuck. Warm the fermenter slightly and rouse the yeast.';}
+  else if(r.attenuation>90){note.textContent='Very high attenuation — check for contamination or a misread gravity.';}
+  else{note.textContent='Healthy fermentation: attenuation between 65–85% is normal for most ale yeasts.';}
+}
+[og,fg,style].forEach(function(el){el.addEventListener('input',render);el.addEventListener('change',render);});
+render();
+})();
+</script>
+</body>
+</html>
