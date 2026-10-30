@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salad Quantity Calculator — How Much Salad per Person by Course</title>
+<meta name="description" content="Calculate salad amounts and dressing from guest count and course type, so a side salad never runs out and a main salad never overwhelms.">
+<link rel="canonical" href="https://fun.fixoraa.tech/saladserve/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Salad Quantity Calculator — How Much Salad per Person by Course">
+<meta property="og:description" content="Calculate salad amounts and dressing from guest count and course type, so a side salad never runs out and a main salad never overwhelms.">
+<meta property="og:url" content="https://fun.fixoraa.tech/saladserve/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SaladServe",
+      "url": "https://fun.fixoraa.tech/saladserve/",
+      "applicationCategory": "Food",
+      "operatingSystem": "Web",
+      "description": "Calculate salad amounts and dressing from guest count and course type, so a side salad never runs out and a main salad never overwhelms.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much salad do I need per person?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 120 g per person for a side salad, 80 g for a light starter, and 250 g when salad is the main course with protein and grains."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much dressing do I need for a salad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 15 ml of dressing per 100 g of salad, or roughly one tablespoon per person for a side salad. Serve extra on the side for guests who like more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I dress salad ahead of time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No for leafy salads, which wilt within minutes of dressing. Dress just before serving, or serve dressing on the side for a buffet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many bowls do I need for a big salad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standard large bowl holds about 1 kg of dressed salad. For a buffet, use two medium bowls instead of one huge one so the salad stays fresh and easy to serve."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I count children as full salad servings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Children usually eat about half a serving. Count children as half a guest when the group includes many of them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much salad for a buffet with other dishes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the side-salad figure of 120 g per person, since guests take smaller portions when many dishes compete. Add a little extra if salad is the only fresh option."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes a salad filling enough for a main course?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add protein like chicken, chickpeas, or cheese, plus a grain like quinoa or a starchy vegetable, and keep the portion at 250 g or more per person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I keep salad crisp for a party?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wash and dry leaves thoroughly, chill them until serving, keep dressing separate, and add crunchy elements like nuts or croutons at the last minute."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#f0fdf4; --surface:#ffffff; --accent:#166534; --accent-ink:#ffffff;
+  --ink:#16281a; --muted:#3f5a44; --line:#bcd8c2;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+.hist{margin-top:1rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.1rem}
+.hist h3{font-size:1rem;margin-bottom:.4rem} .hist ul{padding-left:1.2rem;color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}.formcard,.resultcard{padding:.9rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="SaladServe home">
+      <span class="fx-logo-tile" aria-hidden="true">🥗</span>
+      <span class="fx-brand">SaladServe</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-salad-bowl" aria-label="SaladServe tool">
+<div class="layout"><h1>Salad Quantity Calculator</h1><p class="sub">Work out salad weight and dressing by guests and course type.</p><div class="formcard"><label>Guests<input id="guests" type="number" value="8" step="any" min="0"></label><label>Course type<select id="course"><option value="120">Side salad — 120 g per person</option><option value="250">Main salad — 250 g per person</option><option value="80">Light starter — 80 g per person</option></select></label><div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div><div class="presets" id="presets"></div></div><div class="resultcard" id="result" aria-live="polite"><p>Enter your values to see the result.</p></div><div class="hist"><h3>Recent calculations</h3><ul id="histList"></ul></div><p class="muted">Tip: leafy salads shrink in the bowl — weigh leaves rather than eyeballing volume.</p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why salad quantities are hard to guess</h2>
+<p>Salad is the dish most often misjudged at a gathering. Leaves look like a lot in the bag and very little in the bowl, dense ingredients like grains and cheese weigh far more than they look, and a side salad at one table can be a main course at another. The result is either a sad, half-empty bowl or a mountain of wilted leaves nobody finishes. The fix is to plan by weight and by course. A side salad needs about 120 grams per person, a light starter about 80 grams, and a main-course salad about 250 grams. Dressing follows at roughly fifteen percent of salad weight, which keeps the balance right whether you serve six people or sixty.</p>
+<h2>Side, starter, or main</h2>
+<p>Course type is the single biggest factor in salad quantity, and it changes the answer by three times. A starter salad is a small, elegant plate that wakes the appetite without filling it, so eighty grams is plenty. A side salad accompanies a main dish and should feel generous without competing, so one hundred and twenty grams is the standard. A main-course salad is the meal itself, built with protein, grains, or starchy vegetables, and it needs two hundred and fifty grams or more per person to satisfy. If you are unsure which category fits, ask whether guests will eat anything else substantial. A barbecue with burgers, sausages, and sides needs only a side salad, while a lunch of salad alone needs main-course portions.</p>
+<h2>What is in the 120 grams</h2>
+<p>The weight figure assumes a mixed salad of leaves plus vegetables and toppings. Leaves themselves are light: a large handful of mixed leaves weighs about thirty grams. The rest of the weight comes from cucumber, tomato, carrot, radish, cheese, nuts, seeds, and dressing. Dense salads, like a grain salad with quinoa or a potato salad, weigh more per serving of volume, so the same weight looks smaller in the bowl. That is fine: weight is a better guide than volume because it tracks how much food people actually eat. When a recipe lists ingredients by cups, weigh a test portion once and note the weight, so future scaling is easy.</p>
+<h2>Dressing: how much and when</h2>
+<p>Dressing at fifteen percent of salad weight is a reliable rule: a kilogram of salad needs about 150 millilitres of dressing, and a side salad for eight people needs about 145 millilitres. It is better to serve a little dressing on the side than to drown the salad, because guests differ wildly in how much they like. Dress leafy salads at the last possible minute, tossing gently so every leaf is glossed but not swimming. Grain and root vegetable salads can be dressed an hour ahead, since their structure holds up and the flavour improves. Always taste dressing before serving: it should be bright and seasoned, because underseasoned dressing makes a whole salad taste flat.</p>
+<h2>Bowls, buffets, and big groups</h2>
+<p>Bowl size matters more than people expect. A standard large serving bowl holds about a kilogram of salad comfortably, and overfilling makes tossing difficult and serving messy. For a big group, use two or three medium bowls instead of one enormous one, and refill from a chilled reserve. On a buffet, keep the salad bowl on ice or in the shade, and put it near the start of the line so guests do not pile hot food onto it. For outdoor events, a lidded bowl protects against insects and wind, and a second bowl kept in a cool box lets you refresh the table halfway through. Small bowls of extra toppings, like nuts or cheese, let guests customise without slowing the line.</p>
+<h2>Leaves, washing, and crispness</h2>
+<p>Crispness is what separates a good salad from a tired one, and it starts with washing and drying. Wash leaves in cold water, spin or pat them dry, and chill them in the fridge until serving. Wet leaves dilute dressing and wilt fast, so drying is not optional. Sturdy leaves like romaine and kale hold up longer than delicate ones like butter lettuce or rocket, so choose sturdy leaves for buffets and delicate ones for plated starters. Add crunchy elements, such as toasted nuts, seeds, or croutons, at the last minute, because they go soft in dressing. A salad assembled an hour ahead but dressed at serving time will taste freshly made.</p>
+<h2>A worked example</h2>
+<p>For eight guests with salad as a side, the total is eight times 120 grams, which is 960 grams of salad, with about 144 millilitres of dressing. That fits in one large bowl. For the same eight guests with salad as the main course, the total doubles to 2000 grams, with 300 millilitres of dressing, filling two bowls. For twenty buffet guests at side portions, the total is 2400 grams with 360 millilitres of dressing, across three bowls. The calculator makes these jumps instant, so you can compare a dinner party with a buffet before you shop, and you will never again buy three bags of leaves when one would do.</p>
+<h2>Seasonal and dietary notes</h2>
+<p>Seasonal salads cost less and taste better: spring brings tender leaves and radishes, summer brings tomatoes and cucumbers, autumn brings squash and apples, and winter suits sturdy kale, cabbage, and citrus. For mixed groups, build the base salad without cheese or nuts, and serve those as toppings, so vegans and allergy sufferers can eat the same salad. Label dressings that contain dairy, egg, or nuts. A fruit element, like orange segments or sliced apple, lifts a winter salad, while fresh herbs, like basil or mint, lift a summer one. A salad that respects the season and the guests is a salad that gets finished.</p>
+<h2>Dressings that scale with the salad</h2>
+<p>A good dressing scales with the salad, and the classic vinaigrette ratio of three parts oil to one part acid is the easiest to scale. For a kilogram of salad needing about 150 millilitres of dressing, that means roughly 110 millilitres of oil and 35 millilitres of lemon juice or vinegar, plus mustard, honey, salt, and pepper to taste. Whisk the dressing in a jar so it emulsifies, taste it on a leaf rather than from a spoon, and adjust salt and acid until it is bright. Creamy dressings, like ranch or Caesar, are used slightly more generously, around 20 millilitres per 100 grams of salad, because they cling to leaves. Make dressing in a sealed jar up to a week ahead, shake before using, and always serve a little extra on the side, since dressing preference varies more than any other part of a salad.</p>
+<h2>Building a salad bar for a crowd</h2>
+<p>A salad bar works brilliantly for large groups, because guests build exactly what they like and dietary needs take care of themselves. Set out a base of two or three leaves, then bowls of cucumber, tomato, grated carrot, sweetcorn, chickpeas, cheese, and seeds, with two dressings, one vinaigrette and one creamy. Keep quantities in line with the calculator: total salad weight across all bowls should match guests times portion size, with leaves making up roughly a third. Label anything containing nuts, dairy, or gluten, and keep serving spoons in each bowl to avoid cross-contact. Refill small bowls often rather than putting out huge bowls that wilt, and keep the whole bar chilled or shaded. A well-run salad bar feels generous and costs less than a hot buffet.</p>
+<h3>Salad portions per person</h3><table><tr><th>Course</th><th>Per person</th><th>For 10 guests</th><th>Dressing</th></tr><tr><td>Light starter</td><td>80 g</td><td>800 g</td><td>120 ml</td></tr><tr><td>Side salad</td><td>120 g</td><td>1.2 kg</td><td>180 ml</td></tr><tr><td>Main salad</td><td>250 g</td><td>2.5 kg</td><td>375 ml</td></tr></table>
+<ul><li>Side salad: 120 g per person; main salad: 250 g per person.</li><li>Dressing is about 15% of salad weight.</li><li>One large bowl holds about 1 kg of salad.</li><li>Dress leafy salads just before serving.</li><li>Keep toppings like nuts and cheese on the side for mixed groups.</li></ul>
+<p>Salad planning is simple once you plan by weight and course: pick your portion, multiply by guests, and scale dressing with it. Use the calculator before shopping, keep the leaves dry and the dressing separate until serving, and the salad bowl will be the dish that disappears first, in the best possible way.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much salad do I need per person?</summary><p>About 120 g per person for a side salad, 80 g for a light starter, and 250 g when salad is the main course with protein and grains.</p></details>
+<details><summary>How much dressing do I need for a salad?</summary><p>About 15 ml of dressing per 100 g of salad, or roughly one tablespoon per person for a side salad. Serve extra on the side for guests who like more.</p></details>
+<details><summary>Should I dress salad ahead of time?</summary><p>No for leafy salads, which wilt within minutes of dressing. Dress just before serving, or serve dressing on the side for a buffet.</p></details>
+<details><summary>How many bowls do I need for a big salad?</summary><p>A standard large bowl holds about 1 kg of dressed salad. For a buffet, use two medium bowls instead of one huge one so the salad stays fresh and easy to serve.</p></details>
+<details><summary>Do I count children as full salad servings?</summary><p>Children usually eat about half a serving. Count children as half a guest when the group includes many of them.</p></details>
+<details><summary>How much salad for a buffet with other dishes?</summary><p>Use the side-salad figure of 120 g per person, since guests take smaller portions when many dishes compete. Add a little extra if salad is the only fresh option.</p></details>
+<details><summary>What makes a salad filling enough for a main course?</summary><p>Add protein like chicken, chickpeas, or cheese, plus a grain like quinoa or a starchy vegetable, and keep the portion at 250 g or more per person.</p></details>
+<details><summary>How do I keep salad crisp for a party?</summary><p>Wash and dry leaves thoroughly, chill them until serving, keep dressing separate, and add crunchy elements like nuts or croutons at the last minute.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SaladServe</div>
+    <p>SaladServe scales salad weight and dressing to your guests and whether salad is a side or the main event.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function saladServe(guests, perPerson) { if (guests <= 0 || perPerson <= 0) return {salad: 0, dressing: 0, bowls: 0}; var s = guests * perPerson; return {salad: s, dressing: Math.round(s * 0.15), bowls: Math.ceil(s / 1000)}; }
+
+if (typeof document !== 'undefined') {
+  var _hist = [];
+  function _renderHist() {
+    var el = document.getElementById('histList');
+    if (el) el.innerHTML = _hist.map(function(h) { return '<li>' + h + '</li>'; }).join('') || '<li>No calculations yet.</li>';
+  }
+  function run() {
+    var r=saladServe(+document.getElementById('guests').value,+document.getElementById('course').value);document.getElementById('result').innerHTML='<p class="big">'+r.salad+' g salad &middot; '+r.dressing+' ml dressing</p><p>About '+r.bowls+' serving bowl(s). Dress just before serving so leaves stay crisp.</p>';window._last='SaladServe: '+r.salad+' g salad, '+r.dressing+' ml dressing for '+document.getElementById('guests').value+' guests';
+    if (window._last) { _hist.unshift(window._last); _hist = _hist.slice(0, 5); _renderHist(); }
+  }
+  document.getElementById('calcBtn').onclick = run;
+  document.getElementById('copyBtn').onclick = function() { if (window._last && navigator.clipboard) navigator.clipboard.writeText(window._last); };
+  var P = [['Dinner party side: 8 guests',[8,120]],['Main-course salads: 6 guests',[6,250]],['Buffet side: 20 guests',[20,120]]];
+  document.getElementById('presets').innerHTML = P.map(function(p, i) { return '<button type="button" data-i="' + i + '">' + p[0] + '</button>'; }).join('');
+  document.querySelectorAll('#presets button').forEach(function(b) {
+    b.onclick = function() {
+      var v = P[+b.dataset.i][1];
+      document.getElementById('guests').value=v[0];document.getElementById('course').value=v[1];
+      run();
+    };
+  });
+  _renderHist();
+  run();
+}
+
+</script>
+</body>
+</html>
