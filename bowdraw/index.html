@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archery Draw Length Calculator: Wingspan to Draw Length</title>
+<meta name="description" content="Calculate your archery draw length from wingspan, with arrow length and a safe starting draw weight for your level.">
+<link rel="canonical" href="https://fun.fixoraa.tech/bowdraw/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Archery Draw Length Calculator: Wingspan to Draw Length">
+<meta property="og:description" content="Calculate your archery draw length from wingspan, with arrow length and a safe starting draw weight for your level.">
+<meta property="og:url" content="https://fun.fixoraa.tech/bowdraw/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BowDraw",
+      "url": "https://fun.fixoraa.tech/bowdraw/",
+      "applicationCategory": "Sports",
+      "operatingSystem": "Web",
+      "description": "Calculate your archery draw length from wingspan, with arrow length and a safe starting draw weight for your level.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate my draw length?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Measure your wingspan fingertip to fingertip in inches and divide by 2.5. A 70-inch wingspan gives a 28-inch draw length."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I round my draw length up or down?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Round to the nearest half inch. If you are exactly between settings, start with the shorter one \u2014 it is easier on form and shoulders."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What draw weight should a beginner start with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "20 to 30 lb, regardless of general strength. Archery form uses unfamiliar back and shoulder muscles, and a bow you can hold steady beats a heavy one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should my arrows be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About one inch longer than your draw length, so the arrow stays safely on the rest at full draw. Never cut arrows shorter than your draw length."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does draw length differ for compound and recurve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The wingspan formula is the same starting point, but compound draw length is set on the bow's modules, while recurve draw length depends on your anchor, so confirm both with a coach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my shoulder hurt when I shoot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An overlong draw is a common cause, but pain can have many sources. Stop, rest, and get checked by a coach or clinician rather than pushing through."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should young archers re-measure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every six months, and at the start of each season. Growing archers outgrow draw length fast, so adjustable bows are the smart buy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is wingspan the same as height?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly, for most adults, but arm length varies independently. Wingspan is the better input because it measures the arms that actually draw the bow."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FBF3E4; --surface:#FFFFFF; --accent:#8A4B00; --accent-ink:#FFFFFF;
+  --ink:#2E2412; --muted:#5C4F38; --line:#E8DCC0;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.bd-wrap{max-width:920px;margin:0 auto;padding:26px 16px 40px}.bd-wrap h1{font-size:clamp(30px,5.5vw,44px);line-height:1.15;margin:0 0 8px}.bd-tag{color:var(--muted);margin:0 0 18px;font-size:16px}.bd-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 2px 14px rgba(0,0,0,.06)}.bd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.bd-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--muted)}.bd-field input,.bd-field select{font:inherit;font-size:16px;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg);min-height:48px;width:100%;box-sizing:border-box}.bd-btns{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.bd-btns button{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer;min-height:44px}.bd-btns button.on,.bd-btns button.solid{background:var(--accent);color:var(--accent-ink)}.bd-calc{width:100%;background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:14px;font:inherit;font-size:17px;font-weight:800;cursor:pointer;min-height:52px}.bd-result{background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:22px;text-align:center;margin-top:16px}.bd-result .big{font-size:clamp(34px,7vw,52px);font-weight:800;line-height:1.1}.bd-result .sub{opacity:.92;margin-top:6px}.bd-hist{margin-top:14px;font-size:14px;color:var(--muted)}.bd-hist ul{padding-left:1.2rem;margin:6px 0 0}@media(max-width:640px){.bd-grid{grid-template-columns:1fr}.bd-wrap{padding:20px 12px 32px}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="BowDraw home">
+      <span class="fx-logo-tile" aria-hidden="true">🏹</span>
+      <span class="fx-brand">BowDraw</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-bow-string" aria-label="BowDraw tool">
+<div class='bd-wrap'><h1>🏹 Archery Draw Length Calculator</h1><p class='bd-tag'>Your draw length from wingspan, plus a safe starting draw weight.</p><div class='bd-card'><div class='bd-grid'><label class='bd-field'>Wingspan, fingertip to fingertip (in or cm)<input id='bdSpan' type='number' min='40' max='90' value='70'></label><label class='bd-field'>Experience<select id='bdExp'><option value='0' selected>Beginner</option><option value='1'>Intermediate</option><option value='2'>Advanced</option></select></label></div><div class='bd-btns'><button type='button' data-bd-preset='[70,0]'>70 in · Beginner</button><button type='button' data-bd-preset='[74,1]'>74 in · Intermediate</button><button type='button' data-bd-preset='[68,2]'>68 in · Advanced</button></div><div class='bd-btns'><button type='button' data-bd-unit='in' class='on'>inches</button><button type='button' data-bd-unit='cm'>cm</button></div><button class='bd-calc' id='bdCalc' type='button'>Calculate</button><div class='bd-result' aria-live='polite'><div>Draw length</div><div class='big' id='bdRes'>28 in</div><div class='sub' id='bdSub'>Arrow length about 29 in.</div></div><div class='bd-hist'><strong>Recent calculations</strong><ul id='bdHistList'></ul><div class='bd-btns'><button type='button' id='bdCopy'>Copy result</button></div></div></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>The wingspan rule every archer starts with</h2><p>Draw length is the distance from the bow's grip to the anchor point at full draw, and it is the most important fit measurement in archery. Get it right and your anchor feels natural, your sight picture repeats, and your arrows fly consistently. Get it wrong and everything downstream suffers: too long a draw collapses your form and strains your shoulder, while too short a draw costs you power, speed, and a stable anchor. The classic starting point is beautifully simple: measure your wingspan from fingertip to fingertip with your arms stretched out sideways, divide by 2.5, and you have your approximate draw length in inches. A 70-inch wingspan gives 28 inches, a 75-inch wingspan gives 30 inches, and a 66-inch wingspan gives 26.4 inches, rounded to the nearest half inch. The calculator does that rounding for you and adds arrow-length and draw-weight guidance so you can walk into a shop with a complete starting setup.</p><h2>How to measure your wingspan properly</h2><p>Stand with your back flat against a wall, arms stretched straight out to the sides at shoulder height, palms facing forward, and have someone mark the tip of each middle finger. Measure between the marks in inches. Do not stretch or shrug your shoulders upward, and do not measure over clothing that bunches at the shoulders. Repeat the measurement twice; if the two readings differ by more than half an inch, take a third and use the middle value. Note that wingspan roughly equals height for most adults, which is why height-based charts exist, but wingspan is the better input because arm length varies independently of height. Long-armed archers routinely draw longer than their height suggests, and short-armed archers the reverse. If you already shoot, your current measured draw length from a bow shop beats any formula: use the formula to get started, then confirm with a draw-length check bow or a trained coach.</p><table><thead><tr><th>Wingspan</th><th>Draw length</th><th>Arrow length (approx)</th></tr></thead><tbody><tr><td>62 in</td><td>25 in</td><td>26 in</td></tr><tr><td>66 in</td><td>26.5 in</td><td>27.5 in</td></tr><tr><td>70 in</td><td>28 in</td><td>29 in</td></tr><tr><td>74 in</td><td>29.5 in</td><td>30.5 in</td></tr><tr><td>78 in</td><td>31 in</td><td>32 in</td></tr></tbody></table><h2>Why half an inch matters</h2><p>Half an inch of draw length sounds trivial until you feel it at full draw. At the correct length, your drawing elbow lines up behind the arrow, your anchor hand settles into the same spot on your jaw every time, and your front shoulder stays low and settled. Half an inch too long and your front shoulder creeps up, your release hand drifts behind your ear, and your groups open up vertically. Half an inch too short and you cannot reach a solid anchor, your bow arm stays slightly bent, and you lose the back tension that makes a clean release. Compound bows make this easier because draw length is set with modules or a rotating cam, usually adjustable in half-inch steps, and a shop can change it in minutes. Recurve and traditional bows are less forgiving: draw length is determined by you, not the bow, so the archer must learn to draw to the same anchor every shot, which is a skill that takes coaching and repetition.</p><h3>Draw length and draw weight together</h3><p>Draw length and draw weight are often confused but they measure different things. Draw length is a distance; draw weight is the force, in pounds, needed to hold the bow at full draw. They interact because a longer draw on the same bow stores more energy, and because a bow's rated draw weight is usually quoted at a standard 28-inch draw. Draw a 40 lb bow to 30 inches and you are actually holding more than 40 lb; draw it to 26 inches and you hold less. The calculator's draw-weight guidance is deliberately conservative: beginners should start at 20 to 30 lb regardless of how strong they feel, because archery uses back and shoulder muscles in an unfamiliar pattern and good form matters far more than raw poundage. Intermediates who shoot regularly can handle 30 to 45 lb, and advanced archers may shoot 40 to 60 lb, but only if their form stays perfect at full draw. A bow you cannot hold steady for ten seconds is too heavy, full stop.</p><h2>Signs your draw length is wrong</h2><ul><li><strong>Floating anchor:</strong> your hand never lands in exactly the same place, so your sight picture shifts shot to shot.</li><li><strong>High front shoulder:</strong> your bow shoulder rises toward your ear at full draw, a classic sign of overlong draw.</li><li><strong>Collapsed release arm:</strong> your elbow drops below the arrow line instead of sitting high and in line behind it.</li><li><strong>Inconsistent vertical groups:</strong> arrows group well sideways but scatter up and down, often a draw-length or anchor issue.</li><li><strong>Shoulder pain:</strong> persistent front-shoulder or rotator-cuff discomfort can signal an overlong draw; stop and get checked rather than pushing through.</li></ul><h2>Compound, recurve, and traditional differences</h2><p>Compound archers should treat the formula as a starting module setting and then fine-tune with a coach: shoot groups at two adjacent settings and keep the one that groups tighter with less effort. Recurve archers choose arrow length and bow length partly from draw length: longer draws suit longer bows (68 to 70 inches for most adults), which stack less and feel smoother. Traditional longbow and horse-bow archers often anchor differently, sometimes at the corner of the mouth or the cheekbone rather than under the jaw, which changes effective draw length by an inch or more. In all styles, the anchor is the anchor: pick one reference point (index finger on the jawbone, string touching nose and lips) and use it identically every shot. The formula gives you a number; the anchor gives you repeatability, and repeatability is what scores.</p><h2>Arrows: length, spine, and safety</h2><p>Arrow length follows draw length with about an inch of safety margin past the rest, which is why the calculator suggests draw length plus one inch. Cutting arrows too short is genuinely dangerous: an arrow that falls off the rest at full draw can injure the archer and bystanders. Arrow spine, the stiffness rating, must match your draw weight and draw length together, because a longer draw bends the arrow more dynamically. Shops use spine charts that take both numbers, so bring your calculated draw length and your chosen draw weight when buying arrows. Carbon arrows dominate modern target and hunting archery for their consistency, but they must be inspected for cracks after any hard impact: flex-test a suspect arrow and discard it if it crackles or feels soft. Aluminium arrows are cheaper and easier to inspect, and wood arrows suit traditional bows best.</p><h2>Young archers and growing bodies</h2><p>Children and teenagers outgrow draw length quickly, which makes adjustable equipment the smart buy. Youth compound bows with wide draw-length ranges (often 18 to 30 inches) and adjustable draw weight let one bow last several growth spurts. Re-measure wingspan every six months for growing archers and re-check draw length at the start of each season. Resist the temptation to buy a bow the child will grow into at full adult draw length: an overlong draw now builds bad form that is hard to unlearn later. The same conservatism applies to draw weight: a young archer shooting a bow they can control will outshoot a peer struggling with a heavier bow every time, and they will enjoy it more, which is what keeps them in the sport.</p><h2>From calculation to first shots</h2><p>Take your calculated draw length to a pro shop or club and ask for a draw-length check before buying. Shoot a few ends at the suggested setting and at half an inch either side, and pay attention to which setting lets you anchor identically without strain. Buy arrows a touch long rather than a touch short, start at the light end of the draw-weight guidance, and spend your first month on form: stance, grip, anchor, and release, in that order. Draw length is not a one-time number, either. As your form improves, your true draw length can shift by half an inch as your shoulders settle and your back engages properly. Re-check it annually, or whenever you change bow style, anchor point, or release aid. The formula got you started; your shooting will refine it.</p><p>Measure honestly, start light, anchor identically, and let the groups tell you the truth. Archery rewards patience more than poundage, and a correctly fitted bow is the foundation everything else builds on.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate my draw length?</summary><p>Measure your wingspan fingertip to fingertip in inches and divide by 2.5. A 70-inch wingspan gives a 28-inch draw length.</p></details>
+<details><summary>Should I round my draw length up or down?</summary><p>Round to the nearest half inch. If you are exactly between settings, start with the shorter one — it is easier on form and shoulders.</p></details>
+<details><summary>What draw weight should a beginner start with?</summary><p>20 to 30 lb, regardless of general strength. Archery form uses unfamiliar back and shoulder muscles, and a bow you can hold steady beats a heavy one.</p></details>
+<details><summary>How long should my arrows be?</summary><p>About one inch longer than your draw length, so the arrow stays safely on the rest at full draw. Never cut arrows shorter than your draw length.</p></details>
+<details><summary>Does draw length differ for compound and recurve?</summary><p>The wingspan formula is the same starting point, but compound draw length is set on the bow's modules, while recurve draw length depends on your anchor, so confirm both with a coach.</p></details>
+<details><summary>Why does my shoulder hurt when I shoot?</summary><p>An overlong draw is a common cause, but pain can have many sources. Stop, rest, and get checked by a coach or clinician rather than pushing through.</p></details>
+<details><summary>How often should young archers re-measure?</summary><p>Every six months, and at the start of each season. Growing archers outgrow draw length fast, so adjustable bows are the smart buy.</p></details>
+<details><summary>Is wingspan the same as height?</summary><p>Roughly, for most adults, but arm length varies independently. Wingspan is the better input because it measures the arms that actually draw the bow.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BowDraw</div>
+    <p>BowDraw turns your wingspan into draw length, arrow length, and safe draw-weight guidance.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function bowDraw(wingspanIn){if(!(wingspanIn>0))return NaN;return Math.round(wingspanIn/2.5*2)/2;}
+var bd_unit='metric';
+function bd_calc(){
+var v0=parseFloat(document.getElementById('bdSpan').value)||0;
+var v1=parseFloat(document.getElementById('bdExp').value)||0;
+var unit=bd_unit;
+var ws=(unit==='cm')?v0/2.54:v0;var r=bowDraw(ws);var wt=['20-30 lb (start light, build form first)','30-45 lb (a solid all-round hunting and target range)','40-60 lb (only if form stays perfect at full draw)'][Math.round(v1)]||'20-30 lb';var disp='Arrow length about '+(r+1)+' in (draw length + 1 in). Suggested starting draw weight: '+wt;
+document.getElementById('bdRes').textContent=r;
+document.getElementById('bdSub').innerHTML=disp;
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');h.unshift(r+' | '+disp.replace(/<[^>]+>/g,''));h=h.slice(0,5);localStorage.setItem('%sHist',JSON.stringify(h));var ul=document.getElementById('%sHistList');ul.innerHTML='';h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+}
+function bd_preset(vals){vals.forEach(function(v,i){var el=document.getElementById(['bdSpan','bdExp'][i]);if(el)el.value=v;});bd_calc();}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+document.getElementById('bdCalc').addEventListener('click',bd_calc);
+document.querySelectorAll('[data-bd-preset]').forEach(function(b){b.addEventListener('click',function(){var vals=JSON.parse(b.getAttribute('data-bd-preset'));bd_preset(vals);});});
+document.querySelectorAll('[data-bd-unit]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-bd-unit]').forEach(function(x){x.classList.remove('on');});b.classList.add('on');bd_unit=b.getAttribute('data-bd-unit');bd_calc();});});
+var cp=document.getElementById('bdCopy');if(cp){cp.addEventListener('click',function(){var t=document.getElementById('bdRes').textContent+' '+document.getElementById('bdSub').textContent;try{navigator.clipboard.writeText(t);}catch(e){}});}
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');var ul=document.getElementById('%sHistList');h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+bd_calc();});}
+</script>
+</body>
+</html>
