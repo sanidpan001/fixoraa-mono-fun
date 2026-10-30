@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music Practice Tracker — Log Sessions & Streaks | PracticeLog</title>
+<meta name="description" content="Log practice sessions, build streaks and watch your repertoire grow.">
+<link rel="canonical" href="https://fun.fixoraa.tech/practicelog/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Music Practice Tracker — Log Sessions & Streaks | PracticeLog">
+<meta property="og:description" content="Log practice sessions, build streaks and watch your repertoire grow.">
+<meta property="og:url" content="https://fun.fixoraa.tech/practicelog/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PracticeLog",
+      "url": "https://fun.fixoraa.tech/practicelog/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Log practice sessions, build streaks and watch your repertoire grow.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How much should I practice each day?","acceptedAnswer":{"@type":"Answer","text":"Beginners do best with 20\u201330 minutes daily; intermediate players 45\u201360 minutes; serious students 2\u20134 hours in multiple sessions with breaks. Daily consistency beats weekend marathons \u2014 muscle memory needs daily reinforcement. Start small, log every session, and add about 10 minutes per week."}},
+        {"@type":"Question","name":"What should I write in a practice log?","acceptedAnswer":{"@type":"Answer","text":"Be specific and forward-looking: the piece, the exact bars, the tempo, the problem, and tomorrow's next step \u2014 e.g. 'Sonata mvt 1, bars 24\u201332 at 60bpm, rushing the turn, try 66bpm tomorrow.' That 30-second note turns the next session into a targeted mission instead of vague playing."}},
+        {"@type":"Question","name":"How do practice streaks help?","acceptedAnswer":{"@type":"Answer","text":"Streaks harness loss aversion: protecting a 12-day chain motivates more reliably than vague resolutions. Keep the daily minimum small (even 10 minutes counts), never miss twice in a row, and use the longest-streak stat as a personal best to beat. The habit of showing up matters more than any single session."}},
+        {"@type":"Question","name":"Should I practice one piece or several per session?","acceptedAnswer":{"@type":"Answer","text":"Rotate between 2\u20134 pieces (interleaving) rather than grinding one \u2014 it feels harder but retention is far better. Structure each session as: warm-up (~10%), targeted work on hard passages (~60%), full run-throughs (~20%), and something fun to finish (~10%)."}},
+        {"@type":"Question","name":"How do I break through a practice plateau?","acceptedAnswer":{"@type":"Answer","text":"Plateaus are normal \u2014 your log's long-term trend proves they pass. Shrink sessions to keep the streak alive, change material to something fun, listen to great recordings for inspiration, and try slow practice or learning hard passages backwards (chaining). Return to fundamentals rather than grinding harder."}},
+        {"@type":"Question","name":"Is my practice data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. All sessions, streaks, and repertoire are stored only in your browser's local storage on your device \u2014 nothing is uploaded and no account exists. Clearing your browser data will erase the log, so export important milestones elsewhere if you switch devices."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#F5FAF2;--surface:#FFFFFF;--tint:#E4F4DD;--accent:#3F801E;--accentdeep:#386D1E;--accent-ink:#FFFFFF;--ink:#25331F;--muted:#607854;--line:#B2D1A4;--footmuted:#B7BEB3;--footlink:#F3FAF0;--bodyfont:system-ui,-apple-system,sans-serif;--headfont:'Cabin Sketch',system-ui,sans-serif}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--bodyfont);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accentdeep));color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em;font-family:var(--headfont)}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:transparent}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accentdeep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.01em;margin:34px 0 12px;font-weight:800;font-family:var(--headfont)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px;font-family:var(--headfont)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:var(--ink);color:var(--bg);margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff;font-family:var(--headfont)}
+.fx-footer p{font-size:15px;color:var(--footmuted);max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--footlink);font-weight:700}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+.pl-hero{padding:44px 0 6px;text-align:center}
+.pl-eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.pl-hero h1{font-size:clamp(36px,6vw,58px);font-weight:400;margin-bottom:12px;font-family:var(--headfont)}
+.pl-sub{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto}
+.pl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0 6px}
+.pl-stat{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:18px;text-align:center;box-shadow:3px 3px 0 var(--tint)}
+.pl-stat .v{font-size:34px;font-weight:700;color:var(--accent);font-family:var(--headfont)}
+.pl-stat .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.pl-grid{display:grid;grid-template-columns:380px 1fr;gap:20px;margin-top:20px;align-items:start}
+.pl-card{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:24px;box-shadow:3px 3px 0 var(--tint)}
+.pl-card h2{font-size:22px;font-weight:400;margin-bottom:4px;font-family:var(--headfont)}
+.pl-card .sub{font-size:14px;color:var(--muted);margin-bottom:16px}
+.pl-field{margin-bottom:14px}
+.pl-field label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+.pl-field input,.pl-field textarea,.pl-field select{font:inherit;font-size:16px;padding:11px 13px;border:2px solid var(--line);border-radius:12px;width:100%;color:var(--ink);background:#fff;font-family:inherit}
+.pl-field input:focus,.pl-field textarea:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.pl-addbtn{width:100%;border:0;cursor:pointer;font:inherit;font-weight:700;font-size:17px;padding:14px;border-radius:14px;background:var(--accent);color:var(--accent-ink);box-shadow:0 4px 0 var(--accentdeep)}
+.pl-addbtn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--accentdeep)}
+.pl-timerow{display:flex;gap:10px;align-items:end}
+.pl-timerow .pl-field{flex:1}
+.pl-stopbtn{border:2px solid var(--accent);background:#fff;color:var(--accent);font:inherit;font-weight:700;font-size:15px;padding:11px 18px;border-radius:12px;cursor:pointer;white-space:nowrap}
+.pl-timeline{position:relative;padding-left:34px}
+.pl-timeline::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:3px;background:var(--line);border-radius:2px}
+.pl-entry{position:relative;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px;box-shadow:3px 3px 0 var(--tint)}
+.pl-entry::before{content:"";position:absolute;left:-29px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);box-shadow:0 0 0 2px var(--accent)}
+.pl-entry .d{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.pl-entry .t{font-size:18px;font-weight:700;margin:2px 0}
+.pl-entry .t .mins{color:var(--accent)}
+.pl-entry .n{font-size:15px;color:var(--ink)}
+.pl-entry .del{position:absolute;top:10px;right:12px;border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer}
+.pl-entry .del:hover{color:var(--accent)}
+.pl-empty{text-align:center;color:var(--muted);padding:30px 10px;font-size:16px}
+.pl-rep{margin-top:20px}
+.pl-rep ul{list-style:none;margin-top:10px}
+.pl-rep li{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-bottom:1px dashed var(--line);font-size:16px;font-weight:600}
+.pl-rep li .del{border:0;background:none;color:var(--muted);cursor:pointer;font-size:16px}
+.pl-reprow{display:flex;gap:8px;margin-top:10px}
+.pl-reprow input{flex:1}
+.pl-reprow button{border:2px solid var(--accent);background:#fff;color:var(--accent);font:inherit;font-weight:700;padding:10px 18px;border-radius:12px;cursor:pointer}
+@media(max-width:860px){.pl-grid{grid-template-columns:1fr}.pl-stats{grid-template-columns:1fr 1fr}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/practicelog/" aria-label="PracticeLog home">
+      <span class="fx-tile" aria-hidden="true">&#127929;</span>
+      <span class="fx-name">PracticeLog</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+<section class="pl-hero">
+    <span class="pl-eyebrow">Your practice journal</span>
+    <h1>Music Practice Tracker</h1>
+    <p class="pl-sub">Log sessions, build streaks, and watch your repertoire grow — everything stays on your device, no account needed.</p>
+  </section>
+  <section class="pl-stats" aria-label="Practice statistics">
+    <div class="pl-stat"><div class="v" id="pl-total">0</div><div class="k">Minutes total</div></div>
+    <div class="pl-stat"><div class="v" id="pl-days">0</div><div class="k">Days practiced</div></div>
+    <div class="pl-stat"><div class="v" id="pl-streak">0</div><div class="k">Day streak &#128293;</div></div>
+    <div class="pl-stat"><div class="v" id="pl-longest">0</div><div class="k">Longest streak</div></div>
+  </section>
+  <div class="pl-grid">
+    <div>
+      <section class="pl-card" aria-label="Log a session">
+        <h2>Log a session</h2>
+        <div class="sub">Or run the timer and log when you finish.</div>
+        <div class="pl-timerow">
+          <div class="pl-field"><label for="pl-mins">Minutes</label><input type="number" id="pl-mins" value="30" min="1" max="600"></div>
+          <button class="pl-stopbtn" id="pl-timerbtn" type="button">Start 30:00</button>
+        </div>
+        <div class="pl-field"><label for="pl-date">Date</label><input type="date" id="pl-date"></div>
+        <div class="pl-field"><label for="pl-piece">Piece / focus</label><input type="text" id="pl-piece" placeholder="e.g. Moonlight Sonata, 1st mvt"></div>
+        <div class="pl-field"><label for="pl-notes">Notes</label><textarea id="pl-notes" rows="2" placeholder="What went well? What needs work?"></textarea></div>
+        <button class="pl-addbtn" id="pl-add" type="button">Add to log</button>
+      </section>
+      <section class="pl-card pl-rep" aria-label="Repertoire">
+        <h2>Repertoire</h2>
+        <div class="sub">Pieces you are working on or have polished.</div>
+        <ul id="pl-replist"></ul>
+        <div class="pl-reprow">
+          <input type="text" id="pl-repinput" placeholder="Add a piece…" aria-label="New repertoire piece">
+          <button type="button" id="pl-repadd">Add</button>
+        </div>
+      </section>
+    </div>
+    <section class="pl-card" aria-label="Practice timeline">
+      <h2>Timeline</h2>
+      <div class="sub">Newest sessions first — your practice story, scrollable.</div>
+      <div class="pl-timeline" id="pl-timeline"></div>
+    </section>
+  </div>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec" aria-label="Guide">
+<h2>Why Musicians Who Log Practice Improve Faster</h2>
+    <p>Two students practice "about an hour a day." One logs every session — date, minutes, pieces, notes. The other doesn't. Within months, the logger is measurably ahead, and it isn't because logging is magic. A practice log does three things: it makes practice <strong>visible</strong> (you can't lie to yourself about "practicing every day" when the timeline shows three blank days), it makes progress <strong>trackable</strong> (last month's 20-minute sessions are this month's 45-minute ones), and it makes the next session <strong>plannable</strong> (yesterday's note says "bars 24–32 still shaky" — so that's where you start today).</p>
+    <p>Research on deliberate practice backs this up: improvement comes from focused, feedback-rich repetition with clear goals, not from hours alone. A log is the simplest feedback system available — it turns vague effort into data, and data into better decisions about what to practice next. This page is that system: sessions, streaks, and repertoire, stored privately on your device.</p>
+    <h2>The Anatomy of a Good Practice Session</h2>
+    <p>Effective sessions share a structure, whether they're 20 minutes or two hours. <strong>Warm up (10%):</strong> scales, arpeggios, or technical exercises at a comfortable tempo — you're waking up the hands, not performing. <strong>Targeted work (60%):</strong> the hard parts. Isolate the 4–8 bar passage that's failing, slow it to half tempo, and loop it with full attention until it's clean, then gradually raise the tempo. This is where logging pays off: write the bar numbers in the notes field so tomorrow-you knows exactly where to start. <strong>Repertoire run-through (20%):</strong> play pieces top to bottom without stopping, as if performing — this builds the different skill of recovery and continuity. <strong>Cool down (10%):</strong> something you love, played for joy. Ending on pleasure is what brings you back tomorrow.</p>
+    <p>The most common amateur mistake is spending the whole session on run-throughs — playing pieces start to finish, stumbling in the same spots, reinforcing the stumbles. Professionals invert it: most time on the broken bits, least time on what already works. Your log's notes field is the tool that enforces this discipline.</p>
+    <h2>Streaks: The Motivation Engine</h2>
+    <p>The streak counter above isn't gamification fluff — it's applied behavioral psychology. Loss aversion means a 12-day streak you'll protect beats a vague resolution you'll break; the "don't break the chain" method (popularized by Jerry Seinfeld for writing) works because each day's practice has two rewards: the practice itself and the streak's survival. Start the streak with an embarrassingly small daily minimum — 10 minutes counts — because the habit of showing up matters more than any single session's length.</p>
+    <p>Two rules keep streaks healthy. First, <strong>never miss twice</strong>: one missed day is life; two is the start of quitting. Second, <strong>let the streak bend, not break</strong>: traveling without your instrument? A 10-minute mental-practice session (visualizing fingerings, studying the score) keeps the chain alive honestly. The longest-streak stat is your personal best to beat — progress, not perfection.</p>
+    <h2>How Much Should You Practice?</h2>
+    <p>Quality beats quantity, but quantity still matters. Rough guides: <strong>beginners</strong> — 20–30 minutes daily beats 2 hours on Saturday, because young muscle memory needs daily reinforcement; <strong>intermediate students</strong> — 45–60 minutes, split into two sessions if focus fades; <strong>advanced/serious students</strong> — 2–4 hours in multiple sessions with real breaks, structured around specific goals. Beyond about 4 hours, returns diminish sharply and injury risk (tendonitis, carpal tunnel) rises — professional musicians treat practice like athletic training, with rest days and attention to pain signals.</p>
+    <p>Use the timer above for focused blocks: 25–30 minutes of single-task practice, then a real break. Log the minutes when the timer ends. Over weeks, the totals reveal your real capacity — most people discover they practice less than they think, which is useful data, not a judgment. Increase gradually: add 10 minutes a week, not an hour overnight.</p>
+    <h2>The Repertoire List: Your Musical Resume</h2>
+    <p>The repertoire section is more than a list — it's a curriculum. Organize pieces into three columns mentally: <strong>polished</strong> (performance-ready, maintained with occasional run-throughs), <strong>in progress</strong> (the current 2–4 pieces getting targeted work), and <strong>upcoming</strong> (aspirational pieces that motivate). Keep "in progress" small: spreading thin across ten pieces means none of them improves. When a piece graduates to polished, the satisfaction of moving it is real — and the growing list becomes proof of progress on the weeks when playing feels stagnant.</p>
+    <p>For students with teachers, the log doubles as a lesson report: "this week I practiced 240 minutes, focused on the Beethoven exposition, bars 40–58 still need work." Teachers love data — it lets them diagnose instead of guess, and lessons get dramatically more productive.</p>
+    <h2>What to Write in the Notes</h2>
+    <p>Good notes are specific and forward-looking. Instead of "practiced sonata," write "Sonata mvt 1, bars 24–32 at 60bpm, RH fingering fixed, still rushing the turn — try 66bpm tomorrow." The formula: <strong>what + where + tempo + problem + next step</strong>. This takes 30 seconds and it transforms tomorrow's session from "play stuff" into a targeted mission. Also note non-technical observations: "sounded musical when I stopped forcing it," "tired after 40 min — split sessions tomorrow." Patterns emerge over weeks — you'll spot that slow practice always works, or that morning sessions beat evening ones — and those patterns are gold.</p>
+    <h2>Practicing Smarter: Techniques That Multiply Hours</h2>
+    <p>A few evidence-backed methods: <strong>slow practice</strong> — if you can't play it perfectly slowly, you can't play it fast; speed is accuracy repeated. <strong>Chaining</strong> — learn a hard passage backwards, adding one beat at a time from the end, so you always play toward familiar territory. <strong>Interleaving</strong> — rotate between 2–3 pieces in a session rather than grinding one; it feels harder but retention is far better. <strong>Mental practice</strong> — visualize the fingerings away from the instrument; studies show it measurably improves performance. <strong>Recording yourself</strong> — the phone on the music stand is brutally honest in a way your in-the-moment ears aren't; listen back weekly.</p>
+    <h2>Plateaus, Frustration, and Coming Back</h2>
+    <p>Every musician hits plateaus where practice feels pointless — the log proves they're temporary by showing the long upward trend beneath the flat weeks. When motivation dies, shrink the session (10 minutes counts, the streak survives), change the material (learn something fun and easy), or change the input (listen to great recordings of your pieces — inspiration is a practice tool). If you've been away for months, the log welcomes you back without judgment: start at half your old volume, rebuild over 2–3 weeks, and watch the streak counter climb again. The musicians who last decades aren't the ones who never stop — they're the ones who always restart.</p>
+    <h2>When to Rest: Practice and Injury</h2>
+    <p>More practice is not always better — injured musicians practice zero minutes a day. The warning signs are unmistakable once you know them: sharp or persistent pain (as opposed to mild muscle fatigue), numbness or tingling in fingers, and soreness that does not resolve overnight. The log helps here too: a sudden drop in comfortable session length, or notes mentioning the same ache three days running, is data telling you to stop and recover. Prevention beats treatment: warm up before intense practice, take a 5-minute break every 25–30 minutes (the timer above is perfect for this), keep wrists neutral rather than bent, and never "play through" sharp pain. If pain persists beyond a few days of rest, see a doctor or physiotherapist who works with musicians — general practitioners often just say "stop playing," which is not a plan. Deliberate rest is part of deliberate practice: muscles, tendons, and neural pathways consolidate during recovery, which is why the day after a rest day often feels mysteriously better. Schedule rest like you schedule practice, and your decades-long playing career will thank you.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much should I practice each day?</summary><p>Beginners do best with 20–30 minutes daily; intermediate players 45–60 minutes; serious students 2–4 hours in multiple sessions with breaks. Daily consistency beats weekend marathons — muscle memory needs daily reinforcement. Start small, log every session, and add about 10 minutes per week.</p></details>
+<details><summary>What should I write in a practice log?</summary><p>Be specific and forward-looking: the piece, the exact bars, the tempo, the problem, and tomorrow&#x27;s next step — e.g. &#x27;Sonata mvt 1, bars 24–32 at 60bpm, rushing the turn, try 66bpm tomorrow.&#x27; That 30-second note turns the next session into a targeted mission instead of vague playing.</p></details>
+<details><summary>How do practice streaks help?</summary><p>Streaks harness loss aversion: protecting a 12-day chain motivates more reliably than vague resolutions. Keep the daily minimum small (even 10 minutes counts), never miss twice in a row, and use the longest-streak stat as a personal best to beat. The habit of showing up matters more than any single session.</p></details>
+<details><summary>Should I practice one piece or several per session?</summary><p>Rotate between 2–4 pieces (interleaving) rather than grinding one — it feels harder but retention is far better. Structure each session as: warm-up (~10%), targeted work on hard passages (~60%), full run-throughs (~20%), and something fun to finish (~10%).</p></details>
+<details><summary>How do I break through a practice plateau?</summary><p>Plateaus are normal — your log&#x27;s long-term trend proves they pass. Shrink sessions to keep the streak alive, change material to something fun, listen to great recordings for inspiration, and try slow practice or learning hard passages backwards (chaining). Return to fundamentals rather than grinding harder.</p></details>
+<details><summary>Is my practice data private?</summary><p>Yes. All sessions, streaks, and repertoire are stored only in your browser&#x27;s local storage on your device — nothing is uploaded and no account exists. Clearing your browser data will erase the log, so export important milestones elsewhere if you switch devices.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PracticeLog</div>
+    <p>PracticeLog is a local-first music practice journal — timed sessions, streaks, and a repertoire list, all saved on your device.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* PracticeLog — pure logic. Stats over logged practice sessions.
+   sessions: [{date:'YYYY-MM-DD', minutes}]; todayStr: 'YYYY-MM-DD'. */
+function practiceStats(sessions, todayStr) {
+  var byDay = {};
+  (sessions || []).forEach(function (s) {
+    if (!s || !s.date) return;
+    byDay[s.date] = (byDay[s.date] || 0) + (Math.max(0, Number(s.minutes) || 0));
+  });
+  var days = Object.keys(byDay).sort();
+  var totalMinutes = days.reduce(function (a, d) { return a + byDay[d]; }, 0);
+  var count = days.length;
+  function addDays(dstr, n) {
+    var d = new Date(dstr + 'T00:00:00Z');
+    d.setUTCDate(d.getUTCDate() + n);
+    return d.toISOString().slice(0, 10);
+  }
+  // Current streak: consecutive practiced days ending on todayStr.
+  var cur = 0, d = todayStr;
+  while (d && byDay[d]) { cur++; d = addDays(d, -1); }
+  // Longest streak anywhere in the log.
+  var longest = 0, run = 0, prevDay = null;
+  days.forEach(function (day) {
+    run = (prevDay && addDays(prevDay, 1) === day) ? run + 1 : 1;
+    if (run > longest) longest = run;
+    prevDay = day;
+  });
+  return {
+    totalMinutes: totalMinutes,
+    daysPracticed: count,
+    averageMinutes: count ? totalMinutes / count : 0,
+    currentStreak: cur,
+    longestStreak: longest
+  };
+}
+
+if (typeof document !== 'undefined') {
+  // Page wiring (log form + localStorage timeline) goes in the HTML inline script.
+}
+
+</script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  function dayStr(d){d=d||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+  function load(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v;}catch(e){return d;}}
+  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+  $('pl-date').value=dayStr();
+  /* timer */
+  var tSec=0,tId=null,tRunning=false;
+  function tFmt(s){var m=Math.floor(s/60),ss=s%60;return (m<10?'0':'')+m+':'+(ss<10?'0':'')+ss;}
+  $('pl-timerbtn').addEventListener('click',function(){
+    if(!tRunning){
+      tSec=(parseInt($('pl-mins').value,10)||30)*60;tRunning=true;
+      this.textContent='Stop '+tFmt(tSec);
+      tId=setInterval(function(){
+        tSec--;if(tSec<=0){clearInterval(tId);tRunning=false;$('pl-timerbtn').textContent='Start '+$('pl-mins').value+':00';addSession(true);return;}
+        $('pl-timerbtn').textContent='Stop '+tFmt(tSec);
+      },1000);
+    }else{clearInterval(tId);tRunning=false;this.textContent='Start '+$('pl-mins').value+':00';}
+  });
+  /* sessions */
+  function getSessions(){return load('pl_sessions',[]);}
+  function addSession(fromTimer){
+    var mins=Math.max(1,parseInt($('pl-mins').value,10)||0);
+    var s=getSessions();
+    s.push({date:$('pl-date').value||dayStr(),minutes:mins,piece:$('pl-piece').value.trim(),notes:$('pl-notes').value.trim(),at:Date.now()});
+    save('pl_sessions',s);
+    $('pl-piece').value='';$('pl-notes').value='';
+    render();
+  }
+  $('pl-add').addEventListener('click',function(){addSession(false);});
+  window.plDelete=function(i){var s=getSessions();s.splice(i,1);save('pl_sessions',s);render();};
+  /* repertoire */
+  function getRep(){return load('pl_rep',[]);}
+  function renderRep(){
+    var ul=$('pl-replist');ul.innerHTML='';
+    var r=getRep();
+    if(!r.length)ul.innerHTML='<li style="color:var(--muted);font-weight:400">No pieces yet — add your first below.</li>';
+    r.forEach(function(p,i){
+      var li=document.createElement('li');
+      var sp=document.createElement('span');sp.textContent=p;
+      var b=document.createElement('button');b.className='del';b.textContent='\u00D7';b.setAttribute('aria-label','Remove '+p);
+      b.addEventListener('click',function(){var rr=getRep();rr.splice(i,1);save('pl_rep',rr);renderRep();});
+      li.appendChild(sp);li.appendChild(b);ul.appendChild(li);
+    });
+  }
+  $('pl-repadd').addEventListener('click',function(){
+    var v=$('pl-repinput').value.trim();if(!v)return;
+    var r=getRep();r.push(v);save('pl_rep',r);$('pl-repinput').value='';renderRep();
+  });
+  $('pl-repinput').addEventListener('keydown',function(e){if(e.key==='Enter')$('pl-repadd').click();});
+  function render(){
+    var s=getSessions();
+    var stats=practiceStats(s,dayStr());
+    $('pl-total').textContent=stats.totalMinutes.toLocaleString('en-US');
+    $('pl-days').textContent=stats.daysPracticed;
+    $('pl-streak').textContent=stats.currentStreak;
+    $('pl-longest').textContent=stats.longestStreak;
+    var tl=$('pl-timeline');tl.innerHTML='';
+    if(!s.length){tl.innerHTML='<div class="pl-empty">No sessions yet.<br>Log your first one — future you says thanks.</div>';}
+    s.slice().sort(function(a,b){return b.at-a.at;}).slice(0,30).forEach(function(e){
+      var origIdx=s.indexOf(e);
+      var div=document.createElement('div');div.className='pl-entry';
+      var d=document.createElement('div');d.className='d';d.textContent=e.date;
+      var t=document.createElement('div');t.className='t';
+      t.innerHTML='<span class="mins">'+e.minutes+' min</span>'+(e.piece?' — '+e.piece.replace(/</g,'&lt;'):'');
+      div.appendChild(d);div.appendChild(t);
+      if(e.notes){var n=document.createElement('div');n.className='n';n.textContent=e.notes;div.appendChild(n);}
+      var del=document.createElement('button');del.className='del';del.textContent='\u00D7';del.setAttribute('aria-label','Delete session');
+      del.addEventListener('click',function(){window.plDelete(origIdx);});
+      div.appendChild(del);tl.appendChild(div);
+    });
+    renderRep();
+  }
+  render();
+})();
+</script>
+</body>
+</html>
