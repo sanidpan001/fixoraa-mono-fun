@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is My Zodiac Sign? — Finder by Birthday | ZodiacSign</title>
+<meta name="description" content="Your zodiac sign from your birthday — cusps handled, traits included.">
+<link rel="canonical" href="https://fun.fixoraa.tech/zodiacsign/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="What Is My Zodiac Sign? — Finder by Birthday | ZodiacSign">
+<meta property="og:description" content="Your zodiac sign from your birthday — cusps handled, traits included.">
+<meta property="og:url" content="https://fun.fixoraa.tech/zodiacsign/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ZodiacSign",
+      "url": "https://fun.fixoraa.tech/zodiacsign/",
+      "applicationCategory": "Fun & Lifestyle",
+      "operatingSystem": "Web",
+      "description": "Your zodiac sign from your birthday — cusps handled, traits included.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is my zodiac sign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter your birth month and day in the finder above. It returns your Western (tropical) zodiac sign, your date range, your element, a trait card, and whether you were born on a cusp between two signs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it mean to be born on the cusp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It means your birthday falls within about two days of the date one sign changes to the next (for example, March 20–21 for Pisces/Aries). The tool flags cusp birthdays and names the neighboring sign, since the exact changeover shifts slightly each year."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the zodiac dates for each sign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aries Mar 21–Apr 19, Taurus Apr 20–May 20, Gemini May 21–Jun 20, Cancer Jun 21–Jul 22, Leo Jul 23–Aug 22, Virgo Aug 23–Sep 22, Libra Sep 23–Oct 22, Scorpio Oct 23–Nov 21, Sagittarius Nov 22–Dec 21, Capricorn Dec 22–Jan 19, Aquarius Jan 20–Feb 18, Pisces Feb 19–Mar 20."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which zodiac signs are most compatible?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As a quick read, signs sharing your element click fastest: fire with fire/air, earth with earth/water. The tool lists your fellow element signs on every result. Full compatibility really needs both complete birth charts, so treat sun-sign matching as fun, not fate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between tropical and sidereal zodiac?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The tropical zodiac used here is anchored to the seasons (Aries starts at the March equinox). The sidereal zodiac used in Vedic astrology is tied to the actual constellations and runs about 24 degrees behind, so Vedic signs are usually one sign earlier."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do different sources list slightly different sign dates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Sun crosses each sign boundary at an exact moment that shifts with leap years and Earth's orbit, so changeovers can fall on either of two calendar days depending on the year and time zone. This tool uses the standard ranges and flags birthdays near the boundary as cusps."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F5F2FA; --surface:#FFFFFF; --tint:#E4DDF4; --line:#E4DDF4;
+  --accent:#5127A5; --accent-ink:#FFFFFF;
+  --ink:#251F33; --muted:#605478;
+  --footbg:#241f33; --footink:#f4eef4; --footmuted:#cdbfcd;
+  --display:'Macondo', cursive; --body:system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-wrap{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em;font-family:var(--display)}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;font-weight:700;font-size:13px}
+.article-sec{margin:40px auto;max-width:780px;padding:0 20px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800;font-family:var(--display)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px auto;max-width:780px;padding:0 20px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;font-family:var(--display)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px;color:var(--ink)}
+.fx-footer{background:var(--footbg);color:var(--footink);margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff;font-family:var(--display)}
+.fx-footer p{font-size:15px;color:var(--footmuted);max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px}
+.fx-credit a{color:var(--accent_ink);font-weight:700}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+
+.hero{padding:44px 20px 8px;max-width:960px;margin:0 auto;text-align:center}
+.eyebrow{display:inline-block;font-size:15px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.hero h1{font-size:clamp(40px,6vw,62px);font-weight:400;margin-bottom:10px}
+.hero p{font-size:18px;color:var(--muted);max-width:620px;margin:0 auto}
+.tool{max-width:960px;margin:28px auto 8px;padding:0 20px}
+.finder{background:#fff;border:1px solid #ddd3ee;border-radius:20px;padding:30px;box-shadow:0 14px 36px rgba(81,39,165,.10);text-align:center;margin-bottom:26px}
+.finder .flabel{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.frow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:end}
+.ffield label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px}
+.ffield select{font-size:20px;padding:10px 16px;border-radius:12px;border:2px solid var(--tint);background:#fbf9fe;color:var(--ink)}
+.ffield select:focus{outline:none;border-color:var(--accent)}
+.fgo{font-family:var(--display);font-size:24px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:14px;padding:10px 34px;cursor:pointer;box-shadow:0 5px 0 #3a1c78}
+.fgo:active{transform:translateY(3px);box-shadow:none}
+.result-card{margin-top:22px;background:linear-gradient(160deg,var(--tint),#f7f2fd);border:2px solid var(--accent);border-radius:18px;padding:26px;display:none}
+.result-card.show{display:block;animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.97);opacity:.4}to{transform:scale(1);opacity:1}}
+.rc-sym{font-size:64px;line-height:1}
+.rc-name{font-family:var(--display);font-size:44px;color:var(--accent)}
+.rc-dates{font-size:16px;color:var(--muted);margin-bottom:8px}
+.rc-traits{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0}
+.rc-traits span{background:#fff;border:1.5px solid var(--accent);color:var(--accent);border-radius:999px;padding:5px 14px;font-size:13px;font-weight:700}
+.rc-blurb{max-width:560px;margin:0 auto;font-size:16px}
+.rc-cusp{margin-top:12px;display:inline-block;background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:8px 18px;font-size:14px;font-weight:700}
+.rc-comp{margin-top:14px;font-size:15px;color:var(--muted)}
+.rc-comp b{color:var(--accent)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.gcard{background:#fff;border:2px solid var(--tint);border-radius:16px;padding:18px 10px;text-align:center;cursor:pointer;transition:transform .12s,border-color .12s}
+.gcard:hover{transform:translateY(-3px);border-color:var(--accent)}
+.gcard .s{font-size:38px}
+.gcard .n{font-family:var(--display);font-size:21px;color:var(--ink);margin-top:4px}
+.gcard .d{font-size:12px;color:var(--muted)}
+.gcard.active{border-color:var(--accent);background:var(--tint);box-shadow:0 8px 20px rgba(81,39,165,.15)}
+.gal-note{text-align:center;color:var(--muted);font-size:14px;margin:14px 0 4px}
+.fx-tile{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#7b53d6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:#fff;font-family:system-ui}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{background:var(--tint);color:var(--accent);border:2px dashed var(--accent)}
+@media(max-width:720px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.gallery{grid-template-columns:repeat(2,1fr)}.finder{padding:22px 16px}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-wrap">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/zodiacsign/" aria-label="ZodiacSign home">
+      <span class="fx-tile" aria-hidden="true">☽</span>
+      <span class="fx-name">ZodiacSign</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-wrap">
+  <section class="hero">
+    <span class="eyebrow">The birthday gallery</span>
+    <h1>What is my zodiac sign?</h1>
+    <p>Enter your birthday for your sign, your cusp status, your trait card — and who you click with.</p>
+  </section>
+  <section class="tool" aria-label="ZodiacSign tool">
+<div class="finder">
+      <div class="flabel">Find your sign</div>
+      <div class="frow">
+        <div class="ffield"><label for="zs-m">Month</label><select id="zs-m"></select></div>
+        <div class="ffield"><label for="zs-d">Day</label><select id="zs-d"></select></div>
+        <button type="button" class="fgo" id="zs-go">Reveal</button>
+      </div>
+      <div class="result-card" id="zs-res" aria-live="polite"></div>
+    </div>
+    <p class="gal-note">Or tap any sign in the gallery &darr;</p>
+    <div class="gallery" id="zs-gal"></div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>How Your Zodiac Sign Is Determined</h2>
+<p>Your Western zodiac sign — also called your <strong>sun sign</strong> — is set by where the Sun appeared to be on the day you were born, measured against the twelve 30-degree slices of the ecliptic. In practice, it comes down to your birthday: each sign owns a fixed date range, and the finder above maps any month and day to its sign instantly. Aries opens the zodiacal year around March 21, and the signs march forward from there: Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces closing the loop in mid-March.</p>
+<p>One honest caveat before the fun: this is <strong>tropical astrology</strong>, the system behind newspaper horoscopes. It is anchored to the seasons (Aries always starts at the March equinox), not to the actual constellations, which have drifted over 2,000 years of precession. Astronomically, the Sun is "in" slightly different constellations on those dates. The tool follows the traditional tropical dates everyone means when they ask "what's your sign" — cusps handled properly, which is rarer than it should be.</p>
+<h2>The Cusp Problem, Solved Properly</h2>
+<p>Born on March 20, and one chart says Pisces while another says Aries? Welcome to the <strong>cusp</strong>, the 2–3 day borderland where signs change. Most static tables just pick a side; this tool flags cusp birthdays explicitly and names the neighboring sign, because the exact changeover moment shifts slightly year to year with leap years and time zones. If you were born within two days of a boundary — say July 23 (Cancer/Leo) or January 19 (Capricorn/Aquarius) — you will see a cusp badge on your result card.</p>
+<p>Astrologers disagree about what cusps <em>mean</em>. Traditionalists say there is no such thing — you are one sign, determined by the exact minute. Modern popular astrology loves the idea of "cusp babies" blending two signs' traits. The tool stays neutral: it tells you the facts (your sign, your distance from the boundary, your neighbor) and lets you decide whether you feel like a Leo with Cancer seasoning.</p>
+<h2>The Twelve Signs, in Thirty Seconds Each</h2>
+<p><strong>Aries (Mar 21–Apr 19)</strong>, the Ram: first, fast, and allergic to waiting. <strong>Taurus (Apr 20–May 20)</strong>, the Bull: patient builder of comfort. <strong>Gemini (May 21–Jun 20)</strong>, the Twins: quicksilver curiosity in human form. <strong>Cancer (Jun 21–Jul 22)</strong>, the Crab: the zodiac's memory-keeper and fiercest nurturer. <strong>Leo (Jul 23–Aug 22)</strong>, the Lion: generous warmth with a flair for the dramatic. <strong>Virgo (Aug 23–Sep 22)</strong>, the Maiden: precision, service, and the satisfaction of a job done right.</p>
+<p><strong>Libra (Sep 23–Oct 22)</strong>, the Scales: harmony-seeker and natural diplomat. <strong>Scorpio (Oct 23–Nov 21)</strong>, the Scorpion: intensity, privacy, and all-or-nothing devotion. <strong>Sagittarius (Nov 22–Dec 21)</strong>, the Archer: philosopher-adventurer with itchy feet. <strong>Capricorn (Dec 22–Jan 19)</strong>, the Goat: the long game, played to win. <strong>Aquarius (Jan 20–Feb 18)</strong>, the Water-Bearer: the future, arriving early. <strong>Pisces (Feb 19–Mar 20)</strong>, the Fish: empathy and imagination without borders. Tap any card in the gallery above for the full trait set.</p>
+<h2>The Four Elements: Fire, Earth, Air, Water</h2>
+<p>The twelve signs sort into four <strong>elements</strong> of three signs each, and the element is the fastest compatibility read in astrology. <strong>Fire</strong> (Aries, Leo, Sagittarius) runs on enthusiasm and action. <strong>Earth</strong> (Taurus, Virgo, Capricorn) runs on practicality and staying power. <strong>Air</strong> (Gemini, Libra, Aquarius) runs on ideas and connection. <strong>Water</strong> (Cancer, Scorpio, Pisces) runs on feeling and intuition. Fire feeds air; earth and water nourish each other — which is why the tool lists your fellow element-signs as your natural clicks.</p>
+<p>Element thinking also explains sign reputations. Fire signs get called impulsive because they decide at the speed of excitement; earth signs get called stubborn because they decide at the speed of certainty. Neither is an insult — it is a difference in processing speed, and the best partnerships pair complementary tempos.</p>
+<h2>Quick Compatibility: Who Clicks With Whom</h2>
+<p>The result card shows your <strong>element matches</strong> — the two other signs sharing your element — as a starting point. The classic pairings: fire with fire or air (shared momentum, mutual inspiration), earth with earth or water (shared steadiness, emotional safety). The spicier combos — fire with water, earth with air — are the "growth" pairings: more friction, more transformation, beloved by astrologers and feared by everyone actually living through them.</p>
+<p>Take compatibility lightly. Real synastry compares two full birth charts — Moon signs (emotional needs), Venus (love language), Mars (conflict style) — and sun-sign matching is the cover, not the book. It is perfect for party conversation and first-date small talk, and the tool presents it exactly at that weight: fun, fast, and not a decision-making framework.</p>
+<h2>Where the Zodiac Came From</h2>
+<p>The twelve-sign zodiac is Babylonian in origin, refined by the Greeks (the word <em>zodiac</em> comes from <em>zodiakos kyklos</em>, "circle of little animals"), and passed to Rome, India, and the medieval Islamic world, which preserved and advanced it. For most of history it was serious business: physicians timed treatments by the Moon's sign, farmers planted by them, and kings kept court astrologers. The split between astronomy and astrology is only about 400 years old — before that, they were one discipline.</p>
+<p>The newspaper horoscope, the reason most people know their sign, was invented in 1930 when the <em>Sunday Express</em> published a chart for Princess Margaret's birth. It was a novelty that never ended. Vedic (Indian) astrology, meanwhile, uses the <strong>sidereal</strong> zodiac tied to the actual constellations — about 24 degrees behind the tropical one — so your Vedic "sign" is usually one sign earlier. Same sky, different map.</p>
+<h2>Why Dates Shift Slightly Year to Year</h2>
+<p>You may notice your sign's dates quoted as "March 20–21" in different sources. The Sun crosses each 30-degree boundary at a precise moment that wanders with leap years and Earth's slightly irregular orbit, so the changeover can fall on either of two calendar days depending on the year and your time zone. A baby born March 20 at 11pm in New York might be Aries in London, where it is already March 21. Serious astrologers cast the chart for the exact minute and place; everyone else uses the standard date ranges — which is what this tool does, with the cusp flag as its honesty mechanism.</p>
+<h2>Rising Signs, Moon Signs, and the Rest of the Chart</h2>
+<p>Your sun sign is one instrument in the orchestra. The <strong>Moon sign</strong> (your emotional nature) changes every 2–3 days and often describes you better than your sun sign does. The <strong>rising sign or ascendant</strong> (your outward style) changes every two hours and needs your birth time. Venus, Mars, Mercury and the rest fill out love, drive, and communication. People who say "I'm such a Virgo" while acting nothing like one often have a strong Virgo Moon or rising — the chart is bigger than the birthday.</p>
+<p>If this tool sparks the interest, the natural next step is a free full-chart calculator (you will need your birth time and city). But for the question everyone actually asks — <em>what's my sign?</em> — the birthday is enough, and now you have it, cusp status and all.</p>
+<h2>Sun Sign vs. Rising Sign: Which One Are You?</h2>
+<p>Ask an astrology enthusiast which sign matters most and many will say the <strong>rising sign (ascendant)</strong> — the zodiac sign cresting the eastern horizon at the moment of your birth — edges out the sun sign for describing how you come across. The logic: your sun sign is your core drive, but your rising sign is the mask, the first impression, the style of your approach. It changes roughly every two hours, which is why twins born minutes apart can have different risings and, enthusiasts insist, noticeably different vibes. You need an accurate birth time to compute it, and hospitals record those more reliably than most people expect — check your birth certificate before you guess.</p>
+<p>The <strong>Moon sign</strong> completes the classic trio: it governs emotional needs and changes every two to three days. People who "don't feel like" their sun sign often have a dominant Moon or rising — a Cancer sun with an Aries moon reads as bold, not brooding. None of this changes your result above: the sun sign remains the shared language of zodiac conversation, the one the gallery, the horoscopes, and the party small talk all use. Think of rising and Moon as the director's commentary — enriching, optional, and a rabbit hole you can happily fall down after the birthday question is answered.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What is my zodiac sign?</summary><p>Enter your birth month and day in the finder above. It returns your Western (tropical) zodiac sign, your date range, your element, a trait card, and whether you were born on a cusp between two signs.</p></details>
+    <details><summary>What does it mean to be born on the cusp?</summary><p>It means your birthday falls within about two days of the date one sign changes to the next (for example, March 20–21 for Pisces/Aries). The tool flags cusp birthdays and names the neighboring sign, since the exact changeover shifts slightly each year.</p></details>
+    <details><summary>What are the zodiac dates for each sign?</summary><p>Aries Mar 21–Apr 19, Taurus Apr 20–May 20, Gemini May 21–Jun 20, Cancer Jun 21–Jul 22, Leo Jul 23–Aug 22, Virgo Aug 23–Sep 22, Libra Sep 23–Oct 22, Scorpio Oct 23–Nov 21, Sagittarius Nov 22–Dec 21, Capricorn Dec 22–Jan 19, Aquarius Jan 20–Feb 18, Pisces Feb 19–Mar 20.</p></details>
+    <details><summary>Which zodiac signs are most compatible?</summary><p>As a quick read, signs sharing your element click fastest: fire with fire/air, earth with earth/water. The tool lists your fellow element signs on every result. Full compatibility really needs both complete birth charts, so treat sun-sign matching as fun, not fate.</p></details>
+    <details><summary>What is the difference between tropical and sidereal zodiac?</summary><p>The tropical zodiac used here is anchored to the seasons (Aries starts at the March equinox). The sidereal zodiac used in Vedic astrology is tied to the actual constellations and runs about 24 degrees behind, so Vedic signs are usually one sign earlier.</p></details>
+    <details><summary>Why do different sources list slightly different sign dates?</summary><p>The Sun crosses each sign boundary at an exact moment that shifts with leap years and Earth's orbit, so changeovers can fall on either of two calendar days depending on the year and time zone. This tool uses the standard ranges and flags birthdays near the boundary as cusps.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-wrap">
+    <div class="fx-brand">ZodiacSign</div>
+    <p>ZodiacSign finds your Western zodiac sign from your birth date, explains cusp birthdays, and shows traits and element compatibility.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var SIGNS=[
+{name:"Aries",sm:3,sd:21,em:4,ed:19,element:"fire",traits:["Bold","Pioneering","Energetic","Competitive"],blurb:"The Ram charges first and asks later. Aries brings courage, momentum and a love of new beginnings.",dates:"March 21 – April 19"},
+{name:"Taurus",sm:4,sd:20,em:5,ed:20,element:"earth",traits:["Patient","Loyal","Sensual","Steadfast"],blurb:"The Bull builds to last. Taurus values comfort, loyalty and the quiet pleasure of things done well.",dates:"April 20 – May 20"},
+{name:"Gemini",sm:5,sd:21,em:6,ed:20,element:"air",traits:["Curious","Witty","Adaptable","Expressive"],blurb:"The Twins talk to everyone. Gemini thrives on ideas, conversation and delightful variety.",dates:"May 21 – June 20"},
+{name:"Cancer",sm:6,sd:21,em:7,ed:22,element:"water",traits:["Nurturing","Intuitive","Protective","Sentimental"],blurb:"The Crab feels deeply. Cancer leads with care, memory and fierce loyalty to home.",dates:"June 21 – July 22"},
+{name:"Leo",sm:7,sd:23,em:8,ed:22,element:"fire",traits:["Generous","Dramatic","Warm","Proud"],blurb:"The Lion loves the light. Leo gives big, celebrates big and leads with heart.",dates:"July 23 – August 22"},
+{name:"Virgo",sm:8,sd:23,em:9,ed:22,element:"earth",traits:["Analytical","Helpful","Precise","Modest"],blurb:"The Maiden perfects the details. Virgo serves through craft, care and quiet competence.",dates:"August 23 – September 22"},
+{name:"Libra",sm:9,sd:23,em:10,ed:22,element:"air",traits:["Charming","Fair","Sociable","Diplomatic"],blurb:"The Scales seek balance. Libra smooths conflict and makes everything more beautiful.",dates:"September 23 – October 22"},
+{name:"Scorpio",sm:10,sd:23,em:11,ed:21,element:"water",traits:["Intense","Magnetic","Private","Determined"],blurb:"The Scorpion goes deep. Scorpio trades in truth, transformation and total commitment.",dates:"October 23 – November 21"},
+{name:"Sagittarius",sm:11,sd:22,em:12,ed:21,element:"fire",traits:["Adventurous","Honest","Optimistic","Philosophical"],blurb:"The Archer aims far. Sagittarius chases horizons, ideas and the next great story.",dates:"November 22 – December 21"},
+{name:"Capricorn",sm:12,sd:22,em:1,ed:19,element:"earth",traits:["Disciplined","Ambitious","Wise","Reserved"],blurb:"The Goat climbs steadily. Capricorn plays the long game — and usually wins it.",dates:"December 22 – January 19"},
+{name:"Aquarius",sm:1,sd:20,em:2,ed:18,element:"air",traits:["Original","Humanitarian","Independent","Visionary"],blurb:"The Water-Bearer pours out ideas. Aquarius imagines the future, then builds it.",dates:"January 20 – February 18"},
+{name:"Pisces",sm:2,sd:19,em:3,ed:20,element:"water",traits:["Dreamy","Compassionate","Artistic","Gentle"],blurb:"The Fish swim in feeling. Pisces dissolves boundaries with empathy and imagination.",dates:"February 19 – March 20"}
+];
+var ZS_BOUNDS=[[1,20,10],[2,19,11],[3,21,0],[4,20,1],[5,21,2],[6,21,3],[7,23,4],[8,23,5],[9,23,6],[10,23,7],[11,22,8],[12,22,9]];
+var ZS_MDAYS=[31,28,31,30,31,30,31,31,30,31,30,31];
+var ZS_SYM=["\u2648","\u2649","\u264a","\u264b","\u264c","\u264d","\u264e","\u264f","\u2650","\u2651","\u2652","\u2653"];
+function zsDoy(m,d){ var s=0; for(var i=0;i<m-1;i++) s+=ZS_MDAYS[i]; return s+d; }
+function zodiacSign(month,day){
+  month=Math.trunc(Number(month)); day=Math.trunc(Number(day));
+  if(!(month>=1&&month<=12)) month=1;
+  day=Math.max(1,Math.min(ZS_MDAYS[month-1],day));
+  var x=zsDoy(month,day);
+  var bdoys=[]; for(var i=0;i<12;i++) bdoys.push(zsDoy(ZS_BOUNDS[i][0],ZS_BOUNDS[i][1]));
+  var idx=9;
+  for(var i=0;i<12;i++){ if(x>=bdoys[i]) idx=ZS_BOUNDS[i][2]; }
+  var best=1e9, bbi=-1;
+  for(var j=0;j<12;j++){ var dd=Math.abs(x-bdoys[j]); dd=Math.min(dd,365-dd); if(dd<best){ best=dd; bbi=j; } }
+  var cusp=best<=2, neighbor=null;
+  if(cusp){
+    if(x<bdoys[bbi]) neighbor=SIGNS[ZS_BOUNDS[bbi][2]].name;
+    else neighbor=SIGNS[ZS_BOUNDS[(bbi+11)%12][2]].name;
+  }
+  var s=SIGNS[idx];
+  var kin=SIGNS.filter(function(z){return z.element===s.element;}).map(function(z){return z.name;});
+  return {sign:s.name, symbol:ZS_SYM[idx],
+    dates:s.dates, element:s.element, traits:s.traits, blurb:s.blurb,
+    cusp:cusp, cuspNeighbor:neighbor,
+    cuspNote: cusp ? "Born within 2 days of the "+neighbor+" boundary — you may feel both signs." : "Not a cusp birthday — firmly "+s.name+".",
+    compatible:kin.filter(function(n){return n!==s.name;})};
+}
+if(typeof document!=='undefined'){
+var zsM=document.getElementById('zs-m'), zsD=document.getElementById('zs-d');
+var MN2=["January","February","March","April","May","June","July","August","September","October","November","December"];
+MN2.forEach(function(m,i){var o=document.createElement('option');o.value=i+1;o.textContent=m;zsM.appendChild(o);});
+function zsDays(){var ml=[31,28,31,30,31,30,31,31,30,31,30,31][zsM.value-1]||31;zsD.innerHTML='';for(var d=1;d<=ml;d++){var o=document.createElement('option');o.value=d;o.textContent=d;zsD.appendChild(o);}}
+zsM.addEventListener('change',zsDays); zsDays();
+function zsShow(m,d){
+  var r=zodiacSign(m,d), res=document.getElementById('zs-res');
+  res.className='result-card show';
+  res.innerHTML='<div class="rc-sym">'+r.symbol+'</div><div class="rc-name">'+r.sign+'</div><div class="rc-dates">'+r.dates+' · '+r.element+' sign</div><div class="rc-traits">'+r.traits.map(function(t){return '<span>'+t+'</span>';}).join('')+'</div><p class="rc-blurb">'+r.blurb+'</p>'+(r.cusp?'<div><span class="rc-cusp">Cusp birthday — also feel '+r.cuspNeighbor+'</span></div>':'')+'<div class="rc-comp">Clicks with fellow <b>'+r.element+'</b> signs: '+r.compatible.join(', ')+'</div>';
+  document.querySelectorAll('.gcard').forEach(function(c){c.classList.toggle('active',c.getAttribute('data-i')==String(SIGNS.findIndex(function(s){return s.name===r.sign;})));});
+}
+document.getElementById('zs-go').addEventListener('click',function(){zsShow(parseInt(zsM.value,10),parseInt(zsD.value,10));});
+var gal=document.getElementById('zs-gal');
+var SYM=["\u2648","\u2649","\u264a","\u264b","\u264c","\u264d","\u264e","\u264f","\u2650","\u2651","\u2652","\u2653"];
+SIGNS.forEach(function(s,i){var c=document.createElement('div');c.className='gcard';c.setAttribute('data-i',i);c.innerHTML='<div class="s">'+SYM[i]+'</div><div class="n">'+s.name+'</div><div class="d">'+s.dates+'</div>';c.addEventListener('click',function(){zsShow(s.sm,s.sd);});gal.appendChild(c);});
+}
+</script>
+</body>
+</html>
