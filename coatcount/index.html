@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://fun.fixoraa.tech/coatcount/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoatCount – Free Paint Calculator: How Much Paint Do I Need?</title>
+<meta name="description" content="CoatCount's free paint calculator tells you exactly how much paint you need. Enter your room size to get litres, coats (dark-to-light handled), the cheapest tin sizes and total project cost. No signup, free forever.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#F7F5F0',
+        primary: '#3E6B9A',
+        primarydark: '#2C4F73',
+        accent: '#E8B44B',
+        ink: '#2A2620'
+      },
+      fontFamily: {
+        display: ['Fraunces', 'Georgia', 'serif'],
+        body: ['Inter', 'system-ui', 'sans-serif']
+      }
+    }
+  }
+};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  .font-display { font-family: 'Fraunces', Georgia, serif; }
+  .card { background: #fff; border: 2px solid #2A2620; border-radius: 1.25rem; box-shadow: 6px 6px 0 #2A2620; }
+  .card-flat { background: #fff; border: 2px solid rgba(42,38,32,.14); border-radius: 1.25rem; }
+  .field { width: 100%; border: 2px solid rgba(42,38,32,.18); border-radius: .75rem; padding: .55rem .75rem; background: #fff; font-size: .95rem; }
+  .field:focus { outline: none; border-color: #3E6B9A; box-shadow: 0 0 0 3px rgba(62,107,154,.18); }
+  .chip { border: 2px solid rgba(42,38,32,.2); border-radius: .9rem; padding: .45rem .35rem; font-size: .78rem; font-weight: 600; cursor: pointer; transition: transform .12s ease, box-shadow .12s ease; background: #fff; }
+  .chip:hover { transform: translateY(-2px); }
+  .chip[aria-pressed="true"] { border-color: #2A2620; box-shadow: 3px 3px 0 #2A2620; }
+  .swatch-dot { width: 100%; height: 1.6rem; border-radius: .5rem; border: 1px solid rgba(42,38,32,.25); margin-bottom: .3rem; }
+  .btn-primary { background: #3E6B9A; color: #fff; border: 2px solid #2A2620; box-shadow: 4px 4px 0 #2A2620; border-radius: .9rem; font-weight: 700; transition: transform .12s ease, box-shadow .12s ease; }
+  .btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 #2A2620; }
+  .btn-primary:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 #2A2620; }
+  .btn-ghost { background: #fff; border: 2px solid rgba(42,38,32,.25); border-radius: .9rem; font-weight: 600; }
+  .btn-ghost:hover { border-color: #2A2620; }
+  .swatchfan { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
+  .fan-chip { width: 4.4rem; border: 2px solid #2A2620; border-radius: .7rem; overflow: hidden; background: #fff; box-shadow: 3px 3px 0 rgba(42,38,32,.9); }
+  .fan-chip .c { height: 2.6rem; }
+  .fan-chip .n { font-size: .58rem; font-weight: 700; text-align: center; padding: .25rem .1rem; letter-spacing: .02em; }
+  .fan-chip:nth-child(odd) { transform: rotate(-3deg); }
+  .fan-chip:nth-child(even) { transform: rotate(2.5deg); }
+  .tin { width: 74px; flex: none; }
+  .tin-lid { height: 12px; background: linear-gradient(#ddd6c6, #b3aa96); border: 2px solid #2A2620; border-bottom: none; border-radius: 8px 8px 2px 2px; }
+  .tin-body { border: 2px solid #2A2620; border-radius: 3px 3px 10px 10px; background: linear-gradient(90deg, #2C4F73 0%, #3E6B9A 45%, #5b8ab0 55%, #2C4F73 100%); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 92px; }
+  .tin-band { background: #E8B44B; color: #2A2620; font-weight: 800; font-size: .72rem; padding: .1rem .5rem; border-radius: .4rem; border: 1.5px solid #2A2620; }
+  .receipt { background: #fffdf7; border: 2px dashed rgba(42,38,32,.35); border-radius: 1rem; font-family: ui-monospace, 'SF Mono', Menlo, monospace; }
+  .room-row { border: 2px solid rgba(42,38,32,.15); border-radius: 1rem; background: #fff; }
+  .room-row:hover { border-color: #2A2620; }
+  details.faq-item { border: 2px solid rgba(42,38,32,.15); border-radius: 1rem; background: #fff; }
+  details.faq-item[open] { border-color: #2A2620; box-shadow: 4px 4px 0 #2A2620; }
+  details.faq-item summary { cursor: pointer; font-weight: 700; padding: 1rem 1.25rem; list-style: none; }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after { content: '+'; float: right; color: #3E6B9A; font-size: 1.3rem; line-height: 1; }
+  details.faq-item[open] summary::after { content: '–'; }
+  .brush-stroke { display: block; width: 100%; height: 34px; }
+  @keyframes floaty { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-6px) rotate(-3deg); } }
+  .fan-chip:nth-child(odd) { animation: floaty 5s ease-in-out infinite; }
+  @keyframes floaty2 { 0%,100% { transform: translateY(0) rotate(2.5deg); } 50% { transform: translateY(-6px) rotate(2.5deg); } }
+  .fan-chip:nth-child(even) { animation: floaty2 6s ease-in-out infinite; }
+  @media print { .no-print { display: none !important; } }
+</style>
+</head>
+<body id="top" class="bg-cream text-ink antialiased">
+
+<!-- Sticky header -->
+<header class="no-print sticky top-0 z-50 bg-cream/95 backdrop-blur border-b-2 border-ink/10">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5" aria-label="CoatCount home">
+      <span class="flex -space-x-1.5" aria-hidden="true">
+        <span class="block w-6 h-8 rounded-md border-2 border-ink -rotate-6" style="background:#3E6B9A"></span>
+        <span class="block w-6 h-8 rounded-md border-2 border-ink rotate-3" style="background:#E8B44B"></span>
+        <span class="block w-6 h-8 rounded-md border-2 border-ink -rotate-2" style="background:#F7F5F0"></span>
+      </span>
+      <span class="font-display font-black text-2xl tracking-tight">CoatCount</span>
+    </a>
+    <nav class="flex items-center gap-5 text-sm font-semibold">
+      <a href="#top" class="hover:text-primary">Home</a>
+      <a href="https://fixoraa.tech" class="hover:text-primary">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative overflow-hidden">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 pt-10 sm:pt-14 pb-6 text-center">
+    <span class="inline-flex items-center gap-2 bg-accent border-2 border-ink rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest shadow-[3px_3px_0_#2A2620]">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="#2A2620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Unlimited Free Usage
+    </span>
+    <h1 class="font-display font-black text-4xl sm:text-6xl leading-tight mt-5">
+      How much paint do you <span class="text-primary">really</span> need?
+    </h1>
+    <p class="mt-4 text-base sm:text-lg text-ink/70 max-w-2xl mx-auto">
+      CoatCount is a free paint calculator: enter your room size and we work out the exact litres,
+      the right number of coats (yes, dark-to-light counts extra), the cheapest tin combination
+      and your total project cost. No signup, no paywall — paint happy.
+    </p>
+    <!-- Paint-swatch wall -->
+    <div class="swatchfan mt-8" aria-hidden="true">
+      <div class="fan-chip"><div class="c" style="background:#3E6B9A"></div><div class="n">Harbour Blue</div></div>
+      <div class="fan-chip"><div class="c" style="background:#E8B44B"></div><div class="n">Ochre</div></div>
+      <div class="fan-chip"><div class="c" style="background:#A8B89A"></div><div class="n">Sage</div></div>
+      <div class="fan-chip"><div class="c" style="background:#C96F4A"></div><div class="n">Terracotta</div></div>
+      <div class="fan-chip"><div class="c" style="background:#F1EAD9"></div><div class="n">Plaster</div></div>
+      <div class="fan-chip"><div class="c" style="background:#E8B4B8"></div><div class="n">Blush</div></div>
+      <div class="fan-chip"><div class="c" style="background:#3A3A3A"></div><div class="n">Charcoal</div></div>
+      <div class="fan-chip"><div class="c" style="background:#BFD6D2"></div><div class="n">Sea Mist</div></div>
+    </div>
+  </div>
+  <svg class="brush-stroke" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,17 C150,6 300,28 450,16 C600,5 750,29 900,15 C1050,4 1120,26 1200,14 L1200,22 C1050,32 900,12 750,24 C600,35 450,11 300,25 C150,37 60,12 0,25 Z" fill="#E8B44B"/>
+  </svg>
+</section>
+
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOOL ============ -->
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-8">
+  <div class="grid lg:grid-cols-5 gap-6">
+
+    <!-- LEFT: room builder + rooms -->
+    <div class="lg:col-span-3 space-y-6">
+
+      <!-- Add a room -->
+      <section class="card p-5 sm:p-7" aria-labelledby="add-room-h">
+        <h2 id="add-room-h" class="font-display font-bold text-2xl">1 · Add a room</h2>
+        <p class="text-sm text-ink/60 mt-1">Measure each wall in metres. Doors and windows are subtracted automatically.</p>
+
+        <div class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="col-span-2 sm:col-span-4">
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="room-name">Room name</label>
+            <input id="room-name" class="field mt-1" type="text" placeholder="e.g. Living room" maxlength="40">
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="room-l">Length (m)</label>
+            <input id="room-l" class="field mt-1" type="number" min="0" step="0.1" placeholder="4.0" inputmode="decimal">
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="room-w">Width (m)</label>
+            <input id="room-w" class="field mt-1" type="number" min="0" step="0.1" placeholder="3.5" inputmode="decimal">
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="room-h">Height (m)</label>
+            <input id="room-h" class="field mt-1" type="number" min="0" step="0.1" placeholder="2.7" inputmode="decimal">
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="coverage">Coverage (m²/L)</label>
+            <input id="coverage" class="field mt-1" type="number" min="0" step="0.5" value="10" inputmode="decimal">
+          </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <div class="card-flat p-3">
+            <p class="text-xs font-bold uppercase tracking-wide text-ink/60">Doors</p>
+            <div class="grid grid-cols-3 gap-2 mt-2">
+              <div><label class="text-[11px] text-ink/60" for="door-n">Count</label><input id="door-n" class="field mt-0.5 !px-2" type="number" min="0" step="1" value="1"></div>
+              <div><label class="text-[11px] text-ink/60" for="door-w">W (m)</label><input id="door-w" class="field mt-0.5 !px-2" type="number" min="0" step="0.05" value="0.9"></div>
+              <div><label class="text-[11px] text-ink/60" for="door-h">H (m)</label><input id="door-h" class="field mt-0.5 !px-2" type="number" min="0" step="0.05" value="2.1"></div>
+            </div>
+          </div>
+          <div class="card-flat p-3">
+            <p class="text-xs font-bold uppercase tracking-wide text-ink/60">Windows</p>
+            <div class="grid grid-cols-3 gap-2 mt-2">
+              <div><label class="text-[11px] text-ink/60" for="win-n">Count</label><input id="win-n" class="field mt-0.5 !px-2" type="number" min="0" step="1" value="1"></div>
+              <div><label class="text-[11px] text-ink/60" for="win-w">W (m)</label><input id="win-w" class="field mt-0.5 !px-2" type="number" min="0" step="0.05" value="1.2"></div>
+              <div><label class="text-[11px] text-ink/60" for="win-h">H (m)</label><input id="win-h" class="field mt-0.5 !px-2" type="number" min="0" step="0.05" value="1.2"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <p class="text-xs font-bold uppercase tracking-wide text-ink/60">Colour change <span class="normal-case font-medium text-ink/50">— dark → light needs extra coats</span></p>
+          <div class="grid grid-cols-2 gap-3 mt-2">
+            <div>
+              <p class="text-[11px] font-semibold text-ink/60 mb-1.5">Current wall colour</p>
+              <div class="grid grid-cols-3 gap-2" role="group" aria-label="Current wall colour darkness" id="cur-dark">
+                <button type="button" class="chip" data-val="0" aria-pressed="false"><span class="swatch-dot block" style="background:#F6F2E9"></span>Light</button>
+                <button type="button" class="chip" data-val="1" aria-pressed="true"><span class="swatch-dot block" style="background:#8A99A8"></span>Medium</button>
+                <button type="button" class="chip" data-val="2" aria-pressed="false"><span class="swatch-dot block" style="background:#2F3A44"></span>Dark</button>
+              </div>
+            </div>
+            <div>
+              <p class="text-[11px] font-semibold text-ink/60 mb-1.5">New colour</p>
+              <div class="grid grid-cols-3 gap-2" role="group" aria-label="New colour darkness" id="new-dark">
+                <button type="button" class="chip" data-val="0" aria-pressed="true"><span class="swatch-dot block" style="background:#F6F2E9"></span>Light</button>
+                <button type="button" class="chip" data-val="1" aria-pressed="false"><span class="swatch-dot block" style="background:#8A99A8"></span>Medium</button>
+                <button type="button" class="chip" data-val="2" aria-pressed="false"><span class="swatch-dot block" style="background:#2F3A44"></span>Dark</button>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-4 mt-3">
+            <label class="flex items-center gap-2 text-sm font-medium cursor-pointer">
+              <input id="surface-new" type="checkbox" class="w-4 h-4 accent-[#3E6B9A]">
+              New / unpainted surface (needs primer + 2 coats)
+            </label>
+            <label class="flex items-center gap-2 text-sm font-medium cursor-pointer">
+              <input id="paint-ceiling" type="checkbox" class="w-4 h-4 accent-[#3E6B9A]">
+              Paint the ceiling too
+            </label>
+          </div>
+          <p id="coat-hint" class="mt-3 text-sm font-semibold bg-primary/10 border-2 border-primary/30 rounded-xl px-3 py-2" aria-live="polite"></p>
+        </div>
+
+        <p id="room-error" class="hidden mt-4 text-sm font-semibold text-red-700 bg-red-50 border-2 border-red-200 rounded-xl px-3 py-2" role="alert"></p>
+        <button id="add-room" type="button" class="btn-primary w-full mt-4 py-3 text-base">+ Add room to project</button>
+      </section>
+
+      <!-- Rooms list -->
+      <section class="card p-5 sm:p-7" aria-labelledby="rooms-h">
+        <div class="flex items-center justify-between">
+          <h2 id="rooms-h" class="font-display font-bold text-2xl">2 · Your rooms</h2>
+          <button id="clear-rooms" type="button" class="btn-ghost text-xs px-3 py-1.5">Clear all</button>
+        </div>
+        <div id="rooms-list" class="mt-4 space-y-3"></div>
+        <p id="rooms-empty" class="mt-4 text-sm text-ink/50 italic">No rooms yet — add your first room above and your shopping list will build itself below.</p>
+      </section>
+    </div>
+
+    <!-- RIGHT: prices + results -->
+    <div class="lg:col-span-2 space-y-6">
+      <section class="card p-5 sm:p-6" aria-labelledby="prices-h">
+        <h2 id="prices-h" class="font-display font-bold text-2xl">3 · Tin prices</h2>
+        <p class="text-sm text-ink/60 mt-1">Enter your local store prices to find the cheapest tin combo. Leave blank to just minimise waste.</p>
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="price-1">1 litre</label>
+            <div class="flex items-center gap-1.5 mt-1">
+              <span id="cur-a" class="text-sm font-bold text-ink/50">$</span>
+              <input id="price-1" class="field" type="number" min="0" step="0.01" placeholder="4.50" inputmode="decimal">
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="price-25">2.5 litre</label>
+            <div class="flex items-center gap-1.5 mt-1">
+              <span id="cur-b" class="text-sm font-bold text-ink/50">$</span>
+              <input id="price-25" class="field" type="number" min="0" step="0.01" placeholder="10.00" inputmode="decimal">
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="price-5">5 litre</label>
+            <div class="flex items-center gap-1.5 mt-1">
+              <span id="cur-c" class="text-sm font-bold text-ink/50">$</span>
+              <input id="price-5" class="field" type="number" min="0" step="0.01" placeholder="18.00" inputmode="decimal">
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="price-10">10 litre</label>
+            <div class="flex items-center gap-1.5 mt-1">
+              <span id="cur-d" class="text-sm font-bold text-ink/50">$</span>
+              <input id="price-10" class="field" type="number" min="0" step="0.01" placeholder="32.00" inputmode="decimal">
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="currency">Currency symbol</label>
+            <input id="currency" class="field mt-1" type="text" value="$" maxlength="3">
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wide text-ink/60" for="waste">Waste buffer %</label>
+            <input id="waste" class="field mt-1" type="number" min="0" max="50" step="1" value="10" inputmode="decimal">
+          </div>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section class="card p-5 sm:p-6 !bg-[#FFFEFA]" aria-labelledby="result-h" aria-live="polite">
+        <h2 id="result-h" class="font-display font-bold text-2xl">4 · Shopping list</h2>
+        <div id="result-empty" class="mt-4 text-sm text-ink/50 italic">Your results will appear here once you add a room.</div>
+        <div id="result-body" class="hidden">
+          <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+            <div class="card-flat p-3">
+              <p class="text-[11px] font-bold uppercase tracking-wide text-ink/50">Wall area</p>
+              <p class="font-display font-black text-xl sm:text-2xl text-primary"><span id="stat-area">0</span><span class="text-sm font-bold"> m²</span></p>
+            </div>
+            <div class="card-flat p-3">
+              <p class="text-[11px] font-bold uppercase tracking-wide text-ink/50">Paint needed</p>
+              <p class="font-display font-black text-xl sm:text-2xl text-primary"><span id="stat-litres">0</span><span class="text-sm font-bold"> L</span></p>
+            </div>
+            <div class="card-flat p-3 !bg-accent/25">
+              <p class="text-[11px] font-bold uppercase tracking-wide text-ink/50">Est. cost</p>
+              <p class="font-display font-black text-xl sm:text-2xl"><span id="stat-cost">–</span></p>
+            </div>
+          </div>
+
+          <p class="text-xs font-bold uppercase tracking-wide text-ink/60 mt-5 mb-2">Buy these tins</p>
+          <div id="tins-visual" class="flex flex-wrap gap-3 justify-start"></div>
+
+          <div class="receipt mt-5 p-4 text-sm">
+            <p class="font-bold text-center tracking-widest text-xs uppercase mb-2">— CoatCount shopping list —</p>
+            <div id="receipt-lines" class="space-y-1.5"></div>
+            <div class="border-t-2 border-dashed border-ink/30 mt-2 pt-2 space-y-1">
+              <div class="flex justify-between"><span>Total paint</span><strong id="receipt-total-l">0 L</strong></div>
+              <div class="flex justify-between"><span>Leftover (waste)</span><strong id="receipt-waste">0 L</strong></div>
+              <div class="flex justify-between text-base"><span>Estimated total</span><strong id="receipt-cost">–</strong></div>
+            </div>
+          </div>
+
+          <p class="text-xs font-bold uppercase tracking-wide text-ink/60 mt-5 mb-2">Per-room breakdown</p>
+          <div id="breakdown" class="space-y-2 text-sm"></div>
+          <p class="text-xs text-ink/50 mt-4">Tip: keep one small tin unopened — it is your touch-up paint for scuffs later.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SEO ARTICLE ============ -->
+<article id="seo-article" class="mx-auto max-w-4xl px-4 sm:px-6 py-10 text-ink/85 leading-relaxed">
+  <h2 class="font-display font-black text-3xl sm:text-4xl text-ink">How Much Paint Do I Need? The Complete Calculator Guide</h2>
+  <p class="mt-4">Few DIY moments are as deflating as running out of paint with one wall left to go — or, almost as bad, staring at three half-empty tins you will never open again. That is exactly the problem a good <strong>how much paint do I need calculator</strong> solves. Instead of guessing, you measure your walls, subtract the doors and windows, account for the number of coats, and get a precise litre figure — then buy the cheapest combination of tin sizes to cover it. CoatCount does all of that in seconds, and this guide explains the maths behind it so you can buy paint like a professional decorator.</p>
+
+  <h3 class="font-display font-bold text-2xl mt-8 text-ink">How this paint coverage calculator works</h3>
+  <p class="mt-3">Every paint coverage calculator follows the same four steps. First, it measures the paintable wall area: for a rectangular room that is twice the length-plus-width multiplied by the ceiling height, which gives you all four walls. Second, it subtracts anything you will not paint — a standard interior door is about 1.9 square metres and a typical window around 1.4 square metres, and in a room with two doors and two windows those openings can easily remove 6 square metres from your total. Third, it multiplies by the number of coats. Fourth, it divides by the paint's coverage rate, usually printed on the tin as square metres per litre. The result is then rounded <em>up</em>, because paint is sold in whole tins and you would much rather have a little left over than run short mid-wall.</p>
+  <p class="mt-3">CoatCount adds two refinements most free calculators skip. The colour-change multiplier adjusts the coat count automatically: repainting a dark wall in a light colour needs three coats, not two, because the old colour keeps "grinning through". And the tin-size optimiser does not just tell you the litres — it searches every combination of 1, 2.5, 5 and 10 litre tins and picks the cheapest one that covers your total, so you never overpay for convenience sizes.</p>
+
+  <h3 class="font-display font-bold text-2xl mt-8 text-ink">Paint coverage per litre: what the tin really means</h3>
+  <p class="mt-3">The single biggest input to any paint coverage calculator is the coverage rate, and it varies more than most people expect. A typical interior matt emulsion covers around 10 to 12 square metres per litre on a previously painted wall in good condition. Silk and satin finishes sit around 9 to 11 square metres per litre because their slightly thicker film goes on a touch heavier. Eggshell — popular for kitchens and bathrooms — lands in the same 10 square metres per litre neighbourhood. Primer and undercoat are thirstier: 8 to 10 square metres per litre is normal, and on bare, porous plaster the first coat can disappear at an alarming rate, which is why decorators thin the first coat into a "mist coat" on new plaster. Exterior masonry paint is the hungriest of all at roughly 6 to 8 square metres per litre, because rough render drinks paint.</p>
+  <p class="mt-3">These figures assume a smooth, sealed surface applied with a roller. Textured walls, heavy stipple or rough plaster can easily cut coverage by 15 to 20 percent, and spraying typically uses more paint than rolling. When in doubt, use the conservative end of the range — or bump the waste buffer in the calculator up to 15 percent. The default of 10 square metres per litre in CoatCount suits standard interior emulsion on previously painted walls, which covers the most common repainting job.</p>
+
+  <h3 class="font-display font-bold text-2xl mt-8 text-ink">How many litres of paint for a room? Worked examples</h3>
+  <p class="mt-3">Let us run the numbers for three typical rooms so you can sanity-check your own results. Take a compact bedroom, 3 by 3.5 metres with a 2.4 metre ceiling: the four walls total 31.2 square metres. Subtract one door (1.9 m²) and one window (1.4 m²) and you have about 27.9 square metres of paintable wall. Two coats at 10 m² per litre means 5.6 litres — round up and buy a 5 litre tin plus a 1 litre tin, or a single 10 litre tin if it is cheaper per litre.</p>
+  <p class="mt-3">Now a standard living room, 4 by 5 metres with 2.7 metre ceilings: walls total 48.6 square metres. Minus two doors and two windows (about 6.6 m²) leaves roughly 42 square metres. Two coats at 10 m²/L gives 8.4 litres — the optimiser would likely pick a 5 litre plus a 2.5 litre plus a 1 litre tin, or check whether two 5 litre tins beat that on price. Finally, repainting that same living room from a dark charcoal to a light warm white changes the coat count to three, pushing the need to 12.6 litres — a full extra tin compared with a like-for-like repaint. That jump is exactly why the colour-change question matters so much.</p>
+  <p class="mt-3">A quick rule of thumb if you are in the paint aisle without your phone: one litre covers about one 3-by-3 metre wall in a single coat. Most rooms need one 5 litre tin per average bedroom wall-set per coat, and you almost always need two coats. It is a rough estimate, but it will keep you from the classic mistake of buying a single 2.5 litre tin for a whole room.</p>
+
+  <h3 class="font-display font-bold text-2xl mt-8 text-ink">Dark to light: why you need that extra coat</h3>
+  <p class="mt-3">Paint is translucent. Every coat lets a little of what is underneath show through, and the stronger the contrast between the old and new colour, the more coats it takes to kill it completely. Going from a deep navy, forest green or charcoal to an off-white is the hardest transition in decorating: two coats will almost always leave a ghost of the old colour visible in daylight, especially on the wall opposite the window. Three full coats — or a tinted primer followed by two topcoats — is the professional standard, and CoatCount applies it automatically when you select a dark current colour and a light new one.</p>
+  <p class="mt-3">The reverse trip, light to dark, is far kinder: rich pigments cover pale walls easily, and two coats are plenty. Repainting in a similar tone, or refreshing the exact same colour, can even be done in one careful coat if the existing paint is sound — though most decorators still recommend two for an even sheen. New, unpainted plaster is a special case: it needs a mist coat (emulsion thinned with water) or a dedicated primer plus two topcoats, which is why the calculator counts it as three coats of paint volume. Skipping the primer on bare plaster is a false economy — the topcoat soaks in unevenly and you will end up buying the extra tin anyway.</p>
+
+  <h3 class="font-display font-bold text-2xl mt-8 text-ink">Tin sizes: buying smart at the paint store</h3>
+  <p class="mt-3">Paint tins come in 1, 2.5, 5 and 10 litre sizes, and the price per litre drops steeply as tins get bigger — a 10 litre tin is often 30 to 40 percent cheaper per litre than buying the same paint in 1 litre tins. That tempts people to just grab the biggest tin, but a 10 litre tin for a 7 litre job leaves 3 litres gathering dust, and opened paint has a shelf life of only a couple of years. The sweet spot is the cheapest combination that covers your litres with minimal leftover, which is a small optimisation puzzle: for example, 7.3 litres might be cheapest as a 5 litre plus a 2.5 litre tin rather than a 10 litre tin, depending on the store's pricing.</p>
+  <p class="mt-3">CoatCount solves this with a proper search over every combination, not a greedy guess. Enter the shelf prices from your local store and it will tell you exactly which tins to put in the basket — and it will also tell you how much will be left over, so you can decide whether to size up for touch-up paint. One pro tip: always keep a small amount of each colour for future scuff repairs. A dab from the original tin, applied with a small brush and "feathered" at the edges, is invisible; a new tin mixed months later almost never matches perfectly.</p>
+
+  <h3 class="font-display font-bold text-2xl mt-8 text-ink">Estimating your total project cost</h3>
+  <p class="mt-3">Once you know the litres and the tin combination, costing the project is simple multiplication — but most people forget the extras. Beyond the tins themselves, budget for primer if any surface is new or the colour change is extreme, plus sundries: rollers and sleeves, a decent brush for cutting in, masking tape, dust sheets and filler for cracks and nail holes. As a rough guide, sundries add 15 to 25 percent on top of the paint cost for a DIY job. If you are hiring a decorator, labour typically costs two to four times the materials, which makes accurate paint buying even more valuable — every wasted tin is money twice over.</p>
+  <p class="mt-3">The multi-room feature in CoatCount exists for exactly this kind of whole-house planning. Add each room with its own dimensions, doors, windows and colour change, and the calculator aggregates everything into one shopping list and one total. Buying all your paint in a single trip — and ideally from the same batch — avoids the subtle shade variations that can occur between production batches, which matter more than you would think on large light-coloured walls.</p>
+
+  <h3 class="font-display font-bold text-2xl mt-8 text-ink">Seven mistakes that waste paint (and money)</h3>
+  <p class="mt-3">First, forgetting the ceiling: a 4 by 5 metre ceiling is 20 square metres, nearly half a wall-set, and ceiling paint is usually bought separately in flat white. Second, measuring in feet and entering the numbers as metres — a 12 foot wall is 3.66 metres, and mixing the units roughly triples your estimate. Third, counting coats but not the primer on new plaster. Fourth, ignoring the waste buffer: rollers, trays, brush cleaning and the paint that stays in the tin add up to about 10 percent. Fifth, buying tester pots in the final colour and then not counting them — they do not cover meaningfully, but people sometimes subtract them mentally. Sixth, assuming one coat will do over a strong colour. And seventh, the most expensive mistake: buying paint before measuring at all. Five minutes with a tape measure and this calculator beats every guess.</p>
+  <p class="mt-3">Painting is one of the highest-impact, lowest-cost home improvements there is — a weekend and a few tins can completely transform a room. The difference between a frustrating project and a satisfying one is rarely skill; it is preparation. Measure carefully, subtract the openings, respect the colour change, buy the right tins, and keep a little back for touch-ups. CoatCount handles the arithmetic — you handle the brush strokes.</p>
+</article>
+
+<!-- ============ FAQs ============ -->
+<section class="mx-auto max-w-4xl px-4 sm:px-6 pb-12" aria-labelledby="faq-h">
+  <h2 id="faq-h" class="font-display font-black text-3xl text-ink mb-5">Frequently asked questions</h2>
+  <div class="space-y-3">
+    <details class="faq-item">
+      <summary>How many litres of paint do I need for a 12×12 ft room?</summary>
+      <p class="px-5 pb-5 text-sm text-ink/75">A 12×12 ft room (about 3.66×3.66 m) with 9 ft ceilings has roughly 40 m² of wall. After subtracting a door and a window you are left with around 37 m². Two coats at 10 m² per litre need about 7.4 litres — buy a 5 L tin plus a 2.5 L tin, or check whether a 10 L tin is cheaper per litre at your store.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What is the average coverage of 1 litre of paint?</summary>
+      <p class="px-5 pb-5 text-sm text-ink/75">Most interior emulsions cover 10–12 m² per litre on a previously painted wall. Matt is usually 10–12, silk and satin 9–11, primer 8–10, and exterior masonry paint 6–8 m² per litre on rough surfaces. Textured walls can reduce coverage by 15–20%.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How many coats do I need when painting a dark wall a light colour?</summary>
+      <p class="px-5 pb-5 text-sm text-ink/75">Three. Dark-to-light is the hardest colour transition because the old colour shows through ("grinning"). Use a tinted primer plus two topcoats, or three full coats of the topcoat. CoatCount applies this automatically when you pick a dark current colour and a light new colour.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Should I subtract doors and windows from the wall area?</summary>
+      <p class="px-5 pb-5 text-sm text-ink/75">Yes. A standard interior door is about 1.9 m² and a typical window about 1.4 m². In a room with two of each, skipping this step overestimates paint by more than half a 5 L tin. Enter the counts and sizes and the calculator subtracts them for you.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do I need primer on new plaster walls?</summary>
+      <p class="px-5 pb-5 text-sm text-ink/75">Yes. Bare plaster is very porous and will soak up topcoat unevenly. Apply a mist coat (emulsion thinned with water) or a dedicated primer first, then two topcoats. That is why the calculator counts new surfaces as three coats of paint volume.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How much extra paint should I buy beyond the calculation?</summary>
+      <p class="px-5 pb-5 text-sm text-ink/75">Add about 10% for waste — paint left in rollers, trays and tins. Then keep one small tin unopened for future touch-ups; a dab of the original paint repairs scuffs invisibly, while a newly mixed tin rarely matches perfectly.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="no-print border-t-2 border-ink/10 mt-4">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2.5">
+      <span class="flex -space-x-1.5" aria-hidden="true">
+        <span class="block w-5 h-7 rounded-md border-2 border-ink -rotate-6" style="background:#3E6B9A"></span>
+        <span class="block w-5 h-7 rounded-md border-2 border-ink rotate-3" style="background:#E8B44B"></span>
+      </span>
+      <span class="font-display font-black text-xl">CoatCount</span>
+    </div>
+    <p class="text-sm text-ink/55">Free paint calculator · No signup · © 2026 CoatCount</p>
+    <a href="https://fixoraa.tech" class="text-sm font-semibold text-primary hover:underline">More Tools →</a>
+  </div>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+
+<script id="coatcount-paint-calculator-lib">
+// CoatCount paint-calculator core logic.
+// PURE functions only: no DOM, no window, no localStorage, no navigator.
+// All dimensions in metres, areas in square metres, paint in litres.
+
+function openingsArea(list) {
+  var total = 0;
+  (list || []).forEach(function (o) {
+    var w = Number(o && o.w);
+    var h = Number(o && o.h);
+    if (w > 0 && h > 0) total += w * h;
+  });
+  return total;
+}
+
+// Paintable area of ONE rectangular wall minus door/window openings.
+// doors / windows: arrays of {w, h} in metres. Result never negative.
+function wallArea(length, height, doors, windows) {
+  var L = Number(length);
+  var H = Number(height);
+  if (!(L > 0) || !(H > 0)) return 0;
+  return Math.max(0, L * H - openingsArea(doors) - openingsArea(windows));
+}
+
+// Paintable area of all FOUR walls of a rectangular room minus openings.
+function roomWallArea(length, width, height, doors, windows) {
+  var L = Number(length);
+  var W = Number(width);
+  var H = Number(height);
+  if (!(L > 0) || !(W > 0) || !(H > 0)) return 0;
+  var gross = 2 * (L + W) * H;
+  return Math.max(0, gross - openingsArea(doors) - openingsArea(windows));
+}
+
+// How many coats a colour change needs.
+// Keys: 'same' (recoat same colour) -> 1, 'similar' -> 2,
+// 'light-to-dark' -> 2, 'dark-to-light' -> 3, 'new' (unpainted surface) -> 3.
+// Unknown keys fall back to 2 (the safe standard).
+function coatsNeeded(colorChange) {
+  var key = String(colorChange || '').toLowerCase().replace(/_/g, '-');
+  switch (key) {
+    case 'same':
+      return 1;
+    case 'similar':
+      return 2;
+    case 'light-to-dark':
+      return 2;
+    case 'dark-to-light':
+      return 3;
+    case 'new':
+      return 3;
+    default:
+      return 2;
+  }
+}
+
+// Litres of paint needed for an area, rounded UP to the nearest 0.1 L
+// (you can only buy paint in real quantities, never round down).
+function litresNeeded(area, coveragePerLitre, coats) {
+  var a = Number(area);
+  var c = Number(coveragePerLitre);
+  var n = Number(coats);
+  if (!(a > 0) || !(c > 0) || !(n > 0)) return 0;
+  return Math.ceil(((a / c) * n) * 10 - 1e-9) / 10;
+}
+
+// Cheapest tin combination covering `litres`.
+// tinSizes: [{size: <litres>, price: <number, optional>}].
+// Missing prices default to the tin size itself (equal price per litre),
+// which makes the optimiser minimise waste instead.
+// Returns {combo: [{size, count}...], totalLitres, totalCost, wasteLitres}.
+function tinCombo(litres, tinSizes) {
+  var need = Number(litres);
+  var tins = (tinSizes || [])
+    .map(function (t) {
+      var size = Number(t && t.size);
+      var price = t && t.price !== undefined && t.price !== null && t.price !== '' ? Number(t.price) : size;
+      return { size: size, price: price };
+    })
+    .filter(function (t) {
+      return t.size > 0 && t.price >= 0;
+    });
+  var empty = { combo: [], totalLitres: 0, totalCost: 0, wasteLitres: 0 };
+  if (!(need > 0) || tins.length === 0) return empty;
+
+  // Work in half-litre units so 2.5 L tins stay exact.
+  var UNIT = 0.5;
+  var order = tins
+    .map(function (t, idx) {
+      return idx;
+    })
+    .sort(function (a, b) {
+      return tins[b].size - tins[a].size;
+    });
+  // Largest tins first: on exact price ties the DP keeps the earlier
+  // (bigger) tin, so equal prices prefer fewer, bigger tins.
+  var sortedTins = order.map(function (idx) {
+    return tins[idx];
+  });
+  var units = sortedTins.map(function (t) {
+    return Math.round(t.size / UNIT);
+  });
+  var needUnits = Math.ceil(need / UNIT);
+  var maxUnits = Math.max.apply(null, units);
+  var limit = needUnits + maxUnits;
+
+  // Unbounded knapsack: dp[i] = cheapest price for exactly i units.
+  var dp = [];
+  var pick = [];
+  for (var i = 0; i <= limit; i++) {
+    dp.push(Infinity);
+    pick.push(-1);
+  }
+  dp[0] = 0;
+  for (var u = 1; u <= limit; u++) {
+    for (var j = 0; j < sortedTins.length; j++) {
+      if (units[j] <= u) {
+        var cand = dp[u - units[j]] + sortedTins[j].price;
+        // Strict < keeps the earlier (larger) tin on price ties.
+        if (cand < dp[u] - 1e-9) {
+          dp[u] = cand;
+          pick[u] = j;
+        }
+      }
+    }
+  }
+
+  // Best reachable amount at/above the need: cheapest price, then least waste.
+  var best = -1;
+  for (var x = needUnits; x <= limit; x++) {
+    if (dp[x] === Infinity) continue;
+    if (best < 0 || dp[x] < dp[best] - 1e-9 || (Math.abs(dp[x] - dp[best]) < 1e-9 && x < best)) {
+      best = x;
+    }
+  }
+  if (best < 0) return empty;
+
+  var counts = {};
+  var cur = best;
+  while (cur > 0 && pick[cur] >= 0) {
+    var pi = pick[cur];
+    counts[pi] = (counts[pi] || 0) + 1;
+    cur -= units[pi];
+  }
+  var combo = Object.keys(counts).map(function (kk) {
+    return { size: sortedTins[kk].size, count: counts[kk] };
+  });
+  combo.sort(function (a, b) {
+    return b.size - a.size;
+  });
+  var totalLitres = best * UNIT;
+  return {
+    combo: combo,
+    totalLitres: Math.round(totalLitres * 100) / 100,
+    totalCost: Math.round(dp[best] * 100) / 100,
+    wasteLitres: Math.round((totalLitres - need) * 100) / 100
+  };
+}
+
+// Whole-project rollup.
+// rooms: [{name, area, coverage, coats}] or [{name, area, coats, litres}].
+// Returns per-room litres, totals, cheapest tin combo and project cost.
+function projectCost(rooms, tinSizes) {
+  var list = (rooms || []).map(function (r, i) {
+    var litres = typeof r.litres === 'number' ? r.litres : litresNeeded(r.area, r.coverage, r.coats);
+    return {
+      name: String((r && r.name) || 'Room ' + (i + 1)),
+      area: Number((r && r.area) || 0),
+      coats: Number((r && r.coats) || 0),
+      litres: Math.round(Number(litres || 0) * 10) / 10
+    };
+  });
+  var totalArea = list.reduce(function (s, r) {
+    return s + r.area;
+  }, 0);
+  var totalLitres = list.reduce(function (s, r) {
+    return s + r.litres;
+  }, 0);
+  var combo = tinCombo(totalLitres, tinSizes);
+  return {
+    rooms: list,
+    totalArea: Math.round(totalArea * 100) / 100,
+    totalLitres: Math.round(totalLitres * 100) / 100,
+    combo: combo,
+    totalCost: combo.totalCost
+  };
+}
+
+</script>
+
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+
+  var state = { rooms: [], prices: { '1': '', '2.5': '', '5': '', '10': '' }, currency: '$', waste: 10, curDark: 1, newDark: 0 };
+  try {
+    var saved = JSON.parse(localStorage.getItem('coatcount-v1') || 'null');
+    if (saved && typeof saved === 'object') {
+      if (Array.isArray(saved.rooms)) state.rooms = saved.rooms.filter(function (r) { return r && r.litres > 0; });
+      if (saved.prices) state.prices = saved.prices;
+      if (typeof saved.currency === 'string' && saved.currency) state.currency = saved.currency.slice(0, 3);
+      if (isFinite(saved.waste)) state.waste = Math.min(50, Math.max(0, saved.waste));
+      if (isFinite(saved.curDark)) state.curDark = saved.curDark;
+      if (isFinite(saved.newDark)) state.newDark = saved.newDark;
+    }
+  } catch (e) { /* fresh start */ }
+
+  function save() {
+    try { localStorage.setItem('coatcount-v1', JSON.stringify(state)); } catch (e) {}
+  }
+  function num(id) { var v = parseFloat($(id).value); return isFinite(v) ? v : NaN; }
+  function money(v) { return state.currency + Number(v).toFixed(2); }
+  function el(tag, cls, text) {
+    var d = document.createElement(tag);
+    if (cls) d.className = cls;
+    if (text !== undefined) d.textContent = text;
+    return d;
+  }
+
+  // ---- colour-change multiplier ----
+  function coatKeyFor() {
+    if ($('surface-new').checked) return 'new';
+    var c = state.curDark, n = state.newDark;
+    if (c === n) return 'same';
+    if (c === 2 && n === 0) return 'dark-to-light';
+    return 'similar';
+  }
+  var COAT_NOTES = {
+    'same': 'Refreshing the same colour — one careful coat covers it.',
+    'similar': 'A similar tone needs the standard two coats for an even sheen.',
+    'light-to-dark': 'Light to dark covers easily — two coats is plenty.',
+    'dark-to-light': 'Dark walls to a light colour: the old colour grins through, so 3 coats it is.',
+    'new': 'New plaster needs a mist coat / primer plus two topcoats.'
+  };
+  function updateCoatHint() {
+    var key = coatKeyFor();
+    $('coat-hint').textContent = 'Estimated coats for this room: ' + coatsNeeded(key) + ' — ' + COAT_NOTES[key];
+  }
+  function bindChips(groupId, key) {
+    var btns = $(groupId).querySelectorAll('button');
+    btns.forEach(function (b) {
+      if (Number(b.getAttribute('data-val')) === state[key]) b.setAttribute('aria-pressed', 'true');
+      b.addEventListener('click', function () {
+        state[key] = Number(b.getAttribute('data-val'));
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        updateCoatHint();
+        save();
+      });
+    });
+  }
+
+  function showErr(msg) {
+    var e = $('room-error');
+    e.textContent = msg;
+    e.classList.remove('hidden');
+  }
+
+  function openings(nId, wId, hId) {
+    var n = Math.max(0, Math.floor(num(nId) || 0));
+    var w = num(wId), h = num(hId);
+    var arr = [];
+    for (var i = 0; i < n; i++) arr.push({ w: w > 0 ? w : 0, h: h > 0 ? h : 0 });
+    return arr;
+  }
+
+  function addRoom() {
+    var e = $('room-error');
+    e.classList.add('hidden');
+    var L = num('room-l'), W = num('room-w'), H = num('room-h');
+    var coverage = num('coverage');
+    if (!(L > 0) || !(W > 0) || !(H > 0)) { showErr('Please enter the room length, width and height (numbers above 0).'); return; }
+    if (L > 100 || W > 100 || H > 10) { showErr('Those dimensions look off — please check metres, e.g. 4.0 × 3.5 × 2.7.'); return; }
+    if (!(coverage > 0) || coverage > 30) { showErr('Please enter a valid coverage in m² per litre (usually 6–12).'); return; }
+    var area = roomWallArea(L, W, H, openings('door-n', 'door-w', 'door-h'), openings('win-n', 'win-w', 'win-h'));
+    if ($('paint-ceiling').checked) area += L * W;
+    area = Math.round(area * 100) / 100;
+    if (area <= 0) { showErr('The openings are bigger than the walls — please check your measurements.'); return; }
+    var key = coatKeyFor();
+    var coats = coatsNeeded(key);
+    var raw = litresNeeded(area, coverage, coats);
+    var wasteF = Math.min(50, Math.max(0, num('waste') || 0));
+    state.waste = wasteF;
+    var litres = Math.ceil(raw * (1 + wasteF / 100) * 10 - 1e-9) / 10;
+    var name = $('room-name').value.trim() || ('Room ' + (state.rooms.length + 1));
+    var metaBits = [L + '×' + W + ' m', 'H ' + H + ' m', coats + (coats === 1 ? ' coat' : ' coats')];
+    if ($('paint-ceiling').checked) metaBits.push('ceiling');
+    if ($('surface-new').checked) metaBits.push('new surface');
+    state.rooms.push({ name: name, area: area, coats: coats, litres: litres, meta: metaBits.join(' · ') });
+    $('room-name').value = '';
+    save();
+    render();
+  }
+
+  function tinSizes() {
+    return [
+      { size: 1, key: '1' },
+      { size: 2.5, key: '2.5' },
+      { size: 5, key: '5' },
+      { size: 10, key: '10' }
+    ].map(function (t) {
+      var o = { size: t.size };
+      var p = parseFloat(state.prices[t.key]);
+      if (isFinite(p) && p >= 0 && state.prices[t.key] !== '') o.price = p;
+      return o;
+    });
+  }
+  function priceMap() {
+    var m = {};
+    tinSizes().forEach(function (t) { if (t.price !== undefined) m[t.size] = t.price; });
+    return m;
+  }
+  function hasAnyPrice() { return Object.keys(priceMap()).length > 0; }
+
+  function render() {
+    // rooms list
+    var list = $('rooms-list');
+    list.innerHTML = '';
+    $('rooms-empty').style.display = state.rooms.length ? 'none' : '';
+    state.rooms.forEach(function (r, i) {
+      var row = el('div', 'room-row flex items-center gap-3 p-3');
+      var strip = el('div', 'w-2 self-stretch rounded-full flex-none');
+      strip.style.background = '#E8B44B';
+      var mid = el('div', 'flex-1 min-w-0');
+      mid.appendChild(el('p', 'font-bold truncate', r.name));
+      mid.appendChild(el('p', 'text-xs text-ink/55', r.meta + ' · ' + r.area.toFixed(1) + ' m²'));
+      var right = el('div', 'text-right flex-none');
+      right.appendChild(el('p', 'font-display font-black text-lg text-primary', r.litres.toFixed(1) + ' L'));
+      var del = el('button', 'btn-ghost text-xs px-2.5 py-1 mt-1', 'Remove');
+      del.type = 'button';
+      del.setAttribute('aria-label', 'Remove ' + r.name);
+      del.addEventListener('click', function () {
+        state.rooms.splice(i, 1);
+        save();
+        render();
+      });
+      right.appendChild(del);
+      row.appendChild(strip);
+      row.appendChild(mid);
+      row.appendChild(right);
+      list.appendChild(row);
+    });
+
+    // results
+    var body = $('result-body'), empty = $('result-empty');
+    if (!state.rooms.length) {
+      body.classList.add('hidden');
+      empty.classList.remove('hidden');
+      return;
+    }
+    body.classList.remove('hidden');
+    empty.classList.add('hidden');
+
+    var res = projectCost(state.rooms, tinSizes());
+    var pm = priceMap();
+    var hp = hasAnyPrice();
+    $('stat-area').textContent = res.totalArea.toFixed(1);
+    $('stat-litres').textContent = res.totalLitres.toFixed(1);
+    $('stat-cost').textContent = hp ? money(res.totalCost) : '–';
+
+    var tv = $('tins-visual');
+    tv.innerHTML = '';
+    if (!res.combo.combo.length) {
+      tv.appendChild(el('p', 'text-sm text-ink/50', 'Nothing to buy yet.'));
+    }
+    res.combo.combo.forEach(function (c) {
+      for (var i = 0; i < c.count; i++) {
+        var tin = el('div', 'tin');
+        tin.appendChild(el('div', 'tin-lid'));
+        var bd = el('div', 'tin-body');
+        bd.appendChild(el('div', 'tin-band', c.size + 'L'));
+        tin.appendChild(bd);
+        tv.appendChild(tin);
+      }
+    });
+
+    var rl = $('receipt-lines');
+    rl.innerHTML = '';
+    res.combo.combo.forEach(function (c) {
+      var row = el('div', 'flex justify-between gap-2');
+      row.appendChild(el('span', '', c.count + ' × ' + c.size + ' L tin'));
+      row.appendChild(el('strong', '', pm[c.size] !== undefined ? money(pm[c.size] * c.count) : '—'));
+      rl.appendChild(row);
+    });
+    $('receipt-total-l').textContent = res.combo.totalLitres.toFixed(1) + ' L';
+    $('receipt-waste').textContent = res.combo.wasteLitres.toFixed(1) + ' L';
+    $('receipt-cost').textContent = hp ? money(res.totalCost) : 'add tin prices ↑';
+
+    var bd2 = $('breakdown');
+    bd2.innerHTML = '';
+    res.rooms.forEach(function (r) {
+      var row = el('div', 'room-row flex justify-between gap-2 px-3 py-2');
+      row.appendChild(el('span', 'font-medium truncate', r.name + ' — ' + r.area.toFixed(1) + ' m² · ' + r.coats + ' coats'));
+      row.appendChild(el('strong', 'flex-none', r.litres.toFixed(1) + ' L'));
+      bd2.appendChild(row);
+    });
+  }
+
+  function syncCurrencyLabels() {
+    ['cur-a', 'cur-b', 'cur-c', 'cur-d'].forEach(function (id) { $(id).textContent = state.currency; });
+  }
+
+  // ---- events ----
+  $('add-room').addEventListener('click', addRoom);
+  $('clear-rooms').addEventListener('click', function () {
+    state.rooms = [];
+    save();
+    render();
+  });
+  ['price-1', 'price-25', 'price-5', 'price-10'].forEach(function (id, i) {
+    var key = ['1', '2.5', '5', '10'][i];
+    $(id).addEventListener('input', function () {
+      state.prices[key] = $(id).value;
+      save();
+      render();
+    });
+  });
+  $('currency').addEventListener('input', function () {
+    state.currency = $('currency').value.trim().slice(0, 3) || '$';
+    syncCurrencyLabels();
+    save();
+    render();
+  });
+  $('waste').addEventListener('input', function () {
+    var v = parseFloat($('waste').value);
+    if (isFinite(v)) { state.waste = Math.min(50, Math.max(0, v)); save(); }
+  });
+  $('surface-new').addEventListener('change', updateCoatHint);
+  $('paint-ceiling').addEventListener('change', function () {});
+
+  // ---- init ----
+  $('price-1').value = state.prices['1'];
+  $('price-25').value = state.prices['2.5'];
+  $('price-5').value = state.prices['5'];
+  $('price-10').value = state.prices['10'];
+  $('currency').value = state.currency;
+  $('waste').value = state.waste;
+  syncCurrencyLabels();
+  bindChips('cur-dark', 'curDark');
+  bindChips('new-dark', 'newDark');
+  updateCoatHint();
+  render();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many litres of paint do I need for a 12×12 ft room?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A 12×12 ft room (about 3.66×3.66 m) with 9 ft ceilings has roughly 40 m² of wall. After subtracting a door and a window you are left with around 37 m². Two coats at 10 m² per litre need about 7.4 litres — buy a 5 L tin plus a 2.5 L tin, or check whether a 10 L tin is cheaper per litre at your store." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the average coverage of 1 litre of paint?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most interior emulsions cover 10–12 m² per litre on a previously painted wall. Matt is usually 10–12, silk and satin 9–11, primer 8–10, and exterior masonry paint 6–8 m² per litre on rough surfaces. Textured walls can reduce coverage by 15–20%." }
+    },
+    {
+      "@type": "Question",
+      "name": "How many coats do I need when painting a dark wall a light colour?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Three. Dark-to-light is the hardest colour transition because the old colour shows through. Use a tinted primer plus two topcoats, or three full coats of the topcoat." }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I subtract doors and windows from the wall area?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. A standard interior door is about 1.9 m² and a typical window about 1.4 m². In a room with two of each, skipping this step overestimates paint by more than half a 5 L tin." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need primer on new plaster walls?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Bare plaster is very porous and will soak up topcoat unevenly. Apply a mist coat (emulsion thinned with water) or a dedicated primer first, then two topcoats." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much extra paint should I buy beyond the calculation?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Add about 10% for waste — paint left in rollers, trays and tins. Then keep one small tin unopened for future touch-ups; a dab of the original paint repairs scuffs invisibly." }
+    }
+  ]
+}
+</script>
+</body>
+</html>
