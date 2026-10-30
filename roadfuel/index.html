@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Road Trip Fuel Cost Calculator — How Much Will Fuel Cost for Your Trip?</title>
+<meta name="description" content="Work out road trip fuel cost from distance, fuel consumption, and fuel price, including litres used and return-trip cost.">
+<link rel="canonical" href="https://fun.fixoraa.tech/roadfuel/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Road Trip Fuel Cost Calculator — How Much Will Fuel Cost for Your Trip?">
+<meta property="og:description" content="Work out road trip fuel cost from distance, fuel consumption, and fuel price, including litres used and return-trip cost.">
+<meta property="og:url" content="https://fun.fixoraa.tech/roadfuel/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RoadFuel",
+      "url": "https://fun.fixoraa.tech/roadfuel/",
+      "applicationCategory": "Travel",
+      "operatingSystem": "Web",
+      "description": "Work out road trip fuel cost from distance, fuel consumption, and fuel price, including litres used and return-trip cost.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate road trip fuel cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide distance by consumption in kilometres per litre to get litres used, then multiply by fuel price. This calculator does both steps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert litres per 100 km to km per litre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide 100 by the litres per 100 km figure. For example, 6 litres per 100 km equals about 16.7 km per litre."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my real consumption worse than the brochure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Brochure figures use standard test conditions. City driving, cold starts, heavy loads, roof boxes, and high speeds all increase real consumption."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does speed affect fuel cost much?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, especially above 100 km/h. Air resistance rises with the square of speed, so driving faster costs disproportionately more fuel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I include the return trip?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, unless you are travelling one way. This calculator shows the return cost so you can budget the whole trip."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is motorway fuel more expensive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often yes. Motorway service stations tend to charge more than town stations, so plan fills where prices are lower."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a roof box increase fuel use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It can increase consumption by ten to twenty percent at motorway speeds, because it adds aerodynamic drag."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does air conditioning use much fuel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It adds a small but real cost, especially in slow traffic. At motorway speeds its share is smaller than the effect of speed itself."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#ECFDF5; --surface:#FFFFFF; --accent:#065F46; --accent-ink:#ffffff;
+  --ink:#12291F; --muted:#475569; --line:#A7F3D0;
+  --display:'Outfit',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{max-width:720px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.2rem}
+.tool-card label{display:block;font-weight:600;margin:.9rem 0 .3rem}
+.tool-card input,.tool-card select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;font-size:1rem;background:#fff;color:#111;min-height:44px}
+.tool-card .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.calc-btn{width:100%;margin-top:1.2rem;padding:.85rem;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1.05rem;cursor:pointer;min-height:48px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+.presets button{padding:.5rem .9rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.result{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:14px;background:var(--bg);border:1px solid var(--line);font-size:1.05rem}
+.result .big{font-size:1.5rem;font-weight:800}
+.muted{color:var(--muted);font-size:.95rem}
+.hist{margin-top:1rem;font-size:.95rem}
+.hist li{margin:.3rem 0}
+.copy-btn{margin-top:.7rem;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer}
+.maze-grid{font-family:monospace;line-height:1;letter-spacing:0;white-space:pre;overflow-x:auto;font-size:14px}
+@media (max-width:640px){.tool-card{padding:1rem;border-radius:16px}.tool-card .row{grid-template-columns:1fr}.tool-card h1{font-size:1.35rem}.result .big{font-size:1.25rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="RoadFuel home">
+      <span class="fx-logo-tile" aria-hidden="true">⛽</span>
+      <span class="fx-brand">RoadFuel</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-road-mile" aria-label="RoadFuel tool">
+<div class="tool-card"><h1>Road Trip Fuel Cost Calculator</h1><p class="sub">Enter distance, fuel consumption and fuel price to estimate litres used and total fuel cost.</p>
+<div class="row"><div><label for="rf-dist">Distance (km)</label><input id="rf-dist" type="number" value="300" min="0"></div><div><label for="rf-mile">Consumption (km per litre)</label><input id="rf-mile" type="number" value="15" min="0.1" step="0.1"></div></div>
+<label for="rf-price">Fuel price (per litre)</label><input id="rf-price" type="number" value="1.50" min="0" step="0.01">
+<div class="presets"><button type="button" data-preset="city">City car</button><button type="button" data-preset="family">Family car</button><button type="button" data-preset="suv">Large SUV / van</button></div>
+<button class="calc-btn" id="rf-calc" type="button">Calculate fuel cost</button>
+<div class="result" id="rf-result" aria-live="polite">Enter your trip and press Calculate.</div>
+<button class="copy-btn" id="rf-copy" type="button">Copy result</button>
+<div class="hist"><strong>Recent calculations</strong><ul id="rf-hist"></ul></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why fuel cost deserves its own calculation</h2>
+<p>Fuel is usually the largest single cost of a road trip, yet many travellers guess it. They remember the price of a full tank, or they remember what a previous trip cost, and they assume the new trip will be similar. But fuel cost depends on three things that all change between trips: how far you drive, how efficiently your vehicle uses fuel on that kind of road, and the price of fuel where you fill up. A trip that was cheap in a small efficient car becomes expensive in a loaded SUV, and a trip that was cheap when fuel was inexpensive becomes costly after a price rise. This calculator separates the three factors, so a change in any one of them produces a new, honest figure instead of a vague guess.</p>
+<p>The calculation itself is straightforward. Divide the distance by the vehicle's consumption to get litres used, then multiply litres by the fuel price to get cost. The difficulty is not the arithmetic but the inputs. Consumption figures from manufacturers are measured under standard conditions and often flatter real driving, especially for city driving, short trips, cold starts, and heavy loads. A driver who uses the brochure figure will underestimate fuel cost. A better approach is to use your own measured consumption, calculated from a full tank: note the distance driven and the litres filled, divide distance by litres, and use that figure. It will be more honest than any brochure, because it reflects your car, your load, and your driving.</p>
+<h2>How to use this calculator</h2>
+<p>Enter the trip distance in kilometres, your vehicle's consumption in kilometres per litre, and the fuel price per litre in your currency. The calculator shows litres used, fuel cost one way, cost per 100 km, and return-trip cost. Use the presets for a starting point if you do not know your consumption: a small city car, a family car, and a large SUV or van have very different figures. Then adjust to your own vehicle. If your car displays consumption in litres per 100 km instead, convert it first: kilometres per litre equals 100 divided by litres per 100 km. A car using 6 litres per 100 km, for example, achieves about 16.7 km per litre.</p>
+<h2>Typical fuel costs</h2>
+<table><tr><th>Vehicle</th><th>Consumption</th><th>300 km trip</th><th>Fuel at 1.50 / litre</th><th>Cost per 100 km</th></tr>
+<tr><td>Small city car</td><td>20 km/l</td><td>15 litres</td><td>22.50</td><td>7.50</td></tr>
+<tr><td>Family car</td><td>15 km/l</td><td>20 litres</td><td>30.00</td><td>10.00</td></tr>
+<tr><td>Large SUV / van</td><td>10 km/l</td><td>30 litres</td><td>45.00</td><td>15.00</td></tr>
+<tr><td>Loaded van / towing</td><td>8 km/l</td><td>37.5 litres</td><td>56.25</td><td>18.75</td></tr></table>
+<p>The table makes the vehicle effect visible. On a 300 km trip, the difference between a small car and a large SUV is 22.50 at the same fuel price, and over a 1,000 km holiday that difference grows to 75.00. That is why vehicle choice matters more than fuel price for most trips: you control the vehicle, while the fuel price is largely set by the market. Load matters too. A roof box, a trailer, and a fully loaded car all increase consumption, sometimes by twenty percent or more at motorway speeds, because aerodynamic drag rises sharply with speed and with frontal area. If you are travelling loaded, use a lower consumption figure than your usual one.</p>
+<h2>What changes real consumption</h2>
+<p>Speed is the largest factor on open roads. Fuel consumption rises steeply above about 100 km/h, because air resistance grows with the square of speed. Driving at 120 km/h instead of 100 km/h can increase consumption by fifteen to twenty percent, which means the time saved is bought with fuel. City driving is inefficient for a different reason: frequent stopping and starting wastes energy, and short trips with a cold engine use more fuel per kilometre than a warmed-up motorway run. Air conditioning adds a smaller but real cost, especially in slow traffic, while under-inflated tyres increase rolling resistance and therefore consumption on every kilometre.</p>
+<p>Driving style matters as much as the vehicle. Smooth acceleration, anticipating traffic to avoid hard braking, and maintaining a steady speed all reduce consumption. Aggressive driving with rapid acceleration and late braking can increase consumption by a third on the same route. Cruise control helps on motorways by holding a steady speed, but it does not help in hilly terrain, where a skilled driver can save fuel by allowing speed to vary gently with gradients. Roof boxes and roof racks should be removed when not in use, because they add drag even when empty. Small habits, repeated over a long trip, add up to a measurable saving, and they also make the journey calmer and safer.</p>
+<h2>Planning fuel stops</h2>
+<p>Knowing litres used also tells you how many fuel stops you need. Divide litres used by your tank size, and round up, to get the number of fills. On a long trip, plan stops where fuel is cheaper, because prices vary by region, by brand, and by motorway versus town location. Motorway service stations are often the most expensive places to fill up, sometimes by a large margin, so a short detour into a nearby town can save a noticeable amount on a full tank. Keep a reserve: never plan to arrive at a station with the tank nearly empty in an unfamiliar area, especially at night or in rural regions where stations may be closed. A quarter-tank reserve is a sensible rule for long trips.</p>
+<p>For electric vehicles, the same logic applies with different units: distance divided by efficiency in kilometres per kilowatt-hour gives energy used, multiplied by the charging price gives cost. Public fast charging is usually much more expensive than home charging, so a trip that is cheap when charged at home can be costly on the road. The principle is identical, however: know your consumption, know your price, and multiply. Whatever you drive, a fuel budget made before departure beats a surprise at the pump, and it lets you compare the cost of driving with the cost of a train or a flight on a fair basis.</p>
+<h2>Fuel cost versus other trip costs</h2>
+<ul><li>Fuel: usually the largest transport cost, calculated here.</li><li>Tolls: use a toll calculator for tolled routes, and double for the return trip.</li><li>Food and accommodation: often larger than fuel on a multi-day trip.</li><li>Parking: city parking can exceed a day's fuel cost.</li><li>Wear and depreciation: a real cost, though not paid at the pump.</li><li>Contingency: allow ten percent for detours, delays, and price changes.</li></ul>
+<p>Comparing driving with public transport requires including all of these, not just fuel. A train ticket that looks expensive may be cheaper than driving once tolls, parking, and wear are added, while a car that looks expensive may be cheaper for a family of four travelling together, because one car carries everyone for one fuel cost. Use this calculator for the fuel line, add the other lines honestly, and the comparison will be fair. The cheapest option is not always the best, but an honest comparison lets you choose with confidence rather than with hope.</p>
+<h2>Worked examples</h2>
+<p>A 300 km trip at 15 km per litre uses 20 litres. At 1.50 per litre, that costs 30.00 one way and 60.00 return. A 450 km trip at 18 km per litre uses 25 litres, costing 30.00 at 1.20 per litre. A 600 km trip at 12 km per litre uses 50 litres, costing 85.00 at 1.70 per litre. These examples show how the three inputs interact: a longer trip in an efficient car can cost the same as a shorter trip in a thirsty car, and a fuel price change of 0.20 per litre changes a 50-litre trip by 10.00. When budgeting, use the highest fuel price you expect to pay on the route, not the lowest price you have seen, so the budget survives a price rise.</p>
+<h2>Tips to cut fuel cost</h2>
+<p>Keep tyres at the recommended pressure, remove roof boxes when not needed, and drive smoothly at a steady speed. Plan fuel stops where prices are lower, avoid motorway service stations for full fills where possible, and consider whether a slightly longer route with cheaper fuel or fewer tolls is actually cheaper overall. Service the vehicle regularly, because a neglected engine, clogged filter, or worn spark plug all increase consumption. Finally, travel light where you can: every extra hundred kilograms costs fuel, especially in city driving and on hills. None of these tips alone transforms a trip budget, but together they can save ten to twenty percent, which on a long holiday is a meaningful sum.</p>
+<h3>Before you leave</h3>
+<p>Measure your real consumption from a full tank, check fuel prices along your route, and run this calculator with honest figures. Write the result into your trip budget, add a contingency, and you will know the fuel cost before you turn the key, which is exactly how a road trip budget should work.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate road trip fuel cost?</summary><p>Divide distance by consumption in kilometres per litre to get litres used, then multiply by fuel price. This calculator does both steps.</p></details>
+<details><summary>How do I convert litres per 100 km to km per litre?</summary><p>Divide 100 by the litres per 100 km figure. For example, 6 litres per 100 km equals about 16.7 km per litre.</p></details>
+<details><summary>Why is my real consumption worse than the brochure?</summary><p>Brochure figures use standard test conditions. City driving, cold starts, heavy loads, roof boxes, and high speeds all increase real consumption.</p></details>
+<details><summary>Does speed affect fuel cost much?</summary><p>Yes, especially above 100 km/h. Air resistance rises with the square of speed, so driving faster costs disproportionately more fuel.</p></details>
+<details><summary>Should I include the return trip?</summary><p>Yes, unless you are travelling one way. This calculator shows the return cost so you can budget the whole trip.</p></details>
+<details><summary>Is motorway fuel more expensive?</summary><p>Often yes. Motorway service stations tend to charge more than town stations, so plan fills where prices are lower.</p></details>
+<details><summary>How much does a roof box increase fuel use?</summary><p>It can increase consumption by ten to twenty percent at motorway speeds, because it adds aerodynamic drag.</p></details>
+<details><summary>Does air conditioning use much fuel?</summary><p>It adds a small but real cost, especially in slow traffic. At motorway speeds its share is smaller than the effect of speed itself.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RoadFuel</div>
+    <p>RoadFuel works out litres used and fuel cost for any road trip.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcRoadFuel(distance, kmPerLitre, pricePerLitre){if(distance<=0||kmPerLitre<=0||pricePerLitre<=0)return 0;return Math.round(distance/kmPerLitre*pricePerLitre*100)/100;}
+function calcLitres(distance, kmPerLitre){if(distance<=0||kmPerLitre<=0)return 0;return Math.round(distance/kmPerLitre*100)/100;}
+if (typeof document !== 'undefined') {
+var hist7=[];
+function renderRF(){var d=+document.getElementById('rf-dist').value,m=+document.getElementById('rf-mile').value,p=+document.getElementById('rf-price').value;var litres=calcLitres(d,m),cost=calcRoadFuel(d,m,p);document.getElementById('rf-result').innerHTML='<p class="big">'+cost.toFixed(2)+' fuel cost &middot; '+litres.toFixed(1)+' litres</p><p>'+(d>0?(cost/d*100).toFixed(2):'0.00')+' per 100 km &middot; return trip '+ (cost*2).toFixed(2)+'</p>';hist7.unshift(cost.toFixed(2)+' fuel');if(hist7.length>5)hist7.pop();document.getElementById('rf-hist').innerHTML=hist7.map(function(x){return '<li>'+x+'</li>';}).join('');}
+document.getElementById('rf-calc').onclick=renderRF;
+var ps7=document.querySelectorAll('[data-preset]');
+ps7.forEach(function(b){b.onclick=function(){if(b.dataset.preset==='city'){document.getElementById('rf-mile').value=20;}if(b.dataset.preset==='family'){document.getElementById('rf-mile').value=15;}if(b.dataset.preset==='suv'){document.getElementById('rf-mile').value=10;}renderRF();};});
+document.getElementById('rf-copy').onclick=function(){var t=document.getElementById('rf-result').innerText||'';if(typeof navigator!=='undefined'&&navigator.clipboard){navigator.clipboard.writeText(t);} };
+}
+</script>
+</body>
+</html>
