@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fence Paint Calculator — How Much Paint for Your Fence?</title>
+<meta name="description" content="Calculate fence paint in litres and cans from fence length, height, sides and coats — with 10% waste and coverage by paint type.">
+<link rel="canonical" href="https://fun.fixoraa.tech/fencepaint/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "FencePaint", "url": "https://fun.fixoraa.tech/fencepaint/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much paint do I need for a fence?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply length × height × sides × coats, divide by coverage per litre, and add 10% waste — the calculator does this for you."}}, {"@type": "Question", "name": "Does fence paint coverage differ by wood type?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — rough-sawn boards absorb more paint (around 8 m²/L) than smooth boards (around 12 m²/L)."}}, {"@type": "Question", "name": "Is one coat enough?", "acceptedAnswer": {"@type": "Answer", "text": "For previously painted fences in good condition, yes; new or weathered wood needs two coats for durability."}}, {"@type": "Question", "name": "Can I paint a fence in hot sun?", "acceptedAnswer": {"@type": "Answer", "text": "Avoid it — paint dries too fast, cracks and peels. Paint on dry, mild days."}}, {"@type": "Question", "name": "Should I spray or brush a fence?", "acceptedAnswer": {"@type": "Answer", "text": "Brushing penetrates rough boards best; spraying is faster on long runs but uses more paint and needs calm weather."}}, {"@type": "Question", "name": "How often should a painted fence be repainted?", "acceptedAnswer": {"@type": "Answer", "text": "Every 3–5 years for opaque paint, 2–3 years for stain, and annually for oil, with south-facing fences first."}}]}</script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1F2937;line-height:1.6;background:#ECFDF5}
+header{background:#065F46;color:#fff;padding:18px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:52px;height:52px;border-radius:14px;background:#fff;color:#059669D;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+.brand h1{margin:0;font-size:26px;line-height:1.1}.brand p{margin:2px 0 0;opacity:.9;font-size:14px}
+.btn{display:inline-block;background:#fff;color:#059669D;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;border:0;cursor:pointer;font-size:15px}
+.btn.primary{background:#059669;color:#fff}.badge{display:inline-block;background:#fff;color:#059669D;border-radius:999px;padding:5px 12px;font-weight:700;font-size:13px}
+main{max-width:1020px;margin:0 auto;padding:8px 16px 30px}label{font-weight:700;display:block;margin:12px 0 4px}
+input,select{width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:16px;background:#fff;color:#1f2937}
+.result{margin-top:18px;background:#fff;border:2px solid #059669;border-radius:14px;padding:18px;font-size:18px}
+.result b{font-size:26px}.small{font-size:14px;color:#4b5563}.hist{font-size:14px;background:#fff;border-radius:10px;padding:12px;margin-top:14px}
+article{max-width:1020px;margin:0 auto;padding:10px 20px 30px}article h2{font-size:24px}article h3{font-size:19px}
+.faq{max-width:1020px;margin:0 auto;padding:0 20px 30px}.faq details{background:#fff;border-radius:10px;padding:14px 18px;margin:10px 0}
+footer{background:#065F46;color:#fff;padding:28px 20px;text-align:center}footer a{color:#fff}
+@media(max-width:640px){.brand h1{font-size:21px}header{flex-direction:column;align-items:flex-start}.result b{font-size:22px}}
+.toolwrap{max-width:760px;margin:0 auto}.spec{width:100%;border-collapse:collapse;background:#fff}.spec td,.spec th{border:1px solid #ddd;padding:10px 12px;text-align:left}.spec th{background:#059669;color:#fff;width:38%}</style>
+</head>
+<body>
+<header>
+<div class="brand"><div class="logo" aria-hidden="true">🎨</div><div><h1>FencePaint</h1><p>Every panel covered, no tin wasted.</p></div></div>
+<div><span class="badge">Unlimited Free Usage</span>&nbsp; <a class="btn" href="https://fixoraa.tech">Home</a> <a class="btn" href="https://fixoraa.tech">More Tools</a></div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<section aria-label="Tool">
+<div class="toolwrap"><table class="spec"><tr><th>Fence length (m)</th><td><input id="flen" type="number" value="20"></td></tr><tr><th>Fence height (m)</th><td><input id="fht" type="number" value="1.8"></td></tr><tr><th>Sides to paint</th><td><select id="sides"><option value="1">One side</option><option value="2" selected>Both sides</option></select></td></tr><tr><th>Coats</th><td><input id="coats" type="number" value="2"></td></tr><tr><th>Coverage (m² per litre)</th><td><input id="cov" type="number" value="10"></td></tr><tr><th>Can size (litres)</th><td><input id="can" type="number" value="5"></td></tr></table><p><button class="btn primary" onclick="frun()">Calculate</button></p><div class="result" id="out">Enter fence details and press Calculate.</div>
+<div class="hist" id="hist">Recent results will appear here as you calculate.</div>
+<p><button class="btn primary" onclick="copyResult()">Copy result</button> <button class="btn" onclick="clearHist()">Clear history</button></p>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<article>
+<h2>About FencePaint</h2>
+<h2>Why fence paint estimates go wrong</h2><p>Most people estimate fence paint by guessing the number of tins, and most guesses are wrong in the same direction: too few. Rough-sawn fence boards drink paint, both sides double the area, and a second coat doubles it again, so a fence that looks like a two-tin job can easily need six. Running out mid-fence is worse than running out mid-wall, because a fence painted on two different days in different weather can show a visible join, and a half-painted fence weathers unevenly. Measuring length, height, sides and coats and applying the coverage figure from the tin gives a reliable answer, and the ten percent waste allowance covers brush loss, drips and the paint that stays in the tin.</p><h2>How the calculation works</h2><p>Paintable area is fence length multiplied by height, multiplied by the number of sides, multiplied by the number of coats. Dividing that area by the paint&#x27;s coverage in square metres per litre gives litres before waste, and multiplying by 1.10 adds the waste allowance. Dividing litres by the can size and rounding up gives whole cans, since paint is sold in whole tins. Coverage varies by product and surface: smooth planed boards may reach twelve square metres per litre, while rough-sawn featherboard often manages only eight, so use the figure printed on your chosen product rather than a generic one, and re-check if you switch brands.</p><h2>Measuring fences accurately</h2><p>Measure the fence run with a tape along the ground, following bends and corners, rather than estimating from a map or pacing it. Height is the height of the boards themselves, not the posts, unless you also paint the posts, in which case add a small allowance for them. Gates count as extra area, especially panelled gates, so measure them separately and add their area to the total. If the fence has gaps between boards, the painted area is still close to the full rectangle, because spray and brush work coats edges and both faces of each board. For a fence with mixed heights, split it into sections and add the sections together.</p><h2>One coat or two</h2><p>A single coat refreshes colour on a previously painted fence in good condition, but new or weathered wood almost always needs two coats for even colour and durability. The first coat soaks into dry wood and acts as a primer, while the second builds the protective film and the true colour. Skipping the second coat on new wood saves paint today but shortens the repaint interval from three years to one, which costs more paint in total. If the fence was previously stained rather than painted, check compatibility, since some paints peel over old stain, and a test patch on one board can save an entire fence of wasted work.</p><h2>Choosing paint, stain or oil</h2><p>Opaque fence paint gives the strongest colour and best weather protection, and it hides mismatched boards, but it peels eventually and needs stripping or heavy preparation before repainting. Semi-transparent stain shows the wood grain, weathers more gracefully, and is easier to recoat, but it offers less colour change and less protection. Wood oil nourishes the timber and looks natural, yet it needs frequent reapplication and gives little colour. Match the product to the fence&#x27;s condition and your tolerance for maintenance, and never mix product types on the same fence without checking the manufacturer&#x27;s guidance.</p><h2>Preparation that makes paint last</h2><p>Paint fails most often because of preparation, not product. Clean the fence with a stiff brush and water, removing algae, dirt and loose flakes, and let it dry fully, ideally for two dry days, before painting. Sand rough splinters lightly, replace rotten boards rather than painting over them, and treat any mould with a suitable cleaner. Mask or protect plants, paths and neighbours&#x27; property, and paint on a dry, mild day, since paint applied before rain washes off and paint applied in hot sun dries too fast and cracks. Start early so the first coat dries before evening dew.</p><h2>Application tips for fences</h2><p>A brush gives the best penetration on rough boards and uses paint efficiently, while a sprayer is much faster on long runs but uses more paint and needs masking and calm weather. A long-pile roller suits flat panel fences and is a good compromise. Work along the grain, painting the tops of boards and the gaps between them, since unpainted tops absorb water and rot first. Keep a wet edge to avoid lap marks, and work in sections of a few boards at a time rather than racing along the whole run. Two thin coats always beat one thick coat, which sags, cracks and peels.</p><h2>Cost, storage and repaint intervals</h2><p>Compare paint by price per litre and by coverage, not by tin price alone, since a cheap tin with poor coverage can cost more per fence. Keep a note of the product name, colour and batch for touch-ups, and store leftover paint upright, sealed, in a frost-free place, where it can last two years or more. Expect to repaint an opaque-painted fence every three to five years, a stained fence every two to three, and an oiled fence annually, with south-facing fences weathering fastest. Touching up the worst boards each spring extends the full repaint interval and keeps the fence looking cared for with far less work.</p><h2>Neighbours, boundaries and good practice</h2><p>Check who owns the fence before painting it, since painting a neighbour&#x27;s fence without permission can cause a dispute, and the good side of a fence traditionally faces the neighbour. If the fence is shared, agreeing on colour and cost beforehand avoids awkwardness, and offering to paint both sides often wins agreement. Keep paint off neighbouring plants and property, and clean drips promptly, since dried paint on paving is hard to remove. A freshly painted fence improves the whole garden&#x27;s appearance, and a little neighbourly communication makes the job pleasant for everyone involved.</p><h2>Painting gates, posts and trellis</h2><p>Gates, posts and trellis need more attention than flat fence runs, because they have more edges, joints and end grain, all of which absorb water and paint unevenly. Paint gate frames on all sides, including the bottom edge, since an unpainted bottom edge wicks moisture from the ground and rots first. Posts should be painted down to ground level and slightly below where possible, with the base given an extra coat, since the ground line is where rot starts. Trellis is slow to paint by brush, so use a sprayer or a small roller for the lattice, working from both sides to cover the edges, and accept that trellis uses more paint per square metre than flat boards because of its doubled surface. Count gates and trellis panels separately when estimating, adding their area to the fence total, and keep a small pot of the same paint for touch-ups, since gates suffer knocks and scrapes that flat runs do not, and a small touch-up pot saves a full repaint later. A fence whose gates and posts are finished to the same standard as its panels looks complete and lasts far longer.</p>
+</article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary><strong>How much paint do I need for a fence?</strong></summary><p>Multiply length × height × sides × coats, divide by coverage per litre, and add 10% waste — the calculator does this for you.</p></details><details><summary><strong>Does fence paint coverage differ by wood type?</strong></summary><p>Yes — rough-sawn boards absorb more paint (around 8 m²/L) than smooth boards (around 12 m²/L).</p></details><details><summary><strong>Is one coat enough?</strong></summary><p>For previously painted fences in good condition, yes; new or weathered wood needs two coats for durability.</p></details><details><summary><strong>Can I paint a fence in hot sun?</strong></summary><p>Avoid it — paint dries too fast, cracks and peels. Paint on dry, mild days.</p></details><details><summary><strong>Should I spray or brush a fence?</strong></summary><p>Brushing penetrates rough boards best; spraying is faster on long runs but uses more paint and needs calm weather.</p></details><details><summary><strong>How often should a painted fence be repainted?</strong></summary><p>Every 3–5 years for opaque paint, 2–3 years for stain, and annually for oil, with south-facing fences first.</p></details></section>
+<footer>
+<p><strong>FencePaint</strong> — Every panel covered, no tin wasted.</p>
+<p>FencePaint turns fence measurements into litres and whole cans, so you buy enough paint for full coverage without a garage full of half-used tins.</p>
+<p><a href="https://fixoraa.tech">Home</a> · <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p>
+</footer>
+<script>
+function compute(len,ht,sides,coats,cov,can){if(len<=0||ht<=0||cov<=0)return{litres:0,cans:0};var litres=len*ht*sides*coats/cov*1.10;var cans=Math.ceil(litres/can);return{litres:Math.round(litres*100)/100,cans:cans};}
+function frun(){var r=compute(+document.getElementById('flen').value,+document.getElementById('fht').value,+document.getElementById('sides').value,+document.getElementById('coats').value,+document.getElementById('cov').value,+document.getElementById('can').value);var t='Paint needed: <b>'+r.litres+' litres</b> — buy <b>'+r.cans+' cans</b> (includes 10% waste).';document.getElementById('out').innerHTML=t;pushHist(t);}
+function copyResult(){var r=document.getElementById('out');if(r){navigator.clipboard.writeText(r.innerText);alert('Result copied!');}}
+function clearHist(){try{localStorage.removeItem('hist_fencepaint');}catch(e){}document.getElementById('hist').innerHTML='Recent results will appear here as you calculate.';}
+function pushHist(txt){try{var h=JSON.parse(localStorage.getItem('hist_fencepaint')||'[]');h.unshift(txt);h=h.slice(0,5);localStorage.setItem('hist_fencepaint',JSON.stringify(h));document.getElementById('hist').innerHTML='<strong>Recent:</strong><br>'+h.map(function(x){return x;}).join('<br>');}catch(e){}}
+</script>
+</body>
+</html>
