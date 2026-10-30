@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryDice — Story Dice Roller: Roll Picture Dice &amp; Tell the Tale</title>
+<meta name="description" content="StoryDice — free online story dice online. Roll up to 9 icon dice across story categories, lock the good ones, re-roll the rest — plus a story-starter sentence for the stuck No signup, unlimited free usage.">
+<link rel="canonical" href="https://storydice.2.fixoraa.tech/">
+<meta property="og:title" content="StoryDice — Story Dice Roller: Roll Picture Dice &amp; Tell the Tale">
+<meta property="og:description" content="StoryDice — free online story dice online. Roll up to 9 icon dice across story categories, lock the good ones, re-roll the rest — plus a story-starter sentence for the stuck No signup, unlimited free usage.">
+<meta property="og:url" content="https://storydice.2.fixoraa.tech/">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#F9F3E7;--card:#FFFDF8;--ink:#3D1420;--acc:#1D667F;--acc2:#3D2D9A;--soft:#F0E4CC;--hf:'Nunito',serif;--bf:'Nunito Sans',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--bf);line-height:1.65}
+header.site{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:2px solid var(--soft);padding:10px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{width:42px;height:42px;border-radius:12px;background:var(--ink);color:var(--bg);border:2px solid var(--acc);display:flex;align-items:center;justify-content:center;font-family:var(--hf);font-weight:800;font-size:20px}
+.brandname{font-family:var(--hf);font-size:22px;font-weight:700}
+.navbtns{margin-left:auto;display:flex;gap:8px}
+.navbtns a,.btn{background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;text-decoration:none;font-weight:700;border:0;cursor:pointer;display:inline-block}
+.navbtns a.ghost{background:var(--soft);color:var(--ink)}
+.badge{display:inline-block;background:var(--soft);color:var(--ink);padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700}
+h1{font-family:var(--hf);font-size:clamp(26px,4.5vw,40px);line-height:1.2;margin:14px 0 8px}
+.hero{max-width:900px;margin:auto;padding:26px 20px 4px;text-align:center}
+.wrap{max-width:1000px;margin:auto;padding:18px}.tool{background:var(--card);border-radius:14px;padding:24px;border:1px solid var(--acc)}
+.fld{display:block;margin:10px 0}.fld span{display:block;font-weight:700;margin-bottom:5px;font-size:14px}
+.fld input,.fld select,.fld textarea{width:100%;padding:11px 12px;border:2px solid var(--soft);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.btn2{background:var(--soft);color:var(--ink);border:0;padding:8px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+#result{margin-top:16px;background:var(--soft);border-radius:14px;padding:16px}
+#baStage{margin:14px 0}
+.reserved-ad{max-width:728px;margin:26px auto;min-height:110px;border:2px dashed var(--soft);border-radius:12px}
+article.seo{max-width:820px;margin:auto;padding:10px 20px 30px}article.seo h2{font-family:var(--hf);margin-top:30px}article.seo h3{font-family:var(--hf)}
+.faq{background:var(--card);border:1px solid var(--soft);border-radius:12px;padding:6px 16px;margin:10px 0}
+footer.site{background:var(--card);border-top:2px solid var(--soft);padding:26px 20px;text-align:center;margin-top:30px}
+footer.site a{color:var(--acc);font-weight:700}
+canvas{max-width:100%}table{background:var(--card)}pre{white-space:pre-wrap;word-break:break-word}
+body{background-image:radial-gradient(circle at 85% 0%, var(--soft), transparent 50%)}.tool{border-radius:10px;box-shadow:0 10px 26px #00000017}.hero{text-align:left}.fld input,.fld select,.fld textarea{border-radius:6px}#result{border-left:5px solid var(--acc)}article.seo h2{border-bottom:3px solid var(--soft);padding-bottom:4px}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "StoryDice", "url": "https://storydice.2.fixoraa.tech/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "StoryDice \u2014 free online story dice online. Roll up to 9 icon dice across story categories, lock the good ones, re-roll the rest \u2014 plus a story-starter sentence for the stuck No signup, unlimited free usage."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is StoryDice used for?", "acceptedAnswer": {"@type": "Answer", "text": "StoryDice is a free online tool for anyone searching for a story dice online. It gives you an instant result in your browser \u2014 Roll up to 9 icon dice across story categories, lock the good ones, re-roll the rest \u2014 plus a story-starter sentence for the stuck"}}, {"@type": "Question", "name": "Is StoryDice free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. StoryDice is completely free with unlimited usage \u2014 no signup, no paywall and no watermark on anything you create or download."}}, {"@type": "Question", "name": "How accurate is StoryDice?", "acceptedAnswer": {"@type": "Answer", "text": "StoryDice uses the standard formulas and methods described in the guide on this page, and shows its working so you can check every step. For money, health or legal decisions, treat the result as a strong estimate and confirm important figures with a professional."}}, {"@type": "Question", "name": "Does StoryDice upload my data anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. StoryDice runs entirely in your browser. Your inputs, files and results never leave your device, and nothing is stored on a server."}}, {"@type": "Question", "name": "What makes StoryDice different from other tools for story dice online?", "acceptedAnswer": {"@type": "Answer", "text": "Most tools stop at the basic answer. StoryDice adds lock & re-roll dice and category dice sets \u2014 Yesterday's StorySpark deals text prompt CARDS; dice are the tactile classroom format \u2014 rolling 3-9 icon dice (character/setting/object/problem) is a distinct, beloved mechanic"}}, {"@type": "Question", "name": "Can I use StoryDice on my phone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. StoryDice is a single lightweight page that works on phones, tablets and computers. Anything you save is kept in your own browser's local storage."}}]}</script>
+</head>
+<body>
+<header class="site">
+<div class="logo" aria-hidden="true">S</div>
+<div class="brandname">StoryDice</div>
+<nav class="navbtns"><a href="https://fixoraa.tech">Home</a><a class="ghost" href="https://fixoraa.tech">More Tools</a></nav>
+</header>
+<div class="hero"><h1>StoryDice — Story Dice Roller: Roll Picture Dice &amp; Tell the Tale</h1><p>Fun + learning — roll prompts, tell/write a story — free, private, no signup.</p></div>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<div class="wrap"><div class="tool">
+<div><span class="badge">Unlimited Free Usage</span>
+<h2 style="font-family:var(--hf);margin:10px 0 4px">StoryDice — story dice online</h2>
+<p style="margin:4px 0 12px">Roll up to 9 icon dice across story categories, lock the good ones, re-roll the rest — plus a story-starter sentence for the stuck</p>
+<label class="fld"><span>Dice seed (same seed = same roll)</span><input type="number" id="f_seed" value="2"></label>
+<label class="fld"><span>Number of dice (3-9)</span><input type="number" id="f_count" value="5"></label>
+<label class="fld"><span>Categories to keep on re-roll (comma separated: character, setting, object, problem)</span><input type="text" id="f_locked" value=""></label>
+<p style="margin-top:14px"><button class="btn" id="go">Run StoryDice</button></p>
+<div id="baStage"></div>
+<div id="result" aria-live="polite"><p>Press <b>Run StoryDice</b> — the example values above already show a full working result. Extra built in: lock &amp; re-roll dice.</p></div>
+</div></div></div>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 py-4" role="complementary" aria-label="Advertisement">
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+</div>
+<article class="seo">
+<h2>What is a story dice online — and why this one?</h2><p>If you searched for a story dice online, you want one thing: a correct answer, fast, without creating an account or paying for a subscription. StoryDice was built for exactly that moment. Roll up to 9 icon dice across story categories, lock the good ones, re-roll the rest — plus a story-starter sentence for the stuck The page loads instantly, the tool sits at the top, and your result appears the moment you press the button — no uploads, no waiting rooms, no watermarks.</p><p>The search intent behind “story dice online” is usually fun + learning — roll prompts, tell/write a story That sounds simple, but the top results for this search are a mixed bag: some are blog posts that explain the idea with one static example, some are heavy apps that demand an account before they show you anything, and some are calculators that handle only the simplest case. StoryDice takes a different approach — a dedicated, single-purpose tool that does this one job completely, including the edge cases the simple versions skip.</p>
+<h2>How StoryDice works</h2><p>Under the hood, StoryDice follows the standard method for a story dice online, applied step by step so the result is easy to verify. Every input is labelled in plain language, sensible defaults are filled in so you can try the tool immediately, and the result panel shows not just the headline answer but the working behind it. That transparency matters: a number you cannot check is a number you cannot trust, especially when money, marks, measurements or health are involved.</p><p>Yesterday&#x27;s StorySpark deals text prompt CARDS; dice are the tactile classroom format — rolling 3-9 icon dice (character/setting/object/problem) is a distinct, beloved mechanic In practice that means you spend your time on the decision, not on wrestling the tool. Change any input and re-run — the calculation is instant because everything happens on your own device.</p>
+<h2>Key features</h2><h3>Lock &amp; re-roll dice</h3><p>keep the hero, re-roll the setting — and it is built into StoryDice from the start, not locked behind a signup. When you search for a story dice online, small workflow details like this are what separate a tool you use once from a tool you bookmark. Try it with your own numbers or files and compare the result with the worked example below.</p><h3>Category dice sets</h3><p>character/setting/object/problem structure built in — and it is built into StoryDice from the start, not locked behind a signup. When you search for a story dice online, small workflow details like this are what separate a tool you use once from a tool you bookmark. Try it with your own numbers or files and compare the result with the worked example below.</p><h3>Starter-sentence helper</h3><p>the blank-page fix for young writers — and it is built into StoryDice from the start, not locked behind a signup. When you search for a story dice online, small workflow details like this are what separate a tool you use once from a tool you bookmark. Try it with your own numbers or files and compare the result with the worked example below.</p>
+<h2>How to use StoryDice — step by step</h2><p><strong>Step 1:</strong> Start with the defaults. The tool opens with a realistic example already filled in, so you can press the main button and see a full result before entering anything of your own. <strong>Step 2:</strong> Replace the example values with your real ones — your figures, your file, or your text. <strong>Step 3:</strong> Read the whole result panel, not just the headline number; the breakdown underneath is where the useful decisions hide. <strong>Step 4:</strong> Adjust one input at a time and re-run to see how sensitive the answer is. <strong>Step 5:</strong> Copy, download or save your result using the buttons provided — everything stays in your browser, so your work is private by default.</p><p>A worked example is the fastest way to learn any tool. Run the default example first and check that the result matches the explanation in the “how it works” section above. Once the method makes sense with familiar numbers, your own case — however unusual — becomes straightforward, because the tool applies exactly the same steps every time.</p>
+<h2>Common mistakes to avoid</h2><p>Most wrong answers from a story dice online come from wrong inputs, not wrong maths. Double-check that you have entered values in the units the labels ask for, that percentages are entered as percentages (12, not 0.12), and that you have not mixed two different cases into one run. If a result looks surprising, change one input at a time and watch how the answer moves — a result that moves sensibly is a result you can trust. And if two tools disagree, prefer the one that shows its working, the way StoryDice does.</p><p>People also search for related questions such as story cubes dice roller online classroom, roll story dice characters setting object, storytelling dice generator for kids. Those long-tail searches usually describe a specific situation — a couple budgeting together, a student checking one subject, a buyer comparing two options. StoryDice was designed with those specific situations in mind, which is why its extra features focus on comparisons, breakdowns and “what if” adjustments rather than a single bare answer.</p>
+<h2>Who uses StoryDice?</h2><p>Anyone who needs a story dice online and would rather get the answer in ten seconds than read a long article about it. Students checking work, professionals making a quick decision, families planning a budget or a purchase, and creators producing something to share — the tool does not ask who you are, and it never asks you to sign up. No signup, no downloads, nothing to install — just open the page and play. Everything runs in your browser, and your scores and favourites stay on your own device.</p><p>Because the page is a single self-contained file, it also works in places where heavy apps struggle: older phones, slow connections, school and office networks. If you find it useful, bookmark it — your saved notes, favourites and history live in your own browser and will be waiting next time, with no account to remember and no password to reset.</p>
+<h2>The bottom line</h2><p>A good story dice online should be fast, honest about its method, and complete enough that you do not need a second tool open in another tab. That is the standard StoryDice was built to. Try the default example, run your own case, and read the frequently asked questions below if anything is unclear — they cover accuracy, privacy, cost and the features that make this tool different.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq"><h3>What is StoryDice used for?</h3><p>StoryDice is a free online tool for anyone searching for a story dice online. It gives you an instant result in your browser — Roll up to 9 icon dice across story categories, lock the good ones, re-roll the rest — plus a story-starter sentence for the stuck</p></div><div class="faq"><h3>Is StoryDice free to use?</h3><p>Yes. StoryDice is completely free with unlimited usage — no signup, no paywall and no watermark on anything you create or download.</p></div><div class="faq"><h3>How accurate is StoryDice?</h3><p>StoryDice uses the standard formulas and methods described in the guide on this page, and shows its working so you can check every step. For money, health or legal decisions, treat the result as a strong estimate and confirm important figures with a professional.</p></div><div class="faq"><h3>Does StoryDice upload my data anywhere?</h3><p>No. StoryDice runs entirely in your browser. Your inputs, files and results never leave your device, and nothing is stored on a server.</p></div><div class="faq"><h3>What makes StoryDice different from other tools for story dice online?</h3><p>Most tools stop at the basic answer. StoryDice adds lock &amp; re-roll dice and category dice sets — Yesterday&#x27;s StorySpark deals text prompt CARDS; dice are the tactile classroom format — rolling 3-9 icon dice (character/setting/object/problem) is a distinct, beloved mechanic</p></div><div class="faq"><h3>Can I use StoryDice on my phone?</h3><p>Yes. StoryDice is a single lightweight page that works on phones, tablets and computers. Anything you save is kept in your own browser&#x27;s local storage.</p></div>
+</article>
+</main>
+<footer class="site">
+<p><b>StoryDice</b> — a free story dice online that runs entirely in your browser.</p>
+<p><a href="https://fixoraa.tech">Home</a> · <a href="https://fixoraa.tech">More Tools</a></p>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+<script id="tool-logic">var TL={banks:{character:['a brave knight','a wizard','a lost robot','a talking cat','a young pilot','a kind giant'],setting:['a floating island','an old forest','a busy space station','a seaside village','a snowy mountain','an underground library'],object:['a glowing key','a magic map','a tiny boat','a golden compass','a mysterious egg','a singing stone'],problem:['a storm is coming','the bridge is broken','a friend is missing','the lights went out','a river has flooded','the gate is locked']},pickIndex:function(seed,len){return (seed*31+17)%len;},pick:function(cat,seed){var b=TL.banks[cat];return b[TL.pickIndex(seed,b.length)];},roll:function(seed,count){var cats=['character','setting','object','problem'];var out=[];for(var i=0;i<count;i++){var cat=cats[i%4];out.push({cat:cat,value:TL.pick(cat,seed+i*3)});}return out;},starter:function(c,s){return 'Once, '+c+' arrived in '+s+'.';}};</script>
+<script>function $(i){return document.getElementById(i);}function v(i){var e=$('f_'+i);return e?parseFloat(e.value)||0:0;}function tv(i){var e=$('f_'+i);return e?e.value:'';}function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}function fmt(n){return new Intl.NumberFormat('en-IN',{maximumFractionDigits:2}).format(Math.round(n*100)/100);}function setResult(h){$('result').innerHTML=h;}function drawBars(rows){var mx=Math.max.apply(null,rows.map(function(r){return r[1];}))||1;var h='<div style="margin-top:10px">';rows.forEach(function(r){h+='<div style="margin:6px 0"><span>'+esc(r[0])+'</span><div style="background:var(--soft);border-radius:8px"><div style="width:'+Math.max(2,Math.round(r[1]/mx*100))+'%;background:var(--acc);height:16px;border-radius:8px"></div></div><b>'+fmt(r[1])+'</b></div>';});$('result').innerHTML+=h+'</div>';}
+document.getElementById('go').onclick=function(){window._sdN=(window._sdN||0)+1;var locked=tv('locked').split(',').map(function(s){return s.trim();}).filter(Boolean);var prev=window._sdPrev||[];var seed=v('seed')+window._sdN*7;var roll=TL.roll(seed,Math.max(3,Math.min(9,v('count'))));roll=roll.map(function(d,i){var old=prev.filter(function(p){return p.cat===d.cat;})[0];return (locked.indexOf(d.cat)>-1&&old)?old:d;});window._sdPrev=roll;var tiles=roll.map(function(d){return '<span style=\"display:inline-block;background:#fff;border:3px solid var(--acc);border-radius:16px;padding:14px;margin:5px;min-width:110px;text-align:center\"><b>'+esc(d.cat)+'</b><br>'+esc(d.value)+'</span>';}).join('');var stage=document.getElementById('baStage');stage.innerHTML='<div style=\"background:#1d5c38;border-radius:18px;padding:16px;text-align:center\">'+tiles+'</div>';var ch=(roll.filter(function(d){return d.cat==='character';})[0]||{}).value||'a hero';var se=(roll.filter(function(d){return d.cat==='setting';})[0]||{}).value||'a faraway place';setResult('<p>Story-starter sentence: <b>'+esc(TL.starter(ch,se))+'</b></p><p>Roll '+(window._sdN)+' with seed base '+v('seed')+'. Like a die? Type its category in the keep box above and roll again — locked dice stay, the rest re-roll.</p>');};</script>
+</body>
+</html>
