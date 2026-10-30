@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Garage Parking Fit Calculator — Will Your Car Fit? | GarageFit</title>
+<meta name="description" content="Free garage parking fit calculator: garage and car dimensions give length and width clearance and a clear fits-or-not verdict.">
+<link rel="canonical" href="https://fun.fixoraa.tech/garagefit/">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GarageFit","applicationCategory":"Home","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "How do I measure my garage for a car?", "acceptedAnswer": {"@type": "Answer", "text": "Measure inside wall to inside wall, length and width, and subtract anything that intrudes \u2014 steps, shelves, pipes, water heaters and door tracks."}},{"@type": "Question", "name": "Should I include mirrors in car width?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mirrors are usually the widest point and the first thing to scrape. Always use width including mirrors."}},{"@type": "Question", "name": "How much clearance do I need around a car?", "acceptedAnswer": {"@type": "Answer", "text": "At least 2 feet in front for walking and door swing, and enough width to open doors fully. Zero clearance is a technical fit, not a usable one."}},{"@type": "Question", "name": "Does the calculator check height?", "acceptedAnswer": {"@type": "Answer", "text": "No \u2014 it checks length and width. Measure height separately, especially for roof boxes, rails or lifted vehicles."}},{"@type": "Question", "name": "Will two cars fit in my double garage?", "acceptedAnswer": {"@type": "Answer", "text": "Only if the combined widths plus door-opening room fit the garage width. Run the calculation for each car and check the middle space."}},{"@type": "Question", "name": "What if my car is slightly too long?", "acceptedAnswer": {"@type": "Answer", "text": "If the shortfall is small, options include removing shelving, adjusting parking position, or choosing a shorter vehicle. The garage door must fully close."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:'Public Sans',sans-serif;background:#F5F3FF;color:#221C46;line-height:1.6}
+a{color:#6D28D9} header{background:#4C1D95;color:#FFFFFF;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#FFFFFF;text-decoration:none}
+.mark{width:44px;height:44px;border-radius:22px;background:#6D28D9;color:#fff;display:grid;place-items:center;font-size:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#6D28D9;color:#fff;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+.btn2{background:transparent;color:#FFFFFF;border:2px solid #FFFFFF}
+.wrap{max-width:960px;margin:0 auto;padding:16px} .badge{display:inline-block;background:#DDD6FE;color:#221C46;border:1px solid #6D28D9;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px}
+.card{background:#fff;border:1px solid #DDD6FE;border-radius:22px;padding:20px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.tiles div{background:#fff;border:2px solid #6D28D9;border-radius:22px;padding:14px;text-align:center;font-weight:700}@media(max-width:640px){.tiles{grid-template-columns:1fr 1fr}}h1,h2{font-family:Syne,sans-serif}
+label{display:block;font-weight:700;margin:12px 0 4px} input,select,textarea{width:100%;padding:12px;border:1.5px solid #DDD6FE;border-radius:10px;font-size:16px;font-family:inherit}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px} @media(max-width:600px){.grid{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start}}
+.res{margin-top:16px;padding:16px;background:#DDD6FE;border-radius:22px;font-size:18px} .res b{font-size:26px}
+.err{color:#b91c1c;font-weight:700} article{background:#fff;border-radius:22px;padding:24px;margin-top:20px} article h2{margin-top:28px}
+.faq details{background:#fff;border:1px solid #DDD6FE;border-radius:12px;padding:14px;margin:10px 0} .faq summary{font-weight:700;cursor:pointer}
+footer{background:#4C1D95;color:#FFFFFF;padding:28px 16px;margin-top:24px} footer a{color:#FFFFFF;font-weight:700}
+.hist{font-size:14px;background:#fff;border:1px dashed #6D28D9;padding:10px;border-radius:10px;margin-top:12px;white-space:pre-wrap}
+</style></head>
+<body>
+<header><a class="logo" href="https://fixoraa.tech"><span class="mark">▦</span>GarageFit</a>
+<nav><a class="btn btn2" href="https://fixoraa.tech">Home</a> <a class="btn btn2" href="https://fixoraa.tech">More Tools</a></nav></header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="wrap">
+<span class="badge">Unlimited Free Usage</span><h1>Garage Parking Fit Calculator</h1><p>New car, tight garage, expensive mistake? Check the fit before you buy — or before you build.</p><div class="tiles"><div>🚗<br>Sedan</div><div>🚙<br>SUV</div><div>🛻<br>Pickup</div><div>🚐<br>Van</div></div>
+<section class="card" aria-label="Tool">
+<div class="grid"><div><label for="gar_l">Garage length (ft)</label><input id="gar_l" type="number" step="any" value="20" placeholder="Garage length (ft)"></div><div><label for="gar_w">Garage width (ft)</label><input id="gar_w" type="number" step="any" value="12" placeholder="Garage width (ft)"></div><div><label for="car_l">Car length (ft)</label><input id="car_l" type="number" step="any" value="15" placeholder="Car length (ft)"></div><div><label for="car_w">Car width incl. mirrors (ft)</label><input id="car_w" type="number" step="any" value="6" placeholder="Car width incl. mirrors (ft)"></div></div><div style="margin-top:14px"><button class="btn" onclick="calc()">Calculate</button> <button class="btn" onclick="resetF()">Reset</button></div><div style="margin-top:10px">Presets: <button class="btn" type="button" onclick="applyPreset({"gar_l": 20, "gar_w": 12, "car_l": 15, "car_w": 6})">Sedan in single</button> <button class="btn" type="button" onclick="applyPreset({"gar_l": 20, "gar_w": 12, "car_l": 17, "car_w": 6.5})">SUV in single</button> <button class="btn" type="button" onclick="applyPreset({"gar_l": 22, "gar_w": 20, "car_l": 19, "car_w": 7})">Pickup in double</button> </div>
+<div id="err" class="err" role="alert"></div>
+<div id="res" class="res" style="display:none"></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+<button class="btn" onclick="saveHist()">Save to history</button>
+<button class="btn" onclick="copyRes()">Copy result</button>
+<button class="btn" onclick="dlCSV()">Export CSV</button></div>
+<div id="hist" class="hist" style="display:none"></div>
+<p><strong>Comfort rule:</strong> a car that technically fits with zero clearance is not a car you can live with. Allow at least 2 feet in front for walking and door swing, and measure width including mirrors — mirrors are the part that scrapes first.</p>
+</section>
+<div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article><p>Few mistakes are as annoying — or as expensive — as discovering your new car does not fit your garage. It happens more often than anyone admits, because car dimensions are easy to misremember, garage dimensions are easy to overestimate, and mirrors, bumpers and door swing never appear in the brochure figure. The garage parking fit calculator settles the question before money changes hands. Enter your garage's length and width and your car's length and width, and it returns the clearance left in each direction and a clear verdict: fits, fits but tight, or does not fit at all. It is a two-minute check against a very costly surprise.</p>
+<h2>How to use this calculator</h2>
+<p>Fit is simple subtraction, done twice. Garage length minus car length gives length clearance — the room left for walking around the car, storing the mower, or simply closing the door. Garage width minus car width gives width clearance — the room for opening doors and unfolding mirrors. If both clearances are zero or positive, the car fits; if either is negative, it does not, and the size of the negative number tells you exactly how much you are short. The calculator reports clearances to a tenth of a foot and flags tight fits under two feet, because a car that fits on paper with an inch to spare is not a car you can live with daily.</p>
+<ol><li>Measure the garage's usable length and width in feet — inside wall to inside wall, minus any shelving, steps or water heaters that intrude.</li><li>Measure the car's length including bumpers, and its width including mirrors — mirrors are the widest point on most cars.</li><li>Enter all four numbers and press Calculate.</li><li>Read the clearance in each direction and the verdict.</li><li>If the fit is tight, test it in person with the car before committing, and check door swing and garage door operation.</li></ol>
+<h2>Understanding your results</h2>
+<p><strong>Length clearance.</strong> Garage length minus car length. Two feet or more is comfortable; under two feet means squeezing past the car every day.</p>
+<p><strong>Width clearance.</strong> Garage width minus car width including mirrors. This is the number that decides whether doors open and mirrors survive.</p>
+<p><strong>Fits verdict.</strong> A plain answer — fits, fits but tight, or does not fit — with the shortfall stated when it fails.</p>
+<p><strong>Zero clearance.</strong> Exactly zero means the car touches both walls in that direction. Technically a fit, practically unusable.</p>
+<h2>Practical tips</h2><ul><li>Measure width including mirrors, not just the body — mirrors add several inches and are the first thing to scrape.</li><li>Measure the garage's usable space, not its nominal size — steps, pipes, shelves and door tracks all steal inches.</li><li>Allow for door swing: you need room to open the car door and get out, not just to park the car.</li><li>Check height too if the car has roof rails, a box or a lift — this calculator checks length and width, so verify height separately.</li><li>Test with the garage door closed and the car parked normally, not perfectly centred by three people guiding it.</li><li>Remember electric charging: an EV needs clearance for the charger cable and the charge port side.</li></ul>
+<h2>Common mistakes to avoid</h2><ul><li>Using brochure width without mirrors and discovering the scrape on day one.</li><li>Measuring the garage wall to wall while ignoring the step, shelf or furnace that juts into the space.</li><li>Forgetting that a car needs door-opening room, not just parking room.</li><li>Assuming a double garage fits two cars without checking the middle pillar and both cars' widths.</li><li>Buying the car first and measuring the garage second — the order that creates the problem.</li><li>Ignoring length: a car that fits width-wise can still leave the garage door unable to close.</li></ul>
+<h2>Who benefits most</h2>
+<p>This calculator is for car buyers checking a new purchase, homeowners planning a garage build or extension, renters choosing between properties with different garages, and builders confirming that a design actually parks the cars it claims to. It is also useful for fleets and landlords assigning garage spaces: a quick calculation per space avoids disputes about which vehicle belongs where. If a car and a garage are about to meet, this check belongs before the meeting, not after.</p>
+<h2>Worked example</h2>
+<p>Take a 20-by-12-foot single garage and a sedan 15 feet long and 6 feet wide including mirrors: length clearance is 5 feet and width clearance is 6 feet — a comfortable fit with room to walk around and store a mower. Put an SUV 17 feet long and 6.5 feet wide in the same garage and the clearances drop to 3 feet and 5.5 feet — still a fit, but tighter at the front. Now try a pickup 18.5 feet long in an 18-foot garage: length clearance is minus 0.5 feet, so the garage door simply will not close. Half a foot is the difference between a done deal and a very awkward phone call.</p>
+<h2>Checking and re-running your result</h2>
+<p>Confirm the result with a tape measure and, where possible, the actual car, parked as you would daily rather than perfectly positioned. If the fit is tight, consider folding mirrors, a wall-mounted storage reshuffle, or a different parking arrangement before deciding. Save the calculation to history so you have the numbers when you visit the dealer or the builder — and re-run it for every vehicle, because the next car is rarely the same size as the last one. Height, door swing and future cars are the three checks that complete a garage fit, and each one has surprised buyers who stopped at length and width. Height matters most for SUVs with roof rails, vehicles with roof boxes, and anyone considering a car lift or tall shelving: measure from the floor to the lowest obstruction, usually the garage door opener rail or a light fitting, and compare with the vehicle's height plus any roof load. Door swing is the daily usability test — a car that fits with inches to spare on each side may still trap you if its doors cannot open wide enough to get out comfortably, especially for child seats, which need far more door angle than an adult. Test this with the actual car before signing anything, including getting a child seat in and out. Storage planning changes the equation too: wall-mounted cabinets, overhead racks and a workbench all consume the same inches you just measured, so decide their layout before finalising the fit, and remember that an electric vehicle needs a charger location with cable reach to the charge port side. Future-proofing is the last step: cars grow with each generation, and the sedan that fits today may be replaced by an SUV tomorrow, so a garage that fits your next likely vehicle, not just the current one, protects the investment. If the fit is marginal, small changes — folding mirrors, moving a shelf, choosing a shorter model — often rescue it, but a garage door that cannot close is never acceptable, and no amount of enthusiasm for a car fixes that. A quick reference for the vehicles people park most often: a compact sedan is about 14 to 15 feet long and 6 feet wide with mirrors; a mid-size SUV is about 16 to 17 feet long and 6.5 feet wide; a full-size pickup is about 19 to 20 feet long and 7 feet wide; and a minivan is about 17 feet long and 6.5 feet wide. Compare those figures with your garage's usable length and width before visiting a dealer, and remember that the manufacturer's published width often excludes mirrors, so add several inches to be safe.</p></article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary>How do I measure my garage for a car?</summary><p>Measure inside wall to inside wall, length and width, and subtract anything that intrudes — steps, shelves, pipes, water heaters and door tracks.</p></details><details><summary>Should I include mirrors in car width?</summary><p>Yes. Mirrors are usually the widest point and the first thing to scrape. Always use width including mirrors.</p></details><details><summary>How much clearance do I need around a car?</summary><p>At least 2 feet in front for walking and door swing, and enough width to open doors fully. Zero clearance is a technical fit, not a usable one.</p></details><details><summary>Does the calculator check height?</summary><p>No — it checks length and width. Measure height separately, especially for roof boxes, rails or lifted vehicles.</p></details><details><summary>Will two cars fit in my double garage?</summary><p>Only if the combined widths plus door-opening room fit the garage width. Run the calculation for each car and check the middle space.</p></details><details><summary>What if my car is slightly too long?</summary><p>If the shortfall is small, options include removing shelving, adjusting parking position, or choosing a shorter vehicle. The garage door must fully close.</p></details></section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer><p><strong>GarageFit</strong> — Measure twice, park once.</p>
+<p>GarageFit compares your garage and your car, foot by foot, and tells you the clearance left — or the inches you are short.</p>
+<p><a href="https://fixoraa.tech">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p></footer>
+<script id="pure">function garageFit(gl,gw,cl,cw){return {len:Math.round((gl-cl)*10)/10,wid:Math.round((gw-cw)*10)/10,fits:(gl>=cl&&gw>=cw)};}</script>
+<script>function calc(){var gl=num('gar_l'),gw=num('gar_w'),cl=num('car_l'),cw=num('car_w');
+    if(gl<0||gw<0||cl<0||cw<0){showErr('Dimensions cannot be negative.');return;} document.getElementById('err').textContent='';
+    var r=garageFit(gl,gw,cl,cw);
+    var html=r.fits?('<b>It fits!</b> '+r.len+' ft spare in length and '+r.wid+' ft spare in width.'):('<b>It does not fit.</b> Short by '+(-r.len>0?(-r.len)+' ft in length ':'')+(-r.wid>0?(-r.wid)+' ft in width':'')+'.');
+    if(r.fits&&r.len<2) html+=' Tight on length — allow room to walk around the car.';
+    if(r.fits&&r.wid<2) html+=' Tight on width — check door and mirror clearance.';
+    showRes(html);}
+  
+function applyPreset(o){for(var k in o){var e=document.getElementById(k);if(e)e.value=o[k];}calc();}
+function resetF(){var els=document.querySelectorAll('input,select');els.forEach(function(e){if(e.type!=='button')e.value='';});document.getElementById('res').style.display='none';document.getElementById('err').textContent='';}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+
+function showRes(html){var r=document.getElementById('res');r.style.display='block';r.innerHTML=html;window._last=html.replace(/<[^>]+>/g,' ');}
+function showErr(m){document.getElementById('err').textContent=m;}
+function saveHist(){if(!window._last)return;var k='hist_garagefit';var a=JSON.parse(localStorage.getItem(k)||'[]');a.unshift(new Date().toLocaleString()+': '+window._last);localStorage.setItem(k,JSON.stringify(a.slice(0,10)));var d=document.getElementById('hist');d.style.display='block';d.textContent=a.join('\n');}
+function copyRes(){if(window._last&&navigator.clipboard)navigator.clipboard.writeText(window._last);}
+function dlCSV(){if(!window._last)return;var b=new Blob([window._last],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='garagefit-result.csv';a.click();}
+</script>
+</body></html>
