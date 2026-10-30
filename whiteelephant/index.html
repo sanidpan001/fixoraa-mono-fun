@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>White Elephant Rules + Gift Exchange Generator | WhiteElephant</title>
+<meta name="description" content="White elephant rules, a fair draw-order generator and a steal tracker for your exchange.">
+<link rel="canonical" href="https://fun.fixoraa.tech/whiteelephant/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="White Elephant Rules + Gift Exchange Generator | WhiteElephant">
+<meta property="og:description" content="White elephant rules, a fair draw-order generator and a steal tracker for your exchange.">
+<meta property="og:url" content="https://fun.fixoraa.tech/whiteelephant/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ewert&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "WhiteElephant",
+      "url": "https://fun.fixoraa.tech/whiteelephant/",
+      "applicationCategory": "Fun & Lifestyle",
+      "operatingSystem": "Web",
+      "description": "White elephant rules, a fair draw-order generator and a steal tracker for your exchange.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the basic white elephant rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Everyone brings one wrapped gift and draws a turn order. Player 1 picks and opens a gift; each next player may steal an opened gift or pick a new wrapped one. If stolen from, you steal another gift or pick fresh \u2014 but not the one just taken from you. Each gift can be stolen up to 3 times, then it is frozen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the stealing work in white elephant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On your turn you may take any opened gift instead of picking a wrapped one. The victim then immediately takes another turn: steal a different gift or unwrap a new one. A gift becomes unstealable after 3 steals (the standard limit), and you cannot steal back a gift in the same turn it was taken from you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens at the end of a white elephant exchange?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After the last wrapped gift is picked, player 1 \u2014 who chose first with no information \u2014 gets one final turn to keep their gift or swap it for any other. This balances the first player's disadvantage. After that swap, all gifts are final."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good spending limit for white elephant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "$20 to $30 is the sweet spot for most groups: enough for something genuinely fun, low enough that nobody stresses. Offices often go $25; close friend groups sometimes go $50 for higher-quality chaos. Whatever you pick, announce it clearly and stick to it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between white elephant and Secret Santa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Secret Santa assigns you one person to buy a thoughtful gift for \u2014 no stealing, all sincerity. White elephant is the stealing game: gifts are generic, funny, and up for grabs. Choose Secret Santa for warmth, white elephant for comedy and large groups."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you pick a fair draw order?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a random shuffle everyone can see \u2014 the generator above uses a proper random shuffle. Never let the organizer assign the order, since turn position is a real advantage (late players see all opened gifts). Randomness is the only order nobody can dispute."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#F6F2FA;--accent:#6627A5;--tint:#E8DDF4;--ink:#291F33;--muted:#665478;--accent-ink:#FFFFFF;--card:#FFFDFE;--gold:#C9A227}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Ewert',system-ui,cursive;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:1060px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--card);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-headrow{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#431A6E);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 0 rgba(0,0,0,.2);font-family:'Ewert',cursive}
+.fx-name{font-size:25px}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 18px;border-radius:10px;font-size:15px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:var(--card);transition:transform .12s;font-family:system-ui;font-weight:600}
+.fx-btn:hover{transform:translateY(-2px) rotate(-1deg)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:10px;background:var(--tint);color:var(--ink);font-size:14px;border:2px dashed var(--accent);font-family:system-ui}
+.hero{text-align:center;padding:44px 0 8px}
+.eyebrow{display:inline-block;font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:system-ui;font-weight:700}
+.hero h1{font-size:clamp(34px,5.4vw,56px);line-height:1.08;margin-bottom:10px;font-weight:400}
+.lede{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto;font-family:system-ui}
+.tool{margin:28px 0 10px}
+.we-setup{background:var(--card);border:2px solid var(--tint);border-radius:16px;padding:26px;margin-bottom:20px}
+.we-setup h3{font-size:24px;margin-bottom:12px;font-weight:400}
+.we-setup label{font-family:system-ui;font-size:15px;font-weight:600;display:block;margin-bottom:6px}
+.we-setup textarea{font-family:system-ui;font-size:15px;width:100%;min-height:96px;border:2px solid var(--tint);border-radius:10px;padding:12px;color:var(--ink);resize:vertical}
+.we-setup textarea:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.we-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;align-items:flex-end}
+.we-field label{font-family:system-ui;font-size:14px;font-weight:600}
+.we-field input{font-family:system-ui;font-size:16px;width:90px;padding:9px 12px;border:2px solid var(--tint);border-radius:10px;color:var(--ink)}
+.we-shuffle{font-family:system-ui;font-weight:700;font-size:17px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:12px 30px;cursor:pointer;box-shadow:0 4px 0 #431A6E;transition:transform .12s}
+.we-shuffle:hover{transform:translateY(-2px)}
+.we-tickets{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin:6px 0 22px}
+.we-ticket{background:var(--card);border-radius:12px;display:flex;overflow:hidden;box-shadow:0 6px 16px rgba(102,39,165,.14);border:2px solid var(--tint)}
+.we-stub{background:var(--accent);color:#fff;min-width:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;position:relative;font-family:system-ui}
+.we-stub::after{content:'';position:absolute;right:-7px;top:0;bottom:0;width:14px;background:radial-gradient(circle at 7px 7px,var(--bg) 6px,transparent 6.5px);background-size:14px 18px}
+.we-stub .num{font-size:30px;font-weight:800;line-height:1}
+.we-stub .lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.we-body{padding:14px 16px 14px 20px;font-family:system-ui}
+.we-body .who{font-size:18px;font-weight:700}
+.we-body .steals{font-size:13px;color:var(--muted);margin-top:4px}
+.we-body .pips{margin-top:6px;display:flex;gap:6px}
+.we-pip{width:22px;height:22px;border-radius:50%;border:2px solid var(--accent);background:#fff;cursor:pointer;padding:0}
+.we-pip.used{background:var(--accent)}
+.we-note{background:var(--tint);border:2px dashed var(--accent);border-radius:12px;padding:14px 18px;font-family:system-ui;font-size:15px;text-align:center}
+.we-rules{background:var(--card);border:2px solid var(--tint);border-radius:16px;padding:26px;margin-top:20px}
+.we-rules h3{font-size:24px;margin-bottom:12px;font-weight:400}
+.we-rules ol{margin-left:22px;font-family:system-ui;color:#3d3247}
+.we-rules li{margin-bottom:10px}
+.we-rules strong{color:var(--accent)}
+.article-sec{margin:44px 0;max-width:780px}
+.article-sec h2{font-size:26px;margin:36px 0 12px;font-weight:400}
+.article-sec p{margin-bottom:14px;color:#3d3247;font-family:system-ui}
+.article-sec ul,.article-sec ol{margin:0 0 14px 24px;color:#3d3247;font-family:system-ui}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0 10px;max-width:780px}
+.faq-sec h2{font-size:26px;margin-bottom:16px;font-weight:400}
+.faq-sec details{background:var(--card);border:2px solid var(--tint);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:15px 18px;cursor:pointer;list-style:none;font-size:17px;font-family:'Ewert',cursive}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--tint);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#3d3247;font-size:15px;font-family:system-ui}
+.fx-footer{background:#241a2e;color:#ece2f4;margin-top:48px;padding:42px 0 36px}
+.fx-footer .fx-brand{font-size:26px;margin-bottom:8px;color:#fff;font-weight:400}
+.fx-footer p{font-size:15px;color:#c2aed4;max-width:640px;margin-bottom:14px;font-family:system-ui}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;text-decoration:none;border-bottom:2px solid var(--accent);font-family:system-ui}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#d3b8ee;font-weight:700}
+@media(max-width:680px){.fx-nav{margin-left:0}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-headrow">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/whiteelephant/" aria-label="WhiteElephant home">
+      <span class="fx-tile" aria-hidden="true">🎁</span>
+      <span class="fx-name">WhiteElephant</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="hero">
+    <span class="eyebrow">Draw, steal, laugh, repeat</span>
+    <h1>White Elephant Gift Exchange</h1>
+    <p class="lede">Get the official-style rules, shuffle a fair draw order for your group, and track steals live — everything your gift exchange needs on one page.</p>
+  </section>
+  <section class="tool" aria-label="WhiteElephant tool">
+<div class="we-setup">
+      <h3>Set up your exchange</h3>
+      <label for="we-names">Player names (one per line)</label>
+      <textarea id="we-names">Ava
+Ben
+Cleo
+Dan
+Eli
+Fay</textarea>
+      <div class="we-row">
+        <div class="we-field"><label for="we-steals">Steals per gift</label><input type="number" id="we-steals" value="3" min="1" max="10"></div>
+        <button type="button" class="we-shuffle" id="we-go">🎲 Shuffle draw order</button>
+      </div>
+    </div>
+    <div class="we-tickets" id="we-tickets"></div>
+    <div class="we-note" id="we-note">Enter your players and hit shuffle — then tap the dots on each ticket to track steals live during the game.</div>
+    <div class="we-rules">
+      <h3>How to play</h3>
+      <ol>
+        <li><strong>Draw order.</strong> Everyone draws a number (or use the shuffled order above). Sit in a circle in that order.</li>
+        <li><strong>Pick or steal.</strong> Player 1 picks a wrapped gift and opens it. Each following player may <strong>steal</strong> any opened gift or pick a new wrapped one.</li>
+        <li><strong>Stolen from?</strong> If your gift is stolen, you may steal another opened gift or pick a new wrapped one — you cannot immediately steal back the gift just taken from you.</li>
+        <li><strong>Steal limit.</strong> A single gift can be stolen at most <strong>3 times</strong> (adjust above); after that it is frozen with its owner.</li>
+        <li><strong>The first-player bonus.</strong> After the last wrapped gift is picked, player 1 gets one final turn: keep their gift or swap for any other.</li>
+        <li><strong>Have fun.</strong> Theatrics, alliances and dramatic reveals are not just allowed — they are the point.</li>
+      </ol>
+    </div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>What Is White Elephant, Exactly?</h2>
+<p>White elephant is the gift exchange where the gifts are the joke and the stealing is the sport. Everyone brings one wrapped gift, everyone draws a turn order, and then players take turns either picking a mysterious wrapped gift or stealing an opened one from someone else. The result is part game theory, part comedy show: alliances form, grudges are born over a $20 gag gift, and someone always ends up defending a singing fish with their life. It is called "white elephant" after the legend of Southeast Asian monarchs gifting sacred-but-ruinously-expensive albino elephants — a present you cannot refuse and cannot afford to keep.</p>
+<p>The format works for offices, friend groups and family gatherings precisely because it removes the two anxieties of normal gift exchanges: spending a lot, and picking the perfect gift for someone specific. The budget is low (typically $20 to $30), the target is "funny or weird," and the stealing mechanic means even a bad pick becomes entertainment. All you need is the rules below, a fair draw order (use the shuffler above — drawing numbers from a hat works too, but the shuffler cannot be accused of favoritism), and a steal limit everyone agrees on before the first gift is opened.</p>
+<h2>The Rules, Step by Step</h2>
+<p>Here is the canonical flow. <strong>Setup:</strong> every player brings one wrapped, unlabeled gift within the agreed budget. <strong>Order:</strong> draw numbers one through N; player 1 goes first. <strong>Turns:</strong> player 1 selects a wrapped gift from the pile and opens it for all to see. Every subsequent player, on their turn, chooses: pick an unopened gift from the pile, or steal any already-opened gift. <strong>If you are stolen from,</strong> you are immediately "live" again: steal a different opened gift or pick from the pile — but you may not instantly steal back the gift just taken from you, which would deadlock the game.</p>
+<p><strong>Steal limits</strong> keep the game moving: the standard is three steals per gift, after which that gift is "frozen" with its current owner and cannot be stolen again. Without a limit, two players can volley one coveted gift back and forth forever while everyone else watches. <strong>The ending:</strong> play continues until all wrapped gifts are picked. Then player 1 — who picked first with zero information — gets a compensation turn: keep their gift or swap it for any other gift in the room. That final swap is often the most dramatic moment of the night. After that, gifts are final, photos are taken, and the singing fish has an owner.</p>
+<h2>Why the Draw Order Matters (and Must Be Fair)</h2>
+<p>Turn order is the single biggest structural advantage in white elephant. Early players pick blind from the pile — high risk, and they will likely be stolen from. Late players see everything opened and can steal exactly what they want — enormous advantage. Player 1's compensation swap at the end partially balances this, which is why the first-player bonus exists in the standard rules. The middle of the order is the sweet spot: enough information to choose well, enough turns left to matter.</p>
+<p>Because order matters so much, the draw must be visibly fair. Folded slips in a bowl work, but they invite suspicion ("you let her draw first!"). A digital shuffle — like the generator above, which uses a proper Fisher-Yates shuffle — is instant, auditable, and drama-free. One more fairness point: never let the organizer hand-pick the order, even with good intentions. Randomness is the only order nobody can argue with, and this game generates enough arguments on its own.</p>
+<h2>Setting the Steal Limit</h2>
+<p>Three steals per gift is the default for good reason: it allows real competition (steal, steal back, final steal) without infinite loops. For small groups (under 8), consider dropping to two steals per gift — fewer players means fewer gifts in circulation, and the game can stall. For large groups (15+), three still works because the pile is deep. Some groups play "one steal per turn per player" or ban stealing from the same person twice in a row; these are fine house rules, but announce them before starting.</p>
+<p>The steal tracker above gives each ticket a row of dots — tap one each time that player's gift is stolen, and when the dots run out, the gift is frozen. This sounds fussy until the first disputed "wait, how many times has that been stolen?" argument at 9 p.m. The tracker settles it instantly. Pro tip: appoint one non-playing scorekeeper (or rotate the duty) so the game flows without pause. Nothing kills the energy like stopping to reconstruct the steal history from memory.</p>
+<h2>What Makes a Great White Elephant Gift</h2>
+<p>The ideal white elephant gift sits at the intersection of funny, usable, and slightly absurd: desirable enough to be stolen twice, ridiculous enough to get a laugh when unwrapped. Proven winners: weird-but-functional kitchen gadgets, luxurious versions of mundane things (a $25 candle, fancy hot sauce set), nostalgic toys, and genuinely nice items with one absurd twist. The gifts that get stolen most are almost always the useful ones — a portable charger, a good blanket, quality chocolate — hiding inside the comedy.</p>
+<p>Avoid the true duds: actual trash (the joke lands once and then someone is stuck with garbage), anything genuinely offensive, gifts wildly over or under the budget (a $5 gift in a $30 exchange feels cheap; a $100 gift breaks the social contract), and perishables that cannot survive the evening. Regifting is the soul of white elephant — that weird vase from your aunt is perfect — but rewrap it properly and make sure the original giver is not in the room. The budget exists to keep things fair; honor it loosely but honor it.</p>
+<h2>House Rules Worth Considering</h2>
+<p>Groups evolve their own variants, and a few are genuinely better than the base game. <strong>Steal-free first round:</strong> the first full rotation is pick-only, so everyone has a gift before stealing begins — gentler for mixed groups. <strong>The three-steal freeze</strong> (standard) versus <strong>dead after one steal</strong> (faster, tenser). <strong>Gift swap option:</strong> on your turn you may swap your gift with the pile sight-unseen instead of stealing. <strong>Theme exchanges:</strong> all gifts under $20 from a thrift store, or all gifts food, or all gifts white (a surprisingly fun constraint).</p>
+<p>Two rules to avoid: "you can steal the same gift back immediately" (deadlock), and unlimited steals (the game never ends). Whatever variant you choose, write the three key parameters where everyone can see them: the budget, the steal limit, and the ending rule. Disputes in white elephant are never about the gifts — they are about ambiguous rules. Five minutes of clarity up front buys two hours of smooth chaos.</p>
+<h2>Running the Exchange: A Host's Playbook</h2>
+<p>As host, your job is energy management. Set up a central gift pile on a table everyone can see, arrange seating in a circle in draw order, and designate a charismatic MC (often you) to narrate turns, enforce the steal limit, and hype the steals. Keep the pace brisk: a turn should take 60 to 90 seconds. If someone agonizes, give them a playful ten-second countdown. Background music, snacks within reach, and phones ready for the unwrapping photos all help.</p>
+<p>Manage the emotional edge, because stealing is personal even when it is a game. Frame steals as compliments ("it is so good I must have it"), celebrate dramatic heists, and watch for the genuinely upset player — usually someone who brought a gift they secretly wanted to keep. The first-player final swap often rescues them. End with a group photo of everyone holding their final gift, and send the photo around afterward. The gifts will be forgotten by spring; the photo of your coworker's face mid-steal is forever.</p>
+<h2>White Elephant vs. Secret Santa vs. Yankee Swap</h2>
+<p>People confuse these constantly. <strong>Secret Santa:</strong> you are assigned one person, buy them a thoughtful gift, identities revealed at the end. No stealing, all sincerity. <strong>White elephant / Yankee swap:</strong> the stealing game described here — the terms are used interchangeably in most of the US, though purists note Yankee Swap sometimes has slightly different steal rules. <strong>Dirty Santa</strong> is the Southern name for the same stealing game, often with more raucous house rules.</p>
+<p>Choose by vibe: Secret Santa for groups that want warmth (small teams, families with kids old enough to shop), white elephant for groups that want comedy (offices, friend groups, adult families). White elephant scales better to large groups because nobody has to shop for a specific person, and it is far more entertaining to watch — which is why it dominates office holiday parties. Whatever you call it, the formula is the same: low budget, high absurdity, clear rules, fair order. The generator above handles the order; the rules card handles the clarity; your group supplies the chaos.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What are the basic white elephant rules?</summary><p>Everyone brings one wrapped gift and draws a turn order. Player 1 picks and opens a gift; each next player may steal an opened gift or pick a new wrapped one. If stolen from, you steal another gift or pick fresh — but not the one just taken from you. Each gift can be stolen up to 3 times, then it is frozen.</p></details>
+    <details><summary>How does the stealing work in white elephant?</summary><p>On your turn you may take any opened gift instead of picking a wrapped one. The victim then immediately takes another turn: steal a different gift or unwrap a new one. A gift becomes unstealable after 3 steals (the standard limit), and you cannot steal back a gift in the same turn it was taken from you.</p></details>
+    <details><summary>What happens at the end of a white elephant exchange?</summary><p>After the last wrapped gift is picked, player 1 — who chose first with no information — gets one final turn to keep their gift or swap it for any other. This balances the first player's disadvantage. After that swap, all gifts are final.</p></details>
+    <details><summary>What is a good spending limit for white elephant?</summary><p>$20 to $30 is the sweet spot for most groups: enough for something genuinely fun, low enough that nobody stresses. Offices often go $25; close friend groups sometimes go $50 for higher-quality chaos. Whatever you pick, announce it clearly and stick to it.</p></details>
+    <details><summary>What is the difference between white elephant and Secret Santa?</summary><p>Secret Santa assigns you one person to buy a thoughtful gift for — no stealing, all sincerity. White elephant is the stealing game: gifts are generic, funny, and up for grabs. Choose Secret Santa for warmth, white elephant for comedy and large groups.</p></details>
+    <details><summary>How do you pick a fair draw order?</summary><p>Use a random shuffle everyone can see — the generator above uses a proper random shuffle. Never let the organizer assign the order, since turn position is a real advantage (late players see all opened gifts). Randomness is the only order nobody can dispute.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">WhiteElephant</div>
+    <p>WhiteElephant explains the rules, shuffles a fair draw order, and tracks steals — the complete gift-exchange toolkit.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function whiteElephant(names, seed, stealLimit){
+  var list=(names||[]).filter(function(n){ return String(n).trim().length>0; }).map(function(n){ return String(n).trim(); });
+  var sl = stealLimit==null ? 3 : Math.max(1, stealLimit|0);
+  var sd = (seed==null ? 1 : seed|0)>>>0;
+  function rng(){
+    sd|=0; sd=sd+0x6D2B79F5|0;
+    var t=Math.imul(sd^sd>>>15,1|sd);
+    t=t+Math.imul(t^t>>>7,61|t)^t;
+    return ((t^t>>>14)>>>0)/4294967296;
+  }
+  var order=list.slice();
+  for(var i=order.length-1;i>0;i--){
+    var j=Math.floor(rng()*(i+1));
+    var tmp=order[i]; order[i]=order[j]; order[j]=tmp;
+  }
+  var turns=order.map(function(n,k){
+    return {turn:k+1, player:n, stealsAllowed:sl};
+  });
+  return {
+    players:order.length, drawOrder:order, stealLimit:sl,
+    maxStealsTotal:sl*order.length, turns:turns,
+    seedUsed:(seed==null?1:seed)
+  };
+}
+(function(){
+var namesEl=document.getElementById('we-names'),stealsEl=document.getElementById('we-steals'),
+    tickets=document.getElementById('we-tickets'),note=document.getElementById('we-note');
+function names(){return namesEl.value.split('\n').map(function(s){return s.trim();}).filter(function(s){return s.length>0;});}
+function render(){
+  var list=names();
+  if(list.length<2){tickets.innerHTML='';note.textContent='Add at least two players to shuffle a draw order.';return;}
+  var r=whiteElephant(list, Date.now()%100000, parseInt(stealsEl.value,10)||3);
+  tickets.innerHTML='';
+  r.turns.forEach(function(tn){
+    var card=document.createElement('div');card.className='we-ticket';
+    var stub=document.createElement('div');stub.className='we-stub';
+    stub.innerHTML='<span class="num">'+tn.turn+'</span><span class="lbl">draw</span>';
+    var body=document.createElement('div');body.className='we-body';
+    var who=document.createElement('div');who.className='who';who.textContent=tn.player;
+    var st=document.createElement('div');st.className='steals';st.textContent='Steals used on their gift:';
+    var pips=document.createElement('div');pips.className='pips';
+    for(var i=0;i<tn.stealsAllowed;i++){
+      (function(){
+        var p=document.createElement('button');p.type='button';p.className='we-pip';p.setAttribute('aria-label','Toggle steal');
+        p.addEventListener('click',function(){p.classList.toggle('used');});
+        pips.appendChild(p);
+      })();
+    }
+    body.appendChild(who);body.appendChild(st);body.appendChild(pips);
+    card.appendChild(stub);card.appendChild(body);tickets.appendChild(card);
+  });
+  note.textContent=r.players+' players · '+r.stealLimit+' steals allowed per gift · '+r.maxStealsTotal+' total steals possible. Tap a dot each time a gift is stolen.';
+}
+document.getElementById('we-go').addEventListener('click',render);
+namesEl.addEventListener('input',render);stealsEl.addEventListener('change',render);
+render();
+})();
+</script>
+</body>
+</html>
