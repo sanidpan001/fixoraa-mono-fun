@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pet Name Generator — Find the Perfect Name for Your Dog, Cat or Other Pet</title>
+<meta name="description" content="Generate a pet name by animal and style, using a seed so you can share and reproduce your favourites.">
+<link rel="canonical" href="https://fun.fixoraa.tech/petname/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Pet Name Generator — Find the Perfect Name for Your Dog, Cat or Other Pet">
+<meta property="og:description" content="Generate a pet name by animal and style, using a seed so you can share and reproduce your favourites.">
+<meta property="og:url" content="https://fun.fixoraa.tech/petname/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PetName",
+      "url": "https://fun.fixoraa.tech/petname/",
+      "applicationCategory": "Everyday",
+      "operatingSystem": "Web",
+      "description": "Generate a pet name by animal and style, using a seed so you can share and reproduce your favourites.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a good name for a dog?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Short, two-syllable names with a clear sound, such as Max, Bella, or Rocky, work well because dogs recognise them quickly and owners can call them at distance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good name for a cat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Short, melodic names ending in a vowel sound, such as Luna or Milo, are popular because cats respond well to them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should a pet name sound different from commands?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Avoid names that sound like sit, stay, come, or no, because the similarity confuses training."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the seed work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The seed selects a name from the list for the chosen animal and style in a fixed order, so the same animal, style, and seed always give the same name."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I share a favourite name?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Share the animal, style, and seed, and anyone can generate the identical name."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I rename a rescue pet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually keep the existing name if the pet knows it. If a change is needed, transition gradually and pair the new name with rewards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many syllables should a pet name have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One or two syllables is ideal for training and recall, though a longer formal name can work if it has a short everyday nickname."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I cannot decide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shortlist three names, use each for a day, and see which one your family reaches for naturally."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF2F8; --surface:#FFFFFF; --accent:#9D174D; --accent-ink:#ffffff;
+  --ink:#2E1220; --muted:#475569; --line:#F5C6D8;
+  --display:'Baloo 2',serif; --body:'Nunito',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{max-width:720px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.2rem}
+.tool-card label{display:block;font-weight:600;margin:.9rem 0 .3rem}
+.tool-card input,.tool-card select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;font-size:1rem;background:#fff;color:#111;min-height:44px}
+.tool-card .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.calc-btn{width:100%;margin-top:1.2rem;padding:.85rem;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1.05rem;cursor:pointer;min-height:48px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+.presets button{padding:.5rem .9rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.result{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:14px;background:var(--bg);border:1px solid var(--line);font-size:1.05rem}
+.result .big{font-size:1.5rem;font-weight:800}
+.muted{color:var(--muted);font-size:.95rem}
+.hist{margin-top:1rem;font-size:.95rem}
+.hist li{margin:.3rem 0}
+.copy-btn{margin-top:.7rem;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer}
+.maze-grid{font-family:monospace;line-height:1;letter-spacing:0;white-space:pre;overflow-x:auto;font-size:14px}
+@media (max-width:640px){.tool-card{padding:1rem;border-radius:16px}.tool-card .row{grid-template-columns:1fr}.tool-card h1{font-size:1.35rem}.result .big{font-size:1.25rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PetName home">
+      <span class="fx-logo-tile" aria-hidden="true">🐾</span>
+      <span class="fx-brand">PetName</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-pet-paw" aria-label="PetName tool">
+<div class="tool-card"><h1>Pet Name Generator</h1><p class="sub">Choose an animal and a style, enter a seed, and get a name you can share and reproduce.</p>
+<label for="pn-animal">Animal</label><select id="pn-animal"><option value="dog" selected>Dog</option><option value="cat">Cat</option><option value="bird">Bird</option><option value="rabbit">Rabbit</option></select>
+<label for="pn-style">Style</label><select id="pn-style"><option value="classic" selected>Classic</option><option value="cute">Cute</option><option value="funny">Funny</option><option value="fancy">Fancy</option></select>
+<label for="pn-seed">Seed (any whole number)</label><input id="pn-seed" type="number" value="0" step="1">
+<div class="presets"><button type="button" data-preset="dog">Dog names</button><button type="button" data-preset="cat">Cat names</button><button type="button" data-preset="bird">Bird names</button></div>
+<button class="calc-btn" id="pn-calc" type="button">Generate name</button>
+<div class="result" id="pn-result" aria-live="polite">Choose an animal and press Generate name.</div>
+<button class="copy-btn" id="pn-copy" type="button">Copy name</button>
+<div class="hist"><strong>Recent names</strong><ul id="pn-hist"></ul></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why a pet's name matters more than it seems</h2>
+<p>A pet's name is the word you will say thousands of times, in joy, in training, in worry, and in the vet's waiting room. It is the first thing a new pet learns, the word that should reliably turn their head, and the word your family will use in stories for years. A good name is easy to say clearly, distinct from everyday commands, and pleasant enough that you will not tire of it. A poor name, by contrast, causes small daily frictions: a name that sounds like a command confuses training, a name that is hard to shout across a park gets ignored, and a name that embarrasses its owner gets used less, which weakens the bond it was meant to build.</p>
+<p>Trainers have practical advice that is worth following before falling in love with a clever name. Short names of one or two syllables are easiest for animals to recognise and for people to call quickly. Names that end in a clear vowel sound, such as Luna or Milo, carry well outdoors. Avoid names that sound like common commands: Kit resembles sit, Bo resembles no, and Ray resembles stay, and those similarities slow learning. Also avoid using a name that is identical to another pet's name or a family member's name in the same household, because the animal cannot tell who is being addressed. This generator keeps its lists short, clear, and pronounceable for exactly those reasons.</p>
+<h2>How to use this generator</h2>
+<p>Choose the animal, choose a style, and enter a seed. The seed is a whole number that selects a name from the list for that animal and style in a fixed, reproducible way: seed zero always gives the first name, seed one gives the second, and so on, wrapping around when the seed exceeds the list length. That means you can share a favourite by sharing the animal, style, and seed, and anyone can reproduce the same name. Try several seeds in a row to browse the list, note the ones you like, and then test them aloud. Say the name as if calling the pet from another room, as if praising them, and as if telling a vet receptionist over the phone. The name that survives all three tests is usually the right one.</p>
+<h2>Names by animal and style</h2>
+<table><tr><th>Animal</th><th>Classic</th><th>Cute</th><th>Funny</th><th>Fancy</th></tr>
+<tr><td>Dog</td><td>Buddy, Max, Bella</td><td>Peanut, Biscuit, Mochi</td><td>Sir Barksalot, Pickles</td><td>Reginald, Duchess</td></tr>
+<tr><td>Cat</td><td>Oliver, Luna, Simba</td><td>Mittens, Pudding, Bean</td><td>Chairman Meow, Noodles</td><td>Cleopatra, Theodore</td></tr>
+<tr><td>Bird</td><td>Kiwi, Sunny, Sky</td><td>Peep, Bubbles, Pip</td><td>Captain Squawk, Mango</td><td>Opal, Sterling</td></tr>
+<tr><td>Rabbit</td><td>Willow, Hazel, Milo</td><td>Bunbun, Clover, Pebbles</td><td>Professor Hops, Biscuit</td><td>Isadora, Winston</td></tr></table>
+<p>The table shows only a sample; the generator holds longer lists for each combination. Styles matter because they set expectations. Classic names are timeless and easy for vets, groomers, and pet sitters to remember. Cute names suit small, affectionate animals and young families. Funny names work best when the humour is kind and the name still functions as a call word; a joke that is hard to shout across a park is a poor name even if it makes visitors laugh. Fancy names suit pedigree animals and owners who enjoy a little ceremony, but they work best when paired with a short everyday nickname for training and recall.</p>
+<h2>Choosing a name for a dog</h2>
+<p>Dog names need to work at distance, in wind, and over the noise of a park. Two-syllable names with a strong first syllable, such as Rocky, Daisy, and Cooper, are popular for a reason: they are audible and distinct. If you have a working breed that will be trained to a high standard, keep the name especially distinct from commands and from the names of other dogs you walk with. For a family dog, let children suggest names and then test the shortlist together, because a name children love is a name they will use consistently, and consistency is what teaches the dog. Avoid renaming an adult rescue dog casually; if a new name is needed, choose one that sounds similar to the old name to ease the transition, and pair it generously with rewards for the first weeks.</p>
+<p>Consider the dog's adult size and character, not only its puppy appearance. A tiny puppy named Tank may be charming at eight weeks and confusing at full size, while a large puppy named Tiny may become a lifelong joke that still works. Neither is wrong, but both deserve a moment of thought. Also think about how the name sounds when shortened: many owners naturally shorten a name, so check that the nickname is also pleasant and distinct. A name that shortens awkwardly will be replaced by an accidental nickname anyway, so you may as well choose the short form deliberately from the start.</p>
+<h2>Choosing a name for a cat</h2>
+<p>Cats learn names too, though they may choose when to respond, which owners know well. Short, melodic names work best, and cats often respond more readily to names ending in an ee sound, such as Millie or Toby. Because cats are usually called indoors and at close range, audibility matters less than for dogs, and personality can matter more. A dignified cat may suit a fancy name, while a chaotic kitten may suit a funny one. If you have several cats, choose names that sound different from each other, so each cat learns its own name rather than responding to any call. When adopting an adult cat, keep the existing name if the cat already knows it, unless the name is genuinely unsuitable.</p>
+<h2>Names for birds, rabbits, and small pets</h2>
+<p>Birds often learn to mimic their own names, so a name with clear, repeated sounds can become part of their vocabulary, which delights owners. Keep bird names short and avoid names that resemble words you do not want repeated. Rabbits respond to names less reliably than dogs, but they do learn to associate a name with feeding and attention, so a consistent name paired with a treat builds recognition over time. For any small pet, remember that the name will be written on vet records, insurance forms, and microchip registrations, so spelling matters. Choose a spelling you can dictate easily over the phone, and avoid creative spellings that will be misspelled at every appointment.</p>
+<h2>Testing a shortlist</h2>
+<ul><li>Say it loudly, softly, happily, and firmly. It should work in every tone.</li><li>Call it across a room or garden. It should carry without shouting.</li><li>Check it against commands: sit, stay, come, no, down, heel.</li><li>Check it against other pets' and family members' names.</li><li>Imagine saying it at the vet, at the groomer, and to a stranger.</li><li>Live with it for a day before registering or engraving it anywhere.</li></ul>
+<p>The one-day test is the most valuable step. A name that feels exciting for an hour can feel tiring after a day of repetition, and a name that feels ordinary at first can grow on you as it becomes associated with the animal. Write the shortlist on a card, use each name for a few hours, and watch which one your family reaches for naturally. Children are often the best judges here, because they use the name constantly and without self-consciousness. If everyone keeps returning to the same name, that is your answer, even if it was not the cleverest option on the list.</p>
+<h2>Names to avoid</h2>
+<p>Avoid names that are commands, names that are slurs or insults in any language spoken in your household, and names that mock the animal's disability or appearance in a way that will feel unkind later. Avoid very long names unless you are committed to a short nickname, and avoid names that are currently fashionable for a reason you may regret, such as a character from a show you may fall out of love with. Also avoid naming a pet after a person who may visit often, because the confusion is real and the social awkwardness is avoidable. Finally, avoid choosing a name in haste on adoption day if you can wait: a day or two of observation often reveals a personality trait that suggests the perfect name, and most shelters are happy for you to confirm a name after the first visit.</p>
+<h2>When a pet already has a name</h2>
+<p>Rescue animals often arrive with a name they know. Keeping it is usually kindest, and it helps the animal settle, because one familiar word survives the upheaval of a new home. If the name must change, transition gradually: use the old name and the new name together for a week, then drop the old name, always pairing the new name with praise and treats. Never use the name only for scolding, because the animal will learn to associate it with trouble and stop responding. A name should be the most positive word in a pet's vocabulary, the word that predicts good things, attention, and safety. Protect that association, and the name will do its quiet work for the whole of the animal's life.</p>
+<h3>A final thought</h3>
+<p>The perfect name is rarely the most original name. It is the name that is easy to say, easy to hear, and easy to love after a thousand repetitions. Use this generator to gather ideas, test them honestly, and then choose with confidence. The animal will not judge your taste; it will simply learn that when you say that word, you mean them, and that is the whole point of a name.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is a good name for a dog?</summary><p>Short, two-syllable names with a clear sound, such as Max, Bella, or Rocky, work well because dogs recognise them quickly and owners can call them at distance.</p></details>
+<details><summary>What is a good name for a cat?</summary><p>Short, melodic names ending in a vowel sound, such as Luna or Milo, are popular because cats respond well to them.</p></details>
+<details><summary>Should a pet name sound different from commands?</summary><p>Yes. Avoid names that sound like sit, stay, come, or no, because the similarity confuses training.</p></details>
+<details><summary>How does the seed work?</summary><p>The seed selects a name from the list for the chosen animal and style in a fixed order, so the same animal, style, and seed always give the same name.</p></details>
+<details><summary>Can I share a favourite name?</summary><p>Yes. Share the animal, style, and seed, and anyone can generate the identical name.</p></details>
+<details><summary>Should I rename a rescue pet?</summary><p>Usually keep the existing name if the pet knows it. If a change is needed, transition gradually and pair the new name with rewards.</p></details>
+<details><summary>How many syllables should a pet name have?</summary><p>One or two syllables is ideal for training and recall, though a longer formal name can work if it has a short everyday nickname.</p></details>
+<details><summary>What if I cannot decide?</summary><p>Shortlist three names, use each for a day, and see which one your family reaches for naturally.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PetName</div>
+    <p>PetName picks a name that fits your pet's animal and personality, reproducibly from a seed.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function petLists(){return {dog:{classic:['Buddy','Max','Bella','Rocky','Luna','Charlie'],cute:['Peanut','Biscuit','Mochi','Coco','Teddy','Maple'],funny:['Sir Barksalot','Pickles','Waffles','Noodle','Captain Wiggle','Biscuit'],fancy:['Reginald','Duchess','Winston','Arabella','Theodore','Seraphina']},cat:{classic:['Oliver','Luna','Simba','Milo','Bella','Leo'],cute:['Mittens','Pudding','Bean','Mochi','Peaches','Pip'],funny:['Chairman Meow','Noodles','Sir Pounce','Waffles','Beans','Muffin'],fancy:['Cleopatra','Theodore','Isabella','Augustus','Seraphina','Reginald']},bird:{classic:['Kiwi','Sunny','Sky','Rio','Coco','Blue'],cute:['Peep','Bubbles','Pip','Sunny','Pebbles','Mango'],funny:['Captain Squawk','Mango','Pickles','Noodle','Sir Chirps','Waffles'],fancy:['Opal','Sterling','Arabella','Jasper','Seraphina','Theodore']},rabbit:{classic:['Willow','Hazel','Milo','Bella','Oliver','Maple'],cute:['Bunbun','Clover','Pebbles','Mochi','Coco','Pip'],funny:['Professor Hops','Biscuit','Noodle','Waffles','Sir Fluff','Pickles'],fancy:['Isadora','Winston','Arabella','Theodore','Seraphina','Reginald']}};}
+function pickPetName(seed, animal, style){var lists=petLists();var list=(lists[animal]&&lists[animal][style])?lists[animal][style]:lists.dog.classic;var idx=((seed%list.length)+list.length)%list.length;return list[idx];}
+if (typeof document !== 'undefined') {
+var hist4=[];
+function renderPN(){var a=document.getElementById('pn-animal').value,s=document.getElementById('pn-style').value,seed=+document.getElementById('pn-seed').value;var name=pickPetName(seed,a,s);document.getElementById('pn-result').innerHTML='<p class="big">'+name+'</p><p>'+a+' &middot; '+s+' style &middot; seed '+seed+'</p><p class="muted">Try seed '+(seed+1)+' for the next name in the list.</p>';hist4.unshift(name);if(hist4.length>5)hist4.pop();document.getElementById('pn-hist').innerHTML=hist4.map(function(x){return '<li>'+x+'</li>';}).join('');}
+document.getElementById('pn-calc').onclick=renderPN;
+var ps4=document.querySelectorAll('[data-preset]');
+ps4.forEach(function(b){b.onclick=function(){document.getElementById('pn-animal').value=b.dataset.preset;renderPN();};});
+document.getElementById('pn-copy').onclick=function(){var t=document.getElementById('pn-result').innerText||'';if(typeof navigator!=='undefined'&&navigator.clipboard){navigator.clipboard.writeText(t);} };
+}
+</script>
+</body>
+</html>
