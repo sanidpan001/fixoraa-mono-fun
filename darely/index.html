@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+<link rel="canonical" href="https://fun.fixoraa.tech/darely/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darely — Truth or Dare, Would You Rather &amp; Never Have I Ever Party Game Pack</title>
+<meta name="description" content="Darely is a free party game pack with 400 original truth or dare questions, would you rather questions and never have I ever prompts. Family-to-wild spiciness slider, team scoreboard, pass-and-play rotation and custom packs — no signup needed.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#200f1e; --pink:#f43f5e; --yellow:#facc15; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:#fde8f0; font-family:'Inter',system-ui,sans-serif; }
+  .font-display{ font-family:'Bungee',cursive; }
+  .confetti-bg{
+    background-image:
+      radial-gradient(circle at 12% 20%, rgba(244,63,94,.14) 0 2px, transparent 2px 40px),
+      radial-gradient(circle at 82% 12%, rgba(250,204,21,.12) 0 2px, transparent 2px 46px),
+      radial-gradient(circle at 68% 78%, rgba(244,63,94,.10) 0 2px, transparent 2px 52px),
+      radial-gradient(circle at 30% 86%, rgba(250,204,21,.10) 0 2px, transparent 2px 44px);
+  }
+  .gamebox{
+    background:linear-gradient(160deg,#2b1428 0%,#1c0c1b 70%);
+    border:2px solid rgba(244,63,94,.55);
+    box-shadow:0 0 0 4px rgba(250,204,21,.12), 0 24px 60px -18px rgba(244,63,94,.45);
+  }
+  .ticket{
+    background:repeating-linear-gradient(-45deg,#f43f5e 0 14px,#e11d48 14px 28px);
+    -webkit-mask:radial-gradient(circle 10px at 0 50%, transparent 98%, #000) 0 0/26px 51px repeat-y,
+                 radial-gradient(circle 10px at 100% 50%, transparent 98%, #000) 100% 0/26px 51px repeat-y,
+                 linear-gradient(#000,#000) 26px 0/calc(100% - 52px) 100% no-repeat;
+    mask:radial-gradient(circle 10px at 0 50%, transparent 98%, #000) 0 0/26px 51px repeat-y,
+         radial-gradient(circle 10px at 100% 50%, transparent 98%, #000) 100% 0/26px 51px repeat-y,
+         linear-gradient(#000,#000) 26px 0/calc(100% - 52px) 100% no-repeat;
+  }
+  .btn-pink{ background:var(--pink); color:#fff; font-weight:800; border-radius:9999px; transition:transform .12s ease, box-shadow .12s ease; box-shadow:0 8px 22px -8px rgba(244,63,94,.8); }
+  .btn-pink:hover{ transform:translateY(-2px) scale(1.02); box-shadow:0 12px 28px -8px rgba(244,63,94,.9); }
+  .btn-pink:active{ transform:scale(.97); }
+  .btn-ghost{ border:2px solid rgba(250,204,21,.6); color:var(--yellow); font-weight:700; border-radius:9999px; transition:all .12s ease; }
+  .btn-ghost:hover{ background:rgba(250,204,21,.12); }
+  .mode-tab{ border:2px solid rgba(244,63,94,.35); border-radius:1rem; padding:.65rem .5rem; font-weight:800; font-size:.8rem; cursor:pointer; transition:all .15s ease; background:rgba(255,255,255,.03); }
+  .mode-tab.active{ background:var(--pink); border-color:var(--pink); color:#fff; box-shadow:0 10px 24px -10px rgba(244,63,94,.9); transform:translateY(-2px); }
+  .field{ width:100%; background:#170a16; border:2px solid rgba(244,63,94,.3); border-radius:.75rem; padding:.6rem .8rem; color:#fde8f0; outline:none; }
+  .field:focus{ border-color:var(--yellow); }
+  select.field option{ background:#170a16; }
+  input[type=range]{ -webkit-appearance:none; width:100%; height:10px; border-radius:9999px; background:linear-gradient(90deg,#4ade80,#facc15,#f43f5e); outline:none; }
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:28px; height:28px; border-radius:50%; background:#fff; border:5px solid var(--pink); cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.5); }
+  input[type=range]::-moz-range-thumb{ width:24px; height:24px; border-radius:50%; background:#fff; border:5px solid var(--pink); cursor:pointer; }
+  .prompt-card{ min-height:220px; }
+  .flip{ animation:flipIn .35s ease; }
+  @keyframes flipIn{ 0%{ transform:rotateX(70deg) scale(.92); opacity:0; } 100%{ transform:rotateX(0) scale(1); opacity:1; } }
+  .chip{ display:inline-flex; align-items:center; gap:.35rem; background:rgba(250,204,21,.14); border:1px solid rgba(250,204,21,.5); color:var(--yellow); border-radius:9999px; padding:.25rem .7rem; font-size:.75rem; font-weight:700; }
+  .team-card{ background:#170a16; border:2px dashed rgba(250,204,21,.5); border-radius:1rem; }
+  .score-btn{ width:2.4rem; height:2.4rem; border-radius:9999px; font-weight:800; font-size:1.2rem; line-height:1; }
+  details.faq{ background:#2a1327; border:1px solid rgba(244,63,94,.35); border-radius:1rem; padding:1rem 1.25rem; }
+  details.faq summary{ cursor:pointer; font-weight:700; color:var(--yellow); list-style:none; }
+  details.faq summary::-webkit-details-marker{ display:none; }
+  details.faq summary::before{ content:'▸ '; color:var(--pink); }
+  details.faq[open] summary::before{ content:'▾ '; }
+  .article-prose h2{ font-family:'Bungee',cursive; color:var(--yellow); font-size:1.35rem; margin:2rem 0 .75rem; }
+  .article-prose h3{ font-weight:800; color:#fda4af; font-size:1.05rem; margin:1.4rem 0 .5rem; }
+  .article-prose p{ margin:.7rem 0; line-height:1.75; color:#f3d9e2; }
+  .article-prose ul{ list-style:disc; padding-left:1.4rem; margin:.7rem 0; color:#f3d9e2; line-height:1.7; }
+  .article-prose li{ margin:.35rem 0; }
+  .article-prose strong{ color:#fff; }
+  @media print{ .no-print{ display:none !important; } }
+</style>
+</head>
+<body class="confetti-bg antialiased">
+
+<!-- Sticky header -->
+<header class="no-print sticky top-0 z-50 border-b border-rose-500/30" style="background:rgba(32,15,30,.92);backdrop-filter:blur(10px)">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display text-2xl tracking-wide" style="color:#f43f5e">Dare<span style="color:#facc15">ly</span><span class="text-sm align-top ml-1" style="color:#facc15">🎉</span></a>
+    <nav class="flex items-center gap-5 text-sm font-bold">
+      <a href="#top" class="hover:text-yellow-300 transition">Home</a>
+      <a href="https://fixoraa.tech" class="hover:text-yellow-300 transition">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<main class="mx-auto max-w-6xl px-4 sm:px-6">
+
+  <!-- Badge -->
+  <div class="no-print flex justify-center pt-6">
+    <span class="chip text-sm px-4 py-1.5">♾️ Unlimited Free Usage — no signup, no paywall</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="text-center pt-6 pb-2">
+    <h1 class="font-display text-4xl sm:text-6xl leading-tight">DARELY <span style="color:#facc15">PARTY PACK</span></h1>
+    <p class="mt-3 text-rose-100/80 max-w-2xl mx-auto">Four legendary party games in one box: Truth or Dare, Would You Rather, and Never Have I Ever — with <strong class="text-white">400 original prompts</strong>, a Family→Wild spiciness slider, team scoreboard and pass-and-play rotation.</p>
+  </section>
+</main>
+
+<!-- TOP AD (verbatim) -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= THE GAME BOX ======================= -->
+<main class="mx-auto max-w-6xl px-4 sm:px-6 pb-10">
+<div class="gamebox rounded-3xl mt-6 p-4 sm:p-8">
+
+  <!-- 1. Setup: mode + spiciness -->
+  <section class="mb-6">
+    <h2 class="font-display text-xl sm:text-2xl mb-3" style="color:#facc15">🎲 Pick your game</h2>
+    <div id="modeTabs" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <button type="button" class="mode-tab active" data-mode="tod">🫣 Truth<br>or Dare</button>
+      <button type="button" class="mode-tab" data-mode="wyr">🤔 Would You<br>Rather</button>
+      <button type="button" class="mode-tab" data-mode="nhie">🙈 Never Have<br>I Ever</button>
+      <button type="button" class="mode-tab" data-mode="mix">🎉 Party Mix</button>
+    </div>
+    <div class="mt-5 bg-black/30 rounded-2xl p-4 sm:p-5 border border-rose-500/30">
+      <div class="flex items-center justify-between mb-2">
+        <label for="spiceSlider" class="font-extrabold text-sm">🌶️ Spiciness</label>
+        <span id="spiceLabel" class="chip">Family</span>
+      </div>
+      <input id="spiceSlider" type="range" min="0" max="2" step="1" value="0" aria-label="Spiciness from Family to Wild">
+      <div class="flex justify-between text-xs font-bold mt-1.5 text-rose-200/70">
+        <span>👪 Family</span><span>😏 All-Around</span><span>🔥 Wild</span>
+      </div>
+      <div class="flex items-center justify-between mt-3 text-sm">
+        <span class="text-rose-200/80">Cards left in deck: <strong id="deckCount" class="text-yellow-300">0</strong></span>
+        <button id="btnShuffle" type="button" class="btn-ghost px-4 py-1.5 text-sm">🔀 New shuffle</button>
+      </div>
+      <p id="reshuffleNote" class="hidden text-xs mt-2 text-yellow-200/90">Deck exhausted — reshuffled automatically so the party never stalls. 🎊</p>
+    </div>
+  </section>
+
+  <!-- 2. Prompt stage -->
+  <section class="mb-6">
+    <div class="ticket p-[3px] rounded-2xl">
+      <div id="promptCard" class="prompt-card rounded-2xl bg-[#170a16] p-6 sm:p-10 text-center flex flex-col justify-center">
+        <div class="mb-3 flex items-center justify-center gap-2 flex-wrap">
+          <span id="promptModeChip" class="chip">Truth or Dare</span>
+          <span id="promptSpiceChip" class="chip">👪 Family</span>
+          <span id="promptTurnChip" class="chip hidden"></span>
+        </div>
+        <p id="promptText" class="text-xl sm:text-3xl font-extrabold leading-snug text-white">Tap a button below to deal your first card 🎴</p>
+        <p id="promptHint" class="mt-4 text-sm text-rose-200/70">No repeats until the deck runs out — every card is fresh.</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center justify-center gap-3 mt-4">
+      <button id="btnTruth" type="button" class="btn-pink px-8 py-3 text-lg">🙊 TRUTH</button>
+      <button id="btnDare" type="button" class="btn-ghost px-8 py-3 text-lg">😈 DARE</button>
+      <button id="btnDraw" type="button" class="btn-pink px-8 py-3 text-lg hidden">🎴 DRAW CARD</button>
+    </div>
+  </section>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- 3. Pass-and-play rotation -->
+    <section class="bg-black/30 rounded-2xl p-5 border border-rose-500/30">
+      <h2 class="font-display text-lg mb-3" style="color:#facc15">📱 Pass-and-play</h2>
+      <div class="flex gap-2 mb-3">
+        <input id="playerName" type="text" maxlength="24" class="field" placeholder="Player name…">
+        <button id="btnAddPlayer" type="button" class="btn-pink px-5 whitespace-nowrap">Add</button>
+      </div>
+      <div id="currentPlayer" class="text-center font-extrabold text-lg mb-2 text-rose-100/60">Add players, then start the rotation ➡️</div>
+      <button id="btnNextPlayer" type="button" class="btn-ghost w-full py-2.5 mb-3">⏭ Next player</button>
+      <div id="playerList" class="flex flex-wrap gap-2"></div>
+    </section>
+
+    <!-- 4. Team scoreboard -->
+    <section class="bg-black/30 rounded-2xl p-5 border border-rose-500/30">
+      <h2 class="font-display text-lg mb-3" style="color:#facc15">🏆 Team scoreboard</h2>
+      <div id="leaderBanner" class="text-center text-sm font-bold text-yellow-200 mb-3">Scores are tied — make a move!</div>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="team-card p-4 text-center">
+          <input id="teamAName" type="text" maxlength="24" value="Team A" class="field text-center font-extrabold mb-2" aria-label="Team A name">
+          <div id="scoreTeamA" class="font-display text-5xl mb-3" style="color:#f43f5e">0</div>
+          <div class="flex justify-center gap-2">
+            <button id="btnTeamAMinus" type="button" class="score-btn btn-ghost" aria-label="Team A minus one">−</button>
+            <button id="btnTeamAPlus" type="button" class="score-btn btn-pink" aria-label="Team A plus one">+</button>
+          </div>
+        </div>
+        <div class="team-card p-4 text-center">
+          <input id="teamBName" type="text" maxlength="24" value="Team B" class="field text-center font-extrabold mb-2" aria-label="Team B name">
+          <div id="scoreTeamB" class="font-display text-5xl mb-3" style="color:#facc15">0</div>
+          <div class="flex justify-center gap-2">
+            <button id="btnTeamBMinus" type="button" class="score-btn btn-ghost" aria-label="Team B minus one">−</button>
+            <button id="btnTeamBPlus" type="button" class="score-btn btn-pink" aria-label="Team B plus one">+</button>
+          </div>
+        </div>
+      </div>
+      <button id="btnResetScores" type="button" class="btn-ghost w-full py-2 mt-4 text-sm">↺ Reset scores</button>
+    </section>
+
+    <!-- 5. Forfeit tracker -->
+    <section class="bg-black/30 rounded-2xl p-5 border border-rose-500/30">
+      <h2 class="font-display text-lg mb-3" style="color:#facc15">😅 Forfeit tracker</h2>
+      <p class="text-xs text-rose-200/70 mb-3">Chicken out of a dare? Log the forfeit here and settle up at the end of the night.</p>
+      <div class="flex gap-2 mb-3">
+        <input id="forfeitNote" type="text" maxlength="120" class="field" placeholder="e.g. Maya owes the group a round of snacks">
+        <button id="btnForfeit" type="button" class="btn-pink px-5 whitespace-nowrap">Log</button>
+      </div>
+      <ul id="forfeitList" class="space-y-2 text-sm"></ul>
+      <button id="btnClearForfeits" type="button" class="text-xs text-rose-200/60 underline mt-2">Clear all forfeits</button>
+    </section>
+
+    <!-- 6. Custom party packs -->
+    <section class="bg-black/30 rounded-2xl p-5 border border-rose-500/30">
+      <h2 class="font-display text-lg mb-3" style="color:#facc15">📦 Custom party packs</h2>
+      <p class="text-xs text-rose-200/70 mb-3">Write your own inside jokes and house rules. Packs are saved in this browser.</p>
+      <input id="packName" type="text" maxlength="40" class="field mb-2" placeholder="Pack name, e.g. Office Party Edition">
+      <div class="flex gap-2 mb-2">
+        <select id="packMode" class="field" aria-label="Pack mode">
+          <option value="truth">Truth</option>
+          <option value="dare">Dare</option>
+          <option value="wyr">Would You Rather</option>
+          <option value="nhie">Never Have I Ever</option>
+          <option value="mix">Mixed</option>
+        </select>
+        <button id="btnSavePack" type="button" class="btn-pink px-5 whitespace-nowrap">Save pack</button>
+      </div>
+      <textarea id="packText" rows="3" class="field mb-2" placeholder="One prompt per line…"></textarea>
+      <div id="packList" class="space-y-2"></div>
+      <button id="btnLoadBuiltIn" type="button" class="btn-ghost w-full py-2 mt-3 text-sm hidden">↩ Back to the built-in 400</button>
+    </section>
+  </div>
+</div>
+</main>
+
+<!-- BOTTOM AD (verbatim) -->
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= SEO ARTICLE ======================= -->
+<article id="seo-article" class="article-prose max-w-4xl mx-auto px-4 sm:px-6 py-10">
+  <h2>The Ultimate Party Game Pack: Truth or Dare, Would You Rather &amp; Never Have I Ever</h2>
+  <p>Every great party hits the same awkward moment: the music dips, conversations stall, and someone says, "So... what now?" That is exactly the moment Darely was built for. Darely is a free, no-signup party game pack that bundles the three greatest icebreaker games of all time — <strong>truth or dare questions</strong>, <strong>would you rather questions</strong>, and Never Have I Ever — into one fast, phone-friendly game box. With 400 original prompts baked right into the page, a Family-to-Wild spiciness slider, team-versus-team scoring, pass-and-play rotation and a forfeit tracker, one phone becomes the entire entertainment system for your night.</p>
+  <p>Unlike party game apps that demand accounts, permissions and in-app purchases before you can play a single round, Darely loads instantly in any browser and works completely free with unlimited usage. Hand the phone to the first player, pick a game mode, set the spiciness to match your crowd, and start dealing cards. There are no downloads, no waiting rooms and no "premium prompt packs" locked behind a paywall. Everything is on the table from the first tap.</p>
+
+  <h2>Four Party Modes in One Box</h2>
+  <p>Most party game sites give you one game and call it a day. Darely packs four distinct modes into a single page, so the energy never flatlines. When one game runs its course, switching takes a single tap.</p>
+  <h3>Truth or Dare</h3>
+  <p>The undisputed king of <strong>party games for adults</strong> and family gatherings alike. One hundred original prompts — forty family-safe truths and dares, thirty-five cheeky all-around ones, and twenty-five wild cards for brave groups. In this mode you get dedicated TRUTH and DARE buttons, so each player genuinely chooses their fate. Truths range from lighthearted ("What is your favorite childhood cartoon?") to deliciously revealing ("What is the most embarrassing thing on your camera roll right now?"), while dares scale from silly physical challenges to full-room performances.</p>
+  <h3>Would You Rather</h3>
+  <p>The perfect debate starter. One hundred <strong>would you rather questions</strong> force impossible choices — fly or be invisible, unlimited money or unlimited time, fight one horse-sized duck or one hundred duck-sized horses. There are no wrong answers, which makes this mode ideal for mixed groups where not everyone wants to perform a dare. It reliably produces the loudest arguments and the funniest justifications of any mode in the box.</p>
+  <h3>Never Have I Ever</h3>
+  <p>The confession game. One hundred "Never have I ever..." statements, from innocent ("Never have I ever ridden a bicycle") to adventurous ("Never have I ever taken a spontaneous road trip"). Play it classic-style with fingers up, or use it as a storytelling prompt — whoever has done it tells the tale. It is the fastest way to discover which of your friends has secretly lived three lives.</p>
+  <h3>Party Mix</h3>
+  <p>Cannot decide? Party Mix shuffles all 400 prompts into one unpredictable deck. A heartfelt truth can be followed by a ridiculous dare, then a would-you-rather debate. It is the mode for groups that get bored easily and want maximum chaos per minute.</p>
+
+  <h2>The Family-to-Wild Spiciness Slider</h2>
+  <p>Here is the problem with most <strong>truth or dare questions</strong> websites: the content is either painfully tame or wildly inappropriate, with nothing in between. Darely solves this with a spiciness slider that filters all 400 prompts in real time. Slide to <strong>Family</strong> and you get 160 clean prompts safe for kids, grandparents and office parties. Move to <strong>All-Around</strong> for the full cheeky-but-tasteful middle ground — embarrassing stories, playful dares and awkward hypotheticals that keep adults laughing without crossing lines. Push it to <strong>Wild</strong> for the boldest cards in the deck: high-energy dares, daring confessions and adrenaline-style would-you-rather scenarios, still kept clean and safe.</p>
+  <p>The slider is the feature hosts love most, because the same page works for a 12-year-old's birthday at 4pm and a college reunion at midnight. You never have to pre-read the prompts or awkwardly skip cards — the filter does the curating for you. Changing the level reshuffles a fresh deck instantly, so the game adapts the moment the vibe of the room changes.</p>
+
+  <h2>How to Play: Rules for Each Mode</h2>
+  <h3>Truth or Dare rules</h3>
+  <p>Gather in a circle and decide the turn order — or use Darely's built-in pass-and-play rotation to do it for you. The current player chooses Truth or Dare and taps the matching button. Answer honestly or complete the dare. Refuse, and the forfeit tracker logs your debt: a penalty the group agrees on, like buying the next round of snacks or doing the dishes. Award points to teams for completed dares to raise the stakes.</p>
+  <h3>Would You Rather rules</h3>
+  <p>Read the card aloud. Everyone picks a side and defends their choice — the best justification wins the round. For team play, the minority side loses a point, or the team with the funniest defense steals one. There is no timer unless you want one; the debates are the game.</p>
+  <h3>Never Have I Ever rules</h3>
+  <p>Everyone holds up five (or ten) fingers. Read each statement aloud; anyone who HAS done it puts a finger down and, if the group demands it, tells the story. Last person with fingers up wins. With teams, tally total fingers lost per team across ten cards — the team with the most "guilty" fingers takes the round, or the fewest, depending on how you frame it.</p>
+
+  <h2>Team-vs-Team Scoreboard</h2>
+  <p>Solo party games are fun; team party games are unforgettable. Darely includes a built-in scoreboard for up to bragging-rights warfare between two sides of the room. Rename the teams (couples versus singles, hosts versus guests, left couch versus right couch), then award points for completed dares, winning debates and surviving never-have-I-ever rounds. The live leader banner keeps the rivalry visible all night, and one tap resets everything for a rematch. Because scoring is manual and flexible, you can invent your own house rules — double points for wild-level dares, bonus points for the funniest forfeit, sudden-death tiebreakers with Party Mix cards.</p>
+
+  <h2>Pass-and-Play Rotation and Forfeit Tracker</h2>
+  <p>Two small features that solve the two biggest party-game headaches. <strong>Pass-and-play rotation</strong> means you add every player's name once, then tap "Next player" to rotate turns fairly — no arguments about whose turn it is, no quiet players getting skipped, no loud players hogging the spotlight. The current player's name appears on the prompt card itself, so everyone knows who is in the hot seat even after the phone has been passed around the circle three times.</p>
+  <p>The <strong>forfeit tracker</strong> handles the classic dare-dodgers. When someone chickens out, log their forfeit with one tap — the tracker records who owes what and counts repeat offenders. Settle up at the end of the night, or let the group vote on whether a forfeit was properly served. It keeps the game honest without killing the mood, and the running tally of forfeits becomes its own comedy highlight reel.</p>
+
+  <h2>Custom Party Packs: Your Inside Jokes, Your Rules</h2>
+  <p>The 400 built-in prompts cover every crowd, but the funniest material at any party is always specific to that group — the infamous camping trip, the office legend, the friend who cannot be trusted near a karaoke machine. Darely lets you create unlimited <strong>custom party packs</strong> right in the browser: name your pack, choose a mode, and type one prompt per line. Packs are saved in your browser's local storage, so your "College Reunion Edition" or "Office Party (HR-Approved)" deck is waiting for you next time. Load a pack with one tap to deal exclusively from your own prompts, or switch back to the built-in 400 whenever you like. Planning a themed night? Write 20 themed prompts in two minutes and you have a bespoke game no app store could ever sell you.</p>
+
+  <h2>Hosting Tips: Running a Legendary Game Night</h2>
+  <p>A great game night is 20 percent prompts and 80 percent hosting. Start with the spiciness slider one notch lower than you think you need — it is easy to turn up, and an early awkward card can stall the room. Use Party Mix for the first fifteen minutes while people arrive; the variety warms up shy players. Once the group is loose, switch to dedicated Truth or Dare for peak energy, and save Never Have I Ever for later in the night when stories flow freely.</p>
+  <p>Keep teams balanced by mixing bold and shy players on each side, and let the losing team pick the first card of every new round — it keeps them invested. Use the forfeit tracker generously but kindly: forfeits should be funny, never humiliating. The golden rule of <strong>party games for adults</strong> is that anyone can pass, no questions asked, with the only cost being a logged forfeit. Safety first with physical dares — if a card does not suit your space or your group, deal the next one; with 400 prompts and automatic reshuffling, you will never run dry.</p>
+  <p>Finally, put one phone in the middle and let it be the game box. Darely's no-repeat dealing means every card feels fresh, and when the deck runs out it reshuffles automatically so the party never stalls. Between the scoreboard rivalries, the forfeit debts and your custom packs, do not be surprised when "one more round" turns into one more hour.</p>
+
+  <h2>Why Darely Beats a Stack of Prompt Lists</h2>
+  <p>Search for <strong>truth or dare questions</strong> or <strong>would you rather questions</strong> and you will find endless listicles — static pages you have to scroll, read aloud and mentally filter for appropriateness. Darely turns those lists into an actual game: shuffled dealing with no repeats, one-tap mode switching, live spice filtering, turn rotation, scoring and forfeits, all on one screen. It respects your privacy too — there is no account, no tracking of your game, and custom packs never leave your browser. It is free forever with unlimited usage, because a party game should never have a paywall. Bookmark it, and you are permanently one tap away from saving any gathering.</p>
+
+  <!-- FAQs -->
+  <div class="mt-10">
+    <h2 class="!mt-0">Frequently Asked Questions</h2>
+    <details class="faq mb-3">
+      <summary>How many prompts does Darely include?</summary>
+      <p class="!mt-2">Darely ships with 400 original prompts baked into the page: 100 truths, 100 dares, 100 would-you-rather questions, and 100 Never Have I Ever statements. Cards are dealt with no repeats until the deck is exhausted, then the deck reshuffles automatically.</p>
+    </details>
+    <details class="faq mb-3">
+      <summary>Is Darely safe for family game night?</summary>
+      <p class="!mt-2">Yes. The spiciness slider filters every prompt in real time. Set it to Family and you get 160 clean, kid-friendly prompts across all four modes. Slide up to All-Around or Wild only when the crowd — and the hour — calls for bolder cards.</p>
+    </details>
+    <details class="faq mb-3">
+      <summary>How does the team scoreboard work?</summary>
+      <p class="!mt-2">Rename the two teams, then tap + or − to award points for completed dares, great debate defenses, or surviving rounds. A live leader banner shows who is ahead, and one tap resets scores for a rematch. You set the house rules — for example, double points for wild-level dares.</p>
+    </details>
+    <details class="faq mb-3">
+      <summary>Can I add my own truth or dare questions?</summary>
+      <p class="!mt-2">Absolutely. The custom party packs feature lets you create unlimited packs: name the pack, pick a mode, and type one prompt per line. Packs are saved in your browser's local storage and can be loaded as the dealing deck with one tap, or deleted anytime.</p>
+    </details>
+    <details class="faq mb-3">
+      <summary>What is pass-and-play rotation?</summary>
+      <p class="!mt-2">Add each player's name once, then tap "Next player" to rotate turns fairly around the group. The current player's name appears on the prompt card, so everyone knows whose turn it is even as the phone gets passed around the circle.</p>
+    </details>
+    <details class="faq mb-3">
+      <summary>Is Darely really free, and does it work offline?</summary>
+      <p class="!mt-2">Darely is free with unlimited usage — no signup, no paywall, no watermark. Once the page has loaded, all 400 prompts, the decks, the scoreboard and your custom packs work entirely in your browser, so a shaky party Wi-Fi connection will not interrupt game night.</p>
+    </details>
+  </div>
+</article>
+
+<!-- JSON-LD FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How many prompts does Darely include?", "acceptedAnswer": { "@type": "Answer", "text": "Darely includes 400 original prompts: 100 truths, 100 dares, 100 would-you-rather questions, and 100 Never Have I Ever statements. Cards deal with no repeats until the deck is exhausted, then reshuffle automatically." } },
+    { "@type": "Question", "name": "Is Darely safe for family game night?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The spiciness slider filters all prompts in real time. The Family setting serves 160 clean, kid-friendly prompts across all four modes; All-Around and Wild unlock bolder cards for adult groups." } },
+    { "@type": "Question", "name": "How does the team scoreboard work?", "acceptedAnswer": { "@type": "Answer", "text": "Rename the two teams, tap plus or minus to award points for completed dares or winning debates, and watch the live leader banner. One tap resets scores for a rematch." } },
+    { "@type": "Question", "name": "Can I add my own truth or dare questions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Custom party packs let you create unlimited decks: name the pack, choose a mode, and enter one prompt per line. Packs are stored in your browser's local storage and can be dealt with one tap." } },
+    { "@type": "Question", "name": "What is pass-and-play rotation?", "acceptedAnswer": { "@type": "Answer", "text": "Add each player's name once, then tap Next player to rotate turns fairly. The current player's name shows on the prompt card so everyone knows whose turn it is." } },
+    { "@type": "Question", "name": "Is Darely really free, and does it work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Darely is free with unlimited usage: no signup, no paywall, no watermark. After the page loads, all prompts, decks, the scoreboard and custom packs run entirely in your browser." } }
+  ]
+}
+</script>
+
+<!-- Inlined pure-logic lib -->
+<script id="v3-darely-party-game-pack-lib">
+/* Darely pure logic — party game pack: Truth-or-Dare + Would-You-Rather + Never-Have-I-Ever.
+ * Pure functions only: no DOM access, no storage access, no network.
+ * Dataset: 400 baked-in original prompts (100 per mode), each tagged with a
+ * spiciness level: 0 = Family, 1 = All-Around, 2 = Wild.
+ * Decks deal prompts with no repeats until the deck is exhausted, then reshuffle.
+ */
+var Darely = (function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------ */
+  /* Prompt dataset — [spice, text]. 0=Family, 1=All-Around, 2=Wild.      */
+  /* ------------------------------------------------------------------ */
+  var RAW = {
+    truth: [
+      /* ---- Truth: Family (40) ---- */
+      [0,"What is your favorite food of all time?"],
+      [0,"What is the best gift you have ever received?"],
+      [0,"Who is your hero and why?"],
+      [0,"What subject were you best at in school?"],
+      [0,"What is your earliest happy memory?"],
+      [0,"If you could have dinner with anyone in history, who would it be?"],
+      [0,"What talent do you wish you had?"],
+      [0,"What is your favorite movie ever?"],
+      [0,"What job did you dream of as a kid?"],
+      [0,"What is the kindest thing anyone has ever done for you?"],
+      [0,"What is your favorite holiday tradition?"],
+      [0,"What is one thing on your bucket list?"],
+      [0,"What is your favorite song right now?"],
+      [0,"What superpower would you pick?"],
+      [0,"What is the funniest dream you remember?"],
+      [0,"What is your favorite season and why?"],
+      [0,"What is the best compliment you ever got?"],
+      [0,"Who taught you something important?"],
+      [0,"What is your favorite board game?"],
+      [0,"What would you do with a free Saturday and no chores?"],
+      [0,"What is your favorite dessert?"],
+      [0,"What animal best matches your personality?"],
+      [0,"What is a skill you learned that surprised you?"],
+      [0,"What is your favorite place you have visited?"],
+      [0,"What is one thing you are grateful for today?"],
+      [0,"What is your favorite childhood cartoon?"],
+      [0,"What is the best party you have ever attended?"],
+      [0,"What is your go-to comfort food?"],
+      [0,"What is one thing you want to learn this year?"],
+      [0,"Who makes you laugh the hardest?"],
+      [0,"What is your favorite smell?"],
+      [0,"What is the bravest thing you have ever done?"],
+      [0,"What is your favorite way to relax?"],
+      [0,"What is one rule you would change at school or work?"],
+      [0,"What is your favorite sport to watch?"],
+      [0,"What is the coolest thing you have ever built or made?"],
+      [0,"What is your favorite joke?"],
+      [0,"What is something you are proud of but rarely mention?"],
+      [0,"What is your favorite app on your phone?"],
+      [0,"If you could live anywhere in the world, where would it be?"],
+      /* ---- Truth: All-Around (35) ---- */
+      [1,"What is the most embarrassing thing that happened to you in public?"],
+      [1,"What is a secret talent nobody here knows about?"],
+      [1,"Have you ever lied to get out of plans?"],
+      [1,"What is your most-used emoji and why?"],
+      [1,"What is the weirdest thing in your search history this week?"],
+      [1,"What is a habit you have that annoys other people?"],
+      [1,"What is the longest you have gone without showering?"],
+      [1,"Have you ever pretended to like a gift you hated?"],
+      [1,"What is your most irrational fear?"],
+      [1,"What is the biggest lie you told as a kid?"],
+      [1,"Have you ever snooped through someone else's phone?"],
+      [1,"What is the cringiest text you ever sent?"],
+      [1,"What is something you believed for way too long?"],
+      [1,"Have you ever re-gifted a present?"],
+      [1,"What is your guilty-pleasure TV show?"],
+      [1,"What is the worst haircut you ever had?"],
+      [1,"Have you ever blamed a sibling or friend for something you did?"],
+      [1,"What is a rumor you heard about yourself?"],
+      [1,"What is the most awkward date you have been on?"],
+      [1,"Have you ever cried at a movie? Which one?"],
+      [1,"What is the silliest argument you ever had?"],
+      [1,"What is something you are weirdly competitive about?"],
+      [1,"Have you ever faked being sick to skip something?"],
+      [1,"What is the most money you have ever wasted?"],
+      [1,"What is your most embarrassing nickname?"],
+      [1,"What is the worst gift you ever gave?"],
+      [1,"Have you ever eavesdropped on a conversation?"],
+      [1,"What is a trend you followed that you now regret?"],
+      [1,"What is the funniest misunderstanding you have had?"],
+      [1,"Have you ever walked into the wrong room at a party?"],
+      [1,"What is something petty that still bothers you?"],
+      [1,"What is the strangest thing you have ever eaten?"],
+      [1,"Have you ever practiced a speech in the mirror?"],
+      [1,"What is your most embarrassing autocorrect fail?"],
+      [1,"What is one thing you would never tell your boss?"],
+      /* ---- Truth: Wild (25) ---- */
+      [2,"What is the most daring thing you have ever done on a bet?"],
+      [2,"Who in this room would you trust with your deepest secret?"],
+      [2,"What is the wildest rumor you have ever started?"],
+      [2,"Have you ever snuck out of the house at night?"],
+      [2,"What is the most trouble you have ever been in?"],
+      [2,"Who was your first crush and what happened?"],
+      [2,"What is the boldest text you have ever sent?"],
+      [2,"Have you ever been caught doing something you should not?"],
+      [2,"What is your wildest unfulfilled dare from the past?"],
+      [2,"Who in this room knows you best?"],
+      [2,"What is the most spontaneous thing you have ever done?"],
+      [2,"Have you ever had a secret admirer?"],
+      [2,"What is the craziest dare you have ever completed?"],
+      [2,"Who would you pick for your team in a zombie apocalypse from this room?"],
+      [2,"What is the most embarrassing thing on your camera roll right now?"],
+      [2,"Have you ever kept a secret from everyone for over a year?"],
+      [2,"What is the wildest place you have ever fallen asleep?"],
+      [2,"Who in this room would survive longest on a desert island?"],
+      [2,"What is the biggest risk you have ever taken?"],
+      [2,"Have you ever lied to a teacher or boss and gotten away with it?"],
+      [2,"What is the most mischievous thing you did as a teenager?"],
+      [2,"Who in this room makes you laugh until it hurts?"],
+      [2,"What is the strangest dare you have ever been given?"],
+      [2,"What is one wild story you have never told anyone here?"],
+      [2,"If you had to switch lives with someone here for a day, who would it be?"]
+    ],
+    dare: [
+      /* ---- Dare: Family (40) ---- */
+      [0,"Do 10 jumping jacks right now."],
+      [0,"Sing the chorus of your favorite song."],
+      [0,"Do your best impression of a famous actor."],
+      [0,"Dance for 30 seconds with no music."],
+      [0,"Draw a portrait of the person to your left in 30 seconds."],
+      [0,"Speak in an accent for the next two rounds."],
+      [0,"Name 5 countries in 10 seconds."],
+      [0,"Do a silly walk across the room and back."],
+      [0,"Act out a movie title for others to guess."],
+      [0,"Balance a book on your head for one minute."],
+      [0,"Say the alphabet backwards as fast as you can."],
+      [0,"Do 5 push-ups."],
+      [0,"Make up a 4-line poem about the host."],
+      [0,"Pretend to be a robot for one round."],
+      [0,"Eat a spoonful of a condiment chosen by the group."],
+      [0,"Do your best animal impression."],
+      [0,"Tell a joke and make at least two people laugh."],
+      [0,"Spin around 10 times and try to walk straight."],
+      [0,"Recite a tongue twister 3 times fast."],
+      [0,"Do a magic trick, real or made up."],
+      [0,"Let the group pick your profile-picture pose for a photo."],
+      [0,"Imitate the laugh of the person on your right."],
+      [0,"Do 15 squats while counting out loud."],
+      [0,"Speak only in questions for the next round."],
+      [0,"Act like a news reporter describing this party."],
+      [0,"Do a handstand against the wall, or your best attempt."],
+      [0,"Draw with your eyes closed and show the result."],
+      [0,"Do your best superhero landing pose."],
+      [0,"Name 10 things you can see without looking around."],
+      [0,"Pretend to be a waiter and take everyone's drink order."],
+      [0,"Do a cartwheel, or your best attempt."],
+      [0,"Sing Happy Birthday in an opera voice."],
+      [0,"Do 20 high knees."],
+      [0,"Let someone style your hair however they want."],
+      [0,"Act out your morning routine in fast-forward."],
+      [0,"Try to lick your elbow."],
+      [0,"Do the floss dance for 20 seconds."],
+      [0,"Say a compliment to everyone in the room."],
+      [0,"Pretend to be a statue until your next turn."],
+      [0,"Eat a lemon wedge without making a face."],
+      /* ---- Dare: All-Around (35) ---- */
+      [1,"Let the group write one text on your phone that you must send."],
+      [1,"Post an embarrassing photo of yourself as your story for 10 minutes."],
+      [1,"Call a friend and sing them a song."],
+      [1,"Let someone draw on your face with a washable marker."],
+      [1,"Wear your socks on your hands for the next 3 rounds."],
+      [1,"Do your best impression of someone in this room."],
+      [1,"Swap an item of clothing with the person next to you."],
+      [1,"Let the group restyle your hair using only water and hands."],
+      [1,"Talk in a baby voice until your next turn."],
+      [1,"Eat a weird food combo chosen by the group."],
+      [1,"Do 25 push-ups or take a forfeit."],
+      [1,"Let someone read your last 3 sent texts out loud."],
+      [1,"Stand on one leg for the next 2 rounds."],
+      [1,"Do a dramatic reading of a random text message."],
+      [1,"Let the group choose your ringtone for a week."],
+      [1,"Wear a funny filter on your next selfie and send it to the group chat."],
+      [1,"Do your best runway walk across the room."],
+      [1,"Let someone give you a temporary tattoo with a pen."],
+      [1,"Speak in rhymes for the next round."],
+      [1,"Eat a cracker and try to whistle."],
+      [1,"Do an interpretive dance of your day."],
+      [1,"Let the person to your left write one comment on your latest photo."],
+      [1,"Hold an ice cube until it melts or 2 minutes pass."],
+      [1,"Do 30 seconds of the worm, or your best floor move."],
+      [1,"Let the group rename you for the rest of the night."],
+      [1,"Drink a mystery mix the group makes with safe ingredients only."],
+      [1,"Do your best impression of a crying baby."],
+      [1,"Text your mom I love you with 10 emojis."],
+      [1,"Let someone style you with 3 random accessories."],
+      [1,"Do a plank for 60 seconds while the group cheers."],
+      [1,"Pretend the floor is lava for the next 2 rounds."],
+      [1,"Let the group take 3 candid photos of you and pick one to post."],
+      [1,"Do your best evil-villain laugh."],
+      [1,"Swap shoes with someone for the next 3 rounds."],
+      [1,"Call a pizza place and ask if they deliver to the moon."],
+      /* ---- Dare: Wild (25) ---- */
+      [2,"Let the group dare you to do anything safe within 2 minutes. No refusing."],
+      [2,"Do a dare chosen by a vote of everyone else."],
+      [2,"Perform a 60-second stand-up routine about this party."],
+      [2,"Let someone blindfold you and feed you 3 mystery foods."],
+      [2,"Take the spiciest safe food challenge the group can assemble."],
+      [2,"Act out a dramatic breakup scene with a pillow."],
+      [2,"Let the group write one status update you must keep up for an hour."],
+      [2,"Do 50 jumping jacks while singing your national anthem."],
+      [2,"Let the person across from you dare you anything safe right now."],
+      [2,"Perform a lip-sync battle against the player of the group's choice."],
+      [2,"Let the group pick your outfit from a random pile for 15 minutes."],
+      [2,"Do a trust fall with the two people nearest you."],
+      [2,"Let someone do your makeup blindfolded."],
+      [2,"Perform the most dramatic slow-motion action scene you can."],
+      [2,"Let the group hide and find them with a 2-minute timer."],
+      [2,"Do a dare while wearing oven mitts."],
+      [2,"Let the group choose a song you must dance to right now."],
+      [2,"Act like a celebrity giving an acceptance speech for 2 minutes."],
+      [2,"Let everyone ask you one rapid-fire question for 60 seconds."],
+      [2,"Do your most embarrassing dance move on repeat for 1 minute."],
+      [2,"Let the group dare you to call someone and confess a silly secret."],
+      [2,"Perform a one-person play about your week."],
+      [2,"Let the group stack 5 items on your head while you walk."],
+      [2,"Do a dare with a 60-second countdown. No stalling."],
+      [2,"Let the group crown you party champion and give a victory speech."]
+    ],
+    wyr: [
+      /* ---- Would-You-Rather: Family (40) ---- */
+      [0,"Would you rather fly or be invisible?"],
+      [0,"Would you rather have unlimited money or unlimited time?"],
+      [0,"Would you rather live in the mountains or by the beach?"],
+      [0,"Would you rather talk to animals or speak every language?"],
+      [0,"Would you rather have a rewind button or a pause button for life?"],
+      [0,"Would you rather always be 10 minutes early or 20 minutes late?"],
+      [0,"Would you rather give up pizza or ice cream forever?"],
+      [0,"Would you rather travel to the past or the future?"],
+      [0,"Would you rather be famous or rich?"],
+      [0,"Would you rather live without music or without movies?"],
+      [0,"Would you rather have a pet dragon or a pet unicorn?"],
+      [0,"Would you rather always know when someone is lying or always get away with lying?"],
+      [0,"Would you rather be the funniest or the smartest person in the room?"],
+      [0,"Would you rather have dinner with a hero or a villain?"],
+      [0,"Would you rather never wait in line again or never get stuck in traffic?"],
+      [0,"Would you rather have super strength or super speed?"],
+      [0,"Would you rather live in a treehouse or a houseboat?"],
+      [0,"Would you rather breathe underwater or fly?"],
+      [0,"Would you rather eat only sweet or only savory food forever?"],
+      [0,"Would you rather have a time machine or a teleporter?"],
+      [0,"Would you rather always win arguments or always win games?"],
+      [0,"Would you rather be a morning person or a night owl?"],
+      [0,"Would you rather have 10 good friends or 100 acquaintances?"],
+      [0,"Would you rather read minds or see the future?"],
+      [0,"Would you rather live 200 years in the past or 200 years in the future?"],
+      [0,"Would you rather be able to cook anything or fix anything?"],
+      [0,"Would you rather have a personal chef or a personal driver?"],
+      [0,"Would you rather never need sleep or never need to eat?"],
+      [0,"Would you rather explore space or the deep ocean?"],
+      [0,"Would you rather have a photographic memory or unlimited creativity?"],
+      [0,"Would you rather be great at singing or great at dancing?"],
+      [0,"Would you rather always be warm or always be cool?"],
+      [0,"Would you rather win the lottery or find your dream job?"],
+      [0,"Would you rather have a big party or a small gathering?"],
+      [0,"Would you rather pause time or fast-forward it?"],
+      [0,"Would you rather live in a big city or a small town?"],
+      [0,"Would you rather have endless books or endless movies?"],
+      [0,"Would you rather be an amazing athlete or an amazing artist?"],
+      [0,"Would you rather always have good hair days or always find parking?"],
+      [0,"Would you rather teleport anywhere or time-travel exactly once?"],
+      /* ---- Would-You-Rather: All-Around (35) ---- */
+      [1,"Would you rather know the date of your death or the cause of it?"],
+      [1,"Would you rather lose all your photos or all your contacts?"],
+      [1,"Would you rather always say everything on your mind or never speak again?"],
+      [1,"Would you rather be stuck in an elevator with your ex or your boss?"],
+      [1,"Would you rather give up your phone for a month or your friends for a month?"],
+      [1,"Would you rather have your search history or your texts made public?"],
+      [1,"Would you rather be famous for something embarrassing or unknown forever?"],
+      [1,"Would you rather always be overdressed or underdressed?"],
+      [1,"Would you rather sing everything you say or dance everywhere you go?"],
+      [1,"Would you rather lose your voice or your hearing for a day?"],
+      [1,"Would you rather eat the same meal daily or never eat your favorite meal again?"],
+      [1,"Would you rather see 10 minutes or 10 years into the future?"],
+      [1,"Would you rather have no internet or no phone calls for a year?"],
+      [1,"Would you rather be 3 feet tall or 9 feet tall?"],
+      [1,"Would you rather always be itchy or always be sticky?"],
+      [1,"Would you rather fight one horse-sized duck or 100 duck-sized horses?"],
+      [1,"Would you rather have fingers as long as legs or legs as short as fingers?"],
+      [1,"Would you rather sneeze every 5 minutes or hiccup every 5 minutes?"],
+      [1,"Would you rather live without the letter E or without the number 7?"],
+      [1,"Would you rather have a third eye or a third arm?"],
+      [1,"Would you rather hear colors or see sounds?"],
+      [1,"Would you rather never laugh again or never smile again?"],
+      [1,"Would you rather have unlimited battery or unlimited data?"],
+      [1,"Would you rather always have wet socks or a pebble in your shoe?"],
+      [1,"Would you rather be chased by bees or covered in harmless spiders?"],
+      [1,"Would you rather whisper or shout for a whole week?"],
+      [1,"Would you rather eat a bug or lick a public doorknob?"],
+      [1,"Would you rather have a popcorn kernel stuck in your teeth forever or an itch you cannot scratch?"],
+      [1,"Would you rather be the funniest person nobody remembers or the most boring person everyone knows?"],
+      [1,"Would you rather swap lives with your best friend or your rival for a week?"],
+      [1,"Would you rather always know movie endings or never know what happens next?"],
+      [1,"Would you rather have your life narrated or have a laugh track follow you?"],
+      [1,"Would you rather control the weather or control traffic?"],
+      [1,"Would you rather never age physically or never age mentally?"],
+      [1,"Would you rather have dinner with your future self or your past self?"],
+      /* ---- Would-You-Rather: Wild (25) ---- */
+      [2,"Would you rather skydive or swim with sharks in a cage?"],
+      [2,"Would you rather spend a night in a haunted house or alone in a forest?"],
+      [2,"Would you rather bungee jump or walk a tightrope over a canyon?"],
+      [2,"Would you rather eat the world's hottest pepper or drink a gallon of mild hot sauce?"],
+      [2,"Would you rather be stranded on a desert island or lost in a blizzard?"],
+      [2,"Would you rather wrestle a pro wrestler or race a pro sprinter?"],
+      [2,"Would you rather spend 24 hours in a sensory-deprivation tank or blindfolded in a new city?"],
+      [2,"Would you rather climb the tallest mountain or dive the deepest trench, safely guided?"],
+      [2,"Would you rather survive a week in the jungle or a week in the arctic?"],
+      [2,"Would you rather go viral for something amazing or something hilarious?"],
+      [2,"Would you rather get a tattoo you cannot see or a piercing you cannot feel?"],
+      [2,"Would you rather perform on stage for 10,000 people or give a speech to 10 experts?"],
+      [2,"Would you rather be chased by a bear and escape or stung by 100 bees?"],
+      [2,"Would you rather eat only food you catch yourself or never eat out again?"],
+      [2,"Would you rather ride out a tornado in a bunker or an earthquake on a boat?"],
+      [2,"Would you rather have a fearless heart or an unbreakable body?"],
+      [2,"Would you rather explore a cave system or an abandoned city?"],
+      [2,"Would you rather spend a night lost at sea and be rescued or a night locked in a museum?"],
+      [2,"Would you rather fight in a padded medieval battle or a paintball war?"],
+      [2,"Would you rather ride the world's tallest or the world's fastest roller coaster?"],
+      [2,"Would you rather sail the world for a year or hike across continents?"],
+      [2,"Would you rather be the hero who saves the day or the mastermind behind the plan?"],
+      [2,"Would you rather discover a new species or a lost treasure?"],
+      [2,"Would you rather have a wild story nobody believes or a boring story everyone loves?"],
+      [2,"Would you rather dare your best friend to anything or be dared by them?"]
+    ],
+    nhie: [
+      /* ---- Never-Have-I-Ever: Family (40) ---- */
+      [0,"Never have I ever stayed up all night."],
+      [0,"Never have I ever broken a bone."],
+      [0,"Never have I ever been on a plane."],
+      [0,"Never have I ever eaten sushi."],
+      [0,"Never have I ever won a trophy."],
+      [0,"Never have I ever been to a concert."],
+      [0,"Never have I ever ridden a horse."],
+      [0,"Never have I ever baked a cake from scratch."],
+      [0,"Never have I ever seen snow."],
+      [0,"Never have I ever learned a second language."],
+      [0,"Never have I ever been camping."],
+      [0,"Never have I ever swum in the ocean."],
+      [0,"Never have I ever planted a tree."],
+      [0,"Never have I ever been to a wedding."],
+      [0,"Never have I ever finished a whole book in one day."],
+      [0,"Never have I ever cooked for more than 5 people."],
+      [0,"Never have I ever been on a boat."],
+      [0,"Never have I ever watched a sunrise on purpose."],
+      [0,"Never have I ever grown a vegetable."],
+      [0,"Never have I ever donated blood."],
+      [0,"Never have I ever been to another country."],
+      [0,"Never have I ever run a race."],
+      [0,"Never have I ever fixed something that was broken."],
+      [0,"Never have I ever learned to swim."],
+      [0,"Never have I ever been stung by a bee."],
+      [0,"Never have I ever milked a cow."],
+      [0,"Never have I ever caught a fish."],
+      [0,"Never have I ever been on a roller coaster."],
+      [0,"Never have I ever seen a shooting star."],
+      [0,"Never have I ever made a snowman."],
+      [0,"Never have I ever flown a kite."],
+      [0,"Never have I ever been to a farm."],
+      [0,"Never have I ever ridden a bicycle."],
+      [0,"Never have I ever climbed a tree."],
+      [0,"Never have I ever played chess."],
+      [0,"Never have I ever solved a Rubik's cube."],
+      [0,"Never have I ever been in a play or musical."],
+      [0,"Never have I ever learned an instrument."],
+      [0,"Never have I ever written a poem."],
+      [0,"Never have I ever kept a diary."],
+      /* ---- Never-Have-I-Ever: All-Around (35) ---- */
+      [1,"Never have I ever pretended to be sick to skip school or work."],
+      [1,"Never have I ever snooped through someone's room."],
+      [1,"Never have I ever lied about my age."],
+      [1,"Never have I ever eaten food that fell on the floor."],
+      [1,"Never have I ever stalked someone on social media."],
+      [1,"Never have I ever re-gifted a present."],
+      [1,"Never have I ever blamed someone else for my mistake."],
+      [1,"Never have I ever fallen asleep in class or a meeting."],
+      [1,"Never have I ever sent a text to the wrong person."],
+      [1,"Never have I ever laughed at the wrong moment."],
+      [1,"Never have I ever cheated on a test."],
+      [1,"Never have I ever broken something and hidden it."],
+      [1,"Never have I ever eavesdropped on purpose."],
+      [1,"Never have I ever cried during a cartoon."],
+      [1,"Never have I ever faked a phone call to avoid someone."],
+      [1,"Never have I ever eaten an entire pizza by myself."],
+      [1,"Never have I ever talked to myself in the mirror."],
+      [1,"Never have I ever Googled myself."],
+      [1,"Never have I ever pretended to know a song I did not."],
+      [1,"Never have I ever danced alone in my room."],
+      [1,"Never have I ever been locked out of my house."],
+      [1,"Never have I ever lost my phone for a whole day."],
+      [1,"Never have I ever worn the same outfit two days in a row."],
+      [1,"Never have I ever sung loudly in the shower."],
+      [1,"Never have I ever tripped in public and pretended it was on purpose."],
+      [1,"Never have I ever waved back at someone who was not waving at me."],
+      [1,"Never have I ever called a teacher mom or dad by accident."],
+      [1,"Never have I ever walked into a glass door."],
+      [1,"Never have I ever laughed so hard I cried."],
+      [1,"Never have I ever been scared of the dark as an adult."],
+      [1,"Never have I ever eaten dessert before dinner."],
+      [1,"Never have I ever stayed in pajamas all day."],
+      [1,"Never have I ever binge-watched a whole season in one day."],
+      [1,"Never have I ever talked to my pet like a person."],
+      [1,"Never have I ever practiced a victory speech."],
+      /* ---- Never-Have-I-Ever: Wild (25) ---- */
+      [2,"Never have I ever snuck out of the house at night."],
+      [2,"Never have I ever been caught sneaking around."],
+      [2,"Never have I ever done something wild on a dare."],
+      [2,"Never have I ever kept a secret for over a year."],
+      [2,"Never have I ever had a secret admirer."],
+      [2,"Never have I ever crashed a party I was not invited to."],
+      [2,"Never have I ever taken a spontaneous road trip."],
+      [2,"Never have I ever stayed awake for 48 hours straight."],
+      [2,"Never have I ever jumped off something really high and landed safely."],
+      [2,"Never have I ever been the last one dancing at a party."],
+      [2,"Never have I ever performed on a stage."],
+      [2,"Never have I ever pulled off a legendary prank."],
+      [2,"Never have I ever eaten something super spicy on a bet."],
+      [2,"Never have I ever gone camping in the wild with no tent."],
+      [2,"Never have I ever been chased by an animal."],
+      [2,"Never have I ever gotten lost in a new city."],
+      [2,"Never have I ever tried an extreme sport."],
+      [2,"Never have I ever won a bet I was sure I would lose."],
+      [2,"Never have I ever done karaoke in front of strangers."],
+      [2,"Never have I ever danced in the rain on purpose."],
+      [2,"Never have I ever photobombed a stranger's picture."],
+      [2,"Never have I ever screamed on a roller coaster."],
+      [2,"Never have I ever stayed out past sunrise at a party."],
+      [2,"Never have I ever led a conga line."],
+      [2,"Never have I ever started a dance-off."]
+    ]
+  };
+
+  /* ------------------------------------------------------------------ */
+  /* Build the flat prompt list with stable ids.                        */
+  /* ------------------------------------------------------------------ */
+  var MODES = ['truth', 'dare', 'wyr', 'nhie'];
+  var MODE_LABELS = { truth: 'Truth', dare: 'Dare', wyr: 'Would You Rather', nhie: 'Never Have I Ever', mix: 'Party Mix' };
+
+  function buildPrompts() {
+    var out = [];
+    MODES.forEach(function (mode) {
+      RAW[mode].forEach(function (entry, i) {
+        out.push({ id: mode + '-' + i, mode: mode, spice: entry[0], text: entry[1] });
+      });
+    });
+    return out;
+  }
+  var PROMPTS = buildPrompts();
+
+  function byId(id) {
+    for (var i = 0; i < PROMPTS.length; i++) {
+      if (PROMPTS[i].id === id) return PROMPTS[i];
+    }
+    return null;
+  }
+
+  /* ------------------------------ spice ----------------------------- */
+  function clampSpice(level) {
+    var n = parseInt(level, 10);
+    if (isNaN(n)) return 2;
+    if (n < 0) return 0;
+    if (n > 2) return 2;
+    return n;
+  }
+
+  function spiceLabel(level) {
+    return ['Family', 'All-Around', 'Wild'][clampSpice(level)];
+  }
+
+  function isKnownMode(mode) {
+    return mode === 'mix' || MODES.indexOf(mode) !== -1;
+  }
+
+  function filterPrompts(mode, maxSpice) {
+    if (!isKnownMode(mode)) return [];
+    var cap = clampSpice(maxSpice);
+    return PROMPTS.filter(function (p) {
+      return (mode === 'mix' || p.mode === mode) && p.spice <= cap;
+    });
+  }
+
+  /* ------------------------------ deck ------------------------------ */
+  function shuffle(arr, rng) {
+    var a = arr.slice();
+    var r = (typeof rng === 'function') ? rng : Math.random;
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(r() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function createDeck(mode, maxSpice, rng) {
+    var pool = filterPrompts(mode, maxSpice);
+    return {
+      ids: shuffle(pool.map(function (p) { return p.id; }), rng),
+      pos: 0,
+      mode: mode,
+      maxSpice: clampSpice(maxSpice),
+      reshuffles: 0
+    };
+  }
+
+  /* Draw the next prompt. No repeats until the deck is exhausted; then it
+   * reshuffles automatically so the party never stalls. */
+  function draw(deck, rng) {
+    if (!deck || !deck.ids || deck.ids.length === 0) {
+      return { prompt: null, exhausted: true, reshuffled: false };
+    }
+    var reshuffled = false;
+    if (deck.pos >= deck.ids.length) {
+      deck.ids = shuffle(deck.ids, rng);
+      deck.pos = 0;
+      deck.reshuffles = (deck.reshuffles || 0) + 1;
+      reshuffled = true;
+    }
+    var id = deck.ids[deck.pos];
+    deck.pos += 1;
+    return { prompt: byId(id), exhausted: false, reshuffled: reshuffled };
+  }
+
+  function remaining(deck) {
+    if (!deck || !deck.ids) return 0;
+    return Math.max(0, deck.ids.length - deck.pos);
+  }
+
+  /* ---------------------------- scoreboard --------------------------- */
+  function createScoreboard(names) {
+    var clean = (names || []).filter(function (n) { return n && String(n).trim(); })
+      .map(function (n) { return String(n).trim(); });
+    if (clean.length === 0) clean = ['Team A', 'Team B'];
+    return { teams: clean.slice(0, 4).map(function (n) { return { name: n, score: 0 }; }) };
+  }
+
+  function cloneScoreboard(sb) {
+    return { teams: sb.teams.map(function (t) { return { name: t.name, score: t.score }; }) };
+  }
+
+  function addPoints(sb, teamIndex, points) {
+    var nb = cloneScoreboard(sb);
+    var pts = parseInt(points, 10);
+    if (isNaN(pts)) pts = 0;
+    if (nb.teams[teamIndex]) nb.teams[teamIndex].score += pts;
+    return nb;
+  }
+
+  function resetScoreboard(sb) {
+    var nb = cloneScoreboard(sb);
+    nb.teams.forEach(function (t) { t.score = 0; });
+    return nb;
+  }
+
+  function renameTeam(sb, teamIndex, name) {
+    var nb = cloneScoreboard(sb);
+    if (nb.teams[teamIndex] && name && String(name).trim()) {
+      nb.teams[teamIndex].name = String(name).trim().slice(0, 24);
+    }
+    return nb;
+  }
+
+  /* Indices of the current leader(s); empty array when tied at zero. */
+  function leaders(sb) {
+    if (!sb || !sb.teams || sb.teams.length === 0) return [];
+    var top = sb.teams[0].score;
+    sb.teams.forEach(function (t) { if (t.score > top) top = t.score; });
+    return sb.teams.map(function (t, i) { return i; })
+      .filter(function (i) { return sb.teams[i].score === top; });
+  }
+
+  /* --------------------- players / pass-and-play --------------------- */
+  function createParty(players) {
+    var clean = (players || []).filter(function (n) { return n && String(n).trim(); })
+      .map(function (n) { return String(n).trim().slice(0, 24); });
+    return { players: clean, current: -1 };
+  }
+
+  function addPlayer(party, name) {
+    var clean = String(name || '').trim().slice(0, 24);
+    if (!clean) return party;
+    if (party.players.indexOf(clean) !== -1) return party;
+    return { players: party.players.concat([clean]), current: party.current };
+  }
+
+  function removePlayer(party, index) {
+    if (index < 0 || index >= party.players.length) return party;
+    var players = party.players.slice(0, index).concat(party.players.slice(index + 1));
+    return { players: players, current: -1 };
+  }
+
+  /* Advance the turn rotation. Returns { party, player } where player is
+   * { index, name } or null when nobody is in the game. */
+  function nextPlayer(party) {
+    if (!party || party.players.length === 0) return { party: party, player: null };
+    var idx = (party.current + 1) % party.players.length;
+    return {
+      party: { players: party.players, current: idx },
+      player: { index: idx, name: party.players[idx] }
+    };
+  }
+
+  /* --------------------------- forfeit tracker ------------------------ */
+  function addForfeit(log, playerName, note, ts) {
+    var entry = {
+      player: String(playerName || 'Someone').slice(0, 24),
+      note: String(note || '').slice(0, 120),
+      at: (typeof ts === 'number') ? ts : Date.now()
+    };
+    return (log || []).concat([entry]);
+  }
+
+  function countForfeits(log, playerName) {
+    return (log || []).filter(function (e) { return e.player === playerName; }).length;
+  }
+
+  function clearForfeits() { return []; }
+
+  /* --------------------------- custom packs --------------------------- */
+  function parsePackLines(text) {
+    return String(text || '').split(/\r?\n/).map(function (l) { return l.trim(); })
+      .filter(function (l) { return l.length > 0; });
+  }
+
+  function validateCustomPack(name, text, mode) {
+    var errors = [];
+    if (!name || !String(name).trim()) errors.push('pack-name-missing');
+    var lines = parsePackLines(text);
+    if (lines.length === 0) errors.push('pack-empty');
+    if (lines.length > 200) errors.push('pack-too-big');
+    if (!isKnownMode(mode)) errors.push('pack-bad-mode');
+    return { ok: errors.length === 0, errors: errors, lineCount: lines.length };
+  }
+
+  /* Convert a validated custom pack into prompt objects so it can be dealt
+   * exactly like the built-in deck. */
+  function packToPrompts(pack, spice) {
+    var s = clampSpice(spice === undefined ? 2 : spice);
+    var lines = parsePackLines(pack.text);
+    return lines.map(function (line, i) {
+      return {
+        id: 'custom-' + i,
+        mode: pack.mode === 'mix' ? 'truth' : pack.mode,
+        packName: String(pack.name || 'Custom pack').slice(0, 40),
+        spice: s,
+        text: line
+      };
+    });
+  }
+
+  function createCustomDeck(pack, spice, rng) {
+    var prompts = packToPrompts(pack, spice);
+    return {
+      ids: shuffle(prompts.map(function (p) { return p.id; }), rng),
+      pos: 0,
+      mode: 'custom',
+      maxSpice: clampSpice(spice),
+      reshuffles: 0,
+      prompts: prompts
+    };
+  }
+
+  function drawCustom(deck, rng) {
+    if (!deck || !deck.ids || deck.ids.length === 0 || !deck.prompts) {
+      return { prompt: null, exhausted: true, reshuffled: false };
+    }
+    var reshuffled = false;
+    if (deck.pos >= deck.ids.length) {
+      deck.ids = shuffle(deck.ids, rng);
+      deck.pos = 0;
+      deck.reshuffles = (deck.reshuffles || 0) + 1;
+      reshuffled = true;
+    }
+    var id = deck.ids[deck.pos];
+    deck.pos += 1;
+    var found = null;
+    for (var i = 0; i < deck.prompts.length; i++) {
+      if (deck.prompts[i].id === id) { found = deck.prompts[i]; break; }
+    }
+    return { prompt: found, exhausted: false, reshuffled: reshuffled };
+  }
+
+  return {
+    PROMPTS: PROMPTS,
+    MODES: MODES,
+    MODE_LABELS: MODE_LABELS,
+    promptCount: function () { return PROMPTS.length; },
+    getPrompt: byId,
+    clampSpice: clampSpice,
+    spiceLabel: spiceLabel,
+    filterPrompts: filterPrompts,
+    shuffle: shuffle,
+    createDeck: createDeck,
+    draw: draw,
+    remaining: remaining,
+    createScoreboard: createScoreboard,
+    addPoints: addPoints,
+    resetScoreboard: resetScoreboard,
+    renameTeam: renameTeam,
+    leaders: leaders,
+    createParty: createParty,
+    addPlayer: addPlayer,
+    removePlayer: removePlayer,
+    nextPlayer: nextPlayer,
+    addForfeit: addForfeit,
+    countForfeits: countForfeits,
+    clearForfeits: clearForfeits,
+    parsePackLines: parsePackLines,
+    validateCustomPack: validateCustomPack,
+    packToPrompts: packToPrompts,
+    createCustomDeck: createCustomDeck,
+    drawCustom: drawCustom
+  };
+})();
+
+</script>
+
+<!-- UI wiring (DOM + localStorage live here, NOT in the lib) -->
+<script>
+(function () {
+  'use strict';
+  var D = Darely;
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---------------- state ---------------- */
+  var state = {
+    mode: 'tod',
+    spice: 0,
+    todChoice: null,          // 'truth' | 'dare' when in tod mode
+    decks: {},                // mode -> deck
+    customDeck: null,         // active custom deck, or null
+    activePackName: null,
+    party: D.createParty([]),
+    scores: D.createScoreboard(['Team A', 'Team B']),
+    forfeits: []
+  };
+
+  /* ---------------- helpers ---------------- */
+  function rng() { return Math.random(); }
+
+  function buildDecks() {
+    state.decks = {
+      truth: D.createDeck('truth', state.spice, rng),
+      dare: D.createDeck('dare', state.spice, rng),
+      wyr: D.createDeck('wyr', state.spice, rng),
+      nhie: D.createDeck('nhie', state.spice, rng),
+      mix: D.createDeck('mix', state.spice, rng)
+    };
+    state.customDeck = null;
+    state.activePackName = null;
+    $('btnLoadBuiltIn').classList.add('hidden');
+    updateDeckCount();
+  }
+
+  function currentDeck() {
+    if (state.customDeck) return state.customDeck;
+    if (state.mode === 'tod') return state.decks[state.todChoice || 'truth'];
+    return state.decks[state.mode];
+  }
+
+  function updateDeckCount() {
+    var d = currentDeck();
+    $('deckCount').textContent = d ? D.remaining(d) : 0;
+  }
+
+  function spiceChipText() {
+    return ['👪 Family', '😏 All-Around', '🔥 Wild'][state.spice];
+  }
+
+  function modeLabel(m) {
+    return { tod: 'Truth or Dare', wyr: 'Would You Rather', nhie: 'Never Have I Ever', mix: 'Party Mix' }[m] || m;
+  }
+
+  function showPrompt(res) {
+    var card = $('promptCard');
+    card.classList.remove('flip');
+    void card.offsetWidth;
+    if (!res || !res.prompt) {
+      $('promptText').textContent = 'No cards at this spiciness level — slide it up a notch! 🎚️';
+      return;
+    }
+    var p = res.prompt;
+    $('promptModeChip').textContent = p.packName ? ('📦 ' + p.packName) : modeLabel(p.mode === 'truth' || p.mode === 'dare' ? 'tod' : p.mode);
+    $('promptSpiceChip').textContent = spiceChipText();
+    $('promptText').textContent = p.text;
+    $('promptHint').textContent = p.packName ? 'Custom pack card — no repeats until the pack runs out.' : 'No repeats until the deck runs out — every card is fresh.';
+    var turn = $('promptTurnChip');
+    if (state.party.current >= 0 && state.party.players.length) {
+      turn.textContent = '🎯 ' + state.party.players[state.party.current] + "'s turn";
+      turn.classList.remove('hidden');
+    } else {
+      turn.classList.add('hidden');
+    }
+    $('reshuffleNote').classList.toggle('hidden', !res.reshuffled);
+    card.classList.add('flip');
+    updateDeckCount();
+  }
+
+  function deal() {
+    var deck = currentDeck();
+    if (!deck) return;
+    var res = state.customDeck ? D.drawCustom(deck, rng) : D.draw(deck, rng);
+    showPrompt(res);
+  }
+
+  /* ---------------- mode tabs + spice ---------------- */
+  var tabs = $('modeTabs').querySelectorAll('.mode-tab');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      state.mode = tab.getAttribute('data-mode');
+      state.todChoice = null;
+      var isTod = state.mode === 'tod';
+      $('btnTruth').classList.toggle('hidden', !isTod);
+      $('btnDare').classList.toggle('hidden', !isTod);
+      $('btnDraw').classList.toggle('hidden', isTod);
+      buildDecks();
+    });
+  });
+
+  $('spiceSlider').addEventListener('input', function (e) {
+    state.spice = D.clampSpice(e.target.value);
+    $('spiceLabel').textContent = D.spiceLabel(state.spice);
+    buildDecks();
+  });
+
+  $('btnShuffle').addEventListener('click', function () {
+    buildDecks();
+    $('promptText').textContent = 'Freshly shuffled! Tap a button to deal 🎴';
+  });
+
+  $('btnTruth').addEventListener('click', function () { state.todChoice = 'truth'; deal(); });
+  $('btnDare').addEventListener('click', function () { state.todChoice = 'dare'; deal(); });
+  $('btnDraw').addEventListener('click', deal);
+
+  /* ---------------- pass-and-play ---------------- */
+  function renderPlayers() {
+    var box = $('playerList');
+    box.innerHTML = '';
+    state.party.players.forEach(function (name, i) {
+      var s = document.createElement('span');
+      s.className = 'chip' + (i === state.party.current ? ' !bg-yellow-400 !text-black !border-yellow-400' : '');
+      s.textContent = (i === state.party.current ? '👉 ' : '') + name;
+      var x = document.createElement('button');
+      x.type = 'button'; x.textContent = ' ✕'; x.className = 'opacity-70 hover:opacity-100';
+      x.setAttribute('aria-label', 'Remove ' + name);
+      x.addEventListener('click', function () {
+        state.party = D.removePlayer(state.party, i);
+        renderPlayers();
+      });
+      s.appendChild(x);
+      box.appendChild(s);
+    });
+    $('currentPlayer').textContent = state.party.current >= 0 && state.party.players.length
+      ? '🎯 ' + state.party.players[state.party.current] + ' — pass the phone!'
+      : (state.party.players.length ? 'Tap "Next player" to start ➡️' : 'Add players, then start the rotation ➡️');
+  }
+
+  function addPlayerFromInput() {
+    var v = $('playerName').value;
+    var before = state.party.players.length;
+    state.party = D.addPlayer(state.party, v);
+    if (state.party.players.length !== before) { $('playerName').value = ''; renderPlayers(); }
+  }
+  $('btnAddPlayer').addEventListener('click', addPlayerFromInput);
+  $('playerName').addEventListener('keydown', function (e) { if (e.key === 'Enter') addPlayerFromInput(); });
+  $('btnNextPlayer').addEventListener('click', function () {
+    var r = D.nextPlayer(state.party);
+    state.party = r.party;
+    renderPlayers();
+  });
+
+  /* ---------------- scoreboard ---------------- */
+  function renderScores() {
+    var t = state.scores.teams;
+    $('teamAName').value = t[0] ? t[0].name : 'Team A';
+    $('teamBName').value = t[1] ? t[1].name : 'Team B';
+    $('scoreTeamA').textContent = t[0] ? t[0].score : 0;
+    $('scoreTeamB').textContent = t[1] ? t[1].score : 0;
+    var lead = D.leaders(state.scores);
+    var banner = $('leaderBanner');
+    if (t[0] && t[1] && t[0].score === t[1].score) {
+      banner.textContent = 'Scores are tied — make a move!';
+    } else if (lead.length === 1) {
+      banner.textContent = '🏆 ' + t[lead[0]].name + ' is in the lead!';
+    } else {
+      banner.textContent = 'Scores are tied — make a move!';
+    }
+  }
+  function bump(i, pts) { state.scores = D.addPoints(state.scores, i, pts); renderScores(); }
+  $('btnTeamAPlus').addEventListener('click', function () { bump(0, 1); });
+  $('btnTeamAMinus').addEventListener('click', function () { bump(0, -1); });
+  $('btnTeamBPlus').addEventListener('click', function () { bump(1, 1); });
+  $('btnTeamBMinus').addEventListener('click', function () { bump(1, -1); });
+  $('teamAName').addEventListener('change', function (e) { state.scores = D.renameTeam(state.scores, 0, e.target.value); renderScores(); });
+  $('teamBName').addEventListener('change', function (e) { state.scores = D.renameTeam(state.scores, 1, e.target.value); renderScores(); });
+  $('btnResetScores').addEventListener('click', function () {
+    var names = state.scores.teams.map(function (t) { return t.name; });
+    state.scores = D.resetScoreboard(D.createScoreboard(names));
+    renderScores();
+  });
+
+  /* ---------------- forfeits ---------------- */
+  function renderForfeits() {
+    var box = $('forfeitList');
+    box.innerHTML = '';
+    if (!state.forfeits.length) {
+      box.innerHTML = '<li class="text-rose-200/60 italic">No forfeits yet. The brave have nothing to fear… yet. 😇</li>';
+      return;
+    }
+    state.forfeits.forEach(function (f) {
+      var li = document.createElement('li');
+      li.className = 'bg-black/40 border border-rose-500/30 rounded-lg px-3 py-2';
+      var n = D.countForfeits(state.forfeits, f.player);
+      li.innerHTML = '';
+      var b = document.createElement('strong');
+      b.className = 'text-yellow-300';
+      b.textContent = f.player + (n > 1 ? ' (×' + n + ')' : '');
+      li.appendChild(b);
+      li.appendChild(document.createTextNode(' owes: ' + (f.note || 'a forfeit chosen by the group')));
+      box.appendChild(li);
+    });
+  }
+  function logForfeit() {
+    var note = $('forfeitNote').value.trim();
+    var who = state.party.current >= 0 && state.party.players.length
+      ? state.party.players[state.party.current] : 'Someone';
+    state.forfeits = D.addForfeit(state.forfeits, who, note || 'a forfeit chosen by the group');
+    $('forfeitNote').value = '';
+    renderForfeits();
+  }
+  $('btnForfeit').addEventListener('click', logForfeit);
+  $('forfeitNote').addEventListener('keydown', function (e) { if (e.key === 'Enter') logForfeit(); });
+  $('btnClearForfeits').addEventListener('click', function () {
+    state.forfeits = D.clearForfeits();
+    renderForfeits();
+  });
+
+  /* ---------------- custom packs (localStorage) ---------------- */
+  var PACK_KEY = 'darely-custom-packs-v1';
+  function loadPacks() {
+    try {
+      var raw = localStorage.getItem(PACK_KEY);
+      var arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+  function savePacks(packs) {
+    try { localStorage.setItem(PACK_KEY, JSON.stringify(packs)); } catch (e) {}
+  }
+
+  function renderPacks() {
+    var box = $('packList');
+    box.innerHTML = '';
+    var packs = loadPacks();
+    if (!packs.length) {
+      box.innerHTML = '<p class="text-xs text-rose-200/60 italic">No custom packs yet — create your first above.</p>';
+      return;
+    }
+    packs.forEach(function (pack, i) {
+      var row = document.createElement('div');
+      row.className = 'flex items-center justify-between bg-black/40 border border-yellow-400/40 rounded-lg px-3 py-2';
+      var label = document.createElement('button');
+      label.type = 'button';
+      label.className = 'text-sm font-bold text-left text-yellow-200 hover:underline';
+      var lines = D.parsePackLines(pack.text).length;
+      label.textContent = '📦 ' + pack.name + ' (' + lines + ' cards)';
+      label.addEventListener('click', function () { loadPack(i); });
+      var del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'text-xs text-rose-300/70 hover:text-rose-300 underline';
+      del.textContent = 'Delete';
+      del.addEventListener('click', function () {
+        var ps = loadPacks();
+        ps.splice(i, 1);
+        savePacks(ps);
+        if (state.activePackName === pack.name) buildDecks();
+        renderPacks();
+      });
+      row.appendChild(label);
+      row.appendChild(del);
+      box.appendChild(row);
+    });
+  }
+
+  function loadPack(i) {
+    var packs = loadPacks();
+    var pack = packs[i];
+    if (!pack) return;
+    var v = D.validateCustomPack(pack.name, pack.text, pack.mode);
+    if (!v.ok) return;
+    state.customDeck = D.createCustomDeck(pack, state.spice, rng);
+    state.activePackName = pack.name;
+    $('btnLoadBuiltIn').classList.remove('hidden');
+    $('promptText').textContent = '📦 "' + pack.name + '" loaded — tap DRAW to deal your own cards!';
+    $('btnTruth').classList.add('hidden');
+    $('btnDare').classList.add('hidden');
+    $('btnDraw').classList.remove('hidden');
+    updateDeckCount();
+  }
+
+  $('btnSavePack').addEventListener('click', function () {
+    var name = $('packName').value;
+    var text = $('packText').value;
+    var mode = $('packMode').value;
+    var v = D.validateCustomPack(name, text, mode);
+    if (!v.ok) {
+      alert('Could not save pack: ' + v.errors.join(', ') + '. Give it a name and at least one prompt line.');
+      return;
+    }
+    var packs = loadPacks();
+    packs.push({ name: name.trim(), text: text, mode: mode });
+    savePacks(packs);
+    $('packName').value = '';
+    $('packText').value = '';
+    renderPacks();
+  });
+
+  $('btnLoadBuiltIn').addEventListener('click', function () {
+    buildDecks();
+    var isTod = state.mode === 'tod';
+    $('btnTruth').classList.toggle('hidden', !isTod);
+    $('btnDare').classList.toggle('hidden', !isTod);
+    $('btnDraw').classList.toggle('hidden', isTod);
+    $('promptText').textContent = 'Back to the built-in 400. Tap a button to deal 🎴';
+  });
+
+  /* ---------------- init ---------------- */
+  $('spiceLabel').textContent = D.spiceLabel(0);
+  buildDecks();
+  renderPlayers();
+  renderScores();
+  renderForfeits();
+  renderPacks();
+})();
+</script>
+
+<!-- Footer -->
+<footer class="no-print border-t border-rose-500/30 mt-4">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="font-display text-lg" style="color:#f43f5e">Dare<span style="color:#facc15">ly</span> <span class="text-xs text-rose-200/60 font-sans font-bold">— the party game pack</span></div>
+    <nav class="flex items-center gap-5 text-sm font-bold">
+      <a href="#top" class="hover:text-yellow-300 transition">Home</a>
+      <a href="https://fixoraa.tech" class="hover:text-yellow-300 transition">More Tools</a>
+    </nav>
+  </div>
+  <p class="text-center text-xs text-rose-200/40 pb-6">Play responsibly — dares should always be safe, consensual and fun for everyone.</p>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+</body>
+</html>
