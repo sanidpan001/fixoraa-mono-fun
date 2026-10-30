@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gutter Size Calculator by Roof Area | GutterCalc</title>
+<meta name="description" content="Gutter size calculator: downspouts from roof area, 5 vs 6 inch gutter sizing by rainfall zone, slope, hangers and cleaning schedule.">
+<link rel="canonical" href="https://fun.fixoraa.tech/guttercalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Gutter Size Calculator by Roof Area | GutterCalc">
+<meta property="og:description" content="Gutter size calculator: downspouts from roof area, 5 vs 6 inch gutter sizing by rainfall zone, slope, hangers and cleaning schedule.">
+<meta property="og:url" content="https://fun.fixoraa.tech/guttercalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GutterCalc",
+      "url": "https://fun.fixoraa.tech/guttercalc/",
+      "applicationCategory": "Home Improvement",
+      "operatingSystem": "Web",
+      "description": "Gutter size calculator: downspouts from roof area, 5 vs 6 inch gutter sizing by rainfall zone, slope, hangers and cleaning schedule.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many downspouts does my roof need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One downspout per 600 square feet of roof area (horizontal footprint), rounding up \u2014 601 sq ft needs two. Use 3\u00d74-inch downspouts (good for ~1,200 sq ft each) instead of standard 2\u00d73-inch in heavy rainfall zones. No gutter run should travel more than 40 feet to a downspout."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What size gutters do I need \u2014 5 inch or 6 inch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "5-inch K-style is the standard for most homes in moderate rain. Choose 6-inch for steep roofs, heavy rainfall zones, or long runs \u2014 it carries ~40% more water for only ~20-30% more cost. Half-round suits historic homes but carries less and costs more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much slope should gutters have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1/4 inch of drop per 10 feet of gutter run toward the downspout. More looks visibly tilted; less risks ponding, mosquitoes, and corrosion. Set it with a string line and level \u2014 fascia boards are rarely level themselves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should gutters be cleaned?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At least twice a year \u2014 late spring after seed drop and late fall after leaf drop \u2014 plus after major storms. Homes under pines need quarterly cleaning since needles mat into waterproof felt. Gutter guards reduce but don't eliminate the job."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far apart should gutter hangers be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every 24 inches for K-style gutters with hidden hangers (every 18 inches in snow country). Hidden hangers screwed into the fascia are the modern standard \u2014 stronger and cleaner than old spike-and-ferrule, which loosens as fascia ages."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are signs my gutters are undersized?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Waterfall overflow in normal rain, erosion lines under the eaves, basement dampness below a run, peeling or rotting fascia, and gutters pulling away from the house. Most problem gutters are simply too small with too few downspouts discharging too close to the foundation."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F1F4FC; --surface:#FFFFFF; --accent:#1D4ED8; --accent-ink:#FFFFFF;
+  --ink:#24272E; --muted:#606A76; --line:#D6DFF7;
+  --display:'Barlow Condensed',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.gc-wrap{font-family:Inter,system-ui,sans-serif;background:#F1F4FC;color:#24272E;padding:56px 20px 76px;}.gc-inner{max-width:1000px;margin:0 auto;}.gc-head{text-align:center;margin-bottom:30px;}.gc-logo{width:76px;height:76px;margin:0 auto 16px;border-radius:24px;background:linear-gradient(135deg,#1D4ED8,#5b8def);color:#fff;font-size:36px;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(29,78,216,.25);}.gc-head h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,54px);margin:0 0 8px;letter-spacing:.01em;text-transform:uppercase;}.gc-head p{color:#606A76;margin:0;font-size:16.5px;}.gc-input{background:#FFFFFF;border:1px solid #D6DFF7;border-radius:22px;padding:28px;box-shadow:0 16px 40px rgba(29,78,216,.08);display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px;}.gc-field label{display:block;font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#606A76;margin-bottom:8px;}.gc-field input,.gc-field select{width:100%;padding:13px;font-size:16px;border:2px solid #D6DFF7;border-radius:12px;font-family:inherit;color:#24272E;background:#F1F4FC;box-sizing:border-box;min-height:52px;}.gc-field input:focus,.gc-field select:focus{outline:none;border-color:#1D4ED8;}.gc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:22px;}.gc-card{background:#FFFFFF;border:1px solid #D6DFF7;border-radius:20px;padding:24px;box-shadow:0 14px 34px rgba(29,78,216,.08);position:relative;overflow:hidden;}.gc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#1D4ED8,#5b8def);}.gc-card .gc-v{font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:700;color:#1D4ED8;line-height:1;}.gc-card .gc-l{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:#606A76;font-weight:700;margin-top:8px;}.gc-card .gc-d{font-size:14px;color:#606A76;margin-top:8px;line-height:1.6;}.gc-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}.gc-cmp{background:#FFFFFF;border:1px solid #D6DFF7;border-radius:20px;padding:24px;}.gc-cmp h2{font-family:'Barlow Condensed',sans-serif;font-size:24px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.02em;}.gc-cmp ul{margin:0;padding-left:20px;font-size:14.5px;color:#606A76;line-height:1.9;}.gc-cmp.winner{border:2px solid #1D4ED8;}.gc-badge{display:inline-block;background:#1D4ED8;color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;margin-bottom:10px;letter-spacing:.05em;text-transform:uppercase;}.gc-sched{background:#FFFFFF;border:1px solid #D6DFF7;border-radius:20px;padding:24px;}.gc-sched h2{font-family:'Barlow Condensed',sans-serif;font-size:24px;margin:0 0 10px;text-transform:uppercase;}.gc-sched ul{margin:0;padding-left:20px;font-size:14.5px;color:#606A76;line-height:2;}.gc-sched strong{color:#24272E;}@media (max-width:760px){.gc-input{grid-template-columns:1fr;}.gc-cards{grid-template-columns:1fr;}.gc-compare{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="GutterCalc home">
+      <span class="fx-logo-tile" aria-hidden="true">🌧️</span>
+      <span class="fx-brand">GutterCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-play-cards" aria-label="GutterCalc tool">
+<section class='gc-wrap'><div class='gc-inner'><div class='gc-head'><div class='gc-logo' aria-hidden='true'>🌧️</div><h1>Gutter Size Calculator</h1><p>Right-size your gutters before the next storm.</p></div><div class='gc-input'><div class='gc-field'><label for='gc-roof'>Roof footprint area (sq ft)</label><input id='gc-roof' type='number' min='0' step='50' value='1200' inputmode='numeric'></div><div class='gc-field'><label for='gc-rain'>Rainfall zone</label><select id='gc-rain'><option value='light'>Light — arid, under ~20 in/yr</option><option value='moderate' selected>Moderate — most regions</option><option value='heavy'>Heavy — Gulf Coast, PNW, storm belts</option></select></div></div><div class='gc-cards'><div class='gc-card'><div class='gc-v' id='gc-ds'>–</div><div class='gc-l'>Downspouts needed</div><div class='gc-d' id='gc-dsd'>One per 600 sq ft of roof, rounded up.</div></div><div class='gc-card'><div class='gc-v' id='gc-gutter'>–</div><div class='gc-l'>Gutter size</div><div class='gc-d' id='gc-gutterd'></div></div><div class='gc-card'><div class='gc-v'>1/4&Prime;</div><div class='gc-l'>Slope per 10 ft</div><div class='gc-d'>Toward the downspout. Hangers every 24 in (18 in snow country).</div></div></div><div class='gc-compare'><div class='gc-cmp' id='gc-k'><span class='gc-badge' id='gc-kbadge' style='display:none'>Recommended</span><h2>K-style</h2><ul><li>Standard residential profile</li><li>Highest capacity per inch</li><li>Hidden hangers, clean look</li><li>Lower cost, widely available</li></ul></div><div class='gc-cmp' id='gc-hr'><span class='gc-badge' id='gc-hrbadge' style='display:none'>Recommended</span><h2>Half-round</h2><ul><li>Traditional, historic homes</li><li>Smooth shape sheds debris</li><li>Lower capacity per inch</li><li>Premium cost, distinctive look</li></ul></div></div><div class='gc-sched'><h2>Cleaning schedule</h2><ul><li><strong>Twice yearly:</strong> late spring (seed drop) + late fall (leaf drop)</li><li><strong>After major storms:</strong> check for branches and shingle grit</li><li><strong>Pine overhead?</strong> clean quarterly — needles mat into felt</li><li><strong>Each cleaning:</strong> resecure hangers, reseal joints, confirm slope &amp; extensions</li></ul></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Gutters Actually Have to Handle</h2><p>A gutter system has one job: move roof runoff away from the house before it can damage anything. The scale of that job surprises most homeowners. One inch of rain falling on 1,000 square feet of roof produces about 623 gallons of water — roughly the volume of a hot tub — and a 2,000-square-foot roof in a heavy storm sheds over a thousand gallons in an hour. Undersized gutters do not just overflow decoratively; they dump concentrated streams at the foundation, erode soil, flood basements, and rot fascia boards. Sizing correctly starts with two numbers: your roof's drainage area and your rainfall zone.</p><p>The calculator above turns roof square footage into a downspout count using the industry rule of thumb — <strong>one downspout per 600 square feet of roof</strong> — then layers on gutter sizing, hanger spacing, and slope guidance. It is planning math, not a substitute for a professional assessment on complex roofs, but it puts you in the right range before anyone climbs a ladder.</p><h2>Roof Area: Measure What the Gutter Sees</h2><p>Gutter sizing uses the <strong>horizontal projection</strong> of the roof — the footprint area, not the sloped surface area. A 40 × 30 foot house has 1,200 square feet of roof for gutter purposes regardless of pitch. (Steeper roofs shed water faster, which matters for gutter <em>capacity</em>, but the drainage-area math starts with the footprint.)</p><p>For each gutter run, use the roof area draining <em>into that run</em>. A simple gable house splits its roof into two runs; a hip roof may need four. Measure each section's footprint length × width, assign it to its gutter, and size each run independently. Valleys concentrate flow — a long valley dumping into a short gutter section is the classic overflow point, and deserves an extra downspout even when the raw area math says one is enough.</p><h2>Downspouts: The 600-Square-Foot Rule</h2><p>One standard 2×3-inch downspout drains about 600 square feet of roof in moderate rainfall; a 3×4-inch downspout handles roughly 1,200. The tool applies the 600 rule and rounds up — 601 square feet needs two downspouts, because gutters fail at the margins. Placement matters as much as count:</p><ul><li><strong>Maximum run:</strong> no gutter section should run more than 40 feet to a single downspout. Long runs need a downspout at each end or one in the middle.</li><li><strong>Valleys:</strong> put a downspout near every major valley — concentrated flow overwhelms the 600 rule.</li><li><strong>Corners:</strong> downspouts at inside corners handle converging flows.</li><li><strong>Discharge:</strong> every downspout should empty at least 4–6 feet from the foundation via extensions or underground drains. A downspout dumping at the foundation defeats the entire system.</li></ul><h2>Gutter Sizing: 5-Inch vs 6-Inch</h2><table><thead><tr><th></th><th>5-inch K-style</th><th>6-inch K-style</th><th>Half-round</th></tr></thead><tbody><tr><td>Capacity</td><td>Baseline</td><td>~40% more</td><td>~20% less than K-style</td></tr><tr><td>Best for</td><td>Most homes, moderate rain</td><td>Steep roofs, heavy rain, long runs</td><td>Historic homes, aesthetics</td></tr><tr><td>Downspouts</td><td>2×3 in</td><td>3×4 in</td><td>Round, 3–4 in</td></tr><tr><td>Debris handling</td><td>Good</td><td>Better (wider)</td><td>Self-cleaning shape</td></tr><tr><td>Cost</td><td>Baseline</td><td>~20–30% more</td><td>Premium</td></tr></tbody></table><p><strong>5-inch K-style</strong> is the residential standard and suffices for most homes in moderate rainfall zones. Step up to <strong>6-inch</strong> when your roof is steep (water arrives faster), your rainfall zone is heavy, or runs are long — the 40 percent capacity bump is cheap insurance. <strong>Half-round</strong> gutters are the traditional choice for historic and high-end homes: their smooth curved profile sheds debris better and looks right on period architecture, but they carry less water per inch and cost more.</p><h3>Rainfall zones</h3><p>The tool's rainfall selector adjusts recommendations: <strong>light</strong> (arid regions, under ~20 in/year) can use 5-inch with standard spacing; <strong>moderate</strong> (most of the US) is the baseline; <strong>heavy</strong> (Gulf Coast, Pacific Northwest, hurricane zones) pushes toward 6-inch gutters and 3×4-inch downspouts. If your area gets intense cloudbursts rather than steady rain, size for intensity, not annual totals — gutters fail during the worst hour, not the average year.</p><h2>Slope: The Quarter-Inch Rule</h2><p>Gutters must slope toward downspouts — standing water breeds mosquitoes, adds weight, and corrodes. The standard is <strong>1/4 inch of drop per 10 feet of run</strong> (about 1/16 inch per foot). More slope drains faster but looks visibly tilted; less slope risks ponding. On a 40-foot run to a center downspout, the gutter sits 1/2 inch higher at each end than the middle.</p><p>Set slope with a string line and a level, not by eye — fascia boards are rarely level themselves. After installation, test with a hose: water should flow steadily to the downspout with no lingering puddles.</p><h2>Hangers: What Holds It All Up</h2><p>A gutter full of water and debris is shockingly heavy — a 5-inch gutter holds about a gallon per 4 feet, over 8 pounds, plus ice loads in winter. Hanger spacing:</p><ul><li><strong>K-style with hidden hangers:</strong> every 24 inches (every 18 in snow country)</li><li><strong>Half-round with brackets:</strong> every 24–36 inches depending on profile</li><li><strong>Spike-and-ferrule (older):</strong> every 24 inches, but consider upgrading — spikes loosen as fascia ages</li></ul><p>Hidden hangers screwed into the fascia (not just the drip edge) are the modern standard — stronger, cleaner-looking, and they do not work loose like spikes. In snow country, add snow guards above gutters or accept that sliding snow will test every hanger you own.</p><h2>The Cleaning Schedule</h2><p>Clogged gutters are failed gutters. The baseline schedule:</p><ul><li><strong>Twice yearly:</strong> late spring (after seed drop) and late fall (after leaf drop) — the non-negotiable minimum.</li><li><strong>After major storms:</strong> wind loads gutters with branches and shingle grit.</li><li><strong>Pine needles:</strong> if you have pines overhead, quarterly — needles mat into waterproof felt.</li><li><strong>Gutter guards:</strong> reduce but do not eliminate cleaning; guards themselves need brushing off once a year.</li></ul><p>While cleaning, check the system: resecure loose hangers, reseal leaking joints with gutter sealant, confirm downspout extensions are attached, and verify slope has not sagged. Ten minutes of inspection during each cleaning prevents most gutter failures.</p><h2>Warning Signs Your Gutters Are Undersized</h2><ul><li><strong>Waterfall overflow</strong> during normal rain — the classic capacity failure.</li><li><strong>Erosion lines or mulch displacement</strong> under the eaves — water is overshooting.</li><li><strong>Basement dampness</strong> on the wall below a gutter run — downspouts discharging too close.</li><li><strong>Peeling fascia paint or rot</strong> — water trapped behind the gutter.</li><li><strong>Gutters pulling away</strong> — hangers overloaded, often from chronic overfilling plus debris weight.</li></ul><p>Any of these means the system is not keeping up. Recheck the sizing math above — most problem gutters are simply too small for their roof, with too few downspouts, discharging too close to the house. Fix the sizing and most symptoms resolve together.</p><h2>Gutter Guards: Do They Work?</h2><p>Gutter guards — mesh, screen, or solid covers — keep large debris out of the trough, which cuts cleaning frequency dramatically. They work best against leaves; they work worst against pine needles and maple seeds, which wedge into mesh and create a maintenance problem of their own. Guards do not eliminate cleaning: the guards themselves need brushing off once a year, and fine grit still accumulates inside over time.</p><p>The math: professionally installed micromesh guards run $7–$12 per linear foot — over $1,000 for an average home — against $150–$300 per professional cleaning twice a year. Guards pay back in 2–4 years if you were paying for cleanings, faster if your roof sheds heavily. For DIYers comfortable on a ladder, snap-in screens at $1–$3 per foot are a cheap experiment. One caution: in heavy snow country, solid-surface guards can encourage ice dams by giving meltwater a shelf to refreeze on.</p><h2>DIY vs Hiring a Pro</h2><p>Replacing a short, single-story gutter run is a reasonable DIY project: sectional vinyl or aluminum from a home center, hidden hangers every 24 inches, 1/4-inch-per-10-feet slope, and sealant at the joints. Go pro when the roof is two stories (fall risk), runs exceed 40 feet (seamless gutters need a forming machine), fascia is rotted (it must be replaced first), or the sizing math says 6-inch — pros stock it, home centers often do not. Get three quotes, ask each bidder what size they recommend and why, and be wary of anyone who sizes by eye without asking your roof area.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many downspouts does my roof need?</summary><p>One downspout per 600 square feet of roof area (horizontal footprint), rounding up — 601 sq ft needs two. Use 3×4-inch downspouts (good for ~1,200 sq ft each) instead of standard 2×3-inch in heavy rainfall zones. No gutter run should travel more than 40 feet to a downspout.</p></details>
+<details><summary>What size gutters do I need — 5 inch or 6 inch?</summary><p>5-inch K-style is the standard for most homes in moderate rain. Choose 6-inch for steep roofs, heavy rainfall zones, or long runs — it carries ~40% more water for only ~20-30% more cost. Half-round suits historic homes but carries less and costs more.</p></details>
+<details><summary>How much slope should gutters have?</summary><p>1/4 inch of drop per 10 feet of gutter run toward the downspout. More looks visibly tilted; less risks ponding, mosquitoes, and corrosion. Set it with a string line and level — fascia boards are rarely level themselves.</p></details>
+<details><summary>How often should gutters be cleaned?</summary><p>At least twice a year — late spring after seed drop and late fall after leaf drop — plus after major storms. Homes under pines need quarterly cleaning since needles mat into waterproof felt. Gutter guards reduce but don't eliminate the job.</p></details>
+<details><summary>How far apart should gutter hangers be?</summary><p>Every 24 inches for K-style gutters with hidden hangers (every 18 inches in snow country). Hidden hangers screwed into the fascia are the modern standard — stronger and cleaner than old spike-and-ferrule, which loosens as fascia ages.</p></details>
+<details><summary>What are signs my gutters are undersized?</summary><p>Waterfall overflow in normal rain, erosion lines under the eaves, basement dampness below a run, peeling or rotting fascia, and gutters pulling away from the house. Most problem gutters are simply too small with too few downspouts discharging too close to the foundation.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">GutterCalc</div>
+    <p>GutterCalc sizes gutters and downspouts from your roof area and rainfall zone, with slope and hanger guidance.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function downspouts(roofSqft){var s=Number(roofSqft);if(!(s>0))return 0;return Math.ceil(s/600);}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){function el(id){return document.getElementById(id);}function render(){var roof=el('gc-roof'),rain=el('gc-rain');if(!roof||!rain)return;var sqft=Number(roof.value);var n=sqft>0?downspouts(sqft):0;el('gc-ds').textContent=sqft>0?n:'–';var zone=rain.value;var size,detail;if(zone==='heavy'||sqft>2000){size='6 in';detail='Heavy rain or large roof — ~40% more capacity. Pair with 3×4 in downspouts.';}else{size='5 in';detail='Standard K-style handles this roof in moderate rain. 2×3 in downspouts.';}el('gc-gutter').textContent=size;el('gc-gutterd').textContent=detail;var kB=el('gc-kbadge'),hB=el('gc-hrbadge'),kC=el('gc-k'),hC=el('gc-hr');var kWin=zone!=='heavy'||true;kC.classList.toggle('winner',true);kB.style.display='inline-block';hC.classList.remove('winner');hB.style.display='none';var dsd=el('gc-dsd');if(dsd)dsd.textContent=n?('One per 600 sq ft — place near valleys, keep runs under 40 ft per downspout, discharge 4–6 ft from foundation.'):'Enter your roof area.';}var r=el('gc-roof');if(r)r.addEventListener('input',render);var z=el('gc-rain');if(z)z.addEventListener('change',render);render();});}
+</script>
+</body>
+</html>
