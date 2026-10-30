@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golf Handicap Calculator: Index + Course Handicap</title>
+<meta name="description" content="Calculate your golf handicap index from score differentials, and get your course handicap for any slope, rating and par. Free WHS-style calculator.">
+<link rel="canonical" href="https://fun.fixoraa.tech/golfhandi/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Golf Handicap Calculator: Index + Course Handicap">
+<meta property="og:description" content="Calculate your golf handicap index from score differentials, and get your course handicap for any slope, rating and par. Free WHS-style calculator.">
+<meta property="og:url" content="https://fun.fixoraa.tech/golfhandi/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GolfHandi",
+      "url": "https://fun.fixoraa.tech/golfhandi/",
+      "applicationCategory": "Fun & Lifestyle",
+      "operatingSystem": "Web",
+      "description": "Calculate your golf handicap index from score differentials, and get your course handicap for any slope, rating and par. Free WHS-style calculator.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a good golf handicap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A scratch golfer (0) is elite; single digits (1\u20139) put you in roughly the top 10% of players; 10\u201319 is a solid club golfer; around 18\u201320 is the classic 'bogey golfer' average. Anything under 18 means you're already better than most golfers worldwide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a score differential calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Differential = (adjusted gross score \u2212 course rating) \u00d7 113 \u00f7 slope rating. Example: shooting 90 on a course rated 71.5 with slope 128 gives (90 \u2212 71.5) \u00d7 113 \u00f7 128 = 16.3. Use the rating and slope for the tees you actually played, printed on the scorecard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is slope rating?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Slope rating (55\u2013155, with 113 as standard) measures how much harder a course plays for a bogey golfer versus a scratch golfer. Higher slope = tougher for average players. It's set by official course raters and printed on the scorecard \u2014 never guess it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between handicap index and course handicap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your handicap index is portable \u2014 one number representing your ability anywhere. Your course handicap converts that index into strokes for the specific course, tees, and par you're playing today: index \u00d7 (slope \u00f7 113) + (rating \u2212 par), rounded to a whole number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many scores do I need for a handicap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The full WHS issues an index once you have 3 scores (using the best 1), becoming more reliable as you add rounds up to 20. GolfHandi computes from whatever you've logged \u2014 averaging your lowest 8 differentials, or all of them if you have fewer than 8."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can my golf handicap go up?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 that's the system working correctly. Your index reflects recent demonstrated ability, so a run of poor scores raises it (WHS applies soft and hard caps to limit extreme jumps). Post every round honestly; a handicap that moves both ways is an honest one."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --accent:#1E3A5F; --accent-ink:#FFFFFF;
+  --ink:#17222E; --muted:#54657A; --line:#DCE3EC;
+  --display:'Chivo',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.gh-wrap{font-family:'Chivo',Inter,system-ui,sans-serif;background:#F5F7FA;color:#17222E;padding:56px 20px 72px;}.gh-hero{max-width:800px;margin:0 auto 36px;text-align:center;}.gh-logo{width:76px;height:76px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,#1E3A5F,#3f6ea3);color:#fff;font-size:38px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(30,58,95,.25);}.gh-hero h1{font-size:clamp(32px,5vw,52px);line-height:1.08;margin:0 0 14px;letter-spacing:-0.02em;font-weight:800;}.gh-tag{font-size:18px;color:#54657A;margin:0;}.gh-card{max-width:800px;margin:0 auto;background:#FFFFFF;border:1px solid #DCE3EC;border-radius:28px;padding:40px;box-shadow:0 24px 60px rgba(30,58,95,.10);}.gh-sec-title{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#1E3A5F;margin:0 0 6px;}.gh-index-row{display:flex;align-items:center;gap:18px;margin:10px 0 20px;flex-wrap:wrap;}.gh-index{font-size:64px;font-weight:800;letter-spacing:-0.03em;color:#1E3A5F;line-height:1;min-width:130px;}.gh-trend{font-size:15px;font-weight:700;border-radius:99px;padding:8px 18px;background:#F5F7FA;border:1px solid #DCE3EC;color:#54657A;}.gh-trend.up{color:#2E7D5B;border-color:#2E7D5B;background:#EAF4EA;}.gh-trend.down{color:#B91C1C;border-color:#B91C1C;background:#FBE9E9;}.gh-form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;}.gh-field label{display:block;font-size:12.5px;font-weight:700;color:#54657A;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;}.gh-field input{width:100%;box-sizing:border-box;padding:13px 12px;font-size:16.5px;border:2px solid #DCE3EC;border-radius:12px;font-family:inherit;color:#17222E;min-height:52px;}.gh-field input:focus{outline:none;border-color:#1E3A5F;box-shadow:0 0 0 3px rgba(30,58,95,.14);}.gh-btn{background:#1E3A5F;color:#FFFFFF;border:none;border-radius:14px;padding:13px 26px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;min-height:52px;}.gh-btn:hover{filter:brightness(1.12);}.gh-hist{margin-top:18px;border-top:1px solid #DCE3EC;}.gh-round{display:flex;align-items:center;gap:12px;padding:11px 2px;border-bottom:1px solid #EDF1F6;font-size:15px;}.gh-round .dt{color:#54657A;min-width:86px;font-size:13.5px;}.gh-round .sc{font-weight:800;min-width:70px;}.gh-round .df{margin-left:auto;font-weight:800;color:#1E3A5F;background:#EDF3FA;border-radius:8px;padding:4px 12px;}.gh-round .rm{border:none;background:none;color:#B91C1C;font-size:17px;cursor:pointer;padding:8px;min-width:44px;min-height:44px;}.gh-empty{color:#54657A;text-align:center;padding:22px 8px;font-size:15px;line-height:1.6;}.gh-divider{height:1px;background:#DCE3EC;margin:30px 0;}.gh-ch-form{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}.gh-ch-result{text-align:center;background:#F5F7FA;border:1px dashed #1E3A5F;border-radius:18px;padding:22px;margin-top:6px;}.gh-ch-result .n{font-size:56px;font-weight:800;color:#1E3A5F;line-height:1;}.gh-ch-result .l{font-size:14px;color:#54657A;margin-top:6px;}.gh-note{margin:20px 0 0;font-size:13px;color:#54657A;line-height:1.65;}@media (max-width:620px){.gh-card{padding:26px 18px;border-radius:22px;}.gh-form{grid-template-columns:1fr 1fr;}.gh-ch-form{grid-template-columns:1fr 1fr;}.gh-index{font-size:52px;}.gh-btn{width:100%;}.gh-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="GolfHandi home">
+      <span class="fx-logo-tile" aria-hidden="true">⛳</span>
+      <span class="fx-brand">GolfHandi</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-hero-card" aria-label="GolfHandi tool">
+<section class='gh-wrap'><div class='gh-hero'><div class='gh-logo' aria-hidden='true'>⛳</div><h1>Golf Handicap Calculator</h1><p class='gh-tag'>Differentials in, handicap out — plus your strokes for any course.</p></div><div class='gh-card'><p class='gh-sec-title'>Your handicap index</p><div class='gh-index-row'><div class='gh-index' id='gh-index'>–</div><div class='gh-trend' id='gh-trend'>Log rounds to begin</div></div><div class='gh-form'><div class='gh-field'><label for='gh-score'>Score</label><input id='gh-score' type='number' min='50' max='150' placeholder='e.g. 92' inputmode='numeric'></div><div class='gh-field'><label for='gh-rating'>Course rating</label><input id='gh-rating' type='number' min='60' max='80' step='0.1' placeholder='e.g. 71.5' inputmode='decimal'></div><div class='gh-field'><label for='gh-slope'>Slope</label><input id='gh-slope' type='number' min='55' max='155' placeholder='e.g. 128' inputmode='numeric'></div></div><button class='gh-btn' id='gh-add'>Add round</button><div class='gh-hist' id='gh-hist'></div><div class='gh-divider'></div><p class='gh-sec-title'>Course handicap calculator</p><div class='gh-ch-form'><div class='gh-field'><label for='gh-ch-index'>Handicap index</label><input id='gh-ch-index' type='number' step='0.1' placeholder='e.g. 10.9' inputmode='decimal'></div><div class='gh-field'><label for='gh-ch-slope'>Slope</label><input id='gh-ch-slope' type='number' min='55' max='155' placeholder='130' inputmode='numeric'></div><div class='gh-field'><label for='gh-ch-rating'>Course rating</label><input id='gh-ch-rating' type='number' step='0.1' placeholder='72' inputmode='decimal'></div><div class='gh-field'><label for='gh-ch-par'>Par</label><input id='gh-ch-par' type='number' min='60' max='80' placeholder='72' inputmode='numeric'></div></div><div class='gh-ch-result'><div class='n' id='gh-ch-out'>–</div><div class='l'>strokes for this course</div></div><p class='gh-note'>Index = average of your lowest 8 score differentials (or all, if fewer than 8 rounds logged). Differential = (score − course rating) × 113 ÷ slope. Simplified WHS-style method for casual tracking — official handicaps need 20 rounds via your golf association.</p></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Is a Golf Handicap?</h2><p>A golf handicap is the great equaliser of the sport — the system that lets a 25-handicapper compete fairly against a scratch golfer. It represents your demonstrated playing ability as a number: the lower the handicap, the better the player. A <strong>scratch golfer</strong> (handicap 0) is expected to shoot par; a <strong>bogey golfer</strong> (handicap around 18–20) typically shoots about one over par per hole.</p><p>Before 2020, six different handicap systems operated around the world, which made international competition a mess. The <strong>World Handicap System (WHS)</strong>, administered by the USGA and The R&A, unified them into one global method. GolfHandi follows WHS logic: score differentials in, handicap index out, course handicap for the day's course.</p><h2>Score Differentials: The Core Calculation</h2><p>Raw scores cannot be compared across courses — an 85 on a brutal championship layout is far better golf than an 85 on an easy par-3 course. The <strong>score differential</strong> normalises your score against the difficulty of the course you played:</p><p><strong>Differential = (Adjusted score − Course Rating) × 113 ÷ Slope Rating</strong></p><p>For example, shooting 90 on a course rated 71.5 with a slope of 128: (90 − 71.5) × 113 ÷ 128 = 18.5 × 113 ÷ 128 = <strong>16.3</strong>. That single number — 16.3 — captures how well you played far better than the raw 90 does. Enter each round's score, course rating, and slope into the tool above and it computes the differential automatically.</p><table><thead><tr><th>Score</th><th>Course rating</th><th>Slope</th><th>Differential</th></tr></thead><tbody><tr><td>90</td><td>71.5</td><td>128</td><td>16.3</td></tr><tr><td>82</td><td>70.1</td><td>125</td><td>10.8</td></tr><tr><td>95</td><td>68.9</td><td>115</td><td>25.6</td></tr></tbody></table><p>Two details matter. First, WHS uses your <strong>adjusted gross score</strong> — per-hole scores are capped at net double bogey (double bogey plus any handicap strokes you receive on the hole), so one disaster hole cannot distort your handicap. Second, always use the rating and slope for <strong>the tees you actually played</strong>, printed on the scorecard — not the championship tees.</p><h2>From Differentials to Handicap Index</h2><p>Your <strong>handicap index</strong> is derived from your differentials, not your raw scores. The full WHS method takes your most recent 20 differentials and averages the lowest 8 (with small adjustments for exceptional scores), producing an index that reflects your <em>demonstrated</em> ability — essentially your good golf, not your average golf. With fewer than 20 scores, the system uses a sliding scale of how many differentials count.</p><p>GolfHandi uses a streamlined version of this logic: it averages your <strong>lowest 8 differentials</strong> (or all of them if you have logged fewer than 8). Log at least a handful of rounds and the index it shows is a faithful, easy-to-understand estimate of your WHS index. The more rounds you log, the more stable and meaningful the number becomes.</p><h2>Course Handicap: Your Strokes for the Day</h2><p>The handicap index is portable; the <strong>course handicap</strong> translates it into strokes for the specific course and tees you are playing today:</p><p><strong>Course Handicap = Handicap Index × (Slope Rating ÷ 113) + (Course Rating − Par)</strong></p><p>Example: a 10.9 index playing a course with slope 130, rating 72, par 72: 10.9 × 130 ÷ 113 + 0 = 12.54, which rounds to a <strong>course handicap of 13</strong>. Those 13 strokes are then allocated to the 13 hardest holes (per the scorecard's stroke index), one stroke each. The calculator in the tool above does this instantly — just enter the day's slope, rating, and par.</p><h2>Understanding Slope and Course Rating</h2><ul><li><strong>Course Rating</strong> (e.g. 71.5) is the expected score of a scratch golfer on that course — the difficulty baseline. Higher means harder.</li><li><strong>Slope Rating</strong> (55–155, with 113 as the standard 'neutral' course) measures how much harder the course plays for a bogey golfer than a scratch golfer. A slope of 140+ is seriously demanding; under 115 is gentle.</li><li>Both numbers are set by official course-rating teams and printed on every legitimate scorecard — never guess them.</li></ul><h2>What Is a Good Handicap?</h2><table><thead><tr><th>Handicap</th><th>What it means</th><th>Rough percentile</th></tr></thead><tbody><tr><td>+2 to 0</td><td>Plus/scratch — elite amateur</td><td>Top 1–2%</td></tr><tr><td>1–9</td><td>Single digits — strong player</td><td>Top ~10%</td></tr><tr><td>10–19</td><td>Solid club golfer</td><td>Top ~35%</td></tr><tr><td>20–28</td><td>Bogey golfer — the average</td><td>Middle of the pack</td></tr><tr><td>29–54</td><td>Developing player</td><td>Learning the game</td></tr></tbody></table><p>The average male handicap worldwide sits around 16–20; the average female handicap around 26–30. If you are under 18, you are already better than most golfers on the planet. And remember: handicaps measure potential on a good day, so beating your handicap occasionally is the system working, not a miracle.</p><h2>Seven Ways to Lower Your Handicap</h2><ul><li><strong>Fix the big miss, not the swing:</strong> most strokes are lost to penalties and three-putts, not imperfect technique. Eliminate penalty shots first.</li><li><strong>Wedges inside 100 yards:</strong> the fastest scoring gains come from dialling in partial wedge distances — know your carry numbers for 3–4 wedges.</li><li><strong>Lag putting:</strong> two-putt everything outside 10 feet and you will save 3–4 shots a round immediately.</li><li><strong>Course management:</strong> aim at the fat part of greens, take your medicine from trouble, and stop firing at tucked pins.</li><li><strong>Play more, practise less (or practise smarter):</strong> one focused hour on short game beats three hours of driver range balls.</li><li><strong>Track your stats:</strong> fairways, greens in regulation, putts, up-and-down percentage. Your handicap tells you <em>what</em>; stats tell you <em>why</em>.</li><li><strong>Get fitted:</strong> ill-fitting clubs cost mid-handicappers several shots; a basic fitting is cheaper than a new driver you do not need.</li></ul><h2>Handicap Etiquette</h2><p>Post <strong>every</strong> acceptable round — the good, the bad, and the ugly. Selectively posting only good scores ('sandbagging' in reverse, or vanity handicapping) corrupts the system and is immediately obvious to anyone who plays with you regularly. Equally, deliberately inflating a handicap to win competitions is cheating, plain and simple, and golf clubs take it seriously. The handicap system runs on honour; it is one of the few places in sport where your integrity <em>is</em> the equipment. Log your rounds honestly in the history above, watch the trend line, and enjoy the fairest competition format ever devised.</p><h2>9-Hole Rounds Count Too</h2><p>Short on time? The WHS accepts 9-hole scores, and they carry full weight toward your index. A single 9-hole round is scaled to an 18-hole differential using your expected score for the unplayed nine, and two 9-hole rounds can be combined into one 18-hole differential. Many golfers build their first index entirely from after-work nines — and because the system treats them exactly like full rounds, there is no reason to leave them unposted. Just make sure the 9-hole course rating and slope (printed on the scorecard for the front or back nine) are used, not the 18-hole numbers.</p><h2>Soft Caps and Hard Caps: Why Indexes Move Slowly Upward</h2><p>If handicaps only ever fell, every slump would be punished instantly — so the WHS applies <strong>caps</strong> to upward movement. Once your index rises more than 3.0 above your lowest index of the past year, the <strong>soft cap</strong> suppresses further increases by 50%; if it would rise more than 5.0, the <strong>hard cap</strong> stops it there. These caps exist because a sudden 6-shot jump usually reflects injury, equipment change, or a bad month — not a true collapse in ability. They also quietly fight sandbagging: you cannot inflate your way to extra strokes quickly. GolfHandi's simplified average does not apply caps, which is one more reason it is a tracker rather than an official number — but for watching your trend, the uncapped line is actually more informative.</p><h2>Reading your trend: improving or sliding?</h2><p>Your last twenty differentials tell a story. If your most recent five are all lower than your oldest five, your game is trending better and your index will keep falling as old high scores drop off. If the reverse is true, something has slipped — often it is short putting or penalty strokes, the two fastest ways to inflate differentials. GolfHandi's history view marks your trend so you can see it at a glance. The practical response to a rising trend is not swing overhauls but damage control: aim away from trouble, take your medicine from bad lies, and remember that a bogey never ruined a differential the way a triple does. Handicaps reward the player who avoids big numbers more than the player who occasionally makes birdies.</p><h2>Soft cap and hard cap: the anti-sandbagging brakes</h2><p>The WHS has built-in brakes against sudden index inflation. If your new index would rise more than 3.0 above your 12-month low, a soft cap slows the rise by 50% beyond that point; beyond 5.0, a hard cap stops it entirely. These caps only restrict upward movement — your index can always fall as fast as your play improves. For honest golfers the caps are invisible; they exist to catch manipulation. It is another reason to post every score: a complete record keeps your low index anchored and the caps irrelevant.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is a good golf handicap?</summary><p>A scratch golfer (0) is elite; single digits (1–9) put you in roughly the top 10% of players; 10–19 is a solid club golfer; around 18–20 is the classic 'bogey golfer' average. Anything under 18 means you're already better than most golfers worldwide.</p></details>
+<details><summary>How is a score differential calculated?</summary><p>Differential = (adjusted gross score − course rating) × 113 ÷ slope rating. Example: shooting 90 on a course rated 71.5 with slope 128 gives (90 − 71.5) × 113 ÷ 128 = 16.3. Use the rating and slope for the tees you actually played, printed on the scorecard.</p></details>
+<details><summary>What is slope rating?</summary><p>Slope rating (55–155, with 113 as standard) measures how much harder a course plays for a bogey golfer versus a scratch golfer. Higher slope = tougher for average players. It's set by official course raters and printed on the scorecard — never guess it.</p></details>
+<details><summary>What is the difference between handicap index and course handicap?</summary><p>Your handicap index is portable — one number representing your ability anywhere. Your course handicap converts that index into strokes for the specific course, tees, and par you're playing today: index × (slope ÷ 113) + (rating − par), rounded to a whole number.</p></details>
+<details><summary>How many scores do I need for a handicap?</summary><p>The full WHS issues an index once you have 3 scores (using the best 1), becoming more reliable as you add rounds up to 20. GolfHandi computes from whatever you've logged — averaging your lowest 8 differentials, or all of them if you have fewer than 8.</p></details>
+<details><summary>Can my golf handicap go up?</summary><p>Yes — that's the system working correctly. Your index reflects recent demonstrated ability, so a run of poor scores raises it (WHS applies soft and hard caps to limit extreme jumps). Post every round honestly; a handicap that moves both ways is an honest one.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">GolfHandi</div>
+    <p>GolfHandi calculates your WHS-style handicap index from score differentials and your course handicap for any course.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function handicapIndex(diffs){var a=(diffs||[]).filter(function(x){return typeof x==='number'&&isFinite(x);});if(!a.length)return null;a.sort(function(x,y){return x-y;});var use=a.slice(0,8);var sum=0;for(var i=0;i<use.length;i++)sum+=use[i];return Math.round(sum/use.length*1000)/1000;}
+function diffFromScore(score,rating,slope){var s=parseFloat(score),r=parseFloat(rating),sl=parseFloat(slope);if(!(s>0&&r>0&&sl>0))return null;return Math.round((s-r)*113/sl*10)/10;}
+function courseHandicap(index,slope,rating,par){var i=parseFloat(index),sl=parseFloat(slope),r=parseFloat(rating),p=parseFloat(par);if(!isFinite(i)||!(sl>0)||!isFinite(r)||!isFinite(p))return null;return Math.round(i*sl/113+(r-p));}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var KEY='golfhandi.rounds.v1';function load(){try{var r=localStorage.getItem(KEY);var a=r?JSON.parse(r):[];return Array.isArray(a)?a:[];}catch(e){return [];}}function save(a){try{localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}}var idxEl=document.getElementById('gh-index'),trendEl=document.getElementById('gh-trend'),histEl=document.getElementById('gh-hist');function render(){var rounds=load();var diffs=rounds.map(function(r){return r.diff;});var idx=handicapIndex(diffs);idxEl.textContent=idx==null?'–':idx;var chIdx=document.getElementById('gh-ch-index');if(idx!=null&&!chIdx.value)chIdx.placeholder=String(idx);if(rounds.length>=2){var first=handicapIndex(diffs.slice(0,Math.ceil(diffs.length/2)));var second=handicapIndex(diffs.slice(Math.floor(diffs.length/2)));if(first!=null&&second!=null){var d=second-first;trendEl.className='gh-trend '+(d<-0.05?'up':(d>0.05?'down':''));trendEl.textContent=d<-0.05?'↓ Improving':(d>0.05?'↑ Drifting up':'→ Holding steady');}else{trendEl.className='gh-trend';trendEl.textContent=rounds.length+' rounds logged';}}else{trendEl.className='gh-trend';trendEl.textContent=rounds.length?rounds.length+' round logged':'Log rounds to begin';}histEl.innerHTML='';if(!rounds.length){histEl.innerHTML='<p class="gh-empty">No rounds yet. Add your first round above — score, course rating, and slope are on the scorecard.</p>';return;}rounds.slice().reverse().forEach(function(r){var div=document.createElement('div');div.className='gh-round';var dt=new Date(r.ts);var ds=dt.toLocaleDateString(undefined,{month:'short',day:'numeric'});div.innerHTML='<span class="dt">'+ds+'</span><span class="sc">'+r.score+'</span><span>('+r.rating+' / '+r.slope+')</span><span class="df">'+r.diff+'</span>';var x=document.createElement('button');x.className='rm';x.textContent='✕';x.setAttribute('aria-label','Delete round');x.addEventListener('click',function(){var all=load();var ni=all.indexOf(r);if(ni>=0)all.splice(ni,1);save(all);render();});div.appendChild(x);histEl.appendChild(div);});}function renderCH(){var i=document.getElementById('gh-ch-index').value,sl=document.getElementById('gh-ch-slope').value,r=document.getElementById('gh-ch-rating').value,p=document.getElementById('gh-ch-par').value;var out=document.getElementById('gh-ch-out');if(i===''||sl===''||r===''||p===''){out.textContent='–';return;}var ch=courseHandicap(i,sl,r,p);out.textContent=ch==null?'–':ch;}document.getElementById('gh-add').addEventListener('click',function(){var s=document.getElementById('gh-score').value,r=document.getElementById('gh-rating').value,sl=document.getElementById('gh-slope').value;var d=diffFromScore(s,r,sl);if(d==null)return;var rounds=load();rounds.push({score:parseFloat(s),rating:parseFloat(r),slope:parseFloat(sl),diff:d,ts:Date.now()});save(rounds);document.getElementById('gh-score').value='';render();});['gh-ch-index','gh-ch-slope','gh-ch-rating','gh-ch-par'].forEach(function(id){document.getElementById(id).addEventListener('input',renderCH);});render();renderCH();});}
+</script>
+</body>
+</html>
