@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lightning Distance Calculator: How Far Away Is the Storm?</title>
+<meta name="description" content="Calculate storm distance from flash-to-thunder seconds, in kilometres or miles, with safety guidance.">
+<link rel="canonical" href="https://fun.fixoraa.tech/thunderdist/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Lightning Distance Calculator: How Far Away Is the Storm?">
+<meta property="og:description" content="Calculate storm distance from flash-to-thunder seconds, in kilometres or miles, with safety guidance.">
+<meta property="og:url" content="https://fun.fixoraa.tech/thunderdist/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ThunderDist",
+      "url": "https://fun.fixoraa.tech/thunderdist/",
+      "applicationCategory": "Science",
+      "operatingSystem": "Web",
+      "description": "Calculate storm distance from flash-to-thunder seconds, in kilometres or miles, with safety guidance.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate lightning distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Count the seconds between the flash and the thunder, then multiply by 0.343 for kilometres (or divide by 5 for miles). Five seconds means about 1.7 km."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 3 seconds between flash and thunder mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The lightning was about 1.0 km away. That is very close: seek shelter indoors immediately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is there a delay between lightning and thunder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Light travels almost instantly, but sound travels at about 343 metres per second. The delay is the time sound takes to travel from the strike to you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 30-30 rule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If flash-to-thunder is 30 seconds or less (about 10 km), shelter immediately. Wait 30 minutes after the last thunder before resuming outdoor activity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can lightning strike if I cannot hear thunder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Lightning can strike up to 15 km from a storm centre, beyond the rain and beyond audible thunder. Seeing lightning is enough reason to shelter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a car safe during a lightning storm?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A car with a metal roof and closed windows is a reasonable shelter, because the metal body conducts a strike around occupants. Convertibles, tents, and golf carts are not safe."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I shelter under a tree?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Tall, isolated trees are among the most-struck objects. If caught in the open, crouch low with feet together, minimising ground contact."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you help someone struck by lightning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and they are safe to touch \u2014 they carry no charge. Call emergency services and start CPR immediately if they are not breathing, as lightning often stops the heart."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F0EDF9; --surface:#FFFFFF; --accent:#4B2E83; --accent-ink:#FFFFFF;
+  --ink:#241D33; --muted:#4E4763; --line:#DAD3EC;
+  --display:'Plus Jakarta Sans',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.td-wrap{max-width:920px;margin:0 auto;padding:26px 16px 40px}.td-wrap h1{font-size:clamp(30px,5.5vw,44px);line-height:1.15;margin:0 0 8px}.td-tag{color:var(--muted);margin:0 0 18px;font-size:16px}.td-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 2px 14px rgba(0,0,0,.06)}.td-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.td-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--muted)}.td-field input,.td-field select{font:inherit;font-size:16px;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg);min-height:48px;width:100%;box-sizing:border-box}.td-btns{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.td-btns button{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer;min-height:44px}.td-btns button.on,.td-btns button.solid{background:var(--accent);color:var(--accent-ink)}.td-calc{width:100%;background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:14px;font:inherit;font-size:17px;font-weight:800;cursor:pointer;min-height:52px}.td-result{background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:22px;text-align:center;margin-top:16px}.td-result .big{font-size:clamp(34px,7vw,52px);font-weight:800;line-height:1.1}.td-result .sub{opacity:.92;margin-top:6px}.td-hist{margin-top:14px;font-size:14px;color:var(--muted)}.td-hist ul{padding-left:1.2rem;margin:6px 0 0}@media(max-width:640px){.td-grid{grid-template-columns:1fr}.td-wrap{padding:20px 12px 32px}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ThunderDist home">
+      <span class="fx-logo-tile" aria-hidden="true">⚡</span>
+      <span class="fx-brand">ThunderDist</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-thunder-bolt" aria-label="ThunderDist tool">
+<div class='td-wrap'><h1>⚡ Lightning Distance Calculator</h1><p class='td-tag'>How far away is that storm? Count the seconds between flash and thunder.</p><div class='td-card'><div class='td-grid'><label class='td-field'>Seconds between lightning flash and thunder<input id='tdSec' type='number' min='0' max='120' step='0.5' value='5'></label></div><div class='td-btns'><button type='button' data-td-preset='[3]'>3 seconds</button><button type='button' data-td-preset='[5]'>5 seconds</button><button type='button' data-td-preset='[10]'>10 seconds</button></div><div class='td-btns'><button type='button' data-td-unit='km' class='on'>kilometres</button><button type='button' data-td-unit='mi'>miles</button></div><button class='td-calc' id='tdCalc' type='button'>Calculate</button><div class='td-result' aria-live='polite'><div>Storm distance</div><div class='big' id='tdRes'>1.7 km</div><div class='sub' id='tdSub'>The storm is very close — seek shelter indoors immediately.</div></div><div class='td-hist'><strong>Recent calculations</strong><ul id='tdHistList'></ul><div class='td-btns'><button type='button' id='tdCopy'>Copy result</button></div></div></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Count the seconds, know the distance</h2><p>Lightning and thunder are born at the same instant, but they travel at wildly different speeds. Light reaches your eyes almost instantly, while sound crawls through the air at about 343 metres per second. Count the seconds between the flash and the thunder, and you have measured the time sound took to travel from the lightning to you. Multiply by the speed of sound and you have the distance. Three seconds means about one kilometre. Five seconds means about 1.7 kilometres. Ten seconds means about 3.4 kilometres. Thirty seconds means about 10 kilometres, and beyond that the thunder is usually too faint to hear at all. The calculator does this arithmetic for you in kilometres or miles, and it adds the safety message that matters more than the number: if the storm is close, get indoors.</p><h2>The formula: seconds times 343 metres</h2><p>Distance in kilometres equals seconds multiplied by 0.343, because sound travels 343 metres per second, and 343 metres is 0.343 kilometres. The calculator rounds to one decimal place, which is honest precision for a method that depends on your counting. The old rule of thumb — count seconds and divide by five to get miles — comes from the same physics: sound travels about one mile every five seconds (more precisely, every 4.7 seconds). The divide-by-three rule gives kilometres approximately, since five seconds is about 1.7 kilometres and the rule is a rough version of the same division. Both rules are fine for a quick estimate in the field; the calculator is for when you want the actual number, in the unit you prefer, without mental arithmetic in a storm. Note that the speed of sound varies slightly with temperature: it is about 331 metres per second at freezing and about 349 at 30 degrees Celsius, a variation of a few percent that changes a 10-kilometre estimate by only a few hundred metres.</p><table><thead><tr><th>Seconds counted</th><th>Distance (km)</th><th>Distance (miles)</th><th>What to do</th></tr></thead><tbody><tr><td>3 seconds</td><td>1.0 km</td><td>0.6 miles</td><td>Take shelter immediately</td></tr><tr><td>5 seconds</td><td>1.7 km</td><td>1.1 miles</td><td>Stay indoors, storm is close</td></tr><tr><td>10 seconds</td><td>3.4 km</td><td>2.1 miles</td><td>Stay indoors, watch the storm</td></tr><tr><td>15 seconds</td><td>5.1 km</td><td>3.2 miles</td><td>Do not resume outdoor activity</td></tr><tr><td>30 seconds</td><td>10.3 km</td><td>6.4 miles</td><td>Storm is distant but active</td></tr></tbody></table><h2>Why you hear thunder at all</h2><p>Thunder is the sound of lightning heating the air around it to around 30,000 degrees Celsius — five times hotter than the surface of the Sun — in a fraction of a second. The superheated air expands explosively, faster than the speed of sound, creating a shock wave that decays into the rumble we hear as thunder. A nearby strike sounds like a sharp crack, because the shock wave reaches you intact. A distant strike sounds like a rolling rumble, because the sound has travelled through kilometres of air, reflected off clouds and terrain, and arrived by many paths at slightly different times. The rolling quality is also why distant thunder can seem to last for seconds: you are hearing different parts of a lightning channel several kilometres long, whose sound arrives over an extended period. Lightning channels can be many kilometres long, so the distance you calculate is to the nearest part of the channel, not to a single point.</p><h3>Counting correctly when it matters</h3><p>Start counting the instant you see the flash, not when you realise what you saw. Use one-thousand-one, one-thousand-two pacing, or a watch, because adrenaline makes seconds feel longer than they are and most people undercount in a storm. Count to the first sound of thunder, not the loudest part of the rumble. If flashes come in quick succession, track the shortest interval: the shortest flash-to-thunder time corresponds to the nearest lightning, and the nearest lightning is the one that can hurt you. If you see lightning but hear no thunder, the storm is more than about 15 to 20 kilometres away, or the sound has been absorbed by terrain, wind, or atmospheric conditions. Do not conclude that you are safe because you cannot hear thunder: lightning can strike up to 15 kilometres from the storm centre, well beyond the rain, in what is called a bolt from the blue.</p><h2>The 30-30 rule and modern safety guidance</h2><p>The classic safety rule, taught for decades, is 30-30: if the flash-to-thunder time is 30 seconds or less, the storm is close enough to be dangerous and you should shelter immediately; and you should wait 30 minutes after the last thunder before resuming outdoor activity. The first 30 corresponds to about 10 kilometres, which is inside the danger radius for lightning. The second 30 exists because storms move, build, and decay unpredictably, and because a storm that seems to have passed can still produce a strike. Modern guidance from meteorological agencies is simpler and stricter: when thunder roars, go indoors, and stay indoors until 30 minutes after the last thunder. No outdoor activity — no golf, no swimming, no fishing, no standing under a tree — is worth the risk. A car with a metal roof and closed windows is a reasonable second choice if no building is available, because the metal body conducts a strike around the occupants; a convertible, a tent, and a golf cart are not safe.</p><h2>Where lightning actually strikes</h2><ul><li><strong>Tall and isolated objects:</strong> trees, masts, poles, and hilltops are struck most often, which is why sheltering under a lone tree is one of the most dangerous things you can do.</li><li><strong>Water:</strong> swimming, boating, and fishing during a storm are extremely dangerous. Water conducts electricity and you are the tallest object on a flat surface.</li><li><strong>Open ground:</strong> being the tallest object in a field makes you a target. Crouch low, feet together, on the balls of your feet if caught in the open, minimising ground contact.</li><li><strong>Metal and plumbing:</strong> lightning travels through wiring and plumbing. Avoid wired phones, taps, showers, and electrical appliances during a storm.</li><li><strong>Groups:</strong> spread out if caught outdoors in a group, so a single strike cannot injure everyone, and so someone remains able to help.</li></ul><h2>Lightning myths that can kill</h2><p>Lightning myths persist because they sound plausible. Lightning does strike the same place twice: tall structures like the Empire State Building are struck dozens of times a year. Rubber tyres do not protect you in a car: the metal body does, by conducting the strike around the cabin. Lightning is not only dangerous when it rains: strikes regularly occur ahead of a storm's rain, under blue sky, kilometres from the storm centre. Lying flat on the ground is worse than crouching, because it maximises your contact with ground current, which is how most people are actually injured: the strike hits a nearby object and the current spreads through the ground. And a person struck by lightning does not carry a charge: they are safe to touch, and immediate CPR can save them, because lightning often stops the heart and breathing without causing fatal burns. Knowing the myths matters because acting on them is how people die in storms they thought they understood.</p><h2>Storms, distance, and direction</h2><p>Repeated flash-to-thunder measurements tell you whether a storm is approaching or retreating, which a single measurement cannot. If the interval shortens over successive flashes, the storm is moving toward you, even if it currently seems distant. If it lengthens, the storm is moving away, but do not resume outdoor activity until 30 minutes after the last thunder, because a storm's edge can rebuild. Wind direction, cloud movement, and radar (on a phone, from indoors) confirm what your counting suggests. Storms typically move at 20 to 60 kilometres per hour, so a storm 10 kilometres away can be overhead in ten to thirty minutes: the distance you calculate is a snapshot, not a guarantee. In mountainous terrain, sound reflects and echoes off slopes, making counting harder and distances less reliable; in that environment, any thunder at all is a signal to descend from ridges and peaks immediately.</p><h2>After the strike: helping the injured</h2><p>Most lightning victims survive, but they need help fast. Call emergency services immediately, then check breathing and heartbeat: lightning can cause cardiac arrest and respiratory arrest, and prompt CPR is the difference between life and death. Treat burns and shock, keep the person warm and still, and do not move someone with a suspected spine injury unless they are in further danger. Groups struck together need triage: help those who are not breathing first, because those who are breathing will usually recover with time. Prevention, though, is incomparably better than treatment: no rescue skill compensates for being outdoors in a storm you could have avoided. The calculator's number is interesting; the decision it should drive is simple and non-negotiable. When thunder roars, go indoors.</p><p>Flash, count, multiply by 343, and you know how far the storm is. But the real lesson of the count is not the number: it is that sound takes time, lightning does not wait, and shelter is always the right answer when the seconds get short.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate lightning distance?</summary><p>Count the seconds between the flash and the thunder, then multiply by 0.343 for kilometres (or divide by 5 for miles). Five seconds means about 1.7 km.</p></details>
+<details><summary>What does 3 seconds between flash and thunder mean?</summary><p>The lightning was about 1.0 km away. That is very close: seek shelter indoors immediately.</p></details>
+<details><summary>Why is there a delay between lightning and thunder?</summary><p>Light travels almost instantly, but sound travels at about 343 metres per second. The delay is the time sound takes to travel from the strike to you.</p></details>
+<details><summary>What is the 30-30 rule?</summary><p>If flash-to-thunder is 30 seconds or less (about 10 km), shelter immediately. Wait 30 minutes after the last thunder before resuming outdoor activity.</p></details>
+<details><summary>Can lightning strike if I cannot hear thunder?</summary><p>Yes. Lightning can strike up to 15 km from a storm centre, beyond the rain and beyond audible thunder. Seeing lightning is enough reason to shelter.</p></details>
+<details><summary>Is a car safe during a lightning storm?</summary><p>A car with a metal roof and closed windows is a reasonable shelter, because the metal body conducts a strike around occupants. Convertibles, tents, and golf carts are not safe.</p></details>
+<details><summary>Should I shelter under a tree?</summary><p>No. Tall, isolated trees are among the most-struck objects. If caught in the open, crouch low with feet together, minimising ground contact.</p></details>
+<details><summary>Can you help someone struck by lightning?</summary><p>Yes, and they are safe to touch — they carry no charge. Call emergency services and start CPR immediately if they are not breathing, as lightning often stops the heart.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ThunderDist</div>
+    <p>ThunderDist turns flash-to-thunder seconds into storm distance and safety advice.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function thunderKm(seconds){if(!(seconds>=0))return NaN;return Math.round(seconds*0.343*10)/10;}
+var td_unit='metric';
+function td_calc(){
+var v0=parseFloat(document.getElementById('tdSec').value)||0;
+var unit=td_unit;
+var km=thunderKm(v0);var r=(unit==='mi')?(Math.round(km*0.621371*10)/10)+' miles':km+' km';var disp=(km<2)?'The storm is very close — seek shelter indoors immediately and stay away from windows and water.':(km<8)?'The storm is nearby. Stay indoors; lightning can strike several kilometres from the storm centre.':'The storm is some distance away, but keep watching — storms move fast.';
+document.getElementById('tdRes').textContent=r;
+document.getElementById('tdSub').innerHTML=disp;
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');h.unshift(r+' | '+disp.replace(/<[^>]+>/g,''));h=h.slice(0,5);localStorage.setItem('%sHist',JSON.stringify(h));var ul=document.getElementById('%sHistList');ul.innerHTML='';h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+}
+function td_preset(vals){vals.forEach(function(v,i){var el=document.getElementById(['tdSec'][i]);if(el)el.value=v;});td_calc();}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+document.getElementById('tdCalc').addEventListener('click',td_calc);
+document.querySelectorAll('[data-td-preset]').forEach(function(b){b.addEventListener('click',function(){var vals=JSON.parse(b.getAttribute('data-td-preset'));td_preset(vals);});});
+document.querySelectorAll('[data-td-unit]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-td-unit]').forEach(function(x){x.classList.remove('on');});b.classList.add('on');td_unit=b.getAttribute('data-td-unit');td_calc();});});
+var cp=document.getElementById('tdCopy');if(cp){cp.addEventListener('click',function(){var t=document.getElementById('tdRes').textContent+' '+document.getElementById('tdSub').textContent;try{navigator.clipboard.writeText(t);}catch(e){}});}
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');var ul=document.getElementById('%sHistList');h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+td_calc();});}
+</script>
+</body>
+</html>
