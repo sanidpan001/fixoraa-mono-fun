@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baby Milestones by Month — Personalized Timeline Tracker | TinySteps</title>
+<meta name="description" content="Baby milestones by month: enter your baby&#x27;s birth date for a personalized 0-24 month milestone timeline with check-off tracking. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/tinysteps/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Baby Milestones by Month — Personalized Timeline Tracker | TinySteps">
+<meta property="og:description" content="Baby milestones by month: enter your baby&#x27;s birth date for a personalized 0-24 month milestone timeline with check-off tracking. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/tinysteps/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "TinySteps",
+      "url": "https://fun.fixoraa.tech/tinysteps/",
+      "applicationCategory": "Family Tools",
+      "operatingSystem": "Web",
+      "description": "Baby milestones by month: enter your baby's birth date for a personalized 0-24 month milestone timeline with check-off tracking. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When should my baby start smiling socially?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most babies produce their first true social smile between 6 and 8 weeks. Earlier smiles are usually reflexive (gas, sleep states). If there is no social smiling by 3 months, mention it at your next pediatrician visit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What age do babies start crawling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most babies crawl between 7 and 10 months, but a significant minority skip classic hands-and-knees crawling \u2014 scooting, rolling everywhere, or moving straight to pulling up. Pediatricians look for purposeful mobility, not a specific style."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When do babies usually take their first steps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The normal range for first independent steps is wide: roughly 9 to 18 months, clustering around 12 months. Not walking by 18 months is the point at which pediatricians recommend an evaluation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I use actual age or adjusted age for a preemie's milestones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use adjusted (corrected) age \u2014 subtract the weeks your baby was born early \u2014 until about age 2. A baby born 8 weeks early is assessed against milestones 2 months younger than their chronological age."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My baby skipped crawling. Is that a problem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually not. Some babies go from sitting to pulling up to walking without ever doing classic crawling. What matters is that your baby moves with purpose to explore. Mention it at a well-visit if you are unsure, but skipped crawling alone is not a red flag."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many words should a 2-year-old say?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most 24-month-olds use at least 50 words and combine two words into short phrases. There is wide variation, but fewer than 50 words or no two-word combinations at 2 years is worth discussing with your pediatrician."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FFF8F0; --surface:#FFFFFF; --accent:#C2410C; --accent-ink:#FFFFFF;
+  --ink:#292524; --muted:#78716C; --line:#F1E4D3;
+  --display:'Baloo 2',serif; --body:'Nunito',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ts-wrap{font-family:'Nunito',system-ui,sans-serif;background:#FFF8F0;color:#292524;padding:70px 20px 90px}
+.ts-inner{max-width:1060px;margin:0 auto}
+.ts-hero{text-align:center;margin-bottom:44px}
+.ts-hero .ts-mark{font-size:56px}
+.ts-hero h1{font-family:'Baloo 2',cursive;font-size:clamp(36px,5.6vw,58px);margin:10px 0 8px;line-height:1.05;color:#292524}
+.ts-hero p{color:#78716C;font-size:18px;margin:0 auto;max-width:560px}
+.ts-panel{background:#fff;border:1px solid #F1E4D3;border-radius:28px;box-shadow:0 24px 60px rgba(194,65,12,.09);padding:36px;margin:0 auto 56px;max-width:680px;text-align:center}
+.ts-panel h2{font-family:'Baloo 2',cursive;font-size:26px;margin:0 0 6px}
+.ts-panel .ts-sub{color:#78716C;font-size:15px;margin:0 0 22px}
+.ts-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;align-items:end}
+.ts-field{text-align:left}
+.ts-field label{display:block;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#78716C;margin-bottom:8px}
+.ts-field input,.ts-field select{padding:14px 16px;font-size:17px;border:2px solid #F1E4D3;border-radius:16px;font-family:inherit;color:#292524;background:#FFFDFB;min-width:0}
+.ts-field input:focus,.ts-field select:focus{outline:none;border-color:#C2410C}
+.ts-btn{background:#C2410C;color:#fff;border:none;border-radius:16px;padding:14px 30px;font-size:18px;font-weight:800;cursor:pointer;font-family:'Baloo 2',cursive;letter-spacing:.02em}
+.ts-btn:hover{filter:brightness(1.08)}
+.ts-btn.ghost{background:#fff;color:#C2410C;border:2px solid #C2410C;padding:10px 22px;font-size:15px}
+.ts-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.ts-stat{background:#FFF8F0;border:1px dashed #C2410C;border-radius:18px;padding:14px 22px;min-width:150px}
+.ts-stat b{display:block;font-family:'Baloo 2',cursive;font-size:30px;color:#C2410C;line-height:1}
+.ts-stat span{font-size:13px;color:#78716C;font-weight:700}
+.ts-tl{position:relative;max-width:900px;margin:0 auto;padding:10px 0 20px;list-style:none}
+.ts-tl::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:4px;margin-left:-2px;background:linear-gradient(#F1C9A8,#C2410C,#F1C9A8);border-radius:4px}
+.ts-item{position:relative;width:50%;padding:0 44px 44px 0;text-align:right}
+.ts-item:nth-child(even){margin-left:50%;padding:0 0 44px 44px;text-align:left}
+.ts-dot{position:absolute;top:6px;right:-19px;width:34px;height:34px;border-radius:50%;background:#fff;border:3px solid #E4B48E;display:flex;align-items:center;justify-content:center;font-size:15px;z-index:2}
+.ts-item:nth-child(even) .ts-dot{right:auto;left:-19px}
+.ts-item.done .ts-dot{background:#C2410C;border-color:#C2410C;color:#fff}
+.ts-item.now .ts-dot{border-color:#C2410C;box-shadow:0 0 0 6px rgba(194,65,12,.15)}
+.ts-age{position:absolute;top:8px;right:22px;font-size:12px;font-weight:800;color:#fff;background:#E4A171;border-radius:999px;padding:3px 12px;white-space:nowrap}
+.ts-item:nth-child(even) .ts-age{right:auto;left:22px}
+.ts-item.done .ts-age{background:#C2410C}
+.ts-card{display:inline-block;background:#fff;border:1px solid #F1E4D3;border-radius:20px;padding:22px 24px;text-align:left;max-width:380px;box-shadow:0 10px 28px rgba(41,37,36,.06)}
+.ts-card h3{font-family:'Baloo 2',cursive;font-size:21px;margin:0 0 8px}
+.ts-card p{font-size:15px;color:#78716C;margin:0 0 14px;line-height:1.6}
+.ts-check{display:inline-flex;align-items:center;gap:8px;border:2px solid #E4B48E;background:#fff;color:#C2410C;border-radius:999px;padding:8px 18px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit}
+.ts-item.done .ts-check{background:#C2410C;border-color:#C2410C;color:#fff}
+.ts-tools{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.ts-note{text-align:center;color:#78716C;font-size:13.5px;max-width:640px;margin:26px auto 0}
+@media(max-width:720px){.ts-tl::before{left:17px}.ts-item,.ts-item:nth-child(even){width:100%;margin:0;padding:0 0 34px 52px;text-align:left}.ts-item .ts-dot,.ts-item:nth-child(even) .ts-dot{left:0;right:auto}.ts-item .ts-age,.ts-item:nth-child(even) .ts-age{left:52px;right:auto;top:-24px}}
+@media print{.ts-wrap{padding:20px}.ts-panel,.ts-tools{display:none}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="TinySteps home">
+      <span class="fx-logo-tile" aria-hidden="true">🐣</span>
+      <span class="fx-brand">TinySteps</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-timeline-scroll" aria-label="TinySteps tool">
+<section class='ts-wrap'><div class='ts-inner'>
+<div class='ts-hero'><div class='ts-mark' aria-hidden='true'>&#128035;</div>
+<h1>Baby Milestones by Month</h1>
+<p>Your baby's first two years, one beautiful journey. Enter a birth date and watch the milestones unfold along the timeline.</p></div>
+<div class='ts-panel'><h2>Start your baby's journey</h2>
+<p class='ts-sub'>We place every milestone on your baby's personal timeline — past, present and what's coming next.</p>
+<div class='ts-row'>
+<div class='ts-field'><label for='ts-dob'>Baby's birth date</label><input type='date' id='ts-dob'></div>
+<div class='ts-field'><label for='ts-early'>Born early?</label><select id='ts-early'><option value='0'>On time</option><option value='2'>1-2 weeks</option><option value='4'>3-4 weeks</option><option value='8'>5-8 weeks</option><option value='12'>9+ weeks</option></select></div>
+<div><button class='ts-btn' id='ts-go' type='button'>Show my timeline</button></div></div>
+<div class='ts-stats'>
+<div class='ts-stat'><b id='ts-age'>–</b><span>adjusted age</span></div>
+<div class='ts-stat'><b id='ts-done'>0/19</b><span>milestones reached</span></div>
+<div class='ts-stat'><b id='ts-next'>–</b><span>next milestone</span></div></div></div>
+<ol class='ts-tl' id='ts-tl' aria-label='Milestone timeline'>
+<li class='ts-item' data-mo='0'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>Birth</span><div class='ts-card'><h3>First look around</h3><p>Your newborn sees best 8-12 inches away - about the distance to your face while feeding. Expect brief alert periods and lots of sleep.</p><button type='button' class='ts-check' data-i='0'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='1'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>1 mo</span><div class='ts-card'><h3>Social smile</h3><p>That first real smile usually appears between 6 and 8 weeks. It is social, not gas: your baby smiles back when you smile and talk.</p><button type='button' class='ts-check' data-i='1'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='2'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>2 mo</span><div class='ts-card'><h3>Cooing begins</h3><p>Expect vowel-like coos ('ooo', 'ahh') and more head control during tummy time. Your baby tracks moving objects with their eyes.</p><button type='button' class='ts-check' data-i='2'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='3'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>3 mo</span><div class='ts-card'><h3>Push-up on forearms</h3><p>During tummy time your baby pushes up on forearms and holds the head steady. Laughing and squealing start around now.</p><button type='button' class='ts-check' data-i='3'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='4'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>4 mo</span><div class='ts-card'><h3>Rolling over</h3><p>Many babies roll tummy-to-back first, then back-to-tummy. Reach-and-grasp gets deliberate and hand-eye coordination blooms.</p><button type='button' class='ts-check' data-i='4'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='5'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>5 mo</span><div class='ts-card'><h3>Sitting with support</h3><p>With a cushion or your hands, your baby sits upright and holds objects with a full-hand grasp. Babbling adds consonants.</p><button type='button' class='ts-check' data-i='5'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='6'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>6 mo</span><div class='ts-card'><h3>Rolling both ways</h3><p>Rolling becomes reliable in both directions. Your baby passes toys hand to hand and responds to their own name.</p><button type='button' class='ts-check' data-i='6'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='7'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>7 mo</span><div class='ts-card'><h3>Sitting without support</h3><p>Tripod-free sitting for a few minutes at a time. Expect scooting, pivoting, or early crawling attempts.</p><button type='button' class='ts-check' data-i='7'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='8'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>8 mo</span><div class='ts-card'><h3>Crawling on the move</h3><p>Classic hands-and-knees crawling (or an adorable alternative shuffle) covers real distance. Object permanence clicks.</p><button type='button' class='ts-check' data-i='8'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='9'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>9 mo</span><div class='ts-card'><h3>Pulling to stand</h3><p>Your baby hauls up on furniture and cruises sideways. Pincer grasp picks up tiny objects between thumb and finger.</p><button type='button' class='ts-check' data-i='9'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='10'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>10 mo</span><div class='ts-card'><h3>Waving bye-bye</h3><p>Gestures arrive: waving, clapping, pointing. 'Mama' and 'dada' may appear - not always aimed at the right parent yet!</p><button type='button' class='ts-check' data-i='10'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='11'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>11 mo</span><div class='ts-card'><h3>Cruising confidently</h3><p>Furniture-walking gets fast. Your baby understands 'no' and simple commands, and imitates your sounds and actions.</p><button type='button' class='ts-check' data-i='11'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='12'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>1 yr</span><div class='ts-card'><h3>First independent steps</h3><p>Many babies take their first solo steps around the first birthday - some walk, some are still cruising, both are normal.</p><button type='button' class='ts-check' data-i='12'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='14'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>1 yr 2 mo</span><div class='ts-card'><h3>Walking well</h3><p>By 14-15 months most toddlers walk steadily, squat to pick things up, and start stacking two or three blocks.</p><button type='button' class='ts-check' data-i='13'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='16'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>1 yr 4 mo</span><div class='ts-card'><h3>First real words</h3><p>Beyond mama/dada, a few true words with meaning appear. Your toddler follows one-step directions without gestures.</p><button type='button' class='ts-check' data-i='14'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='18'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>1 yr 6 mo</span><div class='ts-card'><h3>Running and climbing</h3><p>Walking turns to running (toddling style), climbing stairs with help, and kicking a ball. Vocabulary jumps toward 10-20 words.</p><button type='button' class='ts-check' data-i='15'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='20'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>1 yr 8 mo</span><div class='ts-card'><h3>Two-word phrases</h3><p>'More milk', 'daddy go' - word combinations mark a language explosion. Scribbling becomes circular and deliberate.</p><button type='button' class='ts-check' data-i='16'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='22'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>1 yr 10 mo</span><div class='ts-card'><h3>Sorting and stacking</h3><p>Your toddler stacks 4+ blocks, sorts shapes, and shows strong preferences - favorite foods, books, and routines.</p><button type='button' class='ts-check' data-i='17'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li><li class='ts-item' data-mo='24'><span class='ts-dot' aria-hidden='true'>&#9679;</span><span class='ts-age'>2 yr</span><div class='ts-card'><h3>Two years old</h3><p>Running, jumping, short sentences, and big feelings. Most 2-year-olds use 50+ words and combine them into short sentences.</p><button type='button' class='ts-check' data-i='18'><span class='ts-ck'>&#9675;</span> <span class='ts-ck-t'>Mark reached</span></button></div></li>
+</ol>
+<div class='ts-tools'>
+<button class='ts-btn ghost' id='ts-print' type='button'>&#128438; Print checklist</button>
+<button class='ts-btn ghost' id='ts-reset' type='button'>&#10226; Reset journey</button></div>
+<p class='ts-note'>Milestones are typical ranges, not deadlines — every baby develops at their own pace. Progress is saved on this device only. If you ever worry about your baby's development, talk to your pediatrician rather than this page.</p>
+</div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Milestones Are Ranges, Not Deadlines</h2>
+<p>Every parent has had the moment: a friend's baby rolls over at four months, yours shows zero interest at five, and a quiet panic sets in. Here is what pediatricians wish every parent knew — developmental milestones describe <strong>typical windows</strong>, not finish lines. The CDC's milestone checklists, updated in 2022, deliberately list what most children (75% or more) can do <em>by</em> a given age, precisely so parents stop treating the earliest edge of normal as the expectation. A baby who sits at seven months and a baby who sits at nine months are both squarely on track.</p>
+<p>That said, milestones are genuinely useful. They give you a shared vocabulary with your pediatrician, they help you notice patterns over time rather than single moments, and they tell you what kinds of play and interaction support your baby <em>right now</em>. The trick is using them as a map — this is the neighborhood your baby is exploring — rather than as a scoreboard.</p>
+<h2>The First Three Months: Waking Up to the World</h2>
+<p>The newborn period is mostly about regulation: sleeping, feeding, and learning that the world is safe. But development is already racing. Within days, your baby prefers your face to any other pattern and recognizes your voice from the womb. By six to eight weeks comes the social smile — the first unmistakably social milestone, and the one that reliably melts every exhausted parent in the room.</p>
+<p>Tummy time starts from day one, in tiny doses: a minute or two, several times a day, on your chest counts. Head control builds fast — brief lifts at one month, steady holding by three. Cooing follows: vowel sounds that are the raw material of language. Talk back to these coos. Research on serve-and-return interaction shows that responding to your baby's sounds — treating them as conversation — is one of the strongest predictors of later language development. You do not need flashcards; you need chatter.</p>
+<h2>Four to Six Months: Rolling Into Action</h2>
+<p>This is when your stationary newborn becomes a mobile project. Rolling usually starts tummy-to-back (gravity helps) and then reverses. Reaching becomes deliberate rather than reflexive, and everything — everything — goes into the mouth. Mouthing is not misbehavior; it is how babies gather data about texture, shape, and temperature.</p>
+<p>Socially, four-to-six-month-olds are delightful: big laughs, squeals, and clear delight in familiar faces. They begin to show preferences — reaching for a favorite toy, calming faster in a parent's arms. Sleep often shifts here too, with longer night stretches becoming possible as the brain matures, though regressions are normal and not a sign you have done anything wrong.</p>
+<h2>Seven to Nine Months: Sitting, Crawling, and Object Permanence</h2>
+<p>Independent sitting unlocks the world: with hands free, your baby can bang, transfer, mouth, and examine. Crawling typically follows between seven and ten months, though a meaningful minority of babies skip classic crawling entirely — scooting, rolling everywhere, or going straight to pulling up. Pediatricians care about <em>purposeful mobility</em>, not the style. If your baby moves with intent to reach things, the style is a footnote.</p>
+<p>The cognitive headline of this period is object permanence: understanding that things exist when out of sight. Peek-a-boo stops being magic and becomes a game with rules your baby understands. Stranger anxiety also commonly peaks now — clinging to you around unfamiliar people is a sign of healthy attachment, not a problem to fix. Respond with calm reassurance rather than forcing interactions.</p>
+<h2>Ten to Twelve Months: Standing on the Edge of Walking</h2>
+<p>Pulling to stand, cruising along furniture, and the pincer grasp (thumb plus forefinger picking up tiny things) dominate this quarter. First steps cluster around twelve months but spread widely from nine to eighteen — the full normal range is genuinely that wide. Boys and larger babies sometimes walk later; neither predicts athletic ability.</p>
+<p>Communication blooms: pointing to show you things (a major milestone called joint attention), waving, shaking the head for no, and first words with consistent meaning. The single best thing you can do for language now is narrate your day — "I'm peeling the banana, it's yellow" — and read books face-to-face so your baby sees your mouth forming sounds.</p>
+<h2>The Second Year: From Toddler to Little Person</h2>
+<p>Months twelve to twenty-four bring the most visible transformation of all. Walking steadies, then running, climbing, and kicking arrive in quick succession. Language explodes — most children go from a handful of words at twelve months to fifty or more by twenty-four, then start combining them into two-word phrases. This explosion is fueled by comprehension that has been quietly building for months: your eighteen-month-old understands far more than they can say.</p>
+<p>Play becomes symbolic: a block becomes a phone, a box becomes a car. This pretend play is the foundation of abstract thought. Socially, toddlers begin parallel play — playing <em>beside</em> other children rather than with them — which is the correct precursor to cooperative play, not a social deficit. Big feelings arrive too, because impulse control lives in the prefrontal cortex, which will not finish developing for another two decades. Tantrums are neurological, not moral.</p>
+<h2>Preemies and Adjusted Age: The Correction That Matters</h2>
+<p>If your baby arrived early, milestone expectations shift by the number of weeks premature — this is called <strong>adjusted or corrected age</strong>, and pediatricians use it until about age two. A baby born eight weeks early who is six months old chronologically is assessed against four-month milestones. This tool applies that correction automatically when you enter how early your baby arrived. Most preemies catch up to their chronological-age peers by age two, and the correction simply keeps worry (and unnecessary referrals) in proportion.</p>
+<h2>Red Flags Worth a Call — Not a Panic</h2>
+<p>Milestone lists exist partly so parents know when to ask questions. Contact your pediatrician promptly if your baby: loses a skill they previously had; does not respond to loud sounds; shows no social smile by three months; cannot sit without support by nine months; does not bear weight on legs by twelve months; says no single words by sixteen months; or does not walk by eighteen months. None of these guarantees a problem — many resolve into normal variation — but each deserves a professional look. Trust your gut, too: parents are often the first to notice something subtle, and "I just feel something is off" is a valid reason for a checkup.</p>
+<h2>How to Actually Support Development (No Gadgets Required)</h2>
+<p>The developmental science is refreshingly low-tech. What moves the needle: floor time instead of container time (swings, seats, and walkers restrict the movement practice babies need — pediatric physical therapists consistently flag too much container time as a brake on motor development); responsive interaction (following your baby's gaze and labeling what they look at); reading aloud daily from birth; and safe, varied environments to explore. Expensive toys do not outperform cardboard boxes, wooden spoons, and your voice. What babies need is not stimulation — the world is already wildly stimulating — but <strong>contingent response</strong>: a caregiver who notices what they notice and answers.</p>
+<h2>Tracking Without Obsessing</h2>
+<p>A milestone tracker is at its best as a keepsake and a conversation starter for well-visits, not as a source of nightly worry. Check off milestones when you notice them, bring the printed checklist to your pediatrician, and then put the phone down and play. Your baby does not know the chart exists. They know your face, your voice, and whether the world feels safe enough to explore — and that feeling, built moment by moment, is the real foundation every milestone stands on.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>When should my baby start smiling socially?</summary><p>Most babies produce their first true social smile between 6 and 8 weeks. Earlier smiles are usually reflexive (gas, sleep states). If there is no social smiling by 3 months, mention it at your next pediatrician visit.</p></details>
+<details><summary>What age do babies start crawling?</summary><p>Most babies crawl between 7 and 10 months, but a significant minority skip classic hands-and-knees crawling — scooting, rolling everywhere, or moving straight to pulling up. Pediatricians look for purposeful mobility, not a specific style.</p></details>
+<details><summary>When do babies usually take their first steps?</summary><p>The normal range for first independent steps is wide: roughly 9 to 18 months, clustering around 12 months. Not walking by 18 months is the point at which pediatricians recommend an evaluation.</p></details>
+<details><summary>Do I use actual age or adjusted age for a preemie&#x27;s milestones?</summary><p>Use adjusted (corrected) age — subtract the weeks your baby was born early — until about age 2. A baby born 8 weeks early is assessed against milestones 2 months younger than their chronological age.</p></details>
+<details><summary>My baby skipped crawling. Is that a problem?</summary><p>Usually not. Some babies go from sitting to pulling up to walking without ever doing classic crawling. What matters is that your baby moves with purpose to explore. Mention it at a well-visit if you are unsure, but skipped crawling alone is not a red flag.</p></details>
+<details><summary>How many words should a 2-year-old say?</summary><p>Most 24-month-olds use at least 50 words and combine two words into short phrases. There is wide variation, but fewer than 50 words or no two-word combinations at 2 years is worth discussing with your pediatrician.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">TinySteps</div>
+    <p>TinySteps turns your baby's birth date into a personalized 0-24 month milestone journey with check-off tracking, next-milestone countdown, and a printable checklist.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var TS_DATA=[{"mo": 0, "t": "First look around", "d": "Your newborn sees best 8-12 inches away - about the distance to your face while feeding. Expect brief alert periods and lots of sleep."}, {"mo": 1, "t": "Social smile", "d": "That first real smile usually appears between 6 and 8 weeks. It is social, not gas: your baby smiles back when you smile and talk."}, {"mo": 2, "t": "Cooing begins", "d": "Expect vowel-like coos ('ooo', 'ahh') and more head control during tummy time. Your baby tracks moving objects with their eyes."}, {"mo": 3, "t": "Push-up on forearms", "d": "During tummy time your baby pushes up on forearms and holds the head steady. Laughing and squealing start around now."}, {"mo": 4, "t": "Rolling over", "d": "Many babies roll tummy-to-back first, then back-to-tummy. Reach-and-grasp gets deliberate and hand-eye coordination blooms."}, {"mo": 5, "t": "Sitting with support", "d": "With a cushion or your hands, your baby sits upright and holds objects with a full-hand grasp. Babbling adds consonants."}, {"mo": 6, "t": "Rolling both ways", "d": "Rolling becomes reliable in both directions. Your baby passes toys hand to hand and responds to their own name."}, {"mo": 7, "t": "Sitting without support", "d": "Tripod-free sitting for a few minutes at a time. Expect scooting, pivoting, or early crawling attempts."}, {"mo": 8, "t": "Crawling on the move", "d": "Classic hands-and-knees crawling (or an adorable alternative shuffle) covers real distance. Object permanence clicks."}, {"mo": 9, "t": "Pulling to stand", "d": "Your baby hauls up on furniture and cruises sideways. Pincer grasp picks up tiny objects between thumb and finger."}, {"mo": 10, "t": "Waving bye-bye", "d": "Gestures arrive: waving, clapping, pointing. 'Mama' and 'dada' may appear - not always aimed at the right parent yet!"}, {"mo": 11, "t": "Cruising confidently", "d": "Furniture-walking gets fast. Your baby understands 'no' and simple commands, and imitates your sounds and actions."}, {"mo": 12, "t": "First independent steps", "d": "Many babies take their first solo steps around the first birthday - some walk, some are still cruising, both are normal."}, {"mo": 14, "t": "Walking well", "d": "By 14-15 months most toddlers walk steadily, squat to pick things up, and start stacking two or three blocks."}, {"mo": 16, "t": "First real words", "d": "Beyond mama/dada, a few true words with meaning appear. Your toddler follows one-step directions without gestures."}, {"mo": 18, "t": "Running and climbing", "d": "Walking turns to running (toddling style), climbing stairs with help, and kicking a ball. Vocabulary jumps toward 10-20 words."}, {"mo": 20, "t": "Two-word phrases", "d": "'More milk', 'daddy go' - word combinations mark a language explosion. Scribbling becomes circular and deliberate."}, {"mo": 22, "t": "Sorting and stacking", "d": "Your toddler stacks 4+ blocks, sorts shapes, and shows strong preferences - favorite foods, books, and routines."}, {"mo": 24, "t": "Two years old", "d": "Running, jumping, short sentences, and big feelings. Most 2-year-olds use 50+ words and combine them into short sentences."}];
+function ageMonths(dobISO,nowISO){var a=dobISO.split('-').map(Number),b=nowISO.split('-').map(Number);var m=(b[0]-a[0])*12+(b[1]-a[1]);if(b[2]<a[2])m--;return m;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var KEY='ts-checks-v1';var checks={};try{checks=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){checks={};}var tl=document.getElementById('ts-tl'),dob=document.getElementById('ts-dob'),early=document.getElementById('ts-early'),go=document.getElementById('ts-go'),ageEl=document.getElementById('ts-age'),doneEl=document.getElementById('ts-done'),nextEl=document.getElementById('ts-next');if(!tl||!go)return;var items=Array.prototype.slice.call(tl.querySelectorAll('.ts-item'));function fmtAge(mo){if(mo<0)return'not born yet';if(mo===0)return'newborn';if(mo<12)return mo+' mo';var y=Math.floor(mo/12),r=mo%12;return y+' yr'+(r?' '+r+' mo':'');}function paint(age){var done=0,next=null;items.forEach(function(li,i){var mo=parseInt(li.getAttribute('data-mo'),10);var reached=!!checks[i];if(reached)done++;if(!reached&&next===null)next=li;li.classList.toggle('done',reached);li.classList.remove('now');var ck=li.querySelector('.ts-ck'),ckt=li.querySelector('.ts-ck-t');if(ck)ck.innerHTML=reached?'&#9679;':'&#9675;';if(ckt)ckt.textContent=reached?'Reached!':'Mark reached';});if(next)next.classList.add('now');doneEl.textContent=done+'/'+items.length;nextEl.textContent=next?next.querySelector('h3').textContent:'All done!';ageEl.textContent=fmtAge(age);}function currentAge(){if(!dob.value)return null;var t=new Date();var now=t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);var earlyW=parseInt(early.value||'0',10);var raw=ageMonths(dob.value,now);return raw-Math.round(earlyW/4.345);}items.forEach(function(li,i){var b=li.querySelector('.ts-check');if(b)b.addEventListener('click',function(){checks[i]=!checks[i];try{localStorage.setItem(KEY,JSON.stringify(checks));}catch(e){}paint(currentAge()||0);});});go.addEventListener('click',function(){var a=currentAge();if(a===null){ageEl.textContent='pick a date';return;}paint(a);tl.scrollIntoView({behavior:'smooth',block:'start'});});document.getElementById('ts-print').addEventListener('click',function(){window.print();});document.getElementById('ts-reset').addEventListener('click',function(){checks={};try{localStorage.removeItem(KEY);}catch(e){}paint(currentAge()||0);});paint(0);});}
+</script>
+</body>
+</html>
