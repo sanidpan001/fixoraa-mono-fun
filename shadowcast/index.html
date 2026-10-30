@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShadowCast — Shadow Length Calculator (Height &amp; Sun Angle)</title>
+<meta name="description" content="How long is a shadow? Enter an object&#x27;s height and the sun&#x27;s elevation angle to get the shadow length, plus shadow direction and time-of-day guidance.">
+<link rel="canonical" href="https://fun.fixoraa.tech/shadowcast/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "ShadowCast", "url": "https://fun.fixoraa.tech/shadowcast/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "How long is a shadow? Enter an object's height and the sun's elevation angle to get the shadow length, plus shadow direction and time-of-day guidance.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the formula for shadow length?", "acceptedAnswer": {"@type": "Answer", "text": "Shadow length = object height ÷ tan(sun elevation angle). At 45°, the shadow equals the height; at 30°, it is about 1.73 times the height."}}, {"@type": "Question", "name": "When are shadows longest?", "acceptedAnswer": {"@type": "Answer", "text": "At sunrise and sunset, when the sun is low. Shadows are shortest at solar noon, and winter midday shadows are much longer than summer ones at the same location."}}, {"@type": "Question", "name": "Which way does a shadow point?", "acceptedAnswer": {"@type": "Answer", "text": "Always away from the sun. In the northern hemisphere a midday shadow points north; in the southern hemisphere it points south."}}, {"@type": "Question", "name": "How do I find the sun's elevation angle?", "acceptedAnswer": {"@type": "Answer", "text": "Use a sun-position app, which reports it for your place and time, or estimate it with your fist (about 10° per fist-width above the horizon), or measure a known object's shadow and work backwards."}}, {"@type": "Question", "name": "Why is a real shadow's edge fuzzy?", "acceptedAnswer": {"@type": "Answer", "text": "The sun is a disc, not a point, so shadows have a dark umbra core and a softer penumbra edge. Very long shadows show this fuzziness most clearly."}}, {"@type": "Question", "name": "Does the formula work on a slope?", "acceptedAnswer": {"@type": "Answer", "text": "Only approximately. Shadows falling downhill stretch longer and shadows falling uphill shorten, so on steep ground measure on the slope itself or allow a margin."}}]}</script>
+<style>
+  body{font-family:'Trebuchet MS', Verdana, sans-serif;background:#FFF8E7;color:#3B2F1A}
+  .accent{background:#B45309;color:#FFFFFF}
+  .accent-tx{color:#92400E}
+  .soft{background:#FEF3C7}
+  .card{background:#FFFFFF;border:1px solid #E7DCC3;border-radius:14px}
+  .logo-mark{background:#B45309;color:#FFFFFF}
+  .faq{border:1px solid #E7DCC3;border-radius:12px;padding:14px 16px;margin:10px 0;background:#FFFFFF}
+  .faq summary{font-weight:700;cursor:pointer}
+  input,select{width:100%;padding:11px 12px;border:1.5px solid #E7DCC3;border-radius:10px;background:#fff;color:#1c1917;font-size:16px}
+  label{font-weight:700;font-size:14px;display:block;margin:12px 0 5px}
+  .btn{background:#B45309;color:#FFFFFF;font-weight:800;padding:13px 22px;border-radius:999px;font-size:16px}
+  .btn2{border:1.5px solid #92400E;color:#92400E;font-weight:700;padding:9px 16px;border-radius:999px;font-size:14px}
+  @media (max-width:640px){ .stack{flex-direction:column !important} .grid2{grid-template-columns:1fr !important} .hero-pad{padding:22px 16px !important} }
+</style>
+</head>
+<body>
+<header class="mx-auto max-w-6xl px-4 sm:px-6 pt-5 pb-1 flex flex-wrap items-center gap-3 justify-between">
+  <div class="flex items-center gap-3">
+    <span class="logo-mark inline-flex items-center justify-center w-12 h-12 rounded-2xl text-2xl font-black" aria-hidden="true">◐</span>
+    <div><div class="text-2xl font-black leading-none">ShadowCast</div><div class="text-sm opacity-80 mt-1">Shadows, measured by the sun</div></div>
+  </div>
+  <nav class="flex items-center gap-2">
+    <a class="btn2" href="https://fixoraa.tech">Home</a>
+    <a class="btn2" href="https://fixoraa.tech">More Tools</a>
+    <span class="soft accent-tx text-xs font-bold px-3 py-2 rounded-full">Unlimited Free Usage</span>
+  </nav>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-6">
+<section class="rounded-3xl soft">
+  <div class="hero-pad">
+    <h1 class="text-3xl sm:text-4xl font-black leading-tight">Shadow Length Calculator</h1>
+    <p class="mt-3 text-lg opacity-90">From a fence post to a tower block, ShadowCast turns height and sun angle into an exact shadow length — with direction, time-of-day presets, and a compare mode for two objects.</p>
+    <div class="card p-5 sm:p-6 mt-6">
+      
+<div class="grid2 grid grid-cols-2 gap-4">
+<div><label for="sh-h">Object height (metres)</label><input id="sh-h" type="number" value="1.8" min="0" step="0.1"></div>
+<div><label for="sh-a">Sun elevation angle (degrees)</label><input id="sh-a" type="number" value="45" min="0.1" max="90" step="1"></div>
+<div><label for="sh-h2">Compare: second height (m, optional)</label><input id="sh-h2" type="number" value="6" min="0" step="0.1"></div>
+<div><label for="sh-az">Sun azimuth (degrees, 0 = north)</label><input id="sh-az" type="number" value="180" min="0" max="360" step="1"></div>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<button class="btn2" onclick="shPreset(15)">Morning / evening (15°)</button>
+<button class="btn2" onclick="shPreset(45)">Mid-morning (45°)</button>
+<button class="btn2" onclick="shPreset(65)">Summer noon (65°)</button>
+</div>
+<button class="btn mt-5" onclick="shCalc()">Calculate shadow length</button>
+<div id="sh-res" class="soft rounded-2xl p-5 mt-5 text-lg leading-relaxed" aria-live="polite">Enter your values and press Calculate to see the result.</div><div class="flex flex-wrap gap-2 mt-4"><button class="btn2" onclick="copyResult('sh-res')">Copy result</button><button class="btn2" onclick="saveHist('sh-res')">Save to history</button></div><div id="sh-res-hist" class="text-sm mt-3 opacity-80"></div>
+<script>
+function shPreset(a){document.getElementById('sh-a').value=a;shCalc();}
+function shCalc(){var h=parseFloat(document.getElementById('sh-h').value)||0;var a=parseFloat(document.getElementById('sh-a').value)||0;var h2=parseFloat(document.getElementById('sh-h2').value)||0;var az=parseFloat(document.getElementById('sh-az').value)||0;document.getElementById('sh-res').innerHTML=shadowResult(h,a,h2,az);}
+</script>
+<script>
+function copyResult(id){var el=document.getElementById(id);if(!el)return;navigator.clipboard&&navigator.clipboard.writeText(el.innerText);}
+function saveHist(id){var el=document.getElementById(id);if(!el)return;var h=JSON.parse(localStorage.getItem('fx-hist')||'[]');h.unshift(el.innerText);localStorage.setItem('fx-hist',JSON.stringify(h.slice(0,5)));var box=document.getElementById(id+'-hist');if(box)box.innerText='Saved: '+h.slice(0,3).join('  |  ');}
+</script><script>
+/*PURE-START*/
+
+function shadowLen(h,deg){if(h<=0||deg<=0||deg>=90)return deg>=90?0:0;var r=deg*Math.PI/180;return Math.round(h/Math.tan(r)*100)/100;}
+function compass(d){var pts=['north','north-east','east','south-east','south','south-west','west','north-west'];return pts[Math.round(((d%360)+360)%360/45)%8];}
+function shadowResult(h,a,h2,az){if(h<=0||a<=0||a>=90)return 'Enter a height above zero and a sun angle between 0 and 90 degrees.';var s=shadowLen(h,a);var dir=compass((az+180)%360);var out='<strong>Shadow length: '+s+' metres</strong> &nbsp;·&nbsp; Shadow points '+dir+' (away from the sun).';if(h2>0)out+='<br>Second object ('+h2+' m): '+shadowLen(h2,a)+' m shadow.';if(a<20)out+='<br>Low sun: shadows are long and soft — ideal golden-hour light for photography.';return out;}
+/*PURE-END*/
+</script>
+    </div>
+    <p class="text-sm mt-4 opacity-80">Works for any vertical object on flat ground. On slopes, or for objects leaning away from vertical, the true shadow will differ slightly.</p>
+  </div>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pb-8">
+  <article class="card hero-pad p-6 sm:p-8 leading-relaxed text-[17px]">
+    <h2 class="text-2xl font-black mb-4">Why Shadows Change Length, and How to Predict Them Exactly</h2>
+    <p>A shadow is one of the oldest measuring instruments in the world. Ancient surveyors estimated the height of pyramids from their shadows, sundials told the time from a shadow's direction, and sailors once judged the hour by the length of their own shadow on a deck. The geometry behind all of it is beautifully simple: a vertical object, the sun at a known angle above the horizon, and a flat patch of ground form a right-angled triangle, and the shadow is one side of that triangle. If you know the height and the sun's elevation angle, the shadow length is fixed, and this calculator works it out in one step.</p>
+<p>The formula is shadow length equals height divided by the tangent of the sun's elevation angle. When the sun is at 45 degrees, the tangent is exactly one, so the shadow is exactly as long as the object is tall: a two-metre person casts a two-metre shadow. When the sun climbs higher, the tangent grows and the shadow shrinks; at 60 degrees the shadow is only about 58 percent of the height. When the sun sinks low, the tangent collapses toward zero and shadows stretch dramatically: at 10 degrees, a shadow is nearly six times the object's height, which is why evening shadows race across gardens and parks while midday shadows huddle close to their objects.</p>
+<p>Sun elevation changes through the day in a smooth arc, which is why shadows are long in the morning, shortest at solar noon, and long again in the evening. It also changes through the year: at mid-latitudes the midday sun may reach 60 degrees or more in June but barely 15 degrees in December, so the same tree can cast a shadow three or four times longer in winter than in summer. Latitude matters just as much. Near the equator the midday sun passes almost overhead and shadows nearly vanish, while in polar regions the sun stays low for months and shadows stretch for extraordinary distances across snow and ice.</p>
+<p>Shadow direction is the other half of the story, and it is just as predictable. A shadow always points away from the sun, so in the northern hemisphere it points roughly north at midday, swings from west in the morning to east in the evening, and at solar noon it is at its shortest and most northerly. In the southern hemisphere the pattern mirrors: midday shadows point south. Photographers use this constantly, planning shoots for the golden hour when low sun gives long, soft, warm shadows that add depth to a scene, and avoiding harsh midday light when shadows are short, hard and unflattering. Gardeners use it too, working out which beds will fall into a neighbour's hedge shadow in winter.</p>
+<p>For builders, planners and homeowners, shadow prediction is practical rather than poetic. A new fence, extension or tree can shade a neighbour's garden, a solar panel or a vegetable patch, and disputes about light are far easier to prevent than to resolve. Measuring the height of the proposed object and checking the shadow at winter midday, when the sun is lowest and shadows longest, gives the worst case. If a solar panel stays clear in that worst case, it will stay clear all year. The same check helps with placing patios: a patio that is sunny at noon in June may sit in deep shade at the same hour in November, and a few minutes with a shadow calculation can change where you put the chairs.</p>
+<p>Measuring the sun's elevation angle is easier than it sounds. Smartphone compass and sun-position apps report it directly for your location and time, and astronomy websites give it for any date. Without an app, you can estimate it: hold your arm out and use your fist, which covers roughly 10 degrees of sky, counting fists from the horizon to the sun. Or measure a shadow you can already see: if you know your own height and measure your shadow, the angle is the arctangent of height divided by shadow length. Either way, a rough angle gives a useful shadow length, and the calculator's presets for morning, midday and evening cover the most common cases without any measuring at all.</p>
+<p>There are limits worth knowing. The simple formula assumes flat ground and a truly vertical object. On a slope, a shadow falling downhill stretches longer and a shadow falling uphill shortens, sometimes dramatically on steep ground. A leaning tree, a sloping roof edge, or a flagpole on a hill all break the neat triangle. Very long shadows also bend slightly with the curvature of the earth and are softened by the sun not being a perfect point of light: the sun has a visible disc, so real shadows have a dark core called the umbra and a softer edge called the penumbra, which is why a distant shadow's edge looks fuzzy rather than razor sharp.</p>
+<p>Shadows have also shaped science and culture in surprising ways. Eratosthenes measured the size of the earth by comparing shadow lengths in two Egyptian cities on the same day. Sundials, the oldest clocks, are shadow calculators carved in stone, and their markings had to be corrected for latitude precisely because shadow behaviour changes with place. In art, the study of shadows is called chiaroscuro, and painters from Caravaggio onward used long, dramatic shadows to create depth and emotion. Even today, architects run shadow studies for whole city blocks before building, because a tower's shadow can darken a park for hours and change how a neighbourhood feels.</p>
+<p>Children meet this idea early, often without realising it: stand in the sun, measure your shadow with footsteps, and you have measured the sun's angle. It is a wonderful first experiment in trigonometry because the result is visible, physical and easy to check. Try it at different hours and the pattern appears on its own: long, short, long again. Try it in different seasons and the year's rhythm appears too. ShadowCast turns that experiment into a planning tool, but the wonder is the same: a patch of darkness on the ground is really a measurement of where the sun is in the sky.</p>
+<p>To use the calculator well, start with an accurate height: measure the object, do not guess it, since every error in height becomes the same percentage error in the shadow. Then pick your sun angle from an app, a preset, or your own measurement. Use the compare mode to test two objects side by side, such as a proposed tree and an existing fence, and check the worst case at winter midday as well as the pleasant case at summer noon. Whether you are placing a patio, protecting a solar panel, timing a photograph, or settling a playground debate about who casts the longest shadow, the answer is one triangle away.</p>
+<p>ShadowCast is for photographers chasing golden hour, gardeners planning beds, builders checking overshadowing, teachers demonstrating trigonometry, and anyone who has ever wondered how far a shadow will reach. Enter a height and an angle, and the sun's geometry does the rest. The shadow you see on the ground is not random at all: it is the sun, the earth and a simple triangle, drawn in light and dark for anyone willing to measure it.</p>
+  </article>
+  <h2 class="text-2xl font-black mt-10 mb-2">Frequently Asked Questions</h2>
+  <details class="faq"><summary>What is the formula for shadow length?</summary><p>Shadow length = object height ÷ tan(sun elevation angle). At 45°, the shadow equals the height; at 30°, it is about 1.73 times the height.</p></details>
+<details class="faq"><summary>When are shadows longest?</summary><p>At sunrise and sunset, when the sun is low. Shadows are shortest at solar noon, and winter midday shadows are much longer than summer ones at the same location.</p></details>
+<details class="faq"><summary>Which way does a shadow point?</summary><p>Always away from the sun. In the northern hemisphere a midday shadow points north; in the southern hemisphere it points south.</p></details>
+<details class="faq"><summary>How do I find the sun&#x27;s elevation angle?</summary><p>Use a sun-position app, which reports it for your place and time, or estimate it with your fist (about 10° per fist-width above the horizon), or measure a known object&#x27;s shadow and work backwards.</p></details>
+<details class="faq"><summary>Why is a real shadow&#x27;s edge fuzzy?</summary><p>The sun is a disc, not a point, so shadows have a dark umbra core and a softer penumbra edge. Very long shadows show this fuzziness most clearly.</p></details>
+<details class="faq"><summary>Does the formula work on a slope?</summary><p>Only approximately. Shadows falling downhill stretch longer and shadows falling uphill shorten, so on steep ground measure on the slope itself or allow a margin.</p></details>
+</section>
+<footer class="mx-auto max-w-6xl px-4 sm:px-6 pb-10 pt-2 text-center text-sm">
+  <p class="font-bold text-base">ShadowCast — Shadows, measured by the sun</p>
+  <p class="opacity-80 mt-1">ShadowCast predicts shadow length from object height and sun elevation, with direction and time-of-day context for planning and photography.</p>
+  <p class="mt-3"><a class="accent-tx font-bold" href="https://fixoraa.tech">Home</a> &nbsp;·&nbsp; <a class="accent-tx font-bold" href="https://fixoraa.tech">More Tools</a></p>
+  <p class="mt-3">Made by <a class="accent-tx font-bold underline" href="https://fixoraa.tech">Fixoraa</a></p>
+</footer>
+</body>
+</html>
