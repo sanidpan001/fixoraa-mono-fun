@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cribbage Scoring Calculator — Hand, Cut Card &amp; Full Breakdown</title>
+<meta name="description" content="Score any cribbage hand with the cut card: fifteens, pairs, runs, flush and nobs, with a full points breakdown.">
+<link rel="canonical" href="https://fun.fixoraa.tech/cribbage/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Cribbage Scoring Calculator — Hand, Cut Card &amp; Full Breakdown">
+<meta property="og:description" content="Score any cribbage hand with the cut card: fifteens, pairs, runs, flush and nobs, with a full points breakdown.">
+<meta property="og:url" content="https://fun.fixoraa.tech/cribbage/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Cribbage",
+      "url": "https://fun.fixoraa.tech/cribbage/",
+      "applicationCategory": "Games",
+      "operatingSystem": "Web",
+      "description": "Score any cribbage hand with the cut card: fifteens, pairs, runs, flush and nobs, with a full points breakdown.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the highest possible cribbage hand?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Twenty-nine points: three fives and a jack in hand, the fourth five as starter, with the jack matching the starter's suit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do fifteens score in cribbage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every combination of cards totalling exactly 15 scores 2 points, counting pairs, triples and larger subsets of the five cards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is nobs in cribbage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One point for holding a jack whose suit matches the starter card's suit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a flush count in the crib?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only a five-card flush counts in the crib. A four-card flush in the crib scores nothing, unlike a regular hand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do runs with duplicate cards score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A run scores its length multiplied by the number of ways it can be formed. Two fours, a five and a six is a run of three formed twice, scoring 6."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do face cards count as in cribbage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jack, queen and king each count as 10 for fifteens, though their ranks still matter for runs."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fdf2f8; --surface:#ffffff; --accent:#9d174d; --accent-ink:#ffffff;
+  --ink:#2b1220; --muted:#5c3a4d; --line:#f0c4d8;
+  --display:'Playfair Display',serif; --body:'Source Sans 3',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.cb-sub{color:var(--muted);margin:.4rem 0 1.2rem}.cb-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem}.cb-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.1rem}.cb-card h2{font-size:1.15rem;margin-bottom:.7rem}.cb-card label{display:block;margin-bottom:.6rem;font-weight:600}.cb-card select{padding:.5rem;border:1px solid var(--line);border-radius:10px;margin-left:.3rem}.cb-check{margin-top:.8rem}.cb-btns{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}.cb-btns button{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.55rem 1rem;font-weight:700;cursor:pointer}.cb-res div div{display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px dashed var(--line)}@media(max-width:760px){.cb-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="Cribbage home">
+      <span class="fx-logo-tile" aria-hidden="true">♠️</span>
+      <span class="fx-brand">Cribbage</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-crib-board" aria-label="Cribbage tool">
+<h1>Cribbage Scoring Calculator</h1><p class="cb-sub">Pick your four hand cards and the starter card to see the full breakdown.</p><div class="cb-grid"><div class="cb-card"><h2>Your hand</h2><div id="cb-hand"></div><label class="cb-check"><input id="cb-crib" type="checkbox"> This is the crib (flush needs all 5 cards)</label></div><div class="cb-card"><h2>Starter card</h2><div id="cb-cut"></div><div class="cb-btns"><button id="cb-29">29-point hand</button><button id="cb-run">Run example</button></div></div><div class="cb-card cb-res"><h2>Breakdown</h2><div id="cb-out"></div><p id="cb-total"></p></div></div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How cribbage scoring works</h2>
+<p>Cribbage is scored from a hand of four cards plus a cut card, known as the starter, and every point comes from one of five sources: combinations totalling fifteen, pairs, runs, flushes, and a special bonus called nobs. Each combination of cards totalling fifteen scores two points, and because the five cards offer many overlapping combinations, a hand full of fives and tens can score heavily from fifteens alone. Pairs score two points for each pair, so three of a kind contains three pairs and scores six, while four of a kind contains six pairs and scores twelve, which is why pairs multiply so quickly in strong hands. Runs score one point per card in the run, multiplied by the number of ways the run can be formed when duplicate ranks are involved, and a flush scores four or five points when the hand shares a suit. His nobs, a jack in the hand whose suit matches the starter, adds a single point that often decides close games.</p>
+<p>The maximum possible cribbage hand is twenty-nine points, and it is famous precisely because it requires a perfect combination: three fives and a jack in the hand, with the fourth five as the starter, and the jack sharing the starter's suit. That hand earns sixteen points from fifteens, twelve from pairs, and one from nobs, and no other combination of cards can reach twenty-nine. Most real hands score between four and sixteen points, and a hand above twenty is already an excellent result worth celebrating. This calculator breaks any hand down into its five scoring sources, so instead of guessing whether you have missed a fifteen or a run, you can see each component listed and add them with confidence. It is designed for scoring after the cut, for both the dealer's hand and the non-dealer's hand, and for the crib, where the flush rule differs in one important way.</p>
+<h2>How to use this calculator</h2>
+<p>Choose the rank and suit of each of your four hand cards, then choose the rank and suit of the starter card, and tick the crib box only if you are scoring the crib rather than a regular hand. The calculator instantly shows the points from fifteens, pairs, runs, flush, and nobs, together with the total, and it lists how many fifteen combinations were found so you can check the arithmetic. The preset buttons load two famous teaching hands: the twenty-nine hand described above, and a simple run hand that shows how a five-card sequence scores. Use the presets when learning, because comparing the breakdown of a known hand against your own mental count is the fastest way to spot which scoring rule you have been missing. The tool does not score the pegging play, the sequence of cards played during the hand, because pegging points depend on the order of play and must be tracked at the table.</p>
+<p>Card ranks are entered as ace through king, with face cards counting as ten for fifteens, which is a rule that surprises many beginners who expect a queen to count as twelve. Suits matter only for the flush and for nobs, so if you are scoring a hand where suits are irrelevant to your total, you can still enter them and the calculator will simply award no flush points. The crib toggle matters because a crib flush only counts when all five cards, including the starter, share a suit, whereas a regular hand flush counts with four matching hand cards and scores five if the starter matches too. Getting that distinction right is one of the most common scoring corrections at the table, and the calculator applies it automatically once you set the toggle correctly.</p>
+<h2>Fifteens, pairs and runs in detail</h2>
+<p>Fifteens are found by considering every subset of the five cards, from pairs up to all five cards together, and awarding two points for each subset totalling exactly fifteen. With four fives and a ten-value card, for example, there are eight such subsets: four combinations of three fives, and four combinations of one five with the ten, giving sixteen points from fifteens alone. Counting these by hand is error-prone because it is easy to count the same combination twice or to miss a three-card combination, which is why a breakdown tool is so useful for learners. A practical shortcut is to start with the ten-value cards, since each ten needs a five to make fifteen, then look for five-plus-five-plus-five, then for smaller combinations such as seven plus eight or six plus nine, and finally for longer combinations involving an ace and several small cards.</p>
+<p>Runs require three or more consecutive ranks, and duplicate ranks multiply the run rather than breaking it. A hand containing two fours, a five, and a six contains a run of three, but it can be formed in two ways, one with each four, so it scores six points rather than three, and a double-double run with two pairs inside a sequence scores twelve. The calculator applies this multiplication rule exactly, which is important because many casual players score only the length of the run and undercount their hand by several points. Pairs are simpler but still worth counting carefully: each pair of equal ranks scores two points, and the pairs in three or four of a kind are counted as all possible pairings, not as a single group. Together, fifteens, pairs, and runs account for the great majority of points in most hands, so mastering these three sources will improve your scoring accuracy more than any other single skill.</p>
+<h2>Flush, nobs and the crib difference</h2>
+<p>A flush in a regular hand needs all four hand cards to share a suit, scoring four points, and if the starter shares that suit as well, the flush becomes five points. In the crib, however, a four-card flush does not count at all, and only a five-card flush, where the starter also matches, scores five points, which is a deliberate rule that makes the crib slightly harder to score from. This asymmetry catches out even experienced players, because it is tempting to apply the same flush rule everywhere, and the difference can swing a game when the crib is large. His nobs is simpler: if your hand contains a jack whose suit matches the starter's suit, you score one point, and it is called nobs regardless of the jack's rank or the other cards. His heels is a different bonus, awarded when the starter itself is a jack, and it belongs to the dealer during pegging rather than to the hand score, so this calculator does not include it in the hand total.</p>
+<p>When you discard to the crib, remember that the crib belongs to the dealer, which changes which cards you are willing to give away, and the scoring rules for the crib are applied only after the starter is cut. A hand that looks weak as a regular hand may still contribute useful cards to your own crib, while a hand that looks strong may be weakened by a discard that completes your opponent's crib flush or run. The calculator cannot make discard decisions for you, because those depend on the full game state, but it does let you test candidate hands quickly: enter a possible kept hand and starter, note the score, then try an alternative keep and compare. Over time, this kind of comparison builds an intuition for which discards are safe and which are dangerous, which is the deepest strategic skill in cribbage.</p>
+<h2>Worked examples and common mistakes</h2>
+<p>The twenty-nine hand is the perfect worked example: hand cards five of clubs, five of diamonds, five of hearts, and jack of spades, with five of spades as the starter. The fifteens are four triples of fives and four five-plus-jack combinations, eight in total for sixteen points, the four fives contain six pairs for twelve points, and the jack of spades matches the starter's suit for one nobs point, giving twenty-nine in total, with no run and no flush. A second example, hand ace, two, three, four with a five starter and all different suits, scores two points from the single fifteen formed by all five cards, five points from the five-card run, and nothing else, for seven points. A third example, hand king, queen, seven, two with a nine starter in mixed suits, scores nothing at all, because no subset totals fifteen, no ranks repeat, no run exists, and no flush applies, which is a useful reminder that zero-point hands are a normal part of the game.</p>
+<p>The most common cribbage scoring mistakes are forgetting that face cards count as ten, missing fifteen combinations that use three or more cards, undercounting runs with duplicate ranks, and awarding a crib flush for four matching cards. Another frequent error is counting the starter twice or forgetting it entirely, since the starter participates in every scoring source for the hand, including fifteens, pairs, runs, and flushes. Finally, many players confuse nobs with heels: nobs is the one point for a jack in the hand matching the starter's suit, while heels is the two points the dealer pegs when the starter itself is a jack, and only nobs belongs in the hand total shown here. If your total disagrees with the calculator, check these points first, and you will usually find the discrepancy within a minute.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is the highest possible cribbage hand?</summary><p>Twenty-nine points: three fives and a jack in hand, the fourth five as starter, with the jack matching the starter's suit.</p></details>
+<details><summary>How do fifteens score in cribbage?</summary><p>Every combination of cards totalling exactly 15 scores 2 points, counting pairs, triples and larger subsets of the five cards.</p></details>
+<details><summary>What is nobs in cribbage?</summary><p>One point for holding a jack whose suit matches the starter card's suit.</p></details>
+<details><summary>Does a flush count in the crib?</summary><p>Only a five-card flush counts in the crib. A four-card flush in the crib scores nothing, unlike a regular hand.</p></details>
+<details><summary>How do runs with duplicate cards score?</summary><p>A run scores its length multiplied by the number of ways it can be formed. Two fours, a five and a six is a run of three formed twice, scoring 6.</p></details>
+<details><summary>What do face cards count as in cribbage?</summary><p>Jack, queen and king each count as 10 for fifteens, though their ranks still matter for runs.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">Cribbage</div>
+    <p>Cribbage scores your hand and starter card with a complete breakdown of fifteens, pairs, runs, flush and nobs.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function scoreCribbage(hand,cut,suits,cutSuit,isCrib){var val=function(r){if(r==='A')return 1;if(r==='J'||r==='Q'||r==='K')return 10;return +r;};var cards=hand.concat([cut]);var vals=cards.map(val);var fif=0;for(var mask=1;mask<32;mask++){var s=0;for(var i=0;i<5;i++){if(mask>>i&1)s+=vals[i];}if(s===15)fif+=2;}var pairs=0;for(var i=0;i<5;i++){for(var j=i+1;j<5;j++){if(cards[i]===cards[j])pairs+=2;}}var cnt={};cards.forEach(function(r){cnt[r]=(cnt[r]||0)+1;});var order=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];var run=0;for(var len=5;len>=3;len--){for(var st=0;st+len<=13;st++){var ok=true,mult=1;for(var k=0;k<len;k++){var c=cnt[order[st+k]]||0;if(!c)ok=false;else mult*=c;}if(ok){run=len*mult;break;}}if(run)break;}var flush=0;if(suits[0]===suits[1]&&suits[1]===suits[2]&&suits[2]===suits[3]){flush=4;if(suits[0]===cutSuit)flush=5;if(isCrib)flush=flush===5?5:0;}var nobs=0;for(var i=0;i<4;i++){if(hand[i]==='J'&&suits[i]===cutSuit)nobs=1;}return{fifteens:fif,pairs:pairs,runs:run,flush:flush,nobs:nobs,total:fif+pairs+run+flush+nobs};}
+var ranks=['A','2','3','4','5','6','7','8','9','10','J','Q','K'],suits=['♠','♥','♦','♣'];
+function selPair(id){var s='<select id="'+id+'-r">';ranks.forEach(function(r){s+='<option>'+r+'</option>';});s+='</select><select id="'+id+'-s">';suits.forEach(function(r){s+='<option>'+r+'</option>';});s+='</select>';return s;}
+var hh='';for(var i=0;i<4;i++)hh+='<label>Card '+(i+1)+' '+selPair('cb-h'+i)+'</label>';
+document.getElementById('cb-hand').innerHTML=hh;
+document.getElementById('cb-cut').innerHTML='<label>Starter '+selPair('cb-c')+'</label>';
+function cbRender(){var hand=[],ss=[];for(var i=0;i<4;i++){hand.push(document.getElementById('cb-h'+i+'-r').value);ss.push(document.getElementById('cb-h'+i+'-s').value);}var cut=document.getElementById('cb-c-r').value,cs=document.getElementById('cb-c-s').value;var r=scoreCribbage(hand,cut,ss,cs,document.getElementById('cb-crib').checked);document.getElementById('cb-out').innerHTML='<div><span>Fifteens</span><strong>'+r.fifteens+'</strong></div><div><span>Pairs</span><strong>'+r.pairs+'</strong></div><div><span>Runs</span><strong>'+r.runs+'</strong></div><div><span>Flush</span><strong>'+r.flush+'</strong></div><div><span>Nobs</span><strong>'+r.nobs+'</strong></div>';document.getElementById('cb-total').textContent='Total: '+r.total+' points';}
+document.querySelectorAll('#cb-hand select,#cb-cut select').forEach(function(el){el.addEventListener('change',cbRender);});
+document.getElementById('cb-crib').addEventListener('change',cbRender);
+document.getElementById('cb-29').onclick=function(){var h=[['5','♣'],['5','♦'],['5','♥'],['J','♠']];h.forEach(function(c,i){document.getElementById('cb-h'+i+'-r').value=c[0];document.getElementById('cb-h'+i+'-s').value=c[1];});document.getElementById('cb-c-r').value='5';document.getElementById('cb-c-s').value='♠';cbRender();};
+document.getElementById('cb-run').onclick=function(){var h=[['A','♠'],['2','♥'],['3','♦'],['4','♣']];h.forEach(function(c,i){document.getElementById('cb-h'+i+'-r').value=c[0];document.getElementById('cb-h'+i+'-s').value=c[1];});document.getElementById('cb-c-r').value='5';document.getElementById('cb-c-s').value='♥';cbRender();};
+cbRender();
+</script>
+</body>
+</html>
