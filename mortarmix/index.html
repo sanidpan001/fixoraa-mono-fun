@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mortar Mix Calculator for Bricks &amp; Blocks | MortarMix</title>
+<meta name="description" content="Mortar mix calculator: bags needed from your brick or block count, N/S/M type picker, waste slider, and sand-cement site-mix breakdown.">
+<link rel="canonical" href="https://fun.fixoraa.tech/mortarmix/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Mortar Mix Calculator for Bricks &amp; Blocks | MortarMix">
+<meta property="og:description" content="Mortar mix calculator: bags needed from your brick or block count, N/S/M type picker, waste slider, and sand-cement site-mix breakdown.">
+<meta property="og:url" content="https://fun.fixoraa.tech/mortarmix/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "MortarMix",
+      "url": "https://fun.fixoraa.tech/mortarmix/",
+      "applicationCategory": "DIY Tools",
+      "operatingSystem": "Web",
+      "description": "Mortar mix calculator: bags needed from your brick or block count, N/S/M type picker, waste slider, and sand-cement site-mix breakdown.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many bricks does one bag of mortar cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One 80-lb bag of premixed mortar lays about 90 standard bricks with 3/8-inch joints (or ~12 standard 8-inch blocks). Enter your brick count in the calculator \u2014 900 bricks needs 10 bags before waste allowance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use Type N, S, or M mortar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Type N (750 psi) is the default for most above-grade residential work \u2014 veneer, garden walls, chimneys. Type S (1,800 psi) is for below grade and high-load areas; Type M (2,500 psi) for foundations and retaining walls. Mortar should always be weaker than the brick."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the mix ratio for Type N mortar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Type N site mix is 1 part portland cement : 1 part hydrated lime : 6 parts masonry sand by volume. Type S is 1 : 0.5 : 4.5; Type M is 1 : 0.25 : 3. Measure with a bucket, mix dry first, then add water to trowel consistency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much extra mortar should I allow for waste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "10% for careful work in mild weather; 15-20% in heat, wind, with inexperienced crews, raked joints, or block work. A spare bag is returnable \u2014 a cold joint from running out mid-wall is permanent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many bricks per square foot of wall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 7 standard bricks per square foot for a single-wythe wall in running bond. A 10\u00d74 ft garden wall is 40 sq ft \u2248 280 bricks \u2248 4 bags with waste. Double for double-wythe walls; subtract door and window openings first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I lay brick in cold or hot weather?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Below 40\u00b0F mortar gains strength very slowly. Heat your materials, use warm mixing water, never lay on frozen units, and cover fresh work with insulated blankets. In heat, mix smaller batches and mist dry bricks so they don't suck water from the joints."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EFF6F4; --surface:#FFFFFF; --accent:#047857; --accent-ink:#FFFFFF;
+  --ink:#26282E; --muted:#5C6675; --line:#D1E6E0;
+  --display:'Chakra Petch',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.mm-wrap{font-family:Inter,system-ui,sans-serif;background:#EFF6F4;color:#26282E;padding:56px 20px 76px;}.mm-inner{max-width:900px;margin:0 auto;}.mm-head{text-align:center;margin-bottom:26px;}.mm-logo{width:76px;height:76px;margin:0 auto 16px;border-radius:22px;background:linear-gradient(135deg,#047857,#2ea37e);color:#fff;font-size:36px;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(4,120,87,.25);}.mm-head h1{font-family:'Chakra Petch',sans-serif;font-size:clamp(28px,4.8vw,44px);margin:0 0 10px;}.mm-head p{color:#5C6675;margin:0;font-size:16px;}.mm-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:0;}.mm-tab{border:2px solid #D1E6E0;border-bottom:none;background:#f7faf9;border-radius:14px 14px 0 0;padding:12px 26px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Chakra Petch',sans-serif;color:#5C6675;}.mm-tab.on{background:#FFFFFF;color:#047857;border-color:#047857;position:relative;top:2px;}.mm-bench{background:#FFFFFF;border:2px solid #047857;border-radius:22px;padding:32px;box-shadow:0 22px 55px rgba(4,120,87,.10);}.mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}.mm-field label{display:block;font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#5C6675;margin-bottom:8px;}.mm-field input,.mm-field select{width:100%;padding:13px;font-size:16px;border:2px solid #D1E6E0;border-radius:12px;font-family:inherit;color:#26282E;background:#EFF6F4;box-sizing:border-box;min-height:52px;}.mm-field input[type=range]{padding:0;background:none;border:none;min-height:0;accent-color:#047857;}.mm-field input:focus,.mm-field select:focus{outline:none;border-color:#047857;}.mm-wasteval{font-weight:800;color:#047857;}.mm-typebtns{display:flex;gap:8px;}.mm-typebtn{flex:1;border:2px solid #D1E6E0;background:#fff;border-radius:12px;padding:12px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Chakra Petch',sans-serif;color:#26282E;}.mm-typebtn.on{border-color:#047857;background:#EFF6F4;color:#047857;}.mm-result{margin-top:22px;border-radius:18px;padding:24px;background:#EFF6F4;border:2px solid #047857;text-align:center;}.mm-result .mm-big{font-family:'Chakra Petch',sans-serif;font-size:44px;color:#047857;line-height:1;}.mm-result .mm-sub{margin-top:8px;font-size:14.5px;color:#5C6675;}.mm-break{margin-top:18px;border-top:1px solid #D1E6E0;padding-top:16px;text-align:left;}.mm-break h2{font-family:'Chakra Petch',sans-serif;font-size:18px;margin:0 0 10px;}.mm-break table{width:100%;border-collapse:collapse;font-size:14.5px;}.mm-break td{padding:8px 6px;border-bottom:1px solid #D1E6E0;}.mm-break td:last-child{text-align:right;font-weight:800;color:#047857;}.mm-note{margin-top:16px;font-size:13.5px;color:#5C6675;line-height:1.65;}@media (max-width:640px){.mm-grid{grid-template-columns:1fr;}.mm-bench{padding:22px 16px;}.mm-tabs{flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="MortarMix home">
+      <span class="fx-logo-tile" aria-hidden="true">🧱</span>
+      <span class="fx-brand">MortarMix</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-tab-bench" aria-label="MortarMix tool">
+<section class='mm-wrap'><div class='mm-inner'><div class='mm-head'><div class='mm-logo' aria-hidden='true'>🧱</div><h1>Mortar Mix Calculator</h1><p>Bags, ratios, and site-mix math for masonry.</p></div><div class='mm-tabs' role='tablist' aria-label='Unit type'><button class='mm-tab on' id='mm-tab-brick' role='tab' type='button'>Bricks</button><button class='mm-tab' id='mm-tab-block' role='tab' type='button'>Blocks</button></div><div class='mm-bench'><div class='mm-grid'><div class='mm-field'><label for='mm-count' id='mm-countlabel'>Number of bricks</label><input id='mm-count' type='number' min='0' step='1' value='900' inputmode='numeric'></div><div class='mm-field'><label>Mortar type</label><div class='mm-typebtns' id='mm-types' role='radiogroup' aria-label='Mortar type'></div></div></div><div class='mm-field' style='margin-top:18px'><label for='mm-waste'>Waste allowance: <span class='mm-wasteval' id='mm-wasteval'>10%</span></label><input id='mm-waste' type='range' min='0' max='25' step='5' value='10'></div><div class='mm-result' role='status'><div class='mm-big' id='mm-bags'>–</div><div class='mm-sub' id='mm-sub'></div><div class='mm-break'><h2>Site-mix breakdown</h2><table><tbody id='mm-breakbody'></tbody></table></div></div><p class='mm-note'>Rule of thumb: one 80-lb bag lays ~90 bricks or ~12 blocks with 3/8 in joints. Always round up — bags are returnable, cold joints are not.</p></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How Much Mortar Does a Brick Wall Need?</h2><p>Every beginner mason asks some version of this question standing in the supply yard, and the rule of thumb has survived generations because it works: <strong>one 80-pound bag of premixed mortar lays about 90 standard bricks</strong> (with 3/8-inch joints), or about 12 standard 8-inch concrete blocks. That single ratio is the engine of the calculator above — enter your unit count and it returns bags, then breaks the job down further for site mixing.</p><p>Where does 90 come from? A standard US modular brick is 3-5/8 × 2-1/4 × 7-5/8 inches, and a 3/8-inch mortar joint around each brick consumes roughly 0.011 cubic feet of mortar. An 80-pound bag of premixed mortar yields about 0.6 cubic feet of workable mortar. Divide 0.6 by 0.011 and you get roughly 55 — but real-world laying with waste, dropped mortar, and joint variation lands the practical number near 90 bricks per bag for experienced masons, which is the conservative planning figure the trade uses. The tool rounds up and layers your waste allowance on top, because running out of mortar mid-wall is a disaster: a cold joint between batches is a visible, permanent scar.</p><h2>Mortar Types N, S, and M: Picking the Right One</h2><p>Mortar types are defined by compressive strength and, more importantly, by flexibility. Stronger is not better — mortar should always be <em>weaker</em> than the units it joins, so the mortar (which is easy to repoint) cracks before the brick (which is not).</p><table><thead><tr><th>Type</th><th>Min. strength (psi)</th><th>Site-mix ratio (cement:lime:sand)</th><th>Use it for</th></tr></thead><tbody><tr><td>N</td><td>750</td><td>1 : 1 : 6</td><td>General above-grade walls, the default</td></tr><tr><td>S</td><td>1,800</td><td>1 : 0.5 : 4.5</td><td>Below grade, high wind/seismic, pavers</td></tr><tr><td>M</td><td>2,500</td><td>1 : 0.25 : 3</td><td>Foundations, retaining walls, heavy loads</td></tr><tr><td>O</td><td>350</td><td>1 : 2 : 9</td><td>Historic restoration, interior non-load</td></tr></tbody></table><p><strong>Type N</strong> is the right answer for most residential work — garden walls, chimneys above the roofline, brick veneer. It balances strength with enough flexibility to absorb minor movement. <strong>Type S</strong> steps up for below-grade walls, foundations, and areas with lateral loads. <strong>Type M</strong> is the heavyweight for foundations and retaining walls carrying real loads. <strong>Type O</strong> exists mainly for historic buildings: old soft bricks need soft mortar, and repointing a 1900s wall with Type N will crack the bricks within years.</p><p>The picker in the tool adjusts the sand-and-cement breakdown to your type. Premixed bags are labeled by type, so if you are buying bags, just buy the right letter — the breakdown matters when you mix from raw cement, lime, and sand on site.</p><h2>Site Mixing: The Sand and Cement Breakdown</h2><p>Site-mixed mortar (cement + lime + sand + water) costs less per cubic foot than premixed bags and lets you tune the mix, which is why pros use it on big jobs. The calculator converts your bag count into raw materials using the type's volumetric ratio. For Type N at 1:1:6, each cubic foot of mortar needs roughly:</p><ul><li><strong>Portland cement:</strong> ~0.125 cubic feet (≈ 12 lb, since a 94-lb bag is 1 cubic foot)</li><li><strong>Hydrated lime:</strong> ~0.125 cubic feet</li><li><strong>Sand:</strong> ~0.75 cubic feet (masonry sand, damp but not wet)</li></ul><p>Measure by volume with a bucket or shovel-count, not by weight — the ratios are volumetric. Mix dry ingredients first until uniform in color, then add water gradually. The classic field test: mortar should hold its shape on the trowel when you snap your wrist, neither slumping off nor crumbling. If it is too wet, add dry mix; too dry, sprinkle water. Never retemper mortar that has started to set by just adding water — the strength is already compromised.</p><h3>Sand matters more than you think</h3><p>Use <strong>masonry sand</strong> — washed, angular grains that lock together. Play sand and beach sand are too rounded and fine; they make weak, shrinkage-prone mortar. Damp sand (not dripping) is ideal; bone-dry sand steals mix water and throws off your consistency.</p><h2>The Waste Allowance Slider</h2><p>Mortar waste is real and highly variable: it sticks to the mixer, drops off the trowel, dries on the board in hot wind. The slider defaults to 10 percent, which suits careful work in mild weather. Push it to 15–20 percent when:</p><ul><li>Temperatures are high or wind is strong (mortar skins over fast)</li><li>The crew is inexperienced (more drops, more retempering)</li><li>Joints are raked or struck decoratively (more tooling waste)</li><li>You are laying block (cells and cores eat mortar unpredictably)</li></ul><p>On a 900-brick wall at 10 percent waste, the difference is exactly one bag — cheap insurance against a cold joint. On big jobs, contractors order 5 percent over and keep a couple of spare bags dry on site; bags are returnable, cold joints are not.</p><h2>Planning the Wall: From Dimensions to Brick Count</h2><p>If you know the wall's dimensions instead of its brick count, estimate bricks first: a square foot of standard brick wall (running bond, 3/8-inch joints) needs about <strong>7 bricks per square foot</strong> for a single wythe. So a 10 × 4 foot garden wall is 40 square feet ≈ 280 bricks ≈ 4 bags at the 90-per-bag ratio with waste. For 8-inch concrete block, figure <strong>1.125 blocks per square foot</strong> and about 12 blocks per bag.</p><p>Double-wythe walls double everything. Openings (doors, windows) subtract area — measure them and deduct before multiplying. And always round <em>up</em> on bags: a half bag left over is fine, a half wall waiting on a yard run is not.</p><h2>Working Conditions That Change Everything</h2><ul><li><strong>Hot weather:</strong> mortar sets fast. Mix smaller batches, shade the materials, use cool water, and mist the bricks — dry bricks suck water out of the joint and weaken it.</li><li><strong>Cold weather:</strong> below 40°F, mortar barely gains strength. Heat materials, use warm water, cover fresh work with insulated blankets, and never lay on frozen units.</li><li><strong>Rain:</strong> cover fresh masonry. A downpour can wash joints out within hours of laying.</li><li><strong>Wind:</strong> accelerates surface drying. Smaller batches, faster laying, and keep the mortar board covered.</li></ul><h2>Troubleshooting</h2><ul><li><strong>Estimate was short:</strong> the usual causes are undercounted waste, raked joints (which use more), or irregular stone instead of uniform brick. Bump waste to 20% for stone.</li><li><li><strong>Mortar too stiff to work:</strong> do not just add water to old mortar. Mix a fresh, smaller batch. Retempering set mortar kills strength.</li><li><strong>White haze on finished brick (efflorescence):</strong> soluble salts migrating out — usually cosmetic and weather-worn away. Low-alkali cement and clean sand reduce it.</li><li><strong>Cracking in the wall:</strong> often the mortar was stronger than the brick, or there was no control joint. Match mortar softness to the unit.</li></ul><p>Estimate honestly, buy the right type, allow for waste, and protect fresh work from weather. Masonry is unforgiving of shortcuts but deeply rewarding of preparation — and it starts with knowing how many bags to put on the truck.</p><h2>Repointing: When Old Mortar Needs Replacing</h2><p>Mortar is sacrificial by design — it is supposed to weather before the brick does, which means old walls eventually need <strong>repointing</strong>: raking out failed joints and packing in fresh mortar. The test is simple: scrape a joint with a screwdriver. If mortar crumbles or falls out in chunks, it is time. Rake joints to a uniform depth of about 3/4 inch (never grind aggressively into soft historic brick — you will cut the brick faces), dampen the joints, and pack the new mortar in layers, tooling each layer before adding the next.</p><p>The critical rule for repointing: <strong>match the old mortar's softness, or go softer</strong> — never harder. A 1920s wall built with lime-rich Type O mortar will crack its bricks if repointed with modern Type N. When in doubt about a historic building, use a lime-based mortar and consult a preservation mason. For estimating, repointing uses roughly 1 bag per 100 square feet of wall face at 3/8-inch joints raked 3/4 inch deep — the calculator's brick-count mode works if you estimate joints per square foot instead.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many bricks does one bag of mortar cover?</summary><p>One 80-lb bag of premixed mortar lays about 90 standard bricks with 3/8-inch joints (or ~12 standard 8-inch blocks). Enter your brick count in the calculator — 900 bricks needs 10 bags before waste allowance.</p></details>
+<details><summary>Should I use Type N, S, or M mortar?</summary><p>Type N (750 psi) is the default for most above-grade residential work — veneer, garden walls, chimneys. Type S (1,800 psi) is for below grade and high-load areas; Type M (2,500 psi) for foundations and retaining walls. Mortar should always be weaker than the brick.</p></details>
+<details><summary>What is the mix ratio for Type N mortar?</summary><p>Type N site mix is 1 part portland cement : 1 part hydrated lime : 6 parts masonry sand by volume. Type S is 1 : 0.5 : 4.5; Type M is 1 : 0.25 : 3. Measure with a bucket, mix dry first, then add water to trowel consistency.</p></details>
+<details><summary>How much extra mortar should I allow for waste?</summary><p>10% for careful work in mild weather; 15-20% in heat, wind, with inexperienced crews, raked joints, or block work. A spare bag is returnable — a cold joint from running out mid-wall is permanent.</p></details>
+<details><summary>How many bricks per square foot of wall?</summary><p>About 7 standard bricks per square foot for a single-wythe wall in running bond. A 10×4 ft garden wall is 40 sq ft ≈ 280 bricks ≈ 4 bags with waste. Double for double-wythe walls; subtract door and window openings first.</p></details>
+<details><summary>Can I lay brick in cold or hot weather?</summary><p>Below 40°F mortar gains strength very slowly. Heat your materials, use warm mixing water, never lay on frozen units, and cover fresh work with insulated blankets. In heat, mix smaller batches and mist dry bricks so they don't suck water from the joints.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">MortarMix</div>
+    <p>MortarMix tells you how many mortar bags your brick or block count needs, with sand and cement breakdowns for site mixing.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function mortarBags(bricks){var b=Number(bricks);if(!(b>=0))return 0;return Math.round(b/90*10)/10;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){function el(id){return document.getElementById(id);}var TYPES={N:{ratio:'1 : 1 : 6',desc:'General above-grade — the default',cement:0.125,lime:0.125,sand:0.75},S:{ratio:'1 : 0.5 : 4.5',desc:'Below grade, high wind/seismic',cement:0.154,lime:0.077,sand:0.692},M:{ratio:'1 : 0.25 : 3',desc:'Foundations, heavy loads',cement:0.235,lime:0.059,sand:0.706}};var curType='N',mode='brick';var tbox=el('mm-types');Object.keys(TYPES).forEach(function(k){var b=document.createElement('button');b.type='button';b.className='mm-typebtn'+(k===curType?' on':'');b.textContent='Type '+k;b.setAttribute('role','radio');b.title=TYPES[k].desc+' ('+TYPES[k].ratio+')';b.addEventListener('click',function(){curType=k;var all=tbox.querySelectorAll('.mm-typebtn');for(var i=0;i<all.length;i++)all[i].classList.remove('on');b.classList.add('on');render();});tbox.appendChild(b);});function render(){var count=el('mm-count'),waste=el('mm-waste');if(!count||!waste)return;var units=Math.max(0,Math.floor(Number(count.value)||0));var wv=el('mm-wasteval');if(wv)wv.textContent=waste.value+'%';var perBag=mode==='brick'?90:12;var bagsRaw=units/perBag;var bags=Math.ceil(bagsRaw*(1+Number(waste.value)/100)*2)/2;var t=TYPES[curType];el('mm-bags').textContent=bags+(bags===1?' bag':' bags');el('mm-sub').textContent=units+' '+(mode==='brick'?'bricks':'blocks')+' ÷ '+perBag+' per bag, plus '+waste.value+'% waste · Type '+curType+' ('+t.desc+', '+t.ratio+')';var cf=bags*0.6;var bb=el('mm-breakbody');if(bb){bb.innerHTML='';var rows=[['Portland cement',(cf*t.cement).toFixed(2)+' cu ft ('+Math.round(cf*t.cement*94)+' lb)'],['Hydrated lime',(cf*t.lime).toFixed(2)+' cu ft'],['Masonry sand',(cf*t.sand).toFixed(2)+' cu ft'],['Water','to trowel consistency']];rows.forEach(function(r){var tr=document.createElement('tr');var td1=document.createElement('td');td1.textContent=r[0];var td2=document.createElement('td');td2.textContent=r[1];tr.appendChild(td1);tr.appendChild(td2);bb.appendChild(tr);});}}function setMode(m){mode=m;el('mm-tab-brick').classList.toggle('on',m==='brick');el('mm-tab-block').classList.toggle('on',m==='block');var lab=el('mm-countlabel');if(lab)lab.textContent=m==='brick'?'Number of bricks':'Number of blocks (8 in)';var c=el('mm-count');if(c)c.value=m==='brick'?'900':'120';render();}var tb=el('mm-tab-brick'),tk=el('mm-tab-block');if(tb)tb.addEventListener('click',function(){setMode('brick');});if(tk)tk.addEventListener('click',function(){setMode('block');});var ci=el('mm-count');if(ci)ci.addEventListener('input',render);var wi=el('mm-waste');if(wi)wi.addEventListener('input',render);render();});}
+</script>
+</body>
+</html>
