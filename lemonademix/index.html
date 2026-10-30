@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lemonade Recipe Calculator — Lemons, Sugar &amp; Water by Pitcher Size</title>
+<meta name="description" content="Calculate lemons, sugar, and water for lemonade from pitcher size and sweetness, so every batch tastes balanced, never syrupy or sour.">
+<link rel="canonical" href="https://fun.fixoraa.tech/lemonademix/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Lemonade Recipe Calculator — Lemons, Sugar &amp; Water by Pitcher Size">
+<meta property="og:description" content="Calculate lemons, sugar, and water for lemonade from pitcher size and sweetness, so every batch tastes balanced, never syrupy or sour.">
+<meta property="og:url" content="https://fun.fixoraa.tech/lemonademix/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "LemonadeMix",
+      "url": "https://fun.fixoraa.tech/lemonademix/",
+      "applicationCategory": "Food",
+      "operatingSystem": "Web",
+      "description": "Calculate lemons, sugar, and water for lemonade from pitcher size and sweetness, so every batch tastes balanced, never syrupy or sour.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many lemons do I need for lemonade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About four lemons per litre of lemonade, since one lemon gives roughly 45 ml of juice. A two-litre pitcher needs about eight lemons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much sugar goes in lemonade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 60 g per litre for light sweetness, 90 g for regular, and 120 g for sweet. Dissolve sugar in warm water first for a smooth result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use a sugar syrup for lemonade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes for the smoothest result. Dissolve the sugar in an equal volume of hot water, cool it, and mix with lemon juice and cold water. It avoids gritty sugar at the bottom."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does homemade lemonade last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three to four days refrigerated in a sealed pitcher. Stir before serving, since pulp settles, and keep it chilled at a party."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I make lemonade less sour without more sugar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dilute with a little more water, add a pinch of salt, or mix in some orange juice. Salt in particular rounds out sourness without extra sweetness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What lemons are best for lemonade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heavy, thin-skinned lemons with a slight give when squeezed give the most juice. Avoid very green or rock-hard lemons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I make sparkling lemonade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Mix lemon juice and sugar syrup as usual, then top up with chilled sparkling water instead of still water just before serving."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many servings does a pitcher give?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A two-litre pitcher gives about eight 250 ml glasses. For a party, plan two to three glasses per person over a few hours."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fefce8; --surface:#ffffff; --accent:#854d0e; --accent-ink:#ffffff;
+  --ink:#2e2408; --muted:#6b5a2e; --line:#e8dca8;
+  --display:'DM Serif Display',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+.hist{margin-top:1rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.1rem}
+.hist h3{font-size:1rem;margin-bottom:.4rem} .hist ul{padding-left:1.2rem;color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}.formcard,.resultcard{padding:.9rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="LemonadeMix home">
+      <span class="fx-logo-tile" aria-hidden="true">🍋</span>
+      <span class="fx-brand">LemonadeMix</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-lemonade-pitcher" aria-label="LemonadeMix tool">
+<div class="layout"><h1>Lemonade Recipe Calculator</h1><p class="sub">Scale lemons, sugar, and water to your pitcher and sweetness.</p><div class="formcard"><label>Pitcher size (litres)<input id="litres" type="number" value="2" step="any" min="0"></label><label>Sweetness<select id="sweet"><option value="60">Light — 60 g sugar per litre</option><option value="90" selected>Regular — 90 g per litre</option><option value="120">Sweet — 120 g per litre</option></select></label><div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div><div class="presets" id="presets"></div></div><div class="resultcard" id="result" aria-live="polite"><p>Enter your values to see the result.</p></div><div class="hist"><h3>Recent calculations</h3><ul id="histList"></ul></div><p class="muted">Tip: roll lemons firmly on the counter before juicing — you will get noticeably more juice.</p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>The balance that makes lemonade</h2>
+<p>Good lemonade is a balance of three things: sour from lemon juice, sweet from sugar, and dilution from water. Get any one wrong and the drink fails, too sour and it makes eyes water, too sweet and it tastes like syrup, too diluted and it tastes like flavoured water. The classic balance is about four lemons per litre, ninety grams of sugar per litre, and water to make up the rest. A lemon gives roughly forty-five millilitres of juice, so four lemons give about 180 millilitres of juice per litre, with the remaining 820 millilitres being water. That ratio is a starting point, not a law, and sweetness preference moves it up or down.</p>
+<h2>Lemons: how many and how to juice them</h2>
+<p>Four lemons per litre is a reliable planning figure, but lemons vary. Large, heavy, thin-skinned lemons can give sixty millilitres or more, while small, thick-skinned ones may give only thirty. Buy one or two extra lemons beyond the calculated number, and taste before serving. Rolling a lemon firmly on the counter before cutting breaks down internal membranes and increases juice yield noticeably. Room-temperature lemons juice better than cold ones, so take them out of the fridge half an hour before juicing. Cut lengthwise rather than across the middle for easier squeezing, and strain out pips while keeping some pulp for texture.</p>
+<h2>Sugar and sweetness levels</h2>
+<p>Sugar levels divide drinkers more than any other lemonade variable. Sixty grams per litre makes a light, tart lemonade that suits adults and pairs well with food. Ninety grams per litre is the regular, crowd-pleasing middle ground, sweet enough to balance the lemon without hiding it. One hundred and twenty grams per litre makes a sweet, fairground-style lemonade that children usually prefer. Dissolving sugar matters as much as measuring it: sugar stirred into cold water sinks and stays gritty. Make a simple syrup by dissolving the sugar in an equal volume of hot water, cool it, and mix it with juice and cold water for a smooth, even sweetness.</p>
+<h2>Water, ice, and dilution</h2>
+<p>Water is the quiet ingredient that decides whether lemonade refreshes or overwhelms. The calculator gives water as the pitcher volume minus the juice volume, so the total always matches your pitcher. Use cold, good-tasting water, since chlorine or off flavours show up clearly in a simple drink. Ice deserves thought too: ice melts and dilutes, so lemonade served over a lot of ice should start slightly stronger than lemonade served chilled without ice. For a party pitcher that will sit for hours, make the batch a little stronger and let melting ice bring it to balance, or keep ice in glasses rather than in the pitcher so the pitcher stays consistent.</p>
+<h2>Variations worth trying</h2>
+<p>Once the base balance works, lemonade welcomes variations. Sparkling lemonade, made by topping up juice and syrup with chilled sparkling water, is festive and lighter. Mint lemonade, with a handful of bruised mint leaves steeped in the syrup, is cooling on hot days. Berry lemonade, with crushed raspberries or strawberries stirred in, adds colour and a second fruit note. Ginger lemonade, with a little grated ginger in the syrup, adds warmth and bite. For a grown-up version, a splash of gin or vodka turns lemonade into a simple cocktail. In every variation, keep the lemon-sugar-water balance as the base and treat extras as accents, so the drink stays lemonade rather than becoming something else.</p>
+<h2>Serving a crowd</h2>
+<p>For a party, scale the pitcher maths and think about logistics. A two-litre pitcher gives about eight glasses of 250 millilitres, and guests at a summer party drink two to three glasses over a few hours, so a party of twenty needs roughly five to seven pitchers, or one very large dispenser. Make lemonade the day before if you like: it keeps three to four days refrigerated, and the flavour settles overnight. Stir before serving, since pulp settles to the bottom. Label sweet and light batches if you offer both, and keep a small jug of extra syrup and a bowl of lemon wedges nearby so guests can adjust their own glasses.</p>
+<h2>A worked example</h2>
+<p>For a two-litre pitcher at regular sweetness, the calculator gives eight lemons, 180 grams of sugar, and 1640 millilitres of water. The maths is simple: four lemons per litre times two litres is eight lemons, ninety grams per litre times two litres is 180 grams, and eight lemons at forty-five millilitres each give 360 millilitres of juice, leaving 2000 minus 360, or 1640 millilitres, of water. For a one-litre light batch, the figures are four lemons, sixty grams of sugar, and 820 millilitres of water. For a three-litre sweet batch, twelve lemons, 360 grams of sugar, and 2460 millilitres of water. The calculator does this instantly for any pitcher.</p>
+<h2>Troubleshooting lemonade</h2>
+<p>Too sour usually means too little sugar or too much juice, so add syrup a little at a time and taste between additions. Too sweet means too much sugar or too little juice, so squeeze in another lemon. Gritty lemonade means sugar was added to cold water without dissolving, so warm a little of the mixture, dissolve the sugar, and stir it back in. Bitter lemonade often comes from squeezing lemons too hard and pressing pith oils into the juice, so squeeze gently and stop before the pith. Cloudy lemonade is normal and harmless, but straining through a fine sieve gives a clearer drink if you prefer it. Taste, adjust, and note the winning combination for next time.</p>
+<h2>Lemons through the seasons</h2>
+<p>Lemon quality changes through the year, and a good lemonade maker adjusts. Winter and early spring lemons are usually juiciest and cheapest, since that is peak citrus season, while summer lemons can be drier and more expensive. When lemons are dear, buy a few extra and freeze the juice in ice-cube trays, so a future pitcher costs almost nothing. Frozen lemon juice keeps its sourness well for months, although it loses a little fresh aroma, so use it for everyday pitchers and save fresh lemons for special occasions. Limes can substitute for part of the lemon juice, giving a slightly different, more aromatic sourness, and a mix of lemon and lime is a classic variation. Whatever the season, weighing sugar and counting lemons keeps the balance steady when the fruit itself varies.</p>
+<h2>Making lemonade with kids</h2>
+<p>Lemonade is an ideal first recipe for children, because it teaches measuring, tasting, and adjusting in a forgiving drink. Let children roll and squeeze the lemons, count the sugar, and stir the syrup, while an adult handles any hot water for dissolving sugar. Tasting is the lesson: too sour means more syrup, too sweet means more lemon, and children learn quickly that recipes are starting points rather than rules. For a summer project, set up a small lemonade stand with light and regular batches labelled, plus mint and berry options, and let young sellers explain the choices to customers. It is practical maths, real cooking, and a memorable afternoon in one pitcher.</p>
+<h3>Lemonade per litre</h3><table><tr><th>Sweetness</th><th>Lemons</th><th>Sugar</th><th>Water</th></tr><tr><td>Light</td><td>4</td><td>60 g</td><td>820 ml</td></tr><tr><td>Regular</td><td>4</td><td>90 g</td><td>820 ml</td></tr><tr><td>Sweet</td><td>4</td><td>120 g</td><td>820 ml</td></tr></table>
+<ul><li>Plan 4 lemons per litre of lemonade.</li><li>Regular sweetness is 90 g of sugar per litre.</li><li>Dissolve sugar as syrup for a smooth result.</li><li>Serve over ice, or make the batch slightly stronger for a pitcher that will sit.</li><li>Taste and adjust: add syrup for sour, lemon for sweet.</li></ul>
+<p>Lemonade is simple, but simple drinks punish sloppy measuring. Count your lemons, weigh your sugar, and let the water make up the rest. With the balance right, a pitcher of lemonade is the easiest crowd-pleaser of summer, and the recipe you work out today will serve you for years.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many lemons do I need for lemonade?</summary><p>About four lemons per litre of lemonade, since one lemon gives roughly 45 ml of juice. A two-litre pitcher needs about eight lemons.</p></details>
+<details><summary>How much sugar goes in lemonade?</summary><p>About 60 g per litre for light sweetness, 90 g for regular, and 120 g for sweet. Dissolve sugar in warm water first for a smooth result.</p></details>
+<details><summary>Should I use a sugar syrup for lemonade?</summary><p>Yes for the smoothest result. Dissolve the sugar in an equal volume of hot water, cool it, and mix with lemon juice and cold water. It avoids gritty sugar at the bottom.</p></details>
+<details><summary>How long does homemade lemonade last?</summary><p>Three to four days refrigerated in a sealed pitcher. Stir before serving, since pulp settles, and keep it chilled at a party.</p></details>
+<details><summary>Can I make lemonade less sour without more sugar?</summary><p>Dilute with a little more water, add a pinch of salt, or mix in some orange juice. Salt in particular rounds out sourness without extra sweetness.</p></details>
+<details><summary>What lemons are best for lemonade?</summary><p>Heavy, thin-skinned lemons with a slight give when squeezed give the most juice. Avoid very green or rock-hard lemons.</p></details>
+<details><summary>Can I make sparkling lemonade?</summary><p>Yes. Mix lemon juice and sugar syrup as usual, then top up with chilled sparkling water instead of still water just before serving.</p></details>
+<details><summary>How many servings does a pitcher give?</summary><p>A two-litre pitcher gives about eight 250 ml glasses. For a party, plan two to three glasses per person over a few hours.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">LemonadeMix</div>
+    <p>LemonadeMix scales lemons, sugar, and water to your pitcher and sweetness preference.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function lemonadeMix(litres, sugarPerL) { if (litres <= 0 || sugarPerL < 0) return {lemons: 0, sugar: 0, water: 0}; var lem = Math.round(litres * 4); var sug = Math.round(litres * sugarPerL); var wat = Math.round(litres * 1000 - lem * 45); return {lemons: lem, sugar: sug, water: wat}; }
+
+if (typeof document !== 'undefined') {
+  var _hist = [];
+  function _renderHist() {
+    var el = document.getElementById('histList');
+    if (el) el.innerHTML = _hist.map(function(h) { return '<li>' + h + '</li>'; }).join('') || '<li>No calculations yet.</li>';
+  }
+  function run() {
+    var r=lemonadeMix(+document.getElementById('litres').value,+document.getElementById('sweet').value);document.getElementById('result').innerHTML='<p class="big">'+r.lemons+' lemons &middot; '+r.sugar+' g sugar</p><p>Add '+r.water+' ml cold water, stir until sugar dissolves, and serve over ice.</p>';window._last='LemonadeMix: '+r.lemons+' lemons, '+r.sugar+' g sugar, '+r.water+' ml water';
+    if (window._last) { _hist.unshift(window._last); _hist = _hist.slice(0, 5); _renderHist(); }
+  }
+  document.getElementById('calcBtn').onclick = run;
+  document.getElementById('copyBtn').onclick = function() { if (window._last && navigator.clipboard) navigator.clipboard.writeText(window._last); };
+  var P = [['Small pitcher: 1 L, regular',[1,90]],['Party pitcher: 3 L, regular',[3,90]],['Sweet crowd: 2 L, sweet',[2,120]]];
+  document.getElementById('presets').innerHTML = P.map(function(p, i) { return '<button type="button" data-i="' + i + '">' + p[0] + '</button>'; }).join('');
+  document.querySelectorAll('#presets button').forEach(function(b) {
+    b.onclick = function() {
+      var v = P[+b.dataset.i][1];
+      document.getElementById('litres').value=v[0];document.getElementById('sweet').value=v[1];
+      run();
+    };
+  });
+  _renderHist();
+  run();
+}
+
+</script>
+</body>
+</html>
