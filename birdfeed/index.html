@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bird Feeder Calculator — Seed Use, Refills &amp; Cost</title>
+<meta name="description" content="Calculate how fast garden birds empty your feeders: daily seed use, days per fill, monthly seed and cost from birds, feeders and seed type.">
+<link rel="canonical" href="https://fun.fixoraa.tech/birdfeed/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "BirdFeed", "url": "https://fun.fixoraa.tech/birdfeed/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much seed do garden birds eat per day?", "acceptedAnswer": {"@type": "Answer", "text": "Small birds eat roughly 10–20 g each per day; a dozen visitors consume about 150–200 g daily."}}, {"@type": "Question", "name": "How often should I refill a feeder?", "acceptedAnswer": {"@type": "Answer", "text": "Divide total feeder capacity by daily use — a 500 g feeder serving 12 birds lasts about 3 days."}}, {"@type": "Question", "name": "What is the best all-round bird seed?", "acceptedAnswer": {"@type": "Answer", "text": "Sunflower hearts: eaten by the widest range of species with almost no waste husk."}}, {"@type": "Question", "name": "How do I stop squirrels emptying feeders?", "acceptedAnswer": {"@type": "Answer", "text": "Use a weight-activated squirrel-proof feeder, a pole baffle, and place feeders away from fences and branches."}}, {"@type": "Question", "name": "How often should feeders be cleaned?", "acceptedAnswer": {"@type": "Answer", "text": "Every two weeks with hot water, more often in wet weather; never top up mouldy seed."}}, {"@type": "Question", "name": "Should I feed birds all year?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, with seasonal adjustments — high-energy food in winter, mealworms in spring, and fresh water in summer."}}]}</script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1F2937;line-height:1.6;background:#F0FDF4}
+header{background:#14532D;color:#fff;padding:18px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:52px;height:52px;border-radius:14px;background:#fff;color:#16A34AD;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+.brand h1{margin:0;font-size:26px;line-height:1.1}.brand p{margin:2px 0 0;opacity:.9;font-size:14px}
+.btn{display:inline-block;background:#fff;color:#16A34AD;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;border:0;cursor:pointer;font-size:15px}
+.btn.primary{background:#16A34A;color:#fff}.badge{display:inline-block;background:#fff;color:#16A34AD;border-radius:999px;padding:5px 12px;font-weight:700;font-size:13px}
+main{max-width:1020px;margin:0 auto;padding:8px 16px 30px}label{font-weight:700;display:block;margin:12px 0 4px}
+input,select{width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:16px;background:#fff;color:#1f2937}
+.result{margin-top:18px;background:#fff;border:2px solid #16A34A;border-radius:14px;padding:18px;font-size:18px}
+.result b{font-size:26px}.small{font-size:14px;color:#4b5563}.hist{font-size:14px;background:#fff;border-radius:10px;padding:12px;margin-top:14px}
+article{max-width:1020px;margin:0 auto;padding:10px 20px 30px}article h2{font-size:24px}article h3{font-size:19px}
+.faq{max-width:1020px;margin:0 auto;padding:0 20px 30px}.faq details{background:#fff;border-radius:10px;padding:14px 18px;margin:10px 0}
+footer{background:#14532D;color:#fff;padding:28px 20px;text-align:center}footer a{color:#fff}
+@media(max-width:640px){.brand h1{font-size:21px}header{flex-direction:column;align-items:flex-start}.result b{font-size:22px}}
+.toolwrap{display:grid;grid-template-columns:1fr 1fr;gap:24px}.menu{background:#fff;border:3px double #16A34A;border-radius:10px;padding:24px}.menu h3{font-family:Georgia,serif;text-align:center;text-transform:uppercase;letter-spacing:.15em}@media(max-width:640px){.toolwrap{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<header>
+<div class="brand"><div class="logo" aria-hidden="true">🐦</div><div><h1>BirdFeed</h1><p>Keep the feeders full, all season.</p></div></div>
+<div><span class="badge">Unlimited Free Usage</span>&nbsp; <a class="btn" href="https://fixoraa.tech">Home</a> <a class="btn" href="https://fixoraa.tech">More Tools</a></div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<section aria-label="Tool">
+<div class="toolwrap"><div class="menu"><h3>Feeders</h3><label for="feeders">Number of feeders</label><input id="feeders" type="number" value="2" ><label for="cap">Feeder capacity (grams)</label><input id="cap" type="number" value="500" ></div><div class="menu"><h3>Visitors</h3><label for="birds">Birds visiting per day</label><input id="birds" type="number" value="12" ><label for="perbird">Seed per bird per day (g)</label><input id="perbird" type="number" value="15" ><label for="seedprice">Seed price per kg ($)</label><input id="seedprice" type="number" value="4" ><p><button class="btn primary" onclick="brun()">Calculate</button></p><div class="result" id="out">Enter feeder and visitor details.</div></div></div>
+<div class="hist" id="hist">Recent results will appear here as you calculate.</div>
+<p><button class="btn primary" onclick="copyResult()">Copy result</button> <button class="btn" onclick="clearHist()">Clear history</button></p>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<article>
+<h2>About BirdFeed</h2>
+<h2>Why feeders empty faster than you expect</h2><p>A single busy feeder can disappear in days during cold weather, and owners often blame squirrels or waste before realising how many birds are actually visiting. A dozen small birds eating fifteen grams each consume nearly two hundred grams a day, which empties a standard five hundred gram feeder in under three days. Winter demand rises further, because birds burn more energy staying warm and natural food is scarce. Counting visitors roughly for a few days, even imperfectly, transforms seed buying from guesswork into a plan: you know how many fills a month you need, how much seed to keep in stock, and whether a larger feeder or a second feeder is cheaper than constant refilling.</p><h2>How the calculation works</h2><p>Daily consumption is the number of visiting birds multiplied by the grams each bird eats per day, which varies by species: finches and sparrows eat around ten to twenty grams, while larger birds such as pigeons and jays eat far more. Total feeder capacity is the number of feeders multiplied by each feeder&#x27;s capacity, and dividing capacity by daily use gives days per fill. Monthly seed is daily use times thirty days, converted to kilograms, and multiplying by the price per kilogram gives the monthly cost. The figures assume your feeders are the birds&#x27; main supplementary source; if birds also visit neighbours&#x27; feeders, actual use will be lower, so adjust the visitor count after observing for a week.</p><h2>Choosing seed for the birds you want</h2><p>Sunflower hearts are the universal favourite, eaten by finches, tits, nuthatches and many others, with almost no waste husk. Nyjer seed attracts goldfinches and siskins but needs a special small-holed feeder. Peanuts, whole or kibbled, attract tits, woodpeckers and jays, but must be fresh and never salted or roasted in flavourings. Mixed seed with a high wheat and barley content is often ignored and ends up rotting on the ground, so read the ingredients and prefer mixes where sunflower, peanut and millet dominate. Mealworms, live or dried, are a protein boost in breeding season, and fat balls suit cold weather, though they melt and spoil in summer heat.</p><h2>Feeder placement and hygiene</h2><p>Place feeders where birds can see approaching predators, ideally within a few metres of cover such as a bush, but far enough from dense shrubs that cats cannot ambush from them. Hang feeders at least 1.5 metres high and away from windows, or very close to windows, since the middle distance is where fatal window strikes happen most. Clean feeders every two weeks with hot water and a brush, and more often in wet weather, because damp seed grows mould that can sicken birds. Rake up spilled seed regularly, move ground feeding spots occasionally, and never top up a mouldy feeder: empty it, clean it and refill with fresh seed.</p><h2>Squirrels, waste and ground feeding</h2><p>Squirrels are the classic feeder problem, and the most reliable fixes are a squirrel-proof feeder with a weight-activated mechanism, a smooth pole baffle, or placement well away from launch points such as fences and branches. Seed husks on the ground are normal for sunflower and millet, but a growing pile of uneaten seed signals the wrong mix or a damp feeder. Ground feeding suits robins, blackbirds and dunnocks that rarely use hanging feeders, so scatter a small amount of seed and mealworms on a ground tray each morning rather than leaving a large pile to rot. Adjust quantities so ground food is eaten within a day, which keeps rats and mould away.</p><h2>Seasonal feeding through the year</h2><p>Winter is the critical season: natural food is scarce, nights are long, and birds need high-energy food such as sunflower hearts, peanuts and fat. Spring feeding supports breeding birds and fledglings, with mealworms and soft foods especially valuable, though whole peanuts can choke nestlings, so offer kibbled peanuts only. Summer demand falls as insects and berries appear, but fresh water becomes more important than food, so keep a bird bath topped up and clean. Autumn feeding helps migrants build fat reserves and resident birds through the first cold snaps. Feed consistently once you start in winter, because birds learn to rely on a regular source and may struggle if it suddenly stops.</p><h2>Water, the forgotten essential</h2><p>Birds need water for drinking and bathing all year, and a shallow bath with a rough surface for grip is more useful than an ornate deep one. Change the water every day or two, scrub algae weekly, and break ice in freezing weather, since birds cannot drink ice. Place the bath in an open spot with a clear view of predators, and add a few stones so small birds can stand safely at the edge. In summer, a dripping water feature attracts birds from a distance, and the sound of moving water is one of the most effective ways to bring new species to a garden. Keep water away from feeders so spilled seed does not foul it.</p><h2>Counting visitors and adjusting the plan</h2><p>Spend ten minutes watching at the same time each day for a week and note the maximum number of each species present at once, rather than adding up every visit, since the same birds return repeatedly. Use that peak count as your visitor figure, and re-check each season, because winter flocks can triple summer numbers. If feeders empty much faster than calculated, suspect squirrels, larger birds, or spillage, and check the feeder mechanism before buying more seed. If they last much longer, the visitor count was optimistic or birds are finding natural food, and you can reduce orders. A simple notebook record turns feeding into a satisfying seasonal rhythm rather than a chore.</p><h2>Helping birds beyond the feeder</h2><p>Feeders help individual birds, but habitat helps populations: native shrubs for shelter and insects, a wild corner for nesting material, and a pond, however small, support far more species than seed alone. Avoid pesticides where possible, since many garden birds feed insects to their chicks, and a sprayed garden can starve a brood even with full feeders. Leave seed heads standing over winter instead of cutting everything back in autumn, and plant berry-bearing shrubs for autumn food. The feeder is the visible, enjoyable part of bird gardening, but the planting around it is what turns visitors into residents.</p><h2>Dealing with rats and unwanted visitors</h2><p>Rats are the unwelcome side effect of enthusiastic bird feeding, and they arrive when spilled seed accumulates on the ground or when feeders are filled at dusk and left overnight. The most effective prevention is hygiene: sweep up spilled seed daily, bring ground feeding trays in at night, and use feeders that minimise spillage, such as those with trays that catch husks. Avoid scattering large amounts of seed on open ground, and store seed in sealed metal or thick plastic containers, since rats chew through bags easily. If rats appear, pause ground feeding for two weeks while keeping hanging feeders clean, and consider a rat-proof feeder design. Do not use poison near bird feeding areas, since poisoned rats can poison owls, cats and dogs that eat them. A tidy feeding station attracts birds without subsidising pests, and a short break in feeding rarely harms birds, which have many natural food sources to fall back on, especially outside winter.</p>
+</article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary><strong>How much seed do garden birds eat per day?</strong></summary><p>Small birds eat roughly 10–20 g each per day; a dozen visitors consume about 150–200 g daily.</p></details><details><summary><strong>How often should I refill a feeder?</strong></summary><p>Divide total feeder capacity by daily use — a 500 g feeder serving 12 birds lasts about 3 days.</p></details><details><summary><strong>What is the best all-round bird seed?</strong></summary><p>Sunflower hearts: eaten by the widest range of species with almost no waste husk.</p></details><details><summary><strong>How do I stop squirrels emptying feeders?</strong></summary><p>Use a weight-activated squirrel-proof feeder, a pole baffle, and place feeders away from fences and branches.</p></details><details><summary><strong>How often should feeders be cleaned?</strong></summary><p>Every two weeks with hot water, more often in wet weather; never top up mouldy seed.</p></details><details><summary><strong>Should I feed birds all year?</strong></summary><p>Yes, with seasonal adjustments — high-energy food in winter, mealworms in spring, and fresh water in summer.</p></details></section>
+<footer>
+<p><strong>BirdFeed</strong> — Keep the feeders full, all season.</p>
+<p>BirdFeed helps bird lovers plan seed buying: daily consumption, days between refills and monthly cost for any mix of feeders and visiting birds.</p>
+<p><a href="https://fixoraa.tech">Home</a> · <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p>
+</footer>
+<script>
+function compute(feeders,cap,birds,per,price){if(birds<=0||per<=0)return{daily:0,days:0,monthly:0,cost:0};var daily=birds*per;var total=feeders*cap;var days=total/daily;var monthly=daily*30/1000;return{daily:daily,days:Math.round(days*100)/100,monthly:Math.round(monthly*100)/100,cost:Math.round(monthly*price*100)/100};}
+function brun(){var r=compute(+document.getElementById('feeders').value,+document.getElementById('cap').value,+document.getElementById('birds').value,+document.getElementById('perbird').value,+document.getElementById('seedprice').value);var t='Daily use: <b>'+r.daily+' g</b>. One fill lasts <b>'+r.days+' days</b>. Monthly: <b>'+r.monthly+' kg</b> costing <b>$'+r.cost+'</b>.';document.getElementById('out').innerHTML=t;pushHist(t);}
+function copyResult(){var r=document.getElementById('out');if(r){navigator.clipboard.writeText(r.innerText);alert('Result copied!');}}
+function clearHist(){try{localStorage.removeItem('hist_birdfeed');}catch(e){}document.getElementById('hist').innerHTML='Recent results will appear here as you calculate.';}
+function pushHist(txt){try{var h=JSON.parse(localStorage.getItem('hist_birdfeed')||'[]');h.unshift(txt);h=h.slice(0,5);localStorage.setItem('hist_birdfeed',JSON.stringify(h));document.getElementById('hist').innerHTML='<strong>Recent:</strong><br>'+h.map(function(x){return x;}).join('<br>');}catch(e){}}
+</script>
+</body>
+</html>
