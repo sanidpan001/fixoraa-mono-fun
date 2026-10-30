@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disc Golf Distance Calculator: Throw Distance by Arm Speed</title>
+<meta name="description" content="Estimate your disc golf throw distance from arm speed and your disc&#x27;s speed and glide ratings — and find discs you can actually throw.">
+<link rel="canonical" href="https://fun.fixoraa.tech/discflight/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Disc Golf Distance Calculator: Throw Distance by Arm Speed">
+<meta property="og:description" content="Estimate your disc golf throw distance from arm speed and your disc&#x27;s speed and glide ratings — and find discs you can actually throw.">
+<meta property="og:url" content="https://fun.fixoraa.tech/discflight/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "DiscFlight",
+      "url": "https://fun.fixoraa.tech/discflight/",
+      "applicationCategory": "Sports",
+      "operatingSystem": "Web",
+      "description": "Estimate your disc golf throw distance from arm speed and your disc's speed and glide ratings \u2014 and find discs you can actually throw.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What arm speed do I need for a speed-12 driver?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly 60 mph. As a rule of thumb you need about 5 mph of arm speed per point of speed rating, so a speed-12 disc needs a genuinely fast throw to fly as designed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my high-speed driver fade so hard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because your arm speed is below the disc's speed rating. The disc never reaches cruising speed, so it fades early. Drop to a slower disc and you will usually throw farther."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does glide really add distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. High-glide discs stay airborne longer on the same throw, which is why glide earns a place in the distance estimate. In calm conditions a point of glide is worth roughly 4 feet in this model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I measure my arm speed without radar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Work backwards from field distance: a 300-foot drive with a speed-9 disc suggests about 55 mph. Measure your best three of ten field throws for an honest figure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a distance driver to reach 300 feet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Many players reach 300 feet with fairway drivers, which are easier to control. Accuracy inside 300 feet scores better than a wild 350-foot drive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does wind change distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A lot. Headwinds add lift but increase fade at the end; tailwinds rob lift and fade earlier. On a windy day, disc up in a headwind and trust glide in a tailwind."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should beginners buy high-speed drivers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Beginners throw farther and straighter with putters, midranges, and fairway drivers up to speed 7 or 8. Fast drivers only help once arm speed catches up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does plastic type change distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The same mould in grippy base plastic flies more understable than in premium plastic, and discs become less stable as they beat in with use."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EFF7E8; --surface:#FFFFFF; --accent:#2E6B1E; --accent-ink:#FFFFFF;
+  --ink:#1E2F18; --muted:#43553D; --line:#D2E4C4;
+  --display:'Outfit',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.df-wrap{max-width:920px;margin:0 auto;padding:26px 16px 40px}.df-wrap h1{font-size:clamp(30px,5.5vw,44px);line-height:1.15;margin:0 0 8px}.df-tag{color:var(--muted);margin:0 0 18px;font-size:16px}.df-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 2px 14px rgba(0,0,0,.06)}.df-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.df-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--muted)}.df-field input,.df-field select{font:inherit;font-size:16px;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg);min-height:48px;width:100%;box-sizing:border-box}.df-btns{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.df-btns button{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer;min-height:44px}.df-btns button.on,.df-btns button.solid{background:var(--accent);color:var(--accent-ink)}.df-calc{width:100%;background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:14px;font:inherit;font-size:17px;font-weight:800;cursor:pointer;min-height:52px}.df-result{background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:22px;text-align:center;margin-top:16px}.df-result .big{font-size:clamp(34px,7vw,52px);font-weight:800;line-height:1.1}.df-result .sub{opacity:.92;margin-top:6px}.df-hist{margin-top:14px;font-size:14px;color:var(--muted)}.df-hist ul{padding-left:1.2rem;margin:6px 0 0}@media(max-width:640px){.df-grid{grid-template-columns:1fr}.df-wrap{padding:20px 12px 32px}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="DiscFlight home">
+      <span class="fx-logo-tile" aria-hidden="true">🥏</span>
+      <span class="fx-brand">DiscFlight</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-disc-flight" aria-label="DiscFlight tool">
+<div class='df-wrap'><h1>🥏 Disc Golf Distance Calculator</h1><p class='df-tag'>Estimate your throw distance from arm speed and your disc's speed and glide ratings.</p><div class='df-card'><div class='df-grid'><label class='df-field'>Arm speed (mph, your typical throw)<input id='dfArm' type='number' min='20' max='80' value='50'></label><label class='df-field'>Disc speed rating (1–14)<input id='dfSpeed' type='number' min='1' max='14' value='9'></label><label class='df-field'>Disc glide rating (1–7)<input id='dfGlide' type='number' min='1' max='7' value='5'></label></div><div class='df-btns'><button type='button' data-df-preset='[35,7,4]'>Beginner arm</button><button type='button' data-df-preset='[50,9,5]'>Club thrower</button><button type='button' data-df-preset='[60,12,5]'>Power thrower</button></div><div class='df-btns'><button type='button' data-df-unit='ft' class='on'>feet</button><button type='button' data-df-unit='m'>metres</button></div><button class='df-calc' id='dfCalc' type='button'>Calculate</button><div class='df-result' aria-live='polite'><div>Estimated throw</div><div class='big' id='dfRes'>284 ft</div><div class='sub' id='dfSub'>About 87 m.</div></div><div class='df-hist'><strong>Recent calculations</strong><ul id='dfHistList'></ul><div class='df-btns'><button type='button' id='dfCopy'>Copy result</button></div></div></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What actually makes a disc fly far</h2><p>Every disc golfer has watched a playing partner throw a disc fifty feet past their own best effort and wondered what secret they are missing. Usually it is not a secret at all: distance in disc golf comes from arm speed first, disc choice second, and form third, in that order of leverage for most players. Arm speed is how fast your hand is moving when the disc leaves it, and it sets a hard ceiling on what any disc can do. A high-speed distance driver is designed to fly fast and far, but only if you throw it fast enough to make it behave as designed. Throw a speed-14 driver at 35 mph and it will fly like a brick: it will fade hard left (for a right-handed backhand thrower) and land shorter than a speed-7 fairway driver thrown at the same speed. Match the disc to the arm, and the disc starts working for you instead of against you.</p><h2>The distance formula in plain language</h2><p>The calculator estimates throw distance in feet from three inputs: your arm speed in miles per hour, the disc's speed rating, and its glide rating. The model is deliberately simple: distance equals arm speed times 4.2, plus disc speed times 6, plus glide times 4, rounded to the nearest foot. A club thrower with a 50 mph arm throwing a speed-9, glide-5 disc gets about 284 feet. A power thrower at 60 mph with a speed-12 disc gets about 344 feet. A beginner at 30 mph with a speed-7, glide-4 disc gets about 184 feet. These are estimates for a flat, calm, open field throw with decent form, not guarantees on a wooded course with wind, elevation, and pressure. Use them to compare discs and to set realistic expectations, not as a promise printed on the scorecard.</p><table><thead><tr><th>Arm speed</th><th>Disc (speed/glide)</th><th>Estimated distance</th><th>Best disc class</th></tr></thead><tbody><tr><td>30 mph</td><td>7 / 4</td><td>184 ft</td><td>Fairway driver / midrange</td></tr><tr><td>40 mph</td><td>8 / 5</td><td>236 ft</td><td>Fairway driver</td></tr><tr><td>50 mph</td><td>9 / 5</td><td>284 ft</td><td>Distance driver (moderate)</td></tr><tr><td>60 mph</td><td>12 / 5</td><td>344 ft</td><td>High-speed driver</td></tr><tr><td>70 mph</td><td>13 / 6</td><td>396 ft</td><td>High-speed driver</td></tr></tbody></table><h2>Reading the four flight numbers</h2><p>Every disc carries four flight numbers: speed, glide, turn, and fade. Speed (1 to 14) describes how fast the disc must be thrown to fly as intended, and it is the number this calculator uses. Glide (1 to 7) describes how long the disc stays airborne; high-glide discs float farther on the same throw, which is why glide earns a place in the formula. Turn describes how much the disc drifts right during its fast, early flight (for right-handed backhand), with negative numbers meaning more turn; understable discs with more turn are easier to throw far at lower arm speeds. Fade describes the reliable leftward hook at the end of flight, when the disc slows down. A disc's distance potential is only realised if your arm speed reaches its speed rating: the rule of thumb is that you need roughly five miles per hour of arm speed per point of speed rating, which is why a 50 mph thrower tops out around speed 10 in practice, even if they can physically release a speed-13 disc.</p><h3>Why your fastest disc is not your farthest disc</h3><p>This is the single most common equipment mistake in disc golf. Beginners buy the highest-speed driver on the shelf, throw it into a hard fade, and conclude they need more power, when they actually need a slower disc. A speed-7 fairway driver thrown flat at 40 mph will fly straighter, glide longer, and land 20 to 30 feet past a speed-13 driver thrown at the same speed, because the slower disc actually reaches its cruising speed and uses its glide. The test is simple and honest: throw your drivers in a field and measure the real distances. Keep the disc that goes farthest, not the one with the biggest number on the rim. Most intermediate players score best with a bag built around fairway drivers and a single moderate distance driver, plus putters and midranges for everything inside 250 feet.</p><h2>How to estimate your arm speed honestly</h2><p>Few players own a radar gun, so estimate arm speed from your measured field distance with a disc you throw well. Throw ten drives in a field, measure the best three, and work backwards: a 300-foot drive with a speed-9 disc suggests an arm speed near 55 mph. Alternatively, use course experience: if you regularly reach 300-foot holes with a driver and 250-foot holes with a midrange, you are in the 50 to 55 mph band. Be honest about the number, because inflating it only leads you back to discs you cannot throw. Arm speed grows with form, not with gym strength alone: the biggest gains come from a proper reach-back, hip rotation, weight shift onto the plant foot, and a late, snapping release, in that sequence. Lessons and slow-motion video of your own throw beat a new disc every time.</p><h2>Wind, elevation, and the real course</h2><ul><li><strong>Headwind:</strong> makes discs act more understable and adds lift; throw a more stable disc and expect extra fade at the end.</li><li><strong>Tailwind:</strong> robs discs of lift and makes them fade earlier; throw more understable and aim for extra glide.</li><li><strong>Uphill:</strong> costs distance fast, often 10 to 20 percent on a steep hole; disc up or throw harder.</li><li><strong>Downhill:</strong> adds distance and glide; disc down and trust the fade to bring it back.</li><li><strong>Wet and cold:</strong> cold plastic grips less and wet discs slip; keep a towel in the bag and dry your hands between throws.</li></ul><h2>Building a distance practice routine</h2><p>Field work is where distance is built, and it needs structure. Warm up with putters and midranges, then throw sets of five drives with one driver, measuring each set's best and median distance rather than celebrating a single lucky throw. Film yourself from behind and from the side once a month: most form faults are invisible to the thrower but obvious on video. Work on one cue at a time for a full session — plant foot timing, or keeping the disc on a flat plane, or following through toward the target — rather than trying to fix five things at once. Twenty focused minutes twice a week beats a monthly two-hour marathon, because throwing mechanics are motor skills that consolidate with frequent, fresh repetition. And always finish field work with putting practice, because the drive that gains you thirty feet is worthless if you miss the twenty-foot putt that follows it.</p><h2>Disc selection by distance band</h2><p>Think of your bag in distance bands rather than disc types. Inside 200 feet, putters and midranges are more accurate than any driver and should be your default. From 200 to 300 feet, fairway drivers and fast midranges cover most players. From 300 to 400 feet, moderate distance drivers earn their place. Beyond 400 feet, high-speed drivers and genuinely fast arms are required, and most amateur players will never need to throw that far to score well on their local course. The calculator helps you find which band your arm speed honestly belongs in. If your estimated distance is 280 feet, build your bag around the 200 to 300 foot band and spend practice time on accuracy inside it, rather than chasing a 400-foot drive that your arm cannot yet support. Scoring in disc golf is about the second shot as much as the first.</p><h2>When to move up in speed</h2><p>Move up one speed point at a time, and only when your current driver consistently flies straight with a gentle, predictable fade rather than turning over or diving left. The signal is control, not distance: when you can place a speed-9 driver on a chosen line nine times out of ten, a speed-10 disc becomes worth testing. Test new discs in a field, not on a scored round, and give each candidate at least three sessions before judging it. Plastic matters too: the same mould in grippy base plastic flies more understable than in premium plastic, and beat-in discs gradually become less stable with tree hits and time. Keep a note of which discs you actually throw farthest in the field, and let that note, not the shop shelf, decide what stays in the bag.</p><p>Distance is a system: arm speed sets the ceiling, disc choice unlocks it, and form raises it over time. Match the disc to the arm you have today, practise the throw, and the numbers on this page will climb on their own schedule.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What arm speed do I need for a speed-12 driver?</summary><p>Roughly 60 mph. As a rule of thumb you need about 5 mph of arm speed per point of speed rating, so a speed-12 disc needs a genuinely fast throw to fly as designed.</p></details>
+<details><summary>Why does my high-speed driver fade so hard?</summary><p>Because your arm speed is below the disc's speed rating. The disc never reaches cruising speed, so it fades early. Drop to a slower disc and you will usually throw farther.</p></details>
+<details><summary>Does glide really add distance?</summary><p>Yes. High-glide discs stay airborne longer on the same throw, which is why glide earns a place in the distance estimate. In calm conditions a point of glide is worth roughly 4 feet in this model.</p></details>
+<details><summary>How can I measure my arm speed without radar?</summary><p>Work backwards from field distance: a 300-foot drive with a speed-9 disc suggests about 55 mph. Measure your best three of ten field throws for an honest figure.</p></details>
+<details><summary>Do I need a distance driver to reach 300 feet?</summary><p>No. Many players reach 300 feet with fairway drivers, which are easier to control. Accuracy inside 300 feet scores better than a wild 350-foot drive.</p></details>
+<details><summary>How much does wind change distance?</summary><p>A lot. Headwinds add lift but increase fade at the end; tailwinds rob lift and fade earlier. On a windy day, disc up in a headwind and trust glide in a tailwind.</p></details>
+<details><summary>Should beginners buy high-speed drivers?</summary><p>No. Beginners throw farther and straighter with putters, midranges, and fairway drivers up to speed 7 or 8. Fast drivers only help once arm speed catches up.</p></details>
+<details><summary>Does plastic type change distance?</summary><p>Yes. The same mould in grippy base plastic flies more understable than in premium plastic, and discs become less stable as they beat in with use.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">DiscFlight</div>
+    <p>DiscFlight estimates your throw distance from arm speed, disc speed, and glide.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function discDistance(armMph,discSpeed,glide){if(!(armMph>0))return NaN;return Math.round(armMph*4.2+discSpeed*6+glide*4);}
+var df_unit='metric';
+function df_calc(){
+var v0=parseFloat(document.getElementById('dfArm').value)||0;
+var v1=parseFloat(document.getElementById('dfSpeed').value)||0;
+var v2=parseFloat(document.getElementById('dfGlide').value)||0;
+var unit=df_unit;
+var feet=discDistance(v0,v1,v2);var r=(unit==='m')?Math.round(feet*0.3048):feet;var disp=(unit==='m')?('About '+feet+' ft · high-speed discs only fly far if you can throw them up to speed.'):('About '+Math.round(feet*0.3048)+' m · high-speed discs only fly far if you can throw them up to speed.');
+document.getElementById('dfRes').textContent=r;
+document.getElementById('dfSub').innerHTML=disp;
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');h.unshift(r+' | '+disp.replace(/<[^>]+>/g,''));h=h.slice(0,5);localStorage.setItem('%sHist',JSON.stringify(h));var ul=document.getElementById('%sHistList');ul.innerHTML='';h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+}
+function df_preset(vals){vals.forEach(function(v,i){var el=document.getElementById(['dfArm','dfSpeed','dfGlide'][i]);if(el)el.value=v;});df_calc();}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+document.getElementById('dfCalc').addEventListener('click',df_calc);
+document.querySelectorAll('[data-df-preset]').forEach(function(b){b.addEventListener('click',function(){var vals=JSON.parse(b.getAttribute('data-df-preset'));df_preset(vals);});});
+document.querySelectorAll('[data-df-unit]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-df-unit]').forEach(function(x){x.classList.remove('on');});b.classList.add('on');df_unit=b.getAttribute('data-df-unit');df_calc();});});
+var cp=document.getElementById('dfCopy');if(cp){cp.addEventListener('click',function(){var t=document.getElementById('dfRes').textContent+' '+document.getElementById('dfSub').textContent;try{navigator.clipboard.writeText(t);}catch(e){}});}
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');var ul=document.getElementById('%sHistList');h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+df_calc();});}
+</script>
+</body>
+</html>
