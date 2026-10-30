@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diaper Calculator — How Many Diapers by Age &amp; Size | DiaperCount</title>
+<meta name="description" content="Diapers needed month by month with size changes and cost.">
+<link rel="canonical" href="https://fun.fixoraa.tech/diapercount/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Diaper Calculator — How Many Diapers by Age &amp; Size | DiaperCount">
+<meta property="og:description" content="Diapers needed month by month with size changes and cost.">
+<meta property="og:url" content="https://fun.fixoraa.tech/diapercount/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "DiaperCount",
+      "url": "https://fun.fixoraa.tech/diapercount/",
+      "applicationCategory": "Parenting Tools",
+      "operatingSystem": "Web",
+      "description": "Diapers needed month by month with size changes and cost.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How many diapers does a newborn use per day?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Newborns typically use 10 to 12 diapers per day in the first month — roughly one every two hours, since newborns feed around the clock. Usage drops to about 8 to 10 per day by three months and keeps falling as babies get older." } },
+        { "@type": "Question", "name": "How many diapers do I need for the first year?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Roughly 2,700 to 3,000 diapers for the first twelve months: about 900 in the first three months, 800 in months three to six, and 700 to 750 in each six-month stretch after that as daily usage falls." } },
+        { "@type": "Question", "name": "When should I move up a diaper size?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Size up when red marks appear on the thighs or waist, blowouts become frequent, the diaper struggles to cover the bottom, or your baby nears the top of the printed weight range. Fit matters more than the weight chart — a long lean baby may size up earlier." } },
+        { "@type": "Question", "name": "Should I stockpile diapers before the baby arrives?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Stockpile modestly: one to two small packs of newborn size and a few packs of size 1, then buy bigger sizes as you go. Babies outgrow newborn and size 1 fast, and you cannot predict your baby's growth curve or skin sensitivities in advance." } },
+        { "@type": "Question", "name": "How much do diapers cost per month?",
+          "acceptedAnswer": { "@type": "Answer", "text": "At $0.20 to $0.35 per diaper, expect $60 to $90 per month for a newborn and $40 to $60 per month for a toddler. Buying larger boxes, store brands, and subscription discounts typically cut 20 to 30 percent off the per-diaper price." } },
+        { "@type": "Question", "name": "How many diapers will I use until potty training?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Most children use 5,500 to 7,000 diapers before potty training, which typically happens between 24 and 36 months. Earlier potty training is the single biggest lever on the total — every month sooner saves roughly 120 to 150 diapers." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9E1F2; --surface:#FFFFFF; --tint:#F4D2EA;
+  --accent:#841565; --accent-deep:#3D1A68; --accent-ink:#FFFFFF;
+  --ink:#241B33; --muted:#5D5470; --line:#D9CBEA; --margin-red:#E08080;
+  --display:'Gaegu',cursive; --body:'Gaegu',cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:18px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+/* header */
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:10px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:50% 46% 52% 48%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:25px;transform:rotate(-6deg);box-shadow:2px 3px 0 var(--tint)}
+.fx-name{font-weight:700;font-size:24px}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 18px;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;border:2px solid var(--accent);color:var(--accent);font-weight:700;font-size:16px;text-decoration:none;background:var(--surface)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:6px 14px;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:15px;border:2px dashed var(--accent)}
+/* hero */
+.dc-hero{padding:40px 0 4px}
+.dc-eyebrow{display:inline-block;font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.dc-hero h1{font-size:clamp(32px,5vw,50px);line-height:1.05;font-weight:700;margin-bottom:8px}
+.dc-hero p{font-size:19px;color:var(--muted);max-width:640px}
+/* notebook page */
+.dc-page{margin:26px 0 8px;background:var(--surface);border:2px solid var(--line);border-radius:6px;box-shadow:0 12px 30px rgba(83,35,139,.10);position:relative;overflow:hidden}
+.dc-page::before{content:"";position:absolute;top:0;bottom:0;left:56px;width:2px;background:var(--margin-red);opacity:.7}
+.dc-page-inner{position:relative;padding:26px 26px 26px 78px;background:repeating-linear-gradient(180deg,transparent,transparent 35px,rgba(83,35,139,.07) 35px,rgba(83,35,139,.07) 36px)}
+.dc-page h2{font-size:24px;font-weight:700;color:var(--accent-deep);margin-bottom:6px}
+.dc-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 20px}
+.dc-field label{display:block;font-weight:700;font-size:16px;margin-bottom:4px;color:var(--accent-deep)}
+.dc-field input,.dc-field select{font:inherit;font-size:18px;padding:9px 12px;border:2px solid var(--accent);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;background:#fff;color:var(--ink);width:100%}
+.dc-field input:focus{outline:3px solid var(--tint)}
+.dc-total{background:var(--tint);border:2.5px solid var(--accent);border-radius:12px;padding:18px 20px;display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+.dc-total .n{font-size:52px;font-weight:700;line-height:1;color:var(--accent-deep)}
+.dc-total .t{font-size:17px;color:var(--ink)}
+.dc-total .t b{color:var(--accent-deep)}
+.dc-table{width:100%;border-collapse:collapse;font-size:17px;margin-bottom:8px}
+.dc-table th{text-align:left;font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-deep);padding:8px 6px;border-bottom:2.5px solid var(--accent)}
+.dc-table td{padding:7px 6px;border-bottom:1px solid var(--line)}
+.dc-table td.num,.dc-table th.num{text-align:right;font-variant-numeric:tabular-nums}
+.dc-table tr.hl td{background:var(--tint);font-weight:700}
+.dc-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:18px}
+.dc-card{border:2px solid var(--line);border-radius:10px;padding:16px 18px;background:#fff}
+.dc-card h3{font-size:20px;color:var(--accent-deep);margin-bottom:8px;font-weight:700}
+.dc-card ul{margin-left:20px;font-size:16.5px}
+.dc-card li{margin-bottom:5px}
+.dc-sizebar{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.dc-sizebar span{background:var(--tint);border:1.5px solid var(--accent);border-radius:8px;padding:5px 10px;font-size:15px;font-weight:700;color:var(--accent-deep)}
+.dc-margin-note{border-left:3px solid var(--margin-red);padding:10px 14px;margin-top:16px;font-size:16.5px;color:var(--muted);font-style:italic}
+/* article */
+.article-sec{margin:42px 0;max-width:780px}
+.article-sec h2{font-size:27px;margin:36px 0 12px;font-weight:700;color:var(--accent-deep)}
+.article-sec p{margin-bottom:15px;color:#332a44;font-size:18px}
+.article-sec ul,.article-sec ol{margin:0 0 15px 24px;color:#332a44;font-size:18px}
+.article-sec li{margin-bottom:7px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:27px;font-weight:700;margin-bottom:16px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;margin-bottom:12px;overflow:hidden;padding:2px 6px}
+.faq-sec summary{padding:13px 16px;font-weight:700;cursor:pointer;list-style:none;font-size:18px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec details[open] summary{color:var(--accent-deep)}
+.faq-sec details p{padding:0 16px 14px;color:#332a44;font-size:17px}
+/* footer */
+.fx-footer{background:#2a1f3d;color:#e6dcf5;margin-top:46px;padding:42px 0 36px}
+.fx-footer .fx-brand{font-size:24px;font-weight:700;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:17px;color:#b9a8d4;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:16px!important}
+.fx-credit a{color:#c9aef0;font-weight:700}
+@media(max-width:760px){
+  .dc-page::before{left:34px}
+  .dc-page-inner{padding:20px 16px 20px 50px}
+  .dc-controls{grid-template-columns:1fr}
+  .dc-cols{grid-template-columns:1fr}
+  .fx-nav{margin-left:0}
+  .dc-table{font-size:14px}
+  .dc-table th{font-size:11.5px;letter-spacing:.04em}
+  .dc-table td,.dc-table th{padding:6px 3px}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/diapercount/" aria-label="DiaperCount home">
+      <span class="fx-tile" aria-hidden="true">&#9733;</span>
+      <span class="fx-name">DiaperCount</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="dc-hero">
+    <span class="dc-eyebrow">&#9998; Nursery notes</span>
+    <h1>Diaper Calculator</h1>
+    <p>Month by month, size by size — how many diapers your baby actually needs, when to size up, and what the whole mountain costs.</p>
+  </section>
+
+  <section class="dc-page" aria-label="DiaperCount tool">
+    <div class="dc-page-inner">
+      <h2>My diaper plan</h2>
+      <div class="dc-controls">
+        <div class="dc-field">
+          <label for="dc-start">Starting age (months)</label>
+          <input type="number" id="dc-start" value="0" min="0" max="36" step="1">
+        </div>
+        <div class="dc-field">
+          <label for="dc-until">Plan until (months)</label>
+          <select id="dc-until">
+            <option value="24">24 — early trainer</option>
+            <option value="30" selected>30 — average</option>
+            <option value="36">36 — later trainer</option>
+          </select>
+        </div>
+        <div class="dc-field">
+          <label for="dc-price">Price per diaper ($)</label>
+          <input type="number" id="dc-price" value="0.22" min="0.05" max="1" step="0.01">
+        </div>
+      </div>
+      <div class="dc-total" aria-live="polite">
+        <div class="n" id="dc-total">5,844</div>
+        <div class="t"><b>diapers</b> from month 0 to 30<br>about <b id="dc-cost">$1,285.79</b> total &middot; <b id="dc-perday">~6.4</b> per day on average</div>
+      </div>
+      <table class="dc-table" aria-label="Month by month usage">
+        <thead><tr><th>Age</th><th>Size</th><th class="num">Per day</th><th class="num">That month</th><th class="num">Running total</th></tr></thead>
+        <tbody id="dc-rows"></tbody>
+      </table>
+      <div class="dc-cols">
+        <div class="dc-card">
+          <h3>Size-up predictor</h3>
+          <p style="font-size:16.5px">Baby's weight now: <input type="number" id="dc-wt" value="14" min="4" max="45" step="0.5" style="font:inherit;width:70px;padding:6px 10px;border:2px solid var(--accent);border-radius:10px" aria-label="Current weight in pounds"> lb &middot; gaining <input type="number" id="dc-gain" value="1.2" min="0.2" max="3" step="0.1" style="font:inherit;width:64px;padding:6px 10px;border:2px solid var(--accent);border-radius:10px" aria-label="Weight gain per month"> lb/mo</p>
+          <p id="dc-sizeout" style="font-size:17px;margin-top:8px"></p>
+          <div class="dc-sizebar" aria-label="Size weight ranges">
+            <span>NB ≤10</span><span>1: 8–14</span><span>2: 12–18</span><span>3: 16–28</span><span>4: 22–37</span><span>5: 27+</span>
+          </div>
+        </div>
+        <div class="dc-card">
+          <h3>Stockpile smart list</h3>
+          <ul id="dc-stock"></ul>
+        </div>
+      </div>
+      <p class="dc-margin-note">Margin note: don't overbuy newborn — most babies outgrow it in 3–4 weeks, and unopened packs can be exchanged at most big stores.</p>
+    </div>
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec" aria-label="Guide">
+    <h2>How Many Diapers Per Day, Really?</h2>
+    <p>The number that shocks every expectant parent: a newborn goes through <strong>10 to 12 diapers a day</strong>. That is not an exaggeration and it is not bad luck — newborns feed every two to three hours around the clock, and what goes in comes out on nearly the same schedule. At that pace you will burn through a 30-count pack in under three days. The good news is the curve falls fast: by three months most babies are at 8 to 10 a day, by six months around 8, and toddlers cruise at 4 to 6 until potty training.</p>
+    <p>The month-by-month table above is built on that curve. From birth to 30 months — the average potty-training age — the total lands near <strong>5,800 diapers</strong>. Train at 24 months and you save roughly 900; stretch to 36 and you add about 1,100. Those are not small numbers, which is why the single biggest lever on your diaper budget is not the brand or the bulk discount — it is the potty-training timeline.</p>
+    <h2>The First-Year Math</h2>
+    <p>Zoom into year one, where the spending is most intense. Months 0–3 consume roughly 900 diapers, months 3–6 about 820, months 6–9 about 730, and months 9–12 about 640 — a first-year total near <strong>3,100 diapers</strong>, more than half the lifetime supply. At $0.22 per diaper that is roughly $680 for year one alone, or about $57 a month averaged out (though month one alone runs closer to $70).</p>
+    <p>This front-loading shapes every smart buying decision. The months when you use the most diapers are also the months when you are most sleep-deprived and least interested in optimizing — so <strong>automate early</strong>. A subscription delivering size 1 and 2 on a schedule, set up before the birth, beats heroic couponing at 3 a.m. You can fine-tune brands later; in the newborn fog, "diapers simply appear" is worth a few cents per unit.</p>
+    <h2>Size Chart: Weight Is a Guide, Fit Is the Law</h2>
+    <p>Every brand prints weight ranges: newborn up to 10 lb, size 1 for 8–14 lb, size 2 for 12–18 lb, size 3 for 16–28 lb, size 4 for 22–37 lb, size 5 for 27 lb and up. Treat these as <strong>starting points, not rules</strong>. A long, lean baby may swim in a size 2 at 15 lb and need a 3 for the leg coverage; a chunky-thighed baby may size up weeks before hitting the printed ceiling.</p>
+    <p>The real size-up signals: <strong>red marks</strong> on thighs or waist after wearing, <strong>blowouts</strong> becoming a pattern rather than an accident, the diaper looking like a bikini bottom that barely covers, tabs that meet in the middle with room to spare no longer, and nighttime leaks. When two or more show up, size up — even mid-pack. A slightly big diaper contains; a slightly small one detonates. The predictor above estimates timing from weight gain, but your eyes beat the math.</p>
+    <h2>The Stockpile Strategy (Don't Buy 1,000 Newborns)</h2>
+    <p>Stockpiling before birth feels productive, and done right it saves real money — but the classic mistake is buying a wall of newborn-size diapers. Most babies outgrow newborn in <strong>three to four weeks</strong>, and some skip it entirely (babies over 9 lb often start in size 1). The smart stockpile: <strong>one to two small packs of newborn</strong>, a few packs of size 1, and your real bulk in <strong>sizes 2 and 3</strong>, where babies spend the most months.</p>
+    <p>Three more rules. First, <strong>keep receipts and boxes sealed</strong> — most big retailers exchange unopened packs for the next size up, which de-risks every purchase. Second, <strong>don't commit to a brand pre-birth</strong>; some babies react to specific materials, and a 200-count box of the wrong brand is a donation. Buy small variety packs first, then go bulk on the winner. Third, <strong>diversify sizes, not brands</strong>: two open packs (current size + next size) covers every transition without a midnight store run.</p>
+    <h2>What Diapers Actually Cost</h2>
+    <p>At mainstream prices of $0.20–$0.35 per diaper, the birth-to-potty-training total runs roughly <strong>$1,200 to $2,000</strong> for one child. Store brands and warehouse clubs typically land 20–30% below name brands with comparable performance — the per-diaper price is the only number that matters, so always divide the box price by the count. Subscription services (Amazon, big-box auto-delivery) usually shave another 5–20% and, more importantly, remove the mental load.</p>
+    <p>Where the money really leaks: <strong>convenience packs</strong> at drugstores and gas stations can cost double the warehouse price per diaper. One emergency pack a month at 2× pricing adds ~$150 a year. Keep a small buffer at home, in the diaper bag, and at daycare so "emergency" never means "full retail." And if grandparents ask what you need: diapers in sizes 2–4 are the perfect gift — useful, unglamorous, and always the right call.</p>
+    <h2>Daycare, Twins, and Other Multipliers</h2>
+    <p>Daycare changes the math in two ways: most centers require you to <strong>supply your own diapers</strong> (labeled, in bulk), and they change on a schedule — often every two hours — which can push daily usage slightly above home rates. Budget an extra pack a month once daycare starts, and label everything; unlabeled diapers enter a communal void.</p>
+    <p><strong>Twins</strong> do not quite double the total — you get efficient at changes and waste fewer — but budget 1.8× and buy everything in the largest boxes available; the per-diaper savings compound brutally at twin volumes. Cloth diapering flips the economics entirely: $300–$600 upfront for a full stash plus laundry costs, versus disposables — the break-even usually lands around month 4–6, sooner with a second child reusing the stash.</p>
+    <h2>Reducing Waste Without Losing Your Mind</h2>
+    <p>Nearly 6,000 diapers is also an environmental number — roughly a ton of landfill per child. If that bothers you, the practical middle paths: <strong>use cloth at home and disposables out</strong> (cuts disposable use by half with minimal hassle), choose brands with fewer fragrances and more plant-based materials, and <strong>potty-train when your child shows readiness signs</strong> rather than waiting for a milestone birthday — every month earlier saves ~130 diapers. No judgment on the path; the calculator stays neutral and just counts.</p>
+    <h2>Your Action Plan</h2>
+    <p>Before birth: buy 1–2 small newborn packs, 2–3 packs of size 1, set up a subscription for size 2, and keep everything sealed with receipts. Months 0–3: track which brand fits best, then commit bulk. Months 3–12: ride the size curve, always holding current + next size. Toddlerhood: shift to training pants only when showing readiness signs, and remember the finish line — every month of earlier training is ~130 fewer diapers to buy, change, and throw away. Fill in your numbers above and the plan writes itself.</p>
+    <h2>Overnight Diapers and Heavy Wetters</h2>
+    <p>Daytime math and nighttime reality are different sports. Babies sleep 10–12 hours, and a standard diaper engineered for 2–3-hour changes will surrender around hour six. The fix most parents land on: <strong>size up one for nights</strong> (a size 3 at night while wearing size 2 by day is completely normal), consider dedicated <strong>overnight diapers</strong> with extra absorbent core, and for genuinely heavy wetters add a <strong>doubler or booster pad</strong> laid inside the diaper — a $0.15 insert that saves a 2 a.m. sheet change.</p>
+    <p>Nighttime leaks are almost never about brand loyalty — they are about fit and capacity. Check three things: the back waistband should sit at or above the belly button, the leg cuffs' ruffles must be flared <em>out</em> (tucked-in ruffles are the number-one leak cause), and for tummy-sleeping boys, point everything downward and consider the doubler toward the front. If leaks persist nightly despite all this, that is your body telling you the daytime size-up has arrived early — promote the night size to full-time and move on.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many diapers does a newborn use per day?</summary><p>10 to 12 per day in the first month — roughly one every two hours. Usage falls to 8–10 per day by three months and keeps declining as your baby grows.</p></details>
+    <details><summary>How many diapers do I need for the first year?</summary><p>Roughly 2,700–3,000: about 900 in the first three months, 800 in months 3–6, and 640–730 in each subsequent stretch as daily usage drops.</p></details>
+    <details><summary>When should I move up a diaper size?</summary><p>Size up when you see red marks on thighs or waist, frequent blowouts, skimpy coverage, or weight near the top of the printed range. Fit beats the weight chart — trust the signals.</p></details>
+    <details><summary>Should I stockpile diapers before the baby arrives?</summary><p>Modestly: 1–2 small newborn packs and a few size 1 packs, with real bulk in sizes 2–3. Keep boxes sealed — most stores exchange unopened packs for the next size.</p></details>
+    <details><summary>How much do diapers cost per month?</summary><p>About $60–$90/month for a newborn and $40–$60 for a toddler at typical prices. Store brands, warehouse boxes and subscriptions cut 20–30% off per-diaper cost.</p></details>
+    <details><summary>How many diapers until potty training?</summary><p>Most children use 5,500–7,000 diapers before training at 24–36 months. Earlier training is the biggest lever — each month sooner saves roughly 120–150 diapers.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">DiaperCount</div>
+    <p>DiaperCount plans your diaper supply month by month — usage curve, size changes, stockpile strategy and total cost in one notebook page.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* ===== pure ===== */
+var DAYS_PER_MONTH = 30.44;
+var PER_DAY = [10,10,10,9,9,9,8,8,8,7,7,7,6,6,6,6,6,6,5,5,5,5,5,5,4,4,4,4,4,4,3,3,3,3,3,3,3];
+function sizeForMonth(m){
+  if(m<1) return 'NB';
+  if(m<3) return '1';
+  if(m<6) return '2';
+  if(m<12) return '3';
+  if(m<24) return '4';
+  return '5';
+}
+function diaperPlan(startMonth, untilMonth){
+  var rows=[], total=0;
+  for(var m=startMonth; m<untilMonth; m++){
+    var perDay = PER_DAY[m]||3;
+    var count = perDay*DAYS_PER_MONTH;
+    total += count;
+    rows.push({month:m, perDay:perDay, size:sizeForMonth(m), count:count, running:total});
+  }
+  return {rows:rows, total:total};
+}
+function sizePredict(weightLb, gainPerMonth){
+  var sizes = [
+    {s:'Newborn', max:10}, {s:'Size 1', max:14}, {s:'Size 2', max:18},
+    {s:'Size 3', max:28}, {s:'Size 4', max:37}, {s:'Size 5', max:60}
+  ];
+  for(var i=0;i<sizes.length;i++){
+    if(weightLb <= sizes[i].max){
+      var months = (sizes[i].max - weightLb)/gainPerMonth;
+      return {current:sizes[i].s, next: sizes[i+1]?sizes[i+1].s:null, monthsLeft:months};
+    }
+  }
+  return {current:'Size 5', next:null, monthsLeft:99};
+}
+function stockpileAdvice(rows){
+  var bySize = {};
+  rows.forEach(function(r){ bySize[r.size]=(bySize[r.size]||0)+r.count; });
+  return bySize;
+}
+/* ===== dom ===== */
+(function(){
+function num(id){ return parseFloat(document.getElementById(id).value)||0; }
+function money(n){ return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function calc(){
+  var start = Math.max(0, Math.min(36, Math.round(num('dc-start'))));
+  var until = parseInt(document.getElementById('dc-until').value, 10);
+  if(until<=start) until = start+1;
+  var price = num('dc-price');
+  var plan = diaperPlan(start, until);
+  document.getElementById('dc-total').textContent = Math.round(plan.total).toLocaleString('en-US');
+  document.getElementById('dc-cost').textContent = money(plan.total*price);
+  var months = Math.max(1, until-start);
+  document.getElementById('dc-perday').textContent = '~'+(plan.total/months/DAYS_PER_MONTH).toFixed(1);
+  var tb = document.getElementById('dc-rows');
+  tb.innerHTML='';
+  plan.rows.forEach(function(r,i){
+    var tr = document.createElement('tr');
+    if(i===0||i===plan.rows.length-1) tr.className='hl';
+    tr.innerHTML = '<td>Mo '+r.month+'</td><td>'+r.size+'</td><td class="num">'+r.perDay+'</td><td class="num">'+Math.round(r.count).toLocaleString('en-US')+'</td><td class="num">'+Math.round(r.running).toLocaleString('en-US')+'</td>';
+    tb.appendChild(tr);
+  });
+  var p = sizePredict(num('dc-wt'), Math.max(0.1,num('dc-gain')));
+  document.getElementById('dc-sizeout').innerHTML = 'Now in <b>'+p.current+'</b>.'+
+    (p.next ? ' About <b>'+p.monthsLeft.toFixed(1)+' months</b> until <b>'+p.next+'</b> at this growth.' : ' Top of the chart!');
+  var bySize = stockpileAdvice(plan.rows);
+  var order = ['NB','1','2','3','4','5'];
+  var ul = document.getElementById('dc-stock');
+  ul.innerHTML='';
+  var note = {'NB':'buy 1–2 small packs only','1':'a few packs, babies fly through it','2':'first real bulk buy','3':'bulk — longest stretch','4':'bulk for toddler months','5':'buy as needed'};
+  order.forEach(function(s){
+    if(bySize[s]){
+      var li = document.createElement('li');
+      li.innerHTML = '<b>Size '+s+':</b> ~'+Math.round(bySize[s]).toLocaleString('en-US')+' diapers — '+note[s]+'.';
+      ul.appendChild(li);
+    }
+  });
+}
+['dc-start','dc-price','dc-wt','dc-gain'].forEach(function(id){
+  var el = document.getElementById(id);
+  el.addEventListener('input', calc); el.addEventListener('change', calc);
+});
+document.getElementById('dc-until').addEventListener('change', calc);
+calc();
+})();
+</script>
+</body>
+</html>
