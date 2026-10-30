@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Candle Fragrance Load Calculator — Wax &amp; Oil Weights | CandleBlend</title>
+<meta name="description" content="Free candle fragrance load calculator: enter vessel volume, pick your wax and load %, and get exact wax and fragrance-oil weights per candle and per batch.">
+<link rel="canonical" href="https://fun.fixoraa.tech/candleblend/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Candle Fragrance Load Calculator — Wax &amp; Oil Weights | CandleBlend">
+<meta property="og:description" content="Free candle fragrance load calculator: enter vessel volume, pick your wax and load %, and get exact wax and fragrance-oil weights per candle and per batch.">
+<meta property="og:url" content="https://fun.fixoraa.tech/candleblend/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CandleBlend",
+      "url": "https://fun.fixoraa.tech/candleblend/",
+      "applicationCategory": "DIY Tools",
+      "operatingSystem": "Web",
+      "description": "Free candle fragrance load calculator: enter vessel volume, pick your wax and load %, and get exact wax and fragrance-oil weights per candle and per batch.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much fragrance oil do I put in a candle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the standard formula: fragrance oil = wax weight \u00d7 (load % \u00f7 100). For 200 g of soy wax at 8% load: 200 \u00d7 0.08 = 16 g of fragrance oil. Weigh it on a digital scale in grams \u2014 volume spoons aren't accurate enough at these quantities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the maximum fragrance load for soy wax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the wax: soy and paraffin typically max out at 10%, beeswax at 6%, and some coconut-soy blends tolerate up to 12%. Always check your specific wax's technical data sheet \u2014 this calculator warns you if your load exceeds the selected wax's maximum."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate wax needed from my jar size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fill the jar with water to your wax line and weigh the water in grams \u2014 that's your fill volume in ml. Multiply by wax density (about 0.86 g/ml for soy): a 200 ml fill needs about 172 g of wax. This calculator does the conversion for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does an 8 oz candle need 8 oz of wax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An 8 oz jar holds 8 fluid ounces of water, not 8 ounces of wax. Wax is less dense than water, you don't fill to the brim, and fragrance oil adds weight. Measure the water weight to your fill line and convert with wax density for the real number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do homemade candles need to cure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 1 to 2 weeks for soy and coconut blends, a few days for paraffin. During curing, fragrance binds fully into the wax and the crystal structure sets. A soy candle burned the day after pouring will have noticeably weaker hot throw."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my candle sweating fragrance oil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sweating usually means the fragrance load is too high for the wax, or the oil was added at too low a temperature to bind properly. Drop the load 1\u20132 percentage points, add fragrance at the supplier's recommended temperature, and stir gently for two full minutes."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FBF5E4; --surface:#FFFDF4; --accent:#7A4A00; --accent-ink:#FFFFFF;
+  --ink:#2D281F; --muted:#6F6248; --line:#E8D9B4;
+  --display:'Zilla Slab',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.cb-wrap{max-width:880px;margin:0 auto;padding:10px 6px 46px;font-family:Inter,system-ui,sans-serif;color:#2D281F;}.cb-tape{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;}.cb-t{background:#FFF9E2;border:1px solid #EAD9A8;border-radius:6px;padding:20px 14px 14px;font-family:Caveat,cursive;font-size:19px;line-height:1.4;color:#5A4416;position:relative;box-shadow:0 8px 18px rgba(45,40,31,.08);text-align:center;}.cb-t:before{content:'';position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-4deg);width:70px;height:22px;background:rgba(122,74,0,.15);border:1px solid rgba(122,74,0,.18);}.cb-t:nth-child(1){transform:rotate(-1.4deg);}.cb-t:nth-child(2){transform:rotate(1deg);}.cb-t:nth-child(3){transform:rotate(-.8deg);}.cb-t b{font-size:21px;}.cb-page{background:#FFFDF4;border:1px solid #E8D9B4;border-radius:18px;padding:34px 34px 30px;box-shadow:0 12px 30px rgba(45,40,31,.06);border-left:3px solid rgba(190,60,50,.4);margin-bottom:22px;}.cb-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#7A4A00;margin-bottom:8px;}.cb-page h1{font-family:'Zilla Slab',serif;font-size:clamp(30px,4.6vw,44px);margin:0 0 8px;font-weight:700;letter-spacing:-.01em;}.cb-tag{color:#6F6248;font-size:16.5px;margin:0 0 22px;}.cb-field{margin-bottom:16px;}.cb-field>label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6F6248;margin-bottom:7px;}.cb-row2{display:grid;grid-template-columns:1fr 130px;gap:10px;}.cb-field input,.cb-field select{width:100%;padding:12px 13px;font-size:16px;border:2px solid #E8D9B4;border-radius:12px;font-family:inherit;color:#2D281F;background:#fff;}.cb-field input:focus,.cb-field select:focus{outline:none;border-color:#7A4A00;}.cb-seg{display:flex;gap:8px;flex-wrap:wrap;}.cb-seg button{border:2px solid #E8D9B4;background:#fff;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;color:#2D281F;}.cb-seg button.on{background:#7A4A00;color:#fff;border-color:#7A4A00;}.cb-ctl{margin:16px 0;}.cb-ctl label{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6F6248;margin-bottom:8px;}.cb-ctl label output{color:#7A4A00;font-size:16px;}.cb-ctl input[type=range]{width:100%;accent-color:#7A4A00;}.cb-warn{display:none;margin-top:10px;background:#FDECEA;border:1px solid #E8AFA9;color:#8C2F1B;border-radius:12px;padding:12px 14px;font-size:14px;font-weight:600;}.cb-warn.show{display:block;}.cb-res{display:none;margin-top:18px;}.cb-res.show{display:block;}.cb-rgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}.cb-r{background:#FBF5E4;border:1px solid #E8D9B4;border-radius:14px;padding:14px 16px;}.cb-r .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:#6F6248;font-weight:700;}.cb-r .v{font-family:'Zilla Slab',serif;font-size:26px;font-weight:700;color:#7A4A00;}.cb-r small{color:#6F6248;font-size:12.5px;}.cb-marginbox{background:#FFFDF4;border:2px dashed #7A4A00;border-radius:16px;padding:24px;margin-bottom:10px;}.cb-marginbox h2{font-family:Caveat,cursive;font-size:30px;margin:0 0 12px;color:#5A4416;font-weight:600;}.cb-jots{display:grid;grid-template-columns:1fr 1fr;gap:12px;}.cb-jot{font-family:Caveat,cursive;font-size:20px;line-height:1.45;color:#4A3D22;background:#FBF5E4;border-radius:10px;padding:12px 14px;}.cb-jot b{font-size:22px;}@media(max-width:640px){.cb-tape{grid-template-columns:1fr;}.cb-jots{grid-template-columns:1fr;}.cb-page{padding:24px 18px;border-left-width:2px;}.cb-rgrid{grid-template-columns:1fr 1fr;}.cb-row2{grid-template-columns:1fr 110px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="CandleBlend home">
+      <span class="fx-logo-tile" aria-hidden="true">🕯️</span>
+      <span class="fx-brand">CandleBlend</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-notebook-margin" aria-label="CandleBlend tool">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet"><section class="cb-wrap"><div class="cb-tape" aria-label="Quick notes"><div class="cb-t"><b>🌡️ Add fragrance ~85°C</b><br>stir gently 2 full minutes</div><div class="cb-t"><b>⏳ Cure 1–2 weeks</b><br>soy needs the full wait!</div><div class="cb-t"><b>⚖️ Weigh, don't pour</b><br>grams on a scale, always</div></div><div class="cb-page"><span class="cb-kicker">The chandler's notebook</span><h1>Candle Fragrance Load Calculator</h1><p class="cb-tag">Perfect scent, perfect burn — measured to the gram.</p><div class="cb-field"><label for="cb-wax">Wax type</label><select id="cb-wax"><option value="0.86|10|Soy wax">Soy wax (max 10%)</option><option value="0.87|10|Paraffin wax">Paraffin wax (max 10%)</option><option value="0.90|6|Beeswax">Beeswax (max 6%)</option><option value="0.88|12|Coconut-soy blend">Coconut-soy blend (max 12%)</option><option value="0.87|10|Gel wax">Gel wax (max 10%)</option></select></div><div class="cb-field"><label for="cb-vol">Vessel fill volume — water weight to your wax line</label><div class="cb-row2"><input id="cb-vol" type="number" min="1" step="1" value="200" inputmode="decimal"><select id="cb-unit" aria-label="Volume unit"><option value="ml">ml / grams</option><option value="floz">fluid oz</option></select></div></div><div class="cb-ctl"><label>Fragrance load <output id="cb-loadout">8%</output></label><input type="range" id="cb-load" min="1" max="15" step="0.5" value="8"></div><div class="cb-field"><label>Load calculated on</label><div class="cb-seg" id="cb-basis"><button type="button" data-b="wax" class="on">% of wax weight</button><button type="button" data-b="total">% of total weight</button></div></div><div class="cb-field"><label for="cb-jars">Number of candles (batch)</label><input id="cb-jars" type="number" min="1" step="1" value="4" inputmode="numeric" style="max-width:160px"></div><div class="cb-warn" id="cb-warn" role="alert"></div><div class="cb-res" id="cb-res" role="status"><div class="cb-rgrid"><div class="cb-r"><div class="k">Wax per candle</div><div class="v" id="cb-waxpc">–</div><small id="cb-waxpc2"></small></div><div class="cb-r"><div class="k">Fragrance per candle</div><div class="v" id="cb-fragpc">–</div><small id="cb-fragpc2"></small></div><div class="cb-r"><div class="k">Batch wax total</div><div class="v" id="cb-waxb">–</div></div><div class="cb-r"><div class="k">Batch fragrance total</div><div class="v" id="cb-fragb">–</div></div></div></div></div><div class="cb-marginbox"><h2>✎ From the margin…</h2><div class="cb-jots"><div class="cb-jot"><b>The overload trap:</b> never subtract fragrance from wax to "keep" fill weight — it silently pushes load over the max!</div><div class="cb-jot"><b>Round once:</b> multiply per-candle weights by jar count, then round. Rounding first creates batch drift.</div><div class="cb-jot"><b>Melt +5% extra</b> for what sticks to the pitcher — after the base math is right.</div><div class="cb-jot"><b>Test small:</b> one candle, full cure, 2-hour burn test — before the 24-jar production run.</div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Fragrance Load: The Number That Controls Everything</h2><p><strong>Fragrance load</strong> is the percentage of fragrance oil in your candle relative to the wax — and it controls scent strength, burn quality, and safety all at once. Too little and the candle smells of nothing; too much and you get sweating, sooting, poor burn, or in extreme cases a flammability hazard. Every wax has a <strong>maximum recommended load</strong> set by its manufacturer, typically 10–12% for container waxes and lower for beeswax. The professional habit is simple: pick a target load <em>under</em> the max, calculate precisely, and test before scaling.</p><p>The standard formula — the one wax suppliers and this calculator use — is:</p><p><strong>Fragrance oil = wax weight × (load % ÷ 100)</strong></p><p>So 200 g of soy wax at 8% load needs 200 × 0.08 = <strong>16 g of fragrance oil</strong>. Weigh both on a digital scale in grams; at these quantities, volume measurements (teaspoons, milliliters of oil) are not accurate enough, because fragrance oils vary in density.</p><h2>Maximum Loads by Wax Type</h2><table><thead><tr><th>Wax type</th><th>Typical load range</th><th>Maximum</th><th>Notes</th></tr></thead><tbody><tr><td>Soy wax</td><td>6–10%</td><td>10%</td><td>Over 10% risks sweating and poor adhesion</td></tr><tr><td>Paraffin wax</td><td>6–10%</td><td>10%</td><td>Strongest hot throw; watch sooting above max</td></tr><tr><td>Beeswax</td><td>3–6%</td><td>6%</td><td>Natural honey scent is strong already</td></tr><tr><td>Coconut-soy blend</td><td>6–10%</td><td>12%</td><td>Some blends tolerate higher loads — test first</td></tr><tr><td>Gel wax</td><td>6–10%</td><td>10%</td><td>Test for cloudiness at high loads</td></tr></tbody></table><p>These are supplier-typical values; your specific wax's technical data sheet wins every argument. This calculator warns you the moment your chosen load exceeds the selected wax's maximum — treat that warning as a stop sign, not a suggestion.</p><h2>From Jar to Wax Weight: The Volume Method</h2><p>Here's the step beginners get wrong: a jar labeled "8 oz" does <em>not</em> hold 8 ounces of wax. That 8 oz is a <strong>fluid</strong> measure — the volume of water the jar holds to the brim. Wax is less dense than water, you never fill to the brim, and fragrance oil adds weight on top. The correct workflow:</p><ol><li><strong>Measure fill volume:</strong> place the empty jar on a scale, tare it, fill with water to your intended wax line, and note the grams of water. Grams of water = milliliters of volume (1 g water = 1 ml).</li><li><strong>Convert to wax weight:</strong> multiply by the wax density — about 0.86 g/ml for soy, 0.87 for paraffin, 0.90 for beeswax. A 200 ml fill at soy density = <strong>172 g of wax</strong>.</li><li><strong>Calculate fragrance:</strong> wax weight × load %. At 8%: 172 × 0.08 = <strong>13.8 g fragrance oil</strong>.</li><li><strong>Total pour:</strong> 172 + 13.8 = 185.8 g of blended material per candle.</li></ol><p>This calculator does all four steps from your volume input. The 5%-extra-wax habit (melt a little more than the math says) covers what clings to the pouring pitcher — add it <em>after</em> the base math is right, so your recipe stays clean and comparable batch to batch.</p><h2>The Two Bases — and the Overload Trap</h2><p>Fragrance load can be calculated on two bases, and mixing them up is the most common math error in candle making:</p><ul><li><strong>Percent of wax weight (standard):</strong> oil = wax × %. A 240 g wax base at 12% takes 28.8 g oil; the finished candle weighs 268.8 g. The load is exactly 12% — verified as 28.8 ÷ 240.</li><li><strong>Percent of total weight:</strong> oil = total × %. A 240 g finished candle at 12% takes 28.8 g oil and 211.2 g wax.</li></ul><p>The trap: calculating oil from the wax weight (28.8 g) but then <em>subtracting</em> it from the wax to keep the fill weight at 240 g. Now the wax is only 211.2 g, and the true load is 28.8 ÷ 211.2 = <strong>13.6%</strong> — nearly two points over a 12% maximum, a genuine safety margin gone. The differences look small at low percentages, which is exactly why the error survives. Pick one basis, stick to it across every batch, and this calculator's toggle keeps the math honest either way.</p><h2>Batch Scaling Without Drift</h2><p>Once the one-candle recipe is proven, scaling is multiplication — but round only at the <em>final</em> batch stage. Rounding each candle's weights first and then multiplying creates drift that grows with jar count: twelve candles rounded per-jar can drift by several grams of fragrance, enough to change the throw. The clean workflow: confirm the one-jar wax/oil split, multiply by jar count, round once. This calculator's batch section follows that order, so a 12-jar run of the 172 g / 13.8 g recipe gives exactly 2,064 g wax and 165.6 g fragrance.</p><h2>Pour Temperature and the Two-Minute Stir</h2><p>Fragrance oil must <strong>bind</strong> with the wax, not just sit in it — and binding is temperature-dependent. Add fragrance at the temperature your wax supplier recommends (commonly around 85°C / 185°F for soy, lower for parasoy blends), then <strong>stir gently for a full two minutes</strong>. Stirring too aggressively whips in air; stirring too briefly leaves unbound oil that sweats out later. Pour at the supplier's recommended pour temperature (often 55–65°C for soy containers), and don't rush cooling with freezers or fans — rapid cooling causes sinkholes, wet spots, and frosting.</p><h2>Curing: Why Two Weeks Changes Everything</h2><p>A soy candle burned the day after pouring will disappoint you — weak hot throw, tunneling, a short life. During the <strong>1–2 week cure</strong>, fragrance molecules continue binding into the wax matrix and the wax crystalline structure sets. Paraffin cures faster (a few days); soy and coconut blends genuinely need the full two weeks. Cure in a cool, stable room away from sunlight, with lids off for the first 24 hours then on to protect the scent. Test-burn only after the cure: judge hot throw at the two-hour mark of the burn, when the melt pool reaches the jar's edge.</p><h2>Troubleshooting the Usual Suspects</h2><h3>Sweating / beading on the surface</h3><p>Fragrance load too high for the wax, fragrance added too cool to bind, or poured in high humidity. Reduce load 1–2 points and confirm bind temperature.</p><h3>Weak hot throw, fine cold throw</h3><p>The classic under-cured soy candle — wait the full two weeks. If it persists, the load may be too low, the wick too small to build a full melt pool, or the fragrance simply a poor performer in that wax.</p><h3>Sinkholes around the wick</h3><p>Natural shrinkage as wax cools, worse with fast cooling. Do a relief pour: after the first pour sets, poke relief holes around the wick and top up with reserve wax.</p><h3>Tunneling</h3><p>Wick too small for the jar diameter — the melt pool never reaches the edge. Wick up one size, or the candle will drown its own wick in a wax canyon.</p><h3>Frosting (white crystalline patches on soy)</h3><p>A natural soy characteristic, not a defect — but minimizing temperature swings during cooling and avoiding over-stirring reduces it.</p><h2>Wick Sizing in Thirty Seconds</h2><p>This calculator handles wax and fragrance; wicks deserve their own test because no calculator knows your exact jar. The rule of thumb: the melt pool should reach the jar's edge within about two hours of burning, roughly 1 inch of pool depth per hour. Start with the supplier's wick chart for your jar diameter and wax type, then test-burn three candidates. Too small tunnels; too large soots and overheats the jar. Keep notes — wick, jar, wax, load — alongside each recipe, and you'll build a personal reference no chart can match.</p><h2>Essential Oils vs Fragrance Oils</h2><p>Essential oils typically run at <strong>3–6%</strong> in candles — lower than synthetic fragrance oils — because many are more volatile, affect flame behavior, and carry allergen considerations. Some (cinnamon, clove) accelerate or overheat; citrus oils fade fast in hot wax. If you're formulating all-natural, test each oil individually at small scale before committing to a blend, and respect IFRA usage limits for candle applications — the safety data sheet for each oil states its maximum. For most beginners, phthalate-free synthetic fragrance oils at 6–8% give stronger, more predictable results with fewer surprises.</p><h2>Safety Notes Worth Repeating</h2><p>Never leave melting wax unattended; wax has a flash point and overheated wax can ignite. Use a thermometer, not guesswork. Keep a metal lid or baking sheet nearby to smother any flare-up — never water on a wax fire. Pour on a heat-safe, covered surface, keep children and pets clear of the pour zone, and let the pouring pitcher cool before washing (hot wax down the drain is a plumbing disaster). These aren't formalities; every chandler with a few years in has a story about the batch that taught them.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much fragrance oil do I put in a candle?</summary><p>Use the standard formula: fragrance oil = wax weight × (load % ÷ 100). For 200 g of soy wax at 8% load: 200 × 0.08 = 16 g of fragrance oil. Weigh it on a digital scale in grams — volume spoons aren't accurate enough at these quantities.</p></details>
+<details><summary>What is the maximum fragrance load for soy wax?</summary><p>It depends on the wax: soy and paraffin typically max out at 10%, beeswax at 6%, and some coconut-soy blends tolerate up to 12%. Always check your specific wax's technical data sheet — this calculator warns you if your load exceeds the selected wax's maximum.</p></details>
+<details><summary>How do I calculate wax needed from my jar size?</summary><p>Fill the jar with water to your wax line and weigh the water in grams — that's your fill volume in ml. Multiply by wax density (about 0.86 g/ml for soy): a 200 ml fill needs about 172 g of wax. This calculator does the conversion for you.</p></details>
+<details><summary>Does an 8 oz candle need 8 oz of wax?</summary><p>An 8 oz jar holds 8 fluid ounces of water, not 8 ounces of wax. Wax is less dense than water, you don't fill to the brim, and fragrance oil adds weight. Measure the water weight to your fill line and convert with wax density for the real number.</p></details>
+<details><summary>Do homemade candles need to cure?</summary><p>Yes — 1 to 2 weeks for soy and coconut blends, a few days for paraffin. During curing, fragrance binds fully into the wax and the crystal structure sets. A soy candle burned the day after pouring will have noticeably weaker hot throw.</p></details>
+<details><summary>Why is my candle sweating fragrance oil?</summary><p>Sweating usually means the fragrance load is too high for the wax, or the oil was added at too low a temperature to bind properly. Drop the load 1–2 percentage points, add fragrance at the supplier's recommended temperature, and stir gently for two full minutes.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CandleBlend</div>
+    <p>CandleBlend turns your vessel size into exact wax and fragrance-oil weights — with per-wax maximum-load warnings, wax-basis vs total-basis math, and batch scaling for any jar count.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function fragranceOil(waxG,loadPct){var o=Number(waxG)*Number(loadPct)/100;return Math.round(o*100)/100;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var waxSel=document.getElementById('cb-wax');if(!waxSel)return;var vol=document.getElementById('cb-vol'),unit=document.getElementById('cb-unit'),load=document.getElementById('cb-load'),loadOut=document.getElementById('cb-loadout'),basisBox=document.getElementById('cb-basis'),jars=document.getElementById('cb-jars'),warn=document.getElementById('cb-warn'),res=document.getElementById('cb-res');var basis='wax';function waxInfo(){var p=waxSel.value.split('|');return{density:parseFloat(p[0]),max:parseFloat(p[1]),name:p[2]};}basisBox.addEventListener('click',function(e){if(e.target.tagName==='BUTTON'){var bs=basisBox.querySelectorAll('button');for(var i=0;i<bs.length;i++)bs[i].classList.remove('on');e.target.classList.add('on');basis=e.target.getAttribute('data-b');calc();}});load.addEventListener('input',function(){loadOut.textContent=load.value+'%';calc();});function g(x){return x>=1000?(x/1000).toFixed(2)+' kg':x.toFixed(1)+' g';}function calc(){var info=waxInfo();var v=parseFloat(vol.value)||0;var ml=unit.value==='floz'?v*29.5735:v;var waxWax=ml*info.density;var lp=parseFloat(load.value);var waxPc,fragPc,trueLoad;if(basis==='wax'){fragPc=fragranceOil(waxWax,lp);waxPc=Math.round(waxWax*10)/10;trueLoad=lp;}else{var total=waxWax;fragPc=Math.round(total*lp/100*10)/10;waxPc=Math.round((total-fragPc)*10)/10;trueLoad=Math.round(fragPc/waxPc*1000)/10;}var n=Math.max(1,Math.round(parseFloat(jars.value)||1));document.getElementById('cb-waxpc').textContent=g(waxPc);document.getElementById('cb-fragpc').textContent=g(fragPc);document.getElementById('cb-waxb').textContent=g(waxPc*n);document.getElementById('cb-fragb').textContent=g(fragPc*n);document.getElementById('cb-waxpc2').textContent='pour total ≈ '+g(waxPc+fragPc)+' per candle';document.getElementById('cb-fragpc2').textContent='true load '+trueLoad+'% on '+info.name.toLowerCase();if(trueLoad>info.max+1e-9){warn.textContent='⚠️ '+trueLoad+'% exceeds the '+info.max+'% maximum for '+info.name.toLowerCase()+' — reduce the load to avoid sweating, sooting, or poor burn.';warn.classList.add('show');}else{warn.classList.remove('show');}res.classList.add('show');}[waxSel,vol,unit,jars].forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc);});calc();});}
+</script>
+</body>
+</html>
