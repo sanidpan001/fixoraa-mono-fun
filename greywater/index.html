@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greywater Reuse Calculator — How Much Garden Water You Can Save</title>
+<meta name="description" content="Calculate household greywater from showers and laundry, recoverable volume, garden coverage and mains water saved.">
+<link rel="canonical" href="https://fun.fixoraa.tech/greywater/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Greywater Reuse Calculator — How Much Garden Water You Can Save">
+<meta property="og:description" content="Calculate household greywater from showers and laundry, recoverable volume, garden coverage and mains water saved.">
+<meta property="og:url" content="https://fun.fixoraa.tech/greywater/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GreyWater",
+      "url": "https://fun.fixoraa.tech/greywater/",
+      "applicationCategory": "Home",
+      "operatingSystem": "Web",
+      "description": "Calculate household greywater from showers and laundry, recoverable volume, garden coverage and mains water saved.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What counts as greywater?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wastewater from showers, baths, bathroom sinks and washing machines. Toilet and kitchen sink water are not greywater for simple reuse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use greywater on vegetables?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not on root vegetables, salads or crops eaten raw. Use greywater for ornamentals, trees, shrubs and lawns, via subsurface irrigation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long can greywater be stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Do not store untreated greywater for more than 24 hours. Simple systems should use it the same day it is produced."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which detergents are safe for greywater?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose plant-friendly, low-sodium detergents without boron or bleach, which can damage soil and plants over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much water does a shower use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An average shower uses about 50 litres, though low-flow heads and short showers use less and power showers use more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does greywater reuse replace mains water completely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rarely. It covers part or all of garden watering in many homes, but drinking, cooking and bathing still need mains water."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#ecfeff; --surface:#ffffff; --accent:#155e75; --accent-ink:#ffffff;
+  --ink:#083344; --muted:#155e75; --line:#a5f3fc;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.gw-sub{color:var(--muted);margin:.4rem 0 1.2rem}.gw-flow{display:flex;gap:.8rem;align-items:stretch;flex-wrap:wrap}.gw-step{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.1rem;text-align:center}.gw-step span{font-size:2rem}.gw-step label{display:block;font-weight:600;margin-top:.4rem}.gw-step input{width:100%;padding:.6rem;border:1px solid var(--line);border-radius:10px;margin-top:.3rem}.gw-arrow{align-self:center;font-size:1.6rem;color:var(--accent)}.gw-results{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.8rem;margin-top:1rem}.gw-results div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem}.gw-results span{display:block;color:var(--muted);font-size:.85rem}#gw-copy{margin-top:1rem;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.6rem 1.1rem;font-weight:700;cursor:pointer}@media(max-width:640px){.gw-flow{flex-direction:column}.gw-arrow{transform:rotate(90deg);align-self:center}.gw-results{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="GreyWater home">
+      <span class="fx-logo-tile" aria-hidden="true">💧</span>
+      <span class="fx-brand">GreyWater</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-grey-cycle" aria-label="GreyWater tool">
+<h1>Greywater Reuse Calculator</h1><p class="gw-sub">See how much shower and laundry water your home could reuse in the garden.</p><div class="gw-flow"><div class="gw-step"><span>🚿</span><label>Showers per week <input id="gw-show" type="number" min="0" value="20"></label><p>50 L each</p></div><div class="gw-arrow">→</div><div class="gw-step"><span>👕</span><label>Laundry loads per week <input id="gw-load" type="number" min="0" value="5"></label><p>60 L each</p></div><div class="gw-arrow">→</div><div class="gw-step"><span>🌿</span><label>Garden area (m²) <input id="gw-area" type="number" min="0" value="100"></label><p>Need 5 L/m²/week</p></div></div><div class="gw-results"><div><span>Total greywater</span><strong id="gw-total">—</strong></div><div><span>Recoverable (85%)</span><strong id="gw-rec">—</strong></div><div><span>Garden need</span><strong id="gw-need">—</strong></div><div><span>Garden coverage</span><strong id="gw-cov">—</strong></div></div><p id="gw-save"></p><button id="gw-copy">Copy summary</button>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What greywater is and why reuse it</h2>
+<p>Greywater is wastewater from showers, baths, bathroom sinks, and washing machines, as opposed to blackwater from toilets and kitchen sinks, which carries a higher load of pathogens and grease and requires different treatment. Greywater is relatively clean, it is produced every day in every home, and it is well suited to garden irrigation after simple filtration, which is why reuse is one of the most practical water-saving measures available to householders. A typical household produces hundreds of litres of greywater per week, and directing even part of it to the garden can cut mains water use for irrigation dramatically, reduce the load on sewers and septic systems, and keep gardens greener during dry periods when hosepipe restrictions may otherwise apply. Reuse does not mean drinking greywater or using it untreated on food crops, and understanding that boundary is essential to using the practice safely and legally.</p>
+<p>The environmental case is straightforward: mains water is treated to drinking standard at considerable energy and chemical cost, and then much of it is used once for washing and discarded, even though garden plants do not need drinking-quality water. Reusing greywater closes that loop at the household scale, saving treated water, saving the energy embedded in it, and reducing wastewater volumes, all without changing how you wash or do laundry. The financial case is more modest but real, particularly where water is metered, because every litre reused for the garden is a litre not bought from the mains, and the saving accumulates over a year of regular irrigation. This calculator estimates how much greywater your household produces, how much is recoverable after simple treatment, and what share of a garden's weekly watering need that volume could meet.</p>
+<h2>How to use this calculator</h2>
+<p>Enter the number of showers per week in your household, the number of washing machine loads per week, and the area of garden you water, in square metres. The calculator assumes an average shower uses fifty litres and an average washing load uses sixty litres, and that eighty-five percent of that water is recoverable after filtration and losses, which are reasonable planning figures rather than precise measurements for any specific home. It shows the total greywater produced, the recoverable volume, the garden's estimated weekly need at five litres per square metre, and the percentage of that need the recoverable water could cover, together with the equivalent mains water saving per week and per year. The presets load a small household, a family household, and a large household, so you can see the range of results before entering your own figures, and the copy button saves a summary for planning or for discussing a system with an installer.</p>
+<p>Use the results as a planning guide rather than a design specification, because actual shower volumes vary with showerhead flow rate and shower length, washing machine volumes vary by model and cycle, and garden need varies with soil, plants, climate, and season. A household with low-flow showerheads and short showers will produce less than the estimate, while a household with power showers and long showers will produce more, and the calculator's fixed averages sit in the middle of that range. If you are sizing a real system, measure your actual usage for a week or two, check your appliance manuals for water consumption, and discuss filtration, storage, and distribution with a qualified installer, since storage time, treatment level, and local regulations all affect what is safe and legal. The calculator's value is in showing the scale of the opportunity quickly and in helping you decide whether reuse is worth pursuing for your home.</p>
+<h2>Sources, treatment and safe use</h2>
+<p>Showers and baths are the largest and cleanest greywater sources, because the water contains mainly soap, shampoo, skin cells, and hair, all of which are easily filtered and are generally harmless to garden soil in the quantities involved. Washing machine water is the next largest source, and it is suitable for garden use provided you choose plant-friendly detergents without boron, bleach, or high salt content, since those chemicals can damage soil and plants over time. Bathroom sinks contribute a smaller volume of similar quality, while kitchen sink water is usually classified as blackwater or dark greywater because of food waste, grease, and higher bacterial loads, and it is not recommended for simple reuse systems. Dishwasher water is likewise excluded from most simple systems, and toilet water is never greywater under any definition, so a reuse system must be plumbed to collect only the approved sources.</p>
+<p>Treatment for garden irrigation is usually simple: a filter to remove hair and lint, a settling or surge tank to even out flows, and distribution through subsurface irrigation or mulch basins rather than sprinklers, which keeps greywater off plant leaves and away from people and pets. Greywater should not be stored untreated for more than twenty-four hours, because bacteria multiply in stored water and odours develop, so simple systems are designed to use water the same day it is produced, with any excess going to the sewer rather than sitting in a tank. Do not use greywater on root vegetables, salads, or other crops eaten raw, do not use it where children or pets play on wet ground, and do not let it pool on the surface, since pooling creates odour and mosquito breeding sites. With those precautions, greywater irrigation is widely practised and supported by guidance in many countries, but local regulations vary, so check your local rules before installing a system.</p>
+<h2>Garden benefits, soil and plant considerations</h2>
+<p>Greywater benefits gardens in dry periods because it provides a regular, reliable water supply that does not depend on rainfall or mains restrictions, and it contains small amounts of nutrients from soaps and detergents that can actually support plant growth in moderation. Soil biology generally handles the organic load in greywater well, particularly in well-drained, biologically active soils, and mulch basins help by filtering water through organic matter before it reaches plant roots. Over time, however, salts and surfactants from detergents can accumulate in soil, particularly in arid climates with little rainfall to flush them, so alternating greywater with rainwater or mains water, choosing low-sodium detergents, and monitoring soil health are sensible precautions. Plants vary in tolerance: most ornamentals, trees, shrubs, and lawns tolerate greywater well, while salt-sensitive plants, seedlings, and acid-loving plants may be more affected, and it is wise to observe plants after switching and adjust if leaf browning or poor growth appears.</p>
+<p>The garden need figure in this calculator, five litres per square metre per week, is a planning average for established garden beds in temperate climates, and actual need varies from near zero in wet weeks to far more during heatwaves or for thirsty plants in containers. Container plants generally need more frequent watering than beds, because pots dry out faster and hold less soil, and lawns need more water than deep-rooted shrubs, so treat the garden total as a starting point and adjust by observing soil moisture. A simple finger test, pushing a finger into the soil to check moisture at root depth, is more reliable than any calculator for day-to-day watering decisions, and the calculator is best used for weekly planning rather than daily control. If recoverable greywater exceeds garden need, the excess should go to the sewer, not onto already wet ground, because overwatering harms plants as surely as underwatering, and it wastes the system's capacity for no benefit.</p>
+<h2>Worked examples and common mistakes</h2>
+<p>Consider a worked example: a household with twenty showers per week and five washing loads per week produces twenty times fifty, which is one thousand litres, plus five times sixty, which is three hundred litres, for a total of one thousand three hundred litres per week. Eighty-five percent of that is recoverable, which is one thousand one hundred and five litres per week, and for a garden of one hundred square metres needing five hundred litres per week, that covers more than the full need, so the coverage is capped at one hundred percent and the excess goes to the sewer. A second example with fourteen showers and four loads produces seven hundred plus two hundred and forty, which is nine hundred and forty litres, of which seven hundred and ninety-nine litres are recoverable, covering a larger garden's need partially depending on its area. An edge case with no showers and no loads produces zero greywater, which correctly reflects that a home with no qualifying sources cannot reuse what it does not produce.</p>
+<p>The most common greywater mistakes are including kitchen or toilet water in a simple system, storing greywater untreated for days, using harsh detergents that damage soil, and applying greywater to food crops eaten raw. Another frequent error is overestimating garden need or underestimating production, leading to a system that either floods the garden or sits idle, both of which are avoided by measuring actual usage before designing. Finally, many people install a system without checking local regulations, which vary from permissive to restrictive, and a short check with the local authority or a qualified installer prevents costly rework. Used within its limits, greywater reuse is a simple, effective way to save water, support a garden through dry periods, and reduce the environmental footprint of an ordinary household.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What counts as greywater?</summary><p>Wastewater from showers, baths, bathroom sinks and washing machines. Toilet and kitchen sink water are not greywater for simple reuse.</p></details>
+<details><summary>Can I use greywater on vegetables?</summary><p>Not on root vegetables, salads or crops eaten raw. Use greywater for ornamentals, trees, shrubs and lawns, via subsurface irrigation.</p></details>
+<details><summary>How long can greywater be stored?</summary><p>Do not store untreated greywater for more than 24 hours. Simple systems should use it the same day it is produced.</p></details>
+<details><summary>Which detergents are safe for greywater?</summary><p>Choose plant-friendly, low-sodium detergents without boron or bleach, which can damage soil and plants over time.</p></details>
+<details><summary>How much water does a shower use?</summary><p>An average shower uses about 50 litres, though low-flow heads and short showers use less and power showers use more.</p></details>
+<details><summary>Does greywater reuse replace mains water completely?</summary><p>Rarely. It covers part or all of garden watering in many homes, but drinking, cooking and bathing still need mains water.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">GreyWater</div>
+    <p>GreyWater estimates household greywater production, recoverable volume and garden watering coverage.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function greyCalc(showers,loads,gardenM2){showers=+showers||0;loads=+loads||0;gardenM2=+gardenM2||0;var total=showers*50+loads*60;var recoverable=Math.round(total*0.85*10)/10;var need=gardenM2*5;var coverage=need>0?Math.round(Math.min(100,recoverable/need*100)*10)/10:0;return{total:total,recoverable:recoverable,need:need,coverage:coverage,weeklySaving:recoverable};}
+function gwRender(){var r=greyCalc(document.getElementById('gw-show').value,document.getElementById('gw-load').value,document.getElementById('gw-area').value);document.getElementById('gw-total').textContent=r.total+' L/week';document.getElementById('gw-rec').textContent=r.recoverable+' L/week';document.getElementById('gw-need').textContent=r.need+' L/week';document.getElementById('gw-cov').textContent=r.coverage+'%';document.getElementById('gw-save').textContent='You could save about '+r.recoverable+' litres of mains water per week, or '+(Math.round(r.recoverable*52))+' litres per year, by reusing greywater in the garden.';}
+['gw-show','gw-load','gw-area'].forEach(function(id){document.getElementById(id).addEventListener('input',gwRender);});
+document.getElementById('gw-copy').onclick=function(){var t='GreyWater: '+document.getElementById('gw-rec').textContent+' recoverable, garden coverage '+document.getElementById('gw-cov').textContent;if(navigator.clipboard)navigator.clipboard.writeText(t);};
+gwRender();
+</script>
+</body>
+</html>
