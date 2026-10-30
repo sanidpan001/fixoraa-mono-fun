@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telescope Magnification Calculator — Magnification, Max Useful Power and Exit Pupil</title>
+<meta name="description" content="Calculate telescope magnification from focal lengths, the maximum useful magnification for your aperture, and exit pupil.">
+<link rel="canonical" href="https://fun.fixoraa.tech/scopeview/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Telescope Magnification Calculator — Magnification, Max Useful Power and Exit Pupil">
+<meta property="og:description" content="Calculate telescope magnification from focal lengths, the maximum useful magnification for your aperture, and exit pupil.">
+<meta property="og:url" content="https://fun.fixoraa.tech/scopeview/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ScopeView",
+      "url": "https://fun.fixoraa.tech/scopeview/",
+      "applicationCategory": "Science",
+      "operatingSystem": "Web",
+      "description": "Calculate telescope magnification from focal lengths, the maximum useful magnification for your aperture, and exit pupil.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate telescope magnification?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Magnification = telescope focal length \u00f7 eyepiece focal length. A 900 mm telescope with a 25 mm eyepiece gives 36\u00d7."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is maximum useful magnification?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly twice the aperture in millimetres: a 70 mm telescope tops out near 140\u00d7. Beyond that the image gets larger but dimmer and softer, with no new detail."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is higher magnification always better?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. High magnification narrows the field of view, magnifies atmospheric turbulence, and dims the image. Low power often shows extended objects best."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is exit pupil and why does it matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Exit pupil = aperture \u00f7 magnification. It is the width of the light beam entering your eye. Around 2\u20133 mm suits most observing; above 7 mm wastes light, below 0.5 mm looks dim."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my image look blurry at high power?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually atmospheric seeing, not the telescope: heat and turbulence blur fine detail, and magnification magnifies the blur. Try lower power or wait for steadier air."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does aperture matter more than magnification?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Aperture sets light-gathering power and resolution. A larger aperture shows fainter objects and finer detail at any magnification."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#f5f3ff; --surface:#ede9fe; --accent:#5b21b6; --accent-ink:#ffffff;
+  --ink:#1e1b4b; --muted:#4338ca; --line:#ddd6fe;
+  --display:'Sora',serif; --body:'Hanken Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.scope{max-width:44rem;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:1.4rem;text-align:center}.scope label{display:block;font-weight:600;margin-bottom:.8rem;text-align:left}.scope input{width:100%;padding:.65rem;border:1px solid var(--line);border-radius:10px;margin-top:.3rem;font-size:1rem}.presets{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin:.5rem 0 1rem}.presets button,.go,.copy{border:2px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:.45rem .9rem;font-weight:600;cursor:pointer;min-height:44px}.go{background:var(--accent);color:var(--accent-ink);width:100%}.dial{border:2px dashed var(--accent);border-radius:50%;width:280px;max-width:100%;margin:1.2rem auto;padding:2rem 1rem}.big{font-family:var(--display);font-size:2.6rem;font-weight:700}.biglab{color:var(--muted)}.sub{color:var(--muted);margin:.4rem 0 1.2rem;max-width:44rem;text-align:center}.note{color:var(--accent);font-weight:600;text-align:center}@media(max-width:640px){.dial{width:100%;border-radius:24px}.big{font-size:2.2rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ScopeView home">
+      <span class="fx-logo-tile" aria-hidden="true">🔭</span>
+      <span class="fx-brand">ScopeView</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-lens-scope" aria-label="ScopeView tool">
+<h1>Telescope Magnification Calculator</h1><p class="sub">Magnification is just one division: telescope focal length divided by eyepiece focal length.</p><div class="scope"><label>Telescope focal length (mm)<input id="tf" type="number" min="0" step="any" value="900"></label><label>Eyepiece focal length (mm)<input id="ef" type="number" min="0" step="any" value="25"></label><label>Aperture (mm)<input id="ap" type="number" min="0" step="any" value="70"></label><div class="presets"><span>Eyepieces:</span><button type="button" data-e="25">25 mm low power</button><button type="button" data-e="10">10 mm high power</button><button type="button" data-e="6">6 mm planetary</button></div><button class="go" id="calc">Calculate magnification</button><div class="dial"><p class="big" id="rM">&mdash;</p><p class="biglab">magnification</p><p>Max useful magnification: <b id="rMax">&mdash;</b></p><p>Exit pupil: <b id="rEP">&mdash;</b></p><p id="rV"></p></div><button class="copy" id="copy">Copy result</button><button class="copy" id="save">Save to history</button><ul id="hist"></ul></div><p class="note" id="err"></p>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Magnification is the easiest telescope number — and the most misunderstood</h2><p>Ask a new telescope owner what their telescope does and they will often quote a huge magnification: 600×, 675×, printed in bold on the box. Ask an experienced observer and they will quote aperture first, because aperture determines what a telescope can actually show. Magnification is simply how much bigger an object appears, and it is calculated in one division: telescope focal length divided by eyepiece focal length. A 900 millimetre telescope with a 25 millimetre eyepiece gives 36×, meaning the Moon appears 36 times larger in angular size than with the naked eye. Change the eyepiece to 10 millimetres and the same telescope gives 90×. The telescope did not change; only the eyepiece did, which is why eyepieces, not telescopes, are where magnification lives.</p><p>This calculator also answers the question beginners forget to ask: how much magnification is actually useful? The answer depends on aperture, because a telescope cannot reveal detail finer than its optics can resolve, and it cannot brighten an image beyond what its light-gathering area collects. The rule of thumb is maximum useful magnification of about twice the aperture in millimetres. A 70 millimetre telescope therefore tops out near 140×, and a 130 millimetre telescope near 260×. Pushing past that limit with a very short eyepiece makes the image bigger but dimmer and softer, like enlarging a small photograph until it turns to mush. Knowing the limit saves money on eyepieces that promise more than physics allows.</p><h2>The formulas</h2><p>Three formulas cover most eyepiece shopping. Magnification M = telescope focal length ÷ eyepiece focal length, both in the same units, usually millimetres. Maximum useful magnification ≈ 2 × aperture in millimetres. Exit pupil = aperture ÷ magnification, in millimetres, which is the diameter of the beam of light leaving the eyepiece and entering your eye. Exit pupil matters because your own pupil dilates to about 7 millimetres in the dark when young, shrinking with age to perhaps 5 millimetres. An exit pupil larger than your eye pupil wastes light; a very small exit pupil, below about 0.5 millimetres, makes the image dim and reveals floaters in your eye. Most satisfying observing happens with exit pupils between 1 and 4 millimetres.</p><table><tr><th>Telescope</th><th>Eyepiece</th><th>Magnification</th><th>Exit pupil</th></tr><tr><td>900 mm, 70 mm aperture</td><td>25 mm</td><td>36×</td><td>1.94 mm</td></tr><tr><td>900 mm, 70 mm aperture</td><td>10 mm</td><td>90×</td><td>0.78 mm</td></tr><tr><td>1200 mm, 130 mm aperture</td><td>10 mm</td><td>120×</td><td>1.08 mm</td></tr><tr><td>1200 mm, 130 mm aperture</td><td>25 mm</td><td>48×</td><td>2.71 mm</td></tr></table><p>Field of view shrinks as magnification rises, roughly in inverse proportion. At 36× you might see the whole Moon with room to spare; at 150× you see a crater field, and finding anything requires careful aiming. That is why observers start at low power to locate an object, centre it, and then step up in magnification only as far as the night allows. Atmospheric seeing — turbulence in the air above you — often sets a lower practical limit than the telescope's theoretical maximum, sometimes as low as 100× on a poor night even for a large telescope.</p><h2>A worked example</h2><p>Take a common beginner telescope: 900 millimetres focal length, 70 millimetres aperture, supplied with 25 millimetre and 10 millimetre eyepieces. With the 25 millimetre eyepiece, magnification is 900 ÷ 25 = 36×, exit pupil is 70 ÷ 36 = 1.94 millimetres, and the maximum useful magnification is 2 × 70 = 140×, so 36× is comfortably useful. With the 10 millimetre eyepiece, magnification is 90× and exit pupil is 0.78 millimetres — still useful, good for the Moon and planets on a steady night. Add a 6 millimetre eyepiece and magnification jumps to 150×, beyond the 140× useful limit: the image will look larger but softer and dimmer, and most observers will prefer the 10 millimetre view. The calculator's verdict makes exactly that judgement for any combination you enter.</p><p>Now a larger telescope: 1200 millimetres, 130 millimetres aperture, 10 millimetre eyepiece. Magnification is 120×, maximum useful is 260×, and exit pupil is 1.08 millimetres — a fine planetary combination with room to go higher on an excellent night. Swap in a 25 millimetre eyepiece and magnification falls to 48× with a 2.71 millimetre exit pupil, ideal for sweeping star clusters and nebulae, which are extended objects that reward a wide, bright field over raw power. The same telescope serves both jobs; the eyepiece chooses between them.</p><h2>Choosing eyepieces wisely</h2><ul><li><b>Start with three:</b> a low-power eyepiece near 25–32 mm for finding and wide fields, a medium near 15 mm, and a high-power near 10 mm.</li><li><b>Do not chase the box number:</b> a telescope advertising 600× with a 70 mm aperture is promising empty magnification.</li><li><b>Consider a Barlow lens:</b> a 2× Barlow doubles each eyepiece's magnification, effectively doubling your set for the price of one accessory.</li><li><b>Watch exit pupil:</b> if views look dim, your magnification may be too high for the object; step down to a longer eyepiece.</li><li><b>Match eyepiece to target:</b> planets and double stars reward high power; nebulae, clusters and comets reward low power and wide fields.</li></ul><h2>Practical observing tips</h2><ul><li>Let the telescope cool to outdoor temperature for 20–30 minutes; warm optics create internal turbulence that mimics bad seeing.</li><li>Observe objects high in the sky, where you look through less turbulent air than near the horizon.</li><li>Use averted vision for faint objects: look slightly to one side so light falls on the more sensitive rod cells of your retina.</li><li>Keep magnification modest on windy or hazy nights; the atmosphere, not your telescope, is the limit.</li><li>Record which eyepiece worked for each object. Your own notes beat any generic magnification chart.</li></ul><h2>Common mistakes</h2><p>The classic beginner mistake is buying the shortest eyepiece available and wondering why everything looks dim and shaky. The second is judging a telescope by magnification instead of aperture and optical quality: a well-made 90 millimetre telescope will outperform a poor 130 millimetre one. The third is forgetting that magnification also magnifies vibration, so a wobbly mount ruins high-power views long before the optics do. A sturdy mount, realistic expectations about seeing, and a small set of good eyepieces will give better views than any single extreme eyepiece. Telescopes reward patience: the best view of Jupiter is rarely the biggest one, but the steadiest one.</p><h2>Refractors, reflectors and why aperture still rules</h2><p>Telescopes gather light in two main ways: refractors use a lens at the front, reflectors use a mirror at the back. Refractors are sealed, low-maintenance and excellent for planets, but large lenses are heavy and expensive. Reflectors, especially Dobsonian-mounted Newtonians, offer the most aperture per pound, which is why experienced observers often recommend an 8 inch Dobsonian as a first serious telescope. Catadioptric telescopes fold the light path with mirrors and a corrector plate, packing long focal length into a short tube for portability. Whichever design you choose, the magnification maths is identical, and so is the lesson: aperture determines how much light and detail you have to work with, while the eyepiece merely decides how that light is framed. A large, well-made telescope at modest power will show more than a small telescope pushed to its advertised maximum.</p><h3>What to observe at each power</h3><p>At 30–50×, enjoy the Moon whole, the Pleiades, the Orion Nebula and wide double stars. At 80–120×, resolve Jupiter's cloud bands and its four bright moons, Saturn's rings, and lunar craters in detail. At 150× and above on steady nights, chase planetary detail, tight double stars and small lunar features. If the view deteriorates as you increase power, step back down: the night is telling you its limit. Magnification is a tool for framing what your aperture has already gathered, and this calculator keeps that relationship honest.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do you calculate telescope magnification?</summary><p>Magnification = telescope focal length ÷ eyepiece focal length. A 900 mm telescope with a 25 mm eyepiece gives 36×.</p></details>
+<details><summary>What is maximum useful magnification?</summary><p>Roughly twice the aperture in millimetres: a 70 mm telescope tops out near 140×. Beyond that the image gets larger but dimmer and softer, with no new detail.</p></details>
+<details><summary>Is higher magnification always better?</summary><p>No. High magnification narrows the field of view, magnifies atmospheric turbulence, and dims the image. Low power often shows extended objects best.</p></details>
+<details><summary>What is exit pupil and why does it matter?</summary><p>Exit pupil = aperture ÷ magnification. It is the width of the light beam entering your eye. Around 2–3 mm suits most observing; above 7 mm wastes light, below 0.5 mm looks dim.</p></details>
+<details><summary>Why does my image look blurry at high power?</summary><p>Usually atmospheric seeing, not the telescope: heat and turbulence blur fine detail, and magnification magnifies the blur. Try lower power or wait for steadier air.</p></details>
+<details><summary>Does aperture matter more than magnification?</summary><p>Yes. Aperture sets light-gathering power and resolution. A larger aperture shows fainter objects and finer detail at any magnification.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ScopeView</div>
+    <p>ScopeView turns telescope and eyepiece focal lengths into magnification, useful power limits and exit pupil.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(tf,ef,ap){if(!(tf>0)||!(ef>0)||!(ap>0))return{mag:0,max:0,ep:0,verdict:'Enter positive values.'};var mag=tf/ef;var max=2*ap;var ep=ap/mag;var verdict=mag>max?'Beyond useful power: the image will be dim and soft. Use a longer eyepiece.':(mag>max*0.7?'Near the useful limit: good for planets on steady nights.':'Comfortably within useful power.');return{mag:Math.round(mag*100)/100,max:Math.round(max*100)/100,ep:Math.round(ep*100)/100,verdict:verdict};}
+function go(){var tf=parseFloat(document.getElementById('tf').value);var ef=parseFloat(document.getElementById('ef').value);var ap=parseFloat(document.getElementById('ap').value);var r=compute(tf,ef,ap);document.getElementById('rM').textContent=r.mag+'×';document.getElementById('rMax').textContent=r.max+'×';document.getElementById('rEP').textContent=r.ep+' mm';document.getElementById('rV').textContent=r.verdict;document.getElementById('err').textContent=(tf>0&&ef>0&&ap>0)?'':'Enter positive focal lengths and aperture.';}
+document.getElementById('calc').addEventListener('click',go);
+document.querySelectorAll('.presets button').forEach(function(b){b.addEventListener('click',function(){document.getElementById('ef').value=b.dataset.e;go();});});
+document.getElementById('copy').addEventListener('click',function(){navigator.clipboard.writeText(document.getElementById('rM').textContent+' magnification');});
+document.getElementById('save').addEventListener('click',function(){var li=document.createElement('li');li.textContent=document.getElementById('rM').textContent;document.getElementById('hist').appendChild(li);});
+go();
+</script>
+</body>
+</html>
