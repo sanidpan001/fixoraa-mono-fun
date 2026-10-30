@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://fun.fixoraa.tech/dreamly/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreamly — Dream Meaning Dictionary, Dream Journal & Lucid Dream Guide</title>
+<meta name="description" content="Dreamly is a free dream meaning dictionary with 300+ dream interpretation symbols, a private dream journal with mood and sleep tags, recurring-theme analytics, a paste-a-description dream decoder, and a lucid dreaming starter kit.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#141126; --panel:#1d1933; --panel2:#241e40; --line:#352c63; --pri:#a78bfa; --acc:#f0abfc; --txt:#ece9f7; --mut:#a79ec9; --gold:#fcd34d; }
+  html { scroll-behavior: smooth; }
+  body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--txt); }
+  .serif { font-family:'Cormorant Garamond',Georgia,serif; }
+  .night-sky { background:
+    radial-gradient(1px 1px at 12% 22%, #fff 100%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 68% 8%, #fff 100%, transparent 100%),
+    radial-gradient(1px 1px at 84% 34%, #fff 100%, transparent 100%),
+    radial-gradient(2px 2px at 42% 12%, #f0abfc 100%, transparent 100%),
+    radial-gradient(1px 1px at 26% 48%, #fff 100%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 30%, #a78bfa 100%, transparent 100%),
+    radial-gradient(1px 1px at 92% 12%, #fff 100%, transparent 100%),
+    radial-gradient(1px 1px at 5% 60%, #fff 100%, transparent 100%),
+    radial-gradient(2px 2px at 76% 52%, #f0abfc 100%, transparent 100%),
+    radial-gradient(1px 1px at 33% 66%, #fff 100%, transparent 100%),
+    linear-gradient(180deg, #141126 0%, #1a1440 55%, #141126 100%);
+  }
+  .moon { width:120px; height:120px; border-radius:9999px;
+    background: radial-gradient(circle at 35% 35%, #fefce8, #fde68a 55%, #d9a441 100%);
+    box-shadow: 0 0 60px 18px rgba(253,230,138,.28), 0 0 140px 40px rgba(167,139,250,.18); }
+  .glass { background:rgba(29,25,51,.72); backdrop-filter: blur(10px); border:1px solid var(--line); border-radius:20px; }
+  .dream-card { background:linear-gradient(160deg, rgba(36,30,64,.92), rgba(24,19,46,.94)); border:1px solid var(--line); border-radius:18px; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+  .dream-card:hover { transform: translateY(-3px); border-color:var(--pri); box-shadow:0 14px 34px rgba(167,139,250,.22); }
+  .field { background:#100d22; border:1px solid var(--line); border-radius:12px; color:var(--txt); }
+  .field:focus { outline:2px solid var(--pri); border-color:var(--pri); }
+  select.field option { background:#1d1933; }
+  input[type="date"], input[type="checkbox"] { color-scheme: dark; }
+  .btn-dream { background:linear-gradient(135deg,#a78bfa,#f0abfc); color:#141126; font-weight:700; border-radius:14px; transition: transform .12s ease, filter .12s ease; }
+  .btn-dream:hover { transform:translateY(-2px); filter:brightness(1.08); }
+  .btn-ghost { border:1px solid var(--line); border-radius:14px; color:var(--txt); transition:border-color .12s ease; }
+  .btn-ghost:hover { border-color:var(--pri); }
+  .tab-btn { border:1px solid var(--line); border-radius:9999px; padding:.55rem 1.15rem; font-weight:600; font-size:.9rem; color:var(--mut); transition:all .15s ease; white-space:nowrap; }
+  .tab-btn:hover { color:var(--txt); border-color:var(--pri); }
+  .tab-btn.active { background:linear-gradient(135deg,#a78bfa,#f0abfc); color:#141126; border-color:transparent; }
+  .theme-chip { font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); border-radius:9999px; padding:.15rem .6rem; color:var(--acc); }
+  .timeline-dot { width:14px; height:14px; border-radius:9999px; background:radial-gradient(circle at 35% 35%, #f0abfc, #a78bfa); box-shadow:0 0 12px rgba(240,171,252,.7); }
+  .timeline-line { position:absolute; left:6px; top:22px; bottom:-8px; width:2px; background:linear-gradient(180deg, var(--pri), transparent); }
+  details.faq { border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+  details.faq summary { cursor:pointer; font-weight:600; }
+  details.faq[open] { border-color:var(--pri); }
+  .prose-dream p { margin-bottom:1rem; line-height:1.75; color:#d9d4ef; }
+  .prose-dream h2 { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.9rem; font-weight:700; color:#fff; margin:2.2rem 0 1rem; }
+  .prose-dream h3 { font-size:1.25rem; font-weight:700; color:var(--acc); margin:1.6rem 0 .7rem; }
+  .prose-dream ul { list-style:disc; padding-left:1.5rem; margin-bottom:1rem; color:#d9d4ef; line-height:1.75; }
+  .prose-dream strong { color:#fff; }
+  ::-webkit-scrollbar { width:10px; } ::-webkit-scrollbar-track { background:#141126; }
+  ::-webkit-scrollbar-thumb { background:#352c63; border-radius:8px; }
+</style>
+</head>
+<body id="top" class="night-sky min-h-screen">
+<header class="sticky top-0 z-50" style="background:rgba(20,17,38,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2">
+      <span class="text-2xl">☾</span>
+      <span class="serif text-2xl font-bold tracking-wide" style="background:linear-gradient(135deg,#a78bfa,#f0abfc);-webkit-background-clip:text;background-clip:text;color:transparent;">Dreamly</span>
+    </a>
+    <nav class="flex items-center gap-2 sm:gap-3">
+      <a href="#top" class="text-sm sm:text-base font-semibold px-3 py-1.5 rounded-full btn-ghost">Home</a>
+      <a href="https://fixoraa.tech" class="text-sm sm:text-base font-semibold px-3 py-1.5 rounded-full btn-ghost">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pt-10 pb-6 text-center relative">
+  <div class="moon mx-auto mb-6"></div>
+  <span class="inline-flex items-center gap-2 font-semibold px-5 py-2.5 rounded-full text-sm tracking-wide" style="background:rgba(167,139,250,.12);border:1px solid var(--pri);color:var(--acc)">✦ Unlimited Free Usage</span>
+  <h1 class="serif text-4xl sm:text-6xl font-bold mt-5 leading-tight">What did you <em class="italic" style="color:var(--acc)">dream</em> last night?</h1>
+  <p class="mt-4 text-lg max-w-2xl mx-auto" style="color:var(--mut)">Search 300+ dream symbols, decode last night's story, keep a private dream journal, and learn to dream lucidly — all free, all in your browser.</p>
+</section>
+
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-8">
+  <div class="flex gap-2 overflow-x-auto pb-3 mb-6" role="tablist" aria-label="Dreamly tools">
+    <button class="tab-btn active" data-tab="tab-dict" role="tab">🔍 Symbol Dictionary</button>
+    <button class="tab-btn" data-tab="tab-decode" role="tab">✨ Dream Decoder</button>
+    <button class="tab-btn" data-tab="tab-journal" role="tab">📓 Dream Journal</button>
+    <button class="tab-btn" data-tab="tab-insights" role="tab">📊 Insights</button>
+    <button class="tab-btn" data-tab="tab-lucid" role="tab">🌙 Lucid Kit</button>
+  </div>
+
+  <!-- TAB 1: DICTIONARY -->
+  <section id="tab-dict" role="tabpanel">
+    <div class="glass p-5 sm:p-8">
+      <h2 class="serif text-3xl font-bold mb-2">Dream Symbol Dictionary</h2>
+      <p class="mb-5" style="color:var(--mut)">Search <strong id="dm-count" style="color:var(--acc)">300+</strong> dream interpretation symbols. Type anything — <em>snake, teeth, flying, ocean</em> — and get an instant meaning.</p>
+      <div class="flex flex-col sm:flex-row gap-3 mb-6">
+        <input id="dm-search" type="text" class="field flex-1 px-4 py-3 text-lg" placeholder="Search a symbol… e.g. snake" autocomplete="off" aria-label="Search dream symbols">
+        <button id="dm-random" class="btn-ghost px-5 py-3 font-semibold">🎲 Surprise me</button>
+      </div>
+      <div id="dm-results" class="grid gap-4 sm:grid-cols-2"></div>
+    </div>
+  </section>
+
+  <!-- TAB 2: DECODER -->
+  <section id="tab-decode" role="tabpanel" class="hidden">
+    <div class="glass p-5 sm:p-8">
+      <h2 class="serif text-3xl font-bold mb-2">Dream Decoder</h2>
+      <p class="mb-5" style="color:var(--mut)">Paste last night's dream as plain text. Dreamly scans it for known symbols and ranks what your unconscious was talking about.</p>
+      <textarea id="dc-text" rows="6" class="field w-full px-4 py-3" placeholder="Last night I dreamed I was flying over a dark ocean while a snake watched from the beach…"></textarea>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <button id="dc-btn" class="btn-dream px-6 py-3">✨ Decode my dream</button>
+        <button id="dc-clear" class="btn-ghost px-5 py-3">Clear</button>
+      </div>
+      <div id="dc-results" class="mt-6 grid gap-4 sm:grid-cols-2"></div>
+    </div>
+  </section>
+
+  <!-- TAB 3: JOURNAL -->
+  <section id="tab-journal" role="tabpanel" class="hidden">
+    <div class="glass p-5 sm:p-8 mb-6">
+      <h2 class="serif text-3xl font-bold mb-2">Private Dream Journal</h2>
+      <p class="mb-5" style="color:var(--mut)">Stored only in <strong style="color:var(--acc)">your browser</strong> (localStorage). Nothing is uploaded, ever. 🔒</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="j-title">Dream title</label>
+          <input id="j-title" type="text" class="field w-full px-4 py-2.5" placeholder="The snake on the beach">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="j-date">Date</label>
+          <input id="j-date" type="date" class="field w-full px-4 py-2.5">
+        </div>
+      </div>
+      <div class="mt-4">
+        <label class="block text-sm font-semibold mb-1" for="j-text">What happened?</label>
+        <textarea id="j-text" rows="4" class="field w-full px-4 py-2.5" placeholder="Write the dream in present tense, with as much detail as you remember…"></textarea>
+      </div>
+      <div class="mt-4">
+        <label class="block text-sm font-semibold mb-1" for="j-symbols">Symbols (comma separated)</label>
+        <input id="j-symbols" type="text" class="field w-full px-4 py-2.5" placeholder="snake, ocean, flying" list="j-symlist" autocomplete="off">
+        <datalist id="j-symlist"></datalist>
+        <button id="j-detect" type="button" class="btn-ghost px-4 py-2 mt-2 text-sm">✨ Auto-detect symbols from my description</button>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="j-mood">Mood in dream</label>
+          <select id="j-mood" class="field w-full px-3 py-2.5">
+            <option value="">—</option>
+            <option value="1">😱 Terrified</option>
+            <option value="2">😟 Anxious</option>
+            <option value="3">😐 Neutral</option>
+            <option value="4">🙂 Happy</option>
+            <option value="5">🤩 Euphoric</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="j-sleep">Sleep quality</label>
+          <select id="j-sleep" class="field w-full px-3 py-2.5">
+            <option value="">—</option>
+            <option value="1">1 — awful</option>
+            <option value="2">2 — poor</option>
+            <option value="3">3 — okay</option>
+            <option value="4">4 — good</option>
+            <option value="5">5 — amazing</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" for="j-signs">Dream signs</label>
+          <input id="j-signs" type="text" class="field w-full px-3 py-2.5" placeholder="flying, dead grandmother">
+        </div>
+        <div class="flex items-end pb-1">
+          <label class="flex items-center gap-2 cursor-pointer font-semibold text-sm">
+            <input id="j-lucid" type="checkbox" class="w-5 h-5"> 🌙 Lucid dream
+          </label>
+        </div>
+      </div>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <button id="j-save" class="btn-dream px-6 py-3">💾 Save dream</button>
+        <button id="j-export" class="btn-ghost px-5 py-3">⬇ Export JSON</button>
+        <label class="btn-ghost px-5 py-3 cursor-pointer">⬆ Import JSON<input id="j-import" type="file" accept="application/json" class="hidden"></label>
+        <button id="j-clear" class="btn-ghost px-5 py-3" style="color:#fca5a5">🗑 Clear all</button>
+      </div>
+      <p id="j-msg" class="mt-3 text-sm" style="color:var(--acc)"></p>
+    </div>
+    <h3 class="serif text-2xl font-bold mb-4">🌌 Your dream timeline</h3>
+    <div id="j-timeline"></div>
+  </section>
+
+  <!-- TAB 4: INSIGHTS -->
+  <section id="tab-insights" role="tabpanel" class="hidden">
+    <div class="glass p-5 sm:p-8">
+      <h2 class="serif text-3xl font-bold mb-2">Recurring-Theme Analytics</h2>
+      <p class="mb-5" style="color:var(--mut)">Patterns across your journal: which symbols and themes keep visiting you, charted over time.</p>
+      <div id="an-empty" class="text-center py-10" style="color:var(--mut)">Save a few dreams in the Journal tab and your insights will appear here. 🌙</div>
+      <div id="an-body" class="hidden">
+        <div id="an-summary" class="grid sm:grid-cols-4 gap-4 mb-6"></div>
+        <h3 class="text-lg font-bold mb-3">Symbol themes</h3>
+        <div class="dream-card p-4 mb-6"><canvas id="an-chart" height="220" class="w-full"></canvas></div>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg font-bold mb-3">🔁 Most recurring symbols</h3>
+            <div id="an-top" class="space-y-2"></div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-3">📡 Top dream signs</h3>
+            <div id="an-signs" class="space-y-2"></div>
+          </div>
+        </div>
+        <h3 class="text-lg font-bold mt-6 mb-3">🗓 Weekly theme trend</h3>
+        <div id="an-weeks" class="space-y-2"></div>
+        <h3 class="text-lg font-bold mt-6 mb-3">😴 Mood by symbol</h3>
+        <div id="an-mood" class="space-y-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 5: LUCID KIT -->
+  <section id="tab-lucid" role="tabpanel" class="hidden">
+    <div class="glass p-5 sm:p-8 mb-6">
+      <h2 class="serif text-3xl font-bold mb-2">Lucid Dreaming Starter Kit</h2>
+      <p class="mb-6" style="color:var(--mut)">A lucid dream is a dream you know you are dreaming — and can steer. Follow these six steps for 2–4 weeks; most beginners get their first lucid dream in that window.</p>
+      <div id="lc-steps" class="grid gap-4 sm:grid-cols-2"></div>
+    </div>
+    <div class="glass p-5 sm:p-8 mb-6">
+      <h3 class="serif text-2xl font-bold mb-4">🤚 Reality checks <span class="text-sm font-normal" style="color:var(--mut)">(do 5–10× daily)</span></h3>
+      <div id="lc-checks" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+    <div class="glass p-5 sm:p-8">
+      <h3 class="serif text-2xl font-bold mb-2">📡 Dream Sign Tracker</h3>
+      <p class="mb-4" style="color:var(--mut)">Dream signs are impossible or recurring oddities — flying, dead people alive, glitching clocks. Log yours; spotting them is what triggers lucidity.</p>
+      <div class="flex flex-col sm:flex-row gap-3 mb-4">
+        <input id="ds-input" type="text" class="field flex-1 px-4 py-2.5" placeholder="e.g. my childhood home looks different" list="j-symlist">
+        <button id="ds-add" class="btn-dream px-5 py-2.5">＋ Track this sign</button>
+      </div>
+      <div id="ds-list" class="flex flex-wrap gap-2"></div>
+      <h4 class="font-bold mt-6 mb-3" style="color:var(--acc)">Common dream signs to watch for:</h4>
+      <div id="lc-hints" class="grid gap-2 sm:grid-cols-2 text-sm" style="color:var(--mut)"></div>
+    </div>
+  </section>
+</main>
+
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    </div>
+  </div>
+</div>
+
+<section class="mx-auto max-w-4xl px-4 sm:px-6 py-10 prose-dream">
+  <h2>The Complete Guide to Understanding Your Dreams</h2>
+  <p>You wake up at 3 a.m., heart pounding, with the vivid image of a snake sliding across your bedroom floor still burned into your mind. Was it just random neural noise — or was your unconscious trying to tell you something? For thousands of years, humans have turned to dream interpretation for answers, and today the fastest way to start is with a good <strong>dream meaning dictionary</strong>: a searchable reference that translates the strange images of the night into plain, useful language.</p>
+  <p>Dreamly was built to be exactly that — a free <strong>dream meaning dictionary</strong> with more than 300 symbols, paired with a private journal and a decoder that reads your own dream descriptions. But a dictionary is only as good as the reader. This guide teaches you how dream interpretation actually works, what the most common symbols mean, why journaling multiplies your insight, and how to take the next step into lucid dreaming.</p>
+
+  <h2>Why Do We Dream? What Science Says</h2>
+  <p>Neuroscience does not fully agree on why we dream, but the leading theories all point in the same useful direction: dreaming is your brain processing the day. During REM sleep — the stage where the most vivid dreams occur — the brain's emotional centers (especially the amygdala) are highly active while the logical prefrontal cortex is dialed down. The result is a kind of overnight therapy session conducted in metaphor.</p>
+  <p>Psychiatrist and researcher Rosalind Cartwright found that people who dreamed about their emotional problems in a structured, narrative way woke up measurably less distressed than those whose dreams were fragmented. In other words, dreaming helps regulate mood. The famous "threat simulation" theory, proposed by Antti Revonsuo, argues that dreams rehearse dangerous scenarios — being chased, falling, fighting — so we are better prepared in waking life. And memory researchers have shown that REM sleep consolidates learning: students who dream about a newly learned skill perform better the next day.</p>
+  <p>None of this means every dream is a coded prophecy. It does mean dreams are worth paying attention to — they are your mind's nightly status report, written in the language of symbol and feeling.</p>
+
+  <h2>How to Use a Dream Meaning Dictionary</h2>
+  <p>A <strong>dream meaning dictionary</strong> is a starting point, not a verdict. The same symbol can mean opposite things for different dreamers, and context is everything. Here is the method professional dream workers actually recommend:</p>
+  <h3>1. Start with the emotion, not the object</h3>
+  <p>Before you look anything up, ask: how did the dream <em>feel</em>? A snake that fills you with terror and a snake you calmly watch glide by are two different dreams. Emotion is the skeleton key of dream interpretation symbols — the image is just the costume it wears.</p>
+  <h3>2. Note what is personal</h3>
+  <p>If your grandmother appears in a dream, the dictionary meaning (wisdom, family roots) matters less than what your grandmother means to <em>you</em>. Dictionaries give you the cultural and psychological consensus; your associations give you the truth.</p>
+  <h3>3. Look for the day residue</h3>
+  <p>Most dreams weave in fragments of the previous 24–48 hours. That exam you dreamed about the night before a big presentation is not mysterious — it is your brain filing the day's anxiety under a familiar label.</p>
+  <h3>4. Watch for patterns, not one-offs</h3>
+  <p>A single dream about flying might be random. Flying every week for a month is a pattern — and patterns are where a journal becomes indispensable. Recurring symbols are your unconscious underlining a sentence.</p>
+
+  <h2>The Most Searched Dream Interpretation Symbols</h2>
+  <p>Certain images show up in dreams across every culture on earth. Here is what the most-searched <strong>dream interpretation symbols</strong> typically mean — and the questions to ask yourself about each.</p>
+  <h3>Snakes: transformation or hidden threat?</h3>
+  <p>"<strong>What does dreaming about snakes mean</strong>?" is one of the most searched dream questions in the world, and the answer depends on the snake's behavior. Across traditions, snakes carry a double meaning. On one side: transformation, healing, and life-force energy — the snake sheds its skin, the medical caduceus wraps snakes around a staff. A calm or beautiful snake often signals that you are in the middle of a powerful personal change. On the other side: hidden threat. An aggressive, biting, or lurking snake frequently points to a toxic influence, a betrayal you sense but cannot prove, or a fear you have been avoiding. Ask yourself: in the dream, was the snake dangerous, or was it simply <em>there</em>? Your answer tells you which meaning fits.</p>
+  <h3>Teeth falling out: the classic anxiety dream</h3>
+  <p>Dreaming that your teeth crumble, loosen, or fall out is reported on every continent. Psychologists link it to fears about appearance and aging, to powerlessness (teeth are tools of aggression and assertion), and very often to anxiety about communication — saying the wrong thing at the wrong moment. It tends to spike during job interviews, weddings, public speaking, and other moments of being judged.</p>
+  <h3>Flying: freedom with a catch</h3>
+  <p>Flying dreams are among the most joyful dreams people report, and they usually signal liberation — rising above problems, confidence, ambition taking off. The catch is in the control: effortless soaring means you feel capable; struggling to stay airborne, flapping frantically, or crashing back down suggests your confidence is shakier than you admit.</p>
+  <h3>Being chased: what are you avoiding?</h3>
+  <p>The pursuer in a chase dream is almost always something you are avoiding in waking life — a difficult conversation, a deadline, a truth about yourself. Dream researchers note a useful trick: in a lucid dream, you can turn around and ask the chaser what it wants. The answers people report are startlingly insightful.</p>
+  <h3>Water: the state of your emotions</h3>
+  <p>Water is the single most common dream element because it maps so directly onto feeling. Clear, calm water suggests emotional clarity; murky or turbulent water, confusion or turmoil; floods and tsunamis, being overwhelmed. Drowning dreams are distress signals — your mind's way of saying the load is too heavy.</p>
+  <h3>Death (your own): an ending, not a prediction</h3>
+  <p>Dreaming of your own death is frightening but almost never literal. In dream symbolism, death means transformation — the end of a phase, a relationship, an identity. Something is dying so something new can be born. Funerals in dreams work the same way: they are ceremonies of letting go.</p>
+
+  <h2>Why Keeping a Dream Journal Changes Everything</h2>
+  <p>Here is the uncomfortable truth about dream interpretation: you will forget 90% of any dream within ten minutes of waking, and 50% within the first five. Without a journal, you are trying to interpret smoke. With one, patterns emerge that no single dream could reveal.</p>
+  <p>Dream researchers recommend writing in the present tense ("I am walking through my childhood home") because it preserves the dream's emotional immediacy. Record the date, the strongest symbols, how you felt during the dream and on waking, and anything notable about your sleep — quality, stress level, alcohol or late meals. After two to four weeks, read back through your entries and circle anything that repeats: places, people, feelings, impossible events. Those repetitions are your personal symbol lexicon, far more accurate than any generic dictionary.</p>
+  <p>There is a second, less obvious benefit: the act of journaling dramatically improves dream recall itself. The brain learns that dreams are "important" because you keep asking for them, and recall lengthens from fragments to full narratives within weeks. It is also the single best preparation for lucid dreaming, which is why every serious lucid dreaming guide starts with the same instruction: keep a journal.</p>
+
+  <h2>What Are Dream Signs?</h2>
+  <p>Dream signs are the recurring oddities that reveal a dream <em>as</em> a dream: flying without effort, dead relatives appearing alive, text that morphs when you re-read it, your childhood home with extra rooms, clocks showing impossible times. Everyone's dream signs are different, which is why tracking them matters. Once you know your top three or four signs, you can use them as lucidity triggers: every time you notice one in waking life (or rehearse noticing it), you prime your sleeping mind to notice it in a dream. Dreamly's Dream Sign Tracker exists for exactly this — log the impossible things, and watch your personal pattern emerge in the Insights tab.</p>
+
+  <h2>Lucid Dreaming: A Beginner's Roadmap</h2>
+  <p>A lucid dream is simply a dream in which you know you are dreaming — and with practice, one you can influence or direct. It is a real, well-documented phenomenon: EEG studies confirm that lucid dreamers show a unique blend of REM sleep and waking-like gamma activity. Here is the beginner path that research and experienced oneironauts agree on:</p>
+  <ul>
+    <li><strong>Journal daily.</strong> Non-negotiable. Recall first, control later.</li>
+    <li><strong>Reality-check 5–10 times a day.</strong> Genuinely ask "am I dreaming?" and test reality — push a finger through your palm, re-read text, pinch your nose and try to breathe. The habit migrates into dreams.</li>
+    <li><strong>Learn your dream signs.</strong> Two weeks of journaling reveals them; then they become triggers.</li>
+    <li><strong>Practice MILD at bedtime.</strong> As you fall asleep, repeat "next time I'm dreaming, I'll realize I'm dreaming" while visualizing your most recent dream with a lucid twist.</li>
+    <li><strong>Stabilize on arrival.</strong> First lucid dreams collapse from excitement. Rub your dream hands together or spin slowly to stay in.</li>
+  </ul>
+  <p>Most consistent practitioners report their first lucid dream within two to four weeks. It is a skill, not a gift — and like any skill, it compounds.</p>
+
+  <h2>A Note on Accuracy and Limits</h2>
+  <p>Dream dictionaries, including this one, describe common cultural and psychological associations — they are maps, not territories. No symbol list can replace your own associations, and no website can diagnose mental health. If nightmares are frequent, violent, or disrupting your life, that is a matter for a sleep specialist or therapist, not a dictionary. Used wisely, though, dream interpretation is one of the cheapest forms of self-knowledge available: thirty seconds with a journal each morning, and your nights start working <em>for</em> you instead of just happening to you.</p>
+  <p>Sweet dreams. ☾</p>
+</section>
+
+<section class="mx-auto max-w-4xl px-4 sm:px-6 pb-10">
+  <h2 class="serif text-3xl font-bold mb-5 text-center">Frequently Asked Questions</h2>
+  <div class="space-y-3">
+    <details class="faq p-4">
+      <summary>What does dreaming about snakes mean?</summary>
+      <p class="mt-2" style="color:var(--mut)">Dreaming about snakes usually points to transformation or a hidden threat, depending on context. A calm snake often symbolizes healing, life-force energy, and shedding an old version of yourself — while an aggressive or biting snake tends to reflect a toxic influence, betrayal, or a fear you've been avoiding. The emotion you felt in the dream is the best guide to which meaning fits.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>Is this dream meaning dictionary accurate?</summary>
+      <p class="mt-2" style="color:var(--mut)">Dreamly's dictionary covers 300+ symbols compiled from widely shared cultural and psychological interpretations, but no dictionary is a verdict. Symbols are starting points — your personal associations and the dream's emotional tone matter more. Use the meanings as hypotheses, then check them against your own life.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>How can I remember my dreams better?</summary>
+      <p class="mt-2" style="color:var(--mut)">Keep a journal by your bed (or use Dreamly's) and write immediately on waking — even fragments count. Avoid moving or checking your phone first, as motion and light erase dream memory fast. Within 2–3 weeks of daily journaling, most people go from vague fragments to detailed narratives.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>Are my journal entries private?</summary>
+      <p class="mt-2" style="color:var(--mut)">Completely. Dreamly stores your journal, dream signs, and analytics only in your browser's localStorage. Nothing is uploaded to any server, there is no account, and clearing your browser data removes everything. Your dreams never leave your device.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>What are dream signs and how do I find mine?</summary>
+      <p class="mt-2" style="color:var(--mut)">Dream signs are recurring impossible or odd elements — flying, dead people alive, morphing text, strange clocks. Journal for two weeks, then review your entries for repetitions: those are your signs. Log them in Dreamly's Dream Sign Tracker, and the Insights tab will show which appear most often.</p>
+    </details>
+    <details class="faq p-4">
+      <summary>Can anyone learn lucid dreaming?</summary>
+      <p class="mt-2" style="color:var(--mut)">Yes — research shows lucid dreaming is a trainable skill, not a rare gift. The proven beginner stack is: daily dream journaling, 5–10 reality checks per day, learning your personal dream signs, and the MILD technique at bedtime. Most consistent practitioners report their first lucid dream within 2–4 weeks.</p>
+    </details>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What does dreaming about snakes mean?", "acceptedAnswer": { "@type": "Answer", "text": "Dreaming about snakes usually points to transformation or a hidden threat. A calm snake often symbolizes healing and shedding an old version of yourself, while an aggressive or biting snake tends to reflect a toxic influence, betrayal, or an avoided fear. The emotion felt in the dream is the best guide to which meaning fits." } },
+    { "@type": "Question", "name": "Is this dream meaning dictionary accurate?", "acceptedAnswer": { "@type": "Answer", "text": "Dreamly's dictionary covers 300+ symbols compiled from widely shared cultural and psychological interpretations, but no dictionary is a verdict. Symbols are starting points — personal associations and the dream's emotional tone matter more." } },
+    { "@type": "Question", "name": "How can I remember my dreams better?", "acceptedAnswer": { "@type": "Answer", "text": "Keep a journal by your bed and write immediately on waking — even fragments count. Avoid moving or checking your phone first. Within 2-3 weeks of daily journaling, most people go from vague fragments to detailed narratives." } },
+    { "@type": "Question", "name": "Are my journal entries private?", "acceptedAnswer": { "@type": "Answer", "text": "Completely. Dreamly stores your journal, dream signs, and analytics only in your browser's localStorage. Nothing is uploaded to any server and there is no account." } },
+    { "@type": "Question", "name": "What are dream signs and how do I find mine?", "acceptedAnswer": { "@type": "Answer", "text": "Dream signs are recurring impossible or odd elements like flying or morphing text. Journal for two weeks, review entries for repetitions, and log them in a dream sign tracker to spot your personal pattern." } },
+    { "@type": "Question", "name": "Can anyone learn lucid dreaming?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — lucid dreaming is a trainable skill. The proven beginner stack is daily dream journaling, 5-10 reality checks per day, learning personal dream signs, and the MILD technique at bedtime. Most practitioners report a first lucid dream within 2-4 weeks." } }
+  ]
+}
+</script>
+
+<footer class="border-t mt-6" style="border-color:var(--line)">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="text-xl">☾</span>
+      <span class="serif text-xl font-bold" style="background:linear-gradient(135deg,#a78bfa,#f0abfc);-webkit-background-clip:text;background-clip:text;color:transparent;">Dreamly</span>
+    </div>
+    <p class="text-sm text-center" style="color:var(--mut)">For reflection and entertainment — not medical or psychological advice.<br class="sm:hidden"> Your dreams stay in your browser. ☾</p>
+    <nav class="flex gap-4 text-sm">
+      <a href="#top" class="hover:underline" style="color:var(--mut)">Home</a>
+      <a href="https://fixoraa.tech" class="hover:underline" style="color:var(--mut)">More Tools</a>
+    </nav>
+  </div>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+
+<script id="v3-dreamly-dream-dictionary-journal-lib">
+/* Dreamly pure logic — baked-in dream-symbol dictionary (300+ symbols),
+ * keyword matcher, journal analytics, and lucid-dreaming starter data.
+ * Pure functions only: no document/window access, no DOM, no network.
+ * Dataset entries: [name, "comma,separated,keywords", "meaning", "theme"].
+ */
+var DreamlyLogic = (function () {
+  'use strict';
+
+  var SYMBOLS = [
+    ["snake", "serpent,viper,cobra,reptile,bitten,venom", "Dreaming of a snake often points to transformation — shedding an old skin — or a hidden threat you sense but cannot quite name. A calm snake suggests healing and life-force energy; an aggressive one warns of betrayal or a toxic influence near you.", "animals"],
+    ["dog", "puppy,canine,bark,barking,loyal,pet", "A dog stands for loyalty, friendship and protection. A friendly dog reflects trusted bonds; an angry or biting dog can signal a conflict with someone close or guilt over divided loyalty.", "animals"],
+    ["cat", "kitten,feline,kitty,pussycat", "Cats embody independence, intuition and feminine mystery. A content cat suggests you should trust your instincts; a hissing cat may point to someone in your life who is hard to read.", "animals"],
+    ["bird", "flying bird,feather,flock,nest,sparrow", "Birds symbolize freedom, hope and a higher perspective. A bird in flight means you are rising above problems; a caged or injured bird suggests feeling trapped or silenced.", "animals"],
+    ["spider", "web,cobweb,tarantula,arachnid", "A spider weaves patience, creativity and fate. It can mean you are carefully building something — or that you feel caught in someone else's manipulative web.", "animals"],
+    ["butterfly", "moth,caterpillar,cocoon,chrysalis", "Butterflies are the classic emblem of transformation and rebirth. Seeing one signals a beautiful change in progress; a moth near a flame can warn of being drawn to something destructive.", "animals"],
+    ["lion", "mane,roar,king of beasts", "The lion stands for courage, leadership and personal power. A calm lion affirms your authority; a roaring or attacking lion points to anger — yours or someone else's — that needs taming.", "animals"],
+    ["tiger", "stripes,big cat,predator", "Tigers carry raw power, passion and unpredictability. They often appear when strong emotions — desire, anger, ambition — are prowling just beneath your calm surface.", "animals"],
+    ["bear", "grizzly,teddy,hibernation,cub", "Bears represent strength, solitude and introspection. A bear can mean you need to retreat and rest like in hibernation, or that protective, motherly energy is rising in you.", "animals"],
+    ["wolf", "pack,howl,werewolf,coyote", "Wolves speak of pack loyalty, instinct and wildness. Running with wolves suggests belonging; a lone or threatening wolf can mean feeling hunted by pressure or by your own wilder urges.", "animals"],
+    ["horse", "stallion,mare,riding,gallop,pony", "Horses symbolize drive, freedom and life force. Riding confidently means you are in control of your direction; a runaway horse suggests passions or circumstances galloping ahead of you.", "animals"],
+    ["fish", "goldfish,catching fish,aquarium,swimming fish", "Fish live in the unconscious, so dreaming of them means insights are surfacing from deep within. Abundant fish suggest a wealth of ideas or emotions; a dead fish can signal a lost opportunity.", "animals"],
+    ["shark", "jaws,attack,teeth,great white", "A shark is a predatory threat circling in your emotional waters. It often represents a ruthless person, a cutthroat situation at work, or fear that something will strike without warning.", "animals"],
+    ["whale", "orca,spouting,deep sea,blue whale", "Whales carry the weight of deep emotion and intuition. They appear when you are processing something enormous — grief, love, creativity — that words cannot yet hold.", "animals"],
+    ["dolphin", "porpoise,playful,swimming", "Dolphins bring joy, playfulness and emotional intelligence. They suggest harmony in relationships and remind you to approach life with curiosity rather than heaviness.", "animals"],
+    ["octopus", "tentacles,squid,ink,kraken", "An octopus symbolizes complexity and multitasking — too many arms in too many projects. Its ink can mean you are clouding the truth, even from yourself.", "animals"],
+    ["bee", "honey,hive,sting,buzzing,bumblebee", "Bees stand for hard work, teamwork and sweet rewards. A busy hive reflects productive collaboration; a sting delivers a small painful lesson about boundaries.", "animals"],
+    ["ant", "colony,marching,diligent,insect", "Ants celebrate diligence and the power of small, steady efforts. They appear when patient teamwork — or an irritating small problem that will not go away — is on your mind.", "animals"],
+    ["eagle", "soaring,talons,hawk,falcon", "The eagle is vision and rising above. It urges a higher perspective on your problems and often appears when ambition is ready to take flight.", "animals"],
+    ["owl", "hoot,night,wise,barn owl", "Owls see in the dark, so they represent wisdom and hidden truths coming to light. An owl may announce that you already know the answer you are searching for.", "animals"],
+    ["crow", "raven,black bird,caw,rook", "Crows and ravens are messengers between worlds — mystery, intelligence and transformation. They can herald a necessary ending or a truth you have been avoiding.", "animals"],
+    ["dove", "white bird,peace,pigeon,olive branch", "The dove is peace, hope and gentle love. It appears after conflict to promise reconciliation, or to nudge you toward a softer approach.", "animals"],
+    ["lizard", "gecko,chameleon,iguana,reptile", "Lizards symbolize regeneration and adaptability — they regrow their tails. A lizard dream suggests you can recover from a loss and blend into new circumstances.", "animals"],
+    ["frog", "toad,croak,pond,tadpole", "Frogs mean transformation and emotional cleansing — from tadpole to frog, from murky water to land. They often appear before a positive personal change.", "animals"],
+    ["turtle", "tortoise,shell,slow,terrapin", "The turtle teaches patience and steady progress. It can also mean you are withdrawing into your shell for protection when you should be moving forward.", "animals"],
+    ["rabbit", "bunny,hare,easter,carrot", "Rabbits suggest fertility, luck and quick thinking. A rabbit dream can point to new creative abundance — or to hopping anxiously from one worry to the next.", "animals"],
+    ["rat", "mouse,rodent,vermin,mice", "Rats and mice are small worries gnawing at the edges of your peace. They can also point to feelings of guilt, uncleanliness, or someone you do not trust.", "animals"],
+    ["elephant", "trunk,ivory,herd,tusks", "Elephants carry memory, family loyalty and quiet strength. The proverbial elephant in the room may also appear literally — a big issue everyone is avoiding.", "animals"],
+    ["monkey", "ape,chimp,gorilla,primate,baboon", "Monkeys bring playfulness, mischief and imitation. They ask whether you are acting from your true self or just copying what others do.", "animals"],
+    ["pig", "hog,boar,swine,piglet", "Pigs symbolize abundance — and excess. They can celebrate prosperity or warn that greed, overindulgence or laziness is taking over.", "animals"],
+    ["cow", "cattle,bull,moo,milk,heifer", "Cows represent nurturing, motherhood and steady prosperity. A calm cow suggests your basic needs are met; a charging bull warns of stubborn or aggressive energy.", "animals"],
+    ["sheep", "lamb,flock,wool,ram", "Sheep point to conformity and following the crowd. A lost sheep may be the part of you that wandered from your values; a lamb suggests innocence.", "animals"],
+    ["goat", "horns,billy,kid,mountain goat", "Goats embody stubbornness, vitality and climbing ambition. They appear when persistence will get you up the mountain others avoid.", "animals"],
+    ["deer", "stag,doe,fawn,antlers,buck", "Deer symbolize gentleness, grace and vulnerability. They counsel a soft approach — and warn that something delicate in your life needs protection.", "animals"],
+    ["fox", "vixen,cunning,red fox", "The fox is cleverness and slyness. It can celebrate your own resourcefulness or warn that someone around you is being cunning.", "animals"],
+    ["bat", "cave,nocturnal,vampire bat", "Bats navigate darkness, so they represent facing fears and trusting intuition when you cannot see clearly. They often appear during transitions.", "animals"],
+    ["scorpion", "sting,tail,desert,arachnid", "Scorpions warn of hidden danger and defensiveness. Something — or someone — in your life carries a sting you have not yet felt.", "animals"],
+    ["wasp", "hornet,nest,sting,yellowjacket", "Wasps are small irritations and petty conflicts buzzing around your peace. A wasp nest suggests a problem that will get worse if provoked.", "animals"],
+    ["crocodile", "alligator,jaws,swamp,reptile", "Crocodiles are ancient, hidden threats lurking beneath calm surfaces. They represent primal fears or people who smile while waiting to strike.", "animals"],
+    ["crab", "claws,pinch,sideways,lobster", "Crabs move sideways, symbolizing indirect approaches and emotional defensiveness. A crab dream may mean you are avoiding a direct confrontation.", "animals"],
+    ["jellyfish", "sting,drifting,tentacles", "Jellyfish drift without direction, symbolizing painful memories floating in your unconscious. Their sting warns of old hurts resurfacing.", "animals"],
+    ["snail", "slug,shell,slow,garden", "Snails counsel patience and steady, deliberate progress. They can also reveal frustration that life is moving too slowly for your liking.", "animals"],
+    ["baby", "infant,newborn,cradle,toddler", "A baby in dreams usually means a new beginning — a project, relationship or version of yourself that needs care. A crying baby asks what part of your life needs attention.", "people"],
+    ["child", "kid,little boy,little girl,young", "Children represent your inner child — playfulness, innocence and unmet needs. A happy child suggests joy returning; a lost child may be a lost sense of wonder.", "people"],
+    ["mother", "mom,mum,maternal,mama", "Your dream mother embodies nurturing, comfort and unconditional support. She can also represent your own caregiving side — or guilt about neglecting it.", "people"],
+    ["father", "dad,paternal,pop,papa", "Fathers symbolize authority, protection and structure. A supportive father affirms your decisions; a stern one may echo inner criticism or unresolved authority issues.", "people"],
+    ["grandmother", "grandma,nana,elder,granny", "A grandmother carries family wisdom and roots. She often appears as a comforting guide when you need the perspective of experience.", "people"],
+    ["friend", "buddy,pal,best friend,mate", "Dream friends usually represent aspects of yourself you associate with them. Ask what quality that friend embodies — it is likely the trait your unconscious is highlighting.", "people"],
+    ["stranger", "unknown person,unfamiliar face,foreigner", "Strangers are unknown parts of yourself knocking at the door. A friendly stranger suggests new potential; a threatening one, a rejected or feared aspect of you.", "people"],
+    ["ex-partner", "ex-boyfriend,ex-girlfriend,ex-husband,ex-wife,former lover", "An ex in dreams rarely means you want them back — it usually signals unresolved feelings or an old relationship pattern repeating with someone new.", "people"],
+    ["celebrity", "famous,actor,star,singer,actress", "Celebrities embody qualities you admire or crave — success, recognition, charisma. Your dream star shows you what part of yourself wants the spotlight.", "people"],
+    ["teacher", "professor,mentor,instructor,tutor", "A teacher appears when there is a lesson to learn. Pay attention to the subject being taught — it is the curriculum your life is currently offering.", "people"],
+    ["police officer", "cop,policeman,arrest,siren,law", "Police represent rules, conscience and authority. Being chased by police often reflects guilt; being helped by them suggests you want order restored.", "people"],
+    ["doctor", "physician,surgeon,nurse,medic", "Doctors signal a need for healing — physical, emotional or situational. The dream may be urging you to address something you have been ignoring.", "people"],
+    ["clown", "circus,jester,funny,harlequin", "Clowns hide sadness behind a painted smile. They can point to someone (possibly you) masking pain with humor, or to a fear of not being taken seriously.", "people"],
+    ["bride", "wedding dress,veil,groom", "A bride symbolizes commitment and union — of people, or of parts of yourself. She appears when you are ready to commit to a new path.", "people"],
+    ["pregnant woman", "expecting,maternity,belly,pregnancy", "A pregnant figure represents creativity gestating — an idea or project growing inside you that is not ready to be born yet.", "people"],
+    ["twins", "identical,double,two babies,duplicates", "Twins embody duality and balance — two sides of a decision, or the need to integrate opposing parts of yourself.", "people"],
+    ["crowd", "mob,audience,throng,people", "Crowds reflect social pressure and the weight of others' opinions. Feeling lost in a crowd suggests your individuality is being drowned out.", "people"]
+  ];
+  SYMBOLS.push(
+    ["beggar", "homeless,panhandler,tramp,vagrant", "A beggar represents neglected needs — yours or someone else's. The dream asks what part of your life is asking for help and being ignored.", "people"],
+    ["king", "queen,royalty,monarch,throne,emperor", "Royalty symbolizes power, authority and self-mastery. A king or queen affirms your leadership — or exposes where you feel powerless.", "people"],
+    ["soldier", "army,warrior,military,uniform,marine", "Soldiers stand for discipline, duty and defense. They appear when you are armoring up for a battle in waking life — or fighting yourself.", "people"],
+    ["thief", "robber,burglar,stealing,pickpocket", "A thief suggests you feel robbed — of time, energy, credit or trust. It can also point to guilt if you are the one taking what is not yours.", "people"],
+    ["ghost", "spirit,phantom,haunting,apparition", "Ghosts are unfinished business — grief, guilt or memories that refuse to rest. A friendly ghost may be a comforting presence from your past.", "people"],
+    ["angel", "guardian,wings,halo,seraph", "Angels bring guidance, protection and hope. They often appear in times of crisis as reassurance that you are watched over.", "people"],
+    ["witch", "sorceress,magic,wicca,enchantress", "Witches embody feminine power, intuition and transformation — or, in darker dreams, manipulation and fear of a powerful woman.", "people"],
+    ["vampire", "bloodsucker,dracula,fangs,nosferatu", "A vampire drains life force, representing an energy-draining person or habit in your life. It can also symbolize seductive but unhealthy desires.", "people"],
+    ["zombie", "undead,horde,walker", "Zombies reflect burnout and going through the motions — feeling half-dead in routine. They ask what would make you feel alive again.", "people"],
+    ["alien", "extraterrestrial,martian,little green men", "Aliens represent feeling foreign or not belonging. They can also symbolize the unknown parts of yourself waiting to be discovered.", "people"],
+    ["old man", "elder,wise man,sage,grandfather", "A wise old man embodies inner wisdom and guidance. He often appears when you need to trust experience over impulse.", "people"],
+    ["neighbor", "next door,neighbour,neighborhood", "Neighbors reflect your relationship with community and boundaries. A friendly neighbor suggests harmony; a hostile one, boundary violations.", "people"],
+    ["boss", "manager,supervisor,employer,chief", "A boss in dreams represents authority and performance pressure — not necessarily your actual boss, but whoever or whatever judges your work.", "people"],
+    ["sibling", "brother,sister,siblings", "Siblings mirror rivalry, companionship and shared history. Your dream sibling often represents the qualities you associate with them.", "people"],
+    ["husband", "spouse,partner,married man", "A husband in dreams can represent the masculine, action-oriented side of yourself, or reflect the state of your committed partnerships.", "people"],
+    ["wife", "spouse,partner,married woman", "A wife in dreams can represent the receptive, nurturing side of yourself, or mirror the emotional state of your closest partnership.", "people"],
+    ["house", "home,building,residence,dwelling", "A house is you — each room a different area of your life. Its condition reveals how you feel about yourself; exploring new rooms means discovering new potential.", "places"],
+    ["bedroom", "bed,chamber,sleeping room", "The bedroom is your most private self — intimacy, rest and secrets. Its state reflects how safe you feel being vulnerable.", "places"],
+    ["kitchen", "cooking,stove,oven,chef", "Kitchens transform raw ingredients into nourishment, symbolizing creativity and emotional processing. A warm kitchen suggests comfort; a messy one, neglected self-care.", "places"],
+    ["bathroom", "toilet,shower,bath,restroom", "Bathrooms are for emotional cleansing — releasing what no longer serves you. Difficulty finding one often means you need an outlet for pent-up feelings.", "places"],
+    ["basement", "cellar,underground,downstairs", "The basement is your subconscious — buried memories, fears and desires. Descending means you are ready to confront what you have stored away.", "places"],
+    ["attic", "loft,upstairs,storage,garret", "Attics hold memories and the past. Exploring an attic suggests revisiting old experiences for wisdom — or finally clearing out what you have outgrown.", "places"],
+    ["door", "doorway,gate,entrance,portal", "Doors are opportunities and transitions. An open door invites you forward; a locked one marks a blocked path or a choice you are afraid to make.", "places"],
+    ["window", "pane,glass,sill,shutters", "Windows offer outlook and perspective. Looking through one suggests new possibilities; a broken window can mean a shattered viewpoint or vulnerability.", "places"],
+    ["stairs", "staircase,steps,escalator,flight", "Stairs measure progress. Climbing reflects ambition and advancement; descending suggests introspection or a fear of losing ground.", "places"],
+    ["elevator", "lift,shaft,escalator", "Elevators are rapid shifts in status or consciousness. Rising fast feels like success; a stuck or falling elevator reveals anxiety about losing control.", "places"],
+    ["hallway", "corridor,passage,aisle", "Hallways are transitions — you are between chapters. Long, endless corridors suggest uncertainty about where you are headed.", "places"],
+    ["garden", "flowers,planting,vegetables,orchard", "A garden is your inner growth. Tended gardens reflect self-care and flourishing projects; overgrown ones suggest neglected potential.", "places"],
+    ["forest", "woods,jungle,trees,wilderness", "Forests are the unknown — adventure, mystery, or being lost. Entering one means exploring uncharted parts of yourself.", "places"],
+    ["beach", "shore,sand,seaside,coast", "The beach is where conscious meets unconscious — land and sea. It suggests relaxation, but also emotions lapping at the edge of awareness.", "places"],
+    ["ocean", "sea,waves,tide,deep water", "The ocean is the vast unconscious and the full range of emotion. Calm seas mean peace; rough waters, emotional turbulence.", "places"],
+    ["river", "stream,current,flow,brook", "Rivers are the flow of life and time. Swimming with the current means acceptance; fighting it, resistance to change.", "places"],
+    ["lake", "pond,still water,lagoon", "A lake is calm, reflective emotion — a mirror for self-examination. Clear water suggests clarity; murky water, confusion.", "places"],
+    ["waterfall", "cascade,falls,rapids", "Waterfalls are powerful emotional release. They suggest letting feelings pour out rather than damming them up.", "places"],
+    ["mountain", "peak,summit,climb,alp", "Mountains are ambitions and challenges. Climbing one reflects your drive; standing on top, achievement; an unclimbable peak, an overwhelming goal.", "places"],
+    ["cave", "cavern,grotto,den,hollow", "Caves are retreat and introspection — the womb of the earth. Entering one suggests you need solitude to process something deep.", "places"],
+    ["desert", "dunes,arid,wasteland,sahara", "Deserts symbolize loneliness and spiritual dryness — but also clarity and endurance. They appear when life feels empty yet full of stark truth.", "places"],
+    ["island", "isle,tropical,castaway,atoll", "Islands mean isolation or self-sufficiency. A paradise island suggests needed escape; being stranded, loneliness.", "places"],
+    ["city", "town,metropolis,urban,downtown", "Cities represent social life, ambition and complexity. A bustling city reflects an active mind; a deserted one, disconnection.", "places"],
+    ["village", "hamlet,rural,countryside", "Villages symbolize simplicity, community and roots. They suggest a longing for a simpler, more connected life.", "places"],
+    ["bridge", "overpass,crossing,span,viaduct", "Bridges are transitions and connections — between life phases, people or ideas. Crossing safely means you are ready; a broken bridge warns of a gap.", "places"],
+    ["tunnel", "underpass,burrow,subway", "Tunnels are passages through difficulty toward light — also symbols of birth and rebirth. The light at the end reflects hope.", "places"],
+    ["road", "street,highway,path,avenue", "Roads are your life path. A clear road means direction; forks and detours reflect choices and unexpected turns.", "places"],
+    ["crossroads", "intersection,fork,junction", "Crossroads are decision points. Standing at one means a significant choice is before you — each direction a possible future.", "places"],
+    ["school", "academy,university,college,campus", "Schools revisit learning and old anxieties. They appear when you feel tested in waking life or are learning something new.", "places"],
+    ["classroom", "lecture,desk,blackboard,lesson", "Classrooms are places of evaluation. Being unprepared in one is the classic anxiety dream about feeling judged.", "places"],
+    ["hospital", "clinic,ward,emergency,ER", "Hospitals signal healing — needed or underway. They can reflect health worries or the emotional triage of a difficult period.", "places"],
+    ["church", "temple,chapel,mosque,synagogue,shrine", "Sacred spaces represent spiritual seeking and moral reflection. They appear when you need guidance, forgiveness or meaning.", "places"],
+    ["graveyard", "cemetery,tombstone,grave,burial ground", "Graveyards are endings and letting go — not literal death, but the burial of a phase, habit or relationship.", "places"],
+    ["prison", "jail,cell,locked up,dungeon", "Prisons mean feeling trapped — by circumstances, guilt or self-imposed limits. The dream asks what would set you free.", "places"],
+    ["castle", "palace,fortress,tower,keep", "Castles blend ambition with fantasy. They can represent high aspirations — or building walls around your heart.", "places"],
+    ["office", "workplace,desk,cubicle,work", "Offices reflect work stress and professional identity. Dreaming of work often means it is occupying too much mental space.", "places"],
+    ["shop", "store,mall,market,boutique", "Shops are about choices and self-worth — what you buy into. Browsing suggests exploring options; an empty shop, feeling that nothing satisfies.", "places"],
+    ["restaurant", "cafe,diner,eatery,bistro", "Restaurants are nourishment and social appetite — what you hunger for emotionally. The menu reflects your options in life.", "places"],
+    ["airport", "terminal,runway,departure,gate", "Airports are thresholds of new journeys. They carry excitement and anxiety about departures — literal trips or life transitions.", "places"],
+    ["train station", "platform,railway,depot,terminal", "Train stations are about life direction and timing. Missing a train is the classic missed-opportunity dream.", "places"]
+  );
+  SYMBOLS.push(
+    ["water", "ocean,river,lake,puddle,drinking water", "Water is emotion itself. Clear water means clarity; turbulent water, turmoil; drinking it, taking in emotional nourishment.", "objects"],
+    ["fire", "flames,burning,blaze,inferno", "Fire is passion, anger and transformation. A cozy fire warms; a wildfire warns that emotions are burning out of control.", "objects"],
+    ["blood", "bleeding,wound,red,bloody", "Blood is life force and energy. Losing it suggests depletion — emotional or physical; seeing it can also mean sacrifice or deep bonds.", "objects"],
+    ["mirror", "reflection,glass,looking glass", "Mirrors demand self-reflection. A clear reflection means self-acceptance; a distorted or missing one suggests identity confusion.", "objects"],
+    ["key", "keys,unlock,skeleton key", "Keys are solutions and access. Finding one means an answer is near; losing one, feeling locked out of an opportunity.", "objects"],
+    ["lock", "padlock,locked,bolt,latch", "Locks guard secrets and barriers. They represent what you are keeping hidden — or what is keeping you out.", "objects"],
+    ["money", "cash,coins,bills,wealth,currency", "Money in dreams is rarely about cash — it is self-worth and value. Finding it boosts confidence; losing it signals insecurity.", "objects"],
+    ["gold", "golden,bullion,ingot,gilded", "Gold is precious value — talents, achievements, what you treasure most. It affirms that something in your life is genuinely worthwhile.", "objects"],
+    ["diamond", "gem,jewel,precious stone", "Diamonds mean clarity, strength and lasting value. They suggest something in your life is unbreakable — or that you seek perfection.", "objects"],
+    ["ring", "wedding ring,band,circle,hoop", "Rings are commitment and cycles — wholeness without end. A lost ring can signal a broken promise or fear of lost commitment.", "objects"],
+    ["necklace", "pendant,chain,jewelry,beads", "Necklaces adorn the throat — expression and connection. They can represent bonds you wear proudly or burdens hung around your neck.", "objects"],
+    ["watch", "wristwatch,timepiece,clock", "Watches are time pressure and mortality. Constantly checking one suggests anxiety about deadlines or aging.", "objects"],
+    ["clock", "alarm,ticking,time,grandfather clock", "Clocks are deadlines and the passage of time. A stopped clock may mean you feel time is running out — or that you have frozen a moment.", "objects"],
+    ["calendar", "date,planner,schedule,month", "Calendars are planning and anticipation. Circling a date reflects something you are counting down to — eagerly or anxiously.", "objects"],
+    ["phone", "mobile,cellphone,smartphone,call,text", "Phones are communication and connection. A ringing phone is an unanswered message from your unconscious; a broken one, blocked communication.", "objects"],
+    ["computer", "laptop,PC,screen,keyboard", "Computers mirror your mental processing. A crashing computer suggests mental overload; a fast one, sharp thinking.", "objects"],
+    ["book", "novel,reading,pages,library", "Books are knowledge and your life story. An open book invites learning; a closed one, an unread chapter of yourself.", "objects"],
+    ["letter", "mail,envelope,postcard,message", "Letters carry messages and news. Receiving one suggests important information is coming — possibly from your own intuition.", "objects"],
+    ["gift", "present,package,parcel", "Gifts are talents and opportunities being offered — often by life itself. An unopened gift is potential you have not claimed.", "objects"],
+    ["knife", "blade,dagger,cutting,switchblade", "Knives cut — ties, illusions, or people. They represent the need to sever something, or aggression that needs handling carefully.", "objects"],
+    ["sword", "blade,katana,sabre,weapon", "Swords are power, honor and decisive action. Wielding one means you are ready to cut through confusion; being threatened by one, feeling attacked.", "objects"],
+    ["gun", "pistol,rifle,shooting,firearm", "Guns are aggression, power and threat. They often appear with anger — yours or someone else's — or a sense of being under attack.", "objects"],
+    ["rope", "cord,tie,binding,lasso", "Ropes bind or rescue. Being tied suggests restriction; a rope thrown to you is a lifeline — help is available if you reach for it.", "objects"],
+    ["chain", "shackles,fetters,links", "Chains are restriction and obligation. They ask what is holding you back — and whether the lock is real or imagined.", "objects"],
+    ["cage", "bars,trapped,enclosure,prison", "Cages mean feeling trapped — in a job, relationship or mindset. An open cage you will not leave is the most telling of all.", "objects"],
+    ["mask", "disguise,costume,facade,veil", "Masks are hidden identity. Wearing one suggests you are hiding your true self; seeing one on another, distrust.", "objects"],
+    ["hat", "cap,helmet,headwear,beanie", "Hats are the roles you wear. Trying on hats means exploring identities; losing one, losing your role or dignity.", "objects"],
+    ["shoes", "boots,sneakers,footwear,heels", "Shoes are your life direction and grounding. New shoes suggest a new path; lost shoes, feeling unprepared for the journey.", "objects"],
+    ["clothes", "dress,suit,outfit,garments,shirt", "Clothes are how you present yourself to the world. Ill-fitting clothes suggest a role that does not fit; new clothes, reinvention.", "objects"],
+    ["umbrella", "parasol,rain,canopy", "Umbrellas are protection — emotional shelter. An open umbrella means you feel prepared; a broken one, exposed.", "objects"],
+    ["luggage", "suitcase,bag,baggage,backpack", "Luggage is emotional baggage you carry. Heavy bags suggest burdens from the past; lost luggage, identity upheaval.", "objects"],
+    ["wallet", "purse,billfold,card holder", "Wallets hold identity and resources. Losing one reflects fears about security, self-worth or losing yourself.", "objects"],
+    ["glasses", "spectacles,eyewear,lens,sunglasses", "Glasses are clarity of vision — how you see the world. Broken glasses suggest a distorted perspective that needs correcting.", "objects"],
+    ["candle", "flame,wax,wick,tealight", "Candles are hope and guidance in darkness. A lit candle affirms faith; one going out warns of fading hope.", "objects"],
+    ["lamp", "light,lantern,bulb,torch", "Lamps are insight and illumination. Turning one on means understanding is dawning; darkness, confusion.", "objects"],
+    ["bed", "mattress,bedding,sleep", "Beds are rest, intimacy and retreat. A comfortable bed suggests you need rest; an uncomfortable one, unrest in your private life.", "objects"],
+    ["table", "desk,dining,counter", "Tables are gathering and negotiation — where deals and meals happen. A full table suggests abundance; an empty one, unmet needs.", "objects"],
+    ["chair", "seat,stool,armchair", "Chairs are rest and your position in life. An empty chair can mean someone missing; fighting over one, competition.", "objects"],
+    ["box", "crate,container,package", "Boxes hold secrets and hidden potential. Opening one means discovery; a sealed box, something you are not ready to face.", "objects"],
+    ["treasure chest", "chest,gold,loot,coffer", "Treasure chests are inner riches — talents and wisdom you have not yet opened. The dream says your wealth is inside.", "objects"],
+    ["ladder", "rungs,climbing,stepladder", "Ladders are upward progress and ambition. Climbing steadily means advancement; a broken ladder, a blocked rise.", "objects"],
+    ["hammer", "mallet,nail,tool,sledgehammer", "Hammers build or break. They represent constructive force — or the urge to smash through an obstacle.", "objects"],
+    ["scissors", "cutting,snip,shears", "Scissors cut away what is unnecessary. They suggest severing ties, trimming excess, or decisive editing of your life.", "objects"],
+    ["needle", "pin,sewing,thread,syringe", "Needles are small irritations — or precision. A needle can mean a nagging detail, or the careful mending of something torn.", "objects"],
+    ["crown", "tiara,coronet,royal", "Crowns are achievement and authority. Wearing one affirms self-worth; a slipping crown, fear of losing status.", "objects"],
+    ["bell", "chime,ringing,alarm,toll", "Bells are alarms and attention — a call to wake up to something. Wedding bells suggest union; alarm bells, warning.", "objects"],
+    ["drum", "beat,rhythm,percussion", "Drums are heartbeat and primal rhythm. They connect you to your body's wisdom and the pulse of life.", "objects"],
+    ["telescope", "binoculars,spyglass,observatory", "Telescopes are vision into the distance — long-term perspective. They suggest looking beyond immediate worries.", "objects"],
+    ["map", "chart,atlas,guide,directions", "Maps are guidance for life's journey. Studying one means you are planning; being lost without one, needing direction.", "objects"],
+    ["compass", "navigation,north,direction", "A compass is moral direction and guidance. A working compass affirms you know your true north; a broken one, confusion about values.", "objects"],
+    ["camera", "photograph,lens,filming,DSLR", "Cameras are memory and perspective. Taking photos suggests wanting to preserve a moment; being photographed, feeling observed.", "objects"],
+    ["photograph", "picture,photo,image,portrait", "Photographs freeze the past. Looking at them suggests nostalgia or an unresolved memory asking for attention.", "objects"],
+    ["painting", "artwork,canvas,portrait,art", "Paintings are how you frame your life story. Creating one means self-expression; a famous painting, borrowed identity.", "objects"],
+    ["statue", "sculpture,monument,bust", "Statues are frozen ideals — admiration turned rigid. They can mean you have put someone (or yourself) on an unreachable pedestal.", "objects"],
+    ["fountain", "spring,water feature,jet", "Fountains are flowing emotion and renewal. A sparkling fountain suggests joy bubbling up; a dry one, blocked feelings.", "objects"],
+    ["rain", "rainfall,storm,drizzle,downpour", "Rain cleanses and renews — but also brings sadness. Gentle rain suggests healing tears; a downpour, being overwhelmed.", "nature"],
+    ["storm", "tempest,hurricane,gale,thunderstorm", "Storms are emotional turmoil. They mirror inner chaos — and remind you that storms always pass.", "nature"],
+    ["lightning", "bolt,strike,electricity,thunderbolt", "Lightning is sudden insight — a flash of truth. It can also mean shocking news or destructive anger striking without warning.", "nature"],
+    ["thunder", "rumble,boom,crash,roar", "Thunder is power and anger made audible. Distant thunder suggests approaching conflict; overhead, confrontation.", "nature"],
+    ["clouds", "overcast,sky,grey,cloudy", "Clouds are confusion and mood. Dark clouds gather worries; parting clouds promise clarity returning.", "nature"]
+  );
+  SYMBOLS.push(
+    ["sun", "sunshine,solar,bright,daylight", "The sun is vitality, clarity and life force. Bright sunshine affirms optimism; a dim or eclipsed sun, fading energy.", "nature"],
+    ["moon", "lunar,crescent,full moon,moonlight", "The moon governs intuition, cycles and the feminine. A full moon heightens emotion; a new moon, fresh intuitive beginnings.", "nature"],
+    ["stars", "constellation,night sky,twinkle,starry", "Stars are hope and guidance — wishes and destiny. Bright stars affirm you are on the right path.", "nature"],
+    ["rainbow", "prism,colors,arc", "Rainbows are hope after difficulty — the promise that follows the storm. They affirm that beauty comes after hardship.", "nature"],
+    ["snow", "snowfall,blizzard,white,snowflake", "Snow is purity and stillness — or emotional coldness. Fresh snow suggests a clean slate; a blizzard, being frozen out.", "nature"],
+    ["ice", "frozen,icicle,glacier,frost", "Ice is frozen emotion. It suggests feelings you have numbed — or a situation that has gone cold.", "nature"],
+    ["wind", "breeze,gust,storm,gale", "Wind is change and restlessness. A gentle breeze brings fresh ideas; a howling wind, forces beyond your control.", "nature"],
+    ["earthquake", "tremor,quake,shaking,seismic", "Earthquakes are upheaval — foundations shaking. They reflect major life changes that threaten your sense of stability.", "nature"],
+    ["flood", "deluge,inundation,overflow,rising water", "Floods are being overwhelmed by emotion. Rising waters suggest feelings you can no longer contain.", "nature"],
+    ["volcano", "eruption,lava,magma,ash", "Volcanoes are repressed anger erupting. They warn that pressure is building and needs a safe release.", "nature"],
+    ["tornado", "twister,cyclone,funnel", "Tornadoes are chaos tearing through your life. They reflect destructive patterns or emotions spinning out of control.", "nature"],
+    ["fog", "mist,haze,smog,cloudy", "Fog is confusion and an unclear path. It suggests you cannot see what is ahead — and should slow down until you can.", "nature"],
+    ["sunrise", "dawn,daybreak,morning", "Sunrises are new beginnings and hope. They affirm that after darkness, a fresh chapter is starting.", "nature"],
+    ["sunset", "dusk,twilight,evening", "Sunsets are endings and reflection — the graceful close of a chapter. They can bring peace or melancholy.", "nature"],
+    ["eclipse", "solar eclipse,lunar eclipse,shadow", "Eclipses are shadows over clarity — something blocking your light or understanding. They are temporary by nature.", "nature"],
+    ["comet", "meteor,shooting star,fireball", "Comets are rare opportunities streaking across your life. They urge you to act quickly before the moment passes.", "nature"],
+    ["flower", "bloom,blossom,petal,rose,tulip", "Flowers are beauty, growth and unfolding potential. Blooming flowers celebrate personal blossoming; wilting ones, neglected beauty.", "nature"],
+    ["tree", "oak,pine,branches,roots,forest", "Trees are growth, stability and family roots. A strong tree affirms deep foundations; a falling one, threatened security.", "nature"],
+    ["fruit", "apple,harvest,orchard,berries", "Fruit is the reward of labor — results ripening. Ripe fruit suggests success ready to harvest; rotten fruit, missed timing.", "nature"],
+    ["seed", "planting,sprout,germination", "Seeds are pure potential. Planting them means investing in the future; they ask for patience while things grow.", "nature"],
+    ["leaf", "leaves,autumn,foliage,fall", "Leaves mark seasons of change. Falling leaves suggest natural letting-go; new leaves, fresh growth.", "nature"],
+    ["mushroom", "fungi,toadstool,shroom", "Mushrooms are sudden growth — sometimes genuine, sometimes illusion. They appear when something is sprouting fast, for better or worse.", "nature"],
+    ["rock", "stone,boulder,pebble,cliff", "Rocks are stability — or obstacles. A solid rock is dependable support; a rock in your path is a challenge to climb over.", "nature"],
+    ["sand", "dunes,hourglass,beach", "Sand is time slipping through your fingers. It suggests impermanence — and the need to act before the moment runs out.", "nature"],
+    ["shell", "seashell,conch,clam", "Shells are protection and hidden beauty — treasures formed through irritation, like pearls. They suggest guarding something precious.", "nature"],
+    ["pearl", "oyster,gem,necklace", "Pearls are wisdom born from suffering — beauty created through patience. They affirm that hardship is producing something precious.", "nature"],
+    ["crystal", "quartz,gemstone,amethyst", "Crystals are clarity and healing energy. They suggest you are seeking transparency — or that clear insight is forming.", "nature"],
+    ["field", "meadow,pasture,farmland,plain", "Fields are open opportunity and honest work. An open field suggests freedom; a harvested one, completion.", "nature"],
+    ["meadow", "grassland,prairie,grass", "Meadows are peace and natural abundance. They invite you to rest in simple, uncomplicated contentment.", "nature"],
+    ["pond", "pool,still water,small lake", "Ponds are quiet, contained emotion — a small mirror for reflection. They suggest looking inward in stillness.", "nature"],
+    ["flying", "soar,levitate,glide,wings,airborne", "Flying is freedom and ambition — rising above limitations. Effortless flight means confidence; struggling to stay up, fear of falling short.", "actions"],
+    ["falling", "dropping,plummeting,plunge,drop", "Falling is insecurity and loss of control. It reflects anxiety about failing — in work, love or life direction.", "actions"],
+    ["running", "sprinting,jogging,race,chase", "Running means pursuit or escape. Running toward something shows desire; running away, avoidance of a problem.", "actions"],
+    ["being chased", "pursued,hunted,followed,running away", "Being chased means avoiding something — a fear, a deadline, a truth. The pursuer often represents what you refuse to face.", "actions"],
+    ["teeth falling out", "tooth,teeth,dental,crumbling teeth", "The classic anxiety dream: teeth falling out reflects fears about appearance, aging, or saying the wrong thing. It often appears during powerless moments.", "actions"],
+    ["hair falling out", "bald,hair loss,thinning,balding", "Losing hair symbolizes loss of power, vitality or identity. It reflects stress about aging or feeling diminished.", "actions"],
+    ["drowning", "underwater,sinking,suffocating,submerged", "Drowning means overwhelmed — by emotions, responsibilities or circumstances. The dream is a distress signal asking for help.", "actions"],
+    ["swimming", "floating,stroke,pool,water", "Swimming is navigating emotions. Smooth strokes mean coping well; struggling against waves, fighting your feelings.", "actions"],
+    ["climbing", "scaling,ascending,mountaineering", "Climbing is striving toward a goal. Steady climbing reflects determination; slipping, fear of not measuring up.", "actions"],
+    ["dancing", "waltz,ballet,party,tango", "Dancing is joy, freedom and celebration. It suggests you are in rhythm with life — or need to loosen up and enjoy it.", "actions"],
+    ["singing", "song,choir,melody,voice", "Singing is self-expression and joy. A strong voice means confidence; being unable to sing, feeling unheard.", "actions"],
+    ["crying", "tears,sobbing,weeping", "Crying in dreams is healthy emotional release. It suggests grief or stress your waking self will not allow out.", "actions"],
+    ["laughing", "giggling,humor,joy,chuckle", "Laughing reflects joy — or nervousness masking discomfort. Context tells you whether it is genuine happiness or a defense.", "actions"],
+    ["kissing", "kiss,embrace,lips,smooch", "Kissing is affection, union and approval. It can seal a bond — or reveal desire for connection you are missing.", "actions"],
+    ["fighting", "brawl,combat,punching,war", "Fighting is inner conflict made visible. The opponent often represents a part of yourself you are at war with.", "actions"],
+    ["hiding", "concealing,shelter,cover,cowering", "Hiding means avoidance — of confrontation, truth or responsibility. The dream asks what you are afraid to face.", "actions"],
+    ["searching", "looking,seeking,quest,hunting", "Searching means seeking answers or something lost — purpose, love, a missing part of yourself.", "actions"],
+    ["losing something", "lost,misplaced,missing,gone", "Losing something reflects fear of loss — of love, opportunity or identity. What is lost points to what you value most.", "actions"],
+    ["finding money", "discovering cash,treasure,riches", "Finding money is a confidence boost — discovering your own value. It often precedes a period of self-assurance.", "actions"],
+    ["driving", "car,steering,wheel,road", "Driving is control of your life direction. Driving smoothly means you are in charge; losing control, anxiety about where you are headed.", "actions"],
+    ["car crash", "accident,collision,wreck,smash", "Car crashes are loss of control or fear of it. They warn that your current direction may lead to a painful collision.", "actions"],
+    ["missing a bus", "missed train,late,departure", "Missing transport is the classic missed-opportunity dream. It reflects anxiety about timing and chances slipping away.", "actions"],
+    ["being late", "tardy,delayed,behind,overdue", "Being late reflects performance anxiety — fear of missing expectations, yours or others'.", "actions"],
+    ["exam", "test,quiz,assessment,finals", "Exams are self-evaluation anxiety. Being unprepared for one means you feel tested and found wanting in waking life.", "actions"],
+    ["paralyzed", "frozen,unable to move,stuck,sleep paralysis", "Paralysis in dreams is feeling powerless — often linked to sleep paralysis itself, or to waking situations where you feel stuck.", "actions"],
+    ["blindness", "blind,unable to see,dark,sightless", "Blindness means refusing to see a truth — or feeling unable to see your way forward. The dream urges honest looking.", "actions"],
+    ["deafness", "deaf,unable to hear,soundless", "Deafness suggests not listening — to others or to your own inner voice. Something important is being said that you are ignoring.", "actions"],
+    ["muteness", "mute,silent,unable to speak,speechless", "Being unable to speak means feeling unheard or powerless to express yourself. The dream asks what needs saying.", "actions"],
+    ["wounded", "injured,hurt,bleeding,scar", "Wounds are emotional pain that needs attention. Their location can hint at the source — heart, pride, trust.", "actions"],
+    ["surgery", "operation,scalpel,hospital,anesthesia", "Surgery means needing to cut out something harmful — a habit, relationship or belief — to heal.", "actions"]
+  );
+  SYMBOLS.push(
+    ["giving birth", "childbirth,labor,delivery,pregnant", "Giving birth is bringing something new into the world — a project, idea or new self. Labor pains reflect the effort of creation.", "actions"],
+    ["dying", "death,passing away,dead", "Dream death is rarely literal — it means transformation, the end of a phase. Something in you is dying so something new can live.", "actions"],
+    ["funeral", "burial,service,mourning,coffin", "Funerals are letting go — laying a chapter, habit or relationship to rest with ceremony.", "actions"],
+    ["wedding", "marriage,ceremony,bride,groom", "Weddings are unions — of people, or of opposing parts of yourself. They celebrate commitment and integration.", "actions"],
+    ["divorce", "separation,split,breakup", "Divorce dreams mean separation — from a part of yourself, a belief, or a situation you have outgrown.", "actions"],
+    ["cheating", "affair,infidelity,betrayal,unfaithful", "Cheating dreams usually reflect guilt or fear of betrayal — not actual infidelity. They ask where trust feels shaky.", "actions"],
+    ["arguing", "quarrel,dispute,shouting,fight", "Arguing surfaces internal conflict. The person you argue with often represents the side of you that you are fighting.", "actions"],
+    ["airplane", "plane,jet,flight,aircraft", "Airplanes are ambition and rapid ascent. Taking off means a project launching; turbulence, anxiety about the journey.", "actions"],
+    ["plane crash", "crash,disaster,airplane accident", "Plane crashes are fear of failure on a grand scale — high ambitions colliding with doubt.", "actions"],
+    ["boat", "ship,sail,canoe,row,yacht", "Boats are emotional journeys. A steady boat means navigating feelings well; a leaking one, taking on emotional water.", "actions"],
+    ["shipwreck", "sinking,sunken,wreck", "Shipwrecks are plans failing dramatically. They reflect fear that your emotional voyage will not survive the storm.", "actions"],
+    ["walking", "strolling,wandering,hiking,stroll", "Walking is steady progress through life. A pleasant walk suggests contentment; an endless one, feeling you are getting nowhere.", "actions"],
+    ["jumping", "leaping,hopping,bounce,leap", "Jumping is taking a leap — of faith, into the unknown. High jumps suggest ambition; hesitant ones, fear of commitment.", "actions"],
+    ["sleeping", "nap,drowsy,asleep,dozing", "Dreaming that you are asleep suggests you are sleepwalking through some area of life — unaware or avoiding awareness.", "actions"],
+    ["waking up", "awakening,alarm,arise", "Waking up in a dream is a false awakening — or a genuine call to become conscious of something you have been ignoring.", "actions"],
+    ["demon", "devil,evil spirit,possession,hellspawn", "Demons are your shadow self — repressed guilt, anger or desire. Facing one means confronting what you have denied.", "supernatural"],
+    ["dragon", "wyvern,fire-breathing,wyrm", "Dragons guard treasure and embody primal power. Slaying one means conquering a great fear; befriending one, mastering your power.", "supernatural"],
+    ["unicorn", "horn,mythical,pure,magical horse", "Unicorns are pure ideals and rare magic. They appear when you are chasing something beautiful but possibly unattainable.", "supernatural"],
+    ["mermaid", "siren,ocean,half fish,sea", "Mermaids blend emotion with allure — the seductive, mysterious side of feeling. They can warn of being lured by fantasy.", "supernatural"],
+    ["fairy", "pixie,sprite,wings,fae", "Fairies are whimsy and small magic — the belief that little wonders are possible. They invite playfulness back into your life.", "supernatural"],
+    ["giant", "ogre,titan,colossus,huge", "Giants are overwhelming problems or powers looming over you. They shrink when you face them directly.", "supernatural"],
+    ["wizard", "mage,sorcerer,magician,enchanter", "Wizards are mastery and hidden knowledge. They suggest you have more power and wisdom available than you are using.", "supernatural"],
+    ["spell", "enchantment,incantation,curse,magic", "Spells are the power of words and intention. Casting one means you believe your thoughts shape reality; being cursed, feeling victimized.", "supernatural"],
+    ["portal", "gateway,doorway,vortex,stargate", "Portals are thresholds to new realities — major transitions. Stepping through means you are ready for a different life.", "supernatural"],
+    ["maze", "labyrinth,puzzle,lost,confusing", "Mazes are confusion and complex problems. They reflect feeling lost in a situation with no clear exit — yet.", "supernatural"],
+    ["time travel", "past,future,era,time machine", "Time travel explores regret or anticipation. Visiting the past suggests unfinished business; the future, hopes or fears.", "supernatural"],
+    ["invisibility", "invisible,unseen,cloak,hidden", "Being invisible means feeling unseen — or wanting to observe without being noticed. It reflects social invisibility or a desire to escape scrutiny.", "supernatural"],
+    ["superpowers", "powers,abilities,hero,telekinesis", "Superpowers are untapped potential. Flying, strength or telekinesis in dreams affirms capabilities you underestimate.", "supernatural"],
+    ["apocalypse", "end of world,doomsday,catastrophe", "Apocalypses are massive endings — not literal, but the collapse of a worldview, relationship or era of your life.", "supernatural"],
+    ["heaven", "paradise,afterlife,clouds,eternity", "Heaven is peace, reward and spiritual longing. It appears as comfort during grief or as aspiration toward a better state.", "supernatural"],
+    ["hell", "underworld,inferno,damnation,abyss", "Hell is guilt and suffering — self-punishment for perceived wrongs. It reflects torment you are inflicting on yourself.", "supernatural"],
+    ["reincarnation", "past life,rebirth,karma", "Reincarnation dreams explore identity across time. They suggest patterns repeating — lessons your soul keeps revisiting.", "supernatural"],
+    ["soul", "spirit,essence,inner self", "The soul in dreams is your essential self. Losing it suggests feeling hollow; finding it, reconnection with purpose.", "supernatural"],
+    ["aura", "energy,glow,halo,vibration", "Auras are the energy you project. Bright auras suggest vitality; dark ones, depletion or negativity you are carrying.", "supernatural"],
+    ["prophecy", "prediction,vision,foretelling,oracle", "Prophecies are your intuition speaking loudly. They rarely predict literally — they reveal what you already sense coming.", "supernatural"],
+    ["ritual", "ceremony,rite,offering,custom", "Rituals are the need for meaning and structure. They suggest creating ceremony around transitions to honor them properly.", "supernatural"],
+    ["altar", "shrine,sacrifice,offering", "Altars are devotion and sacrifice — what you worship and what you give up for it. They ask what deserves your reverence.", "supernatural"],
+    ["amulet", "charm,talisman,pendant,lucky", "Amulets are protection and belief. They represent the psychological armor you carry — faith, habits or people that keep you safe.", "supernatural"],
+    ["crystal ball", "fortune,scrying,orb,future", "Crystal balls are the desire to see the future. They reflect anxiety about what is coming — and the wish for certainty.", "supernatural"],
+    ["tarot", "cards,reading,divination,deck", "Tarot is seeking guidance from symbols. The dream suggests you are looking for meaning and direction beyond logic.", "supernatural"],
+    ["spaceship", "rocket,shuttle,space,launch", "Spaceships are journeys into the unknown — exploration of inner or outer frontiers. They suggest bold new ventures.", "supernatural"],
+    ["UFO", "flying saucer,alien craft,unidentified", "UFOs are encounters with the truly unknown. They reflect openness to extraordinary possibilities — or fear of them.", "supernatural"],
+    ["robot", "android,machine,AI,automaton", "Robots are automation and emotional detachment. They can mean you are functioning mechanically — or fear being replaced.", "supernatural"],
+    ["cyborg", "half machine,augment,enhanced", "Cyborgs blend human with machine — the merging of feeling with function. They ask whether technology is enhancing or eroding your humanity.", "supernatural"],
+    ["laser", "beam,light,cutting,ray", "Lasers are focused energy and precision. They suggest cutting through confusion with clarity — or feeling targeted.", "supernatural"],
+    ["hologram", "projection,illusion,3D,phantom", "Holograms are illusions that look real. They warn that something in your life may be projection rather than substance.", "supernatural"],
+    ["virtual reality", "VR,simulation,game,metaverse", "Virtual reality dreams question what is real. They suggest you may be living in illusion — or craving escape from reality.", "supernatural"],
+    ["video game", "gaming,console,level,arcade", "Video games frame life as levels and challenges. They suggest you are strategizing — or treating something serious like a game.", "supernatural"],
+    ["television", "TV,screen,broadcast,show", "Televisions are passive observation — watching life rather than living it. They suggest stepping out of spectator mode.", "supernatural"],
+    ["radio", "broadcast,signal,station,music", "Radios are messages and tuning in. Static suggests confusion; a clear signal, guidance coming through.", "supernatural"],
+    ["newspaper", "news,headlines,press,article", "Newspapers are information and public knowledge. Headlines in dreams often carry the message your unconscious wants you to read.", "supernatural"],
+    ["typewriter", "keys,typing,writer,machine", "Typewriters are the urge to write your story. They suggest authorship — taking control of your narrative.", "supernatural"],
+    ["piano", "keys,music,keyboard,grand", "Pianos are emotional expression through discipline. Playing beautifully suggests harmony; discordant keys, inner dissonance.", "supernatural"],
+    ["guitar", "strings,strumming,music,acoustic", "Guitars are personal expression and passion. They suggest playing your own tune rather than following someone else's.", "supernatural"],
+    ["violin", "strings,orchestra,music,fiddle", "Violins are refined emotion — joy and sorrow in high register. They reflect sensitivity and the beauty of vulnerability.", "supernatural"],
+    ["orchestra", "symphony,ensemble,music,band", "Orchestras are many parts working in harmony. They suggest your life's elements coming together — or needing a conductor.", "supernatural"],
+    ["stage", "theater,performance,spotlight,platform", "Stages are performance and visibility. Being on stage reflects feeling watched or judged; watching, being a spectator in your own life.", "supernatural"],
+    ["theater", "cinema,play,auditorium,movie", "Theaters frame life as drama. They suggest you are observing your own story — possibly avoiding participating in it.", "supernatural"],
+    ["circus", "carnival,tent,acrobat,big top", "Circuses are chaos and spectacle — life feeling like a three-ring show. They suggest juggling too much at once.", "supernatural"],
+    ["carnival", "fair,ferris wheel,celebration", "Carnivals are celebration and indulgence. They invite joy — but can warn of distraction from what matters.", "supernatural"],
+    ["parade", "march,procession,float", "Parades are public celebration and pride. Marching in one suggests wanting recognition; watching, feeling left out of the celebration.", "supernatural"],
+    ["festival", "feast,celebration,gathering,fiesta", "Festivals are communal joy and abundance. They suggest connection, gratitude and shared happiness.", "supernatural"],
+    ["picnic", "outdoors,blanket,basket,park", "Picnics are simple pleasures and relaxation. They invite you to slow down and savor uncomplicated happiness.", "supernatural"],
+    ["barbecue", "grill,cookout,fire,bbq", "Barbecues are warmth, gathering and casual bonding. They suggest nourishing relationships in a relaxed setting.", "supernatural"],
+    ["banquet", "feast,dinner,table,celebration", "Banquets are abundance and celebration shared. A lavish banquet suggests prosperity; an empty one, unfulfilled expectations.", "supernatural"],
+    ["hourglass", "sand timer,time,running out", "An hourglass is time visibly running out. It reflects pressure about deadlines — or the preciousness of the present moment.", "objects"],
+    ["anchor", "ship,harbor,stability,mooring", "Anchors are stability and security. They suggest you are grounded — or that something is holding you back from sailing on.", "objects"],
+    ["lighthouse", "beacon,light,tower,guidance", "Lighthouses are guidance through dark waters. They suggest a mentor, principle or hope leading you safely home.", "objects"],
+    ["lifeboat", "rescue,life raft,saving", "Lifeboats are rescue and survival. They appear when you feel your emotional ship sinking and need saving — or are saving someone else.", "objects"],
+    ["diary", "journal,notebook,writing,secrets", "A diary in dreams is your inner record — truths you only tell yourself. It suggests writing things down to understand them.", "objects"],
+    ["pen", "pencil,writing,signature,ink", "Pens are expression and commitment — the power to write your story. Signing suggests binding decisions; a broken pen, blocked expression.", "objects"]
+  );
+
+  /* ---- text helpers ---- */
+  var STOPWORDS = {
+    a: 1, an: 1, the: 1, and: 1, or: 1, but: 1, of: 1, in: 1, on: 1, at: 1,
+    to: 1, for: 1, with: 1, by: 1, from: 1, as: 1, is: 1, are: 1, was: 1,
+    were: 1, be: 1, been: 1, being: 1, it: 1, its: 1, this: 1, that: 1,
+    these: 1, those: 1, i: 1, me: 1, my: 1, we: 1, our: 1, you: 1, your: 1,
+    he: 1, she: 1, him: 1, her: 1, they: 1, them: 1, their: 1, had: 1,
+    have: 1, has: 1, do: 1, does: 1, did: 1, not: 1, no: 1, so: 1, if: 1,
+    then: 1, than: 1, too: 1, very: 1, can: 1, will: 1, would: 1, just: 1,
+    about: 1, into: 1, over: 1, after: 1, before: 1, between: 1, through: 1,
+    there: 1, here: 1, when: 1, where: 1, what: 1, which: 1, who: 1, how: 1,
+    all: 1, also: 1, some: 1, any: 1, one: 1, two: 1, more: 1, most: 1,
+    other: 1, such: 1, only: 1, own: 1, same: 1, again: 1, once: 1, am: 1,
+    dream: 1, dreamed: 1, dreaming: 1, dreams: 1, saw: 1, see: 1, like: 1
+  };
+
+  function normalizeStr(s) {
+    return String(s == null ? '' : s).toLowerCase()
+      .replace(/[^a-z0-9\s'-]/g, ' ')
+      .replace(/\s+/g, ' ').trim();
+  }
+
+  // Light stemming: strip common English suffixes so "snakes" matches "snake".
+  function stem(w) {
+    var word = w;
+    if (word.length > 5 && word.slice(-3) === 'ies') return word.slice(0, -3) + 'y';
+    if (word.length > 4 && word.slice(-3) === 'ing') { word = word.slice(0, -3); }
+    else if (word.length > 4 && word.slice(-2) === 'ed' && word.slice(-3, -2) !== 'e') { word = word.slice(0, -2); }
+    if (word.length > 4 && word.slice(-2) === 'es') {
+      var c = word.slice(-3, -2);
+      // plural -es only after s/x/z/ch/sh (foxes, watches); otherwise strip just -s (snakes -> snake)
+      if (c === 's' || c === 'x' || c === 'z' || word.slice(-4, -2) === 'ch' || word.slice(-4, -2) === 'sh') return word.slice(0, -2);
+      return word.slice(0, -1);
+    }
+    if (word.length > 3 && word.slice(-1) === 's') return word.slice(0, -1);
+    return word;
+  }
+
+  function tokenize(text) {
+    var norm = normalizeStr(text);
+    if (!norm) return [];
+    var out = [];
+    var parts = norm.split(' ');
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i].replace(/^-+|-+$/g, '');
+      if (p.length < 3 || STOPWORDS[p]) continue;
+      var s = stem(p);
+      if (s.length >= 3 && !STOPWORDS[s]) out.push(s);
+    }
+    return out;
+  }
+
+  function entryObject(idx) {
+    var e = SYMBOLS[idx];
+    return { index: idx, name: e[0], keywords: e[1], meaning: e[2], theme: e[3] };
+  }
+
+  function kwList(idx) {
+    return SYMBOLS[idx][1].split(',').map(function (k) { return k.trim(); });
+  }
+
+  /* ---- dictionary search ----
+   * Scores: exact name 100, name starts-with 80, name contains 60,
+   * keyword exact 50, keyword starts-with 30, keyword contains 20.
+   * Multi-word queries: all query tokens must hit name or keywords.
+   */
+  function searchSymbols(query, limit) {
+    limit = limit == null ? 12 : Math.max(1, Math.min(60, limit | 0));
+    var q = normalizeStr(query);
+    if (!q) return [];
+    var qtokens = q.split(' ').map(stem).filter(function (t) { return t.length >= 2; });
+    var results = [];
+    for (var i = 0; i < SYMBOLS.length; i++) {
+      var e = SYMBOLS[i];
+      var name = e[0].toLowerCase();
+      var kws = kwList(i);
+      var score = 0;
+      if (name === q) score = 100;
+      else if (name.indexOf(q) === 0) score = 80;
+      else if (name.indexOf(q) !== -1) score = 60;
+      else {
+        for (var k = 0; k < kws.length; k++) {
+          var kw = kws[k].toLowerCase();
+          if (kw === q) { score = 50; break; }
+          if (kw.indexOf(q) === 0) { score = Math.max(score, 30); }
+          else if (kw.indexOf(q) !== -1) { score = Math.max(score, 20); }
+        }
+      }
+      if (score === 0 && qtokens.length > 1) {
+        // multi-word: every token must appear in name or any keyword
+        var hay = name + ' ' + kws.join(' ').toLowerCase();
+        var allHit = true;
+        for (var t = 0; t < qtokens.length; t++) {
+          if (hay.indexOf(qtokens[t]) === -1) { allHit = false; break; }
+        }
+        if (allHit) score = 40;
+      }
+      if (score > 0) {
+        var r = entryObject(i);
+        r.score = score;
+        results.push(r);
+      }
+    }
+    results.sort(function (a, b) { return b.score - a.score || (a.name < b.name ? -1 : 1); });
+    return results.slice(0, limit);
+  }
+
+  function getSymbol(name) {
+    var q = normalizeStr(name);
+    if (!q) return null;
+    for (var i = 0; i < SYMBOLS.length; i++) {
+      if (SYMBOLS[i][0].toLowerCase() === q) return entryObject(i);
+    }
+    return null;
+  }
+
+  function symbolCount() { return SYMBOLS.length; }
+
+  function symbolsByTheme(theme) {
+    var out = [];
+    for (var i = 0; i < SYMBOLS.length; i++) {
+      if (SYMBOLS[i][3] === theme) out.push(entryObject(i));
+    }
+    return out;
+  }
+
+  /* ---- paste-a-description keyword matcher ----
+   * Tokenizes the description, then scores every symbol by how many of its
+   * name/keyword tokens appear. Name-token hits weigh 5x, keyword-token hits
+   * 3x, prefix/substring hits (len>=4) 1x. Returns top `limit` with matched keywords.
+   */
+  function matchKeywords(text, limit) {
+    limit = limit == null ? 8 : Math.max(1, Math.min(30, limit | 0));
+    var tokens = tokenize(text);
+    if (!tokens.length) return [];
+    var tset = {};
+    for (var i = 0; i < tokens.length; i++) tset[tokens[i]] = 1;
+
+    var results = [];
+    for (var s = 0; s < SYMBOLS.length; s++) {
+      var e = SYMBOLS[s];
+      var symTokens = tokenize(e[0] + ' ' + e[1].replace(/,/g, ' '));
+      var nameTokens = {};
+      var nt = tokenize(e[0]);
+      for (var q = 0; q < nt.length; q++) nameTokens[nt[q]] = 1;
+      var score = 0;
+      var hits = {};
+      for (var j = 0; j < symTokens.length; j++) {
+        var st = symTokens[j];
+        // exact hits on the symbol's own name weigh 5x; keyword hits 3x;
+        // prefix/substring hits (len>=4) weigh 1x.
+        if (tset[st]) { score += nameTokens[st] ? 5 : 3; hits[st] = 1; continue; }
+        if (st.length >= 4) {
+          for (var k = 0; k < tokens.length; k++) {
+            var tt = tokens[k];
+            if (tt.length >= 4 && (tt.indexOf(st) === 0 || st.indexOf(tt) === 0)) {
+              score += 1; hits[st] = 1; break;
+            }
+          }
+        }
+      }
+      if (score > 0) {
+        var r = entryObject(s);
+        r.score = score;
+        r.hits = Object.keys(hits);
+        results.push(r);
+      }
+    }
+    results.sort(function (a, b) { return b.score - a.score || (a.name < b.name ? -1 : 1); });
+    return results.slice(0, limit);
+  }
+
+  /* ---- journal analytics (pure; persistence lives in the page script) ----
+   * entries: [{ date: "YYYY-MM-DD", symbols: [names], mood: string,
+   *             sleep: number|null, lucid: bool, signs: [strings] }]
+   */
+  function isIsoDate(s) {
+    return typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s);
+  }
+
+  function themeFrequency(entries) {
+    var symCount = {}, themeCount = {}, total = 0;
+    var list = entries || [];
+    for (var i = 0; i < list.length; i++) {
+      var syms = list[i] && list[i].symbols ? list[i].symbols : [];
+      for (var j = 0; j < syms.length; j++) {
+        var rec = getSymbol(syms[j]);
+        var key = rec ? rec.name : normalizeStr(syms[j]);
+        if (!key) continue;
+        symCount[key] = (symCount[key] || 0) + 1;
+        var th = rec ? rec.theme : 'other';
+        themeCount[th] = (themeCount[th] || 0) + 1;
+        total++;
+      }
+    }
+    return { symbols: symCount, themes: themeCount, total: total, entries: list.length };
+  }
+
+  function topSymbols(entries, n) {
+    n = n == null ? 10 : Math.max(1, n | 0);
+    var f = themeFrequency(entries);
+    var arr = Object.keys(f.symbols).map(function (k) {
+      return { name: k, count: f.symbols[k] };
+    });
+    arr.sort(function (a, b) { return b.count - a.count || (a.name < b.name ? -1 : 1); });
+    return arr.slice(0, n);
+  }
+
+  function isoWeekStart(iso) { // Monday of the week, YYYY-MM-DD
+    if (!isIsoDate(iso)) return null;
+    var d = new Date(iso + 'T00:00:00Z');
+    if (isNaN(d.getTime())) return null;
+    var dow = (d.getUTCDay() + 6) % 7; // 0 = Monday
+    return new Date(d.getTime() - dow * 86400000).toISOString().slice(0, 10);
+  }
+
+  function weeklyTrend(entries) {
+    var weeks = {};
+    var list = entries || [];
+    for (var i = 0; i < list.length; i++) {
+      var e = list[i];
+      if (!e || !isIsoDate(e.date)) continue;
+      var wk = isoWeekStart(e.date);
+      if (!wk) continue;
+      if (!weeks[wk]) weeks[wk] = { week: wk, themes: {}, total: 0 };
+      var syms = e.symbols || [];
+      for (var j = 0; j < syms.length; j++) {
+        var rec = getSymbol(syms[j]);
+        var th = rec ? rec.theme : 'other';
+        weeks[wk].themes[th] = (weeks[wk].themes[th] || 0) + 1;
+        weeks[wk].total++;
+      }
+    }
+    var arr = Object.keys(weeks).map(function (k) { return weeks[k]; });
+    arr.sort(function (a, b) { return a.week < b.week ? -1 : 1; });
+    return arr;
+  }
+
+  function signFrequency(entries) {
+    var counts = {};
+    var list = entries || [];
+    for (var i = 0; i < list.length; i++) {
+      var signs = list[i] && list[i].signs ? list[i].signs : [];
+      for (var j = 0; j < signs.length; j++) {
+        var s = normalizeStr(signs[j]);
+        if (s) counts[s] = (counts[s] || 0) + 1;
+      }
+    }
+    var arr = Object.keys(counts).map(function (k) { return { sign: k, count: counts[k] }; });
+    arr.sort(function (a, b) { return b.count - a.count || (a.sign < b.sign ? -1 : 1); });
+    return arr;
+  }
+
+  function moodBySymbol(entries) {
+    // average mood score (1..5) per symbol, to spot emotional patterns
+    var sums = {}, counts = {};
+    var list = entries || [];
+    for (var i = 0; i < list.length; i++) {
+      var e = list[i];
+      var mood = Number(e && e.mood);
+      if (!isFinite(mood) || mood < 1 || mood > 5) continue;
+      var syms = e.symbols || [];
+      for (var j = 0; j < syms.length; j++) {
+        var rec = getSymbol(syms[j]);
+        var key = rec ? rec.name : normalizeStr(syms[j]);
+        if (!key) continue;
+        sums[key] = (sums[key] || 0) + mood;
+        counts[key] = (counts[key] || 0) + 1;
+      }
+    }
+    var out = Object.keys(sums).map(function (k) {
+      return { name: k, avgMood: Math.round(sums[k] / counts[k] * 10) / 10, count: counts[k] };
+    });
+    out.sort(function (a, b) { return b.count - a.count || (a.name < b.name ? -1 : 1); });
+    return out;
+  }
+
+  /* ---- journal entry validation ---- */
+  function validateEntry(e) {
+    var errs = [];
+    e = e || {};
+    if (!e.title || !normalizeStr(e.title)) errs.push('title-required');
+    if (e.date && !isIsoDate(e.date)) errs.push('bad-date');
+    if (e.symbols && !Array.isArray(e.symbols)) errs.push('bad-symbols');
+    if (e.mood != null && e.mood !== '' && !(Number(e.mood) >= 1 && Number(e.mood) <= 5)) errs.push('bad-mood');
+    if (e.sleep != null && e.sleep !== '' && !(Number(e.sleep) >= 0 && Number(e.sleep) <= 24)) errs.push('bad-sleep');
+    return { ok: errs.length === 0, errors: errs };
+  }
+
+  /* ---- lucid dreaming starter kit (static content data) ---- */
+  var LUCID_STEPS = [
+    { title: 'Keep a dream journal', text: 'Write every dream down within minutes of waking, every morning. Recall is the foundation — most people forget 90% of dreams within 10 minutes. This very journal is your training ground.' },
+    { title: 'Do daytime reality checks', text: 'Five to ten times a day, genuinely ask: "Am I dreaming?" Try to push a finger through your palm or read text twice. The habit carries into dreams, where the checks fail — and you become lucid.' },
+    { title: 'Learn your dream signs', text: 'After two weeks of journaling, recurring oddities emerge — flying, dead relatives alive, impossible places. Log them in the Dream Sign Tracker; they become your personal lucidity triggers.' },
+    { title: 'Try the MILD technique', text: 'As you fall asleep, repeat: "Next time I am dreaming, I will remember I am dreaming." Visualize your last dream and imagine becoming lucid in it. This is the most beginner-friendly induction method.' },
+    { title: 'Stabilize the lucid dream', text: 'First lucid dreams collapse fast from excitement. When lucid, rub your hands together, spin slowly, or touch dream objects — sensory engagement keeps the dream stable.' },
+    { title: 'Set a gentle intention', text: 'Decide one small goal before sleep — "I will look at my hands" or "I will fly." Simple goals dramatically raise your first-lucidity odds within 2–4 weeks of practice.' }
+  ];
+
+  var REALITY_CHECKS = [
+    { name: 'Palm push', how: 'Try to push your right index finger through your left palm. In dreams it often passes through — instant lucidity trigger.' },
+    { name: 'Text re-read', how: 'Read any text, look away, read it again. In dreams text morphs between readings.' },
+    { name: 'Nose pinch', how: 'Pinch your nose shut and try to breathe through it. In a dream you can still breathe — a classic, discreet check.' },
+    { name: 'Hand watch', how: 'Look at your hands, look away, look back. Dream hands are often distorted, extra-fingered or blurry.' },
+    { name: 'Light switch', how: 'Flip a light switch. In dreams lights rarely respond normally — a dead giveaway.' },
+    { name: 'Memory trace', how: 'Ask: how did I get here? Trace the last hour. Dream logic usually cannot produce a coherent answer.' }
+  ];
+
+  var DREAM_SIGN_HINTS = [
+    'Flying or floating without effort',
+    'Teeth falling out or crumbling',
+    'Being chased but unable to run fast',
+    'Dead people appearing alive',
+    'Childhood home looking different',
+    'Phones, mirrors or clocks behaving strangely',
+    'Sudden scene changes mid-dream',
+    'Superhuman abilities or magic',
+    'Being late or unprepared for an exam',
+    'Water that is impossibly clear or deep'
+  ];
+
+  function allSymbols() {
+    var out = [];
+    for (var i = 0; i < SYMBOLS.length; i++) out.push(entryObject(i));
+    return out;
+  }
+
+  function randomSymbol() {
+    var idx = Math.floor(Math.random() * SYMBOLS.length);
+    return entryObject(idx);
+  }
+
+  return {
+    symbolCount: symbolCount,
+    allSymbols: allSymbols,
+    searchSymbols: searchSymbols,
+    getSymbol: getSymbol,
+    symbolsByTheme: symbolsByTheme,
+    matchKeywords: matchKeywords,
+    tokenize: tokenize,
+    stem: stem,
+    themeFrequency: themeFrequency,
+    topSymbols: topSymbols,
+    weeklyTrend: weeklyTrend,
+    signFrequency: signFrequency,
+    moodBySymbol: moodBySymbol,
+    validateEntry: validateEntry,
+    isIsoDate: isIsoDate,
+    isoWeekStart: isoWeekStart,
+    randomSymbol: randomSymbol,
+    LUCID_STEPS: LUCID_STEPS,
+    REALITY_CHECKS: REALITY_CHECKS,
+    DREAM_SIGN_HINTS: DREAM_SIGN_HINTS
+  };
+})();
+
+</script>
+<script>
+(function () {
+  'use strict';
+  var L = DreamlyLogic;
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function todayISO() {
+    var d = new Date();
+    var m = (d.getMonth() + 1 < 10 ? '0' : '') + (d.getMonth() + 1);
+    var day = (d.getDate() < 10 ? '0' : '') + d.getDate();
+    return d.getFullYear() + '-' + m + '-' + day;
+  }
+
+  /* ---------- tabs ---------- */
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = ['tab-dict', 'tab-decode', 'tab-journal', 'tab-insights', 'tab-lucid'];
+  function showTab(id) {
+    for (var i = 0; i < panels.length; i++) $(panels[i]).classList.toggle('hidden', panels[i] !== id);
+    for (var j = 0; j < tabBtns.length; j++) tabBtns[j].classList.toggle('active', tabBtns[j].getAttribute('data-tab') === id);
+    if (id === 'tab-insights') renderInsights();
+  }
+  for (var tb = 0; tb < tabBtns.length; tb++) {
+    (function (b) { b.addEventListener('click', function () { showTab(b.getAttribute('data-tab')); }); })(tabBtns[tb]);
+  }
+
+  /* ---------- dictionary ---------- */
+  $('dm-count').textContent = L.symbolCount() + '';
+
+  function symbolCard(r, scoreLabel) {
+    var kw = esc(r.keywords.split(',').slice(0, 6).join(', '));
+    return '<div class="dream-card p-5">' +
+      '<div class="flex items-start justify-between gap-3 mb-2">' +
+      '<h3 class="serif text-2xl font-bold capitalize">' + esc(r.name) + '</h3>' +
+      '<span class="theme-chip">' + esc(r.theme) + '</span></div>' +
+      '<p class="text-sm leading-relaxed mb-3" style="color:var(--mut)">' + esc(r.meaning) + '</p>' +
+      '<p class="text-xs" style="color:#7c739f">also: ' + kw + '</p>' +
+      (scoreLabel ? '<p class="text-xs mt-2 font-semibold" style="color:var(--acc)">' + esc(scoreLabel) + '</p>' : '') +
+      '</div>';
+  }
+
+  function renderDict(list, emptyMsg) {
+    var box = $('dm-results');
+    if (!list.length) {
+      box.innerHTML = '<div class="col-span-full text-center py-10" style="color:var(--mut)">' + esc(emptyMsg || 'No symbols found — try another word.') + '</div>';
+      return;
+    }
+    box.innerHTML = list.map(function (r) { return symbolCard(r); }).join('');
+  }
+
+  // initial: show a dreamy sample across themes
+  renderDict(['snake', 'flying', 'ocean', 'teeth falling out', 'moon', 'house'].map(function (n) { return L.getSymbol(n); }).filter(Boolean),
+    'Type to search the dictionary.');
+  var searchTimer = null;
+  $('dm-search').addEventListener('input', function (e) {
+    clearTimeout(searchTimer);
+    var q = e.target.value;
+    searchTimer = setTimeout(function () {
+      if (!q.trim()) {
+        renderDict(['snake', 'flying', 'ocean', 'teeth falling out', 'moon', 'house'].map(function (n) { return L.getSymbol(n); }).filter(Boolean));
+        return;
+      }
+      renderDict(L.searchSymbols(q, 12));
+    }, 180);
+  });
+  $('dm-random').addEventListener('click', function () {
+    renderDict([L.randomSymbol()]);
+    window.scrollTo({ top: $('dm-results').offsetTop - 120, behavior: 'smooth' });
+  });
+
+  // datalist for symbol inputs
+  (function () {
+    var dl = $('j-symlist');
+    var html = L.allSymbols().map(function (s) { return '<option value="' + esc(s.name) + '">'; }).join('');
+    dl.innerHTML = html;
+  })();
+
+  /* ---------- decoder ---------- */
+  function renderDecode(list) {
+    var box = $('dc-results');
+    if (!list.length) {
+      box.innerHTML = '<div class="col-span-full text-center py-8" style="color:var(--mut)">No known symbols detected. Try describing the dream with more concrete nouns — animals, places, objects, actions.</div>';
+      return;
+    }
+    box.innerHTML = list.map(function (r) {
+      return symbolCard(r, 'matched: ' + r.hits.slice(0, 5).join(', '));
+    }).join('');
+  }
+  $('dc-btn').addEventListener('click', function () {
+    var t = $('dc-text').value;
+    if (!t.trim()) { renderDecode([]); return; }
+    renderDecode(L.matchKeywords(t, 8));
+  });
+  $('dc-clear').addEventListener('click', function () { $('dc-text').value = ''; $('dc-results').innerHTML = ''; });
+
+  /* ---------- journal ---------- */
+  var JKEY = 'dreamly-journal-v1';
+  function loadJournal() {
+    try { var v = JSON.parse(localStorage.getItem(JKEY) || '[]'); return Array.isArray(v) ? v : []; }
+    catch (e) { return []; }
+  }
+  function saveJournal(arr) { localStorage.setItem(JKEY, JSON.stringify(arr)); }
+
+  function parseSymbolsInput(raw) {
+    return String(raw || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean)
+      .map(function (s) { var r = L.getSymbol(s); return r ? r.name : s.toLowerCase(); });
+  }
+  function parseSignsInput(raw) {
+    return String(raw || '').split(',').map(function (s) { return s.trim().toLowerCase(); }).filter(Boolean);
+  }
+
+  function moodEmoji(m) { return { 1: '😱', 2: '😟', 3: '😐', 4: '🙂', 5: '🤩' }[m] || '😐'; }
+
+  function renderTimeline() {
+    var box = $('j-timeline');
+    var entries = loadJournal().slice().sort(function (a, b) {
+      if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+      return (b.ts || 0) - (a.ts || 0);
+    });
+    if (!entries.length) {
+      box.innerHTML = '<div class="glass p-8 text-center" style="color:var(--mut)">No dreams yet. Your timeline will grow here, newest first. 🌙</div>';
+      return;
+    }
+    box.innerHTML = entries.map(function (e) {
+      var symChips = (e.symbols || []).map(function (s) {
+        return '<span class="theme-chip">' + esc(s) + '</span>';
+      }).join(' ');
+      var signChips = (e.signs || []).map(function (s) {
+        return '<span class="text-xs px-2 py-1 rounded-full" style="background:rgba(240,171,252,.12);border:1px solid var(--line);color:var(--acc)">📡 ' + esc(s) + '</span>';
+      }).join(' ');
+      return '<div class="relative pl-8 pb-6">' +
+        '<div class="absolute left-0 top-1"><div class="timeline-dot"></div><div class="timeline-line"></div></div>' +
+        '<div class="dream-card p-5">' +
+        '<div class="flex flex-wrap items-center justify-between gap-2 mb-2">' +
+        '<h4 class="serif text-xl font-bold">' + esc(e.title) + (e.lucid ? ' <span title="Lucid dream">🌙</span>' : '') + '</h4>' +
+        '<div class="flex items-center gap-3 text-sm" style="color:var(--mut)"><span>' + esc(e.date || '') + '</span>' +
+        (e.mood ? '<span>' + moodEmoji(e.mood) + '</span>' : '') +
+        (e.sleep ? '<span>😴 ' + esc(String(e.sleep)) + '/5</span>' : '') +
+        '<button class="btn-ghost px-2 py-1 text-xs" data-del="' + e.id + '">delete</button></div></div>' +
+        (e.text ? '<p class="text-sm leading-relaxed mb-3" style="color:#d9d4ef">' + esc(e.text) + '</p>' : '') +
+        '<div class="flex flex-wrap gap-2">' + symChips + ' ' + signChips + '</div>' +
+        '</div></div>';
+    }).join('');
+    var dels = box.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (btn) {
+        btn.addEventListener('click', function () {
+          var id = Number(btn.getAttribute('data-del'));
+          saveJournal(loadJournal().filter(function (x) { return x.id !== id; }));
+          renderTimeline();
+        });
+      })(dels[i]);
+    }
+  }
+
+  $('j-date').value = todayISO();
+  $('j-detect').addEventListener('click', function () {
+    var t = $('j-text').value;
+    if (!t.trim()) { $('j-msg').textContent = 'Write a little description first, then auto-detect.'; return; }
+    var top = L.matchKeywords(t, 5).map(function (r) { return r.name; });
+    $('j-symbols').value = top.join(', ');
+    $('j-msg').textContent = top.length ? 'Detected: ' + top.join(', ') : 'No symbols detected — try more concrete nouns.';
+  });
+  $('j-save').addEventListener('click', function () {
+    var entry = {
+      id: Date.now(),
+      title: $('j-title').value.trim(),
+      date: $('j-date').value || todayISO(),
+      text: $('j-text').value.trim(),
+      symbols: parseSymbolsInput($('j-symbols').value),
+      mood: $('j-mood').value ? Number($('j-mood').value) : null,
+      sleep: $('j-sleep').value ? Number($('j-sleep').value) : null,
+      lucid: $('j-lucid').checked,
+      signs: parseSignsInput($('j-signs').value),
+      ts: Date.now()
+    };
+    var v = L.validateEntry(entry);
+    if (!v.ok) { $('j-msg').textContent = 'Please fix: ' + v.errors.join(', '); return; }
+    var arr = loadJournal(); arr.push(entry); saveJournal(arr);
+    $('j-title').value = ''; $('j-text').value = ''; $('j-symbols').value = '';
+    $('j-signs').value = ''; $('j-mood').value = ''; $('j-sleep').value = ''; $('j-lucid').checked = false;
+    $('j-msg').textContent = '☾ Dream saved to your private journal.';
+    renderTimeline();
+  });
+  $('j-export').addEventListener('click', function () {
+    var blob = new Blob([JSON.stringify(loadJournal(), null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'dreamly-journal.json';
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { document.body.removeChild(a); }, 500);
+  });
+  $('j-import').addEventListener('change', function (e) {
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      try {
+        var data = JSON.parse(rd.result);
+        if (!Array.isArray(data)) throw new Error('bad');
+        var cur = loadJournal();
+        var ids = {}; cur.forEach(function (x) { ids[x.id] = 1; });
+        data.forEach(function (x) { if (x && x.title && !ids[x.id]) { if (!x.id) x.id = Date.now() + Math.random(); cur.push(x); } });
+        saveJournal(cur); renderTimeline();
+        $('j-msg').textContent = 'Imported ' + data.length + ' dreams.';
+      } catch (err) { $('j-msg').textContent = 'Import failed: not a valid Dreamly export.'; }
+    };
+    rd.readAsText(f);
+    e.target.value = '';
+  });
+  $('j-clear').addEventListener('click', function () {
+    if (confirm('Delete ALL saved dreams? This cannot be undone.')) {
+      saveJournal([]); renderTimeline();
+      $('j-msg').textContent = 'Journal cleared.';
+    }
+  });
+  renderTimeline();
+
+  /* ---------- insights ---------- */
+  var THEME_COLORS = { animals: '#a78bfa', people: '#f0abfc', places: '#67e8f9', objects: '#fcd34d', nature: '#6ee7b7', actions: '#fca5a5', supernatural: '#c4b5fd', other: '#8b8fa8' };
+  var THEME_ORDER = ['animals', 'people', 'places', 'objects', 'nature', 'actions', 'supernatural', 'other'];
+
+  function renderInsights() {
+    var entries = loadJournal();
+    var empty = entries.length === 0;
+    $('an-empty').classList.toggle('hidden', !empty);
+    $('an-body').classList.toggle('hidden', empty);
+    if (empty) return;
+
+    var freq = L.themeFrequency(entries);
+    var lucidCount = entries.filter(function (e) { return e.lucid; }).length;
+    var topTheme = '-';
+    var best = 0;
+    Object.keys(freq.themes).forEach(function (t) { if (freq.themes[t] > best) { best = freq.themes[t]; topTheme = t; } });
+
+    $('an-summary').innerHTML = [
+      [entries.length, 'dreams logged'],
+      [freq.total, 'symbols tagged'],
+      [lucidCount, 'lucid dreams'],
+      [topTheme, 'top theme']
+    ].map(function (s) {
+      return '<div class="dream-card p-4 text-center"><div class="serif text-3xl font-bold capitalize" style="color:var(--acc)">' + esc(String(s[0])) + '</div><div class="text-xs mt-1" style="color:var(--mut)">' + esc(s[1]) + '</div></div>';
+    }).join('');
+
+    // theme bar chart
+    var cv = $('an-chart');
+    var ctx = cv.getContext('2d');
+    var W = cv.parentElement.clientWidth || 600, H = 220;
+    var dpr = window.devicePixelRatio || 1;
+    cv.width = W * dpr; cv.height = H * dpr; cv.style.height = H + 'px';
+    ctx.scale(dpr, dpr); ctx.clearRect(0, 0, W, H);
+    var max = 1;
+    THEME_ORDER.forEach(function (t) { max = Math.max(max, freq.themes[t] || 0); });
+    var barW = Math.min(46, (W - 40) / THEME_ORDER.length - 14);
+    THEME_ORDER.forEach(function (t, i) {
+      var v = freq.themes[t] || 0;
+      var h = Math.max(4, (v / max) * (H - 70));
+      var x = 20 + i * ((W - 40) / THEME_ORDER.length) + (((W - 40) / THEME_ORDER.length) - barW) / 2;
+      var y = H - 40 - h;
+      ctx.fillStyle = THEME_COLORS[t] || '#888';
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x, y, barW, h, 6); else ctx.rect(x, y, barW, h);
+      ctx.fill();
+      ctx.fillStyle = '#ece9f7'; ctx.font = 'bold 13px Inter, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(String(v), x + barW / 2, y - 8);
+      ctx.fillStyle = '#a79ec9'; ctx.font = '11px Inter, sans-serif';
+      ctx.fillText(t, x + barW / 2, H - 20);
+    });
+
+    // top symbols
+    var tops = L.topSymbols(entries, 10);
+    var tmax = tops.length ? tops[0].count : 1;
+    $('an-top').innerHTML = tops.map(function (t) {
+      var pct = Math.round(t.count / tmax * 100);
+      var rec = L.getSymbol(t.name);
+      return '<div><div class="flex justify-between text-sm mb-1"><span class="font-semibold capitalize">' + esc(t.name) + '</span><span style="color:var(--mut)">×' + t.count + '</span></div>' +
+        '<div class="h-2 rounded-full" style="background:#241e40"><div class="h-2 rounded-full" style="width:' + pct + '%;background:linear-gradient(90deg,#a78bfa,#f0abfc)"></div></div>' +
+        (rec ? '<p class="text-xs mt-1" style="color:#7c739f">' + esc(rec.meaning.split('.')[0]) + '.</p>' : '') + '</div>';
+    }).join('') || '<p style="color:var(--mut)">Tag symbols on your dreams to see recurrences.</p>';
+
+    // dream signs
+    var signs = L.signFrequency(entries).slice(0, 10);
+    $('an-signs').innerHTML = signs.map(function (s) {
+      return '<div class="flex justify-between text-sm dream-card px-4 py-2.5"><span>📡 ' + esc(s.sign) + '</span><span class="font-bold" style="color:var(--acc)">×' + s.count + '</span></div>';
+    }).join('') || '<p style="color:var(--mut)">No dream signs logged yet.</p>';
+
+    // weekly trend
+    var weeks = L.weeklyTrend(entries).slice(-8);
+    $('an-weeks').innerHTML = weeks.map(function (w) {
+      var chips = THEME_ORDER.filter(function (t) { return w.themes[t]; }).map(function (t) {
+        return '<span class="theme-chip">' + esc(t) + ' ×' + w.themes[t] + '</span>';
+      }).join(' ');
+      return '<div class="dream-card px-4 py-3 flex flex-wrap items-center gap-2"><span class="text-sm font-semibold mono" style="color:var(--mut)">w/c ' + esc(w.week) + '</span>' + chips + '</div>';
+    }).join('') || '<p style="color:var(--mut)">Log dreams across weeks to see trends.</p>';
+
+    // mood by symbol
+    var moods = L.moodBySymbol(entries).slice(0, 8);
+    $('an-mood').innerHTML = moods.map(function (m) {
+      var label = m.avgMood >= 4 ? 'uplifting' : m.avgMood >= 3 ? 'neutral' : 'heavy';
+      var color = m.avgMood >= 4 ? '#6ee7b7' : m.avgMood >= 3 ? '#fcd34d' : '#fca5a5';
+      return '<div class="flex justify-between text-sm dream-card px-4 py-2.5"><span class="capitalize font-semibold">' + esc(m.name) + ' <span style="color:var(--mut)">×' + m.count + '</span></span><span style="color:' + color + '">' + moodEmoji(Math.round(m.avgMood)) + ' ' + label + ' (' + m.avgMood + ')</span></div>';
+    }).join('') || '<p style="color:var(--mut)">Add mood tags to dreams to see emotional patterns.</p>';
+  }
+
+  /* ---------- lucid kit ---------- */
+  $('lc-steps').innerHTML = L.LUCID_STEPS.map(function (s, i) {
+    return '<div class="dream-card p-5"><div class="flex items-center gap-3 mb-2"><span class="serif text-2xl font-bold" style="color:var(--acc)">' + (i + 1) + '</span><h4 class="font-bold">' + esc(s.title) + '</h4></div><p class="text-sm leading-relaxed" style="color:var(--mut)">' + esc(s.text) + '</p></div>';
+  }).join('');
+  $('lc-checks').innerHTML = L.REALITY_CHECKS.map(function (c) {
+    return '<div class="dream-card p-5"><h4 class="font-bold mb-1">🤚 ' + esc(c.name) + '</h4><p class="text-sm" style="color:var(--mut)">' + esc(c.how) + '</p></div>';
+  }).join('');
+  $('lc-hints').innerHTML = L.DREAM_SIGN_HINTS.map(function (h) {
+    return '<div>✦ ' + esc(h) + '</div>';
+  }).join('');
+
+  /* ---------- dream sign tracker ---------- */
+  var SKEY = 'dreamly-signs-v1';
+  function loadSigns() {
+    try { var v = JSON.parse(localStorage.getItem(SKEY) || '[]'); return Array.isArray(v) ? v : []; }
+    catch (e) { return []; }
+  }
+  function renderSigns() {
+    var signs = loadSigns();
+    $('ds-list').innerHTML = signs.length ? signs.map(function (s, i) {
+      return '<span class="inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded-full" style="background:rgba(240,171,252,.12);border:1px solid var(--pri);color:var(--acc)">📡 ' + esc(s) +
+        ' <button data-rm="' + i + '" class="font-bold" aria-label="remove">×</button></span>';
+    }).join('') : '<p class="text-sm" style="color:var(--mut)">No dream signs tracked yet — add your first above.</p>';
+    var rms = $('ds-list').querySelectorAll('[data-rm]');
+    for (var i = 0; i < rms.length; i++) {
+      (function (btn) {
+        btn.addEventListener('click', function () {
+          var arr = loadSigns(); arr.splice(Number(btn.getAttribute('data-rm')), 1);
+          localStorage.setItem(SKEY, JSON.stringify(arr)); renderSigns();
+        });
+      })(rms[i]);
+    }
+  }
+  $('ds-add').addEventListener('click', function () {
+    var v = $('ds-input').value.trim().toLowerCase();
+    if (!v) return;
+    var arr = loadSigns();
+    if (arr.indexOf(v) === -1) arr.push(v);
+    localStorage.setItem(SKEY, JSON.stringify(arr));
+    $('ds-input').value = '';
+    renderSigns();
+  });
+  $('ds-input').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('ds-add').click(); });
+  renderSigns();
+})();
+</script>
+</body>
+</html>
