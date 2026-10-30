@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soil pH Amendment Calculator: Lime &amp; Sulfur Rates | SoilPH</title>
+<meta name="description" content="Soil pH calculator: find exactly how much lime or sulfur your garden needs to hit its target pH, with crop preferences and retest dates. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/soilph/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Soil pH Amendment Calculator: Lime &amp; Sulfur Rates | SoilPH">
+<meta property="og:description" content="Soil pH calculator: find exactly how much lime or sulfur your garden needs to hit its target pH, with crop preferences and retest dates. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/soilph/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SoilPH",
+      "url": "https://fun.fixoraa.tech/soilph/",
+      "applicationCategory": "Garden & Lawn",
+      "operatingSystem": "Web",
+      "description": "Soil pH calculator: find exactly how much lime or sulfur your garden needs to hit its target pH, with crop preferences and retest dates. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much lime do I need per 100 square feet to raise pH by 1 point?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 10 pounds of ground limestone per 100 square feet is the standard starting rate for average loam. Sandy soils may need less, heavy clay more. Apply it, wait 8 weeks, retest, and adjust rather than guessing a bigger dose up front."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does lime take to change soil pH?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Expect 2 to 3 months for the full effect. Lime must dissolve and react with soil acids, which needs moisture and time. Apply in fall or early spring so it is working before planting season, and retest after about 8 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use wood ash instead of lime?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, for small adjustments. Wood ash is alkaline and contains potassium, with roughly half the neutralizing power of lime. Only use ash from untreated wood, never from treated lumber, coal, or charcoal briquettes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the fastest way to lower soil pH?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Elemental sulfur is the standard choice but takes 3 to 6 months because soil microbes must convert it. Aluminum sulfate works in weeks but is easy to over-apply. For most garden beds, sulfur applied in spring, then retested in fall, is the safe route."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What pH do most vegetables need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most vegetables thrive between 6.0 and 7.0. Notable exceptions: blueberries need 4.5 to 5.5, potatoes do best around 5.0 to 6.0, and lavender prefers slightly alkaline soil near 7.2."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I apply lime and fertilizer at the same time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not with ammonium-based fertilizers. Lime converts ammonium nitrogen into ammonia gas, which escapes into the air and wastes your fertilizer. Apply lime first, wait 2 to 4 weeks, then fertilize."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F6F2FC; --surface:#FFFFFF; --accent:#6D28D9; --accent-ink:#FFFFFF;
+  --ink:#232A35; --muted:#5B6472; --line:#E4D8F8;
+  --display:'Alegreya',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.sp-wrap{font-family:'Alegreya',Georgia,serif;background:#F6F2FC;background-image:repeating-linear-gradient(transparent,transparent 31px,rgba(109,40,217,.07) 31px,rgba(109,40,217,.07) 32px);color:#232A35;padding:56px 20px 72px;}.sp-hero{max-width:820px;margin:0 auto 34px;text-align:center;}.sp-logo{width:74px;height:74px;margin:0 auto 16px;border-radius:22px;background:#6D28D9;color:#fff;font-size:36px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(109,40,217,.28);}.sp-hero h1{font-size:clamp(30px,4.6vw,48px);margin:0 0 12px;letter-spacing:-.01em;font-weight:800;}.sp-tag{font-family:Inter,system-ui,sans-serif;font-size:17px;color:#5B6472;margin:0;}.sp-grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}.sp-card{background:#FFFFFF;border:1px solid #E4D8F8;border-radius:20px;padding:30px;box-shadow:0 18px 44px rgba(109,40,217,.10);}.sp-card h2{font-size:21px;margin:0 0 18px;font-weight:800;}.sp-field{margin-bottom:16px;}.sp-field label{display:block;font-family:Inter,system-ui,sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#5B6472;margin-bottom:8px;}.sp-field input,.sp-field select{width:100%;box-sizing:border-box;padding:13px 14px;font-size:16px;font-family:Inter,system-ui,sans-serif;border:2px solid #E4D8F8;border-radius:12px;color:#232A35;background:#F6F2FC;min-height:52px;}.sp-field input:focus,.sp-field select:focus{outline:none;border-color:#6D28D9;}.sp-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}.sp-btn{width:100%;padding:16px;font-size:17px;font-weight:800;font-family:Inter,system-ui,sans-serif;color:#FFFFFF;background:#6D28D9;border:none;border-radius:14px;cursor:pointer;min-height:56px;margin-top:6px;}.sp-btn:hover{background:#5B21B6;}.sp-result{display:none;}.sp-result.show{display:block;}.sp-amount{font-size:46px;font-weight:800;color:#6D28D9;margin:6px 0 2px;line-height:1;}.sp-unit{font-family:Inter,system-ui,sans-serif;font-size:15px;color:#5B6472;}.sp-dir{font-family:Inter,system-ui,sans-serif;display:inline-block;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:8px;}.sp-dir.raise{background:#EDE4FB;color:#6D28D9;}.sp-dir.lower{background:#E4F3EC;color:#166534;}.sp-note{font-family:Inter,system-ui,sans-serif;font-size:14px;line-height:1.65;color:#5B6472;margin:14px 0 0;}.sp-retest{font-family:Inter,system-ui,sans-serif;margin-top:16px;padding:14px 16px;background:#F6F2FC;border:1px dashed #6D28D9;border-radius:12px;font-size:14.5px;}.sp-crops{max-width:980px;margin:22px auto 0;background:#FFFFFF;border:1px solid #E4D8F8;border-radius:20px;padding:30px;}.sp-crops h2{font-size:21px;margin:0 0 6px;}.sp-crops p{font-family:Inter,system-ui,sans-serif;color:#5B6472;font-size:14.5px;margin:0 0 16px;}.sp-table{width:100%;border-collapse:collapse;font-family:Inter,system-ui,sans-serif;font-size:14.5px;}.sp-table th,.sp-table td{padding:10px 12px;text-align:left;border-bottom:1px solid #E4D8F8;}.sp-table th{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:#5B6472;}.sp-table tr{cursor:pointer;}.sp-table tr:hover td{background:#F6F2FC;}.sp-table tr.sel td{background:#EDE4FB;font-weight:700;}@media (max-width:680px){.sp-grid{grid-template-columns:1fr;}.sp-card{padding:24px 18px;}.sp-wrap{padding:40px 14px 56px;}.sp-amount{font-size:38px;}.sp-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="SoilPH home">
+      <span class="fx-logo-tile" aria-hidden="true">🧪</span>
+      <span class="fx-brand">SoilPH</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-ledger-lines" aria-label="SoilPH tool">
+<section class='sp-wrap'><div class='sp-hero'><div class='sp-logo' aria-hidden='true'>🧪</div><h1>Soil pH Amendment Calculator</h1><p class='sp-tag'>Hit your target pH — the right amendment, the right amount.</p></div><div class='sp-grid'><div class='sp-card'><h2>Your soil</h2><div class='sp-row'><div class='sp-field'><label for='sp-cur'>Current pH</label><input id='sp-cur' type='number' step='0.1' min='3' max='10' value='5.5'></div><div class='sp-field'><label for='sp-tgt'>Target pH</label><input id='sp-tgt' type='number' step='0.1' min='3' max='10' value='6.5'></div></div><div class='sp-field'><label for='sp-area'>Bed area (sq ft)</label><input id='sp-area' type='number' min='0' step='1' value='100'></div><div class='sp-field'><label for='sp-soil'>Soil type (for lowering pH)</label><select id='sp-soil'><option value='sandy'>Sandy</option><option value='loam' selected>Loam</option><option value='clay'>Clay</option></select></div><button class='sp-btn' id='sp-go' type='button'>Calculate amendment</button></div><div class='sp-card sp-result' id='sp-result' role='status'><h2>Your prescription</h2><span class='sp-dir' id='sp-dir'></span><div class='sp-amount' id='sp-amount'></div><div class='sp-unit' id='sp-unit'></div><p class='sp-note' id='sp-note'></p><div class='sp-retest' id='sp-retest'></div></div></div><div class='sp-crops'><h2>Crop pH preferences</h2><p>Tap a row to use its pH as your target.</p><table class='sp-table' id='sp-table'><thead><tr><th>Crop</th><th>Best pH</th><th>Notes</th></tr></thead><tbody></tbody></table></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Soil pH Runs the Whole Garden</h2><p>Every gardener has lived this mystery: two identical tomato seedlings, same sun, same water — one thrives, one sulks. Nine times out of ten, the difference is hiding underground in a number most people never measure. Soil pH controls which nutrients your plants can actually absorb, and getting it wrong means your fertilizer sits in the soil, locked away, while your plants starve in the middle of plenty.</p><p>pH is simply a measure of acidity or alkalinity on a scale from 0 to 14, with 7 neutral. Below 7 is acidic, above 7 is alkaline. Most garden plants are happiest between 6.0 and 7.0, a range where the major nutrients — nitrogen, phosphorus, and potassium — plus the trace minerals plants need in small doses, are all reasonably available. Drift too far in either direction and availability collapses: in strongly acidic soil, aluminum and manganese become toxic while phosphorus gets tied up; in strongly alkaline soil, iron, zinc, and manganese become scarce and leaves turn yellow between the veins.</p><p>The frustrating part is that pH problems masquerade as other problems. Yellow leaves look like nitrogen deficiency. Stunted growth looks like poor soil. Blossom-end rot on tomatoes looks like calcium deficiency — and sometimes it is, but often the calcium is present and simply unavailable because the pH is off. A twenty-minute soil test can save you a season of guessing, which is why experienced gardeners test pH before they buy a single bag of fertilizer.</p><h2>The pH Scale, Translated for Gardeners</h2><p>The scale is logarithmic, which matters more than it sounds: a soil at pH 5.0 is ten times more acidic than soil at pH 6.0, and a hundred times more acidic than pH 7.0. Small moves on the meter represent big chemistry. That is why amendments are measured in pounds per hundred square feet rather than handfuls — shifting pH takes real material, and it takes time.</p><p>It also helps to know that soil resists change. Clay soils and soils rich in organic matter have high <strong>buffering capacity</strong>: they shrug off amendments that would swing a sandy soil wildly. This is a feature, not a bug — buffered soil holds a stable pH for your plants — but it means heavy clay needs more lime or sulfur than sand to move the same distance. The calculator above adjusts sulfur rates for soil type for exactly this reason.</p><p>Finally, pH is not permanent. Rain leaches calcium and magnesium and slowly acidifies soil. Ammonium-based fertilizers acidify it faster. Even your mulch matters: pine needles and oak leaves nudge soil acidic over years, while wood ash nudges it alkaline. Think of pH as maintenance, like sharpening a mower blade — check it yearly and correct gently rather than waiting for a crisis.</p><h2>Lime: How to Raise pH</h2><p>When a test comes back at 5.2 and your tomatoes want 6.5, the answer is lime — ground limestone, calcium carbonate. It neutralizes soil acids and supplies calcium at the same time. The rule of thumb built into the calculator is about <strong>10 pounds of ground limestone per 100 square feet to raise pH by one full point</strong> in average loam, and the three test cases above confirm the arithmetic: pH 5.5 to 6.5 over 100 square feet needs 10 pounds; pH 5.0 to 7.0 over 50 square feet needs 10 pounds.</p><ul><li><strong>Ground (powdered) limestone</strong> is cheapest and reacts fastest, but it is dusty to spread.</li><li><strong>Pelletized lime</strong> costs more but spreads cleanly with a broadcast spreader and is the best choice for lawns.</li><li><strong>Dolomitic lime</strong> adds magnesium as well as calcium — choose it if your test also shows low magnesium.</li><li><strong>Wood ash</strong> works in a pinch (about half the neutralizing power of lime) and adds potassium, but never use ash from treated wood or coal.</li></ul><p>Apply lime in fall or early spring so winter rain and freeze-thaw cycles can work it in. Spread it evenly, rake or till it into the top six inches — lime barely moves downward on its own — and water it in. Expect the full effect in two to three months. One safety limit: never apply more than 50 pounds per 1,000 square feet in a single application; if you need more, split it across seasons and retest between rounds.</p><h2>Sulfur: How to Lower pH</h2><p>Lowering pH is the mirror image, and the tool of choice is <strong>elemental sulfur</strong> — the yellow powder sold at garden centers. Soil bacteria convert sulfur into sulfuric acid, which is exactly as dramatic as it sounds, except it happens slowly, over months, at doses your plants tolerate. Because microbes do the work, sulfur needs warm, moist soil; applied in cold winter soil it mostly sits there until spring.</p><p>Rates depend heavily on soil type because clay buffers acid far more than sand. Widely used extension-service starting rates per 100 square feet to lower pH by one point are roughly <strong>1.2 pounds for sandy soil, 2.4 pounds for loam, and 3.6 pounds for clay</strong> — the figures the calculator uses. Treat these as starting estimates, not gospel: apply, wait, retest, and adjust. Over-acidifying is harder to fix than under-acidifying.</p><p>For container gardeners and anyone in a hurry, <strong>aluminum sulfate</strong> acts in weeks rather than months, but it is easy to over-apply and can build up aluminum in the soil, so most advisors reserve it for hydrangea color tweaking rather than whole-bed correction. Acidifying fertilizers like ammonium sulfate can help maintain low pH for blueberries and azaleas once you are there.</p><h2>How Much Amendment You Actually Need</h2><p>The calculator does the arithmetic, but it helps to see the pattern. Lime need scales with two things: how far you have to move, and how much ground you are moving.</p><table><thead><tr><th>Current pH → target</th><th>Shift</th><th>Lime for 100 sq ft</th><th>Lime for 1,000 sq ft</th></tr></thead><tbody><tr><td>5.5 → 6.5</td><td>1.0</td><td>10 lb</td><td>100 lb</td></tr><tr><td>5.0 → 6.5</td><td>1.5</td><td>15 lb</td><td>150 lb</td></tr><tr><td>6.0 → 6.5</td><td>0.5</td><td>5 lb</td><td>50 lb</td></tr><tr><td>5.0 → 7.0</td><td>2.0</td><td>20 lb</td><td>200 lb</td></tr></tbody></table><p>Notice the linear relationship: every half point of pH over 100 square feet is about 5 pounds of lime. Sulfur follows the same shape with the soil-type rates above. These are starting rates for average soils — very heavy clay or very sandy beds will deviate, which is why the retest step is non-negotiable. Amendments are cheap; the test tells you whether to spend more or stop.</p><h2>Soil Type Changes the Math</h2><p>Two gardeners with identical pH readings can need very different amounts of amendment. A sandy raised bed might swing a full point on the standard rate, while a clay bed next door barely budges — clay particles and organic matter act like shock absorbers for pH. If you know you garden on heavy clay, expect to land at the high end of the ranges; on sand, start at the low end and retest before adding more.</p><p>Organic matter deserves special mention because it is the only amendment that improves nearly everything at once: it buffers pH against swings, feeds the microbes that make sulfur work, and improves both drainage in clay and water-holding in sand. Compost will not fix a pH of 5.0 on its own, but a bed rich in compost needs less lime, holds the correction longer, and grows healthier plants at any pH. If you do one thing for your soil this year besides testing, make it compost.</p><h2>When and How to Apply</h2><p>Timing matters because neither lime nor sulfur works overnight.</p><h3>The application sequence</h3><ol><li><strong>Test first.</strong> Use a lab test or a decent probe; cheap paper strips are better than nothing but verify surprises with a second method.</li><li><strong>Calculate.</strong> Enter your current pH, target, area, and soil type above.</li><li><strong>Apply in fall or early spring.</strong> This gives amendments months to react before planting.</li><li><strong>Spread evenly and incorporate.</strong> Rake into the top 6 inches; surface-applied lime moves down only about an inch per year.</li><li><strong>Water in.</strong> Moisture starts the chemistry, especially for sulfur.</li><li><strong>Retest in 8 weeks.</strong> The calculator gives you the date. Adjust only if the new reading says so.</li></ol><p>One combination to avoid: do not apply lime and ammonium-based fertilizers at the same time. The lime converts the ammonium to ammonia gas, and your nitrogen literally floats away. Separate them by two to four weeks.</p><h2>What Different Plants Want</h2><p>Most vegetables cluster in the 6.0 to 7.0 band, but the exceptions are the plants people struggle with most. Blueberries demand strongly acidic soil around 4.5 to 5.5 — the number one reason backyard blueberry bushes fail is alkaline soil, not neglect. Potatoes prefer 5.0 to 6.0 partly because common scab disease fades in acidic soil. Hydrangeas are the famous pH chameleons: acidic soil gives blue blooms, alkaline gives pink, and gardeners have been exploiting this party trick for generations.</p><table><thead><tr><th>Plant group</th><th>Ideal pH</th><th>Notes</th></tr></thead><tbody><tr><td>Most vegetables</td><td>6.0 – 7.0</td><td>Tomatoes, peppers, beans, lettuce</td></tr><tr><td>Acid-lovers</td><td>4.5 – 5.5</td><td>Blueberries, azaleas, rhododendrons</td></tr><tr><td>Root crops</td><td>5.8 – 6.5</td><td>Potatoes and sweet potatoes like it lower</td></tr><tr><td>Lawns</td><td>6.0 – 7.0</td><td>Below 6.0, moss takes over</td></tr><tr><td>Lavender, clematis</td><td>7.0 – 7.5</td><td>Rare alkaline fans</td></tr></tbody></table><p>When one bed must serve plants with conflicting tastes, group the acid-lovers together. A blueberry patch mulched with pine needles and fed acidifying fertilizer can sit ten feet from a neutral vegetable bed — soil pH is local, and smart zoning beats compromise.</p><h2>Test, Apply, Retest</h2><p>The retest is where most gardeners quit too early. Lime keeps working for months after application, and sulfur longer still, so testing the week after spreading tells you nothing. Mark eight weeks on the calendar — the calculator does this for you — and test again. If you are within 0.3 of target, stop; soil pH drifts, and chasing the last decimal wastes amendment. Annual testing each fall is enough for established beds, since you will catch drift before it costs you a season.</p><p>Keep your test records. A simple notebook line per bed — date, pH, what you applied — turns pH management from guesswork into a five-minute yearly habit. After two or three cycles you will know exactly how your soil behaves, and the calculator becomes a confirmation rather than a discovery.</p><h2>Mistakes That Waste Money</h2><ul><li><strong>Amending without testing.</strong> The classic: dumping lime every spring because a neighbor does. If your pH is already 7.2, that lime is pushing you toward iron chlorosis.</li><li><strong>Expecting instant results.</strong> Retesting after two weeks, seeing no change, and doubling the dose is how soils end up at pH 8.</li><li><strong>Surface-sprinkling lime on compacted soil.</strong> It sits there. Incorporate it or aerate first.</li><li><strong>Chasing hydrangea blue with vinegar.</strong> It works for a week. Elemental sulfur works for a season.</li><li><strong>Ignoring the target.</strong> Raising a blueberry bed to 6.5 because the vegetable chart said so is a slow way to kill blueberries. Match the amendment to the plant, not the average.</li></ul><p>Soil pH is one of the highest-leverage numbers in gardening: a single test and a bag of lime or sulfur can outperform a season of expensive fertilizers. Measure it, correct it gently, and let the chemistry do the quiet work underground while you take the credit above it.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much lime do I need per 100 square feet to raise pH by 1 point?</summary><p>About 10 pounds of ground limestone per 100 square feet is the standard starting rate for average loam. Sandy soils may need less, heavy clay more. Apply it, wait 8 weeks, retest, and adjust rather than guessing a bigger dose up front.</p></details>
+<details><summary>How long does lime take to change soil pH?</summary><p>Expect 2 to 3 months for the full effect. Lime must dissolve and react with soil acids, which needs moisture and time. Apply in fall or early spring so it is working before planting season, and retest after about 8 weeks.</p></details>
+<details><summary>Can I use wood ash instead of lime?</summary><p>Yes, for small adjustments. Wood ash is alkaline and contains potassium, with roughly half the neutralizing power of lime. Only use ash from untreated wood, never from treated lumber, coal, or charcoal briquettes.</p></details>
+<details><summary>What is the fastest way to lower soil pH?</summary><p>Elemental sulfur is the standard choice but takes 3 to 6 months because soil microbes must convert it. Aluminum sulfate works in weeks but is easy to over-apply. For most garden beds, sulfur applied in spring, then retested in fall, is the safe route.</p></details>
+<details><summary>What pH do most vegetables need?</summary><p>Most vegetables thrive between 6.0 and 7.0. Notable exceptions: blueberries need 4.5 to 5.5, potatoes do best around 5.0 to 6.0, and lavender prefers slightly alkaline soil near 7.2.</p></details>
+<details><summary>Can I apply lime and fertilizer at the same time?</summary><p>Not with ammonium-based fertilizers. Lime converts ammonium nitrogen into ammonia gas, which escapes into the air and wastes your fertilizer. Apply lime first, wait 2 to 4 weeks, then fertilize.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SoilPH</div>
+    <p>SoilPH tells you exactly how much lime (to raise pH) or sulfur (to lower pH) your beds need, from your current pH, target pH, bed area, and soil type.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function limeNeeded(currentPH,targetPH,areaSqft){var c=Number(currentPH),t=Number(targetPH),a=Number(areaSqft);if(!isFinite(c)||!isFinite(t)||!isFinite(a)||a<0)return 0;var diff=t-c;if(diff<=0)return 0;return Math.round(diff*10*(a/100)*10)/10;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var CROPS=[['Tomatoes',6.5,'Most productive between 6.2 and 6.8'],['Blueberries',5.0,'Needs strongly acidic soil; mulch with pine needles'],['Lawn grass',6.5,'Most turf thrives 6.0 to 7.0'],['Roses',6.5,'Slightly acidic to neutral'],['Potatoes',5.8,'Acidic soil reduces scab disease'],['Carrots',6.3,'Loose, near-neutral soil'],['Beans & peas',6.5,'Fix nitrogen best near neutral'],['Hydrangeas',5.5,'Acidic soil turns blooms blue'],['Lavender',7.2,'One of the few that likes alkaline soil'],['Azaleas',5.5,'Classic acid-lover'],['Lettuce',6.5,'Fast grower, likes 6.0 to 7.0'],['Peppers',6.5,'Similar needs to tomatoes']];function el(id){return document.getElementById(id);}var tbody=document.querySelector('#sp-table tbody');if(tbody){CROPS.forEach(function(c){var tr=document.createElement('tr');tr.innerHTML='<td><strong>'+c[0]+'</strong></td><td>'+c[1].toFixed(1)+'</td><td>'+c[2]+'</td>';tr.addEventListener('click',function(){var t=el('sp-tgt');if(t){t.value=c[1];}var rows=tbody.querySelectorAll('tr');for(var i=0;i<rows.length;i++){rows[i].classList.remove('sel');}tr.classList.add('sel');});tbody.appendChild(tr);});}var go=el('sp-go');if(go){go.addEventListener('click',function(){var cur=parseFloat(el('sp-cur').value),tgt=parseFloat(el('sp-tgt').value),area=parseFloat(el('sp-area').value),soil=el('sp-soil').value;var res=el('sp-result'),dir=el('sp-dir'),amt=el('sp-amount'),unit=el('sp-unit'),note=el('sp-note'),ret=el('sp-retest');if(!res)return;if(!isFinite(cur)||!isFinite(tgt)||!isFinite(area)||area<=0){res.classList.add('show');dir.className='sp-dir raise';dir.textContent='Check inputs';amt.textContent='—';unit.textContent='';note.textContent='Enter a valid current pH, target pH, and a bed area greater than zero.';ret.textContent='';return;}var diff=tgt-cur;res.classList.add('show');var retest=new Date();retest.setDate(retest.getDate()+56);var rstr=retest.toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'});if(diff>0.05){var lime=limeNeeded(cur,tgt,area);dir.className='sp-dir raise';dir.textContent='Raise pH — apply lime';amt.textContent=lime+' lb';unit.textContent='of ground limestone for '+area+' sq ft';note.textContent='Spread evenly, rake into the top 6 inches, and water in. Lime works slowly — expect the full shift in 2 to 3 months. Never exceed 50 lb per 1,000 sq ft in one application.';ret.textContent='Retest your soil around '+rstr+' before applying more.';}else if(diff<-0.05){var rates={sandy:1.2,loam:2.4,clay:3.6};var s=Math.round(Math.abs(diff)*rates[soil]*(area/100)*10)/10;dir.className='sp-dir lower';dir.textContent='Lower pH — apply sulfur';amt.textContent=s+' lb';unit.textContent='of elemental sulfur for '+area+' sq ft ('+soil+' soil)';note.textContent='Sulfur is converted by soil microbes, so it needs warmth and moisture — allow 3 to 6 months. Split large amounts into two applications a month apart.';ret.textContent='Retest your soil around '+rstr+' before applying more.';}else{dir.className='sp-dir raise';dir.textContent='Already on target';amt.textContent='0 lb';unit.textContent='no amendment needed';note.textContent='Your pH is within 0.05 of target. Keep it there with organic matter and retest yearly.';ret.textContent='Next routine retest: '+rstr+'.';}});}});}
+</script>
+</body>
+</html>
