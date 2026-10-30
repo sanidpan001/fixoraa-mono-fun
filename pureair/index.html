@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Air Purifier CADR Calculator: Size by Room Area</title>
+<meta name="description" content="What CADR does your room need? Use the AHAM two-thirds rule to size your air purifier, compare one vs two units, check ACH and shop confidently.">
+<link rel="canonical" href="https://fun.fixoraa.tech/pureair/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Air Purifier CADR Calculator: Size by Room Area">
+<meta property="og:description" content="What CADR does your room need? Use the AHAM two-thirds rule to size your air purifier, compare one vs two units, check ACH and shop confidently.">
+<meta property="og:url" content="https://fun.fixoraa.tech/pureair/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PureAir",
+      "url": "https://fun.fixoraa.tech/pureair/",
+      "applicationCategory": "Home Comfort",
+      "operatingSystem": "Web",
+      "description": "What CADR does your room need? Use the AHAM two-thirds rule to size your air purifier, compare one vs two units, check ACH and shop confidently.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What CADR do I need for my room size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At least two-thirds of the room's square footage. A 300 sq ft room needs a CADR of 201 or higher. Round up to the next available model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does CADR mean on an air purifier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CADR (Clean Air Delivery Rate) is the independently tested volume of clean air a purifier delivers per minute. It's the only reliable way to compare purifier power."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are two small air purifiers better than one big one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often yes for large or L-shaped rooms \u2014 two units give more even coverage and let you run bedroom-quiet at night. Compare total CADR: two 150s beat one 250 in a big space."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between HEPA and True HEPA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "True HEPA (H13) is certified to capture 99.97% of 0.3-micron particles. 'HEPA-type' or 'HEPA-like' have no guaranteed performance \u2014 always look for 'True HEPA'."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I replace purifier filters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every 6\u201312 months depending on use and air quality. A clogged filter can halve real-world performance, so don't stretch it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate air changes per hour?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ACH = (CADR \u00d7 60) \u00f7 room volume in cubic feet. Aim for 4\u20135 ACH for allergies; the AHAM two-thirds rule already targets about 4.8 ACH at 8 ft ceilings."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F1FAF7; --surface:#FFFFFF; --accent:#0C7A62; --accent-ink:#FFFFFF;
+  --ink:#1F2D29; --muted:#54645D; --line:#D7E9E2;
+  --display:'Plus Jakarta Sans',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.pa-wrap{max-width:920px;margin:0 auto;padding:28px 18px 56px;color:#1F2D29;font-family:Inter,system-ui,sans-serif}
+.pa-hero{text-align:center;margin-bottom:20px}
+.pa-hero h1{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:clamp(32px,6vw,48px);margin:0 0 8px;color:#1F2D29;letter-spacing:-.5px}
+.pa-tagline{font-size:16px;color:#54645D;margin:0}
+.pa-bento{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pa-card{background:#fff;border:1px solid #D7E9E2;border-radius:20px;padding:22px;box-shadow:0 2px 12px rgba(12,122,98,.06)}
+.pa-card.pa-wide{grid-column:1/-1}
+.pa-h2{font-family:"Plus Jakarta Sans",sans-serif;font-size:19px;font-weight:800;margin:0 0 4px;color:#1F2D29}
+.pa-sub{font-size:13.5px;color:#54645D;margin:0 0 14px}
+.pa-field{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#54645D}
+.pa-field input{font:inherit;font-size:18px;color:#1F2D29;border:1px solid #D7E9E2;border-radius:12px;padding:12px;background:#F1FAF7;min-height:52px}
+.pa-presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pa-presets button{border:1px solid #D7E9E2;background:#F1FAF7;color:#0C7A62;font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:10px 16px;cursor:pointer;min-height:44px}
+.pa-presets button.pa-on{background:#0C7A62;color:#fff;border-color:#0C7A62}
+.pa-result{background:linear-gradient(135deg,#0C7A62,#1a9e7f);border-radius:20px;color:#fff;padding:24px;text-align:center}
+.pa-result small{display:block;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:.9}
+.pa-result .pa-big{font-family:"Plus Jakarta Sans",sans-serif;font-size:56px;font-weight:800;line-height:1.1}
+.pa-result .pa-alt{font-size:14px;opacity:.95;margin-top:6px}
+.pa-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.pa-compare div{background:#F1FAF7;border:1px solid #D7E9E2;border-radius:14px;padding:14px;text-align:center}
+.pa-compare dt{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#54645D}
+.pa-compare dd{margin:6px 0 0;font-weight:800;font-size:18px;color:#0C7A62}
+.pa-compare dd small{display:block;font-size:12px;font-weight:400;color:#54645D}
+.pa-winner{border:2px solid #0C7A62 !important;background:#fff !important}
+.pa-tip{font-size:13.5px;color:#54645D;background:#EAF7F2;border-radius:12px;padding:10px 14px;margin:14px 0 0}
+@media(max-width:720px){
+.pa-bento{grid-template-columns:1fr}
+.pa-compare{grid-template-columns:1fr 1fr}
+.pa-wrap{padding:20px 12px 44px}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PureAir home">
+      <span class="fx-logo-tile" aria-hidden="true">🌿</span>
+      <span class="fx-brand">PureAir</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-play-cards" aria-label="PureAir tool">
+<section class="pa-wrap" aria-label="Air purifier CADR calculator">
+  <div class="pa-hero">
+    <h1>🌿 Air Purifier CADR Calculator</h1>
+    <p class="pa-tagline">CADR, demystified: the exact number your room needs, nothing more.</p>
+  </div>
+  <div class="pa-bento">
+    <div class="pa-card">
+      <h2 class="pa-h2">Your room</h2>
+      <p class="pa-sub">AHAM rule: CADR ≥ room area × ⅔.</p>
+      <label class="pa-field">Room area (sq ft)
+        <input id="paArea" type="number" min="50" max="2000" value="300" inputmode="numeric">
+      </label>
+      <div class="pa-presets" id="paPresets">
+        <button data-a="120">🛏 Small bedroom</button>
+        <button data-a="200">🛌 Master bedroom</button>
+        <button data-a="300" class="pa-on">🛋 Living room</button>
+        <button data-a="500">🏠 Open plan</button>
+      </div>
+    </div>
+    <div class="pa-card">
+      <h2 class="pa-h2">Compare setups</h2>
+      <p class="pa-sub">One large unit vs two smaller ones.</p>
+      <label class="pa-field">Single purifier CADR
+        <input id="paSingle" type="number" min="50" value="250" inputmode="numeric">
+      </label>
+      <label class="pa-field" style="margin-top:10px">Each of two purifiers CADR
+        <input id="paDual" type="number" min="50" value="150" inputmode="numeric">
+      </label>
+    </div>
+    <div class="pa-card pa-wide">
+      <div class="pa-result">
+        <small>Minimum CADR needed</small>
+        <div class="pa-big"><span id="paCadr">201</span> CFM</div>
+        <div class="pa-alt">≈ <span id="paAch">4.8</span> air changes/hour · shop for <span id="paShop">220+</span> CADR</div>
+      </div>
+      <dl class="pa-compare">
+        <div id="paOneCard"><dt>1 × purifier</dt><dd><span id="paOne">250</span> CADR<small id="paOneNote">covers it ✓</small></dd></div>
+        <div id="paTwoCard"><dt>2 × purifiers</dt><dd><span id="paTwo">300</span> CADR<small id="paTwoNote">covers it ✓</small></dd></div>
+      </dl>
+      <p class="pa-tip">💡 Two smaller units beat one big one in large or L-shaped rooms — better coverage, quieter at night. True HEPA + carbon beats marketing claims.</p>
+    </div>
+  </div>
+</section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What CADR actually means</h2><p>CADR — Clean Air Delivery Rate — is the single number that tells you how powerful an air purifier is. It measures the volume of filtered air a purifier delivers per minute, in cubic feet per minute (CFM), tested independently for smoke, dust and pollen. A purifier's CADR for smoke is usually the headline figure and the one to shop by. Marketing terms like "covers up to 1,000 sq ft" are unregulated; CADR is not. If two purifiers both claim a large room but one has a CADR of 120 and the other 300, the second cleans more than twice as fast.</p><h2>The AHAM rule: CADR ≥ room area × 0.67</h2><p>The Association of Home Appliance Manufacturers recommends a CADR at least <strong>two-thirds of your room's square footage</strong>. A 300 sq ft living room needs a CADR of at least 201; a 150 sq ft bedroom needs 101. This rule assumes standard 8 ft ceilings and roughly 4–5 air changes per hour (ACH) — the rate at which the purifier processes the room's entire air volume — which is the level studies link to meaningful reductions in particles, allergens and odours.</p><table><thead><tr><th>Room</th><th>Area</th><th>Minimum CADR</th><th>Shopping target</th></tr></thead><tbody><tr><td>Small bedroom</td><td>120 sq ft</td><td>80</td><td>100+</td></tr><tr><td>Master bedroom</td><td>200 sq ft</td><td>134</td><td>150+</td></tr><tr><td>Living room</td><td>300 sq ft</td><td>201</td><td>220+</td></tr><tr><td>Open-plan area</td><td>500 sq ft</td><td>335</td><td>350+</td></tr></tbody></table><h2>Air changes per hour (ACH), explained</h2><p>ACH tells you how many times per hour a purifier filters the room's full air volume. For allergy and asthma relief, aim for <strong>4–5 ACH</strong>; for general freshness, 2–3 ACH is fine. You can estimate ACH as (CADR × 60) ÷ room volume in cubic feet. The AHAM two-thirds rule bakes in roughly 4.8 ACH for 8 ft ceilings. High ceilings dilute the effect — a 12 ft ceiling needs about 50% more CADR than the basic rule suggests, so size up.</p><h2>One big purifier or two smaller ones?</h2><p>For large or L-shaped rooms, two smaller purifiers often beat one big one. Air purifiers clean best within about 10–15 feet; a single unit in a long room leaves dead zones at the far end. Two units also give redundancy — one can run on quiet low in the bedroom while the other works the living area — and replacement filters for small models are cheaper. The trade-off is two sets of filters to maintain and slightly higher total energy use. Compare on total CADR: two 150-CADR units (300 combined) outperform one 250-CADR unit in a 400 sq ft space.</p><table><thead><tr><th></th><th>One large unit</th><th>Two smaller units</th></tr></thead><tbody><tr><td>Best for</td><td>Square rooms, simple layouts</td><td>Large, L-shaped or two-zone rooms</td></tr><tr><td>Coverage</td><td>Strong nearby, weak at distance</td><td>Even coverage, fewer dead zones</td></tr><tr><td>Noise</td><td>One louder fan</td><td>Two quieter fans possible</td></tr><tr><td>Filters</td><td>One expensive filter</td><td>Two cheaper filters</td></tr></tbody></table><h2>HEPA, carbon and what to ignore</h2><p><strong>True HEPA</strong> (H13) captures 99.97% of 0.3-micron particles — the standard worth paying for. "HEPA-type" or "HEPA-like" are marketing terms with no guaranteed performance. An <strong>activated carbon filter</strong> handles odours, smoke and VOCs that HEPA cannot catch; it is essential if cooking smells or wildfire smoke are your concern. Ignore ionisers and UV lights as primary features — independent testing shows their contribution is minor next to a properly sized HEPA + carbon combination, and some ionisers produce ozone.</p><h2>Placement and running tips</h2><ul><li><strong>Give it breathing room:</strong> 1–2 feet of clearance on all sides, especially the intake.</li><li><strong>Put it where the pollution is:</strong> near the kitchen for cooking particles, in the bedroom for allergies.</li><li><strong>Run it continuously on low</strong> rather than blasting on high for an hour — steady filtration wins.</li><li><strong>Close doors and windows</strong> in the room you are cleaning; you cannot filter the whole neighbourhood.</li><li><strong>Replace filters on schedule:</strong> a clogged filter can halve real-world CADR. Most last 6–12 months.</li></ul><h2>How much should you spend?</h2><p>Price roughly tracks CADR. Expect to pay for about $1 per CADR point in mid-range models — a 200-CADR purifier around $200. Budget models with honest CADR ratings exist, but beware no-name units that list room coverage without a CADR figure at all. Factor in filter costs: a cheap purifier with $80 replacement filters every 6 months quickly becomes the expensive option.</p><p>Size by CADR, buy True HEPA + carbon, run it low and steady — clean air is mostly arithmetic.</p><h2>CADR vs "covers up to" claims</h2><p>Manufacturers love room-coverage claims — "purifies up to 1,500 sq ft!" — but these are unregulated and usually assume one air change per hour, far below the 4–5 ACH that actually cleans air. A unit claiming 1,500 sq ft might have a CADR of 150, which by the AHAM rule properly serves about 225 sq ft. The rule of thumb: <strong>ignore coverage claims entirely and shop by CADR</strong>. If a listing hides its CADR, treat that as information — reputable brands publish it prominently because independent AHAM testing is a selling point.</p><h2>Wildfire smoke: sizing up</h2><p>During wildfire season, normal sizing rules go out the window. Smoke particles are fine (PM2.5) and infiltrate constantly through every gap, so target <strong>5–6 ACH</strong> instead of 4–5 — roughly 25% more CADR than the AHAM minimum. Seal the room as best you can (tape, towels under doors), run the purifier on high before the smoke arrives to build a clean buffer, and prioritise the bedroom: eight hours of clean sleep air matters more than a pristine living room. Activated carbon becomes essential here — HEPA catches the particles, but only carbon adsorbs the gases and smell.</p><h2>Noise, energy and running costs</h2><p>A purifier running 24/7 on low is the effective strategy, so check the <strong>low-speed noise rating</strong> — under 30 dB is whisper-quiet; over 50 dB on high will annoy in a bedroom. Energy use is modest: most units draw 30–70 W, costing a few dollars a month continuously. The real running cost is filters: budget $50–100 per year per unit. When comparing models, divide the purchase price plus five years of filters by CADR — the "cost per clean air" reveals that some cheap units are the expensive choice.</p><h2>Pre-filters and the maintenance schedule</h2><p>The washable pre-filter is the unsung hero: it catches hair, dust and pet fluff before they reach the expensive HEPA filter, and vacuuming it monthly can double HEPA life. Mark your calendar: <strong>monthly</strong> — vacuum pre-filter, wipe the unit exterior; <strong>every 6 months</strong> — check carbon filter for odour breakthrough (if smells return, it is saturated); <strong>every 6–12 months</strong> — replace HEPA per the indicator or when airflow audibly drops. Running a purifier with clogged filters is like driving with the handbrake on — the motor works harder for a fraction of the CADR you paid for.</p><h2>Purifiers and pets</h2><p>Pet dander is exactly what HEPA filters excel at — 99.97% of 0.3-micron particles covers dander, dust-mite debris and most pollen. Size up one notch for pet homes since dander generates continuously, and place the unit where the pet spends time, not where you do. A carbon filter handles the litter-box and wet-dog odours HEPA cannot touch. One honest caveat: no purifier fixes an unwashed pet — regular grooming and washing bedding does as much as any machine. For severe allergies, the bedroom purifier plus keeping pets out of the bedroom beats any single device.</p><h2>A worked example: sizing a two-bedroom flat</h2><p>Take a 140 sq ft bedroom with 8 ft ceilings. AHAM minimum: 140 × 0.67 ≈ <strong>94 CADR</strong>; buy 120+ for margin. Check ACH: (120 × 60) ÷ (140 × 8) ≈ 6.4 air changes per hour — excellent for allergies. For a 350 sq ft open-plan living area: minimum 235 CADR, so shop for 250+. Either one 250-CADR unit centrally placed, or two 130-CADR units at opposite ends for more even coverage. Total filter budget: roughly $100–150 per year across both rooms.</p><h2>Five buying mistakes to avoid</h2><ul><li><strong>Shopping by room-coverage claims</strong> instead of CADR — the number that actually predicts cleaning speed.</li><li><strong>Buying "HEPA-type"</strong> instead of True HEPA (H13); only the latter guarantees 99.97% capture.</li><li><strong>Undersizing the bedroom</strong>, where you spend eight hours breathing the same air.</li><li><strong>Ignoring filter prices</strong> — a $99 purifier with $70 filters costs far more over five years.</li><li><strong>Running it only when the air looks bad</strong> — particles you cannot see still need continuous filtration.</li></ul>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What CADR do I need for my room size?</summary><p>At least two-thirds of the room's square footage. A 300 sq ft room needs a CADR of 201 or higher. Round up to the next available model.</p></details>
+<details><summary>What does CADR mean on an air purifier?</summary><p>CADR (Clean Air Delivery Rate) is the independently tested volume of clean air a purifier delivers per minute. It's the only reliable way to compare purifier power.</p></details>
+<details><summary>Are two small air purifiers better than one big one?</summary><p>Often yes for large or L-shaped rooms — two units give more even coverage and let you run bedroom-quiet at night. Compare total CADR: two 150s beat one 250 in a big space.</p></details>
+<details><summary>What&#x27;s the difference between HEPA and True HEPA?</summary><p>True HEPA (H13) is certified to capture 99.97% of 0.3-micron particles. 'HEPA-type' or 'HEPA-like' have no guaranteed performance — always look for 'True HEPA'.</p></details>
+<details><summary>How often should I replace purifier filters?</summary><p>Every 6–12 months depending on use and air quality. A clogged filter can halve real-world performance, so don't stretch it.</p></details>
+<details><summary>How do I calculate air changes per hour?</summary><p>ACH = (CADR × 60) ÷ room volume in cubic feet. Aim for 4–5 ACH for allergies; the AHAM two-thirds rule already targets about 4.8 ACH at 8 ft ceilings.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PureAir</div>
+    <p>PureAir applies the AHAM rule to find the CADR your room needs and compares one big purifier vs two smaller ones.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function cadrNeeded(areaSqft){
+  if(!(areaSqft > 0)) return NaN;
+  return Math.ceil(areaSqft * 0.67);
+}
+function purifierCount(neededCadr, unitCadr){
+  if(!(neededCadr > 0) || !(unitCadr > 0)) return NaN;
+  return Math.ceil(neededCadr / unitCadr);
+}
+if(typeof document !== 'undefined'){
+document.addEventListener('DOMContentLoaded', function(){
+  function refresh(){
+    var area = parseFloat(document.getElementById('paArea').value) || 0;
+    var need = cadrNeeded(area);
+    if(isNaN(need)) need = 0;
+    document.getElementById('paCadr').textContent = need;
+    document.getElementById('paShop').textContent = (Math.ceil(need/10)*10 + 20) + '+';
+    var vol = area * 8;
+    document.getElementById('paAch').textContent = vol ? ((need*60)/vol).toFixed(1) : '–';
+    var single = parseFloat(document.getElementById('paSingle').value) || 0;
+    var dual = parseFloat(document.getElementById('paDual').value) || 0;
+    document.getElementById('paOne').textContent = single;
+    document.getElementById('paTwo').textContent = dual*2;
+    var okOne = single >= need, okTwo = dual*2 >= need;
+    document.getElementById('paOneNote').textContent = okOne ? 'covers it ✓' : 'too weak ✗';
+    document.getElementById('paTwoNote').textContent = okTwo ? 'covers it ✓' : 'too weak ✗';
+    document.getElementById('paOneCard').classList.toggle('pa-winner', okOne && single >= dual*2);
+    document.getElementById('paTwoCard').classList.toggle('pa-winner', okTwo && dual*2 > single);
+  }
+  ['paArea','paSingle','paDual'].forEach(function(id){ document.getElementById(id).addEventListener('input', refresh); });
+  document.querySelectorAll('#paPresets button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#paPresets button').forEach(function(x){ x.classList.remove('pa-on'); });
+      b.classList.add('pa-on');
+      document.getElementById('paArea').value = b.getAttribute('data-a');
+      refresh();
+    });
+  });
+  refresh();
+});}
+</script>
+</body>
+</html>
