@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worm Composting Bin Calculator — Worms, Bin Size &amp; Bedding</title>
+<meta name="description" content="Calculate red wiggler worm numbers, bin surface area, and bedding volume from weekly kitchen food waste.">
+<link rel="canonical" href="https://fun.fixoraa.tech/wormbin/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Worm Composting Bin Calculator — Worms, Bin Size &amp; Bedding">
+<meta property="og:description" content="Calculate red wiggler worm numbers, bin surface area, and bedding volume from weekly kitchen food waste.">
+<meta property="og:url" content="https://fun.fixoraa.tech/wormbin/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "WormBin",
+      "url": "https://fun.fixoraa.tech/wormbin/",
+      "applicationCategory": "Garden",
+      "operatingSystem": "Web",
+      "description": "Calculate red wiggler worm numbers, bin surface area, and bedding volume from weekly kitchen food waste.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many worms do I need to start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About five hundred worms per kilogram of weekly food waste, once the bin is established. Start feeding lightly for the first month."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use garden earthworms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Garden earthworms live deep in soil and do poorly in bins. Use red wigglers, Eisenia fetida."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can worms not eat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Avoid meat, dairy, oils, and large amounts of citrus, which cause smells, pests, or harm worms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my worm bin smell?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually overfeeding, too much water, or too little air. Stop feeding, add dry bedding, and fluff gently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I harvest worm castings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Push finished material aside, add fresh bedding and food to the other side, wait for worms to migrate, then remove the finished side."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where should I keep a worm bin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Somewhere sheltered between fifteen and twenty-five degrees, out of direct sun and frost, such as a garage or shed."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#faf6ee; --surface:#ffffff; --accent:#5b3a1e; --accent-ink:#ffffff;
+  --ink:#201a14; --muted:#4d4238; --line:#e0d3bd;
+  --display:'DM Serif Display',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+.layout-grid .wormcards{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1rem} .layout-grid .wormcards span{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.7rem;font-size:.9rem} @media(max-width:640px){.layout-grid .wormcards{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="WormBin home">
+      <span class="fx-logo-tile" aria-hidden="true">🪱</span>
+      <span class="fx-brand">WormBin</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-worm-bed" aria-label="WormBin tool">
+<div class="layout-grid">
+<h1>Worm Composting Bin Calculator</h1>
+<p class="sub">Work out worm numbers, bin size, and bedding from weekly food waste.</p>
+<div class="formcard">
+<label>Suitable food scraps (kg per week)<input id="waste" type="number" value="2" step="1" min="0"></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter weekly scraps to see worm and bin figures.</p></div>
+<div class='wormcards'><span>🐛 Red wigglers</span><span>📰 Shredded bedding</span><span>🥬 Veg scraps only</span></div>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How many worms does a worm bin need?</h2>
+<p>Worm composting, or vermicomposting, turns kitchen scraps into dark, crumbly worm castings that plants love, using red wiggler worms in a ventilated bin. The most common beginner question is how many worms to start with, because too few worms means food rots before it is eaten, and far too many means you have paid for worms you do not need. The honest answer depends on how much food waste your household produces each week. As a planning rule, about five hundred worms can process roughly one kilogram of food waste per week once the bin is established, although a new bin needs a few weeks to build up to full speed. This calculator uses your weekly food waste to estimate worm numbers, bin area, and bedding volume, so you can set up a bin that matches your kitchen rather than guessing.</p>
+<p>Food waste here means fruit and vegetable scraps, coffee grounds, tea bags, and small amounts of bread and grains. It does not mean meat, dairy, oils, or citrus in large amounts, all of which cause smells, attract pests, or harm worms. A typical household of two to four people produces one to three kilograms of suitable scraps per week, though this varies with cooking habits. Weighing your scraps for a week or two gives a far better figure than guessing, and it often surprises people how much peel, cores, and coffee grounds they throw away. If your waste varies a lot, size the bin for your average week, not your biggest week, because worms can catch up after a quiet week, but a bin sized for a feast will sit half empty most of the time.</p>
+<h2>Bin size, bedding, and airflow</h2>
+<p>Bin area follows waste as well. A useful rule is about a quarter of a square metre of surface area per kilogram of weekly waste, because worms feed mostly in the top layer and need surface to work. A bin that is too deep is worse than one that is too shallow, because deep, wet bedding loses oxygen and turns anaerobic, which smells and harms worms. Most worm bins are twenty-five to forty centimetres deep, with drainage holes in the base and air holes near the top. Bedding is the worms' home as well as part of their food. Shredded newspaper, cardboard, and coconut coir make good bedding, dampened to about the wetness of a wrung-out sponge. The calculator suggests about five litres of bedding per kilogram of weekly waste, which gives new worms a comfortable start.</p>
+<p>Worm species matters. Red wigglers, Eisenia fetida, are the standard composting worm because they live in surface organic matter, reproduce quickly, and tolerate the conditions in a bin. Ordinary garden earthworms are not a substitute, because they live deeper in soil and do poorly in a bin environment. Buy worms from a reputable supplier, and expect them to settle for a week or two before feeding heavily. A new bin should be fed lightly at first, with food buried under the bedding, and feeding should increase only as the previous food disappears. Overfeeding is the single most common beginner mistake, and it causes almost every smell, fruit fly, and pest problem in worm bins.</p>
+<h2>Feeding, harvesting, and using castings</h2>
+<p>Feed worms in one area at a time, rotating around the bin, so you can see what has been eaten and what has not. Bury food under bedding to deter fruit flies, and add a handful of crushed eggshell now and then for grit and to balance acidity. Keep the bin in a sheltered spot between about fifteen and twenty-five degrees Celsius, out of direct sun and frost. A garage, shed, or sheltered balcony often works, and an indoor bin under a sink is fine if it does not smell, which a healthy bin should not. Drainage liquid, sometimes called worm tea, can be diluted heavily and used on plants, but it is not the same as the liquid from a purpose-built worm tea brewer, and it should never be used undiluted.</p>
+<p>Harvesting castings takes patience. After three to six months, most of the bedding will have turned into dark, earthy-smelling castings. The simplest harvest is to push finished material to one side, add fresh bedding and food to the other side, and wait a week or two for worms to migrate toward the food, after which the finished side can be removed. Castings can be mixed into potting soil, sprinkled around plants, or steeped in water to make a liquid feed. They improve soil structure, hold moisture, and add gentle nutrients and microbes, which is why gardeners value them far beyond their weight. A healthy bin produces a steady supply, and the worms reproduce to replace any that are lost, so a well-kept bin can run for years.</p>
+<h2>A worked example</h2>
+<p>Take a household producing two kilograms of suitable scraps per week. The calculator suggests about one thousand worms, half a square metre of bin surface, and ten litres of bedding. That is a comfortable starter bin, roughly sixty by eighty centimetres, which fits in most sheds. A larger household producing three and a half kilograms per week needs about 1,750 worms, 0.88 square metres, and 17.5 litres of bedding, which is a bigger bin or two smaller bins. Two smaller bins are often easier to manage than one very large one, because they are easier to move, harvest, and troubleshoot if one goes wrong. Start with the calculator's figures, feed lightly for the first month, and let the worm population grow into the bin.</p>
+<p>Troubleshooting is mostly about balance. A smelly bin usually means too much food, too much water, or too little air, so stop feeding, add dry bedding, and fluff the contents gently. Fruit flies mean exposed food, so bury food deeper and cover the surface with damp newspaper. Worms climbing the walls usually mean conditions inside are too wet, too acidic, or too hot, so check moisture, add crushed eggshell, and move the bin somewhere cooler. Worms are resilient, and most problems recover quickly once feeding and moisture are corrected. The goal is a calm, earthy-smelling bin where food disappears steadily, and the calculator helps you start at the right scale for that calm.</p>
+<h3>Starter guide by weekly waste</h3>
+<table><tr><th>Weekly scraps</th><th>Worms</th><th>Bin surface</th><th>Bedding</th></tr>
+<tr><td>1 kg</td><td>500</td><td>0.25 m²</td><td>5 L</td></tr>
+<tr><td>2 kg</td><td>1,000</td><td>0.50 m²</td><td>10 L</td></tr>
+<tr><td>3.5 kg</td><td>1,750</td><td>0.88 m²</td><td>17.5 L</td></tr>
+<tr><td>5 kg</td><td>2,500</td><td>1.25 m²</td><td>25 L</td></tr></table>
+<ul><li>Feed fruit and vegetable scraps, coffee, and tea, not meat or dairy.</li><li>Start feeding lightly and increase only as food disappears.</li><li>Bury food under bedding to prevent fruit flies.</li><li>Keep bedding as damp as a wrung-out sponge.</li><li>Keep the bin between fifteen and twenty-five degrees.</li><li>Add crushed eggshell occasionally for grit and pH balance.</li></ul>
+<p>Worm composting is one of the most satisfying small-scale recycling projects, because kitchen waste visibly becomes something valuable. Size the bin to your real waste, feed patiently, and the worms will do the rest.</p><p>Once your bin is running well, consider what else it can teach you about waste. Weighing scraps for a month often changes shopping and cooking habits, because you see exactly what gets peeled, trimmed, and thrown away. Vegetable stock from trimmings, smaller peel waste, and better storage all reduce scraps before they reach the bin, which is even better than composting them. The bin then handles the unavoidable remainder, and the castings feed the plants that produce more food. It is a small, visible loop, and watching it work is part of why worm composting keeps people engaged long after the novelty fades.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many worms do I need to start?</summary><p>About five hundred worms per kilogram of weekly food waste, once the bin is established. Start feeding lightly for the first month.</p></details>
+<details><summary>Can I use garden earthworms?</summary><p>No. Garden earthworms live deep in soil and do poorly in bins. Use red wigglers, Eisenia fetida.</p></details>
+<details><summary>What can worms not eat?</summary><p>Avoid meat, dairy, oils, and large amounts of citrus, which cause smells, pests, or harm worms.</p></details>
+<details><summary>Why does my worm bin smell?</summary><p>Usually overfeeding, too much water, or too little air. Stop feeding, add dry bedding, and fluff gently.</p></details>
+<details><summary>How do I harvest worm castings?</summary><p>Push finished material aside, add fresh bedding and food to the other side, wait for worms to migrate, then remove the finished side.</p></details>
+<details><summary>Where should I keep a worm bin?</summary><p>Somewhere sheltered between fifteen and twenty-five degrees, out of direct sun and frost, such as a garage or shed.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">WormBin</div>
+    <p>WormBin sizes a worm composting bin from the food waste your household actually produces.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(waste){if(waste<=0)return{worms:0,area:0,bedding:0};return{worms:Math.round(waste*500),area:Math.round(waste*0.25*100)/100,bedding:Math.round(waste*5*10)/10};}
+function run(){var r=compute(+document.getElementById('waste').value);document.getElementById('result').innerHTML='<p class="big">About '+r.worms+' worms</p><p>Bin surface '+r.area+' m² &middot; bedding '+r.bedding+' litres</p><p class="muted">Feed lightly for the first month while the bin establishes.</p>';window._last='WormBin: about '+r.worms+' worms, '+r.area+' m2 bin, '+r.bedding+' L bedding';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Single person: 1 kg/week',[1]],['Family: 2 kg/week',[2]],['Big kitchen: 3.5 kg/week',[3.5]]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){document.getElementById('waste').value=P[+b.dataset.i][1][0];run();};});
+run();
+</script>
+</body>
+</html>
