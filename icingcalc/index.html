@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IcingCalc: Cake Icing Quantity Calculator - Buttercream, Ganache &amp; Frosting</title>
+<meta name="description" content="Calculate exactly how much buttercream, ganache or cream cheese frosting your cake needs by diameter and layers.">
+<link rel="canonical" href="https://fun.fixoraa.tech/icingcalc/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="IcingCalc: Cake Icing Quantity Calculator - Buttercream, Ganache &amp; Frosting">
+<meta property="og:description" content="Calculate exactly how much buttercream, ganache or cream cheese frosting your cake needs by diameter and layers.">
+<meta property="og:url" content="https://fun.fixoraa.tech/icingcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "IcingCalc",
+      "url": "https://fun.fixoraa.tech/icingcalc/",
+      "applicationCategory": "Food",
+      "operatingSystem": "Web",
+      "description": "Calculate exactly how much buttercream, ganache or cream cheese frosting your cake needs by diameter and layers.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much buttercream do I need for a 20 cm three-layer cake?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 660 g. That covers filling between layers, a crumb coat and a final coat. Add about 10 percent extra if you plan heavy piping."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ganache need more or less than buttercream?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "More by weight: ganache is denser, so allow about 20 percent extra compared with buttercream for the same cake."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a crumb coat and why does it matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A thin first coat that traps crumbs and seals the sponge. Chill it until firm, then apply the final coat for a clean, smooth finish."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I make icing ahead of time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Buttercream keeps a week in the fridge or a month in the freezer. Bring it to room temperature and re-beat before using."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my icing tear the cake?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is probably too cold or the crumb coat was skipped. Use soft, room-temperature icing and always crumb coat first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I scale icing for a much larger cake?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter the real diameter and layer count rather than guessing. Icing grows with diameter and layers, so doubling the cake needs a full recalculation, not a rough double."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FDF2F8; --surface:#FFFFFF; --accent:#9D174D; --accent-ink:#FFFFFF;
+  --ink:#3B0764; --muted:#6B4B5E; --line:#FBCFE8;
+  --display:'Playfair Display',serif; --body:'Nunito',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ic-layers{display:grid;grid-template-columns:220px 1fr;gap:1.4rem}.ic-stack{display:flex;flex-direction:column;gap:.5rem;justify-content:center}.ic-layer{border-radius:14px;padding:1rem;text-align:center;font-weight:700}.ic-layer.l1{background:#FCE7F3;border:2px solid var(--line)}.ic-layer.l2{background:#FBCFE8}.ic-layer.l3{background:#FFF1F2;border:2px dashed var(--accent)}.ic-form{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:1.3rem;display:flex;flex-direction:column;gap:.9rem}.ic-form label{font-weight:600;display:flex;flex-direction:column;gap:.35rem}.ic-form input,.ic-form select{padding:.7rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;min-height:44px}.ic-check{flex-direction:row!important;align-items:center}.ic-go,.ic-copy{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.8rem 1.2rem;font-weight:700;min-height:44px;cursor:pointer;margin-top:.4rem}.ic-result{margin-top:1.2rem;background:#FCE7F3;border-radius:16px;padding:1.4rem}.ic-result .big{font-size:2.2rem;font-weight:800;font-family:var(--display)}.ic-sub{color:var(--muted);margin:.4rem 0 1.2rem}@media(max-width:640px){.ic-layers{grid-template-columns:1fr}.ic-stack{flex-direction:row}.ic-layer{flex:1;padding:.7rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="IcingCalc home">
+      <span class="fx-logo-tile" aria-hidden="true">🎂</span>
+      <span class="fx-brand">IcingCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-frosting-layer" aria-label="IcingCalc tool">
+<h1>IcingCalc: Cake Icing Quantity Calculator</h1><p class="ic-sub">How much buttercream, ganache or cream cheese frosting your cake really needs.</p><div class="ic-layers"><div class="ic-stack" aria-hidden="true"><div class="ic-layer l1">Top coat</div><div class="ic-layer l2">Filling</div><div class="ic-layer l3">Crumb coat</div></div><div class="ic-form"><label>Cake diameter (cm)<input id="diam" type="number" min="0" value="20"></label><label>Layers<select id="layers"><option value="1">1 layer</option><option value="2">2 layers</option><option value="3" selected>3 layers</option><option value="4">4 layers</option></select></label><label>Icing type<select id="type"><option value="1">Buttercream</option><option value="1.2">Chocolate ganache</option><option value="0.9">Cream cheese frosting</option></select></label><label class="ic-check"><input id="pipe" type="checkbox"> Extra 10% for piping decorations</label><button class="ic-go" id="go">Calculate icing</button></div></div><div class="ic-result" id="res"><p>Enter your cake details to see the icing quantity.</p></div><button class="ic-copy" id="copy">Copy shopping list</button>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why icing quantity is so easy to get wrong</h2><p>Running out of icing halfway through decorating a cake is one of the most frustrating moments in baking, because there is no quick fix: a second batch rarely matches the colour or texture of the first, and the cake sits half-finished while you start again. Making far too much is wasteful in a different way, since buttercream is rich, expensive and does not keep forever. The amount you need depends on the cake's diameter, the number of layers, and the type of icing, and most recipe estimates ignore at least one of those factors. IcingCalc brings them together, estimating buttercream, ganache or cream cheese frosting from the actual cake you are decorating, with a sensible split between butter, sugar and chocolate so you can shop and mix with confidence.</p><h2>How the estimate is calculated</h2><p>The calculator starts from a simple, tested rule: each layer of cake needs a base amount of icing plus an amount that grows with the cake's diameter. A wider cake has more top surface to cover and a longer side to coat, so the requirement rises steadily with size. That per-layer figure is multiplied by the number of layers, because every layer adds a filling coat as well as its share of the outer coat. Finally, a factor adjusts for the icing type: ganache is denser and heavier, so it needs about twenty percent more by weight, while cream cheese frosting spreads a little further and needs about ten percent less. The result is a total weight in grams, which is the most reliable unit for icing, far better than vague cup measurements.</p><h2>Choosing buttercream, ganache or cream cheese frosting</h2><p>American buttercream, made from butter and icing sugar, is the most forgiving choice for beginners: it pipes well, holds its shape, and takes colour easily. Ganache, made from chocolate and cream, gives a smooth, professional finish and a rich flavour, but it is heavier and sets firm, so it suits celebration cakes that will be served at room temperature rather than straight from the fridge. Cream cheese frosting is softer and tangier, perfect for carrot cake and red velvet, but it does not hold piped detail as crisply and it must be kept cool. Whichever type you choose, bring butter to cool room temperature before beating, sift the icing sugar to avoid lumps, and beat the finished icing for a few extra minutes for a lighter, whiter result.</p><h2>Step by step: using IcingCalc for your cake</h2><p>Enter the diameter of your cake layers, the number of layers, and the icing type. The calculator returns the total icing weight plus a simple ingredient split: for buttercream, roughly one part butter to two parts icing sugar by weight, with a splash of milk or cream to reach spreading consistency. Weigh the butter and sugar rather than scooping them, because icing sugar compacts easily and cup measures vary wildly. Mix the full amount in one batch, even if it feels like a lot, because a single batch guarantees one consistent colour and texture. If you plan to pipe elaborate decorations, add about ten percent extra; a smooth, simple finish needs no extra at all.</p><h2>Crumb coats, final coats and decoration</h2><p>Professional-looking cakes are iced in two stages. First comes the crumb coat, a thin layer that traps loose crumbs and seals the surface; it uses only a small share of your total icing. Chill the crumb-coated cake for twenty to thirty minutes until the coat is firm to the touch. Then apply the final coat generously and smooth it with a palette knife or bench scraper, turning the cake on a stand if you have one. Reserve a little icing at the end for the top border or simple piping, rather than using every gram on the sides. If the icing tears or drags crumbs into the final coat, the crumb coat was too thin or not chilled long enough, so chill again and add a fresh, thin layer.</p><h2>Common icing mistakes and how to avoid them</h2><p>The most common mistake is underestimating for tall or multi-layer cakes, where each extra layer adds a full filling coat, not just a little more on the outside. Another is forgetting that a cake filled with jam or fruit needs less icing between layers, while a cake with thick buttercream filling needs more. Icing that is too cold will tear the sponge, while icing that is too warm will slide off the sides, so aim for a soft, spreadable consistency at cool room temperature. Over-beating cream cheese frosting can make it runny, so beat it only until smooth. Finally, colour icing gradually: deep colours darken as they rest, so stop a shade lighter than your target and check again after ten minutes.</p><h2>Storing, scaling and making ahead</h2><p>Buttercream keeps well: up to a week in the fridge or a month in the freezer, brought back to room temperature and re-beaten before use. Ganache also keeps in the fridge and can be gently rewarmed, but do not overheat it or the chocolate may seize. Cream cheese frosting is the most perishable and should be refrigerated promptly and used within a few days. When scaling a recipe for a party, it is almost always better to make one large batch than two small ones, for consistency of colour and texture. IcingCalc scales cleanly, so if you double the cake, double the layers in the calculator rather than guessing, and check that your mixer bowl can actually hold the full batch.</p><h2>Tips for a flawless finish</h2><p>Level each layer with a long serrated knife before stacking, so the finished cake stands straight and the icing thickness stays even. Brush away loose crumbs before the crumb coat, and work with the cake on a board that is slightly larger than the cake itself. Keep a hot, dry palette knife nearby for smoothing: dip it in hot water, wipe it dry, and glide it over the surface for a sharp finish. Remember that a good icing job is mostly patience, not speed. Measure with IcingCalc, mix one consistent batch, crumb coat and chill, then finish slowly, and the cake you imagined is the cake you will serve.</p><h2>Colouring, flavouring and fixing icing problems</h2><p>Colour and flavour turn a correct quantity of icing into a cake that looks and tastes intentional. Add flavourings, such as vanilla, lemon zest or cocoa, a little at a time and taste as you go, because icing magnifies strong flavours and it is easy to overshoot. For chocolate buttercream, replace part of the icing sugar with sifted cocoa rather than adding cocoa on top, or the icing will become too sweet and stiff. Colour with gel or paste colours, not liquid food colouring, which thins the icing and dulls the shade. If icing becomes too soft on a warm day, chill it briefly and re-beat it; if it becomes grainy, beat in a tablespoon of warm cream and keep beating until it smooths out. If it curdles, which sometimes happens with butter that was too cold, keep beating: most buttercreams come together with patience and a few minutes of steady mixing. A cake iced with the right amount, the right consistency and a calm hand will always look better than a cake iced in a hurry with twice as much.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much buttercream do I need for a 20 cm three-layer cake?</summary><p>About 660 g. That covers filling between layers, a crumb coat and a final coat. Add about 10 percent extra if you plan heavy piping.</p></details>
+<details><summary>Does ganache need more or less than buttercream?</summary><p>More by weight: ganache is denser, so allow about 20 percent extra compared with buttercream for the same cake.</p></details>
+<details><summary>What is a crumb coat and why does it matter?</summary><p>A thin first coat that traps crumbs and seals the sponge. Chill it until firm, then apply the final coat for a clean, smooth finish.</p></details>
+<details><summary>Can I make icing ahead of time?</summary><p>Yes. Buttercream keeps a week in the fridge or a month in the freezer. Bring it to room temperature and re-beat before using.</p></details>
+<details><summary>Why does my icing tear the cake?</summary><p>It is probably too cold or the crumb coat was skipped. Use soft, room-temperature icing and always crumb coat first.</p></details>
+<details><summary>How do I scale icing for a much larger cake?</summary><p>Enter the real diameter and layer count rather than guessing. Icing grows with diameter and layers, so doubling the cake needs a full recalculation, not a rough double.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">IcingCalc</div>
+    <p>IcingCalc estimates icing by cake size, layers and type, with a butter and sugar split for shopping.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function computeIcing(diam,layers,factor,extra){if(!(diam>0)||!(layers>0))return{total:0,butter:0,sugar:0};var t=layers*(100+diam*6)*factor;if(extra)t*=1.1;return{total:Math.round(t),butter:Math.round(t*0.33),sugar:Math.round(t*0.67)};}
+function render(){var d=+document.getElementById('diam').value,l=+document.getElementById('layers').value,f=+document.getElementById('type').value,e=document.getElementById('pipe').checked;var r=computeIcing(d,l,f,e);if(!r.total){document.getElementById('res').innerHTML='<p>Enter a cake diameter above zero.</p>';return;}document.getElementById('res').innerHTML='<p class="big">'+r.total+' g icing</p><p>Butter about '+r.butter+' g &middot; Icing sugar about '+r.sugar+' g</p><p>That covers a crumb coat, filling and final coat for a '+d+' cm, '+l+'-layer cake.</p>';}
+document.getElementById('go').addEventListener('click',render);
+document.getElementById('copy').addEventListener('click',function(){var t=document.getElementById('res').innerText;navigator.clipboard&&navigator.clipboard.writeText(t);});
+render();
+</script>
+</body>
+</html>
