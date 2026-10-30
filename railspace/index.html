@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baluster Spacing Calculator — 4-Inch Rule Railing Layout | RailSpace</title>
+<meta name="description" content="Baluster spacing calculator: get baluster count, even gaps and on-center layout that pass the 4-inch code rule, with diagram and cut list. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/railspace/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Baluster Spacing Calculator — 4-Inch Rule Railing Layout | RailSpace">
+<meta property="og:description" content="Baluster spacing calculator: get baluster count, even gaps and on-center layout that pass the 4-inch code rule, with diagram and cut list. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/railspace/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RailSpace",
+      "url": "https://fun.fixoraa.tech/railspace/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Baluster spacing calculator: get baluster count, even gaps and on-center layout that pass the 4-inch code rule, with diagram and cut list. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How far apart should deck balusters be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Building code (IRC/IBC) requires that a 4-inch-diameter sphere cannot pass through any opening in a guard railing \u2014 a child-safety rule. In practice, aim for 3.5\u20133.875 inches of clear gap to leave margin for wood movement and imperfect installation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate how many balusters I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Balusters = round up((clear length \u2212 max gap) \u00f7 (baluster width + max gap)). Rounding up guarantees the actual gap lands under the maximum. Then actual gap = (length \u2212 balusters \u00d7 width) \u00f7 (balusters + 1), and on-center spacing = gap + width. The tool computes all three plus a code verdict."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is on-center baluster spacing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On-center (OC) spacing is measured from the center of one baluster to the center of the next, and equals the clear gap plus one baluster width. If your gap is 3.75 in and balusters are 1.5 in wide, OC spacing is 5.25 in \u2014 the number you actually mark on the rails."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do stair railings use the same spacing rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 4-inch sphere rule still applies, but gaps are measured horizontally, not along the slope. The IRC also allows up to 4\u215c inches on the open side of stair stringers. Measure the horizontal run between posts and let the tool apply the stair preset."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many balusters should I buy for a whole deck?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add up every section separately (each gets its own even layout), then add ~10% waste for miscuts and twisted stock. Budget two fasteners per baluster end, buy from one batch, and sight down each baluster before installing. The section totalizer above builds the full shopping list."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How high does a deck railing need to be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The IRC requires a minimum 36-inch guard height for residential decks (measured from the deck surface to the top of the rail); the IBC requires 42 inches for commercial. Stair handrails sit 34\u201338 inches above the nosing line. Always confirm with your local building department."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F6F4EF; --surface:#FFFFFF; --accent:#1F4E5F; --accent-ink:#FFFFFF;
+  --ink:#2B2620; --muted:#665E52; --line:#E2DACA;
+  --display:'Zilla Slab',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.rs-page{font-family:'Inter',system-ui,sans-serif;background:#F6F4EF;color:#2B2620;padding:56px 16px 72px;}.rs-wrap{max-width:1060px;margin:0 auto;}.rs-kicker{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;align-items:baseline;}.rs-kicker .sk{font-family:'Zilla Slab',serif;font-size:21px;font-weight:700;color:#1F4E5F;}.rs-kicker .pg{font-size:12.5px;color:#665E52;font-style:italic;}.rs-wrap h1{font-family:'Zilla Slab',serif;font-size:clamp(32px,4.4vw,48px);margin:0 0 6px;letter-spacing:-.01em;}.rs-tag{color:#665E52;font-size:17px;margin:0 0 26px;}.rs-ruler{height:34px;border:1px solid #E2DACA;border-radius:8px;background:repeating-linear-gradient(90deg,#1F4E5F 0 2px,transparent 2px 24px),repeating-linear-gradient(90deg,rgba(31,78,95,.4) 0 1px,transparent 1px 12px),#FFFDF8;background-size:100% 16px,100% 10px;background-position:bottom;background-repeat:repeat-x;margin-bottom:22px;position:relative;}.rs-ruler span{position:absolute;top:2px;left:10px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#665E52;font-weight:700;}.rs-grid{display:grid;grid-template-columns:380px 1fr;gap:22px;align-items:start;}@media(max-width:900px){.rs-grid{grid-template-columns:1fr;}}.rs-card{background:#fff;border:1px solid #E2DACA;border-radius:16px;padding:26px;box-shadow:0 14px 32px rgba(43,38,32,.07);}.rs-card h2{font-family:'Zilla Slab',serif;font-size:23px;margin:0 0 4px;}.rs-card .sub{color:#665E52;font-size:13.5px;margin:0 0 18px;}.rs-field{margin-bottom:14px;}.rs-field label{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#665E52;margin-bottom:7px;}.rs-field input,.rs-field select{width:100%;font-family:inherit;font-size:17px;padding:11px 14px;border:2px solid #E2DACA;border-radius:10px;background:#fff;color:#2B2620;}.rs-field input:focus,.rs-field select:focus{outline:none;border-color:#1F4E5F;}.rs-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}.rs-presets{display:flex;flex-wrap:wrap;gap:8px;}.rs-presets button{border:2px solid #E2DACA;background:#fff;border-radius:999px;padding:8px 15px;font-size:13.5px;font-weight:600;cursor:pointer;color:#665E52;font-family:inherit;}.rs-presets button.on{border-color:#1F4E5F;background:#1F4E5F;color:#fff;}.rs-verdict{margin-top:18px;border-radius:14px;padding:18px;text-align:center;}.rs-verdict.pass{background:#EDF6EF;border:2px solid #2F6B3A;}.rs-verdict.fail{background:#FBEFEC;border:2px solid #B3402E;}.rs-verdict .v{font-family:'Zilla Slab',serif;font-size:26px;font-weight:700;}.rs-verdict.pass .v{color:#2F6B3A;}.rs-verdict.fail .v{color:#B3402E;}.rs-verdict .n{font-size:14.5px;margin-top:6px;line-height:1.6;color:#2B2620;}.rs-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;}.rs-stat div{background:#F6F4EF;border:1px solid #E2DACA;border-radius:10px;padding:12px;text-align:center;}.rs-stat .n{font-family:'Zilla Slab',serif;font-size:24px;font-weight:700;color:#1F4E5F;}.rs-stat .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#665E52;font-weight:700;margin-top:2px;}.rs-svgwrap{background:#FDFCFA;border:1px solid #E2DACA;border-radius:12px;padding:10px;margin-top:4px;}.rs-svgwrap svg{width:100%;height:auto;display:block;}.rs-strip{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;}@media(max-width:900px){.rs-strip{grid-template-columns:1fr;}}.rs-table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:10px;}.rs-table th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#665E52;padding:8px;border-bottom:2px solid #E2DACA;}.rs-table td{padding:9px 8px;border-bottom:1px solid #E2DACA;}.rs-addrow{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-top:12px;}.rs-btn{background:#1F4E5F;color:#fff;border:none;border-radius:10px;padding:11px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}.rs-btn:hover{filter:brightness(1.1);}.rs-btn.ghost{background:transparent;color:#1F4E5F;border:2px solid #1F4E5F;}.rs-marks{margin:10px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;max-height:260px;overflow:auto;}.rs-marks li{background:#F6F4EF;border:1px solid #E2DACA;border-radius:8px;padding:8px 12px;font-size:13.5px;font-family:'Zilla Slab',serif;}.rs-marks li b{color:#1F4E5F;}.rs-mono{font-family:'Zilla Slab',serif;letter-spacing:.02em;}@media(max-width:640px){.rs-ruler span{display:none;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="RailSpace home">
+      <span class="fx-logo-tile" aria-hidden="true">📐</span>
+      <span class="fx-brand">RailSpace</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-field-notes" aria-label="RailSpace tool">
+<section class='rs-page'><div class='rs-wrap'><div class='rs-kicker'><span class='sk'>Job card nº 05 — railing layout</span><span class='pg'>carpenter's notebook · measure twice</span></div><h1>Baluster Spacing Calculator</h1><p class='rs-tag'>Even gaps, code-passing math — mark it once, cut it right.</p><div class='rs-ruler'><span>field ruler — clear opening, post face to post face</span></div><div class='rs-grid'><div class='rs-card'><h2>The cut list</h2><p class='sub'>One railing section at a time — clear opening only.</p><div class='rs-field'><label for='rs-len'>Clear opening (inches)</label><input type='number' id='rs-len' value='72' min='1' step='0.5' inputmode='decimal'></div><div class='rs-2col'><div class='rs-field'><label for='rs-w'>Baluster width (in)</label><select id='rs-w'><option value='1.5' selected>1.5 — finished 2×2</option><option value='2'>2 — chunky square</option><option value='1'>1 — slim metal</option><option value='2.5'>2.5 — turned wood</option></select></div><div class='rs-field'><label for='rs-max'>Max gap (in)</label><input type='number' id='rs-max' value='4' min='1' max='8' step='0.125' inputmode='decimal'></div></div><div class='rs-field'><label>Code preset</label><div class='rs-presets' id='rs-presets'><button type='button' data-g='4' class='on'>IRC 4″</button><button type='button' data-g='4.375'>Stair 4⅜″</button><button type='button' data-g='3.937'>UK/CA 100mm</button></div></div><div class='rs-verdict pass' id='rs-verdict'><div class='v' id='rs-v'>–</div><div class='n' id='rs-n'></div></div><div class='rs-stat'><div><div class='n' id='rs-count'>–</div><div class='k'>Balusters</div></div><div><div class='n' id='rs-gap'>–</div><div class='k'>Actual gap</div></div><div><div class='n' id='rs-oc'>–</div><div class='k'>On-center</div></div></div></div><div class='rs-card'><h2>Elevation</h2><p class='sub'>Drawn to scale from your numbers — posts, gaps and centers.</p><div class='rs-svgwrap'><svg id='rs-svg' viewBox='0 0 720 250' role='img' aria-label='Railing elevation diagram'></svg></div><p class='sub' style='margin-top:10px'>Mark the <span class='rs-mono'>on-center</span> positions on top and bottom rails, starting from the same post. First center sits one gap + half a baluster off the post face.</p></div></div><div class='rs-strip'><div class='rs-card'><h2>Section totalizer</h2><p class='sub'>Every run gets its own even layout — then one shopping list.</p><table class='rs-table'><thead><tr><th>Section</th><th>Length</th><th>Balusters</th><th>Gap</th><th></th></tr></thead><tbody id='rs-rows'></tbody></table><div class='rs-addrow'><div class='rs-field' style='margin:0'><label for='rs-sname'>Name</label><input type='text' id='rs-sname' value='Front run' style='width:150px'></div><div class='rs-field' style='margin:0'><label for='rs-slen'>Length (in)</label><input type='number' id='rs-slen' value='96' min='1' step='0.5' style='width:110px'></div><button class='rs-btn' id='rs-add' type='button'>+ Add section</button></div><div class='rs-verdict pass' style='margin-top:16px'><div class='v' id='rs-totalv'>–</div><div class='n' id='rs-totaln'></div></div></div><div class='rs-card'><h2>Marking guide</h2><p class='sub'>Baluster center positions from the post face, in order.</p><ul class='rs-marks' id='rs-marks'></ul><div style='margin-top:12px'><button class='rs-btn ghost' id='rs-print' type='button'>Print job card</button></div></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The 4-Inch Rule: Why Baluster Spacing Is a Safety Calculation</h2><p>Baluster spacing is not a style choice — it is a building code requirement with a child's head as the unit of measurement. The International Residential Code (IRC) requires that a <strong>4-inch sphere must not pass through any opening</strong> in a guard railing. The number comes from child safety research: a 4-inch opening is small enough that a small child's head cannot pass through and get trapped. Decks, porches and landings more than 30 inches above grade need guards, and every gap in those guards — between balusters, between the bottom rail and the deck, everywhere — must respect the sphere rule.</p><p>In practice, professionals do not aim for exactly 4 inches. Wood moves with humidity, installation is never perfect, and an inspector's tape measure is unforgiving. Most builders target <strong>3.5 to 3.875 inches</strong> of clear gap, leaving a margin that absorbs swelling, shrinkage and slightly imperfect cuts. This tool defaults to a 4-inch maximum but computes your <em>actual</em> gap from even distribution — which, done right, lands comfortably under the limit with room to spare.</p><h2>The Math: Even Gaps From One Formula</h2><p>The layout problem: distribute balusters across a railing section so every gap is identical and none exceeds the maximum. The method: <strong>balusters = round up((length − max gap) ÷ (baluster width + max gap))</strong>. Rounding up is the load-bearing step — it guarantees the resulting actual gap comes in <em>under</em> your maximum rather than over it. Then <strong>actual gap = (length − balusters × width) ÷ (balusters + 1)</strong>, because balusters divide the opening into one more segment than there are balusters, and <strong>on-center spacing = gap + baluster width</strong>, which is the number you actually mark with a tape measure.</p><p>A worked example: a 72-inch railing section with standard 1.5-inch balusters (a finished 2×2) and a 4-inch maximum. Balusters = ceil((72 − 4) ÷ 5.5) = ceil(12.36) = 13. Actual gap = (72 − 19.5) ÷ 14 = 3.75 inches — safely under 4. On-center = 5.25 inches. Mark the first baluster center at gap + half the baluster width from the post face, then every 5.25 inches after that, and the layout lands perfectly even with equal gaps at both posts.</p><h2>Measure the Right Length</h2><p>The length in the formula is the <strong>clear opening between post faces</strong>, not the overall railing length and not the deck edge. Measure inside face to inside face of the posts (or wall) at the height the balusters will sit. Measure twice — a quarter inch of error across a long run shifts every gap. For stair railings, measure the <em>horizontal</em> run, not the distance along the slope: the code gap is measured horizontally, and a gap that looks right along the angled rail can fail when measured level. Stair guards also get a small mercy in the code: the IRC allows up to a 4⅜-inch sphere on the open side of stair stringers, and a 6-inch sphere in the triangle formed by tread, riser and bottom rail.</p><h2>Code Presets: US, Stairs, UK and Canada</h2><p>The tool ships with the common standards built in. <strong>IRC residential (US):</strong> 4-inch maximum, minimum 36-inch rail height. <strong>IBC commercial (US):</strong> 4-inch maximum, 42-inch minimum height. <strong>Stair open side (IRC):</strong> 4⅜ inches. <strong>UK and Canada:</strong> 100 mm (3.94 inches), minimum 900 mm rail height. These are starting points, not permits — local jurisdictions can and do go stricter, especially for commercial work and multi-family housing. A five-minute call to the local building department before you buy lumber is the cheapest insurance in the project.</p><h2>Marking the Layout on the Rails</h2><p>Do the math once, then transfer it to wood. The reliable method: mark the <strong>on-center positions</strong> on both the top and bottom rails, starting from one post. First center = one gap + half a baluster width from the post face; every center after that = previous + on-center spacing. Use a sharp pencil or a marking knife (knife lines are more precise and guide the saw), and mark an X on the waste side of every line. Work from the same end on both rails so the balusters stand plumb. For long runs, snap a chalk line or clamp a straightedge and transfer all marks at once rather than walking the tape down the rail — cumulative tape-walk error is how the last gap ends up wrong. The tool's marking guide lists every center position for your section so you can work down the list without re-dividing anything in your head.</p><h2>Buying: The Cut List and Waste Factor</h2><p>Count every section of railing separately — deck perimeters are rarely one clean run; posts, gates and stairs break them into sections of different lengths, and each section gets its own even layout. The multi-section totalizer in this tool adds them up into one shopping list. Then add <strong>10 percent waste</strong>: balusters get miscut, a few arrive twisted, and stain-grade lumber has a reject rate. For fasteners, budget two screws or nails per baluster end (top and bottom), and if you are toe-screwing, pre-drill — splitting a 2×2 at the last hole of the day is a rite of passage nobody enjoys twice. Buy all balusters from the same batch and sight down each one before it goes in; a twisted baluster telegraphs through the whole railing line.</p><h2>Installation Tips From the Field</h2><p>Install the bottom rail first, level and at the right height above the deck — most codes also limit the opening under the bottom rail to 4 inches, so do not float it high for a "modern look" without checking. Set balusters plumb with a small level every few pieces; a single leaning baluster throws off the eye for the whole run. Work outward from the center of each section toward the posts, or post-to-post with the computed even gaps — either way, dry-fit the whole section before driving fasteners. Leave a hair of clearance (a sixteenth) between baluster ends and rails for expansion, and seal end grain before assembly — end grain drinks water and rots first. If you are staining, stain all six sides of every baluster <em>before</em> installation; the hidden faces are where rot starts.</p><h2>Common Failures and How to Avoid Them</h2><p><strong>Uneven end gaps:</strong> caused by starting layout from the middle or measuring from the wrong face. Always start from a post face with the computed first-center offset. <strong>Gaps creeping over 4 inches:</strong> caused by rounding the baluster count <em>down</em> instead of up, or by measuring the full deck length instead of the clear opening. <strong>Racking on stairs:</strong> balusters cut square for level rails will not sit right on a sloped rail — cut the ends at the stair angle. <strong>Ignoring the bottom opening:</strong> the 4-inch sphere rule applies under the bottom rail too. <strong>Forgetting gates:</strong> a gate is a railing section with hinges; its balusters follow the same math, and the latch side needs the same gap discipline.</p><p>A final field habit worth adopting: after the last baluster is in, walk the run with a 4-inch ball, a block of wood, or even a soda can (roughly 2.6 inches — well under the limit, a deliberately strict check). If it cannot pass anywhere, neither can an inspector's objection.</p><h2>When to Call It In</h2><p>A single straight deck section is a confident DIY project. Call a professional when the railing turns corners with compound angles, when stairs meet landings in three dimensions, when the deck is high enough that a failure means a real fall (anything above about 6 feet deserves extra respect), or when the inspector has already flagged a previous attempt. There is no shame in it — railing is life-safety carpentry, and the code exists because the failure mode is a person falling.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How far apart should deck balusters be?</summary><p>Building code (IRC/IBC) requires that a 4-inch-diameter sphere cannot pass through any opening in a guard railing — a child-safety rule. In practice, aim for 3.5–3.875 inches of clear gap to leave margin for wood movement and imperfect installation.</p></details>
+<details><summary>How do I calculate how many balusters I need?</summary><p>Balusters = round up((clear length − max gap) ÷ (baluster width + max gap)). Rounding up guarantees the actual gap lands under the maximum. Then actual gap = (length − balusters × width) ÷ (balusters + 1), and on-center spacing = gap + width. The tool computes all three plus a code verdict.</p></details>
+<details><summary>What is on-center baluster spacing?</summary><p>On-center (OC) spacing is measured from the center of one baluster to the center of the next, and equals the clear gap plus one baluster width. If your gap is 3.75 in and balusters are 1.5 in wide, OC spacing is 5.25 in — the number you actually mark on the rails.</p></details>
+<details><summary>Do stair railings use the same spacing rules?</summary><p>The 4-inch sphere rule still applies, but gaps are measured horizontally, not along the slope. The IRC also allows up to 4⅜ inches on the open side of stair stringers. Measure the horizontal run between posts and let the tool apply the stair preset.</p></details>
+<details><summary>How many balusters should I buy for a whole deck?</summary><p>Add up every section separately (each gets its own even layout), then add ~10% waste for miscuts and twisted stock. Budget two fasteners per baluster end, buy from one batch, and sight down each baluster before installing. The section totalizer above builds the full shopping list.</p></details>
+<details><summary>How high does a deck railing need to be?</summary><p>The IRC requires a minimum 36-inch guard height for residential decks (measured from the deck surface to the top of the rail); the IBC requires 42 inches for commercial. Stair handrails sit 34–38 inches above the nosing line. Always confirm with your local building department.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RailSpace</div>
+    <p>RailSpace spaces deck balusters to code — even gaps, on-center layout, the 4-inch sphere rule — with a measured elevation diagram, multi-section totalizer and marking guide.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function balusterLayout(lengthIn,balusterW,maxGap){var n=Math.ceil((lengthIn-maxGap)/(balusterW+maxGap));if(n<0)n=0;var gaps=n+1;var gap=(lengthIn-n*balusterW)/gaps;return{count:n,gap:gap,onCenter:gap+balusterW,ok:gap<=maxGap+1e-9};}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var lenEl=document.getElementById('rs-len'),wEl=document.getElementById('rs-w'),maxEl=document.getElementById('rs-max');var svg=document.getElementById('rs-svg');if(!lenEl||!svg)return;function num(el,fb){var v=parseFloat(el.value);return isNaN(v)?fb:v;}function cur(){return balusterLayout(num(lenEl,72),parseFloat(wEl.value),num(maxEl,4));}function r1(x){return Math.round(x*100)/100;}function draw(){var L=num(lenEl,72),w=parseFloat(wEl.value);var r=cur();var s='';var W=720,H=250,pad=40;var sc=(W-2*pad)/L;function X(i){return pad+i*sc;}var railY=40,botY=210;s+='<rect x="'+(X(0)-14)+'" y="'+(railY-34)+'" width="28" height="'+(botY-railY+68)+'" fill="#8A6F4D"/>';s+='<rect x="'+(X(L)-14)+'" y="'+(railY-34)+'" width="28" height="'+(botY-railY+68)+'" fill="#8A6F4D"/>';s+='<rect x="'+(X(0)-20)+'" y="'+(railY-30)+'" width="'+(L*sc+40)+'" height="18" fill="#A9885E" stroke="#2B2620" stroke-width="1.5"/>';s+='<rect x="'+(X(0)-20)+'" y="'+botY+'" width="'+(L*sc+40)+'" height="18" fill="#A9885E" stroke="#2B2620" stroke-width="1.5"/>';for(var i=0;i<r.count;i++){var cx=X(r.gap+w/2+i*(w+r.gap));s+='<rect x="'+(cx-w*sc/2)+'" y="'+(railY-12)+'" width="'+(w*sc)+'" height="'+(botY-railY+12)+'" fill="#D9C49A" stroke="#2B2620" stroke-width="1.2"/>';}s+='<text x="'+(W/2)+'" y="'+(H-8)+'" font-size="12" fill="#665E52" text-anchor="middle">clear opening '+r1(L)+' in · '+r.count+' balusters · gap '+r1(r.gap)+' in · on-center '+r1(r.onCenter)+' in</text>';svg.innerHTML=s;}function verdict(){var r=cur();var v=document.getElementById('rs-verdict');v.className='rs-verdict '+(r.ok?'pass':'fail');document.getElementById('rs-v').textContent=r.ok?'✓ Passes the '+r1(num(maxEl,4))+'″ rule':'✗ Gap too wide';document.getElementById('rs-n').textContent=r.ok?('Even '+r1(r.gap)+'″ gaps — a '+(r1(num(maxEl,4))-r1(r.gap)).toFixed(2)+'″ safety margin under the maximum.'):'Add balusters (or lower the max gap) until every gap is at or under the limit.';document.getElementById('rs-count').textContent=r.count;document.getElementById('rs-gap').textContent=r1(r.gap)+'″';document.getElementById('rs-oc').textContent=r1(r.onCenter)+'″';var marks=document.getElementById('rs-marks');var h='';var L=num(lenEl,72),w=parseFloat(wEl.value);for(var i=0;i<r.count;i++){var pos=r.gap+w/2+i*(w+r.gap);h+='<li>Center <b>#'+(i+1)+'</b> — '+r1(pos)+'″</li>';}marks.innerHTML=h||'<li>No balusters needed for this opening.</li>';draw();}var sections=[];function totals(){var tb=document.getElementById('rs-rows');var h='';var tot=0;sections.forEach(function(sc,idx){var r=balusterLayout(sc.len,parseFloat(wEl.value),num(maxEl,4));tot+=r.count;h+='<tr><td>'+sc.name+'</td><td>'+r1(sc.len)+'″</td><td>'+r.count+'</td><td>'+r1(r.gap)+'″</td><td><button class="rs-btn ghost" style="padding:4px 12px;font-size:13px" data-i="'+idx+'" type="button">×</button></td></tr>';});tb.innerHTML=h||'<tr><td colspan="5" style="color:#665E52">No sections yet — add your railing runs above.</td></tr>';var btns=tb.querySelectorAll('button');btns.forEach(function(b){b.addEventListener('click',function(){sections.splice(+b.getAttribute('data-i'),1);totals();});});var buy=Math.ceil(tot*1.1);document.getElementById('rs-totalv').textContent=sections.length?(tot+' balusters'):'–';document.getElementById('rs-totaln').textContent=sections.length?('Buy '+buy+' with 10% waste · '+(buy*2)+' fasteners (2 per end).'):'Add sections to build the shopping list.';}document.getElementById('rs-add').addEventListener('click',function(){var nm=document.getElementById('rs-sname').value||'Section '+(sections.length+1);sections.push({name:nm.replace(/</g,''),len:num(document.getElementById('rs-slen'),96)});document.getElementById('rs-sname').value='';totals();});var pres=document.querySelectorAll('#rs-presets button');pres.forEach(function(b){b.addEventListener('click',function(){pres.forEach(function(x){x.classList.remove('on');});b.classList.add('on');maxEl.value=b.getAttribute('data-g');verdict();totals();});});[lenEl,wEl,maxEl].forEach(function(el){el.addEventListener('input',function(){pres.forEach(function(x){x.classList.remove('on');});verdict();});});document.getElementById('rs-print').addEventListener('click',function(){window.print();});verdict();totals();});}
+</script>
+</body>
+</html>
