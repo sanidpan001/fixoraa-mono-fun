@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gelatin Calculator — Sheets &amp; Powder by Liquid Volume and Firmness</title>
+<meta name="description" content="Calculate how much gelatin powder or sheets you need for any liquid volume and firmness, from soft panna cotta to firm jelly.">
+<link rel="canonical" href="https://fun.fixoraa.tech/gelatinset/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Gelatin Calculator — Sheets &amp; Powder by Liquid Volume and Firmness">
+<meta property="og:description" content="Calculate how much gelatin powder or sheets you need for any liquid volume and firmness, from soft panna cotta to firm jelly.">
+<meta property="og:url" content="https://fun.fixoraa.tech/gelatinset/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GelatinSet",
+      "url": "https://fun.fixoraa.tech/gelatinset/",
+      "applicationCategory": "Food",
+      "operatingSystem": "Web",
+      "description": "Calculate how much gelatin powder or sheets you need for any liquid volume and firmness, from soft panna cotta to firm jelly.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much gelatin do I need per cup of liquid?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a soft set like panna cotta, about 1.5 g per 100 ml, or roughly 3.6 g per cup. For a firm jelly, about 2 g per 100 ml, or 5 g per cup."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many gelatin sheets equal one teaspoon of powder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One sheet, about 2 g, equals roughly two-thirds of a teaspoon of powder. Three teaspoons of powder are about 9 g, or four to five sheets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to bloom gelatin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes for both sheets and powder. Soak in cold water for about five minutes until soft, then melt gently into warm liquid. Skipping blooming causes lumps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you boil gelatin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Boiling weakens gelatin and can stop it setting properly. Melt it gently below a simmer and stir until dissolved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did my jelly not set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common causes are too little gelatin, boiling the gelatin, very acidic fruit like fresh pineapple or papaya, or not chilling long enough. Chill at least four hours, ideally overnight."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does fresh pineapple stop gelatin setting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Fresh pineapple, papaya, kiwi, and mango contain enzymes that break down gelatin. Cooked or canned versions are safe because heat destroys the enzymes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use gelatin with dairy and alcohol?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with care. Dairy sets well with gelatin, and small amounts of alcohol are fine, but large amounts of alcohol slow setting, so add a little extra gelatin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert a recipe from sheets to powder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Weigh the sheets if you can: one sheet is about 2 g. If a recipe calls for five sheets, use about 10 g of powder, or roughly three teaspoons."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fdf2f8; --surface:#ffffff; --accent:#9d174d; --accent-ink:#ffffff;
+  --ink:#331527; --muted:#7a3a5a; --line:#eec9dc;
+  --display:'Playfair Display',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+.hist{margin-top:1rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.1rem}
+.hist h3{font-size:1rem;margin-bottom:.4rem} .hist ul{padding-left:1.2rem;color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}.formcard,.resultcard{padding:.9rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="GelatinSet home">
+      <span class="fx-logo-tile" aria-hidden="true">🍮</span>
+      <span class="fx-brand">GelatinSet</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-gelatin-set" aria-label="GelatinSet tool">
+<div class="layout"><h1>Gelatin Calculator</h1><p class="sub">Work out gelatin powder or sheets for any liquid volume and firmness.</p><div class="formcard"><label>Liquid volume (ml)<input id="ml" type="number" value="500" step="any" min="0"></label><label>Firmness<select id="firm"><option value="1.5">Soft — panna cotta, mousse</option><option value="2" selected>Firm — jelly, gummies</option><option value="3">Extra firm — moulded desserts</option></select></label><div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div><div class="presets" id="presets"></div></div><div class="resultcard" id="result" aria-live="polite"><p>Enter your values to see the result.</p></div><div class="hist"><h3>Recent calculations</h3><ul id="histList"></ul></div><p class="muted">Tip: one standard gelatin sheet weighs about 2 g — the calculator rounds sheets up so you never under-set.</p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why gelatin amounts feel confusing</h2>
+<p>Gelatin recipes are confusing because they switch between sheets, teaspoons, grams, leaves, and sachets, often in the same book. A recipe that calls for four leaves leaves a cook with powder wondering how much to use, and a recipe in teaspoons leaves a cook with sheets guessing. The fix is to think in grams and percentages. Gelatin works as a percentage of liquid weight: a soft set needs about one and a half percent, a firm jelly about two percent, and a moulded dessert that must stand up on a plate needs about three percent. Once you know your liquid volume and your target firmness, the grams follow, and grams convert cleanly into sheets or teaspoons.</p>
+<h2>Sheets, powder, and grams</h2>
+<p>A standard gelatin sheet weighs about two grams, although brands vary slightly, and sheets are graded by bloom strength, which measures gelling power. Most supermarket sheets are similar enough that counting sheets works, but weighing is more accurate. Powder is usually sold in sachets of about seven grams, and one teaspoon of powder weighs roughly three grams. That gives a handy chain: one sheet is about two grams, one teaspoon is about three grams, and one sachet is about three and a half sheets. This calculator uses those conversions and rounds sheets up, because a fraction of a sheet cannot be measured and a slightly firmer set is better than a dessert that never sets.</p>
+<h2>Choosing firmness</h2>
+<p>Firmness is a choice about how the dessert will be eaten. A soft set, at one and a half percent, trembles, melts on the tongue, and suits panna cotta, mousse, and creamy desserts served in glasses or cups. A firm set, at two percent, holds its shape when unmoulded, slices cleanly, and suits fruit jelly, gummies, and layered desserts. An extra-firm set, at three percent, stands tall, survives transport, and suits moulded centrepieces and shaped jellies, but it can feel rubbery if used for a delicate cream dessert. Acid, sugar, and alcohol all affect setting, so a very acidic fruit jelly or a boozy dessert may need a little extra gelatin beyond the standard percentage.</p>
+<h2>Blooming: the step you cannot skip</h2>
+<p>Blooming means softening gelatin in cold water before melting it. For sheets, soak them in a bowl of cold water for about five minutes until they are soft and floppy, then lift them out and squeeze out excess water. For powder, sprinkle it over cold water, not the other way round, and let it stand for five minutes until it swells into a spongy mass. Blooming in hot water makes gelatin clump, and skipping it leaves gritty lumps in the finished dessert. Once bloomed, melt the gelatin gently into warm, not boiling, liquid and stir until fully dissolved. Boiling damages gelatin proteins and weakens the set, which is one of the most common reasons a jelly fails.</p>
+<h2>Acid, enzymes, and other setting traps</h2>
+<p>Fresh pineapple, papaya, kiwi, fig, and mango contain protease enzymes that break down gelatin, so a jelly made with them will stay liquid no matter how much gelatin you add. Cooking or canning destroys these enzymes, so canned pineapple works fine. Very acidic mixtures, like pure citrus juice, can also weaken the set, so add a little extra gelatin or balance the acid with sugar and water. Dairy sets beautifully with gelatin, but it must be warm enough to dissolve the gelatin fully. Alcohol slows setting, so desserts with a large proportion of spirits need more gelatin and a longer chill. When in doubt, test a small portion in a ramekin before committing a whole batch.</p>
+<h2>Chilling and unmoulding</h2>
+<p>Gelatin sets as it cools, and most desserts need at least four hours in the fridge, with overnight chilling giving the most reliable result. Rushing with the freezer can make the texture icy or uneven, so patience is part of the recipe. To unmould, dip the mould briefly in warm water, just a few seconds, then invert it onto a plate. If it resists, dip again for a few more seconds rather than forcing it, because a long hot dip melts the outside and ruins the shape. Lightly oiling a mould before filling helps release, but it can leave a sheen, so many cooks prefer a plain mould and a careful warm-water dip.</p>
+<h2>A worked example</h2>
+<p>For 500 millilitres of liquid at a firm two percent, the gelatin needed is 500 times 0.02, which is 10 grams. That is five sheets at two grams each, or about three and a third teaspoons of powder. For a soft panna cotta of the same volume at one and a half percent, the amount drops to 7.5 grams, or four sheets rounded up. For a litre of extra-firm moulded jelly at three percent, the amount rises to 30 grams, or fifteen sheets. The calculator handles these conversions instantly, so you can scale a recipe up for a party or down for a single dessert without a second thought.</p>
+<h2>Troubleshooting gelatin desserts</h2>
+<p>A dessert that never sets usually suffered from boiling, enzyme-rich fruit, too little gelatin, or too short a chill. A rubbery dessert almost always has too much gelatin, so reduce it by a quarter next time. A lumpy dessert means the gelatin was not bloomed or not fully dissolved, so bloom in cold water and stir until clear. A dessert that sets unevenly, with a firm top and liquid bottom, was probably poured too hot or chilled unevenly, so cool the mixture to lukewarm before pouring and chill on a level shelf. Keep notes on grams, firmness, and result, and gelatin will stop being a gamble.</p>
+<h2>Scaling recipes and testing small batches</h2>
+<p>Scaling gelatin recipes is straightforward once you think in percentages, but it pays to test before committing to a large batch. A recipe that works for 500 millilitres will work for two litres at the same percentage, provided the gelatin is fully dissolved and the mixture is chilled evenly, which takes longer in a deep mould than in a shallow one. For an important occasion, make a small test portion first: scale the recipe down to 100 millilitres, set it in a ramekin, and check firmness after four hours. That test costs almost nothing and reveals problems with acid, alcohol, or gelatin strength before they ruin a centrepiece. Note the exact grams used, not just sheets or teaspoons, because grams transfer between brands and kitchens while packet sizes do not. A notebook of tested percentages becomes a personal reference that makes every future gelatin dessert reliable.</p>
+<h2>Vegetarian alternatives and when to use them</h2>
+<p>Vegetarian cooks often ask whether agar, pectin, or carrageenan can replace gelatin, and the honest answer is sometimes, with different results. Agar sets much more firmly than gelatin and at room temperature, so it suits vegan jellies and Asian desserts, but it lacks gelatin's melt-in-the-mouth softness and sets with a slightly brittle texture. Use about half the weight of agar compared with gelatin, and boil it briefly to activate it, since agar only dissolves in boiling liquid. Pectin, the setting agent in jam, works well for fruit jellies but gives a softer, jam-like set rather than a clean gelatin slice. For a dessert that must taste like a classic gelatin set, there is no perfect substitute, but agar comes closest for firm moulded shapes, while a blend of agar and a little coconut cream softens the texture for creamy desserts.</p>
+<h3>Gelatin per 500 ml of liquid</h3><table><tr><th>Firmness</th><th>Grams</th><th>Sheets</th><th>Best for</th></tr><tr><td>Soft (1.5%)</td><td>7.5 g</td><td>4</td><td>Panna cotta, mousse</td></tr><tr><td>Firm (2%)</td><td>10 g</td><td>5</td><td>Fruit jelly, gummies</td></tr><tr><td>Extra firm (3%)</td><td>15 g</td><td>8</td><td>Moulded desserts</td></tr></table>
+<ul><li>Think in grams: 1.5% soft, 2% firm, 3% extra firm.</li><li>One sheet is about 2 g; one teaspoon of powder is about 3 g.</li><li>Always bloom in cold water for five minutes.</li><li>Never boil gelatin — melt gently below a simmer.</li><li>Avoid fresh pineapple, papaya, and kiwi in gelatin desserts.</li></ul>
+<p>Gelatin is simple once you think in percentages instead of packets. Pick your firmness, weigh your liquid, and let the calculator convert grams into sheets or teaspoons. Bloom cold, melt gently, chill patiently, and your desserts will set beautifully, batch after batch.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much gelatin do I need per cup of liquid?</summary><p>For a soft set like panna cotta, about 1.5 g per 100 ml, or roughly 3.6 g per cup. For a firm jelly, about 2 g per 100 ml, or 5 g per cup.</p></details>
+<details><summary>How many gelatin sheets equal one teaspoon of powder?</summary><p>One sheet, about 2 g, equals roughly two-thirds of a teaspoon of powder. Three teaspoons of powder are about 9 g, or four to five sheets.</p></details>
+<details><summary>Do I need to bloom gelatin?</summary><p>Yes for both sheets and powder. Soak in cold water for about five minutes until soft, then melt gently into warm liquid. Skipping blooming causes lumps.</p></details>
+<details><summary>Can you boil gelatin?</summary><p>No. Boiling weakens gelatin and can stop it setting properly. Melt it gently below a simmer and stir until dissolved.</p></details>
+<details><summary>Why did my jelly not set?</summary><p>Common causes are too little gelatin, boiling the gelatin, very acidic fruit like fresh pineapple or papaya, or not chilling long enough. Chill at least four hours, ideally overnight.</p></details>
+<details><summary>Does fresh pineapple stop gelatin setting?</summary><p>Yes. Fresh pineapple, papaya, kiwi, and mango contain enzymes that break down gelatin. Cooked or canned versions are safe because heat destroys the enzymes.</p></details>
+<details><summary>Can I use gelatin with dairy and alcohol?</summary><p>Yes, with care. Dairy sets well with gelatin, and small amounts of alcohol are fine, but large amounts of alcohol slow setting, so add a little extra gelatin.</p></details>
+<details><summary>How do I convert a recipe from sheets to powder?</summary><p>Weigh the sheets if you can: one sheet is about 2 g. If a recipe calls for five sheets, use about 10 g of powder, or roughly three teaspoons.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">GelatinSet</div>
+    <p>GelatinSet converts liquid volume and firmness into gelatin grams, sheets, and teaspoons.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function gelatinCalc(ml, pct) { if (ml <= 0 || pct <= 0) return {grams: 0, sheets: 0, tsp: 0}; var g = Math.round(ml * pct / 100 * 10) / 10; return {grams: g, sheets: Math.ceil(g / 2), tsp: Math.round(g / 3 * 10) / 10}; }
+
+if (typeof document !== 'undefined') {
+  var _hist = [];
+  function _renderHist() {
+    var el = document.getElementById('histList');
+    if (el) el.innerHTML = _hist.map(function(h) { return '<li>' + h + '</li>'; }).join('') || '<li>No calculations yet.</li>';
+  }
+  function run() {
+    var r=gelatinCalc(+document.getElementById('ml').value,+document.getElementById('firm').value);document.getElementById('result').innerHTML='<p class="big">'+r.grams+' g gelatin &middot; '+r.sheets+' sheets</p><p>About '+r.tsp+' teaspoons of powder. Bloom in cold water, then melt gently — never boil.</p>';window._last='GelatinSet: '+r.grams+' g gelatin ('+r.sheets+' sheets) for '+document.getElementById('ml').value+' ml';
+    if (window._last) { _hist.unshift(window._last); _hist = _hist.slice(0, 5); _renderHist(); }
+  }
+  document.getElementById('calcBtn').onclick = run;
+  document.getElementById('copyBtn').onclick = function() { if (window._last && navigator.clipboard) navigator.clipboard.writeText(window._last); };
+  var P = [['Panna cotta: 500 ml, soft',[500,1.5]],['Fruit jelly: 750 ml, firm',[750,2]],['Moulded jelly: 1000 ml, extra firm',[1000,3]]];
+  document.getElementById('presets').innerHTML = P.map(function(p, i) { return '<button type="button" data-i="' + i + '">' + p[0] + '</button>'; }).join('');
+  document.querySelectorAll('#presets button').forEach(function(b) {
+    b.onclick = function() {
+      var v = P[+b.dataset.i][1];
+      document.getElementById('ml').value=v[0];document.getElementById('firm').value=v[1];
+      run();
+    };
+  });
+  _renderHist();
+  run();
+}
+
+</script>
+</body>
+</html>
