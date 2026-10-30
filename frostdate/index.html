@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First &amp; Last Frost Date Finder by City | FrostDate</title>
+<meta name="description" content="Find your city&#x27;s average first and last frost dates, growing season length, and get a frost-risk verdict before you plant. Free garden planner.">
+<link rel="canonical" href="https://fun.fixoraa.tech/frostdate/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="First &amp; Last Frost Date Finder by City | FrostDate">
+<meta property="og:description" content="Find your city&#x27;s average first and last frost dates, growing season length, and get a frost-risk verdict before you plant. Free garden planner.">
+<meta property="og:url" content="https://fun.fixoraa.tech/frostdate/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "FrostDate",
+      "url": "https://fun.fixoraa.tech/frostdate/",
+      "applicationCategory": "Garden Tools",
+      "operatingSystem": "Web",
+      "description": "Find your city's average first and last frost dates, growing season length, and get a frost-risk verdict before you plant. Free garden planner.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What exactly does 'last frost date' mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the average calendar date of the final spring day that reaches 32\u00b0F (0\u00b0C) or below, computed from 30 years of weather records. It carries about a 50% probability \u2014 in half of all years the last frost comes earlier, in half it comes later \u2014 so treat it as a guide and add 1\u20132 weeks of margin for tender crops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate are average frost dates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are reliable as long-term averages but any single year can deviate by two weeks or more. A late cold spring can push frost past the average, while an early warm spring brings it sooner. Always combine the average date with the 10-day forecast before transplanting tender crops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I plant before the last frost date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cool-season crops (peas, spinach, radishes) will be fine, but warm-season crops (tomatoes, peppers, basil, cucumbers) can be stunted or killed by even a light frost. If you plant early, be ready to cover plants with row cover, buckets, or sheets on any night forecast below 36\u00b0F."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a frost and a freeze?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Frost refers to temperatures at or just below 32\u00b0F where ice crystals form on surfaces; a light frost damages only tender growth. A freeze (28\u00b0F and below) means plant tissues themselves freeze, which kills most unprotected tender plants. Frost dates mark the 32\u00b0F threshold."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do frost dates vary so much from year to year?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Spring warming depends on large-scale weather patterns \u2014 jet stream position, Arctic air outbreaks, and ocean temperatures \u2014 which shift annually. The 30-year average smooths this out, but any given spring is a single draw from a wide distribution, so a 'late' frost year is completely normal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do frost dates matter in warm climates like Florida or Southern California?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but differently. Places like Miami average only a brief near-frost window, so the dates matter mainly for tropical plants and citrus protection. In these climates the bigger planning tools are heat, day length, and rainy seasons \u2014 though an outlier freeze every decade or so is exactly when the date proves its worth."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F4F8F4; --surface:#FFFFFF; --accent:#2E7D5B; --accent-ink:#FFFFFF;
+  --ink:#1E2A24; --muted:#4E6157; --line:#D9E5DC;
+  --display:'Figtree',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.fd-wrap{font-family:'Figtree',Inter,system-ui,-apple-system,sans-serif;background:#F4F8F4;color:#1E2A24;padding:56px 20px 72px;}.fd-hero{max-width:780px;margin:0 auto 36px;text-align:center;}.fd-logo{width:76px;height:76px;margin:0 auto 18px;border-radius:24px;background:linear-gradient(135deg,#2E7D5B,#46a67e);color:#fff;font-size:38px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(46,125,91,.28);}.fd-hero h1{font-size:clamp(32px,5vw,54px);line-height:1.08;margin:0 0 14px;letter-spacing:-0.02em;font-weight:800;}.fd-tag{font-size:18px;color:#4E6157;margin:0;line-height:1.5;}.fd-card{max-width:780px;margin:0 auto;background:#FFFFFF;border:1px solid #D9E5DC;border-radius:28px;padding:40px;box-shadow:0 24px 60px rgba(46,125,91,.10);}.fd-label{display:block;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:#4E6157;margin-bottom:10px;}.fd-select{width:100%;padding:14px 16px;font-size:17px;border:2px solid #D9E5DC;border-radius:14px;background:#F4F8F4;color:#1E2A24;font-family:inherit;min-height:52px;}.fd-select:focus{outline:none;border-color:#2E7D5B;box-shadow:0 0 0 3px rgba(46,125,91,.18);}.fd-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 8px;}.fd-stat{background:#F4F8F4;border:1px solid #D9E5DC;border-radius:18px;padding:20px 16px;text-align:center;}.fd-stat-label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#4E6157;margin-bottom:8px;}.fd-stat-val{display:block;font-size:30px;font-weight:800;color:#2E7D5B;letter-spacing:-0.01em;}.fd-count{margin:14px 0 4px;font-size:17px;font-weight:600;color:#1E2A24;background:#EAF4EE;border:1px dashed #2E7D5B;border-radius:14px;padding:14px 18px;line-height:1.5;}.fd-divider{height:1px;background:#D9E5DC;margin:26px 0;}.fd-subhead{font-size:22px;font-weight:800;margin:0 0 6px;letter-spacing:-0.01em;}.fd-hint{color:#4E6157;margin:0 0 16px;line-height:1.55;font-size:15.5px;}.fd-row{display:flex;gap:12px;flex-wrap:wrap;}.fd-date{flex:1;min-width:180px;padding:13px 16px;font-size:16px;border:2px solid #D9E5DC;border-radius:14px;font-family:inherit;color:#1E2A24;min-height:52px;}.fd-date:focus{outline:none;border-color:#2E7D5B;}.fd-btn{background:#2E7D5B;color:#FFFFFF;border:none;border-radius:14px;padding:13px 26px;font-size:16.5px;font-weight:700;font-family:inherit;cursor:pointer;min-height:52px;transition:transform .12s ease,box-shadow .12s ease;}.fd-btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(46,125,91,.30);}.fd-btn:active{transform:translateY(0);}.fd-verdict{margin-top:18px;font-size:16.5px;line-height:1.55;border-radius:14px;padding:16px 18px;display:none;}.fd-verdict.show{display:block;}.fd-verdict.safe{background:#E7F4EC;border:1px solid #2E7D5B;color:#1E2A24;}.fd-verdict.caution{background:#FBF3E2;border:1px solid #B45309;color:#1E2A24;}.fd-verdict.risk{background:#FBE9E9;border:1px solid #B91C1C;color:#1E2A24;}.fd-verdict strong{display:block;font-size:18px;margin-bottom:4px;}.fd-note{margin:22px 0 0;font-size:13.5px;color:#4E6157;line-height:1.6;}@media (max-width:520px){.fd-wrap{padding:40px 14px 56px;}.fd-card{padding:26px 18px;border-radius:22px;}.fd-stats{grid-template-columns:1fr;}.fd-stat-val{font-size:26px;}.fd-row{flex-direction:column;}.fd-btn{width:100%;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="FrostDate home">
+      <span class="fx-logo-tile" aria-hidden="true">❄️</span>
+      <span class="fx-brand">FrostDate</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-hero-card" aria-label="FrostDate tool">
+<section class='fd-wrap'><div class='fd-hero'><div class='fd-logo' aria-hidden='true'>❄️</div><h1>First &amp; Last Frost Date Finder</h1><p class='fd-tag'>Know your last spring frost and first autumn frost — then plant with total confidence.</p></div><div class='fd-card'><label class='fd-label' for='fd-city'>Choose your city</label><select id='fd-city' class='fd-select'></select><div class='fd-stats'><div class='fd-stat'><span class='fd-stat-label'>Last spring frost</span><span class='fd-stat-val' id='fd-last'>–</span></div><div class='fd-stat'><span class='fd-stat-label'>First autumn frost</span><span class='fd-stat-val' id='fd-first'>–</span></div><div class='fd-stat'><span class='fd-stat-label'>Growing season</span><span class='fd-stat-val' id='fd-days'>–</span></div></div><div class='fd-count' id='fd-count' role='status'></div><div class='fd-divider'></div><p class='fd-subhead'>Check a planting date</p><p class='fd-hint'>Pick the day you plan to put plants in the ground and get a frost-risk verdict.</p><div class='fd-row'><input type='date' id='fd-date' class='fd-date' aria-label='Planned planting date'><button id='fd-check' class='fd-btn'>Check frost risk</button></div><div class='fd-verdict' id='fd-verdict' role='status'></div><p class='fd-note'>Dates are 30-year averages (50% probability). In any given year frost can arrive a week or two early or late.</p></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Are First and Last Frost Dates?</h2><p>Every gardener eventually learns the same hard lesson: a single cold night can wipe out weeks of careful work. The <strong>last spring frost date</strong> is the average calendar date after which freezing temperatures are unlikely in spring, and the <strong>first autumn frost date</strong> is the average date when freezing temperatures return in fall. Together they define your <strong>growing season</strong> — the frost-free window in which tender plants can thrive outdoors.</p><p>These dates are not guarantees. They are 30-year climate averages published from official weather station records, and they carry a 50 percent probability: in roughly half of all years the last frost arrives earlier, and in half it arrives later. Think of them as the center of a bell curve, not a wall. Experienced gardeners treat the date as a guide, then add a safety margin of one to two weeks for their most tender crops like tomatoes, peppers, basil, and cucumbers.</p><h2>How Frost Date Averages Are Calculated</h2><p>Meteorologists compute frost dates from daily minimum-temperature records spanning the most recent 30-year climate normal period. For each year they note the last spring day that dipped to 32°F (0°C) or below and the first autumn day that did the same. Averaging those dates across 30 years gives the familiar single date you see on planting calendars.</p><p>Because a 50 percent probability still leaves real risk, many extension services also publish <strong>90 percent dates</strong> — the date by which there is only a 10 percent chance frost will still occur. If you are planting expensive transplants or running a market garden, the 90 percent date is the safer number to use. A common rule of thumb: the 50 percent last-frost date plus 10 to 14 days approximates the 90 percent date in most of the continental United States.</p><p>One more nuance: official dates come from airport and regional weather stations, which are usually sited on flat, open ground. Your backyard may run several degrees warmer or colder, which is why observing your own microclimate (more on that below) matters as much as the published number.</p><h2>Why Frost Dates Matter for Your Garden</h2><p>Nearly every planting decision flows from these two dates. Warm-season crops — tomatoes, peppers, eggplant, cucumbers, squash, melons, basil, and beans — are damaged or killed by frost and should go out only after the last spring frost has passed, plus a safety margin. Cool-season crops — peas, spinach, lettuce, radishes, carrots, broccoli, and kale — tolerate light frost and can be sown weeks <em>before</em> the last frost date, which effectively stretches your season at both ends.</p><p>Seed packets speak this language too. When a packet says 'sow indoors 6 to 8 weeks before the last frost,' it is telling you to count backward from your date. Get the date wrong by three weeks and your seedlings are either leggy and root-bound waiting indoors, or they go out into soil too cold to support them and stall for a month.</p><h2>How to Use Your Frost Dates: The Count-Back Method</h2><p>The count-back method is the single most useful scheduling trick in vegetable gardening. Start from your average last frost date and subtract the indoor lead time on the seed packet to find your sowing date. Here are realistic examples for a gardener whose last frost falls on April 20:</p><table><thead><tr><th>Crop</th><th>Indoor lead time</th><th>Sow indoors</th><th>Transplant out</th></tr></thead><tbody><tr><td>Tomatoes</td><td>6–8 weeks</td><td>Late Feb – early Mar</td><td>Early May (1–2 wks after frost)</td></tr><tr><td>Peppers</td><td>8–10 weeks</td><td>Mid Feb</td><td>Mid May (needs warm soil)</td></tr><tr><td>Basil</td><td>4–6 weeks</td><td>Mid Mar</td><td>Early May</td></tr><tr><td>Cucumbers</td><td>3–4 weeks</td><td>Late Mar</td><td>Early May</td></tr><tr><td>Broccoli</td><td>4–6 weeks</td><td>Early Mar</td><td>Early Apr (frost-tolerant)</td></tr></tbody></table><p>Notice that peppers get extra caution: they sulk in cool soil even without frost, so many gardeners wait until nighttime temperatures hold above 50°F. The FrostDate countdown above tells you how many days remain until your date, which makes this backward planning effortless — work from the countdown, not from memory.</p><h2>Sample Frost Dates Across the United States</h2><p>To show how dramatically the growing season varies, here are average dates for a cross-section of cities. Use the tool above for the full 40-city list.</p><table><thead><tr><th>City</th><th>Last spring frost</th><th>First autumn frost</th><th>Growing days</th></tr></thead><tbody><tr><td>Miami, FL</td><td>Jan 5</td><td>Dec 25</td><td>354</td></tr><tr><td>Phoenix, AZ</td><td>Jan 20</td><td>Dec 10</td><td>324</td></tr><tr><td>Houston, TX</td><td>Feb 10</td><td>Dec 5</td><td>298</td></tr><tr><td>Atlanta, GA</td><td>Mar 25</td><td>Nov 10</td><td>230</td></tr><tr><td>Seattle, WA</td><td>Mar 25</td><td>Nov 5</td><td>225</td></tr><tr><td>New York, NY</td><td>Apr 15</td><td>Nov 5</td><td>204</td></tr><tr><td>Chicago, IL</td><td>Apr 20</td><td>Oct 25</td><td>188</td></tr><tr><td>Denver, CO</td><td>May 5</td><td>Oct 5</td><td>153</td></tr><tr><td>Minneapolis, MN</td><td>May 10</td><td>Oct 1</td><td>144</td></tr></tbody></table><p>The spread is enormous: Miami gardeners get nearly a full year while Minneapolis gets under five months. But short-season gardeners have advantages too — intense summer heat units and long June daylight can ripen crops surprisingly fast if varieties are chosen for 'days to maturity' under 70.</p><h2>Frost vs. Freeze: Know the Difference</h2><p>Not all cold nights are equal, and the distinction decides whether you need to panic or just throw a sheet over the peppers:</p><table><thead><tr><th>Term</th><th>Temperature</th><th>What happens</th></tr></thead><tbody><tr><td>Light frost</td><td>32°F down to 29°F</td><td>Tender leaves show damage; hardy crops fine</td></tr><tr><td>Moderate frost</td><td>28°F down to 25°F</td><td>Most tender plants killed; semi-hardy damaged</td></tr><tr><td>Severe freeze</td><td>24°F and below</td><td>Nearly all unprotected growth destroyed</td></tr></tbody></table><p>Frost dates technically mark 32°F, but a 'light frost' at 31°F on a calm night damages far less than 31°F with wind, which strips heat from leaves faster. Always read the forecast's expected low <em>and</em> the wind and cloud cover: clear, calm nights are the classic radiational frost setup.</p><h2>Microclimates: Your Yard Is Not the Weather Station</h2><p>Cold air behaves like water — it flows downhill and pools in low spots. A garden at the bottom of a slope can be 5°F colder than one on a gentle rise a hundred yards away. South-facing walls radiate stored daytime heat all night and can buy you a full hardiness zone of protection; the north side of a fence does the opposite. Urban gardeners often run a week ahead of official dates thanks to the heat-island effect, while rural gardeners in frost pockets run behind.</p><p>Spend one spring noting where frost lingers longest on your grass in the morning. Those white patches are your personal frost map, and they are worth more than any regional table for deciding exactly where to place tender crops.</p><h2>Seven Ways to Protect Plants From a Late Frost</h2><p>When a surprise freeze threatens after you have planted, you have options ranging from free to fancy:</p><ul><li><strong>Fabric row covers:</strong> spun-bonded polypropylene draped over hoops gives 2–6°F of protection and can stay on for weeks.</li><li><strong>Cloches and buckets:</strong> an inverted bucket or milk jug over a single seedling is the fastest emergency shield; remove it in the morning so heat does not build.</li><li><strong>Old bedsheets:</strong> never plastic directly on leaves — plastic conducts cold to the leaf surface. If you must use plastic, tent it on stakes.</li><li><strong>Water walls:</strong> tubes of water around transplants absorb daytime heat and release it slowly overnight.</li><li><strong>Deep watering:</strong> moist soil holds four times more heat than dry soil. Water the bed thoroughly before a frost night.</li><li><strong>Mulch crowns:</strong> a thick straw mulch protects the crown of perennials even when top growth is sacrificed.</li><li><strong>Christmas lights:</strong> old-style incandescent strings (not LEDs) under a cover add a few precious degrees on marginal nights.</li></ul><h2>Planning the Fall Garden With Your First Frost Date</h2><p>The first autumn frost date runs the same count-back logic in reverse and unlocks a second season most beginners miss. Take your first frost date, subtract the crop's 'days to maturity' plus two weeks (growth slows as days shorten), and you have your last safe sowing date. With an October 25 first frost, carrots maturing in 70 days should be sown by early August; radishes at 25 days can go in as late as mid-September. Add a simple row cover and you can push harvests weeks past the first frost — kale and spinach often taste <em>sweeter</em> after a light freeze converts starches to sugars.</p><p>Bottom line: your two frost dates are the skeleton key to the whole gardening year. Look yours up above, count backward in spring and forward in fall, keep a cover handy for the surprises, and you will plant with the calm confidence that only comes from knowing your season.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What exactly does &#x27;last frost date&#x27; mean?</summary><p>It is the average calendar date of the final spring day that reaches 32°F (0°C) or below, computed from 30 years of weather records. It carries about a 50% probability — in half of all years the last frost comes earlier, in half it comes later — so treat it as a guide and add 1–2 weeks of margin for tender crops.</p></details>
+<details><summary>How accurate are average frost dates?</summary><p>They are reliable as long-term averages but any single year can deviate by two weeks or more. A late cold spring can push frost past the average, while an early warm spring brings it sooner. Always combine the average date with the 10-day forecast before transplanting tender crops.</p></details>
+<details><summary>What happens if I plant before the last frost date?</summary><p>Cool-season crops (peas, spinach, radishes) will be fine, but warm-season crops (tomatoes, peppers, basil, cucumbers) can be stunted or killed by even a light frost. If you plant early, be ready to cover plants with row cover, buckets, or sheets on any night forecast below 36°F.</p></details>
+<details><summary>What is the difference between a frost and a freeze?</summary><p>Frost refers to temperatures at or just below 32°F where ice crystals form on surfaces; a light frost damages only tender growth. A freeze (28°F and below) means plant tissues themselves freeze, which kills most unprotected tender plants. Frost dates mark the 32°F threshold.</p></details>
+<details><summary>Why do frost dates vary so much from year to year?</summary><p>Spring warming depends on large-scale weather patterns — jet stream position, Arctic air outbreaks, and ocean temperatures — which shift annually. The 30-year average smooths this out, but any given spring is a single draw from a wide distribution, so a 'late' frost year is completely normal.</p></details>
+<details><summary>Do frost dates matter in warm climates like Florida or Southern California?</summary><p>Yes, but differently. Places like Miami average only a brief near-frost window, so the dates matter mainly for tropical plants and citrus protection. In these climates the bigger planning tools are heat, day length, and rainy seasons — though an outlier freeze every decade or so is exactly when the date proves its worth.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">FrostDate</div>
+    <p>FrostDate gives gardeners average first and last frost dates for 40 US cities, so every seed goes in at the right time.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function frostCities(){return [['chicago','Chicago, IL','Apr 20','Oct 25',110,298],['newyork','New York, NY','Apr 15','Nov 5',105,309],['losangeles','Los Angeles, CA','Jan 30','Dec 15',30,349],['miami','Miami, FL','Jan 5','Dec 25',5,359],['seattle','Seattle, WA','Mar 25','Nov 5',84,309],['denver','Denver, CO','May 5','Oct 5',125,278],['dallas','Dallas, TX','Mar 15','Nov 20',74,324],['atlanta','Atlanta, GA','Mar 25','Nov 10',84,314],['boston','Boston, MA','Apr 20','Oct 25',110,298],['minneapolis','Minneapolis, MN','May 10','Oct 1',130,274],['phoenix','Phoenix, AZ','Jan 20','Dec 10',20,344],['portland','Portland, OR','Mar 20','Nov 10',79,314],['houston','Houston, TX','Feb 10','Dec 5',41,339],['nashville','Nashville, TN','Apr 10','Oct 25',100,298],['stlouis','St. Louis, MO','Apr 15','Oct 20',105,293],['kansascity','Kansas City, MO','Apr 15','Oct 20',105,293],['indianapolis','Indianapolis, IN','Apr 25','Oct 20',115,293],['columbus','Columbus, OH','Apr 25','Oct 20',115,293],['philadelphia','Philadelphia, PA','Apr 15','Nov 1',105,305],['washingtondc','Washington, DC','Apr 10','Oct 30',100,303],['baltimore','Baltimore, MD','Apr 15','Oct 30',105,303],['charlotte','Charlotte, NC','Apr 5','Oct 30',95,303],['raleigh','Raleigh, NC','Apr 5','Oct 30',95,303],['richmond','Richmond, VA','Apr 10','Oct 25',100,298],['pittsburgh','Pittsburgh, PA','Apr 25','Oct 15',115,288],['cleveland','Cleveland, OH','Apr 25','Oct 20',115,293],['detroit','Detroit, MI','Apr 30','Oct 15',120,288],['milwaukee','Milwaukee, WI','Apr 30','Oct 15',120,288],['saltlakecity','Salt Lake City, UT','May 1','Oct 15',121,288],['boise','Boise, ID','May 5','Oct 10',125,283],['albuquerque','Albuquerque, NM','Apr 20','Oct 20',110,293],['tucson','Tucson, AZ','Feb 15','Dec 1',46,335],['sandiego','San Diego, CA','Jan 25','Dec 20',25,354],['sacramento','Sacramento, CA','Feb 10','Nov 25',41,329],['sanfrancisco','San Francisco, CA','Feb 1','Dec 10',32,344],['lasvegas','Las Vegas, NV','Feb 20','Nov 25',51,329],['austin','Austin, TX','Mar 1','Nov 25',60,329],['neworleans','New Orleans, LA','Feb 20','Dec 5',51,339],['memphis','Memphis, TN','Mar 25','Nov 10',84,314],['omaha','Omaha, NE','Apr 20','Oct 10',110,283]];}
+function frostInfo(cityKey){var key=String(cityKey==null?'':cityKey).toLowerCase();var list=frostCities();for(var i=0;i<list.length;i++){var c=list[i];if(c[0]===key){return {lastFrost:c[2],firstFrost:c[3],growingDays:c[5]-c[4]};}}return null;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var sel=document.getElementById('fd-city');var lastEl=document.getElementById('fd-last');var firstEl=document.getElementById('fd-first');var daysEl=document.getElementById('fd-days');var countEl=document.getElementById('fd-count');var dateEl=document.getElementById('fd-date');var verdictEl=document.getElementById('fd-verdict');var cities=frostCities();var currentDoy=null;for(var i=0;i<cities.length;i++){var o=document.createElement('option');o.value=cities[i][0];o.textContent=cities[i][1];sel.appendChild(o);}function dayOfYear(d){var s=new Date(d.getFullYear(),0,0);return Math.floor((d-s)/86400000);}function render(){var key=sel.value;var info=frostInfo(key);if(!info)return;lastEl.textContent=info.lastFrost;firstEl.textContent=info.firstFrost;daysEl.textContent=info.growingDays+' days';var doy=null;for(var j=0;j<cities.length;j++){if(cities[j][0]===key){doy=cities[j][4];break;}}currentDoy=doy;var now=new Date();var tDoy=dayOfYear(now);var diff=doy-tDoy;var msg;if(diff>1){msg='🌱 <strong>'+diff+' days</strong> until your average last spring frost ('+info.lastFrost+'). Start warm-season seeds indoors now so transplants are ready.';}else if(diff===1){msg='🌱 <strong>Tomorrow</strong> is your average last spring frost date. Hold tender transplants one more night if a cold snap threatens.';}else if(diff===0){msg='🌱 <strong>Today</strong> is your average last spring frost date. The safe planting window is opening — watch the 10-day forecast.';}else{var toNext=365-tDoy+doy;msg='☀️ Your last spring frost ('+info.lastFrost+') has passed — about <strong>'+toNext+' days</strong> until next year\'s date. Plant warm-season crops freely.';}countEl.innerHTML=msg;verdictEl.className='fd-verdict';}document.getElementById('fd-check').addEventListener('click',function(){if(!dateEl.value||currentDoy==null)return;var d=new Date(dateEl.value+'T12:00:00');var pDoy=dayOfYear(d);var gap=pDoy-currentDoy;var cls,head,body;if(gap>=7){cls='safe';head='✅ Safe to plant';body='Your date falls at least a week after the average last frost. Standard 50%-probability guidance says tender plants should be fine — still glance at the 10-day forecast.';}else if(gap>=-13){cls='caution';head='⚠️ Caution — frost still possible';body='Your date is within two weeks of the average last frost. Plant only if you can cover seedlings (row cover, cloche, or buckets) on cold nights.';}else{cls='risk';head='🥶 High frost risk';body='Your date is more than two weeks before the average last frost. Wait, or start seeds indoors and transplant after '+document.getElementById('fd-last').textContent+'.';}verdictEl.className='fd-verdict show '+cls;verdictEl.innerHTML='<strong>'+head+'</strong>'+body;});sel.addEventListener('change',render);render();});}
+</script>
+</body>
+</html>
