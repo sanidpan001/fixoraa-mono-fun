@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capo & Transpose Calculator — Chords in Any Key | CapoTranspose</title>
+<meta name="description" content="Capo positions and transposed chord shapes for any key, both directions.">
+<link rel="canonical" href="https://fun.fixoraa.tech/capotranspose/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Capo & Transpose Calculator — Chords in Any Key | CapoTranspose">
+<meta property="og:description" content="Capo positions and transposed chord shapes for any key, both directions.">
+<meta property="og:url" content="https://fun.fixoraa.tech/capotranspose/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CapoTranspose",
+      "url": "https://fun.fixoraa.tech/capotranspose/",
+      "applicationCategory": "Music",
+      "operatingSystem": "Web",
+      "description": "Capo positions and transposed chord shapes for any key, both directions.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What key am I in with a capo on the 2nd fret playing G shapes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A. Each fret raises pitch one semitone, so G plus two semitones is A. Your G, C, D, and Em shapes sound as A, D, E, and F#m \u2014 the full key of A with familiar fingerings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find the right capo fret for a target key?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Count the semitones from your shape key up to the target key. For C shapes in the key of D: C to D is two semitones, so capo 2. Pick shape keys that keep the fret low \u2014 frets 1 to 3 sound fullest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a capo change the chord shapes I play?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 that is the point. Your fingers play the exact same shapes; the capo transposes everything up by the fret number. A G shape is always a G shape to your fingers, whatever key it sounds in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my guitar go out of tune with a capo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Capo pressure stretches the strings slightly sharp, especially light strings. Always tune after clamping the capo, place it just behind the fret wire, and avoid cranking spring capos tighter than needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use a capo on an electric guitar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Electric players use capos for the same open-string jangle and quick key changes \u2014 the effect is subtler with distortion but beautiful on clean and edge-of-breakup tones. Use lighter pressure since electric strings are thinner."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the highest fret I should put a capo on?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Frets 1\u20133 sound most natural; up to 5 is common for texture. Beyond 7 the tone gets thin and plinky as the vibrating string length shrinks \u2014 usable as an effect, but not as your main rhythm sound."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#E1E2F9; --surface:#FFFFFF; --tint:#D2D3F4;
+  --accent:#151A84; --accent-deep:#1F6115; --btn-ink:#FFFFFF;
+  --ink:#243020; --muted:#53654B; --line:#D5E2CC;
+  --display:'Caveat',cursive; --body:'Caveat',cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:var(--surface)}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--btn-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px;color:var(--ink)}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:var(--ink)}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--ink)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px;color:var(--ink)}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:var(--ink);font-size:15px}
+.fx-footer{background:var(--footbg,#26211c);color:#f0e6da;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#cbb9a8;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#ffd9a8;font-weight:700}
+.no-print{}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+
+body{font-family:'Caveat',cursive;font-size:20px}
+.ct-hero{padding:44px 0 6px;text-align:center}
+.ct-eyebrow{display:inline-block;font-size:19px;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;border-bottom:3px solid var(--tint);padding-bottom:6px}
+.ct-hero h1{font-size:clamp(48px,7vw,76px);font-weight:700;letter-spacing:-.01em;line-height:1;margin-bottom:8px}
+.ct-hero h1 em{font-style:normal;color:var(--accent)}
+.ct-hero p{font-size:22px;color:var(--muted);max-width:640px;margin:0 auto;line-height:1.45}
+.ct-sheet{margin:26px 0 10px}
+.ct-duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
+.ct-card{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:26px;box-shadow:5px 5px 0 var(--tint);position:relative}
+.ct-card::before{content:"";position:absolute;top:-2px;left:26px;right:26px;height:10px;background:repeating-linear-gradient(90deg,var(--line) 0 10px,transparent 10px 20px);opacity:.7}
+.ct-card h2{font-size:30px;font-weight:700;margin-bottom:2px}
+.ct-card .sub{font-size:19px;color:var(--muted);margin-bottom:18px}
+.ct-field{margin-bottom:18px}
+.ct-field label{display:block;font-weight:700;font-size:20px;margin-bottom:8px}
+.ct-keys{display:flex;flex-wrap:wrap;gap:8px}
+.ct-keys button{font-family:inherit;font-size:21px;font-weight:700;border:2px solid var(--line);background:#fff;border-radius:12px;min-width:48px;padding:6px 10px;cursor:pointer;color:var(--ink);transition:all .12s}
+.ct-keys button.on{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 3px 0 var(--accent-deep);transform:rotate(-2deg)}
+.ct-fret{display:flex;align-items:center;gap:14px}
+.ct-fret input[type=range]{flex:1;accent-color:var(--accent)}
+.ct-fret output{font-size:34px;font-weight:700;color:var(--accent);min-width:60px;text-align:center}
+.ct-answer{margin-top:16px;background:var(--tint);border:2px dashed var(--accent);border-radius:14px;padding:14px 18px;text-align:center}
+.ct-answer .k{font-size:22px;color:var(--muted)}
+.ct-answer .v{font-size:52px;font-weight:700;color:var(--accent-deep);line-height:1.1}
+.ct-answer .v small{font-size:24px;color:var(--muted)}
+.ct-lib{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:26px;box-shadow:5px 5px 0 var(--tint)}
+.ct-lib h2{font-size:30px;font-weight:700;margin-bottom:2px}
+.ct-lib .sub{font-size:19px;color:var(--muted);margin-bottom:18px}
+.ct-chords{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.ct-chord{border:2px solid var(--line);border-radius:14px;padding:10px 6px;text-align:center;background:#fff}
+.ct-chord .deg{font-size:17px;color:var(--muted);font-weight:700}
+.ct-chord .nm{font-size:30px;font-weight:700;color:var(--accent-deep);line-height:1.1}
+.ct-chord .sh{font-size:17px;color:var(--muted)}
+@media(max-width:860px){.ct-duo{grid-template-columns:1fr}.ct-chords{grid-template-columns:repeat(3,1fr)}}
+.article-sec{font-size:19px}
+.article-sec p,.article-sec li{line-height:1.55}
+.faq-sec summary{font-size:21px}
+.faq-sec details p{font-size:19px}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/capotranspose/" aria-label="CapoTranspose home">
+      <span class="fx-tile" aria-hidden="true">🎸</span>
+      <span class="fx-name">CapoTranspose</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="ct-hero">
+    <span class="ct-eyebrow">Setlist notebook · Guitar tools</span>
+    <h1>CapoTranspose</h1>
+    <p>Two-way capo math for guitar and ukulele. See what key your shapes ring in at any capo fret — or pick a target key and find the capo fret that gets you there.</p>
+  </section>
+
+  <section class="ct-sheet" aria-label="CapoTranspose tool">
+
+  <div class="ct-duo">
+    <div class="ct-card">
+      <h2>🎸 Capo → Key</h2>
+      <p class="sub">You know your shapes — what key rings out?</p>
+      <div class="ct-field">
+        <label>Chord shapes you are playing</label>
+        <div class="ct-keys" id="ct-shapes-a" role="group" aria-label="Shape key"></div>
+      </div>
+      <div class="ct-field">
+        <label>Capo fret</label>
+        <div class="ct-fret">
+          <input type="range" id="ct-capo" min="0" max="11" step="1" value="2">
+          <output id="ct-capo-out" for="ct-capo">2</output>
+        </div>
+      </div>
+      <div class="ct-answer" aria-live="polite">
+        <div class="k">Sounding key</div>
+        <div class="v" id="ct-key-a">A</div>
+      </div>
+    </div>
+    <div class="ct-card">
+      <h2>🎵 Key → Capo</h2>
+      <p class="sub">You know the target key — where does the capo go?</p>
+      <div class="ct-field">
+        <label>Target sounding key</label>
+        <div class="ct-keys" id="ct-keys-b" role="group" aria-label="Target key"></div>
+      </div>
+      <div class="ct-field">
+        <label>Shapes you want to play</label>
+        <div class="ct-keys" id="ct-shapes-b" role="group" aria-label="Shape key for target"></div>
+      </div>
+      <div class="ct-answer" aria-live="polite">
+        <div class="k">Put the capo on fret</div>
+        <div class="v"><span id="ct-fret-b">2</span><small id="ct-fret-note"></small></div>
+      </div>
+    </div>
+  </div>
+  <div class="ct-lib">
+    <h2>📖 Chord-shape library</h2>
+    <p class="sub">The six chords you need in <b id="ct-lib-key">G</b> shapes — play these fingerings, capo does the rest.</p>
+    <div class="ct-chords" id="ct-chords"></div>
+  </div>
+
+  </section>
+
+  <article class="article-sec" aria-label="Guide">
+
+<h2>What a Capo Actually Does</h2>
+<p>A capo is a movable nut. Clamp it on the second fret and every open string rings two semitones higher — your familiar G-shape chord now sounds an A. Nothing about your fingers changes; the whole guitar simply <strong>transposes up</strong> by the fret number. That is the entire physics of it, and it unlocks two superpowers: playing in any key with easy shapes, and borrowing the bright, jangly voicing of open strings in keys where open strings should not exist.</p>
+<p>Each fret is one semitone, so the math is counting: G shapes + capo 2 = A. D shapes + capo 2 = E. C shapes + capo 5 = F. Go past fret 12 and you are in mandolin territory — the tone gets thin and plinky, which is occasionally exactly what a recording needs, but rarely what a campfire wants.</p>
+<h2>Direction One: Shapes + Capo = Sounding Key</h2>
+<p>This is the everyday question. The singer wants the song in B♭, you know it with G shapes, and you need the fret <em>now</em>. Count up from G: G→G#(1)→A(2)→B♭(3). Capo 3. The left card above does this instantly — pick your shape key, slide the capo, read the sounding key.</p>
+<p>Why does the sounding key matter so much? Because everyone else — the pianist, the bassist, the horn player — lives in <strong>concert pitch</strong>, the actual notes in the air. "We are playing in A" means concert A, regardless of your clever G-shapes-plus-capo-2 scheme. When the bandleader calls the key, the left card translates your guitar world into theirs.</p>
+<h2>Direction Two: Target Key = Capo Fret + Shapes</h2>
+<p>The reverse question is the creative one: the song must be in E♭, but you hate E♭ shapes (every guitarist does). Which capo fret lets you play friendly shapes? Try shape families mentally: C shapes + 3 = E♭. G shapes + 8 = E♭ (too high). A shapes + 6 = E♭. D shapes + 1 = E♭ — capo 1 with D shapes, very playable. The right card runs every combination: pick the target key, audition shape keys, and choose the lowest comfortable fret.</p>
+<p>Lower is almost always better. Capo 1–3 keeps the guitar's full, warm voice and leaves room above for melody. Capo 5+ starts sounding like a different instrument — great for texture, tiring for a whole set. If every option lands above fret 5, consider learning the song in a new shape family instead of fighting physics.</p>
+<h2>Why Not Just Play Barre Chords?</h2>
+<p>Fair question — a barre F works in any key. But open-position shapes ring differently: open strings sustain longer, sympathetic resonance blooms, and hammer-ons, pull-offs, and drone strings fall naturally under the fingers. Bluegrass, folk, and worship music are built on this sound. A capo is not a crutch for avoiding barres; it is a <strong>tone choice</strong>. Listen to the opening of "Here Comes the Sun" (capo 7, D shapes sounding A) — no barre voicing on earth sounds like that.</p>
+<p>There is also the singer's reality: voices have sweet spots measured in semitones. Moving a song from G to A♭ can be the difference between straining and soaring. A capo moves the key without relearning the part, which is why it lives in every working guitarist's case.</p>
+<h2>The Chord Shapes That Matter</h2>
+<p>You do not need all twelve keys of shapes — four families cover nearly everything: <strong>G, C, D, and A</strong> shapes, plus E for good measure. With a capo, G shapes reach G through C; C shapes cover C through F; D shapes handle D through G; A shapes handle A through D. Between them, every key has a low-fret capo option with friendly fingerings.</p>
+<p>Inside each key, learn the <strong>six core chords</strong>: I, ii, iii, IV, V, vi. In G shapes that is G, Am, Bm, C, D, Em — shown in the library above. These six chords play the vast majority of popular music. When you transpose with a capo, you transpose the whole family together: G shapes at capo 2 give you A, Bm, C#m, D, E, F#m — the complete key of A, no new fingerings required.</p>
+<h2>Capo Tone: The Hidden Trade-Offs</h2>
+<p>Every capo position changes more than pitch. Higher frets shorten the <strong>scale length</strong>, making strings feel slinkier and bends easier — but also reducing volume and bass response. The tone brightens and compresses, which flatters strumming and fingerpicking sparkle but can make a dreadnought sound small. Heavy capos can also pull strings sharp, especially on light strings: always retune <em>after</em> clamping, checking the open strings against a tuner.</p>
+<p>Capo placement matters too: park it just behind the fret wire, not in the middle of the fret, with even pressure across all six strings. Too far back and intonation suffers; too tight and the guitar chokes. Spring capos are fast, screw-adjust capos are precise — studio players tend toward the latter.</p>
+<h2>Transposing Without a Capo</h2>
+<p>Sometimes the answer is no capo at all. If the target key's open shapes are friendly (G, C, D, A, E major and their relative minors), just learn the progression in the new key — it builds fretboard knowledge that capos never will. The Nashville Number System makes this painless: think of the progression as numbers (1-6m-4-5) instead of chord names, and the numbers work in every key.</p>
+<p>A good rule: use the capo for <strong>sound and speed</strong> (the gig is tonight, the singer needs it up a step), and practice transposition for <strong>growth</strong> (Saturday morning, no pressure). Both skills compound.</p>
+<h2>Ukulele, Mandolin, and Other Travelers</h2>
+<p>The same semitone math works on any fretted instrument — ukulele players use it constantly since uke keys cluster around C, G, and F. On mandolin and banjo, capos are rarer (spikes and tuning tricks rule there), but the transposition logic is identical: shapes plus frets equals concert key. The chord library above shows guitar's six-string shapes, but the I–vi relationships hold for every instrument.</p>
+<h2>The Nashville Number System Shortcut</h2>
+<p>Session players in Nashville rarely say "G, C, D" — they say "1, 4, 5." The <strong>Number System</strong> names chords by their scale degree, which makes transposition trivial: a 1-6m-4-5 progression is the same <em>shape of a song</em> in every key. Combined with a capo, it is the fastest transposition method ever devised. The bandleader says "1-4-5 in B♭," you think "G shapes, capo 3" (from the right-hand card), and your fingers play 1-4-5 shapes while concert B♭ comes out.</p>
+<p>Learning numbers also frees you from the capo when you want: 1-6m-4-5 in the key of E is E-C#m-A-B whether or not you clamp anything. Practice translating one song you know into numbers this week — say the numbers as you play — and key changes stop being emergencies. The capo handles the <em>sound</em>; the numbers handle the <em>understanding</em>. Together they cover every transposition situation a working guitarist meets.</p>
+<h2>Putting It All Together</h2>
+<p>Keep this page on your music stand. When the key changes, decide direction: shapes-to-key when you are holding the guitar, key-to-capo when you are planning the set. Favor frets 1–3, retune after clamping, and learn the G-C-D-A shape families cold. The capo stops being a mystery device and becomes what it is — a transposition machine with excellent tone.</p>
+
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What key am I in with a capo on the 2nd fret playing G shapes?</summary><p>A. Each fret raises pitch one semitone, so G plus two semitones is A. Your G, C, D, and Em shapes sound as A, D, E, and F#m — the full key of A with familiar fingerings.</p></details>
+    <details><summary>How do I find the right capo fret for a target key?</summary><p>Count the semitones from your shape key up to the target key. For C shapes in the key of D: C to D is two semitones, so capo 2. Pick shape keys that keep the fret low — frets 1 to 3 sound fullest.</p></details>
+    <details><summary>Does a capo change the chord shapes I play?</summary><p>No — that is the point. Your fingers play the exact same shapes; the capo transposes everything up by the fret number. A G shape is always a G shape to your fingers, whatever key it sounds in.</p></details>
+    <details><summary>Why does my guitar go out of tune with a capo?</summary><p>Capo pressure stretches the strings slightly sharp, especially light strings. Always tune after clamping the capo, place it just behind the fret wire, and avoid cranking spring capos tighter than needed.</p></details>
+    <details><summary>Can I use a capo on an electric guitar?</summary><p>Absolutely. Electric players use capos for the same open-string jangle and quick key changes — the effect is subtler with distortion but beautiful on clean and edge-of-breakup tones. Use lighter pressure since electric strings are thinner.</p></details>
+    <details><summary>What is the highest fret I should put a capo on?</summary><p>Frets 1–3 sound most natural; up to 5 is common for texture. Beyond 7 the tone gets thin and plinky as the vibrating string length shrinks — usable as an effect, but not as your main rhythm sound.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CapoTranspose</div>
+    <p>CapoTranspose does two-way capo math — shapes plus capo to sounding key, or target key to capo fret — with a chord-shape library for every key.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+
+var NOTES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+function normNote(n){
+  n = String(n).trim();
+  var flats = {'Db':'C#','Eb':'D#','Gb':'F#','Ab':'G#','Bb':'A#','Cb':'B','Fb':'E','B#':'C','E#':'F'};
+  var up = n.charAt(0).toUpperCase() + n.slice(1);
+  if(flats[up]) return flats[up];
+  return up;
+}
+function transpose(note, semis){
+  var i = NOTES.indexOf(normNote(note));
+  return NOTES[(((i + semis) % 12) + 12) % 12];
+}
+function soundingKey(shapeKey, capo){ return transpose(shapeKey, capo); }
+function capoFor(shapeKey, desiredKey){
+  var a = NOTES.indexOf(normNote(shapeKey)), b = NOTES.indexOf(normNote(desiredKey));
+  return (((b - a) % 12) + 12) % 12;
+}
+function keyChords(root){
+  var steps = [0,2,4,5,7,9], degs = ['I','ii','iii','IV','V','vi'];
+  var quals = ['', 'm', 'm', '', '', 'm'];
+  var out = [];
+  for(var i=0;i<6;i++){ out.push({deg:degs[i], name:transpose(root, steps[i]) + quals[i]}); }
+  return out;
+}
+
+
+(function(){
+var KEYS=['C','G','D','A','E','B','F','Bb','Eb','Ab'];
+var shapeA='G', capo=2, targetKey='A', shapeB='G';
+function buttons(el, list, current, cb){
+  var d=document.getElementById(el); d.innerHTML='';
+  list.forEach(function(k){
+    var b=document.createElement('button'); b.type='button'; b.textContent=k;
+    if(k===current)b.classList.add('on');
+    b.addEventListener('click',function(){cb(k);});
+    d.appendChild(b);
+  });
+}
+function renderLib(){
+  document.getElementById('ct-lib-key').textContent=shapeA;
+  var box=document.getElementById('ct-chords'); box.innerHTML='';
+  keyChords(shapeA).forEach(function(c){
+    var d=document.createElement('div'); d.className='ct-chord';
+    d.innerHTML='<div class="deg">'+c.deg+'</div><div class="nm">'+c.name+'</div><div class="sh">shape</div>';
+    box.appendChild(d);
+  });
+}
+function render(){
+  buttons('ct-shapes-a',KEYS,shapeA,function(k){shapeA=k;render();});
+  buttons('ct-keys-b',KEYS,targetKey,function(k){targetKey=k;render();});
+  buttons('ct-shapes-b',KEYS,shapeB,function(k){shapeB=k;render();});
+  document.getElementById('ct-capo-out').textContent=capo;
+  if(document.getElementById('ct-capo').value!=String(capo))document.getElementById('ct-capo').value=capo;
+  document.getElementById('ct-key-a').textContent=soundingKey(shapeA,capo);
+  var f=capoFor(shapeB,targetKey);
+  document.getElementById('ct-fret-b').textContent=f;
+  var note='';
+  if(f===0)note=' — no capo needed, play it open';
+  else if(f>7)note=' — quite high; try different shapes';
+  document.getElementById('ct-fret-note').textContent=note;
+  renderLib();
+}
+document.getElementById('ct-capo').addEventListener('input',function(){capo=parseInt(this.value,10);render();});
+render();
+})();
+
+</script>
+</body>
+</html>
