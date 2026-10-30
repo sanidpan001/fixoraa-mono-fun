@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Home Circuit Load Calculator — Amps, Load % & Safety | CircuitLoad</title>
+<meta name="description" content="Free home circuit load calculator: total watts, voltage and breaker size give amps, load percentage and a safe-or-overloaded verdict.">
+<link rel="canonical" href="https://fun.fixoraa.tech/circuitload/">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CircuitLoad","applicationCategory":"Home","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "How many amps does a 1200 watt microwave use?", "acceptedAnswer": {"@type": "Answer", "text": "On a 120-volt circuit, 1200 \u00f7 120 = 10 amps. On a 230-volt circuit it uses about 5.2 amps."}},{"@type": "Question", "name": "What load percentage is safe for a circuit?", "acceptedAnswer": {"@type": "Answer", "text": "Up to 80% of the breaker rating for continuous loads. Brief peaks above 80% are tolerated, but sustained load above 100% will trip the breaker."}},{"@type": "Question", "name": "Why does my breaker keep tripping?", "acceptedAnswer": {"@type": "Answer", "text": "Usually because the total watts on the circuit exceed the breaker rating. Add up everything on that circuit \u2014 including appliances in other rooms sharing the breaker."}},{"@type": "Question", "name": "Can I just fit a bigger breaker?", "acceptedAnswer": {"@type": "Answer", "text": "No. The breaker protects the wiring, and wiring rated for 15 amps cannot safely carry 20. Fitting a bigger breaker is a fire risk."}},{"@type": "Question", "name": "What is the difference between watts, amps and volts?", "acceptedAnswer": {"@type": "Answer", "text": "Volts are the supply pressure, amps are the current flowing, and watts are the power used: watts = volts \u00d7 amps."}},{"@type": "Question", "name": "Do power strips increase circuit capacity?", "acceptedAnswer": {"@type": "Answer", "text": "No. A power strip adds outlets, not capacity. The circuit limit is set by the breaker and the wiring behind the wall."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:'Inter',sans-serif;background:#F4F7F2;color:#1C2A1C;line-height:1.6}
+a{color:#3F6212} header{background:#365314;color:#FFFFFF;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#FFFFFF;text-decoration:none}
+.mark{width:44px;height:44px;border-radius:12px;background:#3F6212;color:#fff;display:grid;place-items:center;font-size:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#3F6212;color:#fff;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+.btn2{background:transparent;color:#FFFFFF;border:2px solid #FFFFFF}
+.wrap{max-width:960px;margin:0 auto;padding:16px} .badge{display:inline-block;background:#DCE8D2;color:#1C2A1C;border:1px solid #3F6212;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px}
+.card{background:#fff;border:1px solid #DCE8D2;border-radius:12px;padding:20px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.report{border-top:6px solid #3F6212}.report h1{font-family:Newsreader,serif}.ref{font-family:monospace;background:#365314;color:#fff;display:inline-block;padding:4px 10px;border-radius:6px}h2{font-family:Newsreader,serif}
+label{display:block;font-weight:700;margin:12px 0 4px} input,select,textarea{width:100%;padding:12px;border:1.5px solid #DCE8D2;border-radius:10px;font-size:16px;font-family:inherit}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px} @media(max-width:600px){.grid{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start}}
+.res{margin-top:16px;padding:16px;background:#DCE8D2;border-radius:12px;font-size:18px} .res b{font-size:26px}
+.err{color:#b91c1c;font-weight:700} article{background:#fff;border-radius:12px;padding:24px;margin-top:20px} article h2{margin-top:28px}
+.faq details{background:#fff;border:1px solid #DCE8D2;border-radius:12px;padding:14px;margin:10px 0} .faq summary{font-weight:700;cursor:pointer}
+footer{background:#365314;color:#FFFFFF;padding:28px 16px;margin-top:24px} footer a{color:#FFFFFF;font-weight:700}
+.hist{font-size:14px;background:#fff;border:1px dashed #3F6212;padding:10px;border-radius:10px;margin-top:12px;white-space:pre-wrap}
+</style></head>
+<body>
+<header><a class="logo" href="https://fixoraa.tech"><span class="mark">⚡</span>CircuitLoad</a>
+<nav><a class="btn btn2" href="https://fixoraa.tech">Home</a> <a class="btn btn2" href="https://fixoraa.tech">More Tools</a></nav></header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="wrap">
+<div class="report"><span class="ref">REPORT · CIRCUIT CHECK 01</span><h1>Home Circuit Load Calculator</h1><p>Will this circuit trip? Add up the watts, pick the voltage and breaker, and get the amps, the load percentage, and a plain verdict.</p><span class="badge">Unlimited Free Usage</span></div>
+<section class="card" aria-label="Tool">
+<div class="grid"><div><label for="watts">Total watts on the circuit</label><input id="watts" type="number" step="any" value="1200" placeholder="Total watts on the circuit"></div><div><label for="volts">Voltage</label><select id="volts"><option value="120">120 V (US household)</option><option value="230">230 V (EU/UK household)</option></select></div><div><label for="breaker">Breaker rating (amps)</label><select id="breaker"><option value="15">15 A</option><option value="20">20 A</option><option value="30">30 A</option></select></div></div><div style="margin-top:14px"><button class="btn" onclick="calc()">Calculate</button> <button class="btn" onclick="resetF()">Reset</button></div><div style="margin-top:10px">Presets: <button class="btn" type="button" onclick="applyPreset({"watts": 1200})">Microwave only</button> <button class="btn" type="button" onclick="applyPreset({"watts": 3000})">Kettle + toaster</button> <button class="btn" type="button" onclick="applyPreset({"watts": 400})">TV + lights</button> </div>
+<div id="err" class="err" role="alert"></div>
+<div id="res" class="res" style="display:none"></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+<button class="btn" onclick="saveHist()">Save to history</button>
+<button class="btn" onclick="copyRes()">Copy result</button>
+<button class="btn" onclick="dlCSV()">Export CSV</button></div>
+<div id="hist" class="hist" style="display:none"></div>
+<p><strong>Safety note:</strong> circuits should run below 80% of breaker rating for continuous loads. If your result is over 100%, move an appliance to another circuit or have an electrician add a circuit. This tool estimates load — it is not a substitute for a licensed electrician.</p>
+</section>
+<article><p>Every homeowner has lived through it: the breaker trips in the middle of cooking, the kitchen goes dark, and someone has to find a torch and the breaker box. Breakers trip for a reason — the circuit is carrying more current than it is rated for — and the trip is almost always predictable. The home circuit load calculator predicts it before it happens. Enter the total watts of everything on one circuit, its voltage and its breaker rating, and you get the current in amps, the load as a percentage of the breaker, and a plain verdict: safe, heavy, or overloaded. It is the five-second check that keeps dinner cooking and the lights on.</p>
+<h2>How to use this calculator</h2>
+<p>Electrical current follows a simple law: amps equal watts divided by volts. A 1,200-watt microwave on a 120-volt circuit draws 10 amps; on a 230-volt circuit it draws about 5.2 amps. The calculator applies that law to your total watts, then divides the resulting amps by your breaker rating to get the load percentage. The verdict follows standard practice: up to 80% is safe for continuous loads, 80 to 100% is heavy and worth watching, and over 100% means the breaker should trip. That 80% guideline exists because breakers and wiring heat up under sustained load, and heat is what ages and damages them.</p>
+<ol><li>List every appliance on the same circuit — check the breaker box to see which outlets share a breaker.</li><li>Add up their watt ratings, found on the appliance label or manual.</li><li>Enter the total watts, your household voltage, and the breaker rating.</li><li>Press Calculate and read the amps, load percentage and verdict.</li><li>If the verdict is overloaded, move one appliance to a circuit with spare capacity.</li></ol>
+<h2>Understanding your results</h2>
+<p><strong>Amps.</strong> The current the circuit carries. Compare it directly with the breaker rating — if amps exceed the rating, the breaker trips.</p>
+<p><strong>Load percentage.</strong> Amps as a percentage of breaker rating. This is the most useful single number: 100% is the trip point, 80% is the continuous-load guideline.</p>
+<p><strong>Verdict.</strong> Safe, heavy or overloaded, in plain language. Heavy means usable but tight — avoid adding anything else to that circuit.</p>
+<p><strong>Zero results.</strong> Zero watts means zero amps and zero load. If your appliances are running and you see zero, check the watts field.</p>
+<h2>Practical tips</h2><ul><li>Find your appliance wattages on their labels rather than guessing — a kettle and a toaster together can exceed a whole circuit.</li><li>Treat kitchen small appliances as a group: kettles, toasters, microwaves and coffee makers are the classic trip combination.</li><li>Keep continuous loads — heaters, dehumidifiers, chargers left on — below 80% of the breaker rating.</li><li>Label your breaker box once, properly, so future checks take seconds instead of a treasure hunt.</li><li>If a breaker trips repeatedly even at safe calculated loads, call an electrician — the wiring or breaker itself may be faulty.</li><li>Never replace a breaker with a higher-rated one to stop tripping — the wiring, not the breaker, is the limit.</li></ul>
+<h2>Common mistakes to avoid</h2><ul><li>Adding up only the appliance that tripped the breaker, not everything sharing the circuit.</li><li>Forgetting hidden loads on the same circuit, like a fridge or a heater in the next room.</li><li>Using the wrong voltage — 120 volts in the US, 230 volts in much of Europe — which halves or doubles the amps.</li><li>Treating 100% load as safe because the breaker has not tripped yet — breakers tolerate brief overloads, not sustained ones.</li><li>Plugging a power strip into a power strip and assuming the strip, not the circuit, is the limit.</li><li>Ignoring repeated trips and resetting the breaker again and again instead of reducing the load.</li></ul>
+<h2>Who benefits most</h2>
+<p>This calculator is for homeowners troubleshooting tripping breakers, renters wondering whether a heater and a kettle can share an outlet, renovators planning kitchen circuits, and landlords checking that a property's circuits suit modern appliance loads. It is also handy before buying a large appliance: a 3,000-watt appliance on a 15-amp, 120-volt circuit is already at 167% of the breaker, so it needs its own circuit or a different supply. Knowing the number before purchase saves a return trip and an electrician's call-out.</p>
+<h2>Worked example</h2>
+<p>Take a 1,200-watt microwave on a 120-volt, 15-amp circuit: 1,200 ÷ 120 = 10 amps, which is 66.7% of the breaker — safe, with room for a small appliance. Add a 1,800-watt kettle to the same circuit and the total becomes 3,000 watts, or 25 amps — 166.7% of the breaker, which will trip it promptly. On a 230-volt, 20-amp circuit, the same 3,000 watts draws 13 amps, or 65% — comfortably safe. Voltage and breaker rating change everything, which is why all three inputs matter.</p>
+<h2>Checking and re-running your result</h2>
+<p>Verify your result by checking the breaker box label against the rating you entered, and by testing: if the calculator says safe but the breaker still trips, something unlisted shares the circuit, or the breaker is failing. Save each circuit's calculation to history, and you will build a map of your home's circuits that makes every future appliance decision — and every electrician visit — faster and cheaper. Mapping your breaker box is the single most useful electrical job a homeowner can do, and it makes every future load calculation instant. Switch off one breaker at a time, walk the house with a lamp or a phone charger, and label every outlet and light it controls; a printed map taped inside the box door turns a tripping mystery into a ten-second lookup. Modern protection matters too: GFCI outlets, required in kitchens, bathrooms and outdoors, cut power in milliseconds if current leaks through a person, while AFCI breakers guard bedrooms against arc faults that start fires — if your home lacks them, an electrician's upgrade is money well spent. Big new loads deserve their own circuits: an electric vehicle charger can draw 32 to 48 amps continuously, a heat pump or induction range likewise, and none of them should share a general-purpose circuit. Kitchen remodels are the classic trap — a modern kitchen with a kettle, toaster, microwave, coffee maker and dishwasher can exceed two circuits before breakfast, which is why codes now demand multiple small-appliance circuits. Call an electrician whenever a breaker trips with no clear overload, when outlets feel warm, when lights flicker under load, or when you smell burning near a box; those are fault symptoms, not load problems. And never ignore a breaker that will not reset — it is protecting you, and forcing it defeats the only safety device standing between your wiring and a fire. A quick reference for the appliances that trip breakers most often: a kettle draws about 1,800 watts, a toaster about 1,200, a microwave about 1,200, a hair dryer about 1,500, and a space heater about 1,500. Any two of those on a single 15-amp, 120-volt circuit exceed its 1,800-watt capacity, which is why kitchen and bathroom circuits trip so predictably. Check the label on any new appliance before plugging it into a circuit that already serves a heavy load. One more practical point: write the calculated load for each circuit on its breaker label once you have mapped the box. The next time someone plugs in a heater or a new appliance, the label answers the question instantly, and the household stops learning the answer by tripping the breaker. A labelled box is a small job with an outsized payoff, and it makes any future electrician visit faster and cheaper.</p></article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary>How many amps does a 1200 watt microwave use?</summary><p>On a 120-volt circuit, 1200 ÷ 120 = 10 amps. On a 230-volt circuit it uses about 5.2 amps.</p></details><details><summary>What load percentage is safe for a circuit?</summary><p>Up to 80% of the breaker rating for continuous loads. Brief peaks above 80% are tolerated, but sustained load above 100% will trip the breaker.</p></details><details><summary>Why does my breaker keep tripping?</summary><p>Usually because the total watts on the circuit exceed the breaker rating. Add up everything on that circuit — including appliances in other rooms sharing the breaker.</p></details><details><summary>Can I just fit a bigger breaker?</summary><p>No. The breaker protects the wiring, and wiring rated for 15 amps cannot safely carry 20. Fitting a bigger breaker is a fire risk.</p></details><details><summary>What is the difference between watts, amps and volts?</summary><p>Volts are the supply pressure, amps are the current flowing, and watts are the power used: watts = volts × amps.</p></details><details><summary>Do power strips increase circuit capacity?</summary><p>No. A power strip adds outlets, not capacity. The circuit limit is set by the breaker and the wiring behind the wall.</p></details></section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer><p><strong>CircuitLoad</strong> — Amps, load percentage, and a clear verdict.</p>
+<p>CircuitLoad checks whether your appliances overload a household circuit — amps and load percentage before the breaker trips.</p>
+<p><a href="https://fixoraa.tech">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p></footer>
+<script id="pure">function circuitLoad(watts,volts,breaker){var a=Math.round(watts/volts*10)/10;return {amps:a,pct:Math.round(a/breaker*1000)/10};}</script>
+<script>function calc(){var w=num('watts'),v=parseFloat(document.getElementById('volts').value||120),b=parseFloat(document.getElementById('breaker').value||15);
+    if(w<0){showErr('Watts cannot be negative.');return;} document.getElementById('err').textContent='';
+    var r=circuitLoad(w,v,b);
+    var verdict=r.pct>100?'OVERLOADED — the breaker will trip. Move load to another circuit.':(r.pct>80?'Heavy — above the 80% continuous-load guideline.':'Safe — within the circuit rating.');
+    var html='<b>'+r.amps+' amps</b> — <b>'+r.pct+'%</b> of a '+b+' A breaker. '+verdict;
+    if(w===0) html='No load on the circuit: 0 amps, 0% load.';
+    showRes(html);}
+  
+function applyPreset(o){for(var k in o){var e=document.getElementById(k);if(e)e.value=o[k];}calc();}
+function resetF(){var els=document.querySelectorAll('input,select');els.forEach(function(e){if(e.type!=='button')e.value='';});document.getElementById('res').style.display='none';document.getElementById('err').textContent='';}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+
+function showRes(html){var r=document.getElementById('res');r.style.display='block';r.innerHTML=html;window._last=html.replace(/<[^>]+>/g,' ');}
+function showErr(m){document.getElementById('err').textContent=m;}
+function saveHist(){if(!window._last)return;var k='hist_circuitload';var a=JSON.parse(localStorage.getItem(k)||'[]');a.unshift(new Date().toLocaleString()+': '+window._last);localStorage.setItem(k,JSON.stringify(a.slice(0,10)));var d=document.getElementById('hist');d.style.display='block';d.textContent=a.join('\n');}
+function copyRes(){if(window._last&&navigator.clipboard)navigator.clipboard.writeText(window._last);}
+function dlCSV(){if(!window._last)return;var b=new Blob([window._last],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='circuitload-result.csv';a.click();}
+</script>
+</body></html>
