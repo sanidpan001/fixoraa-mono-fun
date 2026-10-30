@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epoxy Resin Calculator — Volume, Mix Ratio &amp; Pour Layers | ResinMix</title>
+<meta name="description" content="Free epoxy resin calculator: enter mold or tabletop dimensions (or use the water trick) and get exact mixed volume, resin/hardener split, and pour layers.">
+<link rel="canonical" href="https://fun.fixoraa.tech/resinmix/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Epoxy Resin Calculator — Volume, Mix Ratio &amp; Pour Layers | ResinMix">
+<meta property="og:description" content="Free epoxy resin calculator: enter mold or tabletop dimensions (or use the water trick) and get exact mixed volume, resin/hardener split, and pour layers.">
+<meta property="og:url" content="https://fun.fixoraa.tech/resinmix/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ResinMix",
+      "url": "https://fun.fixoraa.tech/resinmix/",
+      "applicationCategory": "DIY Tools",
+      "operatingSystem": "Web",
+      "description": "Free epoxy resin calculator: enter mold or tabletop dimensions (or use the water trick) and get exact mixed volume, resin/hardener split, and pour layers.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate how much epoxy resin I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply length \u00d7 width \u00d7 depth (in cm) to get milliliters directly \u2014 1 cm\u00b3 = 1 ml. A 60\u00d745 cm top with a 0.3 cm flood coat needs 810 ml. For round molds: \u03c0 \u00d7 radius\u00b2 \u00d7 depth. For irregular molds, weigh water that fills the mold in grams and multiply by 1.1."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I split resin and hardener for a 2:1 ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide the total mixed volume by the ratio parts. For 2:1, resin = total \u00d7 2/3 and hardener = total \u00d7 1/3. So 810 ml at 2:1 = 540 ml resin + 270 ml hardener. Check whether your product's ratio is by volume or by weight \u2014 they differ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much epoxy per square foot of tabletop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 12 fl oz per square foot for a standard 1/8 in (3 mm) flood coat, or ~6 oz per square foot for a thin 1/16 in seal coat. Always seal porous wood first so air doesn't rise into the flood coat as bubbles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I pour epoxy 2 inches thick at once?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because curing is exothermic \u2014 thick pours trap heat, which accelerates the cure and causes cracking, yellowing, or smoking. Use a deep-pour resin rated for your depth, and pour in layers: this calculator's planner divides your depth by the max pour depth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the water trick for measuring resin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fill the mold with water, weigh the water in grams, and multiply by 1.1 (resin is denser than water). 196 g of water \u2248 216 g of mixed epoxy. It automatically accounts for every curve of an irregular mold."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much extra resin should I mix as a buffer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add 10\u201315% to the calculated volume. It covers resin left in mixing cups, mold flex, and the fact that a short pour can't be fixed mid-cure. This calculator applies your buffer before splitting the mix ratio."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EFF4F7; --surface:#FFFFFF; --accent:#0B4F6C; --accent-ink:#FFFFFF;
+  --ink:#1E2A32; --muted:#56636D; --line:#D3DEE5;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.rx-wrap{max-width:1060px;margin:0 auto;padding:10px 6px 46px;font-family:Inter,system-ui,sans-serif;color:#1E2A32;}.rx-grid{display:grid;grid-template-columns:280px minmax(0,1fr);gap:26px;align-items:start;}.rx-rail{position:sticky;top:90px;display:flex;flex-direction:column;gap:12px;}.rx-railhead{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#56636D;text-align:center;}.rx-lab{background:#FFFFFF;border:1px solid #D3DEE5;border-left:4px solid #C0392B;border-radius:10px;padding:13px 14px;box-shadow:0 6px 16px rgba(11,79,108,.06);}.rx-lab .k{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:#C0392B;text-transform:uppercase;margin-bottom:3px;}.rx-lab p{margin:0;font-family:Caveat,cursive;font-size:19px;line-height:1.4;color:#33414B;}.rx-main{min-width:0;}.rx-hero{background:#0B4F6C;color:#fff;border-radius:22px;padding:38px 32px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 14px 32px rgba(11,79,108,.25);}.rx-hero:after{content:'🧪';position:absolute;right:22px;top:50%;transform:translateY(-50%) rotate(-12deg);font-size:90px;opacity:.16;}.rx-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#9FD3E8;margin-bottom:8px;}.rx-hero h1{font-family:Sora,Inter,sans-serif;font-size:clamp(30px,4.6vw,46px);margin:0 0 8px;font-weight:700;letter-spacing:-.02em;}.rx-tag{color:#CFE3EC;font-size:16.5px;margin:0;max-width:520px;}.rx-card{background:#FFFFFF;border:1px solid #D3DEE5;border-radius:20px;padding:26px;box-shadow:0 10px 26px rgba(30,42,50,.06);}.rx-tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;}.rx-tabs button{border:2px solid #D3DEE5;background:#fff;border-radius:999px;padding:10px 18px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit;color:#1E2A32;}.rx-tabs button.on{background:#0B4F6C;color:#fff;border-color:#0B4F6C;}.rx-pane{display:none;}.rx-pane.on{display:block;}.rx-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}.rx-field{margin-bottom:14px;}.rx-field label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#56636D;margin-bottom:6px;}.rx-field input,.rx-field select{width:100%;padding:12px;font-size:16px;border:2px solid #D3DEE5;border-radius:12px;font-family:inherit;color:#1E2A32;background:#fff;}.rx-field input:focus,.rx-field select:focus{outline:none;border-color:#0B4F6C;}.rx-seg{display:flex;gap:8px;flex-wrap:wrap;}.rx-seg button{border:2px solid #D3DEE5;background:#fff;border-radius:12px;padding:9px 15px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;color:#1E2A32;}.rx-seg button.on{background:#0B4F6C;color:#fff;border-color:#0B4F6C;}.rx-ctl{margin:14px 0;}.rx-ctl label{display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#56636D;margin-bottom:8px;}.rx-ctl label output{color:#0B4F6C;font-size:15px;}.rx-ctl input[type=range]{width:100%;accent-color:#0B4F6C;}.rx-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px;}.rx-stat{background:#EFF4F7;border:1px solid #D3DEE5;border-radius:14px;padding:14px 10px;text-align:center;}.rx-stat .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:#56636D;font-weight:800;}.rx-stat .v{font-family:Sora,sans-serif;font-size:23px;font-weight:700;color:#0B4F6C;margin-top:2px;}.rx-stat.hero{background:#0B4F6C;border-color:#0B4F6C;}.rx-stat.hero .k{color:#9FD3E8;}.rx-stat.hero .v{color:#fff;}.rx-pours{margin-top:12px;background:#FFF8E6;border:1px solid #EAD9A8;border-radius:14px;padding:14px 16px;font-size:14.5px;color:#5A4416;}.rx-pours b{color:#0B4F6C;}@media(max-width:900px){.rx-grid{grid-template-columns:1fr;}.rx-rail{position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}.rx-railhead{grid-column:1/-1;}.rx-hero{padding:30px 22px;}.rx-hero:after{font-size:64px;}}@media(max-width:560px){.rx-3col{grid-template-columns:1fr 1fr 1fr;}.rx-stats{grid-template-columns:repeat(2,1fr);}.rx-card{padding:20px 16px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ResinMix home">
+      <span class="fx-logo-tile" aria-hidden="true">🧪</span>
+      <span class="fx-brand">ResinMix</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-notebook-margin" aria-label="ResinMix tool">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet"><section class="rx-wrap"><div class="rx-grid"><aside class="rx-rail" aria-label="Lab margin notes"><div class="rx-railhead">— lab margin —</div><div class="rx-lab"><div class="k">Lab note · safety</div><p>Nitrile gloves always — uncured epoxy is a sensitizer. Respirator for big pours &amp; sanding.</p></div><div class="rx-lab"><div class="k">Lab note · mixing</div><p>3 full minutes, scrape sides + bottom. Two-cup method for critical pours.</p></div><div class="rx-lab"><div class="k">Lab note · ratio</div><p>Volume or weight? Check the data sheet — 2:1 by volume ≠ 2:1 by weight!</p></div><div class="rx-lab"><div class="k">Lab note · heat</div><p>Deep pours trap heat → cracking. Respect max pour depth, pour in layers.</p></div><div class="rx-lab"><div class="k">Lab note · cure</div><p>Demold at 24–72h, full cure 7 days. Cold rooms stall the cure.</p></div></aside><div class="rx-main"><div class="rx-hero"><span class="rx-kicker">The resin lab notebook</span><h1>Epoxy Resin Calculator</h1><p class="rx-tag">Never run short mid-pour again.</p></div><div class="rx-card"><div class="rx-tabs" role="tablist"><button type="button" class="on" data-pane="r1">▭ Rectangle / coating</button><button type="button" data-pane="r2">◯ Round mold</button><button type="button" data-pane="r3">💧 Water-weight trick</button></div><div class="rx-pane on" id="rx-r1"><div class="rx-3col"><div class="rx-field"><label for="rx-l">Length (cm)</label><input id="rx-l" type="number" min="0.1" step="0.1" value="60" inputmode="decimal"></div><div class="rx-field"><label for="rx-w">Width (cm)</label><input id="rx-w" type="number" min="0.1" step="0.1" value="45" inputmode="decimal"></div><div class="rx-field"><label for="rx-h">Depth (cm)</label><input id="rx-h" type="number" min="0.05" step="0.05" value="0.3" inputmode="decimal"></div></div></div><div class="rx-pane" id="rx-r2"><div class="rx-3col" style="grid-template-columns:1fr 1fr"><div class="rx-field"><label for="rx-d">Diameter (cm)</label><input id="rx-d" type="number" min="0.1" step="0.1" value="30" inputmode="decimal"></div><div class="rx-field"><label for="rx-h2">Depth (cm)</label><input id="rx-h2" type="number" min="0.05" step="0.05" value="0.6" inputmode="decimal"></div></div></div><div class="rx-pane" id="rx-r3"><div class="rx-field"><label for="rx-ww">Water weight filling the mold (grams)</label><input id="rx-ww" type="number" min="1" step="1" value="196" inputmode="decimal" style="max-width:220px"></div><p style="font-size:13.5px;color:#56636D;margin:0">Resin is denser than water: mixed epoxy ≈ water grams × 1.1</p></div><div class="rx-field" style="margin-top:16px"><label>Mix ratio (resin : hardener)</label><div class="rx-seg" id="rx-ratio"><button type="button" data-r="1,1" class="on">1 : 1</button><button type="button" data-r="2,1">2 : 1</button><button type="button" data-r="3,1">3 : 1</button></div></div><div class="rx-3col"><div class="rx-field"><label for="rx-maxd">Max pour depth / layer (cm)</label><input id="rx-maxd" type="number" min="0.1" step="0.1" value="0.6" inputmode="decimal"></div><div class="rx-field"><label for="rx-buf">Buffer (%)</label><input id="rx-buf" type="number" min="0" max="50" step="1" value="10" inputmode="decimal"></div><div class="rx-field"><label for="rx-den">Resin density (g/ml)</label><input id="rx-den" type="number" min="0.9" max="1.3" step="0.01" value="1.10" inputmode="decimal"></div></div><div class="rx-stats" role="status" aria-live="polite"><div class="rx-stat hero"><div class="k">Mixed total</div><div class="v" id="rx-total">–</div></div><div class="rx-stat"><div class="k">Resin (A)</div><div class="v" id="rx-a">–</div></div><div class="rx-stat"><div class="k">Hardener (B)</div><div class="v" id="rx-b">–</div></div><div class="rx-stat"><div class="k">≈ Weight</div><div class="v" id="rx-wt">–</div></div></div><div class="rx-pours" id="rx-pours"></div></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How Much Epoxy Do You Actually Need?</h2><p>Running short mid-pour is the most expensive mistake in resin work. A second batch mixed to top up a curing pour almost never matches — different mix, different temperature, a visible seam, wasted material. The fix is thirty seconds of math before you touch a cup. Every epoxy calculation follows the same chain: <strong>volume → mixed resin → resin/hardener split → buffer</strong>. Get the volume right and everything downstream is arithmetic.</p><p>The core formulas depend on shape:</p><ul><li><strong>Rectangular mold or coating:</strong> length × width × depth. A 60 × 45 cm tabletop with a 0.3 cm flood coat needs 60 × 45 × 0.3 = <strong>810 ml</strong> of mixed resin.</li><li><strong>Round mold or tray:</strong> π × radius² × depth. A 30 cm diameter tray poured 0.6 cm deep: 3.14 × 15² × 0.6 = <strong>424 ml</strong>.</li><li><strong>Any irregular mold — the water trick:</strong> fill the mold with water, weigh the water in grams, and multiply by <strong>1.1</strong>. Resin is denser than water, so 196 g of water ≈ 216 g of mixed epoxy. Fast, and it automatically accounts for every curve of the mold.</li></ul><p>Remember that 1 cm³ = 1 ml, so working in centimeters gives milliliters directly — the unit most resin kits are measured in.</p><h2>Memorize These Coating Numbers</h2><p>If you coat tabletops regularly, two numbers save constant recalculation. A standard <strong>1/8-inch (0.3 cm) flood coat</strong> needs about <strong>12 fluid ounces per square foot</strong> (≈ 355 ml). A thin <strong>1/16-inch seal coat</strong> needs about <strong>6 oz per square foot</strong>. A seal coat first is not optional on porous wood — it locks down air that would otherwise rise as bubbles into your flood coat.</p><h2>Mix Ratios: Volume vs Weight</h2><p>Epoxy is a two-part system: <strong>resin (Part A)</strong> plus <strong>hardener (Part B)</strong>, and the ratio is chemistry, not suggestion. Common systems are <strong>1:1</strong> (often tabletop/coating resins), <strong>2:1</strong> (many art and casting resins), and <strong>3:1</strong> (some deep-pour systems). The critical question: <strong>ratio by volume or by weight?</strong> They differ because resin and hardener have different densities. A "2:1 by volume" system is not 2:1 by weight.</p><p>Always follow your product's data sheet. If it says by volume, measure in graduated cups; if by weight, use a scale (more accurate). This calculator splits by volume parts: for a 2:1 system, resin = total × 2/3, hardener = total × 1/3. For 810 ml at 2:1: <strong>540 ml resin + 270 ml hardener</strong>. Being off-ratio is the #1 cause of sticky, never-curing pours — measure like a pharmacist, not a cook.</p><h2>The 10–15% Buffer Rule</h2><p>Calculated volume is <em>theoretical</em> volume. Reality adds: resin clinging to mixing cups and sticks, slight mold flex, and the fact that a short pour can't be fixed. Professionals add a <strong>10–15% buffer</strong> to every calculation. On a 1-liter pour that's 100–150 ml of insurance — far cheaper than a ruined project. This calculator applies your chosen buffer before splitting the ratio, so the A/B numbers already include it.</p><h2>Deep Pour vs Coating: Different Resins, Different Rules</h2><p>Epoxy curing is exothermic — it generates heat. Thin coatings shed heat easily; thick pours trap it, and trapped heat accelerates the cure, which generates more heat — a runaway that cracks, yellows, or even smokes. That's why there are two resin families:</p><table><thead><tr><th>Pour depth</th><th>Use</th><th>Resin type</th></tr></thead><tbody><tr><td>1.5 mm (0.15 cm)</td><td>Very thin art coating</td><td>Tabletop / coating</td></tr><tr><td>3 mm (0.3 cm)</td><td>Tabletop flood coat</td><td>Tabletop / coating</td></tr><tr><td>6 mm (0.6 cm)</td><td>Trays, shallow molds</td><td>Tabletop / coating</td></tr><tr><td>13 mm (1.3 cm)</td><td>Small castings</td><td>Casting (check max depth)</td></tr><tr><td>2.5 cm+</td><td>River tables, flower preservation</td><td>Deep pour only</td></tr></tbody></table><p><strong>Coating resins</strong> cure fast and hard but must stay under ~6 mm per pour. <strong>Deep-pour resins</strong> cure slowly (24–72 hours vs 12–24) and can go 2–5 cm per pour depending on the product. Never use a coating resin for a deep pour — the data sheet's maximum pour depth is a hard limit, not a suggestion. The layer planner in this calculator divides your total depth by the max depth to tell you how many pours the project needs; let each layer reach a firm gel before the next.</p><h2>Mixing: The Three-Minute Rule</h2><p>Bad mixing causes more failures than bad measuring. Scrape the sides and bottom of the cup continuously — unmixed resin hiding in the corners is what leaves soft spots. Mix for a <strong>full 3 minutes</strong> (longer for large volumes), then consider the <strong>two-cup method</strong>: pour the mixed batch into a second clean cup and stir another minute, leaving any unmixed residue behind in cup one. The mixture should go completely clear and streak-free; any cloudy ribbons mean keep stirring.</p><h2>Bubbles: Prevention Beats Removal</h2><p>Bubbles come from three sources: air folded in during mixing, air released from porous substrates, and outgassing as the resin warms. Prevention: warm the resin bottles in warm (not hot) water before mixing to lower viscosity, stir slowly without whipping, seal porous wood first, and pour in a warm room — cold resin is thick resin, and thick resin traps bubbles. After pouring, a quick pass with a heat gun or torch held 15–20 cm away pops surface bubbles; keep it moving to avoid scorching. Deep bubbles in thick pours may need a second pass 10 minutes later.</p><h2>Cure Times and When It's Really Done</h2><p>"Dry to the touch" is not "cured." Typical timelines at ~22°C: <strong>tabletop resins</strong> — tack-free in 6–12 hours, light use in 24–72 hours, full cure in 7 days. <strong>Deep-pour resins</strong> — 24–72 hours to demold, full cure in 7–14 days. Cold rooms slow everything dramatically; below ~18°C some systems barely cure at all. Don't rush demolding — a piece demolded soft can warp as it finishes curing. And keep fresh pours dust-free: a cardboard box over the project is the classic studio solution.</p><h2>Safety: Non-Negotiable Gear</h2><p>Uncured epoxy is a sensitizer — repeated skin contact can develop into a permanent allergy that ends your resin hobby. <strong>Nitrile gloves</strong> always (latex dissolves), <strong>respirator with organic-vapor cartridges</strong> when mixing large volumes or sanding, <strong>eye protection</strong>, and ventilation. Sand cured resin wet or with extraction — the dust is the hazard. Keep isopropyl alcohol nearby for cleaning tools and drips, and never pour excess resin down drains; let it cure in the cup and bin it.</p><h2>Troubleshooting Common Failures</h2><h3>Sticky or soft spots after full cure time</h3><p>Off-ratio mix or incomplete mixing — the two classic causes. There's no fix except removing the soft area and re-pouring; prevention (scale, 3-minute mix, two-cup method) is everything.</p><h3>Amine blush (waxy film on surface)</h3><p>Some hardeners form a blush in humid conditions. Wash it off with warm soapy water before sanding or re-coating, or it will cause adhesion failures.</p><h3>Fish eyes / craters</h3><p>Surface contamination — silicone, oils, or dust. Wipe substrates with isopropyl alcohol before pouring and keep silicone tools away from pre-pour surfaces.</p><h3>Yellowing</h3><p>All epoxy yellows eventually with UV exposure; quality resins include UV stabilizers that delay it for years. For pieces in direct sun, a UV-stable topcoat helps. Excessive heat during cure (too-deep pour) yellows fast — another reason to respect max pour depth.</p><h3>Cracking</h3><p>Almost always exothermic runaway from too-deep a pour with the wrong resin, or demolding stress on an under-cured piece. Match resin to depth, pour in layers, control room temperature.</p><h2>Buying the Right Amount</h2><p>Resin is sold by kit size (1L, 4L, 20L…), and kits are cheaper per liter — but resin has a shelf life of roughly 12 months unopened, less once opened. Size your purchase to the project plus buffer, not the bargain: a 20L kit that half-cures in the bottle is no deal. Calculate the project (this page), add the buffer, check your ratio split, and buy the smallest kit that covers it with a little headroom. Your future self, mid-pour with exactly enough resin, will thank you.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate how much epoxy resin I need?</summary><p>Multiply length × width × depth (in cm) to get milliliters directly — 1 cm³ = 1 ml. A 60×45 cm top with a 0.3 cm flood coat needs 810 ml. For round molds: π × radius² × depth. For irregular molds, weigh water that fills the mold in grams and multiply by 1.1.</p></details>
+<details><summary>How do I split resin and hardener for a 2:1 ratio?</summary><p>Divide the total mixed volume by the ratio parts. For 2:1, resin = total × 2/3 and hardener = total × 1/3. So 810 ml at 2:1 = 540 ml resin + 270 ml hardener. Check whether your product's ratio is by volume or by weight — they differ.</p></details>
+<details><summary>How much epoxy per square foot of tabletop?</summary><p>About 12 fl oz per square foot for a standard 1/8 in (3 mm) flood coat, or ~6 oz per square foot for a thin 1/16 in seal coat. Always seal porous wood first so air doesn't rise into the flood coat as bubbles.</p></details>
+<details><summary>Can I pour epoxy 2 inches thick at once?</summary><p>Because curing is exothermic — thick pours trap heat, which accelerates the cure and causes cracking, yellowing, or smoking. Use a deep-pour resin rated for your depth, and pour in layers: this calculator's planner divides your depth by the max pour depth.</p></details>
+<details><summary>What is the water trick for measuring resin?</summary><p>Fill the mold with water, weigh the water in grams, and multiply by 1.1 (resin is denser than water). 196 g of water ≈ 216 g of mixed epoxy. It automatically accounts for every curve of an irregular mold.</p></details>
+<details><summary>How much extra resin should I mix as a buffer?</summary><p>Add 10–15% to the calculated volume. It covers resin left in mixing cups, mold flex, and the fact that a short pour can't be fixed mid-cure. This calculator applies your buffer before splitting the mix ratio.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ResinMix</div>
+    <p>ResinMix calculates exactly how much epoxy you need — rectangle, round, or the water-weight trick — then splits it into resin and hardener for your mix ratio and plans deep-pour layers.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function resinMl(lCm,wCm,hCm){return Math.round(Number(lCm)*Number(wCm)*Number(hCm));}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var card=document.querySelector('.rx-card');if(!card)return;var mode='r1',ratio=[1,1];var tabs=card.querySelectorAll('.rx-tabs button');for(var t=0;t<tabs.length;t++){tabs[t].addEventListener('click',function(){for(var k=0;k<tabs.length;k++)tabs[k].classList.remove('on');this.classList.add('on');mode=this.getAttribute('data-pane');var ps=card.querySelectorAll('.rx-pane');for(var j=0;j<ps.length;j++)ps[j].classList.toggle('on',ps[j].id==='rx-'+mode);calc();});}var rbox=document.getElementById('rx-ratio');rbox.addEventListener('click',function(e){if(e.target.tagName==='BUTTON'){var bs=rbox.querySelectorAll('button');for(var i=0;i<bs.length;i++)bs[i].classList.remove('on');e.target.classList.add('on');ratio=e.target.getAttribute('data-r').split(',').map(Number);calc();}});function val(id){return parseFloat(document.getElementById(id).value)||0;}function fmtMl(x){return x>=1000?(x/1000).toFixed(2)+' L':Math.round(x)+' ml';}function calc(){var base=0,depth=0;if(mode==='r1'){var l=val('rx-l'),w=val('rx-w'),h=val('rx-h');base=l*w*h;depth=h;}else if(mode==='r2'){var d=val('rx-d'),h2=val('rx-h2');base=Math.PI*Math.pow(d/2,2)*h2;depth=h2;}else{base=val('rx-ww')*1.1;depth=0;}var buf=val('rx-buf'),den=val('rx-den')||1.1,maxd=val('rx-maxd')||0.6;var total=Math.round(base*(1+buf/100));var a=Math.round(total*ratio[0]/(ratio[0]+ratio[1]));var b=total-a;document.getElementById('rx-total').textContent=fmtMl(total);document.getElementById('rx-a').textContent=fmtMl(a);document.getElementById('rx-b').textContent=fmtMl(b);var kg=total*den/1000;document.getElementById('rx-wt').textContent=kg>=1?kg.toFixed(2)+' kg':Math.round(total*den)+' g';var poursEl=document.getElementById('rx-pours');if(depth>0&&maxd>0){var n=Math.max(1,Math.ceil(depth/maxd-1e-9));poursEl.innerHTML=n===1?'<b>Single pour OK:</b> '+depth+' cm is within the '+maxd+' cm max layer depth.':'<b>'+n+' pours needed:</b> '+depth+' cm depth ÷ '+maxd+' cm max per layer. Let each layer gel before the next.';}else{poursEl.innerHTML='<b>Water-trick mode:</b> volume already includes the 1.1× density factor. Check your resin\'s max pour depth before casting deep.';}}['rx-l','rx-w','rx-h','rx-d','rx-h2','rx-ww','rx-maxd','rx-buf','rx-den'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',calc);});calc();});}
+</script>
+</body>
+</html>
