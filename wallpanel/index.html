@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wainscoting Wall Panel Calculator — Panels, Trim & Cost | WallPanel</title>
+<meta name="description" content="Free wainscoting wall panel calculator: wall size and panel size give panel count with cutting waste, plus trim and cost estimates.">
+<link rel="canonical" href="https://fun.fixoraa.tech/wallpanel/">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Libre+Franklin:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"WallPanel","applicationCategory":"Home","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "How many wall panels do I need?", "acceptedAnswer": {"@type": "Answer", "text": "Divide your wall area by one panel's area, add 10% for cutting waste, and round up to whole panels. This calculator does all three steps."}},{"@type": "Question", "name": "Why add 10% waste?", "acceptedAnswer": {"@type": "Answer", "text": "Panels are cut around outlets, switches, windows and corners, and those offcuts usually cannot be reused. Without waste allowance you will run short."}},{"@type": "Question", "name": "What size are wall panels?", "acceptedAnswer": {"@type": "Answer", "text": "Full sheets are typically 4 by 8 feet, but beadboard, shiplap and individual boards vary. Always enter your actual panel size."}},{"@type": "Question", "name": "Do I need trim as well?", "acceptedAnswer": {"@type": "Answer", "text": "Yes \u2014 chair rail, cap moulding and corner trim finish the edges. The calculator estimates trim length from the wall perimeter."}},{"@type": "Question", "name": "Should I paint panels before or after installing?", "acceptedAnswer": {"@type": "Answer", "text": "Prime and first-coat before installation, especially edges, then touch up after fitting for the cleanest finish."}},{"@type": "Question", "name": "Can I panel over damaged walls?", "acceptedAnswer": {"@type": "Answer", "text": "Light damage can be covered, but fix loose plaster, damp or mould first \u2014 panelling traps problems behind it."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:'Libre Franklin',sans-serif;background:#FDF6F3;color:#3B2233;line-height:1.6}
+a{color:#7C2D4E} header{background:#7C2D4E;color:#FFFFFF;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#FFFFFF;text-decoration:none}
+.mark{width:44px;height:44px;border-radius:6px;background:#7C2D4E;color:#fff;display:grid;place-items:center;font-size:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#7C2D4E;color:#fff;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+.btn2{background:transparent;color:#FFFFFF;border:2px solid #FFFFFF}
+.wrap{max-width:960px;margin:0 auto;padding:16px} .badge{display:inline-block;background:#EAD9DE;color:#3B2233;border:1px solid #7C2D4E;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px}
+.card{background:#fff;border:1px solid #EAD9DE;border-radius:6px;padding:20px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.spec{border:2px solid #7C2D4E;border-radius:6px;padding:18px;background:#fff}.spec table{width:100%;border-collapse:collapse}.spec td{border-bottom:1px solid #EAD9DE;padding:8px 6px}.spec td:first-child{font-weight:700}h1,h2{font-family:'Zilla Slab',serif}
+label{display:block;font-weight:700;margin:12px 0 4px} input,select,textarea{width:100%;padding:12px;border:1.5px solid #EAD9DE;border-radius:10px;font-size:16px;font-family:inherit}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px} @media(max-width:600px){.grid{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start}}
+.res{margin-top:16px;padding:16px;background:#EAD9DE;border-radius:6px;font-size:18px} .res b{font-size:26px}
+.err{color:#b91c1c;font-weight:700} article{background:#fff;border-radius:6px;padding:24px;margin-top:20px} article h2{margin-top:28px}
+.faq details{background:#fff;border:1px solid #EAD9DE;border-radius:12px;padding:14px;margin:10px 0} .faq summary{font-weight:700;cursor:pointer}
+footer{background:#7C2D4E;color:#FFFFFF;padding:28px 16px;margin-top:24px} footer a{color:#FFFFFF;font-weight:700}
+.hist{font-size:14px;background:#fff;border:1px dashed #7C2D4E;padding:10px;border-radius:10px;margin-top:12px;white-space:pre-wrap}
+</style></head>
+<body>
+<header><a class="logo" href="https://fixoraa.tech"><span class="mark">▤</span>WallPanel</a>
+<nav><a class="btn btn2" href="https://fixoraa.tech">Home</a> <a class="btn btn2" href="https://fixoraa.tech">More Tools</a></nav></header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="wrap">
+<div class="spec"><span class="badge">Unlimited Free Usage</span><h1>Wainscoting Wall Panel Calculator</h1><table><tr><td>What it counts</td><td>Wall panels, with 10% cutting waste</td></tr><tr><td>Also estimated</td><td>Trim length and material cost</td></tr><tr><td>Best for</td><td>Wainscoting, beadboard, shiplap and panel moulding</td></tr></table></div>
+<section class="card" aria-label="Tool">
+<div class="grid"><div><label for="wall_l">Wall length (ft)</label><input id="wall_l" type="number" step="any" value="12" placeholder="Wall length (ft)"></div><div><label for="wall_h">Wall height (ft)</label><input id="wall_h" type="number" step="any" value="8" placeholder="Wall height (ft)"></div><div><label for="pan_w">Panel width (ft)</label><input id="pan_w" type="number" step="any" value="4" placeholder="Panel width (ft)"></div><div><label for="pan_h">Panel height (ft)</label><input id="pan_h" type="number" step="any" value="8" placeholder="Panel height (ft)"></div><div><label for="pan_price">Price per panel (optional, $)</label><input id="pan_price" type="number" step="any" value="25" placeholder="Price per panel (optional, $)"></div></div><div style="margin-top:14px"><button class="btn" onclick="calc()">Calculate</button> <button class="btn" onclick="resetF()">Reset</button></div><div style="margin-top:10px">Presets: <button class="btn" type="button" onclick="applyPreset({"wall_l": 8, "wall_h": 8})">Small wall</button> <button class="btn" type="button" onclick="applyPreset({"wall_l": 12, "wall_h": 9})">Feature wall</button> <button class="btn" type="button" onclick="applyPreset({"wall_l": 20, "wall_h": 8})">Long hall wall</button> </div>
+<div id="err" class="err" role="alert"></div>
+<div id="res" class="res" style="display:none"></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+<button class="btn" onclick="saveHist()">Save to history</button>
+<button class="btn" onclick="copyRes()">Copy result</button>
+<button class="btn" onclick="dlCSV()">Export CSV</button></div>
+<div id="hist" class="hist" style="display:none"></div>
+<p><strong>Cutting tip:</strong> always order the waste allowance — panels cut around outlets, windows and corners produce offcuts you cannot reuse, and dye lots vary between batches, so a mid-project reorder may not match.</p>
+</section>
+<div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article><p>Wainscoting and wall panelling transform a plain room more cheaply than almost any other upgrade — and the project stalls most often at the simplest question: how many panels do I need? Buy too few and you are back at the store mid-weekend, hoping the new batch matches. Buy too many and you have paid for panels that live in the garage for years. The wainscoting wall panel calculator answers that question properly. Enter your wall's length and height and your panel's size, and it returns the panel count with a realistic 10 percent cutting waste allowance, an estimate of trim length, and a material cost if you enter a price. It is the difference between one confident trip to the store and three frustrated ones.</p>
+<h2>How to use this calculator</h2>
+<p>Panel counting is area arithmetic with a practical twist. First the calculator finds your wall area — length times height in square feet — and divides it by the area of one panel to get the exact panel count. Then it adds 10 percent for cutting waste, because panels must be cut around outlets, switches, windows and corners, and those offcuts are rarely reusable. Finally it rounds up to whole panels, since you cannot buy a fraction of one. Trim length is estimated from the wall's perimeter, and cost is simply panels times your price per panel, so budgeting happens at the same time as counting.</p>
+<ol><li>Measure the wall's length and height in feet, including the full area to be panelled.</li><li>Enter your panel's width and height — a standard sheet is 4 by 8 feet, but beadboard and shiplap boards vary.</li><li>Add the price per panel if you want a cost estimate; leave it blank otherwise.</li><li>Press Calculate and read your panel count, trim estimate and cost.</li><li>Order the full count in one batch so every panel comes from the same dye lot.</li></ol>
+<h2>Understanding your results</h2>
+<p><strong>Panel count.</strong> Whole panels including 10% cutting waste. This is the number to order — not the exact area division, which would leave you short.</p>
+<p><strong>Cutting waste.</strong> The 10% allowance covers offcuts around obstacles and the occasional miscut. Rooms with many windows or outlets may need 15%.</p>
+<p><strong>Trim length.</strong> An approximate perimeter-based estimate for chair rail, base cap and corner trim. Measure your actual trim runs before ordering trim.</p>
+<p><strong>Material cost.</strong> Panels times your price per panel. Adhesive, nails, primer and paint are not included — budget those separately.</p>
+<p><strong>Zero results.</strong> A zero wall dimension gives zero panels. If that surprises you, check that both wall fields are filled in.</p>
+<h2>Practical tips</h2><ul><li>Measure twice and write the numbers down before you open the calculator — guessing wall height is the classic error.</li><li>Add extra waste for rooms with many obstacles: 15% is safer for window-heavy walls.</li><li>Order all panels at once to avoid dye-lot colour differences between batches.</li><li>Acclimate panels in the room for 48 hours before fitting, so they expand or contract before they are fixed in place.</li><li>Prime and paint panel edges before installation — once fitted, the back edges are unreachable.</li><li>Start panelling from the most visible corner so any final narrow cut lands in the least visible spot.</li></ul>
+<h2>Common mistakes to avoid</h2><ul><li>Ordering the exact area division with no waste allowance and running short mid-project.</li><li>Measuring only the flat wall and forgetting returns, alcoves and chimney breasts.</li><li>Assuming all panels are 4 by 8 feet — beadboard sheets and individual boards differ.</li><li>Buying trim by guess instead of measuring each run, then splicing short pieces visibly.</li><li>Skipping primer on raw panel edges, which absorb paint unevenly and show as dark lines.</li><li>Fitting panels tight to the floor with no expansion gap, so seasonal movement buckles them.</li></ul>
+<h2>Who benefits most</h2>
+<p>This calculator is for DIY renovators adding wainscoting or beadboard, carpenters quoting panelled rooms, landlords refreshing rentals between tenants, and designers specifying materials for clients. It also helps anyone comparing panel types: run the numbers for full sheets versus individual boards and the cost difference becomes concrete. If a room makeover is on your list, this is the five-minute calculation that keeps the weekend project on schedule and on budget.</p>
+<h2>Worked example</h2>
+<p>Take a 12-foot wall, 8 feet high, panelled with 4-by-8-foot sheets. Wall area is 96 square feet and each sheet covers 32, giving exactly 3 sheets before waste. Adding 10% gives 3.3, rounded up to 4 panels. At 25 dollars per panel, the material cost is 100 dollars. Now a 20-by-9-foot hall wall: 180 square feet divided by 32 is 5.625, times 1.1 is 6.19, rounded up to 7 panels — and skipping the waste allowance would have left you a panel short after the first outlet cut.</p>
+<h2>Checking and re-running your result</h2>
+<p>Double-check by sketching the wall and marking where each panel falls, including cuts for outlets and corners. If your sketch needs more cuts than the allowance covers, add a panel. Save the calculation to history before you shop, so you have the count on your phone at the store, and re-run it for each wall rather than averaging — walls differ, and averaging is how the last wall comes up short. Choosing a panel style changes the look, the cost and the difficulty of the job, so it is worth deciding before you count a single sheet. Beadboard gives a cottage, coastal feel with its narrow vertical grooves and suits bathrooms and kitchens; shiplap, with its wider horizontal boards and shadow gaps, reads modern farmhouse and works well on feature walls; picture-frame moulding, made of applied trim boxes on a flat wall, delivers a formal, classic look for dining rooms and hallways without full sheets at all. Each style cuts differently: beadboard sheets cut like plywood, individual shiplap boards need more pieces and more waste, and picture-frame moulding needs precise mitres but almost no sheet waste. Paint choice matters too — a satin or semi-gloss finish resists scuffs in hallways and wipes clean in kitchens, while flat paint hides wall imperfections in bedrooms but marks easily. For odd walls, measure each section separately rather than averaging: alcoves, chimney breasts and sloped ceilings each get their own calculation, and the calculator should be run once per wall. Tools for the job are modest — a tape measure, a level, a mitre saw or hand saw, a nail gun or hammer, adhesive, caulk and paint — but a laser level pays for itself on long walls by keeping every panel line true. Order ten percent extra trim as well as panels, because mitre mistakes happen, and keep one spare panel after the job for future repairs. A quick reference for the walls you meet most often: an 8-by-8-foot wall needs three 4-by-8 sheets including waste; a 12-by-8-foot wall needs four; a 12-by-9-foot wall needs five; and a 20-by-8-foot wall needs six. These figures assume standard sheets and ten percent waste, so rooms with many windows, doors or outlets should add one more panel. Sketching the wall and marking each panel before you shop catches those extras before they cost you a second trip. One more practical point: buy your adhesive, nails and caulk at the same time as your panels, and test your paint colour on a single panel before committing to the whole wall. A colour that looks perfect on a swatch can read very differently across a full panelled wall in your room's actual light, and discovering that after painting every panel is a weekend you will not get back.</p></article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary>How many wall panels do I need?</summary><p>Divide your wall area by one panel's area, add 10% for cutting waste, and round up to whole panels. This calculator does all three steps.</p></details><details><summary>Why add 10% waste?</summary><p>Panels are cut around outlets, switches, windows and corners, and those offcuts usually cannot be reused. Without waste allowance you will run short.</p></details><details><summary>What size are wall panels?</summary><p>Full sheets are typically 4 by 8 feet, but beadboard, shiplap and individual boards vary. Always enter your actual panel size.</p></details><details><summary>Do I need trim as well?</summary><p>Yes — chair rail, cap moulding and corner trim finish the edges. The calculator estimates trim length from the wall perimeter.</p></details><details><summary>Should I paint panels before or after installing?</summary><p>Prime and first-coat before installation, especially edges, then touch up after fitting for the cleanest finish.</p></details><details><summary>Can I panel over damaged walls?</summary><p>Light damage can be covered, but fix loose plaster, damp or mould first — panelling traps problems behind it.</p></details></section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer><p><strong>WallPanel</strong> — Panels counted, cuts planned, waste included.</p>
+<p>WallPanel turns wall dimensions and panel size into an exact panel count with 10% cutting waste, trim length and cost.</p>
+<p><a href="https://fixoraa.tech">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p></footer>
+<script id="pure">function wallPanels(len,ht,pw,ph){return Math.ceil(len*ht/(pw*ph)*1.1);}</script>
+<script>function calc(){var l=num('wall_l'),h=num('wall_h'),pw=num('pan_w'),ph=num('pan_h'),pr=num('pan_price');
+    if(l<0||h<0||pw<=0||ph<=0){showErr('Check your dimensions: panel size must be greater than zero.');return;} document.getElementById('err').textContent='';
+    var n=wallPanels(l,h,pw,ph); var trim=Math.ceil(l+h);
+    var html='<b>'+n+' panels</b> (including 10% cutting waste) for a '+l+' × '+h+' ft wall, plus about <b>'+trim+' ft</b> of trim.';
+    if(pr>0) html+=' Estimated material cost: $'+Math.round(n*pr)+'.';
+    if(l===0||h===0) html+=' A zero-size wall needs no panels.';
+    showRes(html);}
+  
+function applyPreset(o){for(var k in o){var e=document.getElementById(k);if(e)e.value=o[k];}calc();}
+function resetF(){var els=document.querySelectorAll('input,select');els.forEach(function(e){if(e.type!=='button')e.value='';});document.getElementById('res').style.display='none';document.getElementById('err').textContent='';}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+
+function showRes(html){var r=document.getElementById('res');r.style.display='block';r.innerHTML=html;window._last=html.replace(/<[^>]+>/g,' ');}
+function showErr(m){document.getElementById('err').textContent=m;}
+function saveHist(){if(!window._last)return;var k='hist_wallpanel';var a=JSON.parse(localStorage.getItem(k)||'[]');a.unshift(new Date().toLocaleString()+': '+window._last);localStorage.setItem(k,JSON.stringify(a.slice(0,10)));var d=document.getElementById('hist');d.style.display='block';d.textContent=a.join('\n');}
+function copyRes(){if(window._last&&navigator.clipboard)navigator.clipboard.writeText(window._last);}
+function dlCSV(){if(!window._last)return;var b=new Blob([window._last],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='wallpanel-result.csv';a.click();}
+</script>
+</body></html>
