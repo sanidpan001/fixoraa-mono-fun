@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raffle Ticket Draw — Fair Weighted Winner Picker</title>
+<meta name="description" content="Run a fair weighted raffle draw online. Ticket counts become true proportional odds, with an animated draw and a verifiable fairness log. Free.">
+<link rel="canonical" href="https://fun.fixoraa.tech/rafflepick/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Raffle Ticket Draw — Fair Weighted Winner Picker">
+<meta property="og:description" content="Run a fair weighted raffle draw online. Ticket counts become true proportional odds, with an animated draw and a verifiable fairness log. Free.">
+<meta property="og:url" content="https://fun.fixoraa.tech/rafflepick/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RafflePick",
+      "url": "https://fun.fixoraa.tech/rafflepick/",
+      "applicationCategory": "Social & Fun",
+      "operatingSystem": "Web",
+      "description": "Run a fair weighted raffle draw online. Ticket counts become true proportional odds, with an animated draw and a verifiable fairness log. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do people with more tickets get a better chance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 that is the core of a raffle. Each ticket is one chance: someone holding 5 tickets gets 5 entries in the virtual pool, so their win probability is exactly 5\u00d7 that of a single-ticket holder. The pool size shown at draw time lets anyone verify the math."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I enter people who bought multiple tickets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add each entrant once with their total ticket count (e.g. \u201cMaya \u2014 3 tickets\u201d). The tool expands that into 3 virtual tickets automatically. Double-check counts against your sales records before drawing \u2014 the draw is only as fair as the input list."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I prove the draw was fair?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Draw where people can see it \u2014 on a livestream, on stage, or as a screen recording \u2014 and keep the fairness log. It records every draw with the winner, pool size, and timestamp, so the result is verifiable after the fact."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if the drawn winner is ineligible?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Void that specific draw and redraw from the full pool, and log both events publicly. Never quietly substitute another name \u2014 the void-and-redraw must be as visible as the original draw."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can one person win more than one prize?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 but only under the policy you published before drawing. A common rule: one person may win only one prize, so remove their tickets after their first win. If your rules explicitly allow multiple wins, say so up front. Either way, decide before the draw, not after."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are raffles legal where I live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In many places, a paid-entry game of chance counts as a lottery and may need a permit, often with exceptions for registered charities; free-entry draws (sweepstakes) face lighter rules. This isn't legal advice \u2014 check your local regulations before selling tickets."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F3F8F6; --surface:#FFFFFF; --accent:#0F766E; --accent-ink:#FFFFFF;
+  --ink:#122E2A; --muted:#46655F; --line:#D9E7E2;
+  --display:'Zilla Slab',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.rf-wrap{max-width:560px;margin:0 auto;padding:32px 18px 80px;font-family:Inter,system-ui,sans-serif;color:#122E2A;text-align:center}
+.rf-wrap h1{font-family:'Zilla Slab',Georgia,serif;font-size:clamp(38px,8vw,58px);margin:0 0 10px;font-weight:600}
+.rf-tag{color:#46655F;font-size:18px;margin:0 0 34px}
+.rf-card{background:#FFFFFF;border:1px solid #D9E7E2;border-radius:24px;padding:26px 22px;box-shadow:0 8px 30px rgba(15,118,110,.08);margin-bottom:20px;text-align:left}
+.rf-card h2{font-family:'Zilla Slab',Georgia,serif;font-size:22px;margin:0 0 14px}
+.rf-add{display:flex;gap:8px;margin-bottom:14px}
+#rf-name{flex:2;min-height:52px;border:1.5px solid #D9E7E2;border-radius:12px;padding:0 14px;font-size:16px;color:#122E2A}
+#rf-tickets{flex:1;min-height:52px;border:1.5px solid #D9E7E2;border-radius:12px;padding:0 12px;font-size:16px;color:#122E2A;min-width:0}
+#rf-addbtn{min-height:52px;padding:0 20px;border:0;border-radius:12px;background:#0F766E;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+#rf-list{display:flex;flex-direction:column;gap:8px;max-height:220px;overflow:auto;margin-bottom:6px}
+.rf-entry{display:flex;justify-content:space-between;align-items:center;background:#F3F8F6;border:1px solid #D9E7E2;border-radius:12px;padding:10px 14px;font-size:15px}
+.rf-entry .t{color:#0F766E;font-weight:700}
+.rf-entry button{border:0;background:none;color:#46655F;font-size:18px;cursor:pointer;min-width:44px;min-height:44px}
+.rf-pool{font-size:14px;color:#46655F;margin:10px 0 0}
+.rf-pool b{color:#0F766E;font-size:18px}
+#rf-stage{min-height:110px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#46655F;text-align:center}
+#rf-winner{font-family:'Zilla Slab',Georgia,serif;font-size:clamp(30px,7vw,44px);color:#0F766E;min-height:60px}
+#rf-draw{width:100%;min-height:64px;border:0;border-radius:18px;background:#0F766E;color:#fff;font-size:20px;font-weight:700;cursor:pointer;margin-top:8px}
+#rf-draw:disabled{opacity:.45;cursor:default}
+.rf-log{margin-top:6px;text-align:left}
+.rf-log h3{font-size:15px;color:#46655F;margin:0 0 8px}
+.rf-logitem{display:flex;justify-content:space-between;gap:8px;font-size:14px;padding:8px 2px;border-bottom:1px solid #E4EFEB}
+.rf-logitem .w{font-weight:700}
+.rf-logitem .m{color:#46655F}
+@media (max-width:480px){.rf-add{flex-direction:column}#rf-addbtn{width:100%}.rf-card{padding:20px 16px}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="RafflePick home">
+      <span class="fx-logo-tile" aria-hidden="true">🎟</span>
+      <span class="fx-brand">RafflePick</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-zen-single" aria-label="RafflePick tool">
+<div class='rf-wrap'>
+<h1>Raffle Draw</h1>
+<p class='rf-tag'>Every ticket counts. Every draw is provable.</p>
+<div class='rf-card'>
+<h2>The drum</h2>
+<div class='rf-add'>
+<input id='rf-name' placeholder='Entrant name' aria-label='Entrant name'>
+<input id='rf-tickets' type='number' min='1' value='1' aria-label='Number of tickets'>
+<button id='rf-addbtn'>Add</button>
+</div>
+<div id='rf-list'></div>
+<p class='rf-pool' id='rf-pool'></p>
+</div>
+<div class='rf-card'>
+<h2>The draw</h2>
+<div id='rf-stage'>Add entrants, then draw.</div>
+<div id='rf-winner'></div>
+<button id='rf-draw' disabled>🎟 Draw winner</button>
+</div>
+<div class='rf-card rf-log'>
+<h3>Fairness log</h3>
+<div id='rf-loglist'><p class='rf-pool'>No draws yet.</p></div>
+</div>
+</div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How raffles actually work</h2>
+<p>A raffle is beautifully simple: each ticket is one chance to win, all tickets go into one pool, and one ticket is drawn. Buy two tickets, get two chances. That proportionality is the whole point — and it is exactly what a <strong>raffle ticket draw</strong> tool must preserve. RafflePick builds a virtual ticket pool from your entries (Maya × 3 tickets becomes three Maya tickets in the pool), then draws uniformly from it. Someone with 10 tickets is ten times as likely to win as someone with 1, which is precisely fair for a raffle.</p>
+<h2>Setting up a fair draw</h2>
+<ol>
+<li><strong>List every entrant with their ticket count.</strong> One ticket per row: name, then how many tickets they hold. Double-check the counts against your sales records — the draw is only as fair as the input.</li>
+<li><strong>Publish the pool before drawing.</strong> Show the total ticket count (“142 tickets in the drum”). Transparency before the draw prevents disputes after it.</li>
+<li><strong>Draw where people can see.</strong> On a livestream, on stage with a projector, or as a screen recording. RafflePick's animated draw is built for exactly this moment.</li>
+<li><strong>Log the result.</strong> Each draw records the winner, the pool size, and a timestamp. Screenshot it for your records.</li>
+</ol>
+<h2>Weighted draws, explained</h2>
+<p>Weighting simply means chances are proportional to tickets. With 100 tickets total, a 10-ticket holder has a 10% chance and a 1-ticket holder has 1%. This feels obvious, but many “random name pickers” ignore ticket counts entirely and give everyone one entry — which silently cheats multi-ticket buyers. If you sold tickets, you must honour the weighting; anything else is a breach of trust with the people who paid more. The fairness log shows each draw's pool size so anyone can verify the math.</p>
+<h3>What about bonus and free tickets?</h3>
+<p>Promotions like “buy 5, get 1 free” are fine as long as the free tickets genuinely enter the pool with the same weight. Where organisers get into trouble is invisible weighting — VIP entries, sponsor tickets, or “extra chances” that were never disclosed. Rule of thumb: if a ticket affects the odds, it must be in the published pool.</p>
+<h2>Pricing your tickets</h2>
+<p>Ticket pricing is a small exercise in expected value. A common formula: price the prize at retail value V, decide how many tickets T you want to sell, and set the ticket price around V ÷ T, rounded to a friendly number. Selling 200 tickets at $5 for a $800 prize raises $1,000 — the $200 surplus covers costs or becomes the fundraiser's profit. Keep tiers simple (1 for $5, 5 for $20); complicated tiering confuses buyers and complicates your count. Always cap total tickets if the prize is fixed, and say so up front.</p>
+<h2>Raffle vs lottery vs sweepstakes</h2>
+<table>
+<thead><tr><th>Format</th><th>Entry costs money?</th><th>Winner by</th><th>Typical rules</th></tr></thead>
+<tbody>
+<tr><td>Raffle</td><td>Yes — ticket purchase</td><td>Chance</td><td>Often restricted to nonprofits; check local law</td></tr>
+<tr><td>Lottery</td><td>Yes</td><td>Chance</td><td>State-run only in most places</td></tr>
+<tr><td>Sweepstakes</td><td>No — free entry required</td><td>Chance</td><td>“No purchase necessary” is legally required in the US</td></tr>
+<tr><td>Contest</td><td>Usually no</td><td>Skill/judging</td><td>Needs clear judging criteria</td></tr>
+</tbody>
+</table>
+<p>The legal line that matters most: in many jurisdictions, a game of chance where you pay to enter and win a prize is a lottery, and private lotteries are restricted or require permits — often with exceptions for registered charities. A free-entry giveaway is a sweepstakes and faces lighter rules. This page is not legal advice: if real money is involved, check your local regulations before selling a single ticket.</p>
+<h2>Running the draw night</h2>
+<ul>
+<li><strong>Close sales cleanly.</strong> Announce “ticket sales are closed” and freeze the list. Late entries after the freeze are the #1 source of arguments.</li>
+<li><strong>Read the pool aloud.</strong> “We have 38 entrants holding 142 tickets.” It takes ten seconds and establishes the baseline.</li>
+<li><strong>Draw once, on camera.</strong> One press, one winner. If your rules allow multiple prizes, draw them in descending prize order.</li>
+<li><strong>Handle the absent winner.</strong> Decide in advance: must the winner be present? If not, how and when will you contact them? Put it in the rules.</li>
+<li><strong>Keep unsold tickets out.</strong> Only sold (or legitimately issued) tickets go in the pool. Drawing an unsold ticket number and redrawing looks terrible — remove them first.</li>
+</ul>
+<h2>Multiple prizes and redraws</h2>
+<p>For multi-prize raffles, draw the grand prize first, then remove the winner's tickets before drawing smaller prizes — unless your rules explicitly allow one person to win twice (say so either way). If a drawn winner is ineligible (underage, staff member, duplicate entry), void that draw and redraw from the full pool; log both events. Never quietly “pick someone else” — the void-and-redraw must be as public as the original draw.</p>
+<h2>After the draw</h2>
+<p>Announce the winner within 24 hours on the same channels where you sold tickets. Arrange prize handover promptly and get a photo if the winner agrees — it is the best marketing your next raffle can have. Keep the draw log and the final ticket list for at least a year; if anyone questions the result months later, the log with its pool size and timestamp is your answer. Finally, publish a tiny financial summary (“142 tickets × $5 = $710; prize $500; $210 to the school fund”). Transparency about the money is what turns a one-off raffle into a trusted annual tradition.</p>
+<h2>Common raffle mistakes</h2>
+<ul>
+<li><strong>Ignoring ticket weights</strong> and drawing names uniformly — cheats multi-ticket buyers.</li>
+<li><strong>Fuzzy closing times</strong> — “sales close soon” invites disputes; use an exact time.</li>
+<li><strong>Drawing off-camera</strong> with no log — even an honest draw looks suspicious.</li>
+<li><strong>Changing rules mid-sale</strong> — adding prizes or changing odds after tickets sell.</li>
+<li><strong>No written rules at all</strong> — eligibility, draw date, claim window, redraw policy. Write them down.</li>
+</ul>
+<h2>Privacy note</h2>
+<p>RafflePick runs entirely in your browser. Entrant names, ticket counts, and the draw log never leave your device — screenshot anything you need before clearing browser data.</p>
+<h2>Digital vs paper tickets</h2>
+<p>Paper ticket stubs in a spinning drum have unbeatable theatre — the sound alone builds tension. But paper brings failure modes: illegible handwriting, lost stubs, duplicate numbers from two ticket books, and the nightmare of a stub drawn that was never sold. Digital pools (like RafflePick's) eliminate all of that: every entry is legible, the pool size is exact, and the draw is reproducible from the log. The best of both worlds for live events: sell paper tickets for the theatre, then type the numbers into the tool and draw digitally on the projector. You keep the drum-rolling showmanship and gain the audit trail.</p>
+<h2>Raffle prize ideas that actually sell tickets</h2>
+<ul>
+<li><strong>Experiences beat objects.</strong> A weekend getaway or concert tickets outsell a gadget of equal value — people buy the fantasy.</li>
+<li><strong>One hero prize + small prizes.</strong> A single big draw with 5–10 small consolation prizes keeps more of the room engaged to the end.</li>
+<li><strong>Local and donated.</strong> Restaurant vouchers, spa sessions, and signed memorabilia cost you nothing if donated — and donors get publicity.</li>
+<li><strong>Cash is king, with caveats.</strong> A 50/50 draw (winner takes half the pot) sells itself, but check local rules — cash prizes face the strictest regulation.</li>
+<li><strong>Match the audience.</strong> A school fundraiser wants family experiences; a sports club wants signed shirts. The prize should make <em>your</em> crowd reach for their wallets.</li>
+</ul>
+<h2>Promoting your raffle</h2>
+<p>A raffle nobody hears about sells nothing. Announce early with the prize front and centre — a photo of the prize beats a paragraph of text. Set a visible ticket counter (“137 of 200 sold”) to create urgency. Remind people at natural moments: half-time, intermission, the end of a meeting. And make buying frictionless — a QR code to a payment link beats “find Dave, he has the tickets” every time. After the draw, the winner's photo becomes next year's promotion.</p>
+<h2>Handling disputes gracefully</h2>
+<p>Even well-run raffles get challenged, and the way you respond matters more than the complaint itself. The classic disputes: “I bought a ticket but I'm not in the pool” (check your sales records against the entry list — this is why you reconcile before drawing, not after), “the draw was rigged because my friend never wins” (point to the public draw recording and the fairness log with its pool size and timestamp), and “the prize isn't what was advertised” (never substitute prizes — award exactly what you promised, or announce the change before tickets go on sale). For every dispute, the pattern is the same: refer to the written rules, show the evidence, and stay calm and public. Private arguments breed conspiracy theories; a brief public explanation ends them. The fairness log exists precisely for these moments — a timestamped record of winner, pool size, and draw order settles most arguments in one screenshot.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>Do people with more tickets get a better chance?</summary><p>Yes — that is the core of a raffle. Each ticket is one chance: someone holding 5 tickets gets 5 entries in the virtual pool, so their win probability is exactly 5× that of a single-ticket holder. The pool size shown at draw time lets anyone verify the math.</p></details>
+<details><summary>How do I enter people who bought multiple tickets?</summary><p>Add each entrant once with their total ticket count (e.g. “Maya — 3 tickets”). The tool expands that into 3 virtual tickets automatically. Double-check counts against your sales records before drawing — the draw is only as fair as the input list.</p></details>
+<details><summary>How do I prove the draw was fair?</summary><p>Draw where people can see it — on a livestream, on stage, or as a screen recording — and keep the fairness log. It records every draw with the winner, pool size, and timestamp, so the result is verifiable after the fact.</p></details>
+<details><summary>What if the drawn winner is ineligible?</summary><p>Void that specific draw and redraw from the full pool, and log both events publicly. Never quietly substitute another name — the void-and-redraw must be as visible as the original draw.</p></details>
+<details><summary>Can one person win more than one prize?</summary><p>Yes — but only under the policy you published before drawing. A common rule: one person may win only one prize, so remove their tickets after their first win. If your rules explicitly allow multiple wins, say so up front. Either way, decide before the draw, not after.</p></details>
+<details><summary>Are raffles legal where I live?</summary><p>In many places, a paid-entry game of chance counts as a lottery and may need a permit, often with exceptions for registered charities; free-entry draws (sweepstakes) face lighter rules. This isn't legal advice — check your local regulations before selling tickets.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RafflePick</div>
+    <p>RafflePick runs weighted raffle draws — more tickets, more chances — with an animated draw and a fairness log.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function drawRaffle(entries,pick){var pool=[];(entries||[]).forEach(function(e){var n=String(e&&e.name!=null?e.name:'').trim();var t=Math.max(0,Math.floor(Number(e&&e.tickets)||0));for(var i=0;i<t;i++)pool.push(n);});if(!pool.length)return null;var i=((pick%pool.length)+pool.length)%pool.length;return pool[i];}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var nameEl=document.getElementById('rf-name'),tickEl=document.getElementById('rf-tickets'),listEl=document.getElementById('rf-list'),poolEl=document.getElementById('rf-pool'),drawBtn=document.getElementById('rf-draw'),stage=document.getElementById('rf-stage'),winEl=document.getElementById('rf-winner'),logEl=document.getElementById('rf-loglist');var entries=[],log=[],drawing=false;function poolSize(){var s=0;entries.forEach(function(e){s+=e.tickets;});return s;}function render(){if(!entries.length){listEl.innerHTML='<p class=\'rf-pool\'>No entrants yet.</p>';}else{listEl.innerHTML=entries.map(function(e,i){return '<div class=\'rf-entry\'><span>'+e.name.replace(/</g,'&lt;')+'</span><span><span class=\'t\'>'+e.tickets+' ticket'+(e.tickets===1?'':'s')+'</span> <button data-i=\''+i+'\' aria-label=\'Remove\'>×</button></span></div>';}).join('');var btns=listEl.querySelectorAll('button');for(var b=0;b<btns.length;b++){btns[b].addEventListener('click',function(){entries.splice(parseInt(this.getAttribute('data-i'),10),1);render();});}}var ps=poolSize();poolEl.innerHTML='<b>'+ps+'</b> ticket'+(ps===1?'':'s')+' in the drum · '+entries.length+' entrant'+(entries.length===1?'':'s');drawBtn.disabled=!entries.length||drawing;if(!entries.length)stage.textContent='Add entrants, then draw.';}function renderLog(){if(!log.length){logEl.innerHTML='<p class=\'rf-pool\'>No draws yet.</p>';return;}logEl.innerHTML=log.map(function(l){return '<div class=\'rf-logitem\'><span class=\'w\'>🏆 '+l.winner.replace(/</g,'&lt;')+'</span><span class=\'m\'>'+l.pool+' tickets · '+l.when+'</span></div>';}).join('');}function add(){var n=nameEl.value.trim();var t=Math.max(1,Math.floor(parseInt(tickEl.value||'1',10)||1));if(!n){alert('Enter a name first.');return;}entries.push({name:n,tickets:t});nameEl.value='';tickEl.value='1';nameEl.focus();render();}document.getElementById('rf-addbtn').addEventListener('click',add);nameEl.addEventListener('keydown',function(e){if(e.key==='Enter')add();});drawBtn.addEventListener('click',function(){if(drawing||!entries.length)return;drawing=true;render();winEl.textContent='';var seed=Math.floor(Math.random()*poolSize());var winner=drawRaffle(entries,seed);var ticks=0;var iv=setInterval(function(){var r=entries[Math.floor(Math.random()*entries.length)];stage.textContent='🎟 '+r.name;ticks++;if(ticks>16){clearInterval(iv);stage.textContent='And the winner is…';setTimeout(function(){winEl.textContent=winner;stage.textContent='Congratulations!';log.unshift({winner:winner,pool:poolSize(),when:new Date().toLocaleString()});renderLog();drawing=false;render();},750);}},120);});render();renderLog();});}
+</script>
+</body>
+</html>
