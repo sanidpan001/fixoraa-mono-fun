@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Succession Planting Schedule — Never Run Out | SuccessionPlant</title>
+<meta name="description" content="Succession planting dates by crop with a frost-aware calendar.">
+<link rel="canonical" href="https://fun.fixoraa.tech/successionplant/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Succession Planting Schedule — Never Run Out | SuccessionPlant">
+<meta property="og:description" content="Succession planting dates by crop with a frost-aware calendar.">
+<meta property="og:url" content="https://fun.fixoraa.tech/successionplant/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SuccessionPlant",
+      "url": "https://fun.fixoraa.tech/successionplant/",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "description": "Succession planting dates by crop with a frost-aware calendar.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is succession planting?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sowing the same crop at staggered intervals — every 10 to 21 days — so harvests arrive in a steady stream instead of one overwhelming glut. Lettuce sown every two weeks from April to August gives salad from June to October rather than 40 heads in one week." } },
+        { "@type": "Question", "name": "How often should I succession plant lettuce?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every 14 days in spring and fall, stretching to 21 days in midsummer heat when lettuce bolts. Sow small amounts each time — a 2-foot row per succession feeds a household. Stop when sowings would mature after your first fall frost." } },
+        { "@type": "Question", "name": "Which vegetables are best for succession planting?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Fast, cool-season crops: radishes (every 10 days), arugula and lettuce (every 14), spinach, beets and carrots (every 14–21), bush beans and cilantro (every 14). Slow crops like tomatoes and peppers are planted once; they produce continuously on their own." } },
+        { "@type": "Question", "name": "When should I stop succession planting in fall?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Count backwards from your first fall frost: last sowing date = frost date minus days to maturity minus a 2-week fall slowdown buffer. A 50-day lettuce sown for an October 15 frost should go in by about August 10. The calculator applies this buffer automatically." } },
+        { "@type": "Question", "name": "Why did my summer lettuce succession bolt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Lettuce bolts — flowers and turns bitter — when soil temperatures stay above about 75°F. Sow summer successions in afternoon shade, mulch heavily, choose heat-tolerant varieties like Jericho or Nevada, and water consistently. Or pause lettuce in high summer and resume in late August." } },
+        { "@type": "Question", "name": "Can I succession plant in the same bed?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, and you should — pull the finished crop, add an inch of compost, and sow the next succession in its place. Just avoid following a crop with its close relatives (no carrots after carrots) to break pest and disease cycles, and replenish nutrients since back-to-back crops are hungry." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#E1F1F9; --surface:#FFFFFF; --tint:#D2E8F4;
+  --accent:#155C84; --accent-deep:#181D63; --accent-ink:#FFFFFF;
+  --ink:#20264A; --muted:#5F6488; --line:#C6CAE8;
+  --display:'Karla',system-ui,sans-serif; --body:'Karla',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+/* header */
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:14px;background:linear-gradient(150deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;clip-path:polygon(0 0,100% 0,100% 78%,78% 100%,0 100%)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+/* hero */
+.sp-hero{padding:44px 0 6px}
+.sp-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.sp-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.1;letter-spacing:-.025em;font-weight:800;margin-bottom:12px}
+.sp-hero p{font-size:18px;color:var(--muted);max-width:680px}
+/* planner */
+.sp-plan{margin:28px 0 10px;background:var(--surface);border:2px solid var(--line);border-radius:22px;overflow:hidden}
+.sp-head{background:linear-gradient(120deg,var(--tint),#F2F3FC);border-bottom:2px solid var(--line);padding:18px 28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sp-head h2{font-size:19px;font-weight:800}
+.sp-head .sub{font-size:13px;color:var(--muted)}
+.sp-grid{display:grid;grid-template-columns:340px 1fr;gap:0}
+.sp-left{padding:28px;border-right:2px dashed var(--line)}
+.sp-right{padding:28px;background:linear-gradient(180deg,#FCFCFF,var(--bg))}
+.sp-field{margin-bottom:18px}
+.sp-field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.sp-field label .hint{font-weight:400;color:var(--muted);font-size:13px}
+.sp-field input,.sp-field select{font:inherit;width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.sp-field input:focus,.sp-field select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.sp-crops{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sp-crops button{font:inherit;font-size:13.5px;font-weight:700;padding:11px 8px;border:2px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;color:var(--ink)}
+.sp-crops button small{display:block;font-weight:400;color:var(--muted);font-size:11.5px}
+.sp-crops button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.sp-crops button.on small{color:#D5D8F2}
+.sp-timeline{position:relative;padding-left:26px}
+.sp-timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:3px;background:var(--line);border-radius:2px}
+.sp-event{position:relative;margin-bottom:16px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px 16px}
+.sp-event::before{content:"";position:absolute;left:-24px;top:20px;width:13px;height:13px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent)}
+.sp-event.frost::before{background:#B23A2E;box-shadow:0 0 0 2px #B23A2E}
+.sp-event .d{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.sp-event.frost .d{color:#B23A2E}
+.sp-event .t{font-weight:800;font-size:16px;margin:2px 0}
+.sp-event .h{font-size:13.5px;color:var(--muted)}
+.sp-warn{background:#FFF8E8;border:2px solid #E3C878;border-radius:12px;padding:12px 16px;font-size:14px;color:#7A5A12;margin-bottom:16px}
+.sp-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.sp-stat{background:#fff;border:2px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.sp-stat .n{font-size:22px;font-weight:800;color:var(--accent-deep)}
+.sp-stat .k{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:820px){
+  .sp-grid{grid-template-columns:1fr}
+  .sp-left{border-right:0;border-bottom:2px dashed var(--line)}
+  .fx-nav{margin-left:0}
+  .sp-summary{grid-template-columns:1fr 1fr}
+}
+/* article */
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800}
+.article-sec p{margin-bottom:14px;color:#2c3157}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#2c3157}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#2c3157;font-size:15px}
+/* footer */
+.fx-footer{background:#141841;color:#dcdffa;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#a7abd4;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#b9bdf5;font-weight:700}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/successionplant/" aria-label="SuccessionPlant home">
+      <span class="fx-tile" aria-hidden="true">&#10047;</span>
+      <span class="fx-name">SuccessionPlant</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="sp-hero">
+    <span class="sp-eyebrow">garden journal &middot; sow &amp; sow again</span>
+    <h1>Succession Planting Schedule — Never Run Out</h1>
+    <p>Pick a crop and your frost dates. Get a dated sowing calendar with harvest windows — timed so the salad never stops and nothing matures into a freeze.</p>
+  </section>
+
+  <section class="sp-plan" aria-label="SuccessionPlant tool">
+    <div class="sp-head">
+      <h2>Your succession calendar</h2>
+      <span class="sub">crop intervals &middot; frost-aware &middot; harvest windows</span>
+    </div>
+    <div class="sp-grid">
+      <div class="sp-left">
+        <div class="sp-field">
+          <label>Crop <span class="hint">— interval &amp; maturity presets</span></label>
+          <div class="sp-crops" id="sp-crops"></div>
+        </div>
+        <div class="sp-field">
+          <label for="sp-start">First sowing date <span class="hint">— often last spring frost</span></label>
+          <input type="date" id="sp-start" value="2026-04-15">
+        </div>
+        <div class="sp-field">
+          <label for="sp-frost">First fall frost <span class="hint">— successions stop before this</span></label>
+          <input type="date" id="sp-frost" value="2026-10-20">
+        </div>
+        <div class="sp-field">
+          <label for="sp-count">Number of successions</label>
+          <select id="sp-count">
+            <option value="3">3 sowings</option>
+            <option value="4" selected>4 sowings</option>
+            <option value="5">5 sowings</option>
+            <option value="6">6 sowings</option>
+            <option value="8">8 sowings</option>
+          </select>
+        </div>
+      </div>
+      <div class="sp-right" aria-live="polite">
+        <div class="sp-summary">
+          <div class="sp-stat"><div class="n" id="sp-n">4</div><div class="k">sowings</div></div>
+          <div class="sp-stat"><div class="n" id="sp-hw">Jun 4 – Jul 16</div><div class="k">harvest window</div></div>
+          <div class="sp-stat"><div class="n" id="sp-every">14 days</div><div class="k">sowing interval</div></div>
+        </div>
+        <div class="sp-warn" id="sp-warn" style="display:none"></div>
+        <div class="sp-timeline" id="sp-timeline"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec" aria-label="Guide">
+    <h2>Why One Sowing Is Never Enough</h2>
+    <p>Every new vegetable gardener makes the same glorious mistake: sowing the entire packet of lettuce on the first warm Saturday in April, then staring at forty heads maturing in the same week of June. Half bolt before you can eat them; by August there is nothing. <strong>Succession planting</strong> fixes this with rhythm instead of volume — sowing small amounts of the same crop at regular intervals so harvests arrive in a steady stream. Four sowings of lettuce, two weeks apart, turn one frantic week into two months of salad.</p>
+    <p>The technique is ancient — market gardeners have succession-planted for centuries — but home gardeners underuse it because the timing feels fussy. It is not. Each crop has a natural interval (radishes every 10 days, lettuce every 14, carrots every 21) and a days-to-maturity figure printed on the packet. Anchor the first sowing to your last spring frost, repeat at the interval, and stop early enough that the last sowing matures before the first fall frost. The calculator does exactly this arithmetic and hands you dated calendar entries.</p>
+    <h2>Intervals That Work</h2>
+    <p>Match the interval to the crop's speed and your appetite. <strong>Radish</strong> (25 days, every 10) is the succession superstar — sow a 2-foot row every ten days from April to September and you will never buy radishes. <strong>Arugula</strong> (30 days, every 10–14) behaves similarly. <strong>Lettuce</strong> (45–55 days, every 14) is the classic; in midsummer heat stretch to 21 days and sow in afternoon shade. <strong>Spinach</strong> (40 days, every 14) loves spring and fall but bolts in heat — skip July. <strong>Beets</strong> (55 days, every 21) and <strong>carrots</strong> (65–75 days, every 21) are slower but store well. <strong>Bush beans</strong> (50–60 days, every 14) give three waves easily. <strong>Cilantro</strong> (50 days, every 14) bolts fast, so frequent small sowings are the only way to keep it.</p>
+    <p>Slow, long-season crops — tomatoes, peppers, squash, cucumbers — are planted once; they produce continuously by nature. Succession planting is for the fast crops that give one harvest per sowing and then are done.</p>
+    <h2>Working Backwards From Frost</h2>
+    <p>The fall cutoff is where most succession plans die. The rule: <strong>last sowing date = first fall frost − days to maturity − 14-day fall buffer</strong>. The buffer matters because shortening days and cooling soil slow growth dramatically — a lettuce that matures in 50 days of May sunshine needs 60+ in September. For an October 20 frost and 50-day lettuce, the last sowing lands around August 10, not September 1. Sow later and you will nurse beautiful seedlings straight into a freeze.</p>
+    <p>The calculator applies this automatically: any succession whose harvest would fall after your frost date (plus the buffer) gets flagged with a frost warning instead of silently promising an impossible harvest. In mild-winter regions (zone 9+), the "frost" constraint barely binds — winter itself becomes a growing season for cool crops, and successions can run nearly year-round.</p>
+    <h2>How Much to Sow Each Time</h2>
+    <p>Succession planting fails just as badly from oversowing as from bad timing. A household of two to four eats roughly: a <strong>2-foot row</strong> of lettuce or radishes per succession, a <strong>3-foot row</strong> of bush beans, a <strong>4-foot row</strong> of carrots. These sound absurdly small — that is the point. You can always sow a second row next interval; you cannot un-sow forty lettuce heads. Keep a simple log (the timeline above doubles as one) noting what each sowing yielded, and tune quantities next season.</p>
+    <p>Seed is cheap; space is not. Interplant fast successions between slow crops: radishes between carrot rows (harvested before carrots need the room), lettuce under trellised beans (shade delays bolting). The French intensive tradition built entire market gardens on this layering.</p>
+    <h2>Feeding Back-to-Back Crops</h2>
+    <p>Successions are hungry. Each sowing pulls the same nutrients from the same square feet, so replenish between rounds: an inch of compost worked into the top few inches after each harvest replaces most of what leaves. A light organic fertilizer every second succession keeps nitrogen up for leafy crops. And rotate families — never follow carrots with carrots or lettuce with lettuce in the same spot within a season. Pests and soil diseases build up on repetition; alternating a root (carrot), a leaf (lettuce) and a legume (beans) through the same bed breaks the cycles while the legume fixes nitrogen for its successor.</p>
+    <h2>Beating the Heat: Summer Successions</h2>
+    <p>Cool-season crops have a summer problem: lettuce bolts above ~75°F soil temperature, spinach refuses to germinate, cilantro flowers in weeks. Three tactics keep successions alive through July. <strong>Shade:</strong> sow on the east side of tall crops or under 30–50% shade cloth — afternoon shade alone drops soil temperature several degrees. <strong>Variety:</strong> heat-tolerant lettuces (Jericho, Nevada, Muir), slow-bolt cilantro and New Zealand spinach genuinely extend the season. <strong>Water:</strong> consistent moisture cools the root zone; mulch 2–3 inches deep after seedlings establish. Or embrace the pause: many gardeners rest lettuce in high summer and resume in late August, when fall successions grow superbly in cooling weather.</p>
+    <p>Warm-season successions have the opposite rhythm — bush beans and summer squash sown every 2–3 weeks from May to July outrun squash vine borers and bean beetles by always having young, vigorous plants coming on.</p>
+    <h2>Reading Your Timeline</h2>
+    <p>The calendar above lists each sowing with its expected harvest date (sowing + days to maturity). Harvest "windows" are approximate — weather shifts maturity by a week either way, and most crops can be picked young (baby lettuce at 30 days) or held (carrots sweeten in cool soil). Use the dates as sowing reminders: put them in your phone calendar or on the fridge. The gardeners who succession-plant successfully are not more disciplined — they just have the dates written down where they will see them.</p>
+    <p>After the season, annotate: which successions thrived, which bolted, what the household actually ate. Next year's schedule writes itself from this year's notes, tuned to your soil, your microclimate and your table. That feedback loop — sow, observe, adjust — is the whole craft of succession planting, and it compounds beautifully year after year.</p>
+    <h2>Succession Planting for Bigger Harvests</h2>
+    <p>Once the home-garden rhythm clicks, the same logic scales. Market gardeners run <strong>overlapping successions</strong> — not just repeating one crop, but relaying crops through the same bed across the season: spring lettuce, then summer bush beans, then fall spinach, then overwintered garlic. Each handoff gets the compost-and-replant treatment, and a single 4×8 bed can produce four distinct crops in a year. The calendar above becomes a rotation planner: run it once per crop per season and stack the timelines.</p>
+    <p>Scale also changes the interval math. A market grower sowing lettuce every 7 days instead of 14 doubles the harvest windows and smooths supply for customers — the labor of sowing is small, and the payoff is continuous availability. Home gardeners can borrow this: if your household eats a lot of one crop, halve its interval rather than doubling the row length. Shorter intervals forgive failures too — if one sowing damps off or a heat wave bolts a round, the next is already coming.</p>
+    <p>Two advanced moves complete the picture. <strong>Relay interplanting</strong> sows the next crop <em>before</em> the current one finishes — carrots seeded between maturing lettuce get a head start in the shade, then take over the bed. <strong>Cut-and-come-again layering</strong> pairs a one-cut succession (radishes) with a repeat-harvest crop (cutting lettuce) in the same bed: harvest the radishes at day 25 just as the lettuce needs the room. These are the techniques that turn a small plot into a serious food supply, and they all rest on the same foundation: know your intervals, know your frost dates, and write the dates down.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What is succession planting?</summary><p>Sowing the same crop at staggered intervals — every 10 to 21 days — so harvests arrive in a steady stream instead of one overwhelming glut. Lettuce sown every two weeks from April to August gives salad from June to October rather than 40 heads in one week.</p></details>
+    <details><summary>How often should I succession plant lettuce?</summary><p>Every 14 days in spring and fall, stretching to 21 days in midsummer heat when lettuce bolts. Sow small amounts each time — a 2-foot row per succession feeds a household. Stop when sowings would mature after your first fall frost.</p></details>
+    <details><summary>Which vegetables are best for succession planting?</summary><p>Fast, cool-season crops: radishes (every 10 days), arugula and lettuce (every 14), spinach, beets and carrots (every 14–21), bush beans and cilantro (every 14). Slow crops like tomatoes and peppers are planted once; they produce continuously on their own.</p></details>
+    <details><summary>When should I stop succession planting in fall?</summary><p>Count backwards from your first fall frost: last sowing date = frost date minus days to maturity minus a 2-week fall slowdown buffer. A 50-day lettuce sown for an October 15 frost should go in by about August 10. The calculator applies this buffer automatically.</p></details>
+    <details><summary>Why did my summer lettuce succession bolt?</summary><p>Lettuce bolts — flowers and turns bitter — when soil temperatures stay above about 75°F. Sow summer successions in afternoon shade, mulch heavily, choose heat-tolerant varieties like Jericho or Nevada, and water consistently. Or pause lettuce in high summer and resume in late August.</p></details>
+    <details><summary>Can I succession plant in the same bed?</summary><p>Yes, and you should — pull the finished crop, add an inch of compost, and sow the next succession in its place. Just avoid following a crop with its close relatives (no carrots after carrots) to break pest and disease cycles, and replenish nutrients since back-to-back crops are hungry.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SuccessionPlant</div>
+    <p>SuccessionPlant builds frost-aware sowing calendars for vegetable gardens — crop intervals, dated successions and harvest windows.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+var CROPS = [
+  {n:'Lettuce', mat:50, int:14}, {n:'Radish', mat:25, int:10},
+  {n:'Arugula', mat:30, int:14}, {n:'Spinach', mat:40, int:14},
+  {n:'Carrots', mat:70, int:21}, {n:'Beets', mat:55, int:21},
+  {n:'Bush beans', mat:55, int:14}, {n:'Cilantro', mat:50, int:14}
+];
+var crop = CROPS[0];
+var $=function(id){return document.getElementById(id);};
+var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fdate(d){ return MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear(); }
+function addDays(d,n){ var x=new Date(d); x.setDate(x.getDate()+n); return x; }
+function renderCrops(){
+  var el=$('sp-crops'); el.innerHTML='';
+  CROPS.forEach(function(c){
+    var b=document.createElement('button'); b.type='button';
+    b.innerHTML=c.n+'<small>'+c.mat+'d · every '+c.int+'d</small>';
+    if(c===crop) b.classList.add('on');
+    b.addEventListener('click',function(){ crop=c; renderCrops(); calc(); });
+    el.appendChild(b);
+  });
+}
+function calc(){
+  var start=$('sp-start').valueAsDate, frost=$('sp-frost').valueAsDate;
+  var count=parseInt($('sp-count').value,10);
+  if(!start||!frost){ return; }
+  // valueAsDate is UTC; normalize
+  start=new Date(start.getUTCFullYear(),start.getUTCMonth(),start.getUTCDate());
+  frost=new Date(frost.getUTCFullYear(),frost.getUTCMonth(),frost.getUTCDate());
+  var tl=$('sp-timeline'); tl.innerHTML='';
+  var warn=$('sp-warn'); warn.style.display='none';
+  var sows=[], late=0;
+  for(var i=0;i<count;i++){
+    var sow=addDays(start, i*crop.int);
+    var harv=addDays(sow, crop.mat);
+    var ok = harv <= addDays(frost,-14);
+    if(!ok) late++;
+    sows.push({sow:sow,harv:harv,ok:ok});
+  }
+  if(late){ warn.style.display='block'; warn.textContent='⚠ '+late+' succession'+(late>1?'s':'')+' would mature within 2 weeks of (or after) your '+fdate(frost)+' frost — sow earlier or pick a faster crop.'; }
+  sows.forEach(function(s,i){
+    var e=document.createElement('div'); e.className='sp-event';
+    e.innerHTML='<div class="d">Sowing '+(i+1)+' · '+fdate(s.sow)+'</div><div class="t">'+crop.n+'</div><div class="h">Harvest ≈ '+fdate(s.harv)+(s.ok?'':' · <strong style="color:#B23A2E">too late — frost risk</strong>')+'</div>';
+    tl.appendChild(e);
+  });
+  var fe=document.createElement('div'); fe.className='sp-event frost';
+  fe.innerHTML='<div class="d">Season marker · '+fdate(frost)+'</div><div class="t">First fall frost</div><div class="h">Successions should mature 2+ weeks before this date.</div>';
+  tl.appendChild(fe);
+  $('sp-n').textContent=count;
+  $('sp-every').textContent=crop.int+' days';
+  var okS=sows.filter(function(s){return s.ok;});
+  $('sp-hw').textContent=okS.length?fdate(okS[0].harv).replace(', 2026','').replace(', 2027','')+' – '+fdate(okS[okS.length-1].harv).replace(', 2026','').replace(', 2027',''):'—';
+}
+['sp-start','sp-frost','sp-count'].forEach(function(id){ $(id).addEventListener('input',calc); $(id).addEventListener('change',calc); });
+renderCrops(); calc();
+})();
+</script>
+</body>
+</html>
