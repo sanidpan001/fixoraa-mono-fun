@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boiling Point Altitude Calculator: Water Boiling Temperature</title>
+<meta name="description" content="Find the temperature water boils at your altitude, in Celsius and Fahrenheit, with cooking-time guidance for mountains.">
+<link rel="canonical" href="https://fun.fixoraa.tech/boilpoint/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Boiling Point Altitude Calculator: Water Boiling Temperature">
+<meta property="og:description" content="Find the temperature water boils at your altitude, in Celsius and Fahrenheit, with cooking-time guidance for mountains.">
+<meta property="og:url" content="https://fun.fixoraa.tech/boilpoint/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BoilPoint",
+      "url": "https://fun.fixoraa.tech/boilpoint/",
+      "applicationCategory": "Science",
+      "operatingSystem": "Web",
+      "description": "Find the temperature water boils at your altitude, in Celsius and Fahrenheit, with cooking-time guidance for mountains.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "At what temperature does water boil at 1,500 metres?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 95 \u00b0C (203 \u00b0F). The rule is 100 minus altitude divided by 300, so 1,500 metres costs about 5 degrees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does pasta take longer to cook at altitude?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because boiling water is cooler at altitude, and food cooks in that cooler water. Turning up the heat does not raise the temperature of boiling water, so only extra time helps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is boiled water safe to drink at altitude?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A rolling boil kills pathogens even at 90 \u00b0C. Boil for a full minute, or three minutes above 2,000 metres, as a safety margin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a pressure cooker fix the altitude problem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. At 15 psi above atmospheric pressure, water boils at about 121 \u00b0C regardless of outside altitude, which is why pressure cookers are standard in high cities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is the 300-metre rule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Within a degree or two for most inhabited altitudes. The true curve is slightly exponential, but the straight-line rule is plenty for cooking decisions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do cakes collapse at high altitude?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Leavening gases expand more in thin air, so cakes rise fast and then fall. High-altitude recipes reduce sugar and leavening and add liquid and oven temperature."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the boiling point on Everest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 70 \u00b0C at the summit (8,848 m). Hot enough to scald, but barely hot enough to cook food properly, which is why climbers use pressure cookers and stoves carefully."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does weather change the boiling point?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Slightly. A strong low-pressure system lowers air pressure and drops the boiling point by a fraction of a degree \u2014 too small to notice in cooking."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EAF2FD; --surface:#FFFFFF; --accent:#1D4E9E; --accent-ink:#FFFFFF;
+  --ink:#16233A; --muted:#45566E; --line:#CCDCF3;
+  --display:'Libre Franklin',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.bp-wrap{max-width:920px;margin:0 auto;padding:26px 16px 40px}.bp-wrap h1{font-size:clamp(30px,5.5vw,44px);line-height:1.15;margin:0 0 8px}.bp-tag{color:var(--muted);margin:0 0 18px;font-size:16px}.bp-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 2px 14px rgba(0,0,0,.06)}.bp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.bp-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--muted)}.bp-field input,.bp-field select{font:inherit;font-size:16px;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg);min-height:48px;width:100%;box-sizing:border-box}.bp-btns{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.bp-btns button{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer;min-height:44px}.bp-btns button.on,.bp-btns button.solid{background:var(--accent);color:var(--accent-ink)}.bp-calc{width:100%;background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:14px;font:inherit;font-size:17px;font-weight:800;cursor:pointer;min-height:52px}.bp-result{background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:22px;text-align:center;margin-top:16px}.bp-result .big{font-size:clamp(34px,7vw,52px);font-weight:800;line-height:1.1}.bp-result .sub{opacity:.92;margin-top:6px}.bp-hist{margin-top:14px;font-size:14px;color:var(--muted)}.bp-hist ul{padding-left:1.2rem;margin:6px 0 0}@media(max-width:640px){.bp-grid{grid-template-columns:1fr}.bp-wrap{padding:20px 12px 32px}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="BoilPoint home">
+      <span class="fx-logo-tile" aria-hidden="true">♨️</span>
+      <span class="fx-brand">BoilPoint</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-boil-steam" aria-label="BoilPoint tool">
+<div class='bp-wrap'><h1>♨️ Boiling Point Altitude Calculator</h1><p class='bp-tag'>At what temperature does water boil where you are? Altitude drops it — find yours.</p><div class='bp-card'><div class='bp-grid'><label class='bp-field'>Altitude above sea level (m or ft)<input id='bpAlt' type='number' min='0' max='9000' value='1500'></label></div><div class='bp-btns'><button type='button' data-bp-preset='[0]'>Sea level</button><button type='button' data-bp-preset='[1500]'>Denver-ish · 1,500 m</button><button type='button' data-bp-preset='[3000]'>High resort · 3,000 m</button></div><div class='bp-btns'><button type='button' data-bp-unit='m' class='on'>metres</button><button type='button' data-bp-unit='ft'>feet</button></div><button class='bp-calc' id='bpCalc' type='button'>Calculate</button><div class='bp-result' aria-live='polite'><div>Water boils at</div><div class='big' id='bpRes'>95 °C</div><div class='sub' id='bpSub'>That is 203 °F.</div></div><div class='bp-hist'><strong>Recent calculations</strong><ul id='bpHistList'></ul><div class='bp-btns'><button type='button' id='bpCopy'>Copy result</button></div></div></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why water boils cooler on a mountain</h2><p>Everyone learns at school that water boils at 100 degrees Celsius, and then everyone who has ever tried to cook pasta in a mountain town discovers that the textbook left something out. Water boils when its vapour pressure equals the surrounding air pressure. At sea level, air pressure is high, so water must get very hot before its vapour can push back hard enough to form bubbles. Climb a mountain and the air gets thinner, the pressure drops, and water needs less heat to boil. At 1,500 metres, roughly the height of Denver, water boils at about 95 degrees. At 3,000 metres it boils at about 90 degrees. At the summit of Everest it boils near 70 degrees, which is hot enough to scald but barely hot enough to cook anything properly. The water is not broken and your stove is not faulty: the boiling point itself has moved.</p><h2>The altitude rule: one degree per 300 metres</h2><p>The calculator uses a handy approximation: boiling point in Celsius equals 100 minus altitude in metres divided by 300. Sea level gives 100 degrees. At 1,500 metres you get 95 degrees. At 3,000 metres you get 90 degrees. At 5,000 metres you get about 83 degrees. This rule is accurate to within a degree or two for most inhabited altitudes, which is plenty for cooking decisions. The true relationship is slightly curved rather than perfectly straight, because air pressure falls exponentially with height rather than linearly, but the straight-line rule holds well enough up to about 6,000 metres that mountaineers and mountain cooks have used versions of it for generations. If you need laboratory precision, use a pressure-based formula or a steam table; if you need to know how long to boil an egg in a ski resort, the 300-metre rule is exactly right.</p><table><thead><tr><th>Place (approx altitude)</th><th>Altitude</th><th>Boiling point</th></tr></thead><tbody><tr><td>Sea level (London, New York)</td><td>0 m</td><td>100.0 °C / 212 °F</td></tr><tr><td>Denver, Colorado</td><td>1,600 m</td><td>94.7 °C / 202 °F</td></tr><tr><td>Mexico City</td><td>2,250 m</td><td>92.5 °C / 199 °F</td></tr><tr><td>Bogotá, Colombia</td><td>2,640 m</td><td>91.2 °C / 196 °F</td></tr><tr><td>La Paz, Bolivia</td><td>3,650 m</td><td>87.8 °C / 190 °F</td></tr><tr><td>Everest Base Camp</td><td>5,360 m</td><td>82.1 °C / 180 °F</td></tr></tbody></table><h2>What cooler boiling water means for cooking</h2><p>Here is the part that surprises people: once water is boiling, turning up the heat does not make it hotter. Boiling water sits at its boiling point no matter how fiercely it bubbles, so at altitude your food cooks in cooler water for the same clock time, and it therefore takes longer. Pasta needs roughly 15 to 25 percent more time at 1,500 metres and up to 40 percent more at 3,000 metres. Rice needs extra water as well as extra time, because the longer cooking time evaporates more of it. Eggs boiled in the shell need several extra minutes to reach the same firmness. Beans and tough cuts of meat suffer most of all: at high altitude, dried beans can take twice as long to soften, and some cooks give up and use a pressure cooker, which is the one device that restores sea-level boiling temperatures by cooking under pressure. Baking is affected too: cakes rise faster in thin air because leavening gases expand more, then collapse, so high-altitude recipes reduce sugar and leavening and increase liquid and oven temperature.</p><h3>Boiling water is not the same as safe water</h3><p>A common worry is whether water boiled at altitude is safe to drink. The answer is reassuring: the pathogens that boiling kills die at temperatures well below 100 degrees, and they die faster the longer the water is held hot. Water that has reached a rolling boil at 90 degrees is safe, though at very high altitude it is wise to boil for a full minute (three minutes above 2,000 metres is the usual public-health guidance, mostly as a safety margin). The same logic applies to sterilising baby bottles and medical instruments at altitude: a rolling boil still sterilises, it just takes a little longer. What boiling cannot do, at any altitude, is remove chemical contaminants, heavy metals, or salts; for those you need filtration or distillation, not heat.</p><h2>Pressure cookers: the altitude cheat code</h2><p>A pressure cooker solves the altitude problem by sealing the pot and letting steam build pressure inside it. At 15 psi above atmospheric pressure, water inside boils at about 121 degrees regardless of the altitude outside, which is why pressure cookers are standard kitchen equipment in high cities like La Paz and Cusco. Food that would take hours in an open pot at altitude cooks in minutes under pressure, and beans, stews, and tough meats become practical again. If you live above 2,000 metres, a pressure cooker is not a gadget but a daily tool, and many high-altitude recipes are written for it by default. Instant Pots and similar electric pressure cookers have a high-altitude setting that extends cooking time automatically; if yours does not, add about 5 percent cooking time for every 300 metres above 600 metres as a starting rule.</p><h2>Other places the boiling point moves</h2><ul><li><strong>Weather:</strong> a strong low-pressure storm system lowers air pressure slightly and drops the boiling point by a fraction of a degree. You will never notice it in cooking.</li><li><strong>Aircraft cabins:</strong> cabin pressure is equivalent to about 1,800 to 2,400 metres, so water in an aircraft galley boils near 93 degrees. That is one reason airline tea tastes different.</li><li><strong>Vacuum and industry:</strong> industrial evaporators deliberately boil liquids under vacuum at low temperatures to protect delicate flavours and chemicals.</li><li><strong>Altitude sickness and hydration:</strong> at altitude you lose more water through faster breathing and drier air, so the cooler boiling point is a cooking problem, not a hydration shortcut.</li><li><strong>Science experiments:</strong> measuring the boiling point of water is a classic way to estimate altitude, and mountaineers once used boiling-point thermometers as altimeters.</li></ul><h2>Adjusting recipes for altitude, step by step</h2><p>Start by finding your altitude: your phone's compass or a mapping app gives it, or use the elevation of your town. Run it through the calculator and note your boiling point. For boiling and simmering dishes, add time first: 15 percent at 1,500 metres, 25 percent at 2,500 metres, 40 percent at 3,500 metres, and test for doneness rather than trusting the clock. Add a little extra liquid to rice, pasta, and braises to cover evaporation. For baking, use a high-altitude recipe adjustment chart: typically reduce sugar by one to two tablespoons per cup, reduce baking powder by about a quarter, increase liquid by two to four tablespoons per cup, and raise the oven temperature by 15 to 25 degrees Fahrenheit. Yeast breads need less adjustment than cakes because their structure is stronger, but they rise faster, so watch the proofing time. And always bring water to a full rolling boil before starting a timer: a gentle simmer at altitude is cooler still and throws every estimate off.</p><h2>Altitude, tea, and coffee</h2><p>Tea and coffee drinkers notice altitude before cooks do, because extraction depends on water temperature. Green tea brewed at 90 degrees instead of 80 can taste bitter, while black tea brewed at 90 degrees in a high city is actually near its ideal range. Coffee brewed with 90-degree water extracts slightly less than with 95-degree water, which is why high-altitude coffee can taste thinner unless the dose or contact time is increased. Pour-over brewers in mountain cafes often compensate with finer grinds and longer blooms. None of this is a reason to avoid mountain coffee; it is a reason to adjust the recipe, just as with pasta. And if you are visiting altitude from sea level, drink more water than usual: altitude increases water loss, and dehydration worsens altitude sickness far more than any cooking problem.</p><h2>Finding your altitude in seconds</h2><p>You do not need a surveyor to use this calculator. Most smartphones show altitude in the compass app or in a maps app when you drop a pin. Smartwatches with barometric altimeters show it on the watch face. Hiking and cycling apps record it for every route. Town elevations are listed on Wikipedia and on road signs in many mountain regions. If you are between two known elevations, estimate: a few hundred metres either way changes the boiling point by about one degree, which is smaller than the difference between a gentle simmer and a rolling boil. Enter your best figure, read the boiling point, and adjust your cooking from there. The number will not change your life, but it will explain your pasta, and that is a surprisingly satisfying thing to know at dinner in the mountains.</p><p>Water boils at 100 degrees only at sea level. Everywhere else, it boils at the temperature your altitude allows — and once you know that number, your cooking stops fighting the mountain and starts working with it.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>At what temperature does water boil at 1,500 metres?</summary><p>About 95 °C (203 °F). The rule is 100 minus altitude divided by 300, so 1,500 metres costs about 5 degrees.</p></details>
+<details><summary>Why does pasta take longer to cook at altitude?</summary><p>Because boiling water is cooler at altitude, and food cooks in that cooler water. Turning up the heat does not raise the temperature of boiling water, so only extra time helps.</p></details>
+<details><summary>Is boiled water safe to drink at altitude?</summary><p>Yes. A rolling boil kills pathogens even at 90 °C. Boil for a full minute, or three minutes above 2,000 metres, as a safety margin.</p></details>
+<details><summary>Does a pressure cooker fix the altitude problem?</summary><p>Yes. At 15 psi above atmospheric pressure, water boils at about 121 °C regardless of outside altitude, which is why pressure cookers are standard in high cities.</p></details>
+<details><summary>How accurate is the 300-metre rule?</summary><p>Within a degree or two for most inhabited altitudes. The true curve is slightly exponential, but the straight-line rule is plenty for cooking decisions.</p></details>
+<details><summary>Why do cakes collapse at high altitude?</summary><p>Leavening gases expand more in thin air, so cakes rise fast and then fall. High-altitude recipes reduce sugar and leavening and add liquid and oven temperature.</p></details>
+<details><summary>What is the boiling point on Everest?</summary><p>About 70 °C at the summit (8,848 m). Hot enough to scald, but barely hot enough to cook food properly, which is why climbers use pressure cookers and stoves carefully.</p></details>
+<details><summary>Does weather change the boiling point?</summary><p>Slightly. A strong low-pressure system lowers air pressure and drops the boiling point by a fraction of a degree — too small to notice in cooking.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BoilPoint</div>
+    <p>BoilPoint gives the boiling temperature of water at your altitude, plus cooking adjustments.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function boilPointC(altM){if(!(altM>=0))return NaN;return Math.round((100-altM/300)*10)/10;}
+var bp_unit='metric';
+function bp_calc(){
+var v0=parseFloat(document.getElementById('bpAlt').value)||0;
+var unit=bp_unit;
+var alt=(unit==='ft')?v0*0.3048:v0;var r=boilPointC(alt);var f=Math.round((r*9/5+32)*10)/10;var disp='That is '+f+' °F. Pasta, rice, and eggs all need extra time up here because the water itself is cooler.';
+document.getElementById('bpRes').textContent=r;
+document.getElementById('bpSub').innerHTML=disp;
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');h.unshift(r+' | '+disp.replace(/<[^>]+>/g,''));h=h.slice(0,5);localStorage.setItem('%sHist',JSON.stringify(h));var ul=document.getElementById('%sHistList');ul.innerHTML='';h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+}
+function bp_preset(vals){vals.forEach(function(v,i){var el=document.getElementById(['bpAlt'][i]);if(el)el.value=v;});bp_calc();}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+document.getElementById('bpCalc').addEventListener('click',bp_calc);
+document.querySelectorAll('[data-bp-preset]').forEach(function(b){b.addEventListener('click',function(){var vals=JSON.parse(b.getAttribute('data-bp-preset'));bp_preset(vals);});});
+document.querySelectorAll('[data-bp-unit]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-bp-unit]').forEach(function(x){x.classList.remove('on');});b.classList.add('on');bp_unit=b.getAttribute('data-bp-unit');bp_calc();});});
+var cp=document.getElementById('bpCopy');if(cp){cp.addEventListener('click',function(){var t=document.getElementById('bpRes').textContent+' '+document.getElementById('bpSub').textContent;try{navigator.clipboard.writeText(t);}catch(e){}});}
+try{var h=JSON.parse(localStorage.getItem('%sHist')||'[]');var ul=document.getElementById('%sHistList');h.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});}catch(e){}
+bp_calc();});}
+</script>
+</body>
+</html>
