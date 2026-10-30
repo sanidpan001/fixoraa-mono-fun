@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Board Foot Calculator — Lumber BF, Waste &amp; Cost | BoardFoot</title>
+<meta name="description" content="Free board foot calculator: enter board dimensions, get board feet, linear and square feet, plus waste-adjusted buy quantity and project cost. Quarter-system picker included.">
+<link rel="canonical" href="https://fun.fixoraa.tech/boardfoot/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Board Foot Calculator — Lumber BF, Waste &amp; Cost | BoardFoot">
+<meta property="og:description" content="Free board foot calculator: enter board dimensions, get board feet, linear and square feet, plus waste-adjusted buy quantity and project cost. Quarter-system picker included.">
+<meta property="og:url" content="https://fun.fixoraa.tech/boardfoot/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BoardFoot",
+      "url": "https://fun.fixoraa.tech/boardfoot/",
+      "applicationCategory": "DIY Tools",
+      "operatingSystem": "Web",
+      "description": "Free board foot calculator: enter board dimensions, get board feet, linear and square feet, plus waste-adjusted buy quantity and project cost. Quarter-system picker included.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate board feet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply thickness (inches) \u00d7 width (inches) \u00d7 length (feet), then divide by 12. Example: a 1 in \u00d7 6 in \u00d7 8 ft board = (1 \u00d7 6 \u00d7 8) \u00f7 12 = 4 board feet. Multiply by the number of identical boards for the total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 4/4 mean in lumber?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "4/4 (four-quarter) means 1 inch of rough-sawn thickness. The quarter system counts quarters of an inch: 8/4 is 2 inches, 12/4 is 3 inches. Note that 4/4 rough stock surfaces down to about 3/4 inch \u2014 but board feet are always calculated on the rough dimension."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a board foot and a linear foot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A board foot measures volume (144 cubic inches) and accounts for thickness; a linear foot measures length only. Hardwood is priced by the board foot because thickness varies, while trim and molding are sold by the linear foot because their cross-section is standardized."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much extra lumber should I buy for waste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Buy 10\u201315% more board footage than your finished parts need \u2014 15\u201320% for figured stock or unfamiliar species. Waste comes from planing rough faces flat, cutting around knots and defects, grain matching, and the occasional mistake."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the board foot formula the same for hardwood and softwood?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 the formula is identical for hardwoods, softwoods, and exotics. The difference is commercial: hardwoods are typically sold by the board foot, while construction softwoods are usually sold by the linear foot or per piece."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I calculate board feet before or after planing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dealers price the rough/nominal dimensions, not the surfaced size \u2014 so calculate with the quarter-system (rough) thickness. You pay for the wood the mill sawed, including what the planer later removes."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F4EFE3; --surface:#FFFDF8; --accent:#1D5C38; --accent-ink:#FFFFFF;
+  --ink:#23281F; --muted:#5F6355; --line:#DED3B8;
+  --display:'Space Grotesk',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.bf2-wrap{max-width:860px;margin:0 auto;padding:10px 6px 8px;font-family:Inter,system-ui,sans-serif;color:#23281F;}.bf2-hero{background:repeating-linear-gradient(#FFFDF8 0 30px,#F3ECDA 30px 31px);border:1px solid #DED3B8;border-radius:22px;padding:44px 30px 38px;text-align:center;box-shadow:0 14px 30px rgba(29,92,56,.08);margin-bottom:26px;position:relative;}.bf2-hero .rule{position:absolute;left:34px;top:18px;bottom:18px;width:2px;background:rgba(180,60,50,.35);}.bf2-kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#1D5C38;margin-bottom:10px;}.bf2-hero h1{font-family:'Space Grotesk',Inter,sans-serif;font-size:clamp(32px,5vw,50px);font-weight:700;letter-spacing:-.02em;margin:0 0 10px;line-height:1.05;}.bf2-tag{color:#5F6355;font-size:17px;margin:0;}.bf2-card{background:#FFFDF8;border:1px solid #DED3B8;border-radius:20px;padding:28px 26px;box-shadow:0 10px 26px rgba(35,40,31,.06);margin-bottom:22px;}.bf2-card h2{font-family:'Space Grotesk',sans-serif;font-size:22px;margin:0 0 4px;}.bf2-sub{color:#5F6355;font-size:14.5px;margin:0 0 18px;}.bf2-q{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}.bf2-q button{border:2px solid #DED3B8;background:#fff;border-radius:10px;padding:9px 13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;color:#23281F;}.bf2-q button.on{background:#1D5C38;color:#fff;border-color:#1D5C38;}.bf2-row{display:grid;grid-template-columns:1fr 1fr 1fr 76px 40px;gap:8px;margin-bottom:10px;align-items:center;}.bf2-row input{padding:11px 10px;font-size:15px;border:2px solid #DED3B8;border-radius:12px;font-family:inherit;color:#23281F;background:#fff;width:100%;min-width:0;}.bf2-row input:focus{outline:none;border-color:#1D5C38;}.bf2-x{background:none;border:2px solid #DED3B8;color:#1D5C38;border-radius:10px;height:44px;font-size:17px;cursor:pointer;font-weight:700;}.bf2-x:hover{background:#1D5C38;color:#fff;border-color:#1D5C38;}.bf2-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#5F6355;margin-bottom:4px;}.bf2-add{background:none;border:2px dashed #1D5C38;color:#1D5C38;border-radius:12px;padding:10px 16px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit;}.bf2-add:hover{background:rgba(29,92,56,.07);}.bf2-ctl{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 4px;}.bf2-ctl label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5F6355;margin-bottom:6px;}.bf2-ctl input{width:100%;padding:11px 12px;font-size:16px;border:2px solid #DED3B8;border-radius:12px;font-family:inherit;}.bf2-ctl input:focus{outline:none;border-color:#1D5C38;}.bf2-res{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px;}.bf2-stat{background:#F4EFE3;border:1px solid #DED3B8;border-radius:14px;padding:14px 12px;text-align:center;}.bf2-stat .k{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#5F6355;font-weight:700;}.bf2-stat .v{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#1D5C38;margin-top:2px;}.bf2-stat.hero{background:#1D5C38;border-color:#1D5C38;}.bf2-stat.hero .k{color:#DDE9DF;}.bf2-stat.hero .v{color:#fff;}.bf2-cost{margin-top:12px;background:#FFFDF8;border:2px dashed #1D5C38;border-radius:14px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}.bf2-cost .t{font-size:14.5px;color:#5F6355;}.bf2-cost .p{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:#1D5C38;}.bf2-band{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 40px;}.bf2-note{background:#FFF9E8;border:1px solid #EADFBF;border-radius:4px 16px 4px 16px;padding:16px 14px;font-family:Caveat,cursive;font-size:19px;line-height:1.4;color:#4A4028;box-shadow:0 8px 18px rgba(35,40,31,.08);position:relative;}.bf2-note b{font-size:20px;}.bf2-note:nth-child(odd){transform:rotate(-1.2deg);}.bf2-note:nth-child(even){transform:rotate(1.1deg);}.bf2-note .tape{position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);width:64px;height:20px;background:rgba(29,92,56,.16);border:1px solid rgba(29,92,56,.2);}@media(max-width:700px){.bf2-band{grid-template-columns:repeat(2,1fr);}.bf2-res{grid-template-columns:repeat(2,1fr);}.bf2-ctl{grid-template-columns:1fr;}.bf2-hero .rule{display:none;}}@media(max-width:520px){.bf2-row{grid-template-columns:1fr 1fr 40px;}.bf2-row .c-t{display:none;}.bf2-card{padding:22px 16px;}}.bf2-head{display:grid;grid-template-columns:1fr 1fr 1fr 76px 40px;gap:8px;margin-bottom:6px;}.bf2-head span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#5F6355;}@media(max-width:520px){.bf2-head{grid-template-columns:1fr 1fr 40px;}.bf2-head span:first-child{display:none;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="BoardFoot home">
+      <span class="fx-logo-tile" aria-hidden="true">🪵</span>
+      <span class="fx-brand">BoardFoot</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-notebook-margin" aria-label="BoardFoot tool">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet"><section class="bf2-wrap"><div class="bf2-hero"><span class="rule"></span><span class="bf2-kicker">The lumber-yard notebook</span><h1>Board Foot Calculator</h1><p class="bf2-tag">From cut list to lumber-yard budget in one page.</p></div><div class="bf2-card"><h2>Your board list</h2><p class="bf2-sub">Pick a quarter-system thickness (or type inches), then add each board or group of identical boards.</p><div class="bf2-lbl">Thickness — quarter system (rough)</div><div class="bf2-q" id="bf2-q"><button type="button" data-t="1" class="on">4/4 · 1&Prime;</button><button type="button" data-t="1.25">5/4 · 1&frac14;&Prime;</button><button type="button" data-t="1.5">6/4 · 1&frac12;&Prime;</button><button type="button" data-t="2">8/4 · 2&Prime;</button><button type="button" data-t="3">12/4 · 3&Prime;</button></div><div class="bf2-head" aria-hidden="true"><span>Thick (in)</span><span>Width (in)</span><span>Length (ft)</span><span>Qty</span><span></span></div><div id="bf2-rows"></div><button class="bf2-add" id="bf2-add" type="button">+ Add boards</button><div class="bf2-ctl"><div><label for="bf2-price">Price per board foot ($)</label><input id="bf2-price" type="number" min="0" step="0.05" value="5" inputmode="decimal"></div><div><label for="bf2-waste">Waste allowance (%)</label><input id="bf2-waste" type="number" min="0" max="60" step="1" value="15" inputmode="decimal"></div></div><div class="bf2-res" role="status" aria-live="polite"><div class="bf2-stat hero"><div class="k">Buy quantity</div><div class="v" id="bf2-buy">–</div></div><div class="bf2-stat"><div class="k">Board feet</div><div class="v" id="bf2-bf">–</div></div><div class="bf2-stat"><div class="k">Linear feet</div><div class="v" id="bf2-lin">–</div></div><div class="bf2-stat"><div class="k">Square feet</div><div class="v" id="bf2-sq">–</div></div></div><div class="bf2-cost"><span class="t" id="bf2-costline">Enter your boards to see the project budget.</span><span class="p" id="bf2-cost">–</span></div></div><div class="bf2-band" aria-label="Margin notes"><div class="bf2-note"><span class="tape"></span><b>Quarter reminder:</b> 4/4 = 1&Prime; rough, surfaces to &frac34;&Prime;. You still pay BF on the rough size!</div><div class="bf2-note"><span class="tape"></span><b>BF vs linear:</b> board feet = volume (thickness counts). Linear feet = length only — for trim.</div><div class="bf2-note"><span class="tape"></span><b>Waste rule:</b> pros buy 10–15% extra. Figured wood or first project? Make it 20%.</div><div class="bf2-note"><span class="tape"></span><b>Measure narrow:</b> rough boards taper — width is the narrowest usable point.</div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Is a Board Foot, Really?</h2><p>A <strong>board foot</strong> is a unit of <em>volume</em>, not length — and that single fact clears up most of the confusion around lumber pricing. One board foot equals 144 cubic inches of wood: imagine a board 12 inches wide, 12 inches long, and 1 inch thick. It doesn't matter how those dimensions are arranged — a long thin strip and a short fat plank can both be exactly one board foot as long as their volume matches.</p><p>Hardwood lumber in North America is priced by the board foot because it's the only unit that accounts for <strong>thickness</strong> as well as length and width. Linear feet ignore thickness entirely (fine for trim sold by length, useless for comparing a 4/4 board against an 8/4 board). Square feet ignore thickness too (fine for flooring coverage, misleading for cost). When a sawyer quotes $6.50 per board foot of black walnut, the board-foot math is what lets you compare that quote against another yard's $7.00 — apples to apples, regardless of how each yard cuts its stock.</p><h2>The Board Foot Formula</h2><p>There are two equivalent forms, depending on which units you measure in:</p><p><strong>Board feet = thickness (in) × width (in) × length (ft) ÷ 12</strong></p><p><strong>Board feet = thickness (in) × width (in) × length (in) ÷ 144</strong></p><p>A worked example: one board, 8 feet long, 6 inches wide, 1 inch thick. Board feet = (1 × 6 × 8) ÷ 12 = <strong>4 board feet</strong>. Buying ten of them? Multiply by ten: 40 board feet. At $5.00 per board foot, that's $200 of lumber — before waste.</p><p>This calculator also reports the companion units every woodworker needs: <strong>linear feet</strong> (just the length — what trim and molding are sold by), <strong>square feet</strong> (width × length — coverage for panels, tabletops, and flooring), and <strong>cubic feet</strong> (board feet ÷ 12 — total solid volume, handy for weight and shipping estimates).</p><h2>The Quarter System: Reading Hardwood Thickness</h2><p>Walk into a hardwood dealer and you'll hear boards described as "four-quarter" or "eight-quarter." The <strong>quarter system</strong> counts quarters of an inch of rough-sawn thickness:</p><table><thead><tr><th>Call-out</th><th>Rough thickness</th><th>Typical surfaced thickness</th><th>Common uses</th></tr></thead><tbody><tr><td>4/4</td><td>1 inch</td><td>3/4 in</td><td>General furniture, cabinetry</td></tr><tr><td>5/4</td><td>1¼ inch</td><td>1 in</td><td>Table tops, stair treads</td></tr><tr><td>6/4</td><td>1½ inch</td><td>1¼ in</td><td>Workbench tops, thick legs</td></tr><tr><td>8/4</td><td>2 inches</td><td>1¾ in</td><td>Legs, turning blanks, chunky parts</td></tr><tr><td>12/4</td><td>3 inches</td><td>2¾ in</td><td>Large turnings, sculptural work</td></tr><tr><td>16/4</td><td>4 inches</td><td>3¾ in</td><td>Mantle beams, massive legs</td></tr></tbody></table><p>Two subtleties matter. First, quarter-system thickness refers to the <strong>rough</strong> board; surfacing (planing smooth) removes about 1/4 inch total, which is why 4/4 stock finishes at 3/4 inch. Second — and this is where beginners lose money — <strong>board feet are calculated on the rough/nominal dimensions</strong>, not the surfaced ones. You pay for the wood the mill had to grow, dry, and saw, including what the planer later removes. This calculator's quarter picker uses the correct nominal values.</p><h2>Board Foot vs Linear Foot vs Square Foot</h2><p>Use the right unit for the right purchase, or you'll misprice the project:</p><ul><li><strong>Board feet</strong> — buying hardwood lumber for furniture. The universal pricing unit at hardwood dealers and sawmills.</li><li><strong>Linear feet</strong> — buying trim, molding, baseboard, or dimensional 2×4s sold by length. Thickness is standardized, so length is all that varies.</li><li><strong>Square feet</strong> — buying flooring, paneling, or sheet goods; or estimating how much surface your boards will cover.</li></ul><p>The classic mix-up: "how many linear feet do I need to cover this wall?" Barnboard and shiplap sellers hear this weekly. The answer needs board width — a 6-inch-wide board covers half the wall per linear foot that a 12-inch board does. Convert to square feet first (wall area ÷ board width), then to linear feet if that's how the product is sold.</p><h2>How to Measure a Board Correctly</h2><ol><li><strong>Length in feet</strong> — the long dimension. Hardwood is sold in even lengths (6, 8, 10, 12 ft); measure to the nearest inch and convert.</li><li><strong>Width in inches</strong> — the face width at the <em>narrowest</em> point. Rough hardwood boards taper and wane; dealers measure the narrowest usable width, and so should you.</li><li><strong>Thickness</strong> — in quarters (4/4, 8/4…) for hardwood, or actual inches for surfaced stock. Use the nominal rough dimension for board-foot pricing.</li><li><strong>Multiply and divide by 12</strong> — then multiply by the number of identical boards.</li></ol><p>Measure every board you intend to buy, not just one: a "6-inch" stack of rough lumber routinely spans 5½ to 7 inches board to board. The board list in this calculator exists for exactly this — enter each board (or each group of identical boards) and watch the running total, so the number you hand the dealer matches the pile on the cart.</p><h2>Waste: The 10–15% Nobody Budgets</h2><p>Rough lumber is not a finished part. Between the saw and your project you lose wood to: <strong>surfacing</strong> (planing rough faces flat), <strong>defects</strong> (knots, checks, wane, sticker stain — you cut around them), <strong>grain matching</strong> (resawing and book-matching eat width), and <strong>mistakes</strong> (every shop has a story). The professional rule is to buy <strong>10–15% more board footage than the finished parts require</strong> — 15–20% for highly figured stock or first-time projects in an unfamiliar species.</p><p>The waste control in this calculator applies your chosen percentage to the measured total and reports the <strong>buy quantity</strong> — the number to actually order. On a $400 walnut order, 15% waste is $60 of insurance against coming up one board short mid-project, when the yard's next flitch won't match your grain anyway.</p><h2>Pricing: Reading a Hardwood Quote</h2><p>Hardwood price lists quote dollars per board foot, and the spread between species is dramatic: poplar and soft maple at the budget end, black walnut and white oak commanding premiums, exotics higher still. Three things move a quote besides species: <strong>thickness</strong> (8/4 costs more per board foot than 4/4 — thicker clear stock is rarer), <strong>grade</strong> (FAS/F1F selects vs #1 Common — higher grades yield more clear cuttings per board), and <strong>surfacing</strong> (S2S/S4S surfaced stock costs more per board foot than rough).</p><p>Always compare quotes in dollars per board foot <em>for the same thickness and surfacing</em>. A $5.50/BF quote for rough 4/4 cherry and a $6.25/BF quote for surfaced 4/4 cherry may describe nearly the same wood — the second yard just did the planing for you. Enter the price per board foot in the calculator to turn your cut list into a project budget instantly.</p><h2>A Full Project Example</h2><p>Say you're building a shaker-style side table needing: a top from two 8/4 boards (2 in × 8 in × 4 ft), four legs from one 8/4 board (2 in × 6 in × 8 ft), and an apron set from 4/4 stock (1 in × 5 in × 8 ft, two boards). The math: top boards: (2 × 8 × 4) ÷ 12 = 5.33 BF each → 10.67 BF. Leg board: (2 × 6 × 8) ÷ 12 = 8 BF. Aprons: (1 × 5 × 8) ÷ 12 = 3.33 BF each → 6.67 BF. Finished-parts total: <strong>25.34 BF</strong>. Add 15% waste: <strong>29.14 BF to buy</strong>. At $6.00/BF cherry, the lumber budget is <strong>$174.84</strong>. That is the entire workflow this page automates: dimensions in, buy quantity and budget out.</p><h2>Reading a Board: Grain, Defects, and What They Cost You</h2><p>Board footage tells you how much wood you're paying for, but it says nothing about how much of that wood becomes furniture. Learning to read a board at the yard is the skill that separates cheap projects from expensive ones. Start with the faces: <strong>flat-sawn</strong> boards show cathedral grain patterns and are the most common and affordable; <strong>quarter-sawn</strong> boards show straight, parallel grain lines, move less with humidity, and typically cost 15–30% more per board foot. <strong>Rift-sawn</strong> sits between the two. For table tops and wide panels, quarter-sawn stock is worth the premium — it stays flatter across seasons, which means less planing, less waste, and fewer callbacks on client work.</p><p>Next, scan for defects you'll cut around — and remember you pay board-foot price for every inch you discard. <strong>Wane</strong> (bark or missing wood along an edge) is the most common; a board with heavy wane on both edges can lose a full inch of usable width, which quietly inflates your cost per <em>usable</em> board foot. <strong>Checks</strong> are end cracks from drying; expect to trim 2–4 inches off each end of rough stock, more on bargain piles. <strong>Knots</strong> aren't automatically waste — a tight, small knot can be a feature in rustic work — but loose or black knots near a joint are. <strong>Sticker stain</strong> (dark bands where drying stickers sat) usually planes out, but on thin 4/4 stock it can survive surfacing and ruin a finish.</p><p>Finally, sight down the board's length like a rifle barrel. <strong>Bow</strong> (curve along the length), <strong>cup</strong> (curve across the width), <strong>twist</strong> (one corner lifted), and <strong>crook</strong> (curve along the edge) all steal thickness when you flatten the board. A twisted 8/4 board might surface down to barely 6/4 of usable thickness — you've paid 8/4 price for 6/4 wood. Slight bow in a long board is manageable; twist is the dealbreaker. Chalk-mark the worst defects right at the yard so you remember which boards need the most trimming when you build the cut list at home. The calculator's waste percentage exists precisely for this reality: honest defect assessment at the pile is what turns the 10–15% rule from a guess into a budget.</p><h2>Buying Smart at the Lumber Yard</h2><p>Bring your cut list, a tape measure, and chalk. Sight down each board for twist and bow — a twisted board surfs into far less usable wood than its board footage suggests. Check the ends for checks (cracks) that will be cut off, and remember you pay board-foot price for those waste inches too. For small projects, ask about <strong>shorts and offcuts</strong>: many yards sell short lengths at a discount, and a cutting board or box project fits beautifully in stock the furniture makers passed over. Finally, let lumber <strong>acclimate</strong> in your shop for a week or two before milling; wood moves with humidity, and parts milled from unacclimated stock move after assembly.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do you calculate board feet?</summary><p>Multiply thickness (inches) × width (inches) × length (feet), then divide by 12. Example: a 1 in × 6 in × 8 ft board = (1 × 6 × 8) ÷ 12 = 4 board feet. Multiply by the number of identical boards for the total.</p></details>
+<details><summary>What does 4/4 mean in lumber?</summary><p>4/4 (four-quarter) means 1 inch of rough-sawn thickness. The quarter system counts quarters of an inch: 8/4 is 2 inches, 12/4 is 3 inches. Note that 4/4 rough stock surfaces down to about 3/4 inch — but board feet are always calculated on the rough dimension.</p></details>
+<details><summary>What is the difference between a board foot and a linear foot?</summary><p>A board foot measures volume (144 cubic inches) and accounts for thickness; a linear foot measures length only. Hardwood is priced by the board foot because thickness varies, while trim and molding are sold by the linear foot because their cross-section is standardized.</p></details>
+<details><summary>How much extra lumber should I buy for waste?</summary><p>Buy 10–15% more board footage than your finished parts need — 15–20% for figured stock or unfamiliar species. Waste comes from planing rough faces flat, cutting around knots and defects, grain matching, and the occasional mistake.</p></details>
+<details><summary>Is the board foot formula the same for hardwood and softwood?</summary><p>Yes — the formula is identical for hardwoods, softwoods, and exotics. The difference is commercial: hardwoods are typically sold by the board foot, while construction softwoods are usually sold by the linear foot or per piece.</p></details>
+<details><summary>Do I calculate board feet before or after planing?</summary><p>Dealers price the rough/nominal dimensions, not the surfaced size — so calculate with the quarter-system (rough) thickness. You pay for the wood the mill sawed, including what the planer later removes.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BoardFoot</div>
+    <p>BoardFoot converts board dimensions into board feet, linear feet, and square feet — with a quarter-system thickness picker, a running board list, and price-plus-waste project costing.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function boardFeet(tIn,wIn,lFt,qty){var bf=Number(tIn)*Number(wIn)*Number(lFt)/12*Number(qty);return Math.round(bf*100)/100;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var rows=document.getElementById('bf2-rows');if(!rows)return;var qbox=document.getElementById('bf2-q'),price=document.getElementById('bf2-price'),waste=document.getElementById('bf2-waste'),buyEl=document.getElementById('bf2-buy'),bfEl=document.getElementById('bf2-bf'),linEl=document.getElementById('bf2-lin'),sqEl=document.getElementById('bf2-sq'),costEl=document.getElementById('bf2-cost'),costLine=document.getElementById('bf2-costline');var thick=1;qbox.addEventListener('click',function(e){if(e.target.tagName==='BUTTON'){var bs=qbox.querySelectorAll('button');for(var i=0;i<bs.length;i++)bs[i].classList.remove('on');e.target.classList.add('on');thick=parseFloat(e.target.getAttribute('data-t'));var rs=rows.querySelectorAll('.bf2-row');for(var j=0;j<rs.length;j++){rs[j].querySelector('.c-t').value=thick;}calc();}});function addRow(t,w,l,q){var d=document.createElement('div');d.className='bf2-row';d.innerHTML='<input class="c-t" type="number" min="0.1" step="0.25" value="'+(t||thick)+'" aria-label="Thickness inches" inputmode="decimal"><input type="number" min="0.1" step="0.25" value="'+(w||6)+'" aria-label="Width inches" inputmode="decimal"><input type="number" min="0.1" step="0.5" value="'+(l||8)+'" aria-label="Length feet" inputmode="decimal"><input type="number" min="1" step="1" value="'+(q||1)+'" aria-label="Quantity" inputmode="numeric"><button class="bf2-x" type="button" aria-label="Remove row">×</button>';var ins=d.querySelectorAll('input');for(var i=0;i<ins.length;i++)ins[i].addEventListener('input',calc);d.querySelector('.bf2-x').addEventListener('click',function(){if(rows.children.length>1){d.remove();calc();}});rows.appendChild(d);}addRow(1,6,8,1);addRow(2,8,4,2);document.getElementById('bf2-add').addEventListener('click',function(){addRow();});price.addEventListener('input',calc);waste.addEventListener('input',calc);function r2(x){return Math.round(x*100)/100;}function calc(){var rs=rows.querySelectorAll('.bf2-row'),bf=0,lin=0,sq=0;for(var i=0;i<rs.length;i++){var ins=rs[i].querySelectorAll('input');var t=parseFloat(ins[0].value)||0,w=parseFloat(ins[1].value)||0,l=parseFloat(ins[2].value)||0,q=parseFloat(ins[3].value)||0;bf+=boardFeet(t,w,l,q);lin+=l*q;sq+=w/12*l*q;}bf=r2(bf);lin=r2(lin);sq=r2(sq);var wp=parseFloat(waste.value)||0,pr=parseFloat(price.value)||0;var buy=r2(bf*(1+wp/100));bfEl.textContent=bf+' BF';linEl.textContent=lin+' ft';sqEl.textContent=sq+' ft²';buyEl.textContent=buy+' BF';var cost=r2(buy*pr);costEl.textContent='$'+cost.toFixed(2);costLine.textContent='Buy '+buy+' BF at $'+pr.toFixed(2)+'/BF with '+wp+'% waste.';}calc();});}
+</script>
+</body>
+</html>
