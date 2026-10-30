@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cold Brew Coffee Ratio Calculator — Coffee &amp; Water by Servings</title>
+<meta name="description" content="Calculate cold brew coffee and water amounts from servings, cup size, and brew ratio for smooth, balanced cold brew.">
+<link rel="canonical" href="https://fun.fixoraa.tech/coldbrew/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Cold Brew Coffee Ratio Calculator — Coffee &amp; Water by Servings">
+<meta property="og:description" content="Calculate cold brew coffee and water amounts from servings, cup size, and brew ratio for smooth, balanced cold brew.">
+<meta property="og:url" content="https://fun.fixoraa.tech/coldbrew/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ColdBrew",
+      "url": "https://fun.fixoraa.tech/coldbrew/",
+      "applicationCategory": "Food",
+      "operatingSystem": "Web",
+      "description": "Calculate cold brew coffee and water amounts from servings, cup size, and brew ratio for smooth, balanced cold brew.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best cold brew coffee ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 1:10 coffee-to-water ratio by weight is a reliable balanced starting point. Use 1:8 for a stronger concentrate and 1:12 to 1:16 for a lighter, ready-to-drink brew."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much coffee do I need for 1 litre of cold brew?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At 1:10 you need 100 g of coffee for 1000 ml of water. At 1:12 you need about 83 g, and at 1:8 you need 125 g."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should cold brew coffee be ground coarse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A coarse grind, like raw sugar, extracts slowly and keeps bitterness and sediment low over a long steep."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should cold brew steep?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most recipes steep 12 to 24 hours at room temperature, or 18 to 24 hours in the fridge. Longer steeps taste stronger and can turn woody."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I make cold brew concentrate and dilute it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Brew at 1:8, then dilute the concentrate with equal parts water or milk when serving. This calculator gives ready-to-drink amounts unless you pick the strong ratio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does cold brew have more caffeine?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often yes per serving, because it uses more coffee per cup than hot brewing. Dilution and serving size decide the final caffeine in your glass."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does cold brew last in the fridge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Strained cold brew keeps about 7 to 10 days refrigerated in a sealed container. Discard it if it smells sour or stale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my cold brew taste bitter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common causes are too fine a grind, too long a steep, or too strong a ratio. Go coarser, shorten the steep, or move toward 1:12."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fdf6ec; --surface:#ffffff; --accent:#5b3a1e; --accent-ink:#ffffff;
+  --ink:#2b1d12; --muted:#6b5844; --line:#e8d9c0;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+.hist{margin-top:1rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.1rem}
+.hist h3{font-size:1rem;margin-bottom:.4rem} .hist ul{padding-left:1.2rem;color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}.formcard,.resultcard{padding:.9rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ColdBrew home">
+      <span class="fx-logo-tile" aria-hidden="true">☕</span>
+      <span class="fx-brand">ColdBrew</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-cold-drip" aria-label="ColdBrew tool">
+<div class="layout"><h1>Cold Brew Coffee Ratio Calculator</h1><p class="sub">Work out exactly how much coffee and water you need for smooth, low-acid cold brew.</p><div class="formcard"><label>Servings<input id="serv" type="number" value="2" step="any" min="0"></label><label>Cup size (ml)<input id="cup" type="number" value="250" step="any" min="0"></label><label>Brew ratio (1 part coffee to X water)<select id="ratio"><option value="8">1:8 — extra strong</option><option value="10" selected>1:10 — balanced</option><option value="12">1:12 — smooth</option><option value="16">1:16 — light</option></select></label><div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div><div class="presets" id="presets"></div></div><div class="resultcard" id="result" aria-live="polite"><p>Enter your values to see the result.</p></div><div class="hist"><h3>Recent calculations</h3><ul id="histList"></ul></div><p class="muted">Tip: weigh your coffee for consistency — a kitchen scale beats scoops every time.</p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How cold brew ratios work</h2>
+<p>Cold brew is coffee steeped in cool or room-temperature water for many hours instead of minutes. Because there is no heat to speed up extraction, the ratio of coffee to water does most of the work in deciding flavour. A ratio written as 1:10 means one part coffee to ten parts water by weight, so 50 grams of coffee meets 500 millilitres of water. Weighing both ingredients is the single biggest upgrade a home brewer can make, because scoops vary with bean size, roast, and grind, while grams do not. Once you know your servings, your cup size, and your ratio, the maths is simple: multiply servings by cup size for total water, then divide by the ratio number for coffee weight. This calculator does that arithmetic and lets you compare ratios side by side, so you can brew the same cup twice instead of guessing each time.</p>
+<h2>Choosing a ratio for your taste</h2>
+<p>Ratios between 1:8 and 1:16 cover nearly every home recipe, and the right one depends on how you serve the coffee. A 1:8 brew is a concentrate: bold, syrupy, and built to be diluted with water, milk, or ice. It suits people who like strong iced lattes or who brew a batch to stretch across the week. A 1:10 brew is the balanced middle ground, full-flavoured but drinkable straight over ice, and it is the safest first recipe for a new brewer. Moving to 1:12 gives a smoother, lighter cup with less bite, while 1:16 approaches the strength of ordinary filter coffee and suits drinkers who find cold brew heavy. Roast matters too: dark roasts taste stronger at the same ratio, so a dark bean at 1:12 can taste like a medium bean at 1:10. Start at 1:10, taste, and move one step at a time rather than changing ratio, grind, and steep time all at once.</p>
+<h2>Grind, water, and steep time</h2>
+<p>Grind size is the second variable that shapes cold brew. A coarse grind, about the texture of raw sugar or coarse sea salt, gives water a slow, even path through the grounds and limits the fine particles that make cold brew cloudy and bitter. A fine grind extracts too fast in a long steep and is hard to strain, leaving silt in the finished coffee. Water quality matters more than many brewers expect: if your tap water tastes of chlorine, filter it or let it stand uncovered for a while before brewing. Steep time works with ratio and grind as a team. Twelve hours gives a lighter, brighter cup, while eighteen to twenty-four hours gives a deeper, chocolatey result. Beyond twenty-four hours the returns fade and woody, papery notes creep in, especially with lighter roasts.</p>
+<h2>Room temperature or fridge</h2>
+<p>Steeping at room temperature extracts faster than steeping in the fridge, so a room-temperature brew is usually ready in twelve to sixteen hours, while a fridge brew needs closer to twenty-four. Room-temperature brewing is convenient, but the jar must be clean and covered, and the finished coffee should be refrigerated promptly after straining. Fridge brewing is slower and more forgiving, which suits busy schedules and warm kitchens. Either way, stir the grounds gently at the start so every particle is wet, because dry pockets extract unevenly and leave weak, grassy flavours. Keep the jar out of direct sunlight, and do not squeeze the grounds hard when straining, since squeezing pushes bitter compounds and sediment into the cup.</p>
+<h2>Straining and storing</h2>
+<p>Good straining happens in two stages. First pour the brew through a fine mesh strainer or cheesecloth to remove most grounds, then pass it through a paper coffee filter for a clean, clear result. Paper filtering takes patience, especially with a large batch, but it is the difference between a silky glass and a gritty one. Store finished cold brew in a clean, sealed bottle or jar in the fridge, where it keeps well for seven to ten days. Concentrate keeps slightly longer than diluted brew because its lower water activity slows staling, but no cold brew improves with age. Label the bottle with the brew date and ratio so you can repeat a batch you loved or fix one you did not.</p>
+<h2>Serving ideas</h2>
+<p>Cold brew is flexible at serving time. Over ice with a splash of water, it is refreshing and clean. With milk or oat milk, it becomes a smooth iced latte, and a pinch of salt or a drop of vanilla can round out sharp edges without sweetening. For a stronger drink, serve concentrate over ice and let the melt dilute it gradually, tasting as you go. Cold brew also works in cocktails and desserts: it adds depth to chocolate cake, tiramisu, and coffee ice cream without the acidity of hot-brewed coffee. Whatever you serve, keep the glass cold and the ice fresh, because warm ice melts fast and waters down a carefully measured brew.</p>
+<h2>A worked example</h2>
+<p>Suppose you want four servings of 240 millilitres each at a balanced 1:12 ratio. Total water is four times 240, which is 960 millilitres, and coffee is 960 divided by 12, which is 80 grams. At 1:10 the same servings need 96 grams, and at 1:8 they need 120 grams, which shows how much stronger a concentrate really is. If you brew concentrate and dilute it one-to-one, that 120-gram batch becomes eight servings rather than four, which is why concentrate is economical for a household. Weigh the beans before grinding, grind coarse, combine with the water, stir, cover, and steep. The calculator keeps the numbers straight so the brewing itself stays relaxed.</p>
+<h2>Troubleshooting your brew</h2>
+<p>Weak or watery cold brew usually means too little coffee, too short a steep, or a grind that is too coarse for the time given. Fix one variable at a time: add ten percent more coffee, or extend the steep by four hours. Bitter or harsh cold brew usually means the opposite problem, too fine a grind or too long a steep, and the fix is a coarser grind or a shorter steep rather than more water. Sour or sharp notes often point to under-extraction from a very light roast or a short steep, so try a longer steep before blaming the beans. Cloudy brew is almost always a filtering problem, solved by a second pass through paper. Keep notes on ratio, grind, steep time, and taste, and within three or four batches you will have a house recipe worth repeating.</p>
+<h2>Storing beans and scaling batches</h2>
+<p>Bean freshness matters as much as ratio, because stale beans make flat cold brew no matter how careful the measurements are. Buy whole beans in quantities you will use within two to three weeks, store them in an airtight container away from light and heat, and grind just before brewing rather than grinding days ahead. Grinding exposes far more surface area to oxygen, and pre-ground coffee stales noticeably within days, while whole beans hold up for weeks. For large batches, scale the calculator figures directly: a four-litre batch at 1:10 needs 400 grams of coffee and 4000 millilitres of water, and it brews in the same time as a small batch, provided the grounds are fully wet and the container is covered. Use a large jar or food-safe bucket for big batches, stir well at the start, and strain in stages so the filter does not clog. Batch brewing is efficient, but do not brew more than you will drink within ten days, since finished cold brew stales and the last glasses of an old batch taste noticeably worse than the first.</p>
+<h3>Cold brew ratios at a glance</h3><table><tr><th>Ratio</th><th>Coffee per litre</th><th>Best for</th></tr><tr><td>1:8</td><td>125 g</td><td>Concentrate, dilute to serve</td></tr><tr><td>1:10</td><td>100 g</td><td>Balanced, ready to drink</td></tr><tr><td>1:12</td><td>83 g</td><td>Smooth, lighter cup</td></tr><tr><td>1:16</td><td>63 g</td><td>Light, filter-like cup</td></tr></table>
+<ul><li>Weigh coffee and water for repeatable results.</li><li>Grind coarse, like raw sugar.</li><li>Steep 12 to 24 hours, covered and out of sunlight.</li><li>Strain twice: mesh first, then paper.</li><li>Refrigerate finished brew and use within 10 days.</li></ul>
+<p>Cold brew rewards patience more than equipment. A jar, a scale, coarse grounds, and the right ratio are enough for a cafe-quality glass at home. Use the calculator to set your numbers, brew one batch at a time, and let taste guide the next adjustment. Within a few batches you will know your ratio by heart, and cold brew will become the easiest good coffee in your routine.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is the best cold brew coffee ratio?</summary><p>A 1:10 coffee-to-water ratio by weight is a reliable balanced starting point. Use 1:8 for a stronger concentrate and 1:12 to 1:16 for a lighter, ready-to-drink brew.</p></details>
+<details><summary>How much coffee do I need for 1 litre of cold brew?</summary><p>At 1:10 you need 100 g of coffee for 1000 ml of water. At 1:12 you need about 83 g, and at 1:8 you need 125 g.</p></details>
+<details><summary>Should cold brew coffee be ground coarse?</summary><p>Yes. A coarse grind, like raw sugar, extracts slowly and keeps bitterness and sediment low over a long steep.</p></details>
+<details><summary>How long should cold brew steep?</summary><p>Most recipes steep 12 to 24 hours at room temperature, or 18 to 24 hours in the fridge. Longer steeps taste stronger and can turn woody.</p></details>
+<details><summary>Can I make cold brew concentrate and dilute it?</summary><p>Yes. Brew at 1:8, then dilute the concentrate with equal parts water or milk when serving. This calculator gives ready-to-drink amounts unless you pick the strong ratio.</p></details>
+<details><summary>Does cold brew have more caffeine?</summary><p>Often yes per serving, because it uses more coffee per cup than hot brewing. Dilution and serving size decide the final caffeine in your glass.</p></details>
+<details><summary>How long does cold brew last in the fridge?</summary><p>Strained cold brew keeps about 7 to 10 days refrigerated in a sealed container. Discard it if it smells sour or stale.</p></details>
+<details><summary>Why does my cold brew taste bitter?</summary><p>Common causes are too fine a grind, too long a steep, or too strong a ratio. Go coarser, shorten the steep, or move toward 1:12.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ColdBrew</div>
+    <p>ColdBrew works out coffee and water for cold brew from servings, cup size, and your chosen brew ratio.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function coldBrew(servings, cupMl, ratio) { if (servings <= 0 || cupMl <= 0 || ratio <= 0) return {water: 0, coffee: 0, cups: 0}; var water = Math.round(servings * cupMl); var coffee = Math.round(water / ratio * 10) / 10; return {water: water, coffee: coffee, cups: servings}; }
+
+if (typeof document !== 'undefined') {
+  var _hist = [];
+  function _renderHist() {
+    var el = document.getElementById('histList');
+    if (el) el.innerHTML = _hist.map(function(h) { return '<li>' + h + '</li>'; }).join('') || '<li>No calculations yet.</li>';
+  }
+  function run() {
+    var r=coldBrew(+document.getElementById('serv').value,+document.getElementById('cup').value,+document.getElementById('ratio').value);document.getElementById('result').innerHTML='<p class="big">'+r.coffee+' g coffee &middot; '+r.water+' ml water</p><p>For '+r.cups+' serving(s) at your chosen ratio. Grind coarse and steep 12 to 24 hours.</p>';window._last='ColdBrew: '+r.coffee+' g coffee, '+r.water+' ml water for '+r.cups+' servings';
+    if (window._last) { _hist.unshift(window._last); _hist = _hist.slice(0, 5); _renderHist(); }
+  }
+  document.getElementById('calcBtn').onclick = run;
+  document.getElementById('copyBtn').onclick = function() { if (window._last && navigator.clipboard) navigator.clipboard.writeText(window._last); };
+  var P = [['2 servings, 250 ml, 1:10',[2,250,10]],['4 servings, 240 ml, 1:12',[4,240,12]],['1 strong cup, 300 ml, 1:8',[1,300,8]]];
+  document.getElementById('presets').innerHTML = P.map(function(p, i) { return '<button type="button" data-i="' + i + '">' + p[0] + '</button>'; }).join('');
+  document.querySelectorAll('#presets button').forEach(function(b) {
+    b.onclick = function() {
+      var v = P[+b.dataset.i][1];
+      document.getElementById('serv').value=v[0];document.getElementById('cup').value=v[1];document.getElementById('ratio').value=v[2];
+      run();
+    };
+  });
+  _renderHist();
+  run();
+}
+
+</script>
+</body>
+</html>
