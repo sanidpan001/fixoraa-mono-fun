@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baseboard Calculator — How Much Trim Do You Need? | BaseboardCalc</title>
+<meta name="description" content="Baseboard linear feet by room with openings deducted, corners counted, waste added.">
+<link rel="canonical" href="https://fun.fixoraa.tech/baseboardcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Baseboard Calculator — How Much Trim Do You Need? | BaseboardCalc">
+<meta property="og:description" content="Baseboard linear feet by room with openings deducted, corners counted, waste added.">
+<meta property="og:url" content="https://fun.fixoraa.tech/baseboardcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BaseboardCalc",
+      "url": "https://fun.fixoraa.tech/baseboardcalc/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Baseboard linear feet by room with openings deducted, corners counted, waste added.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much baseboard do I need for a 12x12 room?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 12×12 room has a 48-ft perimeter. Minus two 3-ft door openings, that's 42 ft, plus 10% waste = about 47 ft. Three 16-ft boards (48 ft) cover it with almost nothing left over."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you deduct doors when measuring for baseboard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — deduct about 3 feet per standard door opening (door plus casing). Don't deduct windows, since baseboard runs underneath them. Don't deduct closet sliders either; the trim stays behind them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should inside corners be mitered or coped?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Coped. Cut one piece square into the corner and cope the mating piece to match its profile. Coped joints stay tight when wood shrinks seasonally; mitered inside corners open into visible gaps within a year or two."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good waste factor for baseboard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ten percent for a normal house. Go 15% with lots of outside corners, short wall segments, or stain-grade trim where every cut must be perfect. Five percent only for long straight runs with few joints."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "8 ft vs 12 ft vs 16 ft baseboard — which should I buy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Whichever wastes least for your total, which the calculator figures for all three. Longer boards mean fewer visible butt joints; shorter boards are easier to transport and handle solo. When waste is close, prefer longer boards for long walls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How high should baseboard sit with carpet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hold it about 3/8 inch off the subfloor so carpet tucks underneath — a scrap of baseboard makes a perfect spacer. On hard floors it sits directly on the finished floor with a thin caulk line at most."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9EAE1; --tint:#F4DED2; --accent:#843D15; --accent-deep:#13542A;
+  --ink:#22331F; --muted:#5C6E5B; --line:#B4D6C0;
+  --display:'Nunito',system-ui,sans-serif; --body:'Nunito',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:#fff;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:#fff}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:#fff}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:#fff;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:#1d1d1d;color:#e8e8e8;margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bdbdbd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--tint);font-weight:700}
+input,select,button{font:inherit}
+
+
+.bb-hero{text-align:center;padding:52px 0 6px}
+.bb-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:2px solid var(--line);padding:7px 16px;border-radius:999px;margin-bottom:16px}
+.bb-hero h1{font-size:clamp(34px,5vw,52px);letter-spacing:-.03em;font-weight:800;margin-bottom:12px}
+.bb-hero p{font-size:18px;color:var(--muted);max-width:600px;margin:0 auto}
+.bb-tape{max-width:560px;margin:26px auto 0;height:34px;border-radius:8px;border:2px solid var(--line);background:repeating-linear-gradient(90deg,#fff 0 46px,var(--tint) 46px 48px);position:relative;overflow:hidden}
+.bb-tape span{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 9px,rgba(29,124,62,.35) 9px 10px)}
+.bb-tool{background:#fff;border:2px solid var(--line);border-radius:24px;margin:26px 0 8px;overflow:hidden;box-shadow:0 14px 34px rgba(29,124,62,.10)}
+.bb-cols{display:grid;grid-template-columns:1.2fr .8fr}
+.bb-left{padding:28px;border-right:2px dashed var(--line)}
+.bb-right{padding:28px;background:linear-gradient(180deg,#fff,var(--bg))}
+.bb-h{font-size:17px;font-weight:800;margin-bottom:14px;letter-spacing:-.01em}
+.bb-room{border:2px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;background:var(--bg)}
+.bb-room .nm{width:100%;padding:10px 12px;border:2px solid var(--line);border-radius:10px;margin-bottom:10px;font-weight:700;background:#fff;color:var(--ink)}
+.bb-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bb-grid .field label{font-size:12px;margin-bottom:5px}
+.bb-grid .field input{width:100%;padding:9px 11px;border:2px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.bb-grid .field input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.bb-rm{margin-top:10px;background:none;border:0;color:var(--muted);cursor:pointer;font-size:13px;font-weight:700;text-decoration:underline}
+.bb-rm:hover{color:var(--accent)}
+.bb-add{width:100%;border:2px dashed var(--accent);background:transparent;color:var(--accent);border-radius:12px;padding:12px;font-weight:800;cursor:pointer;margin:4px 0 16px}
+.bb-add:hover{background:var(--tint)}
+.bb-row .field label{display:block;font-weight:700;font-size:14px;margin-bottom:7px}
+.bb-row .field select{width:100%;padding:11px 13px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.bb-total{background:var(--accent);color:#fff;border-radius:18px;text-align:center;padding:22px;margin-bottom:16px;box-shadow:0 6px 0 var(--accent-deep)}
+.bb-total .n{font-size:54px;font-weight:800;line-height:1}
+.bb-total .l{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.92;margin-top:8px}
+.bb-opt{border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;background:#fff}
+.bb-opt.best{border-color:var(--accent);background:var(--tint)}
+.bb-opt .t{display:flex;justify-content:space-between;font-weight:800;font-size:15px;margin-bottom:8px}
+.bb-opt .t .tag{font-size:11px;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;letter-spacing:.06em}
+.bb-bar{height:10px;border-radius:99px;background:var(--tint);overflow:hidden}
+.bb-bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.bb-opt .w{font-size:13px;color:var(--muted);margin-top:6px}
+.bb-corners{display:flex;gap:16px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 16px;margin-top:6px;font-size:14px}
+.bb-corners .k{color:var(--muted);font-weight:700}
+.bb-corners b{color:var(--accent);font-size:20px}
+.bb-note{margin-top:12px;font-size:14px;color:var(--muted)}
+@media(max-width:760px){.bb-cols{grid-template-columns:1fr}.bb-left{border-right:0;border-bottom:2px dashed var(--line)}}
+
+</style>
+</head>
+<body>
+<header class="fx-header baseboardcalc-hdr">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/baseboardcalc/" aria-label="BaseboardCalc home">
+      <span class="fx-tile" aria-hidden="true">B</span>
+      <span class="fx-name">BaseboardCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="bb-hero">
+    <span class="bb-eyebrow">Trim math</span>
+    <h1>Baseboard Calculator</h1>
+    <p>Measure rooms, deduct the doors, count the corners — then buy the board length that wastes the least.</p>
+    <div class="bb-tape" aria-hidden="true"><span></span></div>
+  </section>
+  <section class="bb-tool" aria-label="BaseboardCalc tool">
+    <div class="bb-cols">
+      <div class="bb-left">
+        <h2 class="bb-h">Rooms</h2>
+        <div id="bb-rooms"></div>
+        <button type="button" class="bb-add" id="bb-add">+ Add a room</button>
+        <div class="bb-row">
+          <div class="field"><label for="bb-waste">Waste allowance</label><select id="bb-waste">
+            <option value="0.05">5% — careful cuts</option><option value="0.10" selected>10% — standard</option>
+            <option value="0.15">15% — lots of corners</option></select></div>
+        </div>
+      </div>
+      <div class="bb-right" aria-live="polite">
+        <h2 class="bb-h">Your order</h2>
+        <div class="bb-total"><div class="n" id="bb-need">0</div><div class="l">linear feet with waste</div></div>
+        <div class="bb-opts" id="bb-opts"></div>
+        <div class="bb-corners"><span class="k">Inside corners</span><b id="bb-in">0</b><span class="k">Outside corners</span><b id="bb-out">0</b></div>
+        <p class="bb-note" id="bb-note"></p>
+      </div>
+    </div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+    <h2>Measure the Perimeter, Not the Walls</h2>
+    <p>Baseboard math starts with one number per room: the <strong>perimeter</strong> — the total length of wall at floor level. Run a tape around the room, or measure each wall and add them up. A 12-by-14 living room has a 52-foot perimeter. That is your starting point, and it is the only measuring most people actually need to do.</p>
+    <p>Then deduct the openings. Every standard interior door removes about <strong>3 feet</strong> (a 30-inch door plus casing). Cased openings without doors still count as deductions — no trim runs across a doorway. Closets with sliding doors keep their baseboard (the doors sit above it), so do not deduct those. Fireplaces, built-ins and floor-to-ceiling cabinets: measure around them or deduct their width, whichever is easier.</p>
+    <p>What about windows? Baseboard runs <strong>under</strong> windows, so windows are not deductions. The one exception is a window or glass door that reaches the floor — treat it like a doorway. When in doubt, include it; a foot of extra trim costs a dollar, a second trip to the store costs an afternoon.</p>
+    <h2>Inside Corners vs. Outside Corners</h2>
+    <p>Corners decide how you cut, and cuts decide how much you waste. <strong>Inside corners</strong> — where two walls meet going in — are best handled with a <strong>coped joint</strong>: one piece runs square into the corner, the other is cut to match its profile. Coped joints stay tight when wood shrinks in winter; mitered inside corners open up into visible gaps.</p>
+    <p>Outside corners — wall ends, bump-outs, stair skirts — get <strong>mitered joints</strong> at 45 degrees, glued and pinned. They are the fussy ones: walls are rarely exactly 90 degrees, so test-fit with scrap and sneak up on the angle. Count your outside corners before you buy, because each one consumes extra length in test cuts.</p>
+    <p>The calculator tallies both corner types per room so you can plan the cut sequence. Rule of thumb: cut and fit the longest walls first, then use the offcuts for short pieces between doors and corners.</p>
+    <h2>Waste: 10 Percent Is Honest</h2>
+    <p>Trim waste is not about being clumsy — it is structural. Every miter consumes the blade's kerf plus test-fit slivers; every coped joint sacrifices an inch or two; and boards arrive with the occasional warp, knot or dented end you cut away. <strong>Ten percent</strong> covers a normal house with normal corners.</p>
+    <p>Bump to 15 percent when the job has lots of outside corners, short wall segments, or you are matching an existing profile where every piece must be perfect. Drop to 5 percent only for long, straight commercial-style runs with few joints. First-timers: take the 15. The trim is cheap; the frustration is not.</p>
+    <p>One more waste source people forget: <strong>defects</strong>. Sight down every board at the store and reject anything twisted, bowed more than a gentle curve, or with crushed ends. A rejected board at the store is free; a rejected board mid-installation is a wasted cut plus a wasted trip.</p>
+    <h2>The Board-Length Game</h2>
+    <p>Baseboard comes in <strong>8, 12 and 16-foot</strong> lengths, and the right choice can halve your waste. Longer boards mean fewer butt joints (which are visible no matter how well you fill them) but more leftover when rooms do not divide evenly. Shorter boards fit in most cars and are easier to maneuver around corners.</p>
+    <p>The calculator plays all three lengths against your total and flags the <strong>least-waste option</strong>. The math is simple — boards needed rounds up, leftover is what you paid for but cannot use — but doing it by hand for three lengths across five rooms is exactly the kind of arithmetic that gets skipped and regretted.</p>
+    <p>Practical tie-breakers: if two lengths waste nearly the same, take the <strong>longer board</strong> for fewer joints on long walls, or the <strong>shorter</strong> if you are working solo and wrestling 16-footers around stairwells. And always buy one spare board — profiles get discontinued, and the spare lives in the garage until a future scuff needs patching.</p>
+    <h2>Butt Joints on Long Walls</h2>
+    <p>Walls longer than your longest board need a <strong>butt joint</strong>: two board ends meeting on the wall. Never butt-joint in the middle of a long visible stretch if you can avoid it — place joints over studs, and cut both ends at opposing 45-degree <strong>scarf joints</strong> instead of square butts. Scarfs glue up stronger and the seam nearly disappears after filling.</p>
+    <p>Plan joints near door casing or inside corners where the eye does not linger. Stagger joints between parallel walls so they do not mirror each other. And always nail into studs — trim nailed only to drywall eventually waves away from the wall as humidity cycles.</p>
+    <p>For painted baseboard, the seam ritual is: glue, pin-nail, wood filler, sand, caulk the top edge, then paint. Each step is five minutes; skipping any of them is visible forever.</p>
+    <h2>Coping: The Skill Worth Learning</h2>
+    <p>Coping looks intimidating and takes about twenty minutes to learn. Cut the first piece square into the corner. On the second piece, cut a 45-degree miter as if you were mitering the corner, then use a <strong>coping saw</strong> to cut along the profile line the miter reveals — back-cutting slightly so only the face touches. The coped end nests against the first piece's face like a puzzle piece.</p>
+    <p>The beauty of a coped joint is mechanical: when the wood shrinks, the coped piece slides slightly along the face instead of opening a gap. A mitered inside corner has no such forgiveness — it just opens. Pros cope every inside corner; it is the single biggest difference between trim that looks good for a year and trim that looks good for a decade.</p>
+    <p>Practice on scrap. Your third cope will be better than your first miter ever was.</p>
+    <h2>Paint-Grade vs. Stain-Grade Buying</h2>
+    <p>Paint-grade baseboard is usually <strong>MDF or finger-jointed pine</strong> — cheap, perfectly smooth, and takes paint beautifully. It hates moisture, so keep it out of bathrooms and off concrete. Stain-grade is solid oak, maple or similar: three to four times the price, and every joint must be perfect because there is no filler-and-paint to hide behind.</p>
+    <p>If you are painting, MDF is the rational choice: it does not shrink, so joints stay tight, and it costs a fraction of solid wood. Buy it a week early and let it acclimate in the room — even MDF moves a little with humidity, and pre-painting the backs seals it.</p>
+    <p>Match the <strong>profile</strong> to the house, not to fashion. A tall 5-inch colonial base suits 9-foot ceilings; a chunky craftsman profile suits a bungalow. Mismatched trim between rooms is more noticeable than any brand difference.</p>
+    <h2>Installation Order That Saves Rework</h2>
+    <p>Install baseboard <strong>after</strong> the walls are painted and the floors are in, but <strong>before</strong> the final wall touch-up — you will caulk the top edge and touch up the paint line. If carpet is coming, leave the baseboard about 3/8 inch off the subfloor (a scrap of baseboard makes a perfect spacer) so carpet tucks underneath.</p>
+    <p>Work room by room, longest walls first. Cope as you go rather than batching all cuts — walls are never as square as the plan says, and each corner teaches you the next one. Keep a tube of paintable caulk and a nail set on the ladder tray; filling nail holes as you go beats a separate filling day.</p>
+    <p>Final step before paint: run a thin bead of caulk along the <strong>top edge</strong> where trim meets wall. That shadow line is what separates professional trim from weekend trim, and it takes ten minutes a room.</p>
+    <h2>When to Call It a Pro Job</h2>
+    <p>Most baseboard is honest DIY. Call a trim carpenter when the house has <strong>plaster walls that wave</strong> (scribing tall base to wavy plaster is an art), when you are running stain-grade hardwood where every joint shows, or when the design includes built-up profiles with three stacked moldings that must align perfectly.</p>
+    <p>Also consider a pro for stairs: skirt boards and the rake-to-level transitions involve compound angles that punish beginners. Nothing wrong with DIYing the bedrooms and hiring out the staircase — carpenters are used to partial jobs.</p>
+    <p>Either way, the material math does not change. Hand your carpenter the room-by-room totals from the calculator and you will both skip the measuring appointment.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How much baseboard do I need for a 12x12 room?</summary><p>A 12×12 room has a 48-ft perimeter. Minus two 3-ft door openings, that's 42 ft, plus 10% waste = about 47 ft. Three 16-ft boards (48 ft) cover it with almost nothing left over.</p></details>
+    <details><summary>Do you deduct doors when measuring for baseboard?</summary><p>Yes — deduct about 3 feet per standard door opening (door plus casing). Don't deduct windows, since baseboard runs underneath them. Don't deduct closet sliders either; the trim stays behind them.</p></details>
+    <details><summary>Should inside corners be mitered or coped?</summary><p>Coped. Cut one piece square into the corner and cope the mating piece to match its profile. Coped joints stay tight when wood shrinks seasonally; mitered inside corners open into visible gaps within a year or two.</p></details>
+    <details><summary>What is a good waste factor for baseboard?</summary><p>Ten percent for a normal house. Go 15% with lots of outside corners, short wall segments, or stain-grade trim where every cut must be perfect. Five percent only for long straight runs with few joints.</p></details>
+    <details><summary>8 ft vs 12 ft vs 16 ft baseboard — which should I buy?</summary><p>Whichever wastes least for your total, which the calculator figures for all three. Longer boards mean fewer visible butt joints; shorter boards are easier to transport and handle solo. When waste is close, prefer longer boards for long walls.</p></details>
+    <details><summary>How high should baseboard sit with carpet?</summary><p>Hold it about 3/8 inch off the subfloor so carpet tucks underneath — a scrap of baseboard makes a perfect spacer. On hard floors it sits directly on the finished floor with a thin caulk line at most.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BaseboardCalc</div>
+    <p>BaseboardCalc totals your trim by room, deducts door openings, counts corners for cut planning, and picks the least-waste board length.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TOOLJS */
+var bbRooms=[{name:'Living room',perim:52,doors:2,inC:4,outC:0},{name:'Bedroom',perim:40,doors:1,inC:4,outC:0}];
+function computeBaseboard(rooms,waste){
+  var total=0,inC=0,outC=0;
+  rooms.forEach(function(r){total+=Math.max(0,r.perim-r.doors*3);inC+=r.inC;outC+=r.outC;});
+  var need=total*(1+waste);
+  function opt(len){var n=Math.ceil(need/len-1e-9);return{len:len,n:n,leftover:Math.max(0,n*len-need)};}
+  var o8=opt(8),o12=opt(12),o16=opt(16);
+  var best=[o8,o12,o16].sort(function(a,b){return(a.leftover-b.leftover)||(b.len-a.len);})[0];
+  return{total:total,need:need,o8:o8,o12:o12,o16:o16,best:best,inC:inC,outC:outC};
+}
+if(typeof document!=='undefined'){
+(function(){
+  var list=document.getElementById('bb-rooms');
+  function fmt(n,d){return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});}
+  function render(){
+    list.innerHTML='';
+    bbRooms.forEach(function(r,i){
+      var d=document.createElement('div');d.className='bb-room';
+      d.innerHTML='<input class="nm" value="'+r.name.replace(/"/g,'&quot;')+'" aria-label="Room name">'+
+        '<div class="bb-grid">'+
+        '<div class="field"><label>Perimeter (ft)</label><input type="number" min="0" max="500" step="1" value="'+r.perim+'"></div>'+
+        '<div class="field"><label>Doors</label><input type="number" min="0" max="20" step="1" value="'+r.doors+'"></div>'+
+        '<div class="field"><label>Inside corners</label><input type="number" min="0" max="20" step="1" value="'+r.inC+'"></div>'+
+        '<div class="field"><label>Outside corners</label><input type="number" min="0" max="20" step="1" value="'+r.outC+'"></div>'+
+        '</div><button type="button" class="bb-rm">Remove room</button>';
+      var inp=d.querySelectorAll('input');
+      inp[0].addEventListener('input',function(){r.name=this.value;});
+      var keys=['perim','doors','inC','outC'];
+      keys.forEach(function(k,j){inp[j+1].addEventListener('input',function(){r[k]=parseFloat(this.value)||0;calc();});});
+      d.querySelector('.bb-rm').addEventListener('click',function(){bbRooms.splice(i,1);render();calc();});
+      list.appendChild(d);
+    });
+  }
+  document.getElementById('bb-add').addEventListener('click',function(){
+    bbRooms.push({name:'Room '+(bbRooms.length+1),perim:40,doors:1,inC:4,outC:0});render();calc();});
+  document.getElementById('bb-waste').addEventListener('change',calc);
+  function optHtml(o,best){
+    var pct=o.n?Math.min(100,(o.leftover/(o.n*o.len))*100):0;
+    return '<div class="bb-opt'+(o===best?' best':'')+'"><div class="t"><span>'+o.n+' × '+o.len+'-ft boards</span>'+
+      (o===best?'<span class="tag">BEST BUY</span>':'')+'</div>'+
+      '<div class="bb-bar"><i style="width:'+pct.toFixed(1)+'%"></i></div>'+
+      '<div class="w">'+fmt(o.leftover,1)+' ft leftover ('+pct.toFixed(0)+'% waste)</div></div>';
+  }
+  function calc(){
+    var waste=parseFloat(document.getElementById('bb-waste').value);
+    var r=computeBaseboard(bbRooms,waste);
+    document.getElementById('bb-need').textContent=fmt(r.need,1);
+    document.getElementById('bb-opts').innerHTML=optHtml(r.o8,r.best)+optHtml(r.o12,r.best)+optHtml(r.o16,r.best);
+    document.getElementById('bb-in').textContent=r.inC;
+    document.getElementById('bb-out').textContent=r.outC;
+    document.getElementById('bb-note').textContent=
+      r.inC+r.outC>0?('Plan '+(r.inC+r.outC)+' mitered or coped joints. Cope inside corners for a tight fit that survives seasonal movement.'):'Add each room’s perimeter and door count above.';
+  }
+  render();calc();
+})();
+}
+</script>
+</body>
+</html>
