@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lawn Watering Calculator: Gallons Per Watering | WaterWise</title>
+<meta name="description" content="Lawn watering calculator: get gallons per watering from area and inches needed, subtract rainfall, and convert to sprinkler runtime. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/waterwise/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Lawn Watering Calculator: Gallons Per Watering | WaterWise">
+<meta property="og:description" content="Lawn watering calculator: get gallons per watering from area and inches needed, subtract rainfall, and convert to sprinkler runtime. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/waterwise/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "WaterWise",
+      "url": "https://fun.fixoraa.tech/waterwise/",
+      "applicationCategory": "Garden & Lawn",
+      "operatingSystem": "Web",
+      "description": "Lawn watering calculator: get gallons per watering from area and inches needed, subtract rainfall, and convert to sprinkler runtime. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many gallons is one inch of water over 1,000 square feet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 623 gallons. One inch over one square foot is 0.623 gallons, so multiply 0.623 by your square footage and your target inches. A 5,000 sq ft lawn getting one inch drinks over 3,100 gallons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I water my lawn?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most lawns do best with 1 to 1.5 inches per week split across 2 to 3 deep sessions, rather than daily light watering. Deep, infrequent watering grows roots 6+ inches deep; daily sprinkles keep roots shallow and fragile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What time of day is best for watering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Between 4 a.m. and 10 a.m. Morning watering loses the least to evaporation and lets grass blades dry before nightfall, which prevents fungal disease. Avoid evening watering and midday watering in heat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I measure how much water my sprinklers put out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Do the tuna-can test: place straight-sided cans around the lawn, run sprinklers for 15 minutes, and measure the depth in each with a ruler. The average is your precipitation rate; big differences between cans reveal coverage problems to fix."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I subtract rainfall from my watering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 an inch of rain is an inch you do not need to irrigate. Track weekly rainfall with a rain gauge or weather app and subtract it from your 1 to 1.5 inch target. A rain sensor on automatic systems prevents watering during downpours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My clay soil puddles when I water. What should I do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use cycle-and-soak: split your watering into 2 to 3 short sessions 30 to 60 minutes apart so each layer absorbs before the next arrives. Clay absorbs water slowly, so one long session mostly runs off into the street."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F5F1FA; --surface:#FFFFFF; --accent:#5B21B6; --accent-ink:#FFFFFF;
+  --ink:#1F2937; --muted:#5C6675; --line:#E1D7F1;
+  --display:'Cabin',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ww-wrap{font-family:'Cabin',system-ui,sans-serif;background:#F5F1FA;color:#1F2937;padding:56px 20px 72px;}.ww-hero{max-width:840px;margin:0 auto 32px;text-align:center;}.ww-badge{width:72px;height:72px;margin:0 auto 16px;border-radius:50%;background:linear-gradient(135deg,#5B21B6,#8B5CF6);color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(91,33,182,.3);}.ww-hero h1{font-size:clamp(30px,4.6vw,46px);margin:0 0 12px;font-weight:800;letter-spacing:-.01em;}.ww-tag{font-size:17px;color:#5C6675;margin:0;}.ww-dash{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}.ww-card{background:#FFFFFF;border:1px solid #E1D7F1;border-radius:20px;padding:26px;box-shadow:0 16px 40px rgba(91,33,182,.10);}.ww-card h2{font-size:17px;margin:0 0 16px;font-weight:800;letter-spacing:.02em;}.ww-field{margin-bottom:14px;}.ww-field label{display:block;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5C6675;margin-bottom:7px;}.ww-field input,.ww-field select{width:100%;box-sizing:border-box;padding:12px 13px;font-size:16px;font-family:inherit;border:2px solid #E1D7F1;border-radius:12px;color:#1F2937;background:#F5F1FA;min-height:50px;}.ww-field input:focus{outline:none;border-color:#5B21B6;}.ww-btn{width:100%;padding:15px;font-size:16px;font-weight:800;font-family:inherit;color:#fff;background:#5B21B6;border:none;border-radius:13px;cursor:pointer;min-height:54px;}.ww-btn:hover{background:#4C1D95;}.ww-btn.ghost{background:#fff;color:#5B21B6;border:2px solid #5B21B6;margin-top:10px;}.ww-big{font-size:52px;font-weight:800;color:#5B21B6;line-height:1;margin:4px 0;}.ww-unit{font-size:14px;color:#5C6675;}.ww-line{font-size:14.5px;color:#1F2937;line-height:1.6;margin:10px 0 0;}.ww-line strong{color:#5B21B6;}.ww-zones{list-style:none;margin:12px 0 0;padding:0;font-size:14.5px;}.ww-zones li{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px dashed #E1D7F1;}.ww-zones button{background:none;border:none;color:#B91C1C;font-size:16px;cursor:pointer;min-width:32px;min-height:32px;}.ww-total{margin-top:12px;padding:12px 14px;background:#F5F1FA;border-radius:12px;font-size:15px;font-weight:700;}.ww-tip{max-width:1060px;margin:20px auto 0;background:#FFFFFF;border-left:6px solid #5B21B6;border-radius:14px;padding:20px 24px;font-size:15px;line-height:1.7;color:#1F2937;}@media (max-width:860px){.ww-dash{grid-template-columns:1fr;}.ww-card{padding:22px 18px;}.ww-big{font-size:42px;}.ww-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="WaterWise home">
+      <span class="fx-logo-tile" aria-hidden="true">💧</span>
+      <span class="fx-brand">WaterWise</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-ledger-lines" aria-label="WaterWise tool">
+<section class='ww-wrap'><div class='ww-hero'><div class='ww-badge' aria-hidden='true'>💧</div><h1>Lawn Watering Calculator</h1><p class='ww-tag'>Water deep, not often — with the exact gallons to prove it.</p></div><div class='ww-dash'><div class='ww-card'><h2>How much water</h2><div class='ww-field'><label for='ww-area'>Lawn area (sq ft)</label><input id='ww-area' type='number' min='0' step='10' value='1000'></div><div class='ww-field'><label for='ww-inches'>Inches needed this watering</label><input id='ww-inches' type='number' min='0' step='0.25' value='1'></div><div class='ww-field'><label for='ww-rain'>Rainfall in last 7 days (in)</label><input id='ww-rain' type='number' min='0' step='0.1' value='0'></div><button class='ww-btn' id='ww-go' type='button'>Calculate gallons</button></div><div class='ww-card'><h2>Your watering</h2><div class='ww-big' id='ww-gal'>—</div><div class='ww-unit'>gallons this watering</div><p class='ww-line' id='ww-detail'>Enter your lawn area and press calculate.</p><p class='ww-line' id='ww-sessions'></p></div><div class='ww-card'><h2>Sprinkler runtime</h2><div class='ww-field'><label for='ww-gpm'>Sprinkler flow (gallons per minute)</label><input id='ww-gpm' type='number' min='0' step='0.5' value='4'></div><button class='ww-btn ghost' id='ww-rt' type='button'>Convert to minutes</button><p class='ww-line' id='ww-runtime'></p></div><div class='ww-card'><h2>Zone planner</h2><div class='ww-field'><label for='ww-zname'>Zone name</label><input id='ww-zname' type='text' value='Front yard'></div><div class='ww-field'><label for='ww-zgal'>Gallons per watering</label><input id='ww-zgal' type='number' min='0' step='1' value='600'></div><button class='ww-btn ghost' id='ww-add' type='button'>Add zone</button><ul class='ww-zones' id='ww-zones'></ul><div class='ww-total' id='ww-ztotal' style='display:none'></div></div><div class='ww-card'><h2>Deep vs frequent</h2><p class='ww-line'>Deep, infrequent watering grows roots 6+ inches down; daily sprinkles keep roots in the top inch where heat kills them.</p><p class='ww-line'><strong>Rule:</strong> 1 to 1.5 inches per week, in 2–3 sessions. Water before 10 a.m. so leaves dry by nightfall.</p><p class='ww-line'>Clay soil: split sessions 30 min apart so water soaks in. Sandy soil: water slightly more often, slightly less each time.</p></div><div class='ww-card'><h2>Measure your system</h2><p class='ww-line'><strong>Tuna-can test:</strong> place empty cans across the lawn, run sprinklers 15 minutes, measure depth with a ruler.</p><p class='ww-line'>Average the cans — that is your inches per 15 minutes. Uneven cans mean poor coverage to fix before you water more.</p><p class='ww-line'>Typical pop-up heads deliver about 0.3–0.5 in per 15 min; rotors about 0.2–0.3 in.</p></div></div><div class='ww-tip'><strong>Water-wise tip:</strong> one inch of water over 1,000 sq ft is about 623 gallons. If that number shocks you, you are watering exactly right by measuring — most over-waterers never do the math.</div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How Much Water a Lawn Really Needs</h2><p>Most lawns need about one to one and a half inches of water per week, including rainfall. That sounds modest until you do the math: one inch of water over 1,000 square feet is roughly 623 gallons. A typical suburban lawn of 5,000 square feet therefore drinks more than 3,000 gallons in a week of hot weather. The calculator above exists because almost nobody believes the number until they see it — and seeing it is what finally stops the over-watering.</p><p>The weekly target is not arbitrary. Turfgrass roots grow toward moisture, so the goal is to wet the soil six to eight inches deep and then let the top dry out. That wet-dry cycle pulls roots downward, where soil stays cooler and moisture lasts longer. Lawns watered deeply twice a week develop root systems two to three times deeper than lawns sprinkled daily, and deep-rooted grass survives heat waves and short droughts that kill shallow-rooted lawns outright.</p><p>Where does the 0.623 gallons per square foot per inch come from? An inch of water over one square foot is 144 cubic inches, which is 0.623 gallons. Multiply by your area and your target inches and you have the exact volume. It is the kind of arithmetic nobody does in their head, which is why sprinklers run on vibes instead of numbers.</p><h2>Deep Versus Frequent: Why It Matters</h2><p>Daily fifteen-minute sprinklings feel diligent but create fragile lawns. Shallow watering keeps the top inch of soil moist and the rest dry, so roots colonize only that top inch. The first hot spell bakes that layer, and the lawn goes dormant or dies while the soil six inches down — where the roots should have been — stays bone dry.</p><p>Deep watering flips the script. Two or three sessions per week, each delivering about half an inch, push moisture deep. Between sessions the surface dries, which discourages fungal disease and forces roots to chase water downward. The lawn looks the same on the surface but behaves like a completely different plant underground.</p><p>There is one exception: new seed and new sod. Germinating seed must stay moist at the surface, so new lawns get light watering two to three times a day for the first two to three weeks. Once seedlings are an inch tall, transition to the deep schedule over about two weeks.</p><h2>Subtract the Rain You Already Got</h2><p>Free water counts. An inch of rain is an inch of irrigation you do not need to buy, so the calculator subtracts recent rainfall from your target. A cheap rain gauge — or your weather app's weekly total — is all it takes. This single habit saves more water than any gadget: automatic sprinkler systems without rain sensors are notorious for watering through downpours, and municipalities in dry regions increasingly fine it.</p><p>If you have an in-ground system, a rain sensor or a smart controller that pulls weather data pays for itself in a season or two. The sensor is a twenty-dollar part that interrupts the irrigation schedule when it rains. Smart controllers go further, adjusting runtimes for temperature and humidity. Either beats the most common irrigation schedule in America: the one set by the installer five years ago and never touched since.</p><h2>When to Water During the Day</h2><p>Water between 4 a.m. and 10 a.m. Early morning watering loses the least to evaporation, gives leaves time to dry before nightfall, and takes advantage of typically lower wind. Midday watering can lose a third of the water to evaporation and wind drift. Evening watering seems convenient but leaves grass blades wet overnight — an open invitation to brown patch, dollar spot, and other fungal diseases that thrive in warm, damp darkness.</p><p>If morning is impossible, late afternoon is the second choice, but aim to finish at least two hours before sunset. And never water a lawn that is already wet from rain or heavy dew; soggy soil suffocates roots and feeds disease.</p><h2>Know Your Sprinkler Output</h2><p>Gallons are only half the equation — you need to know how long to run the system to deliver them. The classic method is the tuna-can test: scatter straight-sided cans across the lawn, run the sprinklers for fifteen minutes, then measure the depth in each can with a ruler. The average is your precipitation rate; the spread between cans reveals coverage problems.</p><p>Typical numbers: pop-up spray heads deliver about 0.3 to 0.5 inches per fifteen minutes, while gear-driven rotors deliver about 0.2 to 0.3 inches. Drip zones are a different animal entirely and should never share a schedule with spray zones. If one can collects twice as much as another, you have a coverage problem — fix head spacing, pressure, or clogged nozzles before you water longer, because more minutes will not fix uneven distribution.</p><p>Once you know your rate, the runtime converter in the tool turns gallons into minutes. A zone delivering 4 gallons per minute needs about 150 minutes to put down 600 gallons — which is why large lawns run zones in sequence overnight, and why the zone planner totals everything so you can see the whole picture.</p><h2>Soil Type Changes the Schedule</h2><p>Clay soil absorbs water slowly; sandy soil absorbs it fast but holds little. On clay, a long single session mostly runs off into the street — the water arrives faster than the soil can take it. The fix is <strong>cycle and soak</strong>: split the watering into two or three short sessions thirty to sixty minutes apart so each layer soaks in before the next arrives. Most smart controllers do this automatically; with a manual system, just set multiple start times.</p><p>Sandy soil is the opposite problem: water races through before roots can drink. Sandy lawns do better with slightly more frequent, slightly lighter watering — three sessions instead of two — and benefit enormously from topdressing with compost, which acts like a sponge in otherwise sieve-like soil. A soil test every few years tells you where you stand; the squeeze test (a moist ball that crumbles means sandy, that holds together means clay) gets you close enough for scheduling.</p><h2>Reading Your Lawn's Thirst Signals</h2><p>Lawns tell you when they are thirsty if you know the signs. The footprint test is the easiest: walk across the grass in the afternoon, and if your footprints stay visible because the blades do not spring back, water within a day or two. A well-hydrated lawn also has a subtle blue-green cast when dry versus a vivid green when watered — the dull color is the plant's first drought response, well before browning.</p><p>Screwdriver test: push a long screwdriver into the soil. If it slides in six inches easily, moisture is adequate; if it stops at two inches, the soil is dry and it is time to water. Brown patches, by contrast, are a late signal — by the time grass browns, it has been stressed for days. Water to the early signals and you will use less water than watering to the brown ones.</p><h2>Mowing and Watering Work Together</h2><p>How you mow changes how much water the lawn needs. Taller grass shades the soil, cutting evaporation dramatically — mowing at 3.5 to 4 inches instead of scalping at 2 inches can cut water needs by a quarter or more. The one-third rule (never remove more than a third of the blade in one mowing) keeps grass unstressed and deep-rooted.</p><p>Leave the clippings. Grasscycling returns nitrogen and organic matter to the soil, feeding the microbial life that builds soil structure and water-holding capacity. A mulching mower makes this effortless, and the clippings disappear into the lawn within a day or two. Bagging clippings, by contrast, exports nutrients you then replace with fertilizer and water.</p><h2>Drought Strategy and Restrictions</h2><p>When water restrictions hit, prioritize. Trees and shrubs first — they are expensive to replace and their deep roots make them efficient users. Then high-visibility lawn areas; let far corners go dormant. Most cool-season grasses survive dormancy for four to six weeks if the crowns stay alive — water dormant lawns about half an inch every two to three weeks just to keep crowns hydrated, and they green up when rain returns.</p><table><thead><tr><th>Strategy</th><th>Water use</th><th>Lawn outcome</th></tr></thead><tbody><tr><td>Deep watering 2x/week</td><td>1–1.5 in/week</td><td>Green, deep-rooted, resilient</td></tr><tr><td>Daily light sprinkle</td><td>1–1.5 in/week</td><td>Green but shallow-rooted, fragile</td></tr><tr><td>Survival watering</td><td>0.5 in every 2–3 weeks</td><td>Dormant brown, crowns alive</td></tr><tr><td>No water 6+ weeks</td><td>None</td><td>Risk of permanent loss in heat</td></tr></tbody></table><p>Consider the long game too: replacing thirsty turf in low-traffic areas with native groundcovers, mulch beds, or drought-tolerant grasses like buffalo grass or zoysia can cut a property's water bill in half. The greenest lawn is not always grass — sometimes it is the garden bed that replaced the part of the lawn nobody walked on anyway.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many gallons is one inch of water over 1,000 square feet?</summary><p>About 623 gallons. One inch over one square foot is 0.623 gallons, so multiply 0.623 by your square footage and your target inches. A 5,000 sq ft lawn getting one inch drinks over 3,100 gallons.</p></details>
+<details><summary>How often should I water my lawn?</summary><p>Most lawns do best with 1 to 1.5 inches per week split across 2 to 3 deep sessions, rather than daily light watering. Deep, infrequent watering grows roots 6+ inches deep; daily sprinkles keep roots shallow and fragile.</p></details>
+<details><summary>What time of day is best for watering?</summary><p>Between 4 a.m. and 10 a.m. Morning watering loses the least to evaporation and lets grass blades dry before nightfall, which prevents fungal disease. Avoid evening watering and midday watering in heat.</p></details>
+<details><summary>How do I measure how much water my sprinklers put out?</summary><p>Do the tuna-can test: place straight-sided cans around the lawn, run sprinklers for 15 minutes, and measure the depth in each with a ruler. The average is your precipitation rate; big differences between cans reveal coverage problems to fix.</p></details>
+<details><summary>Should I subtract rainfall from my watering?</summary><p>Yes — an inch of rain is an inch you do not need to irrigate. Track weekly rainfall with a rain gauge or weather app and subtract it from your 1 to 1.5 inch target. A rain sensor on automatic systems prevents watering during downpours.</p></details>
+<details><summary>My clay soil puddles when I water. What should I do?</summary><p>Use cycle-and-soak: split your watering into 2 to 3 short sessions 30 to 60 minutes apart so each layer absorbs before the next arrives. Clay absorbs water slowly, so one long session mostly runs off into the street.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">WaterWise</div>
+    <p>WaterWise converts your lawn area and target inches into gallons per watering, subtracts recent rainfall, and turns it into sprinkler runtime.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function waterGallons(areaSqft,inches){var a=Number(areaSqft),i=Number(inches);if(!isFinite(a)||!isFinite(i)||a<0||i<0)return 0;return Math.round(a*i*0.623*10)/10;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){function el(id){return document.getElementById(id);}var go=el('ww-go');if(go){go.addEventListener('click',function(){var area=parseFloat(el('ww-area').value),inches=parseFloat(el('ww-inches').value),rain=parseFloat(el('ww-rain').value)||0;var gal=el('ww-gal'),det=el('ww-detail'),ses=el('ww-sessions');if(!gal)return;if(!isFinite(area)||!isFinite(inches)||area<=0||inches<0){gal.textContent='—';if(det)det.textContent='Enter a valid lawn area and inches.';if(ses)ses.textContent='';return;}var net=Math.max(0,inches-rain);var g=waterGallons(area,net);gal.textContent=g.toLocaleString();if(det)det.innerHTML='That is <strong>'+net.toFixed(2)+' in</strong> net after '+rain.toFixed(1)+' in of rain, over '+area.toLocaleString()+' sq ft. One inch per square foot = 0.623 gallons.';if(ses)ses.innerHTML=net>=1?'Split into <strong>'+Math.ceil(net/0.5)+' sessions</strong> of about 0.5 in so water soaks in instead of running off.':'A light watering — fine for seedlings or new sod.';});}var rt=el('ww-rt');if(rt){rt.addEventListener('click',function(){var gpm=parseFloat(el('ww-gpm').value);var out=el('ww-runtime');var galTxt=el('ww-gal').textContent.replace(/,/g,'');var gal=parseFloat(galTxt);if(!out)return;if(!isFinite(gpm)||gpm<=0||!isFinite(gal)){out.textContent='Calculate gallons first, then enter your sprinkler flow rate.';return;}var mins=Math.round(gal/gpm);out.innerHTML='Run your sprinklers about <strong>'+mins+' minutes</strong> to deliver this watering ('+gpm+' gpm). Split across 2–3 start times for clay soil.';});}var zones=[];function renderZones(){var ul=el('ww-zones'),tot=el('ww-ztotal');if(!ul||!tot)return;ul.innerHTML='';var sum=0;zones.forEach(function(z,idx){sum+=z.gal;var li=document.createElement('li');li.innerHTML='<span><strong>'+z.name+'</strong> — '+z.gal.toLocaleString()+' gal</span>';var b=document.createElement('button');b.type='button';b.textContent='✕';b.setAttribute('aria-label','Remove '+z.name);b.addEventListener('click',function(){zones.splice(idx,1);renderZones();});li.appendChild(b);ul.appendChild(li);});if(zones.length){tot.style.display='block';tot.textContent='Total across '+zones.length+' zones: '+sum.toLocaleString()+' gallons per watering';}else{tot.style.display='none';}}var add=el('ww-add');if(add){add.addEventListener('click',function(){var name=(el('ww-zname').value||'Zone').trim()||'Zone';var gal=parseFloat(el('ww-zgal').value);if(!isFinite(gal)||gal<0)return;zones.push({name:name,gal:Math.round(gal)});renderZones();});}});}
+</script>
+</body>
+</html>
