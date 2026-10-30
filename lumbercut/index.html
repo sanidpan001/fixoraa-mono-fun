@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Board Feet Calculator &amp; Lumber Estimator | LumberCut</title>
+<meta name="description" content="Board feet calculator: instant bd ft math, project totals, weight and cost estimates, nominal-vs-actual table and cut-list planner. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/lumbercut/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Board Feet Calculator &amp; Lumber Estimator | LumberCut">
+<meta property="og:description" content="Board feet calculator: instant bd ft math, project totals, weight and cost estimates, nominal-vs-actual table and cut-list planner. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/lumbercut/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "LumberCut",
+      "url": "https://fun.fixoraa.tech/lumbercut/",
+      "applicationCategory": "DIY Tools",
+      "operatingSystem": "Web",
+      "description": "Board feet calculator: instant bd ft math, project totals, weight and cost estimates, nominal-vs-actual table and cut-list planner. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate board feet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Board feet = thickness (inches) \u00d7 width (inches) \u00d7 length (feet) \u00f7 12. A 2\u00d76\u00d78 board is (2\u00d76\u00d78)/12 = 8 board feet. Enter your dimensions in the calculator above and it does this instantly, including project totals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a 2x4 actually 2 inches by 4 inches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 a nominal 2\u00d74 actually measures 1.5 \u00d7 3.5 inches after drying and planing. Lumber is sold by nominal (rough-sawn) size. Board-foot math uses nominal sizes, but your project plans must use actual measurements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a board foot of lumber weigh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 2.5 lb per board foot for pine/SPF framing lumber, ~3 lb for poplar, ~3.5-4 lb for oak and maple. Pressure-treated lumber runs ~30% heavier because it is sold wet. The tool estimates weight from your total board feet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much extra lumber should I buy for waste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add 10% for simple projects, 15-20% when working around defects or when you are new. Defects, miscuts, and grain-matching all consume footage. Always buy one extra board beyond the factor for insurance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do lumber grades like FAS and #1 Common mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FAS is the top grade with long clear cuttings (most expensive); Select is nearly as good for furniture; #1 Common is cheaper with more knots and shorter clear sections \u2014 fine for rustic pieces or short parts. Do not pay FAS prices when #1 Common yields your part sizes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I store and acclimate lumber?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Store it flat with spacers (stickers) between layers for airflow, out of sun and off damp concrete, in your shop for about a week before milling. Wood moves as it equalizes with your shop's humidity \u2014 parts cut on day one can twist by day seven."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F0F6F6; --surface:#FFFFFF; --accent:#0F766E; --accent-ink:#FFFFFF;
+  --ink:#23272F; --muted:#5B6472; --line:#D3E6E4;
+  --display:'Roboto Slab',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.lc-wrap{font-family:Inter,system-ui,sans-serif;background:#F0F6F6;color:#23272F;padding:56px 20px 76px;}.lc-inner{max-width:1040px;margin:0 auto;}.lc-head{display:flex;align-items:center;gap:18px;margin-bottom:26px;}.lc-logo{width:66px;height:66px;border-radius:20px;background:linear-gradient(135deg,#0F766E,#3aa08f);color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 12px 26px rgba(15,118,110,.25);}.lc-head h1{font-family:'Roboto Slab',serif;font-size:clamp(28px,4.4vw,42px);margin:0;}.lc-head p{margin:4px 0 0;color:#5B6472;font-size:15.5px;}.lc-split{display:grid;grid-template-columns:1fr 1fr;gap:20px;}.lc-panel{background:#FFFFFF;border:1px solid #D3E6E4;border-radius:22px;padding:28px;box-shadow:0 16px 40px rgba(15,118,110,.08);}.lc-panel h2{font-family:'Roboto Slab',serif;font-size:21px;margin:0 0 16px;}.lc-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}.lc-field label{display:block;font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#5B6472;margin-bottom:7px;}.lc-field input,.lc-field select{width:100%;padding:12px;font-size:15.5px;border:2px solid #D3E6E4;border-radius:12px;font-family:inherit;color:#23272F;background:#F0F6F6;box-sizing:border-box;min-height:50px;}.lc-field input:focus,.lc-field select:focus{outline:none;border-color:#0F766E;}.lc-field{margin-bottom:14px;}.lc-big{background:#F0F6F6;border:2px solid #0F766E;border-radius:16px;padding:20px;text-align:center;margin-top:6px;}.lc-big .lc-v{font-family:'Roboto Slab',serif;font-size:40px;color:#0F766E;}.lc-big .lc-l{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:#5B6472;font-weight:700;margin-top:6px;}.lc-lines{margin-top:16px;font-size:15px;line-height:2;}.lc-lines .lc-k{color:#5B6472;}.lc-lines .lc-n{float:right;font-weight:800;}.lc-tablewrap{max-width:1040px;margin:20px auto 0;background:#FFFFFF;border:1px solid #D3E6E4;border-radius:22px;padding:28px;}.lc-tablewrap h2{font-family:'Roboto Slab',serif;font-size:21px;margin:0 0 6px;}.lc-tablewrap>p{color:#5B6472;font-size:14px;margin:0 0 14px;}.lc-tablewrap table{width:100%;border-collapse:collapse;font-size:14px;}.lc-tablewrap th,.lc-tablewrap td{padding:9px 8px;text-align:left;border-bottom:1px solid #D3E6E4;}.lc-tablewrap th{color:#5B6472;font-size:12px;text-transform:uppercase;letter-spacing:.05em;}.lc-cutlist{max-width:1040px;margin:20px auto 0;background:#FFFFFF;border:1px solid #D3E6E4;border-radius:22px;padding:28px;}.lc-cutlist h2{font-family:'Roboto Slab',serif;font-size:21px;margin:0 0 6px;}.lc-cutlist>p{color:#5B6472;font-size:14px;margin:0 0 14px;}.lc-clrow{display:grid;grid-template-columns:1fr 1fr 1fr 70px 44px;gap:10px;margin-bottom:10px;}.lc-clrow input{padding:11px;font-size:14.5px;border:2px solid #D3E6E4;border-radius:10px;font-family:inherit;box-sizing:border-box;width:100%;color:#23272F;}.lc-add{background:#0F766E;color:#fff;border:none;border-radius:12px;padding:12px 20px;font-weight:800;cursor:pointer;font-family:inherit;font-size:15px;}.lc-del{background:#fff;border:2px solid #D3E6E4;border-radius:10px;cursor:pointer;font-size:16px;color:#5B6472;}.lc-total{margin-top:12px;font-size:16px;font-weight:800;color:#0F766E;}@media (max-width:820px){.lc-split{grid-template-columns:1fr;}.lc-row{grid-template-columns:1fr 1fr;}.lc-clrow{grid-template-columns:1fr 1fr;}.lc-head{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="LumberCut home">
+      <span class="fx-logo-tile" aria-hidden="true">🪵</span>
+      <span class="fx-brand">LumberCut</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-split-panel" aria-label="LumberCut tool">
+<section class='lc-wrap'><div class='lc-inner'><div class='lc-head'><div class='lc-logo' aria-hidden='true'>🪵</div><div><h1>Board Feet Calculator</h1><p>Board feet, project totals, zero guesswork.</p></div></div><div class='lc-split'><div class='lc-panel'><h2>Board dimensions</h2><div class='lc-row'><div class='lc-field'><label for='lc-t'>Thick (in)</label><input id='lc-t' type='number' min='0' step='0.25' value='2' inputmode='decimal'></div><div class='lc-field'><label for='lc-w'>Width (in)</label><input id='lc-w' type='number' min='0' step='0.25' value='6' inputmode='decimal'></div><div class='lc-field'><label for='lc-l'>Length (ft)</label><input id='lc-l' type='number' min='0' step='0.5' value='8' inputmode='decimal'></div></div><div class='lc-field'><label for='lc-n'>Number of boards</label><input id='lc-n' type='number' min='0' step='1' value='4' inputmode='numeric'></div><div class='lc-field'><label for='lc-price'>Price per board foot ($)</label><input id='lc-price' type='number' min='0' step='0.1' value='2.5' inputmode='decimal'></div><div class='lc-field'><label for='lc-waste'>Waste factor</label><select id='lc-waste'><option value='1.1'>10% — simple project</option><option value='1.15' selected>15% — typical</option><option value='1.2'>20% — rustic / beginner</option></select></div></div><div class='lc-panel'><h2>Project estimate</h2><div class='lc-big'><div class='lc-v' id='lc-bf'>–</div><div class='lc-l'>Total board feet</div></div><div class='lc-lines'><div><span class='lc-k'>Per board</span><span class='lc-n' id='lc-per'>–</span></div><div><span class='lc-k'>Est. weight</span><span class='lc-n' id='lc-wt'>–</span></div><div><span class='lc-k'>Est. cost (with waste)</span><span class='lc-n' id='lc-cost'>–</span></div><div><span class='lc-k'>Boards to buy</span><span class='lc-n' id='lc-buy'>–</span></div></div></div></div><div class='lc-tablewrap'><h2>Nominal vs actual sizes</h2><p>Board-foot math uses nominal sizes; your plans must use actual. Reference for common framing lumber.</p><div style='overflow-x:auto'><table><thead><tr><th>Nominal</th><th>Actual (in)</th><th>Bd ft per 8-ft board</th></tr></thead><tbody><tr><td>1×4</td><td>0.75 × 3.5</td><td>2.67</td></tr><tr><td>1×6</td><td>0.75 × 5.5</td><td>4.00</td></tr><tr><td>2×4</td><td>1.5 × 3.5</td><td>5.33</td></tr><tr><td>2×6</td><td>1.5 × 5.5</td><td>8.00</td></tr><tr><td>2×8</td><td>1.5 × 7.25</td><td>10.67</td></tr><tr><td>2×10</td><td>1.5 × 9.25</td><td>13.33</td></tr><tr><td>2×12</td><td>1.5 × 11.25</td><td>16.00</td></tr><tr><td>4×4</td><td>3.5 × 3.5</td><td>10.67</td></tr></tbody></table></div></div><div class='lc-cutlist'><h2>Cut-list planner</h2><p>Add every part your project needs — the tool totals board feet across the whole list.</p><div id='lc-clrows'></div><button class='lc-add' id='lc-add' type='button'>+ Add part</button><div class='lc-total' id='lc-cltotal'></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What a Board Foot Actually Is</h2><p>A board foot is the lumber industry's unit of volume: one board foot equals 144 cubic inches of wood — a board 1 inch thick, 12 inches wide, and 12 inches long. The formula is disarmingly simple: <strong>board feet = thickness (in) × width (in) × length (ft) ÷ 12</strong>. That division by 12 converts the length from feet to inches so all three dimensions share units. A 2×6 that is 8 feet long is therefore (2 × 6 × 8) ÷ 12 = 8 board feet — which is also the first test case this tool's math is verified against.</p><p>Board feet matter because hardwood lumber is sold by the board foot, not by the piece. When a yard quotes $6.50 per board foot for white oak, you need your project's total board footage to know what the wood will cost. Softwood framing lumber (2×4s, 2×6s) is usually priced per piece, but board feet still let you compare value across sizes and estimate weight for hauling.</p><h2>The Nominal vs Actual Trap</h2><p>Here is the thing that confuses every beginner: a "2×4" is not 2 inches by 4 inches. Lumber is sold by <strong>nominal</strong> dimensions (the size of the rough-sawn board) but you receive <strong>actual</strong> dimensions (after drying and planing smooth). A 2×4 actually measures 1.5 × 3.5 inches. This is not a scam — it is a century-old convention — but it has real consequences:</p><table><thead><tr><th>Nominal size</th><th>Actual size</th><th>Bd ft per 8-ft board (nominal)</th></tr></thead><tbody><tr><td>1×4</td><td>0.75 × 3.5 in</td><td>2.67</td></tr><tr><td>1×6</td><td>0.75 × 5.5 in</td><td>4.00</td></tr><tr><td>2×4</td><td>1.5 × 3.5 in</td><td>5.33</td></tr><tr><td>2×6</td><td>1.5 × 5.5 in</td><td>8.00</td></tr><tr><td>2×8</td><td>1.5 × 7.25 in</td><td>10.67</td></tr><tr><td>2×10</td><td>1.5 × 9.25 in</td><td>13.33</td></tr><tr><td>2×12</td><td>1.5 × 11.25 in</td><td>16.00</td></tr><tr><td>4×4</td><td>3.5 × 3.5 in</td><td>10.67</td></tr></tbody></table><p>Two practical rules. First, <strong>board-foot calculations use nominal dimensions</strong> — the industry standard. A nominal 2×6×8 is 8 board feet even though the actual wood is smaller. Second, <strong>your project plans must use actual dimensions</strong> — a shelf span calculated with nominal 12-inch width will be a quarter inch off with actual 11.25-inch boards, and those errors compound across a bookcase.</p><h2>How to Use the Calculator</h2><p>Enter thickness and width in inches and length in feet — matching how lumber is sold ("2 by 6 by 8"). The tool computes board feet per board, then multiplies by your board count for the project total. This matches how yards tally an order, so the number you bring to the counter is the number they will compute.</p><p>For hardwoods sold random-width, measure each board's width at its narrowest usable point and enter boards individually — or use the cut-list planner to total everything at once. Always add a <strong>waste factor</strong>: 10 percent for simple projects, 15–20 percent when boards have defects to cut around or when you are new and miscuts happen. Lumber is cheapest when bought once.</p><h2>Estimating Weight: Can Your Vehicle Handle It?</h2><p>Weight per board foot varies by species and moisture content, but useful rules of thumb for air-dried lumber:</p><ul><li><strong>Pine / SPF framing:</strong> ~2.5 lb per board foot</li><li><strong>Cedar / redwood:</strong> ~2.2 lb per board foot</li><li><strong>Poplar:</strong> ~3.0 lb per board foot</li><li><strong>Oak / maple:</strong> ~3.5–4.0 lb per board foot</li><li><strong>Pressure-treated:</strong> add ~30% — it is sold wet</li></ul><p>The tool's weight estimate uses 2.5 lb/bf as a default for framing lumber with a species adjustment. Twenty 2×6×8 boards (160 board feet) weigh roughly 400 pounds — fine for a pickup, questionable for a sedan's roof rack. When in doubt, make two trips; lumber strapped badly to a small car is a highway hazard.</p><h2>Estimating Cost</h2><p>Enter your yard's price per board foot and the tool totals the project cost including your waste factor. Hardwood prices swing wildly by region and grade — call the yard for the current price of the species you want rather than trusting last year's numbers. Two cost traps to avoid: <strong>surfacing charges</strong> (S2S/S4S milling adds $0.50–$1.50/bf) and <strong>minimum charges</strong> on small orders. For small projects, the per-piece price at a home center sometimes beats a hardwood dealer's board-foot price once minimums apply.</p><h3>Grading: what FAS, Select, and #1 Common mean</h3><p>Hardwood grades describe how much clear, defect-free wood a board yields. FAS (Firsts and Seconds) is the top grade — long clear cuttings, highest price. Select is nearly as good for most furniture. #1 Common is cheaper with more knots and shorter clear sections — perfectly fine for rustic pieces or small parts. Do not pay FAS prices for a project whose longest part is 18 inches; #1 Common will yield it for far less.</p><h2>The Cut-List Planner</h2><p>A cut list is your shopping list translated into parts: every piece the project needs, with dimensions. Building it before buying does three things: it totals your board footage accurately, it reveals which board lengths minimize waste, and it stops you from buying a 12-footer when two 8-footers cut cleaner. Enter each part's dimensions and quantity in the planner; the tool sums board feet and flags the total length of each nominal size you will need.</p><p>Pro move: <strong>buy length, not just footage</strong>. If your longest part is 7 feet, 8-foot boards work but 10-footers might yield two parts with less waste per board — do the arithmetic both ways. And always buy one extra board beyond the waste factor. The project-stopping catastrophe is running short on a Sunday when the yard is closed.</p><h2>Moisture Content and Acclimation</h2><p>Framing lumber from a home center is kiln-dried to about 19% moisture; fine hardwoods are dried to 6–8%. Either way, <strong>acclimate lumber in your shop for a week</strong> before milling — wood moves as it equalizes with your shop's humidity, and parts cut on day one can twist by day seven. Store boards flat with stickers (spacers) between layers for air circulation, out of direct sun and off damp concrete.</p><h2>Troubleshooting</h2><ul><li><strong>Numbers do not match the yard's:</strong> confirm you are both using nominal dimensions and the same length units — feet for length, inches for thickness and width.</li><li><strong>Boards cup or twist after purchase:</strong> they dried unevenly or were stored badly. Buy straight, store flat, acclimate before cutting.</li><li><strong>Project costs double the estimate:</strong> check surfacing charges, delivery fees, and whether you priced FAS when #1 Common would do.</li><li><strong>Ran short despite the waste factor:</strong> defects eat footage fast. Inspect boards at the yard and reject the worst ones rather than paying to haul home firewood.</li></ul><p>Board feet are simple arithmetic, but they are the language the lumber trade speaks. Learn the formula, respect the nominal-actual gap, plan with a cut list, and the yard becomes a much less intimidating place.</p><h2>Reading a Board: Grain, Defects, and Selection</h2><p>Learning to read lumber at the yard saves more money than any calculator. Sight down each board's edge for <strong>crown</strong> (a gentle bow — fine if consistent, bad if severe), <strong>twist</strong> (corners not in plane — reject it), and <strong>cup</strong> (edges curling up — workable for narrow parts, hopeless for wide panels). Knots are not automatic rejects: tight, small knots are fine in framing and rustic work, but loose or large knots in a board's middle will weaken it and may fall out after drying.</p><p>Check the end grain: <strong>quartersawn</strong> boards (growth rings perpendicular to the face) move less with humidity and are worth picking for tabletops; <strong>plainsawn</strong> boards (rings parallel to the face) are cheaper and fine for most framing. Avoid boards with checks (splits from the end) longer than a few inches, any sign of insect holes, or a musty smell that suggests rot. Pull boards from the middle of the stack rather than the top — the top boards take the weather. And buy 10–15 percent more length than your cut list demands: you will cut around at least one defect per few boards, and that waste is already priced into the waste factor above.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do you calculate board feet?</summary><p>Board feet = thickness (inches) × width (inches) × length (feet) ÷ 12. A 2×6×8 board is (2×6×8)/12 = 8 board feet. Enter your dimensions in the calculator above and it does this instantly, including project totals.</p></details>
+<details><summary>Is a 2x4 actually 2 inches by 4 inches?</summary><p>No — a nominal 2×4 actually measures 1.5 × 3.5 inches after drying and planing. Lumber is sold by nominal (rough-sawn) size. Board-foot math uses nominal sizes, but your project plans must use actual measurements.</p></details>
+<details><summary>How much does a board foot of lumber weigh?</summary><p>About 2.5 lb per board foot for pine/SPF framing lumber, ~3 lb for poplar, ~3.5-4 lb for oak and maple. Pressure-treated lumber runs ~30% heavier because it is sold wet. The tool estimates weight from your total board feet.</p></details>
+<details><summary>How much extra lumber should I buy for waste?</summary><p>Add 10% for simple projects, 15-20% when working around defects or when you are new. Defects, miscuts, and grain-matching all consume footage. Always buy one extra board beyond the factor for insurance.</p></details>
+<details><summary>What do lumber grades like FAS and #1 Common mean?</summary><p>FAS is the top grade with long clear cuttings (most expensive); Select is nearly as good for furniture; #1 Common is cheaper with more knots and shorter clear sections — fine for rustic pieces or short parts. Do not pay FAS prices when #1 Common yields your part sizes.</p></details>
+<details><summary>How should I store and acclimate lumber?</summary><p>Store it flat with spacers (stickers) between layers for airflow, out of sun and off damp concrete, in your shop for about a week before milling. Wood moves as it equalizes with your shop's humidity — parts cut on day one can twist by day seven.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">LumberCut</div>
+    <p>LumberCut computes board feet for any board, plus project totals, weight estimates, cost, and a cut-list planner.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function boardFeet(thickIn,wideIn,lenFt){var t=Number(thickIn),w=Number(wideIn),l=Number(lenFt);if(!(t>0)||!(w>0)||!(l>0))return 0;return Math.round(t*w*l/12*100)/100;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){function el(id){return document.getElementById(id);}function render(){var t=el('lc-t'),w=el('lc-w'),l=el('lc-l'),n=el('lc-n'),pr=el('lc-price'),wa=el('lc-waste');if(!t||!w||!l||!n)return;var per=boardFeet(t.value,w.value,l.value);var count=Math.max(0,Math.floor(Number(n.value)||0));var total=Math.round(per*count*100)/100;var waste=wa?Number(wa.value):1.15;var price=pr?Number(pr.value):0;el('lc-bf').textContent=total;el('lc-per').textContent=per+' bf';el('lc-wt').textContent=Math.round(total*2.5)+' lb (pine est.)';el('lc-cost').textContent='$'+(Math.round(total*waste*price*100)/100).toFixed(2);el('lc-buy').textContent=Math.ceil(count*waste);}['lc-t','lc-w','lc-l','lc-n','lc-price','lc-waste'].forEach(function(id){var x=el(id);if(x)x.addEventListener('input',render);if(x)x.addEventListener('change',render);});function clRow(){var wrap=el('lc-clrows');if(!wrap)return;var d=document.createElement('div');d.className='lc-clrow';d.innerHTML='<input type="number" min="0" step="0.25" placeholder="Thick in" aria-label="Thickness inches"><input type="number" min="0" step="0.25" placeholder="Width in" aria-label="Width inches"><input type="number" min="0" step="0.5" placeholder="Length ft" aria-label="Length feet"><input type="number" min="0" step="1" placeholder="Qty" aria-label="Quantity" value="1">';var del=document.createElement('button');del.className='lc-del';del.type='button';del.textContent='×';del.setAttribute('aria-label','Remove part');del.addEventListener('click',function(){d.remove();clTotal();});d.appendChild(del);var ins=d.querySelectorAll('input');for(var i=0;i<ins.length;i++)ins[i].addEventListener('input',clTotal);wrap.appendChild(d);}function clTotal(){var wrap=el('lc-clrows');if(!wrap)return;var rows=wrap.querySelectorAll('.lc-clrow');var tot=0;for(var i=0;i<rows.length;i++){var ins=rows[i].querySelectorAll('input');var bf=boardFeet(ins[0].value,ins[1].value,ins[2].value);var q=Math.max(0,Math.floor(Number(ins[3].value)||0));tot+=bf*q;}tot=Math.round(tot*100)/100;var t=el('lc-cltotal');if(t)t.textContent=rows.length?('Cut-list total: '+tot+' board feet'):'Add parts to total your cut list.';}var add=el('lc-add');if(add)add.addEventListener('click',function(){clRow();clTotal();});clRow();clRow();render();clTotal();});}
+</script>
+</body>
+</html>
