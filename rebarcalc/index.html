@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebar Calculator — How Much Rebar for Slab or Footing? | RebarCalc</title>
+<meta name="description" content="Rebar pieces, laps, weight and cost for slabs, footings and walls.">
+<link rel="canonical" href="https://fun.fixoraa.tech/rebarcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Rebar Calculator — How Much Rebar for Slab or Footing? | RebarCalc">
+<meta property="og:description" content="Rebar pieces, laps, weight and cost for slabs, footings and walls.">
+<meta property="og:url" content="https://fun.fixoraa.tech/rebarcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RebarCalc",
+      "url": "https://fun.fixoraa.tech/rebarcalc/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Rebar pieces, laps, weight and cost for slabs, footings and walls.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much rebar do I need for a 20x20 slab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At the standard #4 bars on 12-inch centers, a 20×20 ft slab needs 42 bars (21 each direction) totaling 840 ft, which is 42 twenty-foot sticks before waste. Add 5% waste and order 45 sticks. Lap splices only kick in when a run exceeds 20 ft, so a 20-ft slab needs none."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What size rebar should I use for a 4-inch concrete slab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "#4 (1/2-inch) bars at 12 to 18 inches on center is the standard for residential 4-inch slabs like driveways, patios and garage floors. #3 works for light walkways. Go to #5 or tighter spacing for heavy loads or poor soil — and follow engineered drawings when you have them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far apart should rebar be spaced in a slab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Twelve inches on center is the most common residential spacing; 18 inches is fine for light-duty patios and walkways. Use 6-inch spacing for structural slabs or heavy driveways. Tighter spacing with smaller bars controls cracking better than wide spacing with big bars."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should a rebar lap splice be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The rule of thumb is 40 bar diameters: 15 inches for #3, 20 inches for #4, 25 inches for #5, and 30 inches for #6. Tie both ends of the overlap with tie wire and stagger laps so they don't all line up in one cross-section."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does rebar weigh per foot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "#3 weighs 0.376 lb/ft, #4 weighs 0.668 lb/ft, #5 weighs 1.043 lb/ft, and #6 weighs 1.502 lb/ft. A 20-ft stick of #4 is about 13 lb. The calculator totals the weight so you know what the delivery truck — and your back — are in for."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use wire mesh instead of rebar in a slab?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Welded wire mesh (6x6 W1.4) is fine for crack control in light-duty slabs like sidewalks, but it must be chaired up into the concrete — mesh left on the ground does nothing. For driveways, garage floors and anything structural, rebar on a proper grid is the safer choice."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9E7E1; --tint:#F4DAD2; --accent:#843015; --accent-deep:#2F5413;
+  --ink:#2C3A1C; --muted:#5F6E4E; --line:#C3D6B4;
+  --display:'Barlow',system-ui,sans-serif; --body:'Barlow',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:#fff;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:#fff}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:#fff}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:#fff;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:#1d1d1d;color:#e8e8e8;margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bdbdbd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--tint);font-weight:700}
+input,select,button{font:inherit}
+
+
+.rb-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:48px 0 10px}
+.rb-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:2px solid var(--line);padding:7px 16px;border-radius:999px;margin-bottom:16px}
+.rb-hero h1{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.03em;font-weight:800;margin-bottom:12px}
+.rb-hero p{font-size:18px;color:var(--muted);max-width:520px}
+.rb-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.rb-chip{background:#fff;border:2px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--muted)}
+.rb-chip b{color:var(--accent)}
+.rb-hero-fig{background:var(--tint);border:2px solid var(--line);border-radius:24px;padding:22px}
+.rb-mat{width:100%;height:auto;display:block}
+.rb-tool{background:#fff;border:2px solid var(--line);border-radius:24px;margin:26px 0 8px;overflow:hidden;box-shadow:0 14px 34px rgba(70,124,29,.10)}
+.rb-tabs{display:flex;background:var(--tint);border-bottom:2px solid var(--line)}
+.rb-tabs button{flex:1;border:0;background:transparent;padding:16px;font-weight:800;font-size:15px;cursor:pointer;color:var(--muted);border-bottom:4px solid transparent}
+.rb-tabs button.on{color:var(--accent);border-bottom-color:var(--accent);background:#fff}
+.rb-cols{display:grid;grid-template-columns:1fr 1fr}
+.rb-inputs{padding:28px;border-right:2px dashed var(--line)}
+.rb-out{padding:28px;background:linear-gradient(180deg,#fff,var(--bg))}
+.rb-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:7px}
+.field input,.field select{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.field input:focus,.field select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.rb-fine{font-size:13px;color:var(--muted);margin-top:6px}
+.rb-big{background:var(--accent);color:#fff;border-radius:18px;text-align:center;padding:24px;margin-bottom:18px;box-shadow:0 6px 0 var(--accent-deep)}
+.rb-big .n{font-size:60px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.rb-big .l{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.92;margin-top:8px}
+.rb-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rb-stat{background:var(--tint);border:2px solid var(--line);border-radius:14px;padding:12px 14px}
+.rb-stat .k{display:block;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.rb-stat .v{font-size:22px;font-weight:800;color:var(--accent-deep)}
+.rb-note{margin-top:14px;font-size:14px;color:var(--muted);background:#fff;border:1.5px dashed var(--line);border-radius:12px;padding:12px 14px}
+@media(max-width:760px){.rb-hero{grid-template-columns:1fr}.rb-cols{grid-template-columns:1fr}.rb-inputs{border-right:0;border-bottom:2px dashed var(--line)}}
+
+</style>
+</head>
+<body>
+<header class="fx-header rebarcalc-hdr">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/rebarcalc/" aria-label="RebarCalc home">
+      <span class="fx-tile" aria-hidden="true">R</span>
+      <span class="fx-name">RebarCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="rb-hero">
+    <div class="rb-hero-txt">
+      <span class="rb-eyebrow">Jobsite math</span>
+      <h1>Rebar Calculator</h1>
+      <p>Bars, laps, chairs and weight — the full rebar order for your slab, footing or wall, figured from a real spacing grid.</p>
+      <div class="rb-chips">
+        <span class="rb-chip"><b>#3–#6</b> bar sizes</span>
+        <span class="rb-chip"><b>40×</b> dia. lap rule</span>
+        <span class="rb-chip"><b>20 ft</b> sticks</span>
+      </div>
+    </div>
+    <div class="rb-hero-fig" aria-hidden="true">
+      <svg viewBox="0 0 300 248" class="rb-mat">
+        <rect x="14" y="14" width="272" height="192" rx="10" fill="#fff" stroke="#843015" stroke-width="3"/>
+        <g stroke="#843015" stroke-width="2.4" opacity="0.85">
+          <line x1="60" y1="14" x2="60" y2="206"/><line x1="106" y1="14" x2="106" y2="206"/>
+          <line x1="152" y1="14" x2="152" y2="206"/><line x1="198" y1="14" x2="198" y2="206"/>
+          <line x1="244" y1="14" x2="244" y2="206"/>
+          <line x1="14" y1="58" x2="286" y2="58"/><line x1="14" y1="102" x2="286" y2="102"/>
+          <line x1="14" y1="146" x2="286" y2="146"/>
+        </g>
+        <g fill="#843015"><circle cx="60" cy="58" r="5"/><circle cx="152" cy="102" r="5"/><circle cx="244" cy="146" r="5"/></g>
+        <text x="150" y="238" text-anchor="middle" font-size="13" fill="#5F6E4E" font-weight="700">12 in. grid · #4 bars</text>
+      </svg>
+    </div>
+  </section>
+  <section class="rb-tool" aria-label="RebarCalc tool">
+    <div class="rb-tabs" role="group" aria-label="Project type">
+      <button type="button" data-mode="slab" class="on">Slab</button>
+      <button type="button" data-mode="footing">Footing</button>
+      <button type="button" data-mode="wall">Wall</button>
+    </div>
+    <div class="rb-cols">
+      <div class="rb-inputs">
+        <div class="rb-row">
+          <div class="field"><label for="rb-len">Length (ft)</label><input type="number" id="rb-len" value="20" min="1" max="200" step="1"></div>
+          <div class="field"><label for="rb-wid" id="rb-widlab">Width (ft)</label><input type="number" id="rb-wid" value="20" min="1" max="200" step="1"></div>
+        </div>
+        <div class="rb-row">
+          <div class="field"><label for="rb-bar">Bar size</label><select id="rb-bar">
+            <option value="#3">#3 (3/8 in.)</option><option value="#4" selected>#4 (1/2 in.)</option>
+            <option value="#5">#5 (5/8 in.)</option><option value="#6">#6 (3/4 in.)</option></select></div>
+          <div class="field"><label for="rb-sp">Spacing</label><select id="rb-sp">
+            <option value="6">6 in.</option><option value="8">8 in.</option>
+            <option value="12" selected>12 in.</option><option value="18">18 in.</option></select></div>
+        </div>
+        <div class="rb-row">
+          <div class="field"><label for="rb-waste">Waste</label><select id="rb-waste">
+            <option value="0">0%</option><option value="0.05" selected>5%</option><option value="0.10">10%</option></select></div>
+          <div class="field"><label for="rb-price">Price per lb ($)</label><input type="number" id="rb-price" value="0.65" min="0" max="5" step="0.05"></div>
+        </div>
+        <p class="rb-fine">Lap splice = 40 × bar diameter. Sticks are 20 ft. Chairs every ~4 sq ft on slabs.</p>
+      </div>
+      <div class="rb-out" aria-live="polite">
+        <div class="rb-big"><div class="n" id="rb-sticks">42</div><div class="l">20-ft sticks to order</div></div>
+        <div class="rb-grid2">
+          <div class="rb-stat"><span class="k">Total bar length</span><span class="v" id="rb-lf">840 ft</span></div>
+          <div class="rb-stat"><span class="k">Total weight</span><span class="v" id="rb-wt">561 lb</span></div>
+          <div class="rb-stat"><span class="k">Chairs / supports</span><span class="v" id="rb-ch">100</span></div>
+          <div class="rb-stat"><span class="k">Est. cost</span><span class="v" id="rb-cost">$364.73</span></div>
+        </div>
+        <p class="rb-note" id="rb-note"></p>
+      </div>
+    </div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+    <h2>The Real Question Isn't Length — It's the Grid</h2>
+    <p>Ask a contractor how much rebar a slab needs and they will not start with feet of bar. They start with the <strong>grid</strong>: bar size, spacing in each direction, and how the bars join where 20-foot sticks run out. Everything else — weight, cost, the order you phone in — falls out of that grid. This calculator builds the grid first and does the arithmetic for you.</p>
+    <p>Rebar does one job: it carries tension. Concrete is magnificent in compression and miserable in tension, so steel goes where the concrete wants to pull apart — the bottom of a slab spanning soft spots, the faces of a wall holding back soil. The grid spreads that steel evenly so no square foot of concrete is left to fend for itself. Get the grid right and the quantity takes care of itself.</p>
+    <p>Three inputs drive the whole estimate: <strong>bar size</strong> (#3 through #6 for residential work), <strong>spacing</strong> (usually 12 or 18 inches on center for slabs), and the <strong>lap splice length</strong> where bars overlap. Miss the laps and your order comes up short by 5 to 10 percent — the classic reason for a panicked second trip to the yard.</p>
+    <h2>Rebar Sizes #3 Through #6, Translated</h2>
+    <p>Bar numbers are eighths of an inch: <strong>#3 is 3/8 inch</strong> in diameter, <strong>#4 is 1/2 inch</strong>, <strong>#5 is 5/8 inch</strong>, <strong>#6 is 3/4 inch</strong>. Weight follows the square of the diameter, so it climbs fast: #3 weighs 0.376 lb per foot, #4 weighs 0.668 lb, #5 weighs 1.043 lb, and #6 weighs 1.502 lb. A 20-foot stick of #4 is about 13 pounds — easy to carry; the same stick of #6 is 30 pounds and noticeably less friendly.</p>
+    <p>For residential slabs, <strong>#4 at 12 to 18 inches on center</strong> is the workhorse: driveways, patios, garage floors, shed slabs. Step up to #5 when the slab carries real point loads or spans questionable soil. Footings typically run two or three continuous #4 or #5 bars top and bottom, and basement or retaining walls use #4 verticals with #4 horizontals. Anything bigger than #6 on a house project usually means an engineer is involved — and their drawings overrule any calculator.</p>
+    <p>Buy by the 20-foot stick. Yards stock 20-foot lengths because they fit a flatbed and a pickup with a flag; 10-foot sticks exist but cost more per foot. The calculator converts your total footage into 20-foot sticks automatically, laps included.</p>
+    <h2>Slabs: Spacing Is Everything</h2>
+    <p>For a slab, the calculator lays bars in <strong>both directions</strong>: one set running the length, spaced across the width, and a second set running the width, spaced across the length. The count in each direction is the cross-dimension in inches divided by the spacing, plus one starter bar. A 20-by-20 slab at 12-inch spacing needs 21 bars each way — 42 bars before laps.</p>
+    <p>Twelve-inch spacing suits most residential slabs on decent soil. Eighteen inches is acceptable for light-duty patios and walkways where the concrete mostly just needs crack control. Six-inch spacing shows up on structural slabs and heavy driveways. When in doubt, tighter spacing with smaller bars beats wider spacing with bigger bars — it distributes cracks into hairlines instead of letting one wide crack open.</p>
+    <p>Position matters as much as quantity: steel belongs in the <strong>tension zone</strong>, which for a slab on grade is roughly the middle to upper-middle of the pour. Bars lying on the dirt do nothing — that is what chairs are for, and the calculator counts them at roughly one per 4 square feet.</p>
+    <h2>Footings: Fewer Bars, Same Rules</h2>
+    <p>A footing is a long, narrow beam of concrete, so the steel runs <strong>longitudinally</strong>: typically two #4 bars for narrow footings, three for wider ones. The calculator's footing mode spaces those longitudinal bars across the footing width and runs them the full length, adding lap splices wherever a run exceeds 20 feet.</p>
+    <p>The non-negotiable rule for footings: <strong>3 inches of concrete cover</strong> between steel and soil on every side. Steel touching dirt rusts, rust expands, and the expansion pops the concrete — the exact failure the rebar was there to prevent. Set the bars on chairs or dobies, never on bricks or broken concrete chunks that wick moisture.</p>
+    <p>Footing dowels deserve a mention: short vertical bars left sticking out of the footing tie the wall steel to the footing. If your project includes a wall on the footing, order dowels at the same spacing as your wall verticals, about 2 feet long with half embedded.</p>
+    <h2>Walls: Verticals, Horizontals, and Dowels</h2>
+    <p>Wall mode figures two mats: <strong>vertical bars</strong> spaced along the wall length, each as tall as the wall, and <strong>horizontal bars</strong> spaced up the height, each as long as the wall. A 24-foot-long, 4-foot-tall garden wall at 18-inch spacing needs 17 verticals and 4 horizontals before laps — modest, but every one of them earns its keep against soil pressure.</p>
+    <p>For retaining walls, the horizontals go on the <strong>inside face</strong> (the soil side), because that is where tension lives when dirt pushes. For freestanding walls it matters less, but keep the habit. Verticals lap with the footing dowels — a 40-diameter lap, same as everywhere else.</p>
+    <p>Taller walls (over 4 feet) or walls holding back serious slopes are engineer territory. The math here handles material quantities; it does not size the wall. A wall that fails does not crack politely — it moves, and moved walls are expensive in ways rebar never is.</p>
+    <h2>Lap Splices: Where Beginners Lose Money</h2>
+    <p>Rebar comes in 20-foot sticks; concrete work comes in whatever length the project is. Where one stick ends and the next begins, the bars must <strong>overlap</strong> so force transfers from one to the next through the concrete gripping both. The standard residential lap is <strong>40 bar diameters</strong>: 20 inches for #4, 25 inches for #5, 30 inches for #6.</p>
+    <p>The calculator adds one lap per bar wherever the run exceeds 20 feet, at the full 40-diameter length. On a 30-foot slab edge, each bar needs one 20-inch lap — eight bars in that direction means over 13 extra feet of steel you would otherwise forget. Across a whole project, laps add 5 to 10 percent to the order. That is not waste; it is structure.</p>
+    <p>Tie laps with <strong>tie wire</strong> — a couple of twists with a tie tool at each end of the overlap. The wire does not carry load; it just holds position while concrete flows around the bars. Stagger laps so they do not all land in the same cross-section, especially in footings and beams.</p>
+    <h2>Chairs, Dobies, and Keeping Steel Off the Dirt</h2>
+    <p>Rebar at the bottom of the pour is decoration. Steel must sit <strong>inside</strong> the concrete with the specified cover — typically 2 to 3 inches from any surface, 3 inches against soil. <strong>Chairs</strong> (wire or plastic) hold slab mats at height; <strong>dobies</strong> (small concrete blocks) do the same job and cannot rust or melt. The calculator's chair count — about one per 4 square feet of slab — is the number that keeps the whole mat floating at the right elevation.</p>
+    <p>Set chairs on the subgrade <strong>before</strong> the truck arrives, then lay the mat and tie it. The classic failure is the mat getting kicked down to the dirt during the pour as workers walk it — assign someone to watch and lift. For footings, hang the bars from the forms with wire or set them on dobies; for walls, the verticals stand on the footing and get tied to horizontals as courses go up.</p>
+    <p>Plastic chairs are cheap insurance at a few cents each. Skipping them to save twenty dollars while pouring two thousand dollars of concrete is the worst trade in construction.</p>
+    <h2>Waste, Ordering, and the 20-Foot Problem</h2>
+    <p>Add <strong>5 percent waste</strong> for simple rectangles; 10 percent if the shape is irregular or you are cutting lots of short pieces. Cutting a 20-foot stick into two 9-foot pieces leaves 2 feet of cutoff — plan the cuts so offcuts become short wall pieces or dowels rather than scrap.</p>
+    <p>Order the sticks, then order <strong>tie wire</strong> (a roll per few hundred ties) and chairs in the same trip. Delivery beats pickup: a bundle of 40 twenty-foot sticks does not fit in a pickup without heroic flagging, and most yards deliver free over a minimum order.</p>
+    <p>Phone the order as sticks, not feet: “forty-two sticks of #4, a roll of tie wire, and a hundred 2-inch chairs.” The yard speaks sticks. Your calculator speaks sticks too — the big number up top is the one to read out.</p>
+    <h2>Mistakes That Crack Concrete</h2>
+    <p>The greatest hits, in order of how often they happen: <strong>steel on the dirt</strong> (no chairs), which rusts and spalls the slab from inside; <strong>no laps or short laps</strong>, which turn long runs into a series of disconnected sticks; <strong>wrong spacing</strong> — eyeballed 18 inches drifting to 24 where nobody measured; and <strong>bars too close to the surface</strong>, which rust-stain and pop within a few winters of de-icing salt.</p>
+    <p>Less obvious: tying the mat so tightly it cannot be lifted during the pour, then pouring around a mat sitting on the subgrade. And the quiet one — <strong>no steel at all</strong> in a slab that needed it, because “concrete is strong.” Concrete is strong in compression. Your truck's tires disagree about tension.</p>
+    <p>Do the grid, buy the laps, chair the mat, and keep 3 inches of cover. Four habits, and the steel disappears into the concrete to do its job for fifty years without a word.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How much rebar do I need for a 20x20 slab?</summary><p>At the standard #4 bars on 12-inch centers, a 20×20 ft slab needs 42 bars (21 each direction) totaling 840 ft, which is 42 twenty-foot sticks before waste. Add 5% waste and order 45 sticks. Lap splices only kick in when a run exceeds 20 ft, so a 20-ft slab needs none.</p></details>
+    <details><summary>What size rebar should I use for a 4-inch concrete slab?</summary><p>#4 (1/2-inch) bars at 12 to 18 inches on center is the standard for residential 4-inch slabs like driveways, patios and garage floors. #3 works for light walkways. Go to #5 or tighter spacing for heavy loads or poor soil — and follow engineered drawings when you have them.</p></details>
+    <details><summary>How far apart should rebar be spaced in a slab?</summary><p>Twelve inches on center is the most common residential spacing; 18 inches is fine for light-duty patios and walkways. Use 6-inch spacing for structural slabs or heavy driveways. Tighter spacing with smaller bars controls cracking better than wide spacing with big bars.</p></details>
+    <details><summary>How long should a rebar lap splice be?</summary><p>The rule of thumb is 40 bar diameters: 15 inches for #3, 20 inches for #4, 25 inches for #5, and 30 inches for #6. Tie both ends of the overlap with tie wire and stagger laps so they don't all line up in one cross-section.</p></details>
+    <details><summary>How much does rebar weigh per foot?</summary><p>#3 weighs 0.376 lb/ft, #4 weighs 0.668 lb/ft, #5 weighs 1.043 lb/ft, and #6 weighs 1.502 lb/ft. A 20-ft stick of #4 is about 13 lb. The calculator totals the weight so you know what the delivery truck — and your back — are in for.</p></details>
+    <details><summary>Can I use wire mesh instead of rebar in a slab?</summary><p>Welded wire mesh (6x6 W1.4) is fine for crack control in light-duty slabs like sidewalks, but it must be chaired up into the concrete — mesh left on the ground does nothing. For driveways, garage floors and anything structural, rebar on a proper grid is the safer choice.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RebarCalc</div>
+    <p>RebarCalc lays out your rebar grid for slabs, footings and walls — bars, lap splices, chairs, total weight and cost.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TOOLJS */
+var RBAR={'#3':{d:0.375,w:0.376},'#4':{d:0.5,w:0.668},'#5':{d:0.625,w:1.043},'#6':{d:0.75,w:1.502}};
+var rbMode='slab';
+function computeRebar(o){
+  var bar=RBAR[o.bar],sp=o.spacing,waste=o.waste||0,bars=[];
+  if(o.mode==='slab'){bars.push({n:Math.ceil(o.wid*12/sp)+1,len:o.len});bars.push({n:Math.ceil(o.len*12/sp)+1,len:o.wid});}
+  else if(o.mode==='footing'){bars.push({n:Math.ceil(o.wid*12/sp)+1,len:o.len});}
+  else{bars.push({n:Math.ceil(o.len*12/sp)+1,len:o.height});bars.push({n:Math.ceil(o.height*12/sp)+1,len:o.len});}
+  var lf=0;bars.forEach(function(b){var laps=b.len>20?Math.ceil(b.len/20)-1:0;lf+=b.n*b.len+b.n*laps*(40*bar.d/12);});
+  var lfW=lf*(1+waste),sticks=Math.ceil(lfW/20-1e-9),weight=lfW*bar.w;
+  var area=o.mode==='wall'?o.len*o.height:o.len*o.wid;
+  var chairs=Math.ceil(area/(o.mode==='slab'?4:(o.mode==='footing'?8:6)));
+  return{totalLF:lf,sticks:sticks,weight:weight,chairs:chairs,cost:weight*(o.price||0)};
+}
+if(typeof document!=='undefined'){
+(function(){
+  function val(id){return parseFloat(document.getElementById(id).value)||0;}
+  function fmt(n,d){return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});}
+  document.querySelector('.rb-tabs').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;rbMode=b.getAttribute('data-mode');
+    this.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');
+    document.getElementById('rb-widlab').textContent=rbMode==='wall'?'Height (ft)':'Width (ft)';calc();
+  });
+  ['rb-len','rb-wid','rb-bar','rb-sp','rb-waste','rb-price'].forEach(function(id){
+    var el=document.getElementById(id);el.addEventListener('input',calc);el.addEventListener('change',calc);});
+  function calc(){
+    var r=computeRebar({mode:rbMode,len:val('rb-len'),wid:val('rb-wid'),height:val('rb-wid'),
+      bar:document.getElementById('rb-bar').value,spacing:parseFloat(document.getElementById('rb-sp').value),
+      waste:parseFloat(document.getElementById('rb-waste').value),price:val('rb-price')});
+    document.getElementById('rb-sticks').textContent=r.sticks;
+    document.getElementById('rb-lf').textContent=fmt(r.totalLF,0)+' ft';
+    document.getElementById('rb-wt').textContent=fmt(r.weight,0)+' lb';
+    document.getElementById('rb-ch').textContent=r.chairs;
+    document.getElementById('rb-cost').textContent='$'+fmt(r.cost,2);
+    var n=document.getElementById('rb-note');
+    n.textContent=rbMode==='slab'?'Tie every intersection on the perimeter, every other one inside. Keep bars 2–3 in. clear of forms and soil.':
+      (rbMode==='footing'?'Footing bars sit on 3 in. chairs — never let steel touch soil.':'Verticals tie to footing dowels; horizontals go on the inside face for retaining walls.');
+  }
+  calc();
+})();
+}
+</script>
+</body>
+</html>
