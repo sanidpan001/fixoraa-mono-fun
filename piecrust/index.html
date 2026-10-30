@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PieCrust: Pie Crust Dough Calculator - Flour, Butter &amp; Water for Any Dish</title>
+<meta name="description" content="Calculate pie crust dough by dish diameter and crust style: single, lattice or double crust, with flour, butter and water.">
+<link rel="canonical" href="https://fun.fixoraa.tech/piecrust/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="PieCrust: Pie Crust Dough Calculator - Flour, Butter &amp; Water for Any Dish">
+<meta property="og:description" content="Calculate pie crust dough by dish diameter and crust style: single, lattice or double crust, with flour, butter and water.">
+<meta property="og:url" content="https://fun.fixoraa.tech/piecrust/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;600;700;800&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PieCrust",
+      "url": "https://fun.fixoraa.tech/piecrust/",
+      "applicationCategory": "Food",
+      "operatingSystem": "Web",
+      "description": "Calculate pie crust dough by dish diameter and crust style: single, lattice or double crust, with flour, butter and water.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much flour do I need for a 23 cm pie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 204 g for a single crust, 306 g for a lattice top, and 367 g for a full double crust, with butter at 60 percent of the flour weight."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my pie crust shrink in the oven?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually because the dough was stretched into the dish or not chilled. Ease it in without pulling, and chill the lined dish for 15 minutes before baking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I blind bake a fruit pie crust?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For very juicy fillings, yes: blind bake the base until set, then fill and bake. This keeps the bottom crisp instead of soggy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much water should pie dough have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About a third of the flour weight, added gradually. Stop as soon as the dough holds together; too much water makes tough pastry."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Butter or lard for pie crust?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Butter gives the best flavour, lard gives extra flakiness. Many bakers use half of each for the best balance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I make pie dough ahead?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Wrapped dough keeps several days in the fridge or up to three months in the freezer. Thaw overnight in the fridge before rolling."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FFFBEB; --surface:#FFFFFF; --accent:#92400E; --accent-ink:#FFFFFF;
+  --ink:#1C1917; --muted:#57534E; --line:#FDE68A;
+  --display:'DM Serif Display',serif; --body:'Karla',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.cr-wheel{display:grid;grid-template-columns:240px 1fr;gap:1.4rem;align-items:center}.cr-dial{background:#FEF3C7;border:2px solid var(--line);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem}.cr-dial span{font-size:3rem}.cr-dial p{font-weight:700;color:var(--accent)}.cr-form{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:1.3rem;display:flex;flex-direction:column;gap:.9rem}.cr-form label{font-weight:600;display:flex;flex-direction:column;gap:.35rem}.cr-form input,.cr-form select{padding:.7rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;min-height:44px}.cr-go,.cr-copy{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.8rem 1.2rem;font-weight:700;min-height:44px;cursor:pointer;margin-top:.4rem}.cr-presets{display:flex;gap:.5rem;flex-wrap:wrap}.cr-presets button{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:.4rem .9rem;cursor:pointer}.cr-result{margin-top:1.2rem;background:#FEF3C7;border-radius:16px;padding:1.4rem}.cr-result .big{font-size:2.2rem;font-weight:800;font-family:var(--display)}.pc-sub{color:var(--muted);margin:.4rem 0 1.2rem}.cr-note{color:var(--muted);margin-top:1rem}@media(max-width:640px){.cr-wheel{grid-template-columns:1fr}.cr-dial{max-width:220px;margin:0 auto;width:100%}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PieCrust home">
+      <span class="fx-logo-tile" aria-hidden="true">🥧</span>
+      <span class="fx-brand">PieCrust</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-crust-wheel" aria-label="PieCrust tool">
+<h1>PieCrust: Pie Crust Dough Calculator</h1><p class="pc-sub">Flour, butter and water for any pie dish, single, lattice or double crust.</p><div class="cr-wheel"><div class="cr-dial" aria-hidden="true"><span>🥧</span><p>Roll cold, chill well</p></div><div class="cr-form"><label>Pie dish diameter (cm)<input id="diam" type="number" min="0" value="23"></label><label>Crust style<select id="style"><option value="1">Single crust (base only)</option><option value="1.5">Lattice top</option><option value="1.8">Double crust (lid)</option></select></label><div class="cr-presets"><button data-d="20">20 cm tart</button><button data-d="23">23 cm pie</button><button data-d="28">28 cm feast</button></div><button class="cr-go" id="go">Calculate dough</button></div></div><div class="cr-result" id="res"><p>Enter your dish size to see the dough quantities.</p></div><button class="cr-copy" id="copy">Copy recipe</button><p class="cr-note">Butter is 60% of flour weight, water 33%. Keep everything cold and chill the dough 30 minutes before rolling.</p>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why pie crust quantity matters more than the filling</h2><p>A great pie is decided before the filling ever goes in, because the crust is the structure, the texture and a large part of the flavour. Too little dough and the crust tears when you roll it, shrinks away from the rim, or leaves bald patches where filling leaks through and makes the base soggy. Too much dough and you end up with a thick, tough edge that dominates every bite. The right amount depends on the diameter of your pie dish, whether you need a bottom crust only or a full double crust, and whether the top is a solid lid or a woven lattice. PieCrust calculates the flour, butter and water for exactly that combination, so you can roll out with confidence instead of patching, stretching or trimming away half your dough.</p><h2>How the dough calculation works</h2><p>The calculator starts from a simple relationship: the dough you need grows steadily with the diameter of the pie dish. A larger dish needs a wider circle of dough, and the area of that circle grows faster than the diameter itself, which is why a small increase in dish size can leave you surprisingly short. That base figure is then multiplied by the crust style: a single bottom crust uses the base amount, a lattice top needs about one and a half times as much, and a full double crust needs about 1.8 times as much, because the top crust plus its edge needs almost as much dough as the base. From the flour weight, the calculator derives butter at about sixty percent of the flour weight and water at about a third, which are the classic proportions for a tender, flaky shortcrust.</p><h2>Choosing single, lattice or double crust</h2><p>A single crust suits custard pies, pumpkin pie, lemon tart fillings and any pie served in its dish, where only the base and edge need pastry. A lattice top is the classic choice for fruit pies: the woven strips look beautiful, they let steam escape so the filling thickens properly, and they use less dough than a solid lid. A full double crust is best for hearty savoury pies and for fruit pies that will be sliced and lifted out, because the solid lid protects the filling and holds the slice together. If you are unsure, choose the lattice: it is more forgiving than a solid lid, because small gaps in the weave do not matter, and it bakes more evenly. Whatever style you choose, keep the dough cold and work quickly, because warm butter melts into the flour and loses the flaky layers you are working for.</p><h2>Step by step: using PieCrust for your dish</h2><p>Measure your pie dish across the top, not the base, because the dough must cover the rim as well as the bottom. Enter that diameter and choose your crust style, and the calculator returns flour, butter and cold water in grams and millilitres, which are far more reliable than cups for pastry. Cut cold butter into small cubes and rub or pulse it into the flour until the mixture looks like coarse breadcrumbs with a few pea-sized pieces remaining; those pieces are what create flakes. Add cold water a tablespoon at a time, mixing only until the dough just holds together, then gather it into a disc, wrap it and chill it for at least thirty minutes before rolling. Chilling relaxes the gluten and firms the butter, which is the single most important step for a crust that holds its shape.</p><h2>Rolling out without tears or shrinkage</h2><p>Roll the chilled dough on a lightly floured surface, turning it a quarter turn after every few rolls so it stays round and does not stick. Roll to about three millimetres thick, and roll the circle a few centimetres wider than the dish so there is enough to trim and crimp. Lift the dough by draping it over the rolling pin, rather than pulling it with your hands, and ease it into the dish without stretching it, because stretched dough shrinks back in the oven. Trim the overhang, crimp the edge with your fingers or a fork, and chill the lined dish again for fifteen minutes before filling. For a lattice, roll the top dough, cut even strips, and weave them over and under across the filling, trimming and sealing the ends at the rim.</p><h2>Blind baking and avoiding a soggy bottom</h2><p>Wet fillings are the enemy of a crisp base, so for custard and very juicy fruit pies, blind bake the bottom crust first: line the chilled crust with baking paper, fill it with baking beans or rice, and bake until the edges are set, then remove the weights and bake a few minutes more until the base looks dry. Brushing the hot base with a little beaten egg and returning it to the oven for a minute creates a thin seal that resists moisture. For fruit pies, toss the fruit with sugar and a thickener such as cornflour and let it stand for fifteen minutes before filling, so the juices are already starting to thicken. Place the pie on a preheated baking tray in the lowest part of the oven, where the base gets the strongest heat, and do not slice a hot fruit pie: let it cool so the filling sets.</p><h2>Common pie crust mistakes</h2><p>The most common mistake is adding too much water, which makes a tough crust that shrinks badly. Add water gradually and stop as soon as the dough holds together, even if it still looks a little dry; it will hydrate as it chills. Overworking the dough is the second classic error: every extra minute of kneading develops gluten and turns flaky pastry into something closer to bread. Using warm butter or a warm kitchen is the third, because melted butter cannot form the distinct layers that make pastry flaky. Finally, skipping the chill is a false economy: unchilled dough slumps, loses its crimp and bakes unevenly. If the crust still shrinks, your oven may be running hot at the start, or the dough was stretched into the dish; next time, ease it in gently and chill it well.</p><h2>Butter, lard, shortening and flavour variations</h2><p>Butter gives the best flavour, while lard or shortening gives extra flakiness but less taste, so many experienced bakers use a mixture, often half butter and half lard, for the best of both. Keep whatever fat you use very cold, and cut it small so it distributes evenly. A pinch of salt in the dough and a teaspoon of sugar for sweet pies make a real difference to flavour, even though the amounts are small. For savoury pies, add a little grated cheese, herbs or black pepper to the flour for a crust that tastes as good as the filling. A splash of vinegar or lemon juice in the water is a traditional trick that some bakers swear by for tenderness, though with gentle handling it is not essential. The calculator's proportions work for all these variations; simply keep the total fat and water in the same proportions.</p><h2>Storing dough and scaling for a crowd</h2><p>Pie dough keeps beautifully: wrapped tightly, it lasts several days in the fridge or up to three months in the freezer, and it rolls best when thawed overnight in the fridge and then left at room temperature for ten minutes. When baking for a crowd, it is usually better to make two separate batches than one enormous one, because a very large mass of dough is harder to keep cold and even. PieCrust scales cleanly by diameter and style, so if you move from a 23 centimetre dish to a 28 centimetre dish, recalculate rather than guessing, and remember that a double crust for the larger dish needs far more dough than you might expect. With the right quantity, cold butter and a proper chill, the crust stops being the worrying part of pie making and becomes the part you are proudest of.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much flour do I need for a 23 cm pie?</summary><p>About 204 g for a single crust, 306 g for a lattice top, and 367 g for a full double crust, with butter at 60 percent of the flour weight.</p></details>
+<details><summary>Why does my pie crust shrink in the oven?</summary><p>Usually because the dough was stretched into the dish or not chilled. Ease it in without pulling, and chill the lined dish for 15 minutes before baking.</p></details>
+<details><summary>Should I blind bake a fruit pie crust?</summary><p>For very juicy fillings, yes: blind bake the base until set, then fill and bake. This keeps the bottom crisp instead of soggy.</p></details>
+<details><summary>How much water should pie dough have?</summary><p>About a third of the flour weight, added gradually. Stop as soon as the dough holds together; too much water makes tough pastry.</p></details>
+<details><summary>Butter or lard for pie crust?</summary><p>Butter gives the best flavour, lard gives extra flakiness. Many bakers use half of each for the best balance.</p></details>
+<details><summary>Can I make pie dough ahead?</summary><p>Yes. Wrapped dough keeps several days in the fridge or up to three months in the freezer. Thaw overnight in the fridge before rolling.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PieCrust</div>
+    <p>PieCrust calculates pie dough by dish size and crust style, so you roll the right amount every time.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function computeCrust(diam,factor){if(!(diam>0)||!(factor>0))return{flour:0,butter:0,water:0};var f=(8*diam+20)*factor;return{flour:Math.round(f),butter:Math.round(f*0.6),water:Math.round(f*0.33)};}
+function render(){var d=+document.getElementById('diam').value,f=+document.getElementById('style').value;var r=computeCrust(d,f);if(!r.flour){document.getElementById('res').innerHTML='<p>Enter a dish diameter above zero.</p>';return;}document.getElementById('res').innerHTML='<p class="big">'+r.flour+' g flour</p><p>Butter '+r.butter+' g &middot; Cold water '+r.water+' ml &middot; Pinch of salt</p><p>Roll to about 3 mm, ease into the dish without stretching, and chill before baking.</p>';}
+document.getElementById('go').addEventListener('click',render);
+document.querySelectorAll('.cr-presets button').forEach(function(b){b.addEventListener('click',function(){document.getElementById('diam').value=b.dataset.d;render();});});
+document.getElementById('copy').addEventListener('click',function(){var t=document.getElementById('res').innerText;navigator.clipboard&&navigator.clipboard.writeText(t);});
+render();
+</script>
+</body>
+</html>
