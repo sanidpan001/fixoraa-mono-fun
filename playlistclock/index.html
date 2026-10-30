@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playlist Length Calculator — Total Runtime in Seconds | PlaylistClock</title>
+<meta name="description" content="Free playlist length calculator: total runtime, track count and average from pasted tracklists, plus a slot planner. No signup.">
+<link rel="canonical" href="https://fun.fixoraa.tech/playlistclock/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Playlist Length Calculator — Total Runtime in Seconds | PlaylistClock">
+<meta property="og:description" content="Free playlist length calculator: total runtime, track count and average from pasted tracklists, plus a slot planner. No signup.">
+<meta property="og:url" content="https://fun.fixoraa.tech/playlistclock/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PlaylistClock",
+      "url": "https://fun.fixoraa.tech/playlistclock/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Free playlist length calculator: total runtime, track count and average from pasted tracklists, plus a slot planner. No signup.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate the total length of a playlist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add up every track's duration. PlaylistClock does it three ways: add tracks one by one, or paste a whole tracklist (lines like 'Song \u2014 4:20') and it extracts the times automatically. It accepts 3:45, 1:02:30 and plain-seconds formats, even mixed in one list."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many songs do I need for a one-hour playlist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide 60 by your average song length: at a 3.5-minute average you need about 17 songs. The Slot Planner does this backwards math for any time slot \u2014 enter the minutes and your genre's average and it tells you the track count plus the total music time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my playlist shorter than the sum of the tracks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Crossfades overlap the ends of tracks, so a playlist with 10-second crossfades runs shorter than the raw sum. Conversely, gaps for announcements or applause make live sets run longer \u2014 use the gap adder to account for those seconds between tracks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good average song length for a workout playlist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pop and hip-hop average 3:15\u20133:30, which suits most workouts. For a 60-minute session that means 17\u201318 songs. Match the average to your genre: EDM runs 4:30+, so the same hour needs only 12\u201313 tracks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I paste a tracklist with song titles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 paste mode keeps your titles and extracts the times. Lines like 'Neon Skyline \u2014 4:20' become titled rows in your track list automatically. Blank lines and lines without a valid time are ignored."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much extra music should I plan for a live event?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Carry 15\u201320% more music than the slot: a 2-hour set wants ~2:20 of material. Songs get skipped, speeches run long, and energy shifts. Build the buffer into the plan rather than discovering the shortfall mid-event."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F3F5FF; --surface:#FFFFFF; --accent:#3B4FD8; --accent-ink:#FFFFFF;
+  --ink:#232842; --muted:#5A6079; --line:#DDE2F5;
+  --display:'Chakra Petch',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.pc-wrap{font-family:'Chakra Petch',Inter,system-ui,sans-serif;background:#F3F5FF;color:#232842;padding:58px 20px 76px;}
+.pc-inner{max-width:760px;margin:0 auto;}
+.pc-topline{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;}
+.pc-dot{width:11px;height:11px;border-radius:50%;background:#3E9B4F;box-shadow:0 0 0 4px rgba(62,155,79,.18);}
+.pc-status{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:#5A6079;font-weight:600;font-family:Inter,system-ui,sans-serif;}
+.pc-inner h1{font-size:clamp(30px,4.6vw,46px);line-height:1.08;letter-spacing:-.01em;margin:0 0 10px;font-weight:700;text-align:center;text-wrap:balance;}
+.pc-tag{color:#5A6079;font-size:16.5px;max-width:600px;margin:0 auto 30px;line-height:1.55;font-family:Inter,system-ui,sans-serif;text-align:center;}
+.pc-clock{background:#fff;border:1px solid #DDE2F5;border-radius:26px;padding:36px 30px 30px;text-align:center;box-shadow:0 22px 54px rgba(59,79,216,.10);margin-bottom:20px;position:relative;overflow:hidden;}
+.pc-clock::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#3B4FD8,#8B9BF5,#3B4FD8);}
+.pc-total{font-size:clamp(56px,10vw,96px);font-weight:700;letter-spacing:.01em;line-height:1;color:#232842;font-variant-numeric:tabular-nums;}
+.pc-total-lab{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#5A6079;font-weight:600;margin-top:8px;font-family:Inter,system-ui,sans-serif;}
+.pc-stats{display:flex;justify-content:center;gap:34px;margin-top:20px;flex-wrap:wrap;}
+.pc-stat{text-align:center;}
+.pc-stat b{display:block;font-size:22px;color:#3B4FD8;}
+.pc-stat span{font-size:12px;color:#5A6079;font-family:Inter,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;}
+.pc-adj{margin-top:16px;font-size:13.5px;color:#5A6079;font-family:Inter,system-ui,sans-serif;}
+.pc-panel{background:#fff;border:1px solid #DDE2F5;border-radius:20px;padding:24px;margin-bottom:16px;box-shadow:0 12px 30px rgba(59,79,216,.07);}
+.pc-panel h2{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#3B4FD8;margin:0 0 4px;font-weight:700;font-family:Inter,system-ui,sans-serif;}
+.pc-panel .pc-sub{font-size:13.5px;color:#5A6079;margin:0 0 16px;font-family:Inter,system-ui,sans-serif;line-height:1.55;}
+.pc-addrow{display:grid;grid-template-columns:1fr 130px auto;gap:10px;margin-bottom:14px;}
+.pc-in{padding:12px 14px;font-size:15px;border:2px solid #DDE2F5;border-radius:12px;font-family:Inter,system-ui,sans-serif;color:#232842;width:100%;}
+.pc-in:focus{outline:none;border-color:#3B4FD8;}
+.pc-btn{background:#3B4FD8;color:#fff;border:none;border-radius:12px;padding:12px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:Inter,system-ui,sans-serif;white-space:nowrap;}
+.pc-btn:hover{filter:brightness(1.08);}
+.pc-btn.ghost{background:#fff;color:#3B4FD8;border:2px solid #3B4FD8;}
+.pc-row{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid #EEF1FD;font-family:Inter,system-ui,sans-serif;}
+.pc-n{width:28px;height:28px;border-radius:9px;background:#EEF1FD;color:#3B4FD8;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pc-t{flex:1;font-size:14.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.pc-d{font-family:'Chakra Petch',monospace;font-weight:700;font-size:15px;color:#232842;font-variant-numeric:tabular-nums;}
+.pc-x{border:none;background:#F3F5FF;color:#5A6079;width:30px;height:30px;border-radius:9px;font-size:17px;cursor:pointer;line-height:1;flex-shrink:0;}
+.pc-x:hover{background:#FFE4E4;color:#B91C1C;}
+.pc-dim{color:#5A6079;font-size:14px;font-family:Inter,system-ui,sans-serif;line-height:1.6;}
+.pc-gaprow{display:flex;align-items:center;gap:12px;margin-top:16px;font-family:Inter,system-ui,sans-serif;font-size:14px;color:#5A6079;flex-wrap:wrap;}
+.pc-gaprow input{width:76px;padding:10px 12px;font-size:15px;border:2px solid #DDE2F5;border-radius:11px;font-family:inherit;color:#232842;}
+.pc-gaprow input:focus{outline:none;border-color:#3B4FD8;}
+.pc-paste{width:100%;min-height:110px;padding:13px 14px;font-size:14px;border:2px solid #DDE2F5;border-radius:12px;font-family:ui-monospace,Menlo,monospace;color:#232842;resize:vertical;line-height:1.7;}
+.pc-paste:focus{outline:none;border-color:#3B4FD8;}
+.pc-slotgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.pc-slotgrid label{font-size:12.5px;color:#5A6079;font-family:Inter,system-ui,sans-serif;font-weight:600;display:block;}
+.pc-slotgrid input{width:100%;margin-top:6px;padding:11px 13px;font-size:15px;border:2px solid #DDE2F5;border-radius:11px;font-family:Inter,system-ui,sans-serif;color:#232842;}
+.pc-slotgrid input:focus{outline:none;border-color:#3B4FD8;}
+.pc-slotout{font-size:14.5px;font-family:Inter,system-ui,sans-serif;color:#232842;background:#F3F5FF;border-radius:12px;padding:13px 16px;line-height:1.6;}
+.pc-slotout b{color:#3B4FD8;}
+.pc-actions{display:flex;gap:10px;justify-content:center;margin-top:4px;flex-wrap:wrap;}
+@media(max-width:560px){.pc-wrap{padding:40px 14px 56px;}.pc-clock{padding:28px 18px 24px;}.pc-addrow{grid-template-columns:1fr 104px;}.pc-addrow .pc-btn{grid-column:1/-1;}.pc-slotgrid{grid-template-columns:1fr;}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PlaylistClock home">
+      <span class="fx-logo-tile" aria-hidden="true">🎧</span>
+      <span class="fx-brand">PlaylistClock</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-console-dash" aria-label="PlaylistClock tool">
+<section class='pc-wrap'><div class='pc-inner'>
+<div class='pc-topline'><span class='pc-dot' aria-hidden='true'></span><span class='pc-status'>Time Console &middot; Synced</span></div>
+<h1>Playlist Length Calculator — Total Runtime in Seconds</h1>
+<p class='pc-tag'>Add your tracks (or paste a whole tracklist) and watch the total tick up — then plan backwards from any time slot.</p>
+<div class='pc-clock' aria-live='polite'>
+<div class='pc-total' id='pc-total'>0:00</div>
+<div class='pc-total-lab'>Total runtime</div>
+<div class='pc-stats'>
+<div class='pc-stat'><b id='pc-tracks'>0 tracks</b><span>tracks</span></div>
+<div class='pc-stat'><b id='pc-avg'>0:00</b><span>average</span></div>
+</div>
+<p class='pc-adj' id='pc-adj'></p>
+</div>
+<div class='pc-panel'>
+<h2>Track List</h2>
+<p class='pc-sub'>Add tracks one by one, or paste a tracklist below — times like 3:45 are detected automatically.</p>
+<div class='pc-addrow'>
+<input class='pc-in' id='pc-title' placeholder='Track title (optional)' maxlength='80'>
+<input class='pc-in' id='pc-dur' placeholder='3:45' inputmode='numeric' maxlength='9'>
+<button class='pc-btn' id='pc-add' type='button'>Add</button>
+</div>
+<div id='pc-list'></div>
+<div class='pc-gaprow'><label for='pc-gap'>Gap between tracks (sec)</label><input type='number' id='pc-gap' min='0' max='120' value='0'><span>for announcements, applause or crossfades</span></div>
+</div>
+<div class='pc-panel'>
+<h2>Paste Mode</h2>
+<p class='pc-sub'>Paste lines like &ldquo;Neon Skyline &ndash; 4:20&rdquo;, one per line. Titles are kept, times are extracted.</p>
+<textarea class='pc-paste' id='pc-paste' spellcheck='false' placeholder="Midnight Drive — 3:45&#10;Neon Skyline — 4:20&#10;Slow Parade — 5:02"></textarea>
+</div>
+<div class='pc-panel'>
+<h2>Slot Planner</h2>
+<p class='pc-sub'>Planning backwards: how many songs fill your time slot?</p>
+<div class='pc-slotgrid'>
+<label>Time slot (minutes)<input type='number' id='pc-slott' min='1' max='1440' value='60'></label>
+<label>Average song length (minutes)<input type='number' id='pc-slota' min='0.5' max='30' step='0.5' value='3.5'></label>
+</div>
+<div class='pc-slotout' id='pc-slotout'></div>
+</div>
+<div class='pc-actions'>
+<button class='pc-btn' id='pc-copy' type='button'>Copy summary</button>
+<button class='pc-btn ghost' id='pc-clear' type='button'>Clear list</button>
+</div>
+</div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The Question Every Playlist Hides</h2><p>Twenty songs at three and a half minutes each: is that an hour, or closer to seventy minutes? It is seventy &mdash; and that ten-minute gap is the difference between a workout playlist that ends mid-cool-down and one that lands perfectly. Streaming apps show you track counts but rarely the total, and mental base-60 math across dozens of tracks is exactly the kind of arithmetic humans botch. A playlist length calculator does one job completely: it adds up every track and tells you the real runtime, the track count, and the average &mdash; the three numbers that turn a pile of songs into a <em>plan</em>.</p><p>The use cases are everywhere once you notice them. The runner whose 10K needs 55 minutes of music. The wedding DJ filling a 3-hour reception. The teacher building a 45-minute focus block. The couple soundtracking a 4-hour drive. Every one of them is really asking the same two questions: <em>how long is what I have?</em> and <em>what fits in the time I have?</em></p><h2>Forward Math: Adding Up What You've Got</h2><p>The forward calculation is simple &mdash; total = sum of all track lengths &mdash; but the input is where tools earn their keep. PlaylistClock accepts tracks three ways: typed one by one into the track list, pasted as a whole tracklist (titles kept, times auto-detected from lines like &ldquo;Neon Skyline &ndash; 4:20&rdquo;), and mixed formats (3:45, 1:02:30, or plain seconds like 225 all parse). The clock display shows the running total in large type, with track count and average underneath.</p><p>The <strong>gap adder</strong> is the detail most calculators miss. Between songs in real life there are announcements, applause, crossfades, or just the two seconds of silence your player inserts. At 30 tracks, even a 5-second gap adds two and a half minutes &mdash; enough to blow a timed slot. Set the per-track gap and the adjusted total tells the truth.</p><h2>Backward Math: Planning From the Slot</h2><p>The more powerful direction is backwards: start from the time you must fill and divide by your average. The Slot Planner does this &mdash; enter 90 minutes and a 3.5-minute average, and it tells you 26 songs. This is how professionals build sets: DJs, fitness instructors and ceremony planners all think in slots first, songs second.</p><p>Useful slot math to keep handy (at a 3.5-minute average): a 30-minute commute takes 8&ndash;9 songs; an hour-long gym session takes 17; a 90-minute dinner takes 25&ndash;26; a 2-hour party warm-up takes 34; a 3-hour road-trip leg takes 51. Adjust for your genre's reality &mdash; punk and pop average closer to 3:00, prog and classical blow past 6:00, and EDM DJ sets are mixed continuously so &ldquo;track count&rdquo; stops meaning much.</p><h2>Average Song Length by Genre (and Why It Matters)</h2><p>The average is the number that makes or breaks estimates. Rough real-world averages: pop 3:15, rock 3:45, hip-hop 3:30, country 3:20, EDM 4:30&ndash;6:00 (extended mixes), jazz 5:00+, classical 7:00+. A &ldquo;50-song workout playlist&rdquo; of pop is about 2h40; the same 50 songs of prog rock is over 4 hours. When the Slot Planner asks for your average, pick the genre's number, not 3:30 out of habit &mdash; or better, paste a few real tracks and let the tool compute your actual average.</p><h2>The Energy Arc: Beyond the Total</h2><p>A playlist that is exactly the right length can still fail if its <em>shape</em> is wrong. Think in three acts. <strong>Act 1 (first 20%):</strong> familiar, mid-energy &mdash; orientation, not peaks. <strong>Act 2 (middle 60%):</strong> the climb &mdash; energy rises toward the activity's peak (the run's hard miles, the party's peak hour). <strong>Act 3 (last 20%):</strong> the landing &mdash; cool-down tracks, slower tempos, resolution. DJs call this reading the room; runners call it not bonking at kilometer 8 because the playlist peaked at kilometer 3.</p><p>Practical trick: sort your track list by energy (BPM is a decent proxy) and check the curve. Two slow songs back-to-back in Act 2 kills momentum; a 140-BPM banger in Act 1 exhausts the listener early. The total tells you <em>how much</em>; the arc tells you <em>in what order</em>.</p><h2>Special Cases: Ceremonies, Classes and Road Trips</h2><p><strong>Weddings and ceremonies</strong> are the highest-stakes slot planning: processional music must cover an unpredictable walk (plan 20% extra and fade out), dinner sets must not end mid-speech. Always build a 15-minute overflow buffer and know your fade-out track. <strong>Fitness classes</strong> need the total to match the class <em>including</em> warm-up and cool-down &mdash; instructors who plan only the work block end up stretching in silence. <strong>Road trips</strong> want 20% more music than the drive, because nobody wants to re-listen to the same 40 songs on the return leg. <strong>Focus/study blocks</strong> work best at 50&ndash;90 minutes with no lyrics in the listener's language &mdash; the brain cannot help but parse words.</p><h2>Formats, Fades and the Last 2%</h2><p>A few fine points that separate good playlists from great ones. <strong>Crossfades:</strong> a 6&ndash;12 second crossfade between tracks (most players offer it) makes the total slightly <em>shorter</em> than the sum &mdash; the gap adder handles the opposite case. <strong>Explicit lyrics:</strong> check the clean flag if the playlist is for kids, clients or the office. <strong>Volume leveling:</strong> tracks mastered in different decades vary wildly in loudness; normalization (usually in player settings) prevents the 1975 track from whispering after the 2024 one. <strong>Offline copies:</strong> for flights, remote drives and wedding venues with bad signal, download the playlist &mdash; a buffer spinner during the first dance is unforgettable for the wrong reasons.</p><h2>Presentation: Titles, Covers and Descriptions That Get Followed</h2><p>A perfectly timed playlist nobody opens is a tree falling in a forest. If you publish playlists &mdash; for a brand, a running club, a wedding business &mdash; the packaging matters as much as the runtime. <strong>Titles</strong> should promise a specific outcome, not a vibe: &ldquo;45-Minute Tempo Run&rdquo; outperforms &ldquo;Running Jams&rdquo; because it answers the runner's real question (and it matches what people type into search). <strong>Descriptions</strong> get two lines: say the slot (&ldquo;90 minutes, warm-up to peak to cool-down&rdquo;), the genre lane, and the update rhythm (&ldquo;refreshed monthly&rdquo;). Playlists that look maintained get followed; playlists that look abandoned do not.</p><p><strong>Covers</strong> are the thumbnail that decides the click. One strong image, high contrast, readable at 56 pixels &mdash; text on covers is usually unreadable at that size, so let color and composition do the work. Keep a consistent cover style across a series (&ldquo;Morning Miles Vol. 1&ndash;12&rdquo;) and followers start collecting them. Finally, <strong>order is a feature</strong>: the first three tracks decide whether a listener stays, so never bury your strongest opener at track 9 because &ldquo;the arc demands it.&rdquo; Put the hook first, then build. A playlist is a product; the total runtime is the spec sheet, but the title, cover and first three songs are the sales pitch.</p><h2>Maintenance: The Playlist Is Never Finished</h2><p>The best playlists are living documents. Songs fatigue &mdash; the track that powered your January workouts is wallpaper by March &mdash; so schedule a refresh cadence: monthly for workout and party lists, quarterly for focus and dinner lists. Each refresh, retire the bottom 20% (the skips, the ones you always talk over) and audition replacements in the same energy slot. Keep a &ldquo;bullpen&rdquo; playlist where candidates wait; promotion to the main list has to be earned. And version your big ones: before a major overhaul, duplicate the list as &ldquo;Name &mdash; Archive Spring&rdquo;. Future you, hunting for that perfect dinner sequence from two years ago, will be grateful. A playlist with a hundred followers is an audience; treat it like one.</p><h2>From Total to Setlist: A Worked Example</h2><p>Say you are DJing a friend's 2-hour birthday set. Slot: 120 minutes. Your house tracks average 5 minutes mixed, so the planner says 24 tracks &mdash; but you will mix continuously with ~1 minute of overlap per transition, so plan 28 tracks and expect to drop 3&ndash;4. Build the list in paste mode from your crate notes, set a 0-second gap (continuous mix), and the clock shows 2:20 of raw material for a 2:00 slot &mdash; exactly the 15% buffer pros carry. Copy the summary into your notes app and you walk in with a plan instead of a hope. That is the whole philosophy: the total is not trivia, it is the foundation the rest of the planning stands on.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate the total length of a playlist?</summary><p>Add up every track's duration. PlaylistClock does it three ways: add tracks one by one, or paste a whole tracklist (lines like 'Song — 4:20') and it extracts the times automatically. It accepts 3:45, 1:02:30 and plain-seconds formats, even mixed in one list.</p></details>
+<details><summary>How many songs do I need for a one-hour playlist?</summary><p>Divide 60 by your average song length: at a 3.5-minute average you need about 17 songs. The Slot Planner does this backwards math for any time slot — enter the minutes and your genre's average and it tells you the track count plus the total music time.</p></details>
+<details><summary>Why is my playlist shorter than the sum of the tracks?</summary><p>Crossfades overlap the ends of tracks, so a playlist with 10-second crossfades runs shorter than the raw sum. Conversely, gaps for announcements or applause make live sets run longer — use the gap adder to account for those seconds between tracks.</p></details>
+<details><summary>What is a good average song length for a workout playlist?</summary><p>Pop and hip-hop average 3:15–3:30, which suits most workouts. For a 60-minute session that means 17–18 songs. Match the average to your genre: EDM runs 4:30+, so the same hour needs only 12–13 tracks.</p></details>
+<details><summary>Can I paste a tracklist with song titles?</summary><p>Yes — paste mode keeps your titles and extracts the times. Lines like 'Neon Skyline — 4:20' become titled rows in your track list automatically. Blank lines and lines without a valid time are ignored.</p></details>
+<details><summary>How much extra music should I plan for a live event?</summary><p>Carry 15–20% more music than the slot: a 2-hour set wants ~2:20 of material. Songs get skipped, speeches run long, and energy shifts. Build the buffer into the plan rather than discovering the shortfall mid-event.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PlaylistClock</div>
+    <p>PlaylistClock totals any playlist from pasted tracklists or manual entry — with per-track gap math, averages, and a backwards Slot Planner that tells you how many songs fill your time.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function pcParse(s){
+  var t=String(s==null?"":s).trim();if(!t)return -1;
+  var m=t.match(/^(\d+):([0-5]?\d):([0-5]\d)$/);
+  if(m)return Number(m[1])*3600+Number(m[2])*60+Number(m[3]);
+  m=t.match(/^(\d+):([0-5]\d)$/);
+  if(m)return Number(m[1])*60+Number(m[2]);
+  if(/^\d+(\.\d+)?$/.test(t))return Math.round(Number(t));
+  return -1;
+}
+function pcParseLine(line){
+  var t=String(line==null?"":line);
+  var m=t.match(/(\d+:[0-5]?\d:[0-5]\d|\d+:[0-5]\d)/);
+  if(m)return pcParse(m[1]);
+  m=t.match(/(\d+(?:\.\d+)?)\s*(?:s|sec|secs|seconds)\b/i);
+  if(m)return Math.round(Number(m[1]));
+  return pcParse(t);
+}
+function pcFmt(sec){
+  sec=Math.round(sec);var h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;
+  function p(n){return (n<10?"0":"")+n;}
+  return h>0?h+":"+p(m)+":"+p(s):m+":"+p(s);
+}
+function sumDurations(lines){
+  var secs=[];
+  (lines||[]).forEach(function(l){var v=pcParseLine(l);if(v>=0)secs.push(v);});
+  var total=secs.reduce(function(a,b){return a+b;},0),n=secs.length;
+  return {total:pcFmt(total),tracks:n,average:n?pcFmt(total/n):"0:00"};
+}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+  var totalEl=document.getElementById('pc-total'),tracksEl=document.getElementById('pc-tracks'),
+      avgEl=document.getElementById('pc-avg'),adjEl=document.getElementById('pc-adj'),
+      listEl=document.getElementById('pc-list'),tTitle=document.getElementById('pc-title'),
+      tDur=document.getElementById('pc-dur'),addB=document.getElementById('pc-add'),
+      gapEl=document.getElementById('pc-gap'),paste=document.getElementById('pc-paste'),
+      slotT=document.getElementById('pc-slott'),slotA=document.getElementById('pc-slota'),
+      slotOut=document.getElementById('pc-slotout'),copyB=document.getElementById('pc-copy'),
+      clearB=document.getElementById('pc-clear');
+  if(!totalEl||!listEl)return;
+  var tracks=[{t:"Midnight Drive",d:"3:45"},{t:"Neon Skyline",d:"4:20"},{t:"Slow Parade",d:"5:02"}];
+  function secsOf(d){var v=pcParse(d);return v>=0?v:0;}
+  function render(){
+    var gap=Math.max(0,Number(gapEl.value)||0);
+    var tot=tracks.reduce(function(a,x){return a+secsOf(x.d);},0);
+    var adj=tot+gap*Math.max(0,tracks.length-1);
+    totalEl.textContent=pcFmt(tot);
+    tracksEl.textContent=String(tracks.length);
+    avgEl.textContent=tracks.length?pcFmt(tot/tracks.length):"0:00";
+    adjEl.textContent=gap>0?("with "+gap+"s gaps: "+pcFmt(adj)):"add a per-track gap for announcements or crossfades";
+    listEl.innerHTML=tracks.map(function(x,i){
+      return '<div class="pc-row"><span class="pc-n">'+(i+1)+'</span>'+
+      '<span class="pc-t">'+x.t.replace(/</g,"&lt;")+'</span>'+
+      '<span class="pc-d">'+x.d+'</span>'+
+      '<button class="pc-x" data-i="'+i+'" type="button" aria-label="Remove track">&times;</button></div>';
+    }).join('')||'<p class="pc-dim">No tracks yet — add one above or paste a tracklist.</p>';
+    var xs=listEl.querySelectorAll('.pc-x');
+    for(var i=0;i<xs.length;i++){xs[i].addEventListener('click',function(){tracks.splice(Number(this.getAttribute('data-i')),1);render();});}
+    renderSlot();
+  }
+  function renderSlot(){
+    if(!slotT||!slotOut)return;
+    var target=Number(slotT.value)||0,avg=Number(slotA.value)||3.5;
+    if(target>0&&avg>0){
+      var need=Math.ceil(target*60/(avg*60));
+      slotOut.innerHTML='Fill <b>'+target+' min</b> at ~'+avg+' min/song: you need <b>'+need+' songs</b> ('+pcFmt(need*avg*60)+' of music).';
+    }else{slotOut.innerHTML='<span class="pc-dim">Enter a time slot to plan backwards.</span>';}
+  }
+  function addTrack(){
+    var d=tDur.value.trim()||"3:30";
+    if(pcParse(d)<0){tDur.focus();tDur.style.borderColor='#C2410C';setTimeout(function(){tDur.style.borderColor='';},1200);return;}
+    tracks.push({t:tTitle.value.trim()||("Track "+(tracks.length+1)),d:d});
+    tTitle.value='';tDur.value='';tTitle.focus();render();
+  }
+  if(addB)addB.addEventListener('click',addTrack);
+  if(tDur)tDur.addEventListener('keydown',function(e){if(e.key==='Enter')addTrack();});
+  if(gapEl)gapEl.addEventListener('input',render);
+  if(slotT)slotT.addEventListener('input',renderSlot);
+  if(slotA)slotA.addEventListener('input',renderSlot);
+  if(paste)paste.addEventListener('input',function(){
+    var lines=paste.value.split(/\n/);
+    var found=[];
+    lines.forEach(function(ln){
+      var m=ln.match(/(\d+:[0-5]?\d:[0-5]\d|\d+:[0-5]\d)/);
+      if(m){var title=ln.replace(m[1],'').replace(/[-–—|•\t ]+$/,'').trim()||("Track "+(tracks.length+found.length+1));found.push({t:title,d:m[1]});}
+    });
+    if(found.length){tracks=tracks.concat(found);paste.value='';render();}
+  });
+  if(clearB)clearB.addEventListener('click',function(){tracks=[];render();});
+  if(copyB)copyB.addEventListener('click',function(){
+    var tot=tracks.reduce(function(a,x){return a+secsOf(x.d);},0);
+    var txt='Playlist total: '+pcFmt(tot)+' ('+tracks.length+' tracks, avg '+avgEl.textContent+')\n'+
+      tracks.map(function(x,i){return (i+1)+'. '+x.t+' — '+x.d;}).join('\n');
+    if(navigator.clipboard)navigator.clipboard.writeText(txt);
+    copyB.textContent='Copied!';setTimeout(function(){copyB.textContent='Copy summary';},1600);
+  });
+  render();
+});}
+
+</script>
+</body>
+</html>
