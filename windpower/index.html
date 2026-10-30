@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Wind Turbine Output Calculator — Watts, kWh and Payback Estimate</title>
+<meta name="description" content="Calculate home wind turbine power output from rotor size and wind speed, plus daily and annual energy estimates.">
+<link rel="canonical" href="https://fun.fixoraa.tech/windpower/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Home Wind Turbine Output Calculator — Watts, kWh and Payback Estimate">
+<meta property="og:description" content="Calculate home wind turbine power output from rotor size and wind speed, plus daily and annual energy estimates.">
+<meta property="og:url" content="https://fun.fixoraa.tech/windpower/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "WindPower",
+      "url": "https://fun.fixoraa.tech/windpower/",
+      "applicationCategory": "Energy",
+      "operatingSystem": "Web",
+      "description": "Calculate home wind turbine power output from rotor size and wind speed, plus daily and annual energy estimates.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate wind turbine power?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Power = \u00bd \u00d7 air density \u00d7 swept area \u00d7 wind speed\u00b3 \u00d7 efficiency. Swept area is \u03c0 \u00d7 radius\u00b2, and the cube of wind speed is why small speed changes matter so much."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does doubling wind speed give 8\u00d7 power?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because power depends on wind speed cubed: 2\u00b3 = 8. A site averaging 8 m/s is far more productive than one averaging 4 m/s, even though the wind feels only twice as strong."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Betz limit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Betz limit, 59.3%, is the maximum fraction of wind energy any turbine can capture, because air must keep moving after passing the rotor. Real small turbines achieve 25\u201340%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What wind speed do small turbines need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most start (cut in) around 2.5\u20133.5 m/s, reach rated power near 10\u201312 m/s, and shut down or furl above about 20\u201325 m/s to protect themselves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a home wind turbine worth it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends entirely on your site's average wind speed, height above obstacles, and local rules. A windy, exposed rural site can work well; a sheltered urban rooftop usually cannot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is turbine height so important?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wind speed rises with height above ground because friction with trees, buildings and terrain slows low-level wind. Raising a turbine even a few metres can add significant energy."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fefce8; --surface:#fef9c3; --accent:#3f6212; --accent-ink:#ffffff;
+  --ink:#292524; --muted:#57534e; --line:#fde047;
+  --display:'Outfit',serif; --body:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.wind{display:grid;grid-template-columns:1fr;gap:1rem;max-width:56rem}.stage{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}.rotor{font-size:2rem;display:block;margin-bottom:.4rem}.stage label{display:block;font-weight:600;margin-top:.6rem}.stage input{width:100%;padding:.6rem;border:1px solid var(--line);border-radius:10px;margin-top:.3rem;font-size:1rem}.presets{display:flex;flex-wrap:wrap;gap:.45rem}.presets button,.go,.copy{border:2px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:.5rem 1rem;font-weight:600;cursor:pointer;min-height:44px}.go{background:var(--accent);color:var(--accent-ink);width:100%;margin:.8rem 0}.big{font-family:var(--display);font-size:2.4rem;font-weight:700}.biglab{color:var(--muted)}.sub{color:var(--muted);margin:.4rem 0 1.2rem;max-width:44rem}.note{color:var(--accent);font-weight:600}@media(min-width:700px){.wind{grid-template-columns:1fr 1fr 1.3fr}.presets{grid-column:1/-1}}@media(max-width:640px){.big{font-size:2rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="WindPower home">
+      <span class="fx-logo-tile" aria-hidden="true">🌬️</span>
+      <span class="fx-brand">WindPower</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-turbine-spin" aria-label="WindPower tool">
+<h1>Home Wind Turbine Output Calculator</h1><p class="sub">Wind power grows with the cube of wind speed — a small breeze change means a big power change.</p><div class="wind"><div class="stage"><span class="rotor">✳</span><p>Step 1 — Rotor size</p><label>Rotor radius (m)<input id="rad" type="number" min="0" step="any" value="1"></label></div><div class="stage"><span class="rotor">💨</span><p>Step 2 — Wind</p><label>Wind speed (m/s)<input id="ws" type="number" min="0" step="any" value="8"></label></div><div class="stage"><span class="rotor">⚡</span><p>Step 3 — Result</p><button class="go" id="calc">Calculate output</button><p class="big" id="rP">&mdash;</p><p class="biglab">instant power</p><p>Daily energy (at this speed): <b id="rD">&mdash;</b></p><p>Annual energy (at this speed): <b id="rA">&mdash;</b></p><p id="rV"></p></div><div class="presets"><span>Turbines:</span><button type="button" data-r="1" data-w="8">Small 1 m rotor, 8 m/s</button><button type="button" data-r="1.5" data-w="10">Medium 1.5 m, 10 m/s</button><button type="button" data-r="2" data-w="12">Large 2 m, 12 m/s</button></div><button class="copy" id="copy">Copy result</button><button class="copy" id="save">Save to history</button><ul id="hist"></ul></div><p class="note" id="err"></p>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>The cube law: why wind speed dominates everything</h2><p>A home wind turbine looks like a simple fan in reverse, but its output follows a rule that surprises everyone the first time they meet it: power grows with the cube of wind speed. Double the wind speed and you get eight times the power; halve it and you get one eighth. That single fact explains why site selection matters more than turbine brand, why a turbine on a windy hill outperforms a larger one in a sheltered garden, and why manufacturers' headline wattages — quoted at a brisk 12 metres per second — rarely match what a sheltered rooftop actually delivers. This calculator makes the cube law tangible: enter a rotor radius and a wind speed and it returns instant power plus daily and annual energy if that wind blew constantly, so you can compare sites and turbines honestly.</p><p>The formula is P = ½ × ρ × A × v³ × Cp, where ρ is air density (about 1.225 kilograms per cubic metre at sea level), A is the swept area of the rotor (π × radius²), v is wind speed, and Cp is the power coefficient — the fraction of the wind's energy the turbine actually captures. This calculator uses Cp = 0.35, a realistic value for a good small turbine; the theoretical maximum, the Betz limit, is 0.593, because air must retain some speed to move away after passing the rotor. A turbine that captured 100 percent of the wind's energy would stop the air dead, and no more air could arrive. Real turbines therefore live well below the Betz limit, and cheap ones well below that.</p><h2>Why swept area matters as much as wind</h2><p>Swept area grows with the square of rotor radius: double the radius and the area quadruples. A 1 metre rotor sweeps 3.14 square metres; a 2 metre rotor sweeps 12.57 square metres. Combined with the cube law, that means a modest increase in both size and wind transforms output. At 8 metres per second, a 1 metre rotor at Cp 0.35 gives about 345 watts. At 10 metres per second, a 1.5 metre rotor gives about 1,515 watts — more than four times as much, from a 25 percent wind increase and a 50 percent radius increase working together. This is why turbine makers emphasise rotor diameter and why planning rules that cap height or diameter cap energy far more than they appear to.</p><table><tr><th>Rotor radius</th><th>At 6 m/s</th><th>At 8 m/s</th><th>At 10 m/s</th><th>At 12 m/s</th></tr><tr><td>1.0 m</td><td>146 W</td><td>345 W</td><td>674 W</td><td>1,164 W</td></tr><tr><td>1.5 m</td><td>327 W</td><td>776 W</td><td>1,515 W</td><td>2,619 W</td></tr><tr><td>2.0 m</td><td>582 W</td><td>1,379 W</td><td>2,694 W</td><td>4,655 W</td></tr></table><p>Read the table as instant power at a constant wind speed, not as a promise. Real wind gusts, lulls and changes direction, and a turbine spends much of its life below its rated speed. Annual energy therefore depends on the wind speed distribution at your site, not a single speed. The calculator's annual figure — daily energy at the entered speed times 365 — is an upper bound for that speed, useful for comparing turbines and sites, but a proper site assessment uses a year's wind data or a local wind atlas. If your average wind speed is 5 metres per second, do not size your expectations from the 12 metres per second row.</p><h2>A worked example</h2><p>Take a 1 metre rotor in an 8 metres per second wind. Swept area is π × 1² = 3.14 square metres. Power is 0.5 × 1.225 × 3.14 × 8³ × 0.35. Since 8³ = 512, that is 0.6125 × 3.14 × 512 × 0.35 = 344.8 watts. Running at that speed all day gives 344.8 × 24 ÷ 1000 = 8.28 kilowatt-hours per day, and all year gives about 3,020 kilowatt-hours. A typical home uses roughly 8–10 kilowatt-hours per day, so this turbine at a constant 8 metres per second would roughly cover a home — but wind is not constant, so real annual output at an average of 8 metres per second with gusts and calms would be lower, often by a third or more. The calculator's job is to show the physics clearly, not to replace a site survey.</p><p>Now the larger case: a 1.5 metre rotor at 10 metres per second. Swept area is π × 2.25 = 7.07 square metres. Power is 0.6125 × 7.07 × 1000 × 0.35 = 1,515.3 watts. Daily energy at that speed is 36.37 kilowatt-hours, annual is about 13,274 kilowatt-hours — far more than a home needs, which is why larger turbines are often grid-connected and export surplus. The jump from the first example to the second is the cube law plus the square law working together, and it is the reason a slightly bigger, slightly windier installation can look disproportionately better on paper. Check both inputs before believing any headline figure.</p><h2>Site factors that make or break a turbine</h2><ul><li><b>Average wind speed:</b> the dominant factor. Below about 5 m/s average, most small turbines struggle to justify their cost; above 7 m/s they start to shine.</li><li><b>Height above obstacles:</b> wind speeds rise with height. A turbine should clear nearby trees and roofs by a good margin, typically with the rotor at least 9 metres above anything within 150 metres.</li><li><b>Turbulence:</b> rooftops and trees create gusty, swirling wind that reduces output and wears bearings. Smooth, laminar wind from open ground or water is far better.</li><li><b>Direction:</b> prevailing wind direction matters for placement relative to obstacles; a turbine downwind of a house sits in its turbulent wake.</li><li><b>Air density:</b> cold, sea-level air is denser and carries more energy than warm, high-altitude air. The difference is modest but real.</li></ul><h2>Practical and legal checks before buying</h2><ul><li>Check planning permission, permitted development rules, and any height or noise limits in your area before ordering.</li><li>Talk to neighbours early: noise, flicker and visual impact cause more disputes than technical failures.</li><li>Get a wind assessment: a year of anemometer data, or at least a reputable wind atlas, beats a manufacturer's brochure.</li><li>Budget for tower, inverter, cabling, and maintenance, not just the turbine. The tower often costs as much as the turbine.</li><li>Plan for shutdown: most turbines need a brake or furling system for storms, and a safe way to lower the tower for servicing.</li></ul><h2>Common mistakes</h2><p>The most expensive mistake is installing a turbine where the wind is poor — a sheltered garden, a rooftop in a built-up area, or a valley — and expecting brochure output. The second is confusing peak watts with average watts: a turbine rated at 1,000 watts at 12 metres per second may average 150 watts at a real site. The third is underestimating turbulence damage: a turbine that shakes in gusty rooftop wind will fail early, and its warranty may exclude turbulent sites. The fourth is ignoring the tower: a short tower on a cheap pole saves money and loses most of the energy. Wind energy rewards height, exposure and patience; it punishes shortcuts in all three.</p><h3>Wind versus solar for a home</h3><p>Wind and solar complement each other seasonally: wind is often stronger in winter when solar is weakest, and solar peaks in summer when wind may fall. A home with both can smooth its renewable output across the year, but only if the wind site is genuinely good. If your site is sheltered, solar panels on a clear roof will almost always give more energy per pound than a small turbine. Use this calculator to test your site honestly — enter your real average wind speed, not the brochure speed — and let the cube law give you the answer before you spend anything.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do you calculate wind turbine power?</summary><p>Power = ½ × air density × swept area × wind speed³ × efficiency. Swept area is π × radius², and the cube of wind speed is why small speed changes matter so much.</p></details>
+<details><summary>Why does doubling wind speed give 8× power?</summary><p>Because power depends on wind speed cubed: 2³ = 8. A site averaging 8 m/s is far more productive than one averaging 4 m/s, even though the wind feels only twice as strong.</p></details>
+<details><summary>What is the Betz limit?</summary><p>The Betz limit, 59.3%, is the maximum fraction of wind energy any turbine can capture, because air must keep moving after passing the rotor. Real small turbines achieve 25–40%.</p></details>
+<details><summary>What wind speed do small turbines need?</summary><p>Most start (cut in) around 2.5–3.5 m/s, reach rated power near 10–12 m/s, and shut down or furl above about 20–25 m/s to protect themselves.</p></details>
+<details><summary>Is a home wind turbine worth it?</summary><p>It depends entirely on your site's average wind speed, height above obstacles, and local rules. A windy, exposed rural site can work well; a sheltered urban rooftop usually cannot.</p></details>
+<details><summary>Why is turbine height so important?</summary><p>Wind speed rises with height above ground because friction with trees, buildings and terrain slows low-level wind. Raising a turbine even a few metres can add significant energy.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">WindPower</div>
+    <p>WindPower converts rotor size, wind speed and efficiency into watts and kilowatt-hours for a home turbine.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(rad,ws){if(!(rad>0)||!(ws>0))return{watts:0,daily:0,annual:0,verdict:'Enter positive radius and wind speed.'};var area=Math.PI*rad*rad;var watts=0.5*1.225*area*Math.pow(ws,3)*0.35;var daily=watts*24/1000;var annual=daily*365;var verdict=ws<3?'Below cut-in for most small turbines: little or no output.':(ws<6?'Light wind: modest output, good for trickle charging.':(ws<=12?'Good wind: strong output for a home turbine.':'Very strong wind: many turbines brake or furl above this speed.'));return{watts:Math.round(watts*10)/10,daily:Math.round(daily*100)/100,annual:Math.round(annual*10)/10,verdict:verdict};}
+function go(){var r=parseFloat(document.getElementById('rad').value)||0;var w=parseFloat(document.getElementById('ws').value)||0;var o=compute(r,w);document.getElementById('rP').textContent=o.watts+' W';document.getElementById('rD').textContent=o.daily+' kWh/day';document.getElementById('rA').textContent=o.annual+' kWh/year';document.getElementById('rV').textContent=o.verdict;document.getElementById('err').textContent=(r>0&&w>0)?'':'Enter a positive rotor radius and wind speed.';}
+document.getElementById('calc').addEventListener('click',go);
+document.querySelectorAll('.presets button').forEach(function(b){b.addEventListener('click',function(){document.getElementById('rad').value=b.dataset.r;document.getElementById('ws').value=b.dataset.w;go();});});
+document.getElementById('copy').addEventListener('click',function(){navigator.clipboard.writeText(document.getElementById('rP').textContent+' wind power');});
+document.getElementById('save').addEventListener('click',function(){var li=document.createElement('li');li.textContent=document.getElementById('rP').textContent;document.getElementById('hist').appendChild(li);});
+go();
+</script>
+</body>
+</html>
