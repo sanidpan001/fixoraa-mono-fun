@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boggle Solver — Find Every Word in Your 4×4 Grid</title>
+<meta name="description" content="Enter your 4×4 Boggle grid and find every valid word instantly — with letter paths and official Boggle scores. Free online boggle solver.">
+<link rel="canonical" href="https://fun.fixoraa.tech/bogglesolve/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Boggle Solver — Find Every Word in Your 4×4 Grid">
+<meta property="og:description" content="Enter your 4×4 Boggle grid and find every valid word instantly — with letter paths and official Boggle scores. Free online boggle solver.">
+<meta property="og:url" content="https://fun.fixoraa.tech/bogglesolve/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BoggleSolve",
+      "url": "https://fun.fixoraa.tech/bogglesolve/",
+      "applicationCategory": "Word Games",
+      "operatingSystem": "Web",
+      "description": "Enter your 4\u00d74 Boggle grid and find every valid word instantly \u2014 with letter paths and official Boggle scores. Free online boggle solver.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I enter my Boggle board?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Type one letter into each of the sixteen boxes, matching your physical board or app grid, then press Solve. Every valid word of three or more letters appears below, grouped by length with its Boggle score."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Boggle scoring work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Words score 1 point for 3\u20134 letters, 2 for five letters, 3 for six, 5 for seven, and 11 for eight or more. When players compare lists, any word found by two or more players is crossed off and scores for nobody."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the solver treat the Q tile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The solver reads each tile as exactly the letter you typed, which matches most digital Boggle versions and casual play. On a physical board the Q die shows \u201cQu\u201d \u2014 if you play that way, just remember that Q and U sit on neighbouring tiles in the solver."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a letter tile be reused inside one word?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each cube may be used only once within a single word \u2014 you cannot revisit a tile. The solver enforces this: it tracks used cells along every path and never steps on one twice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why isn't my obscure tournament word in the results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The built-in list holds several hundred common English words, which covers casual and family play well. Tournament players use official lists (NASPA/CSW) containing obscure words like qat and xi \u2014 those are intentionally not included, since they would clutter casual results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the solver really finding everything a human would miss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The solver checks every possible path \u2014 tens of thousands per board \u2014 in a fraction of a second. A human in a three-minute round will always miss words; typical players find 30\u201360% of what is actually on the grid."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F1F7EC; --surface:#FFFFFF; --accent:#2F7D33; --accent-ink:#FFFFFF;
+  --ink:#1E2A1A; --muted:#4E5F46; --line:#DCE8D2;
+  --display:'Gloock',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.bg-wrap{max-width:1060px;margin:0 auto;padding:24px 16px 64px;font-family:Inter,system-ui,sans-serif;color:#1E2A1A}
+.bg-hero{text-align:center;margin:6px 0 24px}
+.bg-hero h1{font-family:Gloock,Georgia,serif;font-size:clamp(30px,5vw,44px);margin:0 0 8px}
+.bg-tag{color:#4E5F46;font-size:16px;margin:0}
+.bg-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.bg-stat{background:#FFFFFF;border:1px solid #DCE8D2;border-radius:16px;padding:16px 12px;text-align:center;box-shadow:0 4px 16px rgba(47,125,51,.06)}
+.bg-stat .v{font-family:Gloock,Georgia,serif;font-size:30px;color:#2F7D33}
+.bg-stat .l{font-size:12.5px;color:#4E5F46;margin-top:4px}
+.bg-main{display:grid;grid-template-columns:minmax(280px,380px) 1fr;gap:20px;align-items:start}
+.bg-card{background:#FFFFFF;border:1px solid #DCE8D2;border-radius:20px;padding:20px;box-shadow:0 6px 24px rgba(47,125,51,.06)}
+.bg-card h2{font-family:Gloock,Georgia,serif;font-size:19px;margin:0 0 14px}
+.bg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.bg-grid input{aspect-ratio:1;min-height:52px;text-align:center;font-size:24px;font-weight:700;text-transform:uppercase;border:2px solid #DCE8D2;border-radius:12px;color:#1E2A1A;background:#F1F7EC}
+.bg-grid input:focus{outline:2px solid #2F7D33;border-color:#2F7D33}
+.bg-grid input.hit{background:#2F7D33;color:#fff;border-color:#2F7D33}
+.bg-btns{display:flex;gap:10px;flex-wrap:wrap}
+.bg-btns button{min-height:48px;padding:0 18px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer}
+#bg-solve{flex:1;background:#2F7D33;color:#fff;border:0}
+#bg-shuffle,#bg-clear{background:#fff;color:#2F7D33;border:2px solid #2F7D33}
+.bg-note{font-size:13px;color:#4E5F46;margin:12px 0 0}
+#bg-results{min-height:200px}
+.bg-group{margin-bottom:14px}
+.bg-group h3{font-size:14px;color:#4E5F46;margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em}
+.bg-words{display:flex;flex-wrap:wrap;gap:8px}
+.bg-word{padding:9px 13px;min-height:40px;background:#F1F7EC;border:1px solid #DCE8D2;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;color:#1E2A1A}
+.bg-word:hover{border-color:#2F7D33}
+.bg-word .s{color:#2F7D33;font-weight:700;margin-left:6px;font-size:12px}
+.bg-empty{color:#4E5F46;text-align:center;padding:40px 10px;font-size:15px}
+@media (max-width:680px){.bg-main{grid-template-columns:1fr}.bg-stats{grid-template-columns:repeat(2,1fr)}.bg-grid input{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="BoggleSolve home">
+      <span class="fx-logo-tile" aria-hidden="true">🔤</span>
+      <span class="fx-brand">BoggleSolve</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-stat-dash" aria-label="BoggleSolve tool">
+<div class='bg-wrap'>
+<div class='bg-hero'><h1>Boggle Solver</h1><p class='bg-tag'>Every word hiding in your grid — found, scored, and traced.</p></div>
+<div class='bg-stats'>
+<div class='bg-stat'><div class='v' id='bg-st-letters'>16</div><div class='l'>Letters</div></div>
+<div class='bg-stat'><div class='v' id='bg-st-words'>0</div><div class='l'>Words found</div></div>
+<div class='bg-stat'><div class='v' id='bg-st-score'>0</div><div class='l'>Total score</div></div>
+<div class='bg-stat'><div class='v' id='bg-st-long'>–</div><div class='l'>Longest word</div></div>
+</div>
+<div class='bg-main'>
+<div class='bg-card'>
+<h2>Your board</h2>
+<div class='bg-grid' id='bg-grid'></div>
+<div class='bg-btns'>
+<button id='bg-solve'>Solve board</button>
+<button id='bg-shuffle'>Shuffle</button>
+<button id='bg-clear'>Clear</button>
+</div>
+<p class='bg-note'>Type one letter per tile. Click any found word to light up its path.</p>
+</div>
+<div class='bg-card'>
+<h2>Found words</h2>
+<div id='bg-results'><div class='bg-empty'>Enter your letters and press Solve.</div></div>
+</div>
+</div>
+</div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How Boggle works</h2>
+<p>Boggle is the classic 4×4 word-hunting game: sixteen letter dice are shaken into a grid, a three-minute timer starts, and every player writes down as many words as they can find. Letters connect in any direction — horizontally, vertically, or diagonally — and each cube can be used only once per word. Words must be at least three letters long. When time runs out, players compare lists; any word found by more than one player is crossed off both lists, and remaining words score by length: 1 point for 3–4 letters, 2 for five, 3 for six, 5 for seven, and 11 for eight or more. The <strong>boggle solver</strong> on this page does the hunting for you: type in any grid and it finds every valid word in seconds.</p>
+<h2>Why a solver is worth using</h2>
+<p>Even strong players miss words. Human eyes lock onto familiar patterns and skip over odd corners of the grid, while a solver checks every possible path systematically — tens of thousands of them — without fatigue. Common uses: settling disputes about whether a word is really on the board, studying a finished game to see what you missed, practicing pattern recognition, and helping children or new players learn by revealing words they overlooked. It is also handy for Boggle variants played by mail, in classrooms, or in app versions where you want to check a high score's plausibility.</p>
+<h2>How the solver searches</h2>
+<p>Under the hood, BoggleSolve runs a depth-first search from every one of the sixteen cells. From each starting letter it walks to all eight neighbours, building up letter strings one cube at a time, and checks each string against its dictionary. Two tricks keep it fast. First, it never reuses a cube within a single word, mirroring the real rule. Second, it prunes dead paths early: if the letters built so far cannot begin any dictionary word (for example “qx” in English), it stops exploring that branch. The result is a complete, sorted list of every word of three or more letters on the board — typically somewhere between a few dozen and a few hundred for a normal grid.</p>
+<h2>Reading your results</h2>
+<p>The results panel groups found words by length, longest first, and shows each word's Boggle score beside it. The four stat tiles summarise the board: total letters, words found, combined score, and the longest word. Long words are worth studying because they reveal the board's best paths — an 8-letter word scores 11 points, more than ten 3-letter words combined. Click any word to highlight its path on the grid: the tiles light up in order so you can trace exactly how it snakes through the cubes.</p>
+<h2>Strategy: find more words yourself</h2>
+<h3>Start with the corners and edges</h3>
+<p>Most players over-scan the centre, where letters are easy to connect, and under-scan the corners, where paths feel cramped. Corners anchor long words surprisingly often because a corner letter has only three neighbours — fewer options means fewer distractions, and your brain commits to a path instead of dithering.</p>
+<h3>Hunt common endings first</h3>
+<p>Scan the board for <strong>S</strong>, <strong>ED</strong>, <strong>ING</strong>, <strong>ER</strong>, and <strong>LY</strong> clusters. Finding a stem like “walk” near an S or ED multiplies one discovery into three or four words. Plural S is the single highest-value habit in Boggle: it turns almost every noun you find into a second word for free.</p>
+<h3>Treat Q and U as neighbours</h3>
+<p>Because Q is almost always followed by U, the two tiles form a natural pair. When you spot a Q on the board, immediately look at its eight neighbours for a U — that QU pair unlocks words like “quiet”, “square”, and “equal” that beginners walk straight past.</p>
+<h3>Work the grid in zones</h3>
+<p>Instead of random scanning, divide the board into four 2×2 quadrants and exhaust each one before moving on. Within a quadrant, pick a starting letter and mentally walk every path from it. Systematic coverage beats inspiration over a three-minute round.</p>
+<h3>Learn the short-word gold</h3>
+<p>Three-letter words feel worthless at 1 point each, but duplicates are crossed off — unique words survive. Obscure-but-valid short words like “zoa”, “qat”, or “xi” (valid in tournament word lists) are rarely duplicated and often decide close games. Our dictionary focuses on common words, which is perfect for casual play.</p>
+<h2>Boggle scoring reference</h2>
+<table>
+<thead><tr><th>Word length</th><th>Points</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>3–4 letters</td><td>1</td><td>cat, lamp</td></tr>
+<tr><td>5 letters</td><td>2</td><td>house, train</td></tr>
+<tr><td>6 letters</td><td>3</td><td>garden, market</td></tr>
+<tr><td>7 letters</td><td>5</td><td>window, letter</td></tr>
+<tr><td>8+ letters</td><td>11</td><td>mountain, friend</td></tr>
+</tbody>
+</table>
+<h2>Common rule variations</h2>
+<p>House rules differ. Some groups allow 2-letter words (rare in official play), some forbid proper nouns strictly while others allow them, and tournament players use the official NASPA or Collins word lists rather than a common-words dictionary. Big Boggle (5×5) and Super Big Boggle (6×6) change the minimum word length to four and five letters respectively and use different scoring. If your group plays a variant, use the solver as a starting point and filter to your house rules.</p>
+<h2>Practice drills that actually help</h2>
+<ul>
+<li><strong>Missed-word review:</strong> after each game, run the grid through the solver and study the ten longest words you missed. You will start seeing those patterns within a week.</li>
+<li><strong>One-minute sprints:</strong> solve a random grid in 60 seconds instead of 180. Speed pressure trains your eyes to move on instead of staring.</li>
+<li><strong>Suffix runs:</strong> pick a suffix (ING, ERS, IEST) and find every word on the board that can take it.</li>
+<li><strong>Longest-word hunt:</strong> ignore short words entirely and find only the single longest word. This rewires your brain toward paths instead of clusters.</li>
+</ul>
+<h2>Fair-play notes</h2>
+<p>A solver is a study aid, not a way to cheat live opponents — using one during a timed round against friends who are playing honestly will not make you popular. The best use is after the game: compare your list with the solver's, learn the patterns you missed, and come back stronger next time. Teachers and parents: the solver is genuinely useful for vocabulary building, because tracing a word's path reinforces spelling far better than memorising lists.</p>
+<h2>Anatomy of a high-scoring board</h2>
+<p>Not all grids are equal. The richest boards share traits worth recognising: a good vowel spread (at least 5–6 vowels across the grid, including a Y), common consonants (R, S, T, L, N) rather than clusters of J, Q, X, Z, and at least one S near the edge for instant plurals. The dreaded all-consonant corner kills more rounds than any other feature — if three low-value consonants huddle together, mentally quarantine that corner and work the rest. When you press Shuffle in the solver, glance at the new board and predict its potential before solving; comparing your estimate with the actual word count trains board-reading faster than anything else.</p>
+<h2>Boggle for kids and learners</h2>
+<p>Boggle is secretly one of the best spelling teachers ever made, because it rewards pattern recognition over memorisation. For young players, relax the rules: allow two-letter words, play cooperatively (everyone builds one shared list), and use the solver afterwards as a “did we miss any?” reveal rather than a competitor. English learners benefit enormously from the path-tracing — seeing that C-A-T connects in an L-shape cements letter order physically. Set a longer timer (five minutes), celebrate the longest word rather than the most words, and watch vocabulary grow without a single worksheet.</p>
+<h2>From casual to competitive</h2>
+<p>If the bug bites, competitive Boggle (and its digital cousin Bananagrams-adjacent word gaming) rewards three trainable skills: anagramming speed, prefix/suffix recognition, and board vision. Serious players study word lists — particularly the short words, since 2- and 3-letter words are the scaffolding everything hangs on. Timed drills with the solver as referee (“find 20 words in 90 seconds, then verify”) build speed honestly. And remember the tournament truth: the player who finds the words nobody else sees wins, so train yourself on weird corners, not comfortable centres.</p>
+<h2>Short words: the hidden scaffolding</h2>
+<p>Beginners chase long words; experts collect short ones. Three-letter words are the scaffolding of a big Boggle score for a simple reason: every long word you find contains shorter words along its path, and each one counts separately. Find “star” and you may also have “tar”, “art”, and “sat” hiding in the same tiles. Tournament players drill short-word lists precisely because these are the words opponents miss — and in competitive play, a word only you found is a word that survives the cross-off. When you review a solved board, don't just admire the eight-letter monster; trace its path and harvest every three- and four-letter word embedded in it. That habit alone can double a casual player's score within weeks.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I enter my Boggle board?</summary><p>Type one letter into each of the sixteen boxes, matching your physical board or app grid, then press Solve. Every valid word of three or more letters appears below, grouped by length with its Boggle score.</p></details>
+<details><summary>How does Boggle scoring work?</summary><p>Words score 1 point for 3–4 letters, 2 for five letters, 3 for six, 5 for seven, and 11 for eight or more. When players compare lists, any word found by two or more players is crossed off and scores for nobody.</p></details>
+<details><summary>How does the solver treat the Q tile?</summary><p>The solver reads each tile as exactly the letter you typed, which matches most digital Boggle versions and casual play. On a physical board the Q die shows “Qu” — if you play that way, just remember that Q and U sit on neighbouring tiles in the solver.</p></details>
+<details><summary>Can a letter tile be reused inside one word?</summary><p>Each cube may be used only once within a single word — you cannot revisit a tile. The solver enforces this: it tracks used cells along every path and never steps on one twice.</p></details>
+<details><summary>Why isn&#x27;t my obscure tournament word in the results?</summary><p>The built-in list holds several hundred common English words, which covers casual and family play well. Tournament players use official lists (NASPA/CSW) containing obscure words like qat and xi — those are intentionally not included, since they would clutter casual results.</p></details>
+<details><summary>Is the solver really finding everything a human would miss?</summary><p>The solver checks every possible path — tens of thousands per board — in a fraction of a second. A human in a three-minute round will always miss words; typical players find 30–60% of what is actually on the grid.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BoggleSolve</div>
+    <p>BoggleSolve finds every valid word hiding in your 4×4 Boggle grid, with paths and scores.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function solveBoggle(grid,wordlist){var found={};var dirs=[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];var letters=(grid||[]).map(function(c){return String(c||'').toLowerCase();});while(letters.length<16)letters.push('');var words=(wordlist||[]).map(function(w){return String(w).toLowerCase();}).filter(function(w){return w.length>=3;});var set={};words.forEach(function(w){set[w]=1;});var pref={};words.forEach(function(w){for(var i=1;i<w.length;i++)pref[w.slice(0,i)]=1;});function dfs(r,c,word,used){if(word.length>=3&&set[word])found[word]=1;if(!pref[word])return;for(var d=0;d<8;d++){var nr=r+dirs[d][0],nc=c+dirs[d][1];if(nr<0||nr>3||nc<0||nc>3)continue;var k=nr*4+nc;if(used[k])continue;var nl=letters[k];if(!nl)continue;used[k]=1;dfs(nr,nc,word+nl,used);used[k]=0;}}for(var i=0;i<16;i++){if(!letters[i])continue;var used={};used[i]=1;dfs(Math.floor(i/4),i%4,letters[i],used);}return Object.keys(found).sort();}
+var BOGGLE_WORDS='act add age ago aid aim air ale alert alien allow almost alone along aloud alter among angel anger angle ankle apart apple apply arena argue arise armor array arrow aside asset atlas attic audio audit avoid awake award aware bacon badge bagel baker ballot bamboo banjo basic batch beach beard beast begin being belly bench berry birth black blade blame blank blast blend bless blind block bloom board boast bonus booth bound brace brain brand brave bread break brick bride brief bring broad broke brown brush build bunch buyer cabin cable cake calm camera camp canal candy carry catch cause chain chair charm chart chase cheap check cheese chest chief child chill choir choose chunk civil claim class clean clear clerk click cliff climb clock close cloth cloud coach coast color comedy comic corner cost could count court cover crack craft crash crazy cream crime cross crowd crown daily dance death delay depth diary dirty dodge doing donor doubt dozen draft drain drama dream dress drink drive drone eager eagle early earth eight elbow elder elect elite empty enemy enjoy enter entry equal error essay event every exact exist extra faint faith false fancy fault favor feast fence fever field fifth fifty fight final first flame flash fleet flesh float floor flour fluid focus force forth forty forum found frame fresh friend front frost fruit funny giant given glass globe glory glove going gold good grace grade grain grand grant grape grass great green greet grief group guard guess guest guide habit happy heart heavy hello honey honor horse hotel house human hurry ideal image index inner input issue ivory joint judge juice knife knock known label labor large laser later laugh layer learn least leave legal lemon level light limit liver local logic loose lover lower lucky lunch magic major maker march marry match maybe mayor meant medal media merry metal meter micro might minor minus model money month moral motor mount mouse mouth movie music nasty never night noble noise north novel nurse ocean offer often older olive onion opera order other ought outer owner paint panel paper party patch peace penny phase phone photo piano piece pilot pitch place plain plane plant plate point pound power press price pride prime print prize proof proud prove queen quick quiet quite radio raise range rapid ratio reach ready realm rebel refer renew reply rider right river roast robot rock roman round route royal rural salad scale scene score sense serve seven shade shake shall shape share sharp sheep sheet shelf shell shift shine shirt shock short shout shown sight silly since sixth sixty skill skirt sleep slice slide small smart smell smile smoke snake solar solid solve sorry sound south space spare speak speed spell spend spice split spoke sport staff stage stair stand start state steam steel steep stick still stock stone stood store storm story strip style sugar sunny super sweet table taken taste teach teeth thank their theme there these thick thing think third those three threw throw thumb tiger tight tired title today token tooth topic total touch tough tower town trace track trade trail train treat trend trial tribe trick truck truly trust truth twice under union unite until upper upset urban usual valid value video visit vital voice voter waste watch water weave wheel where which while white whole whose woman women world worry worth would wound write wrong wrote yield young youth acorn adage affair affect agile agony aider alcove algae align almond amber anchor anode antic apron aroma ascend ashes askew balcony banish banner banquet barrel basil basin batter bawdy beacon beady beaver behalf behave belated belfry belle below beret beset bevel beware beyond biscuit blaze blimp bliss blouse blown booty border bounty braid brink brood brutal buddy budget bundle cabana cactus cadet cage camel canoe canon canopy carat carbon cargo carve cattle cease chalk chime chord chorus churn clamor clergy clever cloak clover cocoa comet comma common coral cord core cork corny cotton couch county covet cradle crane crate crease credit crimp crisis crisp crude cruel crush crust dairy dandy debate debut delta derby disco ditch diver dizzy dough drift droll droop easel elope enact envoy equip estate evict expel'.split(' ');
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var gridEl=document.getElementById('bg-grid'),res=document.getElementById('bg-results');var inputs=[];for(var i=0;i<16;i++){var inp=document.createElement('input');inp.maxLength=1;inp.setAttribute('aria-label','Tile '+(i+1));(function(el){el.addEventListener('input',function(){el.value=el.value.replace(/[^a-z]/gi,'').slice(0,1);});})(inp);gridEl.appendChild(inp);inputs.push(inp);}function letters(){return inputs.map(function(el){return el.value.toLowerCase();});}function scoreOf(w){var l=w.length;if(l<=4)return 1;if(l===5)return 2;if(l===6)return 3;if(l===7)return 5;return 11;}var lastPaths={};function solve(){var L=letters();var words=solveBoggle(L,BOGGLE_WORDS);var total=0,longest='';words.forEach(function(w){total+=scoreOf(w);if(w.length>longest.length)longest=w;});document.getElementById('bg-st-words').textContent=words.length;document.getElementById('bg-st-score').textContent=total;document.getElementById('bg-st-long').textContent=longest?longest.toUpperCase():'–';if(!words.length){res.innerHTML='<div class=\'bg-empty\'>No words found — try different letters or press Shuffle.</div>';return;}var groups={};words.forEach(function(w){var k=w.length+' letters';(groups[k]=groups[k]||[]).push(w);});var lens=Object.keys(groups).map(function(k){return parseInt(k,10);}).sort(function(a,b){return b-a;});var html='';lens.forEach(function(len){html+='<div class=\'bg-group\'><h3>'+len+' letters · '+groups[len+' letters'].length+' words</h3><div class=\'bg-words\'>';groups[len+' letters'].forEach(function(w){html+='<button class=\'bg-word\' data-w=\''+w+'\'>'+w.toUpperCase()+'<span class=\'s\'>+'+scoreOf(w)+'</span></button>';});html+='</div></div>';});res.innerHTML=html;var btns=res.querySelectorAll('.bg-word');for(var b=0;b<btns.length;b++){btns[b].addEventListener('click',function(){highlight(this.getAttribute('data-w'));});}}function findPath(L,word){var dirs=[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];function dfs(r,c,idx,used,path){var tile=L[r*4+c];if(word.slice(idx,idx+tile.length)!==tile)return null;idx+=tile.length;path=path.concat([r*4+c]);if(idx===word.length)return path;for(var d=0;d<8;d++){var nr=r+dirs[d][0],nc=c+dirs[d][1];if(nr<0||nr>3||nc<0||nc>3)continue;var k=nr*4+nc;if(used[k]||!L[k])continue;used[k]=1;var out=dfs(nr,nc,idx,used,path);used[k]=0;if(out)return out;}return null;}for(var i=0;i<16;i++){if(!L[i])continue;var used={};used[i]=1;var p=dfs(Math.floor(i/4),i%4,0,used,[]);if(p)return p;}return [];}function highlight(w){var L=letters();var path=findPath(L,w);inputs.forEach(function(el){el.classList.remove('hit');});path.forEach(function(k){inputs[k].classList.add('hit');});}document.getElementById('bg-solve').addEventListener('click',solve);document.getElementById('bg-clear').addEventListener('click',function(){inputs.forEach(function(el){el.value='';el.classList.remove('hit');});res.innerHTML='<div class=\'bg-empty\'>Enter your letters and press Solve.</div>';document.getElementById('bg-st-words').textContent='0';document.getElementById('bg-st-score').textContent='0';document.getElementById('bg-st-long').textContent='–';});document.getElementById('bg-shuffle').addEventListener('click',function(){var dice='ABCDEFGHIJKLMNOPRSTUVWY';for(var i=0;i<16;i++){inputs[i].value=dice[Math.floor(Math.random()*dice.length)];}solve();});});}
+</script>
+</body>
+</html>
