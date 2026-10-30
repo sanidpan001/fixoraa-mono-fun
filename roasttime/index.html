@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turkey &amp; Roast Cooking Time Calculator — Minutes Per Pound | RoastTime</title>
+<meta name="description" content="RoastTime calculates exact roasting time per pound for turkey, chicken, beef, pork, lamb and ham — plus safe internal temps, rest time and servings. Free.">
+<link rel="canonical" href="https://fun.fixoraa.tech/roasttime/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Turkey &amp; Roast Cooking Time Calculator — Minutes Per Pound | RoastTime">
+<meta property="og:description" content="RoastTime calculates exact roasting time per pound for turkey, chicken, beef, pork, lamb and ham — plus safe internal temps, rest time and servings. Free.">
+<meta property="og:url" content="https://fun.fixoraa.tech/roasttime/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RoastTime",
+      "url": "https://fun.fixoraa.tech/roasttime/",
+      "applicationCategory": "Kitchen Tools",
+      "operatingSystem": "Web",
+      "description": "RoastTime calculates exact roasting time per pound for turkey, chicken, beef, pork, lamb and ham \u2014 plus safe internal temps, rest time and servings. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate turkey cooking time per pound?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the weight by the rate for your meat and oven: an unstuffed turkey at 325\u00b0F needs about 14 minutes per pound, so a 14-lb bird takes roughly 196 minutes (3 hr 16 min). A stuffed turkey needs about 16 minutes per pound. Always confirm with a meat thermometer \u2014 time plans, temperature decides."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What temperature is turkey done at?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "165\u00b0F (74\u00b0C) in the innermost thigh, the thickest part of the breast, and the center of the stuffing if stuffed. Use a digital meat thermometer and avoid touching bone, which reads falsely high."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a stuffed turkey take longer to cook?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 about 2 extra minutes per pound, or roughly 30\u201345 minutes more for a typical bird, because the stuffing insulates the cavity and must itself reach 165\u00b0F. Many cooks bake stuffing separately for better browning and simpler food safety."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What internal temperature is safe for pork?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pork loin and tenderloin are safe at 145\u00b0F (63\u00b0C) internal temperature plus a 3-minute rest, per USDA guidance. It will look slightly pink in the center \u2014 that is safe and far juicier than the old 160\u00b0F rule."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should a roast rest before carving?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rest a whole turkey 30 minutes, a whole chicken 15 minutes, and beef or lamb roasts about 20 minutes, tented loosely with foil. Resting lets juices redistribute and lets carryover heat finish the center \u2014 cutting early spills those juices onto the board."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I cook a turkey from frozen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "USDA says it is safe, but allow at least 50% more cooking time, do not stuff it, and remove the giblet bag with tongs once it loosens partway through. It is a workable rescue plan, not a first choice \u2014 fridge-thawing days ahead gives far better results."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FBF6EC; --surface:#FFFFFF; --accent:#A93226; --accent-ink:#FFFFFF;
+  --ink:#2B2118; --muted:#6B5D4F; --line:#E7D9C3;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.rt-wrap{font-family:'Fraunces',Georgia,serif;background:#FBF6EC;color:#2B2118;padding:56px 18px 72px;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(169,50,38,.06) 31px,rgba(169,50,38,.06) 32px);}.rt-book{max-width:1060px;margin:0 auto;background:#FFFDF8;border:1px solid #E7D9C3;border-radius:18px;box-shadow:0 24px 60px rgba(90,40,20,.10);overflow:hidden;}.rt-head{text-align:center;padding:34px 24px 8px;}.rt-head h1{font-size:clamp(30px,4.6vw,46px);font-weight:700;letter-spacing:-.01em;margin:10px 0 6px;color:#2B2118;}.rt-emoji{font-size:46px;}.rt-tag{font-family:Inter,system-ui,sans-serif;color:#6B5D4F;font-size:16.5px;margin:0 0 6px;}.rt-spread{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:18px;}.rt-page{padding:30px 30px 36px;position:relative;}.rt-page.left{border-right:3px double #E7D9C3;}.rt-page h2{font-size:13px;font-family:Inter,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#A93226;margin:0 0 18px;font-weight:800;}.rt-entry{border-bottom:1px solid #E7D9C3;padding:13px 2px;font-family:Inter,system-ui,sans-serif;}.rt-entry label{display:block;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6B5D4F;margin-bottom:8px;}.rt-meats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}.rt-meats button{border:1.5px solid #E7D9C3;background:#fff;border-radius:10px;padding:10px 4px;font-size:13px;font-weight:600;cursor:pointer;color:#2B2118;font-family:Inter,system-ui,sans-serif;transition:all .15s;}.rt-meats button.on{background:#A93226;border-color:#A93226;color:#fff;}.rt-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}.rt-entry input[type=number],.rt-entry input[type=time],.rt-entry select{width:100%;padding:11px 12px;font-size:16px;border:1.5px solid #E7D9C3;border-radius:10px;font-family:Inter,system-ui,sans-serif;background:#fff;color:#2B2118;}.rt-entry input:focus,.rt-entry select:focus{outline:none;border-color:#A93226;}.rt-check{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;cursor:pointer;}.rt-check input{width:20px;height:20px;accent-color:#A93226;}.rt-unit{display:flex;border:1.5px solid #E7D9C3;border-radius:10px;overflow:hidden;}.rt-unit button{flex:1;border:none;background:#fff;padding:11px;font-size:14px;font-weight:700;cursor:pointer;color:#6B5D4F;font-family:Inter,system-ui,sans-serif;}.rt-unit button.on{background:#A93226;color:#fff;}.rt-tally{background:#FBF6EC;}.rt-line{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #E7D9C3;padding:12px 2px;font-family:Inter,system-ui,sans-serif;font-size:15.5px;}.rt-line .k{color:#6B5D4F;font-weight:600;}.rt-line .v{font-weight:800;color:#2B2118;text-align:right;}.rt-big{text-align:center;padding:20px 0 8px;border-bottom:2px solid #A93226;margin-bottom:6px;}.rt-big .t{font-size:clamp(44px,6vw,64px);font-weight:700;color:#A93226;line-height:1;letter-spacing:-.02em;}.rt-big .u{font-family:Inter,system-ui,sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.2em;color:#6B5D4F;font-weight:700;margin-top:6px;}.rt-note{font-family:Inter,system-ui,sans-serif;font-size:13.5px;color:#6B5D4F;line-height:1.65;padding:14px 2px;}.rt-note strong{color:#A93226;}@media(max-width:760px){.rt-spread{grid-template-columns:1fr;}.rt-page.left{border-right:none;border-bottom:3px double #E7D9C3;}.rt-meats{grid-template-columns:repeat(2,1fr);}.rt-page{padding:24px 20px 28px;}.rt-wrap{padding:40px 12px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="RoastTime home">
+      <span class="fx-logo-tile" aria-hidden="true">🍗</span>
+      <span class="fx-brand">RoastTime</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-ledger-lines" aria-label="RoastTime tool">
+<section class='rt-wrap'><div class='rt-book'><div class='rt-head'><div class='rt-emoji' aria-hidden='true'>🍗</div><h1>Turkey &amp; Roast Cooking Time Calculator</h1><p class='rt-tag'>Every roast, timed to the minute.</p></div><div class='rt-spread'><div class='rt-page left'><h2>Ledger · Entries</h2><div class='rt-entry'><label>Meat</label><div class='rt-meats' id='rt-meats'><button data-m='turkey' class='on' type='button'>🦃 Turkey</button><button data-m='turkeybreast' type='button'>🍗 Turkey breast</button><button data-m='chicken' type='button'>🐔 Chicken</button><button data-m='beef' type='button'>🥩 Beef roast</button><button data-m='pork' type='button'>🐖 Pork loin</button><button data-m='lamb' type='button'>🍖 Lamb leg</button><button data-m='ham' type='button'>🍖 Ham</button><button data-m='duck' type='button'>🦆 Duck</button></div></div><div class='rt-entry'><label>Stuffed bird?</label><label class='rt-check'><input type='checkbox' id='rt-stuffed'> Stuffed (turkey only — adds time)</label></div><div class='rt-row2'><div class='rt-entry'><label for='rt-weight'>Weight</label><input type='number' id='rt-weight' value='14' min='0' step='0.5' inputmode='decimal'></div><div class='rt-entry'><label>Units</label><div class='rt-unit' role='group' aria-label='Weight units'><button id='rt-lb' class='on' type='button'>lb</button><button id='rt-kg' type='button'>kg</button></div></div></div><div class='rt-row2'><div class='rt-entry'><label for='rt-serve'>Serving time (optional)</label><input type='time' id='rt-serve' value='18:00'></div><div class='rt-entry'><label>Temp units</label><div class='rt-unit' role='group' aria-label='Temperature units'><button id='rt-f' class='on' type='button'>°F</button><button id='rt-c' type='button'>°C</button></div></div></div></div><div class='rt-page rt-tally'><h2>Ledger · Tally</h2><div class='rt-big'><div class='t' id='rt-time'>–</div><div class='u'>in the oven</div></div><div class='rt-line'><span class='k'>Oven temperature</span><span class='v' id='rt-oven'>–</span></div><div class='rt-line'><span class='k'>Safe internal temp</span><span class='v' id='rt-target'>–</span></div><div class='rt-line'><span class='k'>Rest before carving</span><span class='v' id='rt-rest'>–</span></div><div class='rt-line'><span class='k'>Serves about</span><span class='v' id='rt-serves'>–</span></div><div class='rt-line'><span class='k'>Into the oven by</span><span class='v' id='rt-start'>–</span></div><p class='rt-note' id='rt-note'>Pick a meat and enter the weight — the tally updates instantly. <strong>Always verify with a meat thermometer:</strong> time plans, temperature decides.</p></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Minutes-Per-Pound Is the Only Roast Math That Matters</h2><p>Every roast — from a Thanksgiving turkey to a weeknight pork loin — obeys the same physics: heat moves from the outside in, and the time it takes depends on the thickness and density of the meat. That is why professional kitchens and food-safety agencies alike express roasting time as <strong>minutes per pound</strong> rather than a single fixed number. A 12-pound turkey and a 20-pound turkey are not the same recipe with different names; they are the same rate applied to different weights.</p><p>The rate itself depends on three things: the <strong>meat</strong> (poultry cooks faster per pound than dense beef), the <strong>oven temperature</strong> (higher heat shortens the time but risks a burnt exterior and raw center), and whether the bird is <strong>stuffed</strong> (stuffing insulates the cavity, adding roughly 2 minutes per pound for turkey). Get the rate right for your meat and your oven, multiply by weight, and you have a plan you can set a timer by.</p><h2>The Reference Rates RoastTime Uses</h2><p>These rates are the midpoints of the ranges published by the USDA and America's Test Kitchen, at the oven temperatures listed. They assume a fully thawed roast, an oven that is genuinely preheated, and a conventional (non-convection) oven — convection runs about 25°F hotter in effect, so reduce time by roughly 10–15% if you use it.</p><table><thead><tr><th>Meat</th><th>Oven</th><th>Minutes / lb</th><th>Done temp</th><th>Rest</th></tr></thead><tbody><tr><td>Whole turkey, unstuffed</td><td>325°F / 165°C</td><td>14</td><td>165°F / 74°C</td><td>30 min</td></tr><tr><td>Whole turkey, stuffed</td><td>325°F / 165°C</td><td>16</td><td>165°F / 74°C</td><td>30 min</td></tr><tr><td>Turkey breast, bone-in</td><td>325°F / 165°C</td><td>20</td><td>165°F / 74°C</td><td>20 min</td></tr><tr><td>Whole chicken</td><td>375°F / 190°C</td><td>20</td><td>165°F / 74°C</td><td>15 min</td></tr><tr><td>Beef roast (medium-rare)</td><td>325°F / 165°C</td><td>22</td><td>145°F / 63°C</td><td>20 min</td></tr><tr><td>Pork loin / tenderloin</td><td>350°F / 175°C</td><td>25</td><td>145°F / 63°C</td><td>15 min</td></tr><tr><td>Leg of lamb</td><td>325°F / 165°C</td><td>22</td><td>145°F / 63°C</td><td>20 min</td></tr><tr><td>Ham, precooked</td><td>325°F / 165°C</td><td>15</td><td>140°F / 60°C</td><td>15 min</td></tr><tr><td>Whole duck</td><td>350°F / 175°C</td><td>18</td><td>165°F / 74°C</td><td>15 min</td></tr></tbody></table><p>Two notes on these numbers. First, <strong>done temperatures are USDA safe minimums</strong> measured with a thermometer in the thickest part of the meat, away from bone. Beef and pork at 145°F will look pink in the middle — that is safe, and it is also where they taste best. Second, the beef rate targets <strong>medium-rare</strong>; add about 3 minutes per pound for medium and 6 for well-done, though well-done roast beef is a texture most cooks regret.</p><h2>Stuffed vs Unstuffed: The Real Difference</h2><p>Stuffing a turkey adds roughly 30–45 minutes to the total time because the dense, moist stuffing slows heat reaching the center of the bird — and the center of the stuffing must itself reach 165°F to be safe. That is the entire reason food-safety experts prefer <strong>baking stuffing separately</strong>: it cooks faster, browns better, and removes the biggest food-safety variable from the bird. If you do stuff, pack it loosely (it expands), and check the stuffing temperature, not just the meat.</p><p>A spatchcocked (butterflied) turkey breaks the table in the other direction: lying flat, it roasts in roughly 30–40% less time with more even browning. If your calculator says 4 hours for a whole bird, plan about 2½ for a spatchcocked one at 350°F — and verify with the thermometer, which is the whole point.</p><h2>Carryover Cooking: Why You Pull Early</h2><p>Meat keeps cooking after it leaves the oven. A large roast can climb another <strong>5–10°F</strong> during resting as residual heat moves toward the cooler center — this is carryover cooking, and it is why experienced cooks pull beef and pork a few degrees <em>before</em> the target temperature. Pull a beef roast at 140°F and it will coast to 145°F on the counter. For poultry, where the safety margin matters more than perfect texture, pull right at 165°F in the thigh; carryover only adds safety.</p><p>Resting is not optional, either. Cut into a roast straight from the oven and the juices — driven toward the center by heat — pour out onto the board. Rest a turkey 30 minutes, a chicken 15, and a beef roast 20, tented loosely with foil. The internal temperature evens out, the muscle fibers relax, and the juices redistribute. The calculator's rest time is part of the plan, not a footnote: work it into your serving time.</p><h2>The Thermometer Beats the Clock, Every Time</h2><p>Minutes-per-pound gets you to the neighborhood; only a thermometer gets you home. Ovens routinely run 15–25°F off their dial setting, birds vary in shape and starting temperature, and a roast that went in cold from the fridge needs noticeably longer than one tempered at room temperature for 45 minutes. Start checking about <strong>30 minutes before</strong> the calculated finish time.</p><p>Where to probe matters as much as when. For turkey and chicken: the <strong>innermost thigh</strong> (the slowest spot), avoiding bone, which conducts heat and reads falsely high. For beef, pork, and lamb: the <strong>thickest center</strong> of the roast. For stuffed birds: the <strong>center of the stuffing</strong>. And check in two or three spots — one reading can lie; three rarely do.</p><h2>Planning Backwards From Dinner</h2><p>The most useful way to use a roasting calculator is in reverse. Dinner at 6:00, a 14-pound unstuffed turkey (196 minutes of roasting), 30 minutes of rest: the bird must come out at 5:30, so it goes in at about 2:15 — plus 15 minutes for the oven to recover after the door opens and the bird goes in. Round up, not down; a roast can rest happily under foil for 45 minutes, but it cannot be un-served late.</p><p>This is also where the thaw math collides with the roast math. A frozen-centered turkey will not cook to the chart — the outside overcooks while the middle stays icy. If Thursday morning reveals a still-frozen bird, you can roast from frozen (USDA-approved) at <strong>50% more time</strong>, but you cannot stuff it, and the giblet bag must come out with tongs once it loosens. Better: know your thaw time days ahead and let the fridge do the work.</p><h2>Servings: How Much Bird Per Person</h2><p>Bone-in roasts yield far less edible meat than their weight suggests. Plan <strong>1 to 1¼ pounds of bone-in turkey or chicken per person</strong> (about ¾ pound of actual meat after bones), <strong>¾ pound per person for bone-in beef, pork, and lamb roasts</strong>, and <strong>½ pound per person for boneless cuts</strong>. For a holiday crowd that expects leftovers — the entire point of Thanksgiving — round up by a quarter. A 14-pound turkey serves roughly 10 generously, which is why it is the classic family size.</p><h2>Troubleshooting: When the Plan Meets Reality</h2><h3>The skin is burning but the inside is raw</h3><p>Your oven runs hot, or the roast is too close to the top element. Tent the exposed areas loosely with foil (shiny side out), verify the oven temperature with a $10 oven thermometer, and consider dropping 25°F and extending the time. Foil is a browning brake, not a failure.</p><h3>It is done an hour early</h3><p>This happens with smaller birds and accurate ovens. Tent the roast in foil, then wrap the whole thing in clean towels and park it in an empty cooler — it will hold safely above 140°F for up to 2 hours. Do not leave it on the counter; the danger zone (40–140°F) is where bacteria thrive.</p><h3>It is done late and guests are hungry</h3><p>Resist cranking the oven to 450°F — the outside will scorch while the center lags further behind. Bump to 375°F at most, tent what is browning, and serve appetizers. Next time, temper the meat 45–60 minutes at room temperature before roasting and trust the thermometer over the clock.</p><h3>The breast is dry but the thighs are perfect</h3><p>The classic whole-bird dilemma: breast meat finishes at 150–155°F while thighs need 165°F+. Fixes that work: roast breast-side down for the first half, lay a foil shield over the breast for the last hour, or ice the breast for 30 minutes before roasting so it starts colder than the legs. Brining (wet or dry) also buys a meaningful moisture margin.</p><h2>Food Safety Rules Worth Memorizing</h2><ul><li><strong>Thaw in the fridge, never on the counter.</strong> The surface of a counter-thawing roast sits in the bacterial danger zone for hours while the center stays frozen.</li><li><strong>Two hours out, max.</strong> Raw or cooked meat should not sit at room temperature more than 2 hours (1 hour above 90°F).</li><li><strong>Reheat leftovers to 165°F.</strong> The original safe temperature does not carry over to day three — reheated leftovers need the full 165°F again.</li><li><strong>Cool leftovers fast.</strong> Carve the bird and refrigerate meat within 2 hours; a whole carcass in the fridge stays warm in the middle for hours.</li><li><strong>When in doubt, throw it out.</strong> No chart, calculator, or sniff test overrules the 3–4 day leftover rule.</li></ul><p>A roast is one of the oldest human technologies — fire, meat, patience. The calculator just removes the arithmetic so you can spend the saved attention on the parts that actually need a cook's judgment: seasoning, browning, and knowing when to trust the thermometer over the timer.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate turkey cooking time per pound?</summary><p>Multiply the weight by the rate for your meat and oven: an unstuffed turkey at 325°F needs about 14 minutes per pound, so a 14-lb bird takes roughly 196 minutes (3 hr 16 min). A stuffed turkey needs about 16 minutes per pound. Always confirm with a meat thermometer — time plans, temperature decides.</p></details>
+<details><summary>What temperature is turkey done at?</summary><p>165°F (74°C) in the innermost thigh, the thickest part of the breast, and the center of the stuffing if stuffed. Use a digital meat thermometer and avoid touching bone, which reads falsely high.</p></details>
+<details><summary>Does a stuffed turkey take longer to cook?</summary><p>Yes — about 2 extra minutes per pound, or roughly 30–45 minutes more for a typical bird, because the stuffing insulates the cavity and must itself reach 165°F. Many cooks bake stuffing separately for better browning and simpler food safety.</p></details>
+<details><summary>What internal temperature is safe for pork?</summary><p>Pork loin and tenderloin are safe at 145°F (63°C) internal temperature plus a 3-minute rest, per USDA guidance. It will look slightly pink in the center — that is safe and far juicier than the old 160°F rule.</p></details>
+<details><summary>How long should a roast rest before carving?</summary><p>Rest a whole turkey 30 minutes, a whole chicken 15 minutes, and beef or lamb roasts about 20 minutes, tented loosely with foil. Resting lets juices redistribute and lets carryover heat finish the center — cutting early spills those juices onto the board.</p></details>
+<details><summary>Can I cook a turkey from frozen?</summary><p>USDA says it is safe, but allow at least 50% more cooking time, do not stuff it, and remove the giblet bag with tongs once it loosens partway through. It is a workable rescue plan, not a first choice — fridge-thawing days ahead gives far better results.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RoastTime</div>
+    <p>RoastTime turns any roast's weight into an exact oven plan: minutes per pound, oven temperature, safe internal temperature, rest time, and servings — for turkey, chicken, beef, pork, lamb, ham and duck.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var RT_MEATS={turkey:{rate:14,rateStuffed:16,ovenF:325,targetF:165,rest:30,yield:0.75,label:'Whole turkey'},turkeybreast:{rate:20,ovenF:325,targetF:165,rest:20,yield:0.8,label:'Turkey breast'},chicken:{rate:20,ovenF:375,targetF:165,rest:15,yield:0.75,label:'Whole chicken'},beef:{rate:22,ovenF:325,targetF:145,rest:20,yield:0.6,label:'Beef roast'},pork:{rate:25,ovenF:350,targetF:145,rest:15,yield:0.6,label:'Pork loin'},lamb:{rate:22,ovenF:325,targetF:145,rest:20,yield:0.6,label:'Leg of lamb'},ham:{rate:15,ovenF:325,targetF:140,rest:15,yield:0.7,label:'Ham (precooked)'},duck:{rate:18,ovenF:350,targetF:165,rest:15,yield:0.6,label:'Whole duck'}};
+function roastMinutes(w,meat,stuffed){var m=RT_MEATS[meat]||RT_MEATS.chicken;var r=(meat==='turkey'&&stuffed)?m.rateStuffed:m.rate;w=Number(w);if(!(w>0))return 0;return Math.round(w*r);}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var meat='turkey',wUnit='lb',tUnit='F';var wEl=document.getElementById('rt-weight'),stEl=document.getElementById('rt-stuffed'),serveEl=document.getElementById('rt-serve');function f2c(f){return Math.round((f-32)*5/9);}function fmtT(f){return tUnit==='F'?f+'\u00B0F':f2c(f)+'\u00B0C';}function fmtDur(min){var h=Math.floor(min/60),m=min%60;if(h===0)return m+' min';return h+' hr'+(m?' '+m+' min':'');}function calc(){var m=RT_MEATS[meat];var raw=parseFloat(wEl.value);var wLb=wUnit==='kg'?raw*2.20462:raw;var mins=roastMinutes(wLb,meat,stEl.checked);document.getElementById('rt-time').textContent=mins?fmtDur(mins):'\u2013';document.getElementById('rt-oven').textContent=fmtT(m.ovenF);document.getElementById('rt-target').textContent=fmtT(m.targetF);document.getElementById('rt-rest').textContent=m.rest+' min';document.getElementById('rt-serves').textContent=wLb>0?Math.max(1,Math.round(wLb*m.yield))+' people':'\u2013';var note=document.getElementById('rt-note');var startEl=document.getElementById('rt-start');if(serveEl.value&&mins){var parts=serveEl.value.split(':');var serve=new Date();serve.setHours(parseInt(parts[0],10),parseInt(parts[1],10),0,0);var start=new Date(serve.getTime()-(mins+m.rest)*60000);var hh=start.getHours(),mm=('0'+start.getMinutes()).slice(-2);var ap=hh>=12?'PM':'AM';var h12=hh%12||12;startEl.textContent=h12+':'+mm+' '+ap;note.innerHTML='For a '+wLb.toFixed(1)+' lb '+m.label.toLowerCase()+(stEl.checked?' (stuffed)':'')+': <strong>'+fmtDur(mins)+'</strong> roasting + <strong>'+m.rest+' min</strong> rest. Start checking the thermometer ~30 min early.';}else{startEl.textContent='\u2013';note.innerHTML='Pick a meat and enter the weight \u2014 the tally updates instantly. <strong>Always verify with a meat thermometer:</strong> time plans, temperature decides.';}}
+var btns=document.querySelectorAll('#rt-meats button');for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){for(var j=0;j<btns.length;j++)btns[j].classList.remove('on');this.classList.add('on');meat=this.getAttribute('data-m');calc();});}
+wEl.addEventListener('input',calc);stEl.addEventListener('change',calc);serveEl.addEventListener('change',calc);
+function unitBtn(id,fn){var b=document.getElementById(id);if(b)b.addEventListener('click',fn);}
+unitBtn('rt-lb',function(){wUnit='lb';document.getElementById('rt-lb').classList.add('on');document.getElementById('rt-kg').classList.remove('on');calc();});
+unitBtn('rt-kg',function(){wUnit='kg';document.getElementById('rt-kg').classList.add('on');document.getElementById('rt-lb').classList.remove('on');calc();});
+unitBtn('rt-f',function(){tUnit='F';document.getElementById('rt-f').classList.add('on');document.getElementById('rt-c').classList.remove('on');calc();});
+unitBtn('rt-c',function(){tUnit='C';document.getElementById('rt-c').classList.add('on');document.getElementById('rt-f').classList.remove('on');calc();});
+calc();});}
+</script>
+</body>
+</html>
