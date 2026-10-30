@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Road Trip Toll Calculator — Estimate Toll Costs by Distance, Rate &amp; Route Type</title>
+<meta name="description" content="Estimate road trip toll costs from distance, toll rate per kilometre, and route type, so you can budget a trip and compare routes.">
+<link rel="canonical" href="https://fun.fixoraa.tech/tollcost/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Road Trip Toll Calculator — Estimate Toll Costs by Distance, Rate &amp; Route Type">
+<meta property="og:description" content="Estimate road trip toll costs from distance, toll rate per kilometre, and route type, so you can budget a trip and compare routes.">
+<meta property="og:url" content="https://fun.fixoraa.tech/tollcost/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "TollCost",
+      "url": "https://fun.fixoraa.tech/tollcost/",
+      "applicationCategory": "Travel",
+      "operatingSystem": "Web",
+      "description": "Estimate road trip toll costs from distance, toll rate per kilometre, and route type, so you can budget a trip and compare routes.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I estimate road trip toll costs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the tolled distance by the toll rate per kilometre, then adjust for route type. This calculator does that and also shows the return-trip cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a typical toll rate per kilometre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It varies by country and operator. Rates around 0.08 to 0.15 per kilometre are common on tolled motorways, but always check your route operator for the real figure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do tolls apply on the return trip too?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually yes, unless you choose a different return route. This calculator shows the return cost so you can budget both directions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do rental cars charge extra for tolls?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many rental companies add an administration fee for processing each toll, sometimes several times the toll itself. Ask before departure and pay directly where possible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a tolled route always faster?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, but not always. Compare the time saved with the toll cost and the fuel difference, and consider congestion on the free route."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do motorcycles pay the same toll as cars?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually less. Toll rates vary by vehicle class, axle count, and sometimes emission class, so check the rate for your vehicle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a vignette?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A vignette is a time-based toll permit, often sold by the week or month, used in some countries instead of per-kilometre charges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I avoid tolls entirely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often yes, by choosing free routes, but they are usually slower and may use more fuel. Compare total cost and time before deciding."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FFF7ED; --surface:#FFFFFF; --accent:#9A3412; --accent-ink:#ffffff;
+  --ink:#2A1A0E; --muted:#475569; --line:#FED7AA;
+  --display:'Space Grotesk',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{max-width:720px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.2rem}
+.tool-card label{display:block;font-weight:600;margin:.9rem 0 .3rem}
+.tool-card input,.tool-card select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;font-size:1rem;background:#fff;color:#111;min-height:44px}
+.tool-card .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.calc-btn{width:100%;margin-top:1.2rem;padding:.85rem;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1.05rem;cursor:pointer;min-height:48px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+.presets button{padding:.5rem .9rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.result{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:14px;background:var(--bg);border:1px solid var(--line);font-size:1.05rem}
+.result .big{font-size:1.5rem;font-weight:800}
+.muted{color:var(--muted);font-size:.95rem}
+.hist{margin-top:1rem;font-size:.95rem}
+.hist li{margin:.3rem 0}
+.copy-btn{margin-top:.7rem;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer}
+.maze-grid{font-family:monospace;line-height:1;letter-spacing:0;white-space:pre;overflow-x:auto;font-size:14px}
+@media (max-width:640px){.tool-card{padding:1rem;border-radius:16px}.tool-card .row{grid-template-columns:1fr}.tool-card h1{font-size:1.35rem}.result .big{font-size:1.25rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="TollCost home">
+      <span class="fx-logo-tile" aria-hidden="true">🛣️</span>
+      <span class="fx-brand">TollCost</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-toll-gate" aria-label="TollCost tool">
+<div class="tool-card"><h1>Road Trip Toll Calculator</h1><p class="sub">Enter distance, toll rate and route type to estimate total tolls for your trip.</p>
+<label for="tc-dist">Distance (km)</label><input id="tc-dist" type="number" value="250" min="0">
+<label for="tc-rate">Toll rate (per km)</label><input id="tc-rate" type="number" value="0.12" min="0" step="0.01">
+<label for="tc-route">Route type</label><select id="tc-route"><option value="1" selected>Standard highway (×1.0)</option><option value="1.5">Expressway / tolled motorway (×1.5)</option><option value="0.7">Toll-light route (×0.7)</option><option value="2">Premium / bridge-heavy route (×2.0)</option></select>
+<div class="presets"><button type="button" data-preset="short">Short trip</button><button type="button" data-preset="weekend">Weekend trip</button><button type="button" data-preset="long">Long haul</button></div>
+<button class="calc-btn" id="tc-calc" type="button">Calculate toll cost</button>
+<div class="result" id="tc-result" aria-live="polite">Enter your trip and press Calculate.</div>
+<button class="copy-btn" id="tc-copy" type="button">Copy result</button>
+<div class="hist"><strong>Recent calculations</strong><ul id="tc-hist"></ul></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why tolls catch road trippers by surprise</h2>
+<p>Most road trip budgets cover fuel, food, and accommodation, and then tolls arrive as an afterthought. A single toll may be small, but a long tolled motorway, a series of bridges, or a tunnel can add a substantial sum, and the cost is often collected in ways that are easy to miss: an electronic tag, a licence-plate charge billed weeks later, or a rental car surcharge added after the trip. Travellers who budget only for fuel can therefore underestimate a trip by a meaningful amount, especially on routes where tolls are the price of speed. This calculator puts tolls into the budget before departure, using distance, a per-kilometre rate, and a route factor that reflects how heavily tolled the chosen road is.</p>
+<p>Toll systems vary widely, which is why the calculator uses a rate and a factor rather than pretending that every road charges the same. Some countries charge a flat vignette for a period of time, others charge per kilometre on motorways, and others charge only at bridges, tunnels, and specific sections. Some routes offer a free alternative that is slower, while others have no practical alternative at all. Before a trip, check the toll operator for your route, note whether your vehicle class changes the rate, and check whether a rental car adds its own administration fee on top of the toll. The calculator gives you a planning figure; the operator's schedule gives you the exact charge for a specific section.</p>
+<h2>How to use this calculator</h2>
+<p>Enter the tolled distance, not necessarily the whole trip distance, if part of your route is toll-free. Enter the toll rate per kilometre, which you can find from the route operator or estimate from a previous trip on the same road. Choose the route type: a standard highway uses the rate as entered, an expressway or fully tolled motorway typically costs more, a toll-light route with only occasional toll sections costs less, and a bridge-heavy or premium route can cost much more. The result shows the total toll cost, the cost per 100 km for comparison, and the return-trip cost, because most road trips go both ways and tolls apply in both directions unless you choose a different return route.</p>
+<h2>Typical toll costs</h2>
+<table><tr><th>Trip</th><th>Distance</th><th>Rate per km</th><th>Route factor</th><th>One-way toll</th></tr>
+<tr><td>Short city trip</td><td>50 km</td><td>0.10</td><td>1.0</td><td>5.00</td></tr>
+<tr><td>Weekend getaway</td><td>250 km</td><td>0.12</td><td>1.0</td><td>30.00</td></tr>
+<tr><td>Expressway holiday</td><td>400 km</td><td>0.12</td><td>1.5</td><td>72.00</td></tr>
+<tr><td>Bridge-heavy route</td><td>300 km</td><td>0.12</td><td>2.0</td><td>72.00</td></tr>
+<tr><td>Long haul</td><td>800 km</td><td>0.10</td><td>1.0</td><td>80.00</td></tr></table>
+<p>The table shows a useful pattern: distance alone does not determine toll cost, because route type can double it. A 400 km expressway trip can cost the same in tolls as a 300 km bridge-heavy trip, even though the distances differ by a third. That is why comparing routes by distance alone is misleading. A longer toll-light route may be cheaper overall than a shorter expressway route, especially once fuel is added, because the toll-light route may also be slower and use slightly more fuel. The right comparison is total trip cost, including fuel, tolls, and the value of your time, not any single line item.</p>
+<h2>Tolled route versus free route</h2>
+<p>Every tolled route invites the same question: is the time saved worth the toll? Answering it honestly requires three numbers: the toll cost, the time saved, and the fuel difference. A toll that saves an hour on a long journey is usually worth it, especially for a family that would otherwise arrive tired or late. A toll that saves five minutes on a short journey rarely is, unless the free route is congested, poorly maintained, or unsafe. Consider also stress: a well-maintained motorway with services, lighting, and emergency phones may be worth a toll even when the time saving is modest, while a scenic free route may be worth the extra time on a leisure trip. There is no universally correct answer, only a trade-off that depends on the purpose of the trip.</p>
+<p>For regular commuters, the calculation changes again. A daily toll that seems small becomes a large monthly expense, and a monthly pass, tag discount, or off-peak rate may cut it substantially. Many operators offer discounts for electronic tags, frequent users, or off-peak travel, and some offer caps that limit the monthly total. If you travel the same tolled route regularly, check for passes before assuming the per-trip rate applies every time. For a one-off holiday, the per-trip rate is usually the right figure, but check whether a short-term vignette or tourist pass is cheaper than paying per section, especially in countries that sell vignettes by the week or month.</p>
+<h2>Hidden toll costs to watch for</h2>
+<p>Rental cars deserve special attention. Many rental companies charge an administration fee for each toll processed, sometimes several times the toll itself, and they may charge it weeks after the trip. Ask the rental company how tolls are handled before departure, and consider buying your own tag or paying tolls directly where that is possible. Electronic tolling without a tag can also generate a bill by post, sometimes with a surcharge if it is not paid promptly. Keep records of your route and dates, so an unexpected bill can be checked. For company cars and fleet vehicles, check who pays tolls and whether a tag is already fitted, because paying twice for the same toll is a common and avoidable waste.</p>
+<p>Vehicle class matters too. Cars, motorcycles, vans, and vehicles with trailers often pay different rates, and some tolls vary by emission class, axle count, or time of day. A rate you remember from a car trip will not apply to a trip towing a caravan. Bridges and tunnels sometimes have their own separate charges that are not included in a per-kilometre motorway rate, which is why the premium route factor exists in this calculator. When in doubt, look up the specific bridge or tunnel charge and add it separately, rather than trusting a single average rate to cover an exceptional section.</p>
+<h2>Budgeting a full road trip</h2>
+<ul><li>Fuel: distance divided by consumption, multiplied by fuel price, for both directions.</li><li>Tolls: the figure from this calculator, doubled for a return trip on the same route.</li><li>Food and drink: a daily allowance per person, higher on travel days.</li><li>Accommodation: booked nights plus a contingency for an unplanned stop.</li><li>Parking: city parking can rival tolls on a city-centre trip.</li><li>Contingency: at least ten percent of the total for detours, delays, and surprises.</li></ul>
+<p>Tolls are only one line in a trip budget, but they are the line most often forgotten, which makes them the line most likely to cause an unpleasant surprise. Adding them before departure, even as an estimate, changes the feel of a trip: costs become expected rather than resented, and route choices become deliberate rather than accidental. If the toll estimate makes a route look expensive, that is useful information, not a reason to ignore it. Choose the route with open eyes, and the toll becomes part of the journey rather than a grievance at the end of it.</p>
+<h2>Worked examples</h2>
+<p>A 250 km weekend trip at 0.12 per kilometre on a standard highway costs 30.00 in tolls one way, or 60.00 return. The same trip on an expressway at a factor of 1.5 costs 45.00 one way, or 90.00 return. A 400 km holiday leg at the same rate on an expressway costs 72.00 one way. A short 50 km trip at 0.10 costs only 5.00, which shows why tolls matter little for short trips and much for long ones. These examples use round rates for clarity; your actual rate will differ by country, operator, and vehicle, so replace the rate with your route's real figure before relying on the result for a tight budget.</p>
+<h2>Tips for paying less in tolls</h2>
+<p>Travel off-peak where the operator offers lower rates, use an electronic tag if it carries a discount, and consider a pass for repeated travel. Plan the route in advance and compare the tolled and free options on total cost and time, not on toll cost alone. Avoid rental car toll administration fees by paying directly where possible. Keep toll receipts and tag statements, and check them against your route, because errors happen and are easier to correct promptly. Finally, remember that the cheapest route is not always the best route: safety, road quality, services, and arrival time all have value, and a toll that buys a safer, faster, less stressful journey is often money well spent.</p>
+<h3>Before you set off</h3>
+<p>Check the toll operator's website for your route, confirm your vehicle class and payment method, and run this calculator with the real rate. Write the toll estimate into your trip budget alongside fuel, and you will arrive with no financial surprises, which is a good start to any journey.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I estimate road trip toll costs?</summary><p>Multiply the tolled distance by the toll rate per kilometre, then adjust for route type. This calculator does that and also shows the return-trip cost.</p></details>
+<details><summary>What is a typical toll rate per kilometre?</summary><p>It varies by country and operator. Rates around 0.08 to 0.15 per kilometre are common on tolled motorways, but always check your route operator for the real figure.</p></details>
+<details><summary>Do tolls apply on the return trip too?</summary><p>Usually yes, unless you choose a different return route. This calculator shows the return cost so you can budget both directions.</p></details>
+<details><summary>Why do rental cars charge extra for tolls?</summary><p>Many rental companies add an administration fee for processing each toll, sometimes several times the toll itself. Ask before departure and pay directly where possible.</p></details>
+<details><summary>Is a tolled route always faster?</summary><p>Usually, but not always. Compare the time saved with the toll cost and the fuel difference, and consider congestion on the free route.</p></details>
+<details><summary>Do motorcycles pay the same toll as cars?</summary><p>Usually less. Toll rates vary by vehicle class, axle count, and sometimes emission class, so check the rate for your vehicle.</p></details>
+<details><summary>What is a vignette?</summary><p>A vignette is a time-based toll permit, often sold by the week or month, used in some countries instead of per-kilometre charges.</p></details>
+<details><summary>Can I avoid tolls entirely?</summary><p>Often yes, by choosing free routes, but they are usually slower and may use more fuel. Compare total cost and time before deciding.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">TollCost</div>
+    <p>TollCost estimates what tolls will add to your road trip, by route type.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcTollCost(distance, ratePerKm, routeFactor){if(distance<=0||ratePerKm<=0||routeFactor<=0)return 0;return Math.round(distance*ratePerKm*routeFactor*100)/100;}
+if (typeof document !== 'undefined') {
+var hist6=[];
+function renderTC(){var d=+document.getElementById('tc-dist').value,r=+document.getElementById('tc-rate').value,f=+document.getElementById('tc-route').value;var total=calcTollCost(d,r,f);document.getElementById('tc-result').innerHTML='<p class="big">'+total.toFixed(2)+' total tolls</p><p>'+(d>0?(total/d).toFixed(3):'0.000')+' per km &middot; return trip '+(total*2).toFixed(2)+'</p>';hist6.unshift(total.toFixed(2)+' tolls');if(hist6.length>5)hist6.pop();document.getElementById('tc-hist').innerHTML=hist6.map(function(x){return '<li>'+x+'</li>';}).join('');}
+document.getElementById('tc-calc').onclick=renderTC;
+var ps6=document.querySelectorAll('[data-preset]');
+ps6.forEach(function(b){b.onclick=function(){if(b.dataset.preset==='short'){document.getElementById('tc-dist').value=50;document.getElementById('tc-rate').value=0.10;document.getElementById('tc-route').value='1';}if(b.dataset.preset==='weekend'){document.getElementById('tc-dist').value=250;document.getElementById('tc-rate').value=0.12;document.getElementById('tc-route').value='1';}if(b.dataset.preset==='long'){document.getElementById('tc-dist').value=800;document.getElementById('tc-rate').value=0.10;document.getElementById('tc-route').value='1.5';}renderTC();};});
+document.getElementById('tc-copy').onclick=function(){var t=document.getElementById('tc-result').innerText||'';if(typeof navigator!=='undefined'&&navigator.clipboard){navigator.clipboard.writeText(t);} };
+}
+</script>
+</body>
+</html>
