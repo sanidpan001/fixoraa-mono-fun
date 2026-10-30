@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plant Watering Calculator — How Much Water Does Your Plant Need?</title>
+<meta name="description" content="Calculate watering amounts and frequency for houseplants from pot size and plant type — with monthly totals and care tips.">
+<link rel="canonical" href="https://fun.fixoraa.tech/plantwater/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PlantWater", "url": "https://fun.fixoraa.tech/plantwater/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much water does a houseplant need?", "acceptedAnswer": {"@type": "Answer", "text": "It scales with pot size and plant type — for example, a 20 cm tropical plant needs about 240 ml per session, weekly."}}, {"@type": "Question", "name": "How do I know when to water?", "acceptedAnswer": {"@type": "Answer", "text": "Push a finger 2–3 cm into the soil: water when dry at that depth for most plants, or still slightly moist for ferns."}}, {"@type": "Question", "name": "Is overwatering worse than underwatering?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — overwatering causes root rot and kills more houseplants than drought."}}, {"@type": "Question", "name": "Do all plants need drainage holes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — without drainage, water pools at the roots and causes rot, whatever the plant type."}}, {"@type": "Question", "name": "Should I water plants in winter?", "acceptedAnswer": {"@type": "Answer", "text": "Usually much less — growth slows and daylight shortens, so halve summer frequency for most plants."}}, {"@type": "Question", "name": "Can I use tap water on houseplants?", "acceptedAnswer": {"@type": "Answer", "text": "Yes for most plants; let it stand overnight to reach room temperature and let chlorine dissipate."}}]}</script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1F2937;line-height:1.6;background:#F0FDF4}
+header{background:#166534;color:#fff;padding:18px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:52px;height:52px;border-radius:14px;background:#fff;color:#16A34AD;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+.brand h1{margin:0;font-size:26px;line-height:1.1}.brand p{margin:2px 0 0;opacity:.9;font-size:14px}
+.btn{display:inline-block;background:#fff;color:#16A34AD;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;border:0;cursor:pointer;font-size:15px}
+.btn.primary{background:#16A34A;color:#fff}.badge{display:inline-block;background:#fff;color:#16A34AD;border-radius:999px;padding:5px 12px;font-weight:700;font-size:13px}
+main{max-width:1020px;margin:0 auto;padding:8px 16px 30px}label{font-weight:700;display:block;margin:12px 0 4px}
+input,select{width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:16px;background:#fff;color:#1f2937}
+.result{margin-top:18px;background:#fff;border:2px solid #16A34A;border-radius:14px;padding:18px;font-size:18px}
+.result b{font-size:26px}.small{font-size:14px;color:#4b5563}.hist{font-size:14px;background:#fff;border-radius:10px;padding:12px;margin-top:14px}
+article{max-width:1020px;margin:0 auto;padding:10px 20px 30px}article h2{font-size:24px}article h3{font-size:19px}
+.faq{max-width:1020px;margin:0 auto;padding:0 20px 30px}.faq details{background:#fff;border-radius:10px;padding:14px 18px;margin:10px 0}
+footer{background:#166534;color:#fff;padding:28px 20px;text-align:center}footer a{color:#fff}
+@media(max-width:640px){.brand h1{font-size:21px}header{flex-direction:column;align-items:flex-start}.result b{font-size:22px}}
+.toolwrap{max-width:720px;margin:0 auto;background:#fff;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8eef5 28px);padding:30px;border:1px solid #dbe4ee;border-radius:6px}.labhead{font-family:'Courier New',monospace;letter-spacing:.1em;text-transform:uppercase}</style>
+</head>
+<body>
+<header>
+<div class="brand"><div class="logo" aria-hidden="true">🌿</div><div><h1>PlantWater</h1><p>Watered right, never guessed.</p></div></div>
+<div><span class="badge">Unlimited Free Usage</span>&nbsp; <a class="btn" href="https://fixoraa.tech">Home</a> <a class="btn" href="https://fixoraa.tech">More Tools</a></div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<section aria-label="Tool">
+<div class="toolwrap"><p class="labhead">Specimen record — watering plan</p><label for="pot">Pot diameter (cm)</label><input id="pot" type="number" value="20" ><label for="ptype">Plant type</label><select id="ptype"><option value="0.4">Succulent / cactus</option><option value="1.0" selected>Tropical houseplant</option><option value="1.4">Fern / moisture lover</option><option value="0.7">Herb</option><option value="1.2">Flowering plant</option></select><p><button class="btn primary" onclick="prun()">Calculate</button></p><div class="result" id="out">Enter pot size and plant type.</div></div>
+<div class="hist" id="hist">Recent results will appear here as you calculate.</div>
+<p><button class="btn primary" onclick="copyResult()">Copy result</button> <button class="btn" onclick="clearHist()">Clear history</button></p>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<article>
+<h2>About PlantWater</h2>
+<h2>Why most houseplants die from water, not drought</h2><p>Overwatering kills more houseplants than underwatering, yet underwatering is what most owners fear, so they water little and often, keeping the surface damp while the roots stay dry or, worse, constantly wet. The real rule is simple: water thoroughly, then let the soil dry to the right depth before watering again. How much water and how often depends on pot size, plant type, light, season and soil, which is why a fixed schedule such as every Sunday fails. This calculator gives a starting amount per session and a frequency by plant type, and the finger test — checking soil moisture before watering — turns that starting point into a routine tuned to your home.</p><h2>How the calculation works</h2><p>The amount per session scales with pot diameter, since a larger pot holds more soil and more roots, using a rule of roughly twelve millilitres per centimetre of pot diameter for a standard tropical plant. Plant type adjusts that figure: succulents need about forty percent of the standard amount, ferns about one hundred and forty percent, and herbs and flowering plants sit between. Frequency follows the same logic: succulents every fourteen days, moisture lovers every four, and most houseplants weekly. Monthly total is the session amount multiplied by the number of sessions in thirty days, which helps owners who water with a measured jug rather than guessing from a can.</p><h2>The finger test and drainage</h2><p>No calculator replaces checking the soil: push a finger two to three centimetres into the compost, and water only if it feels dry at that depth for most plants, or still slightly moist for ferns. Drainage is non-negotiable: every pot needs holes, and the pot should never sit in a saucer full of water, since standing water suffocates roots and causes rot within days. Water slowly until a little runs from the drainage holes, then empty the saucer after fifteen minutes. If water runs straight through without wetting the soil, the compost has become hydrophobic from drying out, and the pot needs soaking in a bowl for twenty minutes to rehydrate.</p><h2>Light, season and position</h2><p>A plant in bright indirect light drinks far more than the same plant in a dark corner, because light drives growth and evaporation. Summer watering may double winter watering, and many plants need only half as much water in winter when growth slows and daylight shortens. Plants near radiators, draughts and air conditioning dry faster, while plants in bathrooms benefit from humidity and need less frequent watering. Move the calculator&#x27;s frequency up or down by a few days based on these factors, and watch the plant for a month after any move: wilting, yellow leaves and crispy edges each tell a different story about water and light.</p><h2>Reading the plant&#x27;s signals</h2><p>Yellow, soft leaves and a musty smell usually mean overwatering, while crispy brown leaf edges and drooping that recovers after watering usually mean underwatering. A plant that wilts every day despite wet soil may have root rot, and needs inspection: healthy roots are firm and pale, while rotted roots are dark and mushy. Brown tips on many houseplants come from low humidity or mineral build-up rather than water quantity, so try rainwater or filtered water and occasional flushing of the pot. Keep a simple log of watering dates for a month, and patterns that were invisible become obvious, including the common habit of watering on a schedule instead of by soil condition.</p><h2>Soil, pots and repotting</h2><p>Soil mix matters as much as watering: a free-draining mix with perlite or bark suits most houseplants, while a dense, peaty mix stays wet too long and invites rot. Terracotta pots dry faster than plastic, which suits succulents and overwaterers, while plastic retains moisture for ferns and tropical plants. Repot when roots circle the pot or water runs straight through, moving only one pot size up, since a pot much larger than the root ball stays wet and rots the plant. Fresh compost at repotting restores drainage and nutrients, and a plant repotted in spring recovers fastest.</p><h2>Water quality and technique</h2><p>Tap water is fine for most plants, but letting it stand overnight lets chlorine dissipate and brings it to room temperature, which roots prefer to cold water straight from the tap. Hard water leaves mineral deposits on soil and leaves over time, so occasional flushing with rainwater helps sensitive plants such as ferns and calatheas. Water the soil, not the leaves, for most plants, since wet foliage in still indoor air invites fungal problems. A long-spouted watering can gives control, and a measured jug removes guesswork entirely, which is why the calculator&#x27;s millilitre figure is worth using rather than eyeballing.</p><h2>Holidays and busy periods</h2><p>A week away is safe for most established houseplants if they are watered thoroughly beforehand and moved out of direct sun, while two weeks needs a plan: a friend, a self-watering pot, or a simple wick system with a water reservoir. Succulents can usually survive a month without water, but ferns cannot, so group plants by need and prioritise the thirsty ones. Avoid the temptation to overwater before leaving, since a plant drowned before a holiday is worse than one slightly dry on return. On return, resume normal watering gradually rather than flooding every pot at once.</p><h2>Building a routine that lasts</h2><p>The best watering routine is the one you actually keep, so link it to an existing habit, such as a weekend morning check, and keep the jug and a moisture meter together. Check every plant each time, but water only those that need it, since different plants in the same room dry at different rates. Review the routine each season, adjusting frequency as light and temperature change, and celebrate the plants that thrive rather than blaming yourself for the occasional loss. Every experienced plant owner has killed plants while learning, and the knowledge gained is exactly what makes the next plant succeed.</p><h2>Watering orchids, cacti and unusual plants</h2><p>Specialist plants break the general rules, so treat the calculator&#x27;s figure as a starting point and adjust by species. Orchids in bark need a soak-and-drain method: immerse the pot for ten minutes, drain completely, and repeat only when the bark is nearly dry, since orchid roots rot quickly in standing water. Cacti and succulents in gritty, free-draining mix need very little water and long dry periods, with winter watering reduced to almost nothing, since cold and wet together are lethal for desert plants. Carnivorous plants are the opposite extreme: they need constantly moist, mineral-free water, and tap water can kill them, so use rainwater or distilled water only. African violets prefer bottom watering to keep leaves dry, while ferns in hanging baskets dry faster than floor pots because warm air rises. Research each unusual plant&#x27;s native habitat for a week after buying it, and adjust the calculator&#x27;s amount and frequency until the plant shows steady growth, since a thriving plant is the best confirmation that the routine is right, and steady new growth over several weeks proves the watering balance works.</p>
+</article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary><strong>How much water does a houseplant need?</strong></summary><p>It scales with pot size and plant type — for example, a 20 cm tropical plant needs about 240 ml per session, weekly.</p></details><details><summary><strong>How do I know when to water?</strong></summary><p>Push a finger 2–3 cm into the soil: water when dry at that depth for most plants, or still slightly moist for ferns.</p></details><details><summary><strong>Is overwatering worse than underwatering?</strong></summary><p>Yes — overwatering causes root rot and kills more houseplants than drought.</p></details><details><summary><strong>Do all plants need drainage holes?</strong></summary><p>Yes — without drainage, water pools at the roots and causes rot, whatever the plant type.</p></details><details><summary><strong>Should I water plants in winter?</strong></summary><p>Usually much less — growth slows and daylight shortens, so halve summer frequency for most plants.</p></details><details><summary><strong>Can I use tap water on houseplants?</strong></summary><p>Yes for most plants; let it stand overnight to reach room temperature and let chlorine dissipate.</p></details></section>
+<footer>
+<p><strong>PlantWater</strong> — Watered right, never guessed.</p>
+<p>PlantWater turns pot size and plant type into a watering amount per session, a frequency, and a monthly total — so plants get enough water without drowning.</p>
+<p><a href="https://fixoraa.tech">Home</a> · <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p>
+</footer>
+<script>
+function compute(pot,factor){if(pot<=0)return{ml:0,freq:0,monthly:0};var ml=pot*12*factor;var freq=factor<=0.4?14:(factor>=1.4?4:7);var monthly=ml*(30/freq);return{ml:Math.round(ml*10)/10,freq:freq,monthly:Math.round(monthly*10)/10};}
+function prun(){var r=compute(+document.getElementById('pot').value,+document.getElementById('ptype').value);var t='Water <b>'+r.ml+' ml</b> per session, every <b>'+r.freq+' days</b> — about <b>'+r.monthly+' ml</b> per month.';document.getElementById('out').innerHTML=t;pushHist(t);}
+function copyResult(){var r=document.getElementById('out');if(r){navigator.clipboard.writeText(r.innerText);alert('Result copied!');}}
+function clearHist(){try{localStorage.removeItem('hist_plantwater');}catch(e){}document.getElementById('hist').innerHTML='Recent results will appear here as you calculate.';}
+function pushHist(txt){try{var h=JSON.parse(localStorage.getItem('hist_plantwater')||'[]');h.unshift(txt);h=h.slice(0,5);localStorage.setItem('hist_plantwater',JSON.stringify(h));document.getElementById('hist').innerHTML='<strong>Recent:</strong><br>'+h.map(function(x){return x;}).join('<br>');}catch(e){}}
+</script>
+</body>
+</html>
