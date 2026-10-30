@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Online Guitar Tuner — Free Chromatic Tuner | TuneUp</title>
+<meta name="description" content="Tune your guitar in the browser — live pitch detection, no app needed.">
+<link rel="canonical" href="https://fun.fixoraa.tech/tuneup/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Online Guitar Tuner — Free Chromatic Tuner | TuneUp">
+<meta property="og:description" content="Tune your guitar in the browser — live pitch detection, no app needed.">
+<meta property="og:url" content="https://fun.fixoraa.tech/tuneup/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "TuneUp",
+      "url": "https://fun.fixoraa.tech/tuneup/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Tune your guitar in the browser \u2014 live pitch detection, no app needed.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How do I use this online guitar tuner?","acceptedAnswer":{"@type":"Answer","text":"Click Enable microphone, allow access, and play one open string at a time. The display shows the nearest note and how many cents sharp or flat you are. Adjust the tuning peg until the badge lights up (within \u00b15 cents). Always tune up toward the pitch \u2014 loosen below it first if you are sharp."}},
+        {"@type":"Question","name":"What are the standard guitar tuning notes?","acceptedAnswer":{"@type":"Answer","text":"Low to high: E2 (82.4 Hz), A2 (110 Hz), D3 (146.8 Hz), G3 (196 Hz), B3 (246.9 Hz), E4 (329.6 Hz) \u2014 'Eddie Ate Dynamite, Good Bye Eddie.' The tuner includes Drop D, half-step down, and Open G as alternate tunings in the selector."}},
+        {"@type":"Question","name":"Why does my guitar keep going out of tune?","acceptedAnswer":{"@type":"Answer","text":"The usual causes: new strings still stretching, temperature or humidity changes moving the wooden neck, strings binding in the nut slots, slipping wraps on the tuning posts, or old dead strings. Stretch new strings, tune up to pitch, and change strings every 1\u20133 months of regular playing."}},
+        {"@type":"Question","name":"What does the cents reading mean?","acceptedAnswer":{"@type":"Answer","text":"Cents measure tuning error: 100 cents equals one semitone. Negative is flat (too low), positive is sharp (too high). Within \u00b15 cents is the practical in-tune zone \u2014 small errors are inaudible alone, but they add up across strings and make chords sound tense."}},
+        {"@type":"Question","name":"How do I tune a guitar by ear without a tuner?","acceptedAnswer":{"@type":"Answer","text":"Get one reference string in tune, then use the 5th-fret method: fret low E at 5th fret to match open A, A at 5th for D, D at 5th for G, G at 4th fret for B (the one exception), B at 5th for high E. Verify with harmonics \u2014 the 5th-fret harmonic of a string should match the 7th-fret harmonic above it."}},
+        {"@type":"Question","name":"Is my microphone audio sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Pitch detection runs entirely in your browser using the Web Audio API \u2014 the microphone signal is analyzed locally and never uploaded or stored. You can even disconnect from the internet after the page loads and the tuner keeps working."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#FAF2F9;--surface:#FFFFFF;--tint:#F4DDF0;--accent:#A52790;--accentdeep:#882578;--accent-ink:#FFFFFF;--ink:#331F30;--muted:#785472;--line:#DCA6D3;--footmuted:#BEB3BD;--footlink:#FAF0F8;--bodyfont:system-ui,-apple-system,sans-serif;--headfont:'Fascinate',system-ui,sans-serif}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--bodyfont);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accentdeep));color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em;font-family:var(--headfont)}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:transparent}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accentdeep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.01em;margin:34px 0 12px;font-weight:800;font-family:var(--headfont)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px;font-family:var(--headfont)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:var(--ink);color:var(--bg);margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff;font-family:var(--headfont)}
+.fx-footer p{font-size:15px;color:var(--footmuted);max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--footlink);font-weight:700}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+.tu-hero{padding:44px 0 6px;text-align:center}
+.tu-eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:7px 16px;border-radius:999px;margin-bottom:16px}
+.tu-hero h1{font-size:clamp(38px,6vw,62px);line-height:1.05;font-weight:400;margin-bottom:12px;font-family:var(--headfont)}
+.tu-sub{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto}
+.tu-stage{max-width:720px;margin:30px auto 10px;background:var(--surface);border:2px solid var(--line);border-radius:28px;padding:34px 28px;box-shadow:0 18px 44px rgba(165,39,144,.10);text-align:center;position:relative;overflow:hidden}
+.tu-stage::before{content:"";position:absolute;top:0;left:0;right:0;height:10px;background:repeating-linear-gradient(90deg,var(--accent) 0 26px,var(--tint) 26px 52px)}
+.tu-note{font-size:clamp(72px,14vw,120px);font-weight:700;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.tu-note small{font-size:.35em;color:var(--muted);font-weight:700}
+.tu-freq{font-size:20px;font-weight:700;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+.tu-gauge{position:relative;height:120px;margin:18px 0 6px}
+.tu-scale{position:absolute;left:6%;right:6%;top:34px;height:16px;background:var(--tint);border-radius:999px;border:2px solid var(--line)}
+.tu-needle{position:absolute;top:22px;width:6px;height:40px;background:var(--accent);border-radius:3px;left:50%;transform:translateX(-50%);transition:left .12s ease-out;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.tu-center{position:absolute;top:28px;left:50%;width:4px;height:28px;background:var(--ink);transform:translateX(-50%);border-radius:2px;opacity:.5}
+.tu-ticks{position:absolute;left:6%;right:6%;top:58px;display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:var(--muted)}
+.tu-cents{font-size:26px;font-weight:800;color:var(--accent);min-height:38px;font-variant-numeric:tabular-nums}
+.tu-intune{display:inline-block;margin-top:6px;padding:8px 22px;border-radius:999px;font-weight:800;font-size:15px;background:var(--tint);color:var(--muted)}
+.tu-intune.yes{background:var(--accent);color:var(--accent-ink)}
+.tu-micbtn{margin-top:20px;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:18px;padding:15px 44px;border-radius:999px;background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 0 var(--accentdeep)}
+.tu-micbtn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--accentdeep)}
+.tu-micbtn.off{background:var(--ink);box-shadow:0 6px 0 #000}
+.tu-strings{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.tu-strings button{border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 0;width:76px;font:inherit;cursor:pointer;color:var(--ink)}
+.tu-strings button .s{font-size:20px;font-weight:800;display:block}
+.tu-strings button .f{font-size:12px;color:var(--muted);font-weight:600}
+.tu-strings button.on{border-color:var(--accent);background:var(--tint);box-shadow:0 0 0 3px var(--tint)}
+.tu-tunings{margin-top:18px;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;font-size:15px;font-weight:600}
+.tu-tunings select{font:inherit;padding:10px 14px;border:2px solid var(--line);border-radius:12px;color:var(--ink);background:#fff}
+.tu-target{margin-top:10px;font-size:15px;color:var(--muted)}
+.tu-target strong{color:var(--accent);font-size:18px}
+.tu-err{margin-top:14px;font-size:14px;color:var(--accent);font-weight:600;min-height:22px}
+@media(max-width:560px){.tu-strings button{width:64px}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/tuneup/" aria-label="TuneUp home">
+      <span class="fx-tile" aria-hidden="true">&#127928;</span>
+      <span class="fx-name">TuneUp</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+<section class="tu-hero">
+    <span class="tu-eyebrow">Mic-powered &middot; no app needed</span>
+    <h1>Online Guitar Tuner</h1>
+    <p class="tu-sub">Allow microphone access, play a string, and watch the needle. Green means in tune — string-by-string mode walks you through all six.</p>
+  </section>
+  <section class="tu-stage" aria-label="TuneUp tool">
+    <div class="tu-note" id="tu-note">&ndash;</div>
+    <div class="tu-freq" id="tu-freq">0.0 Hz</div>
+    <div class="tu-gauge" aria-hidden="true">
+      <div class="tu-scale"></div><div class="tu-center"></div><div class="tu-needle" id="tu-needle"></div>
+      <div class="tu-ticks"><span>-50&cent;</span><span>-25&cent;</span><span>0</span><span>+25&cent;</span><span>+50&cent;</span></div>
+    </div>
+    <div class="tu-cents" id="tu-cents">&nbsp;</div>
+    <div><span class="tu-intune" id="tu-intune">Waiting for sound</span></div>
+    <div><button class="tu-micbtn" id="tu-mic" type="button">Enable microphone</button></div>
+    <div class="tu-err" id="tu-err"></div>
+    <div class="tu-strings" id="tu-strings" role="group" aria-label="String by string tuning"></div>
+    <div class="tu-tunings">
+      <label for="tu-tuning">Tuning:</label>
+      <select id="tu-tuning">
+        <option value="standard" selected>Standard E</option>
+        <option value="dropd">Drop D</option>
+        <option value="halfdown">Half-step down (Eb)</option>
+        <option value="openg">Open G</option>
+      </select>
+    </div>
+    <div class="tu-target" id="tu-target">Target: <strong>E2</strong> · 82.4 Hz — play the low E string</div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec" aria-label="Guide">
+<h2>How to Use This Tuner</h2>
+    <p>Click <strong>Enable microphone</strong> and allow access when your browser asks. Play one string at a time — open, not fretted — and let it ring. The big letter shows the nearest note, the needle shows how many cents sharp or flat you are (100 cents = one semitone), and the badge turns solid when you are within ±5 cents. Tune up toward the pitch, not down: if you are sharp, loosen below the note first, then tighten up to it. Strings hold tune better when the final adjustment tightens the tuning peg, because it seats the string firmly against the nut and post.</p>
+    <p>For string-by-string mode, tap a string button (low E through high E) and the tuner tells you which string to play and its exact target frequency. Work from low E to high E, then go around once more — tightening one string pulls the neck slightly and detunes the others, so the second pass is where stability comes from. New strings need three or four full passes plus some stretching before they settle.</p>
+    <h2>Understanding the Needle</h2>
+    <p>The gauge reads in cents, the standard unit of tuning error. Zero means perfect; negative is flat (too low), positive is sharp (too high). A few cents of error is inaudible to most ears in isolation — ±5 cents is the practical "in tune" zone this tuner uses. But cents add up across strings: if every string is 8 cents sharp, chords sound noticeably tense, which is why the badge only lights up inside the ±5 window.</p>
+    <p>Watch the needle's behavior, not just its position. A healthy plucked string starts slightly sharp (the attack stretches it) and settles toward its true pitch within a second — tune to the settled reading, not the attack. If the needle jumps wildly, you are probably hearing room noise, a second string ringing, or fret buzz; mute the other strings with your picking hand and play the string cleanly near the 12th fret for the purest tone.</p>
+    <h2>The Six Strings, in Order</h2>
+    <p>Standard tuning, low to high: <strong>E2 (82.4 Hz), A2 (110 Hz), D3 (146.8 Hz), G3 (196 Hz), B3 (246.9 Hz), E4 (329.6 Hz)</strong> — memorized by generations of players as "Eddie Ate Dynamite, Good Bye Eddie." The interval pattern is fourths between every pair of adjacent strings except G to B, which is a major third; that one exception is what makes chord shapes interesting and tuning by ear tricky.</p>
+    <p>Alternate tunings in the selector change the targets: <strong>Drop D</strong> lowers only the low E to D2 (73.4 Hz) for heavier riffs with easy one-finger power chords; <strong>half-step down</strong> drops every string one semitone (Eb standard — a favorite of blues and rock players for a slightly slinkier feel and easier vocals); <strong>Open G</strong> (D2–G2–D3–G3–B3–D4) turns the open strings into a G major chord, the classic slide-guitar and Stones tuning. When switching tunings, always go string by string and re-check, because changing one string's tension shifts the neck and moves the rest.</p>
+    <h2>Tuning by Ear: The 5th-Fret Method</h2>
+    <p>Electronic tuners are precise, but every guitarist should know the traditional method for when no tuner is available. Get one reference string in tune (low E from a piano, a tuning fork, or this page), then: fret the low E at the 5th fret — that pitch is A, matching the open A string. Fret the A at the 5th fret to tune the D string; the D at the 5th fret to tune G. The exception: fret the G at the <strong>4th</strong> fret to match the open B. Then fret the B at the 5th fret to tune the high E. Check by playing octaves and harmonics — the 5th-fret harmonic of one string should match the 7th-fret harmonic of the string above it, and beats between them reveal tiny errors your eye might miss.</p>
+    <h2>Why Guitars Go Out of Tune</h2>
+    <p>Strings go flat far more often than sharp, and the causes are physical. <strong>New strings</strong> stretch for days — pre-stretch each one by gently pulling it away from the fretboard and re-tuning, repeating until it holds. <strong>Temperature and humidity</strong> move wood: heat and dryness shrink the neck and drop pitch, which is why guitars detune in hot cars and cold venues. <strong>Playing hard</strong> — especially bending — pulls strings sharp or flat at the nut if the slots bind; a touch of graphite (pencil lead) in the nut slots helps strings return to pitch.</p>
+    <p>The mechanical suspects: slipping tuning posts (make sure the string wraps downward on the post, 2–3 neat winds), a nut cut too tight, old strings (change them every 1–3 months of regular playing — dead strings won't intonate no matter how you tune), and a floating tremolo, which detunes everything when you touch one string. If one string chronically misbehaves, the hardware — not your technique — is usually guilty.</p>
+    <h2>Intonation: When Open Strings Lie</h2>
+    <p>A guitar can be perfectly in tune open and still sound wrong fretted — that is an intonation problem, not a tuning problem. Check it: play the 12th-fret harmonic, then fret the 12th fret normally. They should match. If the fretted note is sharp, the string is too short — move the saddle back; if flat, move it forward. Adjust in small increments and re-tune the open string after every move, since saddle position and open tuning interact.</p>
+    <p>Intonation drifts as strings age and with big temperature swings, so check it whenever you change string gauge or notice chords sounding sour up the neck while open chords sound fine. It is a five-minute adjustment with a screwdriver that makes the whole fretboard sound more expensive than it is.</p>
+    <h2>How This Tuner Hears Pitch</h2>
+    <p>Under the hood, this page runs autocorrelation on your microphone signal: it slides the waveform against itself at different time lags and finds the lag where the signal best matches itself — that lag is the wave's period, and frequency is its reciprocal. A parabolic refinement around the best lag gives sub-sample accuracy, and the frequency is converted to the nearest musical note with a cents deviation. It is the same core technique used in many hardware tuners, running entirely in your browser — no audio ever leaves your device.</p>
+    <p>For best results, use a quiet room, hold the guitar near the microphone, and pluck with moderate force — very hard plucks add inharmonic overtones that can confuse any pitch detector, and very soft plucks drown in noise. Laptop microphones work fine; phone mics work even better.</p>
+    <h2>Tuning Tips for Beginners</h2>
+    <p>Tune every time you pick up the guitar — it takes 60 seconds and it is the single highest-leverage habit in musicianship, because you cannot train your ear on an out-of-tune instrument. Always tune up to the note, stretch new strings, and re-check after a few minutes of playing. Learn what "in tune" sounds like by strumming a chord slowly and listening for beats — the slow wobble between two nearly-matching pitches — and practice eliminating them. Within weeks, your ear will start catching drift before any tuner does, and that is when tuning stops being a chore and starts being musicianship.</p>
+    <h2>Beyond Guitar: Bass, Ukulele, and Everything Else</h2>
+    <p>This is a chromatic tuner, which means it hears any note — not just guitar strings. Bass players: your open strings are E1 (41.2 Hz), A1 (55 Hz), D2 (73.4 Hz), G2 (98 Hz), all comfortably inside the detection range; pluck gently near the neck for the cleanest reading, since hard bass attacks confuse pitch detectors. Ukulele standard tuning is G4–C4–E4–A4 (392, 261.6, 329.6, 440 Hz) — the tuner reads them all, though the reentrant high G can surprise players expecting low-to-high order. Violin, viola, and cello work too (G3–D4–A4–E5 for violin), as does any wind instrument for checking intonation against a tuner. The ±5-cent "in tune" badge is calibrated for fretted instruments; orchestral players often want tighter (±2–3 cents), so watch the raw cents number rather than the badge. Whatever the instrument, the technique is identical: quiet room, clean attack, let the note settle, tune up to the pitch. The physics of vibrating strings does not care what shape the wood is.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I use this online guitar tuner?</summary><p>Click Enable microphone, allow access, and play one open string at a time. The display shows the nearest note and how many cents sharp or flat you are. Adjust the tuning peg until the badge lights up (within ±5 cents). Always tune up toward the pitch — loosen below it first if you are sharp.</p></details>
+<details><summary>What are the standard guitar tuning notes?</summary><p>Low to high: E2 (82.4 Hz), A2 (110 Hz), D3 (146.8 Hz), G3 (196 Hz), B3 (246.9 Hz), E4 (329.6 Hz) — &#x27;Eddie Ate Dynamite, Good Bye Eddie.&#x27; The tuner includes Drop D, half-step down, and Open G as alternate tunings in the selector.</p></details>
+<details><summary>Why does my guitar keep going out of tune?</summary><p>The usual causes: new strings still stretching, temperature or humidity changes moving the wooden neck, strings binding in the nut slots, slipping wraps on the tuning posts, or old dead strings. Stretch new strings, tune up to pitch, and change strings every 1–3 months of regular playing.</p></details>
+<details><summary>What does the cents reading mean?</summary><p>Cents measure tuning error: 100 cents equals one semitone. Negative is flat (too low), positive is sharp (too high). Within ±5 cents is the practical in-tune zone — small errors are inaudible alone, but they add up across strings and make chords sound tense.</p></details>
+<details><summary>How do I tune a guitar by ear without a tuner?</summary><p>Get one reference string in tune, then use the 5th-fret method: fret low E at 5th fret to match open A, A at 5th for D, D at 5th for G, G at 4th fret for B (the one exception), B at 5th for high E. Verify with harmonics — the 5th-fret harmonic of a string should match the 7th-fret harmonic above it.</p></details>
+<details><summary>Is my microphone audio sent anywhere?</summary><p>No. Pitch detection runs entirely in your browser using the Web Audio API — the microphone signal is analyzed locally and never uploaded or stored. You can even disconnect from the internet after the page loads and the tuner keeps working.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">TuneUp</div>
+    <p>TuneUp is a free chromatic guitar tuner that runs in your browser — live pitch detection from your microphone, string-by-string mode, and alternate tunings.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TuneUp — pure logic. Autocorrelation pitch detection.
+   Returns {freq, note, cents} for a mono sample buffer.
+   Note: detectPitch is the testable core; all mic/DOM code lives
+   behind typeof-document / mediaDevices guards in the page. */
+function detectPitch(samples, sampleRate) {
+  var n = samples ? samples.length : 0;
+  if (!n || !sampleRate) return { freq: 0, note: '', cents: 0 };
+  var mean = 0, i;
+  for (i = 0; i < n; i++) mean += samples[i];
+  mean /= n;
+  var x = new Array(n), energy = 0;
+  for (i = 0; i < n; i++) { x[i] = samples[i] - mean; energy += x[i] * x[i]; }
+  if (energy < 1e-12) return { freq: 0, note: '', cents: 0 }; // silence
+  var minLag = Math.max(2, Math.floor(sampleRate / 1200)); // up to 1200 Hz
+  var maxLag = Math.min(n - 2, Math.floor(sampleRate / 40)); // down to 40 Hz
+  function corr(lag) {
+    var s = 0, i;
+    for (i = 0; i < n - lag; i++) s += x[i] * x[i + lag];
+    return s / (n - lag);
+  }
+  var bestLag = minLag, bestCorr = -Infinity;
+  for (var lag = minLag; lag <= maxLag; lag++) {
+    var c = corr(lag);
+    if (c > bestCorr) { bestCorr = c; bestLag = lag; }
+  }
+  // Take the FIRST strong local peak (avoids subharmonic/octave-down
+  // errors): scan upward for the first local maximum reaching at least
+  // half of the global max correlation. Fall back to the global max.
+  var peak = bestLag, found = false;
+  for (lag = minLag + 1; lag < maxLag; lag++) {
+    var cl = corr(lag);
+    if (cl >= 0.5 * bestCorr && cl >= corr(lag - 1) && cl >= corr(lag + 1)) {
+      peak = lag; found = true; break;
+    }
+  }
+  if (!found) peak = bestLag;
+  bestLag = peak; bestCorr = corr(peak);
+  // Parabolic interpolation around the peak for sub-sample accuracy.
+  var y0 = corr(bestLag - 1), y1 = bestCorr, y2 = corr(bestLag + 1);
+  var denom = y0 - 2 * y1 + y2;
+  var shift = 0;
+  if (denom !== 0) {
+    shift = 0.5 * (y0 - y2) / denom;
+    if (!(shift > -1 && shift < 1)) shift = 0; // sub-sample corrections only
+  }
+  var refined = bestLag + shift;
+  var freq = sampleRate / refined;
+  var midi = 69 + 12 * (Math.log(freq / 440) / Math.log(2));
+  var rounded = Math.round(midi);
+  var names = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+  var note = names[((rounded % 12) + 12) % 12] + (Math.floor(rounded / 12) - 1);
+  var cents = (midi - rounded) * 100;
+  return {
+    freq: Math.round(freq * 10) / 10,
+    note: note,
+    cents: Math.round(cents * 10) / 10
+  };
+}
+
+if (typeof document !== 'undefined' && typeof navigator !== 'undefined' && navigator.mediaDevices) {
+  // Page wiring (mic capture + string-by-string tuner) goes in the HTML inline script.
+}
+
+</script>
+<script>
+(function(){
+if(typeof document==='undefined')return;
+if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+  document.getElementById('tu-err').textContent='This browser does not support microphone access. Try Chrome, Edge, Firefox or Safari.';
+  return;
+}
+var TUNINGS={
+  standard:[{s:'E2',f:82.41,n:'low E string'},{s:'A2',f:110,n:'A string'},{s:'D3',f:146.83,n:'D string'},{s:'G3',f:196,n:'G string'},{s:'B3',f:246.94,n:'B string'},{s:'E4',f:329.63,n:'high E string'}],
+  dropd:[{s:'D2',f:73.42,n:'low D string'},{s:'A2',f:110,n:'A string'},{s:'D3',f:146.83,n:'D string'},{s:'G3',f:196,n:'G string'},{s:'B3',f:246.94,n:'B string'},{s:'E4',f:329.63,n:'high E string'}],
+  halfdown:[{s:'Eb2',f:77.78,n:'low Eb string'},{s:'Ab2',f:103.83,n:'Ab string'},{s:'Db3',f:138.59,n:'Db string'},{s:'Gb3',f:185,n:'Gb string'},{s:'Bb3',f:233.08,n:'Bb string'},{s:'Eb4',f:311.13,n:'high Eb string'}],
+  openg:[{s:'D2',f:73.42,n:'low D string'},{s:'G2',f:98,n:'G string'},{s:'D3',f:146.83,n:'D string'},{s:'G3',f:196,n:'G string'},{s:'B3',f:246.94,n:'B string'},{s:'D4',f:293.66,n:'high D string'}]
+};
+var strings=TUNINGS.standard,selStr=0,listening=false,audioCtx=null,analyser=null,buf=null,rafId=null;
+var $=function(id){return document.getElementById(id);};
+function fmt(n,d){return n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function buildStrings(){
+  var box=$('tu-strings');box.innerHTML='';
+  strings.forEach(function(st,i){
+    var b=document.createElement('button');b.type='button';
+    b.innerHTML='<span class="s">'+st.s.replace(/[0-9]/g,'')+'</span><span class="f">'+st.s+'</span>';
+    if(i===selStr)b.className='on';
+    b.addEventListener('click',function(){selStr=i;buildStrings();updateTarget();});
+    box.appendChild(b);
+  });
+}
+function updateTarget(){
+  var st=strings[selStr];
+  $('tu-target').innerHTML='Target: <strong>'+st.s+'</strong> &middot; '+fmt(st.f,1)+' Hz — play the '+st.n;
+}
+function centsToNote(freq,target){
+  return Math.round(1200*Math.log(freq/target)/Math.log(2));
+}
+function loop(){
+  if(!listening)return;
+  analyser.getFloatTimeDomainData(buf);
+  var r=detectPitch(buf,audioCtx.sampleRate);
+  if(r.freq>0){
+    var base=r.note.replace(/[0-9-]/g,'');
+    $('tu-note').innerHTML=base+'<small>'+r.note.slice(base.length)+'</small>';
+    $('tu-freq').textContent=fmt(r.freq,1)+' Hz';
+    var c=r.cents;
+    $('tu-cents').textContent=(c>0?'+':'')+c+' cents '+(c===0?'— perfect':(c<0?'flat':'sharp'));
+    var pct=Math.max(-50,Math.min(50,c));
+    $('tu-needle').style.left=(6+(pct+50)*0.88)+'%';
+    var ok=Math.abs(c)<=5;
+    var badge=$('tu-intune');
+    badge.textContent=ok?'In tune ✓':(c<0?'Too flat — tighten':'Too sharp — loosen');
+    badge.className='tu-intune'+(ok?' yes':'');
+    var st=strings[selStr];
+    var dc=centsToNote(r.freq,st.f);
+    if(Math.abs(dc)<=50){$('tu-cents').textContent=(dc>0?'+':'')+dc+' cents vs '+st.s+' '+(dc===0?'— perfect':(dc<0?'(flat)':'(sharp)'));}
+  } else {
+    $('tu-note').innerHTML='&ndash;';$('tu-freq').textContent='listening…';
+  }
+  rafId=requestAnimationFrame(loop);
+}
+$('tu-mic').addEventListener('click',function(){
+  var btn=this;
+  if(listening){
+    listening=false;cancelAnimationFrame(rafId);
+    if(audioCtx&&audioCtx.close)audioCtx.close();
+    audioCtx=null;btn.textContent='Enable microphone';btn.classList.remove('off');
+    $('tu-intune').textContent='Waiting for sound';$('tu-intune').className='tu-intune';
+    return;
+  }
+  $('tu-err').textContent='';
+  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}})
+  .then(function(stream){
+    var AC=window.AudioContext||window.webkitAudioContext;
+    audioCtx=new AC();
+    var src=audioCtx.createMediaStreamSource(stream);
+    analyser=audioCtx.createAnalyser();analyser.fftSize=8192;
+    buf=new Float32Array(analyser.fftSize);
+    src.connect(analyser);
+    listening=true;btn.textContent='Stop';btn.classList.add('off');
+    loop();
+  })
+  .catch(function(err){
+    $('tu-err').textContent='Microphone unavailable: '+(err&&err.name==='NotAllowedError'?'permission denied — allow microphone access and try again.':'please check your microphone settings.');
+  });
+});
+$('tu-tuning').addEventListener('change',function(){strings=TUNINGS[this.value];selStr=0;buildStrings();updateTarget();});
+buildStrings();updateTarget();
+})();
+</script>
+</body>
+</html>
