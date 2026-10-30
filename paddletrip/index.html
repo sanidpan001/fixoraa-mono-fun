@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canoe &amp; Kayak Trip Time Calculator — Plan Your Paddle Day</title>
+<meta name="description" content="Calculate canoe and kayak trip time from distance, paddling speed, breaks, and portages.">
+<link rel="canonical" href="https://fun.fixoraa.tech/paddletrip/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Canoe &amp; Kayak Trip Time Calculator — Plan Your Paddle Day">
+<meta property="og:description" content="Calculate canoe and kayak trip time from distance, paddling speed, breaks, and portages.">
+<meta property="og:url" content="https://fun.fixoraa.tech/paddletrip/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PaddleTrip",
+      "url": "https://fun.fixoraa.tech/paddletrip/",
+      "applicationCategory": "Outdoor",
+      "operatingSystem": "Web",
+      "description": "Calculate canoe and kayak trip time from distance, paddling speed, breaks, and portages.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How fast does an average kayaker paddle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A recreational paddler averages about four to six kilometres per hour on flat water over a full day, with canoes typically a little slower."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I count breaks in trip time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Breaks, lunch, and portages are real time, and leaving them out is the most common reason trips finish late."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does river current change trip time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Downstream current adds to your speed over the ground, while upstream current subtracts from it. A return leg against the flow can take far longer than the way out."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What speed should I use for a group?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the slowest paddler's comfortable speed. Group pace is set by the slowest boat, not the fastest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much buffer time should I add?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For an unfamiliar route, add at least twenty to thirty percent on top of the calculated time, and plan to finish well before dark."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is wind really that important on a lake?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A headwind can halve your speed on open water, and wind that builds during the day can make the return leg much harder."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#eef7fb; --surface:#ffffff; --accent:#0b4f6c; --accent-ink:#ffffff;
+  --ink:#14232b; --muted:#3d5563; --line:#c2dde8;
+  --display:'Bricolage Grotesque',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+.layout-split .route{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;color:var(--muted);font-weight:600} @media(min-width:760px){.layout-split{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;align-items:start}.layout-split h1,.layout-split .sub{grid-column:1/-1}.layout-split .resultcard{grid-column:2}.layout-split .route{grid-column:2}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PaddleTrip home">
+      <span class="fx-logo-tile" aria-hidden="true">🛶</span>
+      <span class="fx-brand">PaddleTrip</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-river-route" aria-label="PaddleTrip tool">
+<div class="layout-split">
+<h1>Canoe & Kayak Trip Time Calculator</h1>
+<p class="sub">Estimate paddling time and total trip time, including breaks.</p>
+<div class="formcard">
+<label>Distance (km)<input id="dist" type="number" value="12" step="1" min="0"></label><label>Average paddling speed (km/h)<input id="speed" type="number" value="4" step="1" min="0"></label><label>Breaks and portages (minutes)<input id="brk" type="number" value="30" step="1" min="0"></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter distance, speed, and breaks to see your trip time.</p></div>
+<div class='route'><span>Launch</span><span>— paddle —</span><span>Break</span><span>— paddle —</span><span>Finish</span></div>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How long will a canoe or kayak trip really take?</h2>
+<p>Trip time on the water is one of the easiest things to get wrong, because the distance on a map never tells the whole story. A twelve kilometre paddle sounds short until you add a headwind, a lunch stop, a portage around a weir, and the slower pace of a loaded boat with a beginner in the bow. This calculator starts with the honest basics: how far you are paddling, your average paddling speed, and how long you plan to stop. Paddling time is distance divided by speed, and total trip time is paddling time plus breaks. That simple division is the backbone of every realistic river plan, and it is also the step most people skip when they guess from the map alone.</p>
+<p>Average speed is where experience matters. A relaxed recreational paddler in a loaded canoe on flat water typically averages three to five kilometres per hour over a whole day, not the six or seven they manage in a short burst on a calm lake. Kayaks are usually a little faster than canoes, and a tailwind or gentle current can add a kilometre per hour or more. A headwind does the opposite and can easily halve your progress, especially on open water where waves build up. If you have not paddled the route before, use the lower end of your expected speed. Arriving early with time to spare is pleasant; arriving at dusk, tired and still on the water, is not.</p>
+<h2>Breaks, portages, and the parts people forget</h2>
+<p>Breaks deserve their own line in the plan because they are not wasted time. Stopping to eat, drink, stretch, and check the map keeps energy up and prevents the sloppy paddling that leads to capsizes late in the day. A good rule is a short break every sixty to ninety minutes, plus a longer lunch stop. Portages, where you carry boats and kit around an obstacle, are slower than most beginners expect. A short, well-maintained portage path might take fifteen minutes, but a muddy bank, a steep climb, or multiple trips for heavy kit can turn it into an hour. Add portage time to your break allowance rather than pretending it does not exist, and scout weirs and dams from the bank before you commit to a line through them.</p>
+<p>Current changes everything on rivers. Paddling downstream with a two kilometre per hour current means your speed over the ground is your paddling speed plus the current, while paddling upstream means you must subtract it. A trip that takes three hours downstream can take five or more coming back against the same flow. Tidal rivers add another layer: the tide may help you for part of the day and fight you for the rest, so check tide times as carefully as you check the weather. On lakes, wind is the equivalent force. An offshore wind that helps you out in the morning may make the return leg a hard grind, and a wind that builds during the day can turn a sheltered bay into rough water by afternoon.</p>
+<h2>A worked example you can sanity-check</h2>
+<p>Take a twelve kilometre river trip at an average of four kilometres per hour with thirty minutes of breaks. Paddling time is three hours, and total time is three and a half hours. That is the calculator's answer, and it is also a useful gut check: if your group is slow, tired, or paddling into wind, four kilometres per hour is optimistic, and the same trip could take four and a half hours. For a longer day, twenty kilometres at five kilometres per hour with an hour of breaks gives five hours in total, which is a full but comfortable day for fit paddlers. Anything beyond six hours of paddling time deserves an early start, a bail-out point, and a clear plan for what happens if the group falls behind schedule.</p>
+<p>Group pace is set by the slowest boat, not the fastest, and children, beginners, and heavily loaded boats all slow a group down. Plan the day around the slowest paddler, build in buffer time, and agree on regrouping points at bridges, bends, and junctions so nobody gets left behind or takes a wrong channel. Navigation errors cost time too: a missed turn onto a side channel can add a kilometre of backtracking. Carry a map in a waterproof case, keep it where the lead paddler can see it, and check position at every obvious landmark rather than discovering the mistake an hour later. A phone in a dry bag is a backup, not a plan, because batteries and signal both fail on remote rivers.</p>
+<h2>Safety, kit, and timing the day</h2>
+<p>Start early enough that the slowest realistic finish is still well before dark. Pack a headlamp anyway, because delays happen, and a light turns a late finish from a hazard into an inconvenience. Buoyancy aids are non-negotiable for everyone, whatever their swimming ability, and cold water deserves a wetsuit or drysuit even on a warm day, because cold shock and swim failure are real risks. Tell someone ashore your route and expected finish time, and agree when they should raise the alarm if you do not check in. Food and water matter more than most day paddlers admit: carry at least a litre of water per person for a half day, more in heat, plus snacks you can eat without landing.</p>
+<p>Weather checks should happen the night before and again on the morning of the trip, because wind forecasts change. A forecast of strong winds, thunderstorms, or rapidly rising river levels is a reason to postpone, not a challenge to overcome. River levels after heavy rain can turn a gentle stream into a fast, debris-filled hazard, and weirs that are safe at normal levels become dangerous when the river is up. If you are unsure, paddle a shorter, familiar stretch or walk the bank first. The river will still be there tomorrow, and the best trip plans are the ones that leave room for the river to have its say.</p>
+<h3>Typical paddling speeds</h3>
+<table><tr><th>Boat and conditions</th><th>Typical average</th><th>Use it for</th></tr>
+<tr><td>Recreational canoe, flat water</td><td>3–4 km/h</td><td>Family days, loaded boats</td></tr>
+<tr><td>Touring kayak, flat water</td><td>4–6 km/h</td><td>Fit paddlers, day trips</td></tr>
+<tr><td>Downstream river, gentle current</td><td>5–7 km/h over ground</td><td>River journeys downstream</td></tr>
+<tr><td>Upstream or into wind</td><td>2–3 km/h</td><td>Conservative return-leg planning</td></tr></table>
+<ul><li>Use the slowest paddler's speed for group planning.</li><li>Add breaks and portages as separate time, not as rounding.</li><li>Check wind, tide, and river level on the morning of the trip.</li><li>Agree regrouping points and a bail-out option before launching.</li><li>Finish well before dark, and carry a headlamp regardless.</li><li>Tell someone ashore your route and expected finish time.</li></ul>
+<p>Used well, a trip-time estimate is not about rushing. It is about giving the day a shape: a launch time, a lunch spot, a latest finish, and enough slack that a slow stretch or a beautiful detour does not turn into a problem. Calculate conservatively, paddle happily, and let the river set the pace.</p><p>One last habit separates smooth trips from stressful ones: a quick debrief at the take-out. Note the actual finish time against the calculated time, the wind and current you met, and any portage that took longer than expected. Over a season, those notes become your personal speed table, far more accurate than any generic figure, because they reflect your boat, your group, and your local rivers. Share the notes with regular paddling partners so the whole group plans from the same experience. Good planning is a loop, not a single calculation, and each trip makes the next estimate a little sharper.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How fast does an average kayaker paddle?</summary><p>A recreational paddler averages about four to six kilometres per hour on flat water over a full day, with canoes typically a little slower.</p></details>
+<details><summary>Should I count breaks in trip time?</summary><p>Yes. Breaks, lunch, and portages are real time, and leaving them out is the most common reason trips finish late.</p></details>
+<details><summary>How does river current change trip time?</summary><p>Downstream current adds to your speed over the ground, while upstream current subtracts from it. A return leg against the flow can take far longer than the way out.</p></details>
+<details><summary>What speed should I use for a group?</summary><p>Use the slowest paddler's comfortable speed. Group pace is set by the slowest boat, not the fastest.</p></details>
+<details><summary>How much buffer time should I add?</summary><p>For an unfamiliar route, add at least twenty to thirty percent on top of the calculated time, and plan to finish well before dark.</p></details>
+<details><summary>Is wind really that important on a lake?</summary><p>Yes. A headwind can halve your speed on open water, and wind that builds during the day can make the return leg much harder.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PaddleTrip</div>
+    <p>PaddleTrip turns distance and speed into a realistic trip time for canoe and kayak days.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(dist,speed,breakMin){if(dist<=0||speed<=0)return{paddle:0,total:0};var p=dist/speed;var t=p+breakMin/60;return{paddle:Math.round(p*100)/100,total:Math.round(t*100)/100};}
+function run(){var r=compute(+document.getElementById('dist').value,+document.getElementById('speed').value,+document.getElementById('brk').value);document.getElementById('result').innerHTML='<p class="big">'+r.total+' hours total</p><p>'+r.paddle+' hours paddling + breaks</p><p class="muted">Launch by 9:00 and you finish around '+(9+r.total).toFixed(1)+':00 on this plan.</p>';window._last='PaddleTrip: '+r.total+' hours total ('+r.paddle+' h paddling)';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Gentle day: 12 km',[12,4,30]],['Full day: 20 km',[20,5,60]],['Slow group: 8 km',[8,3,45]]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){var v=P[+b.dataset.i][1];document.getElementById('dist').value=v[0];document.getElementById('speed').value=v[1];document.getElementById('brk').value=v[2];run();};});
+run();
+</script>
+</body>
+</html>
