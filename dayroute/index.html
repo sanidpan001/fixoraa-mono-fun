@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trip Itinerary Day Planner — Balance Sights Across Days | DayRoute</title>
+<meta name="description" content="Free trip day planner: add your sights with durations and auto-balance them into realistic days with time budgets. Copy, print, no signup.">
+<link rel="canonical" href="https://fun.fixoraa.tech/dayroute/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Trip Itinerary Day Planner — Balance Sights Across Days | DayRoute">
+<meta property="og:description" content="Free trip day planner: add your sights with durations and auto-balance them into realistic days with time budgets. Copy, print, no signup.">
+<meta property="og:url" content="https://fun.fixoraa.tech/dayroute/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "DayRoute",
+      "url": "https://fun.fixoraa.tech/dayroute/",
+      "applicationCategory": "Travel Tools",
+      "operatingSystem": "Web",
+      "description": "Free trip day planner: add your sights with durations and auto-balance them into realistic days with time budgets. Copy, print, no signup.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many attractions should I plan per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most travelers, 2\u20133 major sights (anchors) plus a few small fillers, totaling 5\u20137 hours of structured sightseeing. More than that consistently leads to mid-trip burnout \u2014 pace beats volume."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I split my sightseeing list across days?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add each stop with a realistic door-to-door duration, set your daily sightseeing hours, and the tool distributes stops into balanced days. Then reorder each day geographically and move stops between days to taste."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should I budget per attraction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter door-to-door time: time inside the attraction plus transit, queues and a 15-minute buffer. A '2-hour museum' is really about 2h45m. Pre-booking timed entry removes most queue time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I group sights by area or by type?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cluster by neighborhood, not by theme \u2014 grouping nearby sights cuts transit dramatically. After auto-balancing, reorder each day's stops into a sensible walking route and swap cross-town stops between days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should I pace a multi-day trip?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Day one light (one anchor \u2014 it is for orientation and jet lag), heaviest days in the middle when energy peaks, and a flexible final day as a buffer for anything that slipped. On trips over a week, add a rest half-day every 4\u20135 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my itinerary save if I close the page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 your plan autosaves to this browser as you build it, so you can close the tab and come back. Use the copy button for a text version to share, or print for an offline one-page-per-day copy."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F3F7E9; --surface:#FFFFFF; --accent:#4D7C0F; --accent-ink:#FFFFFF;
+  --ink:#243013; --muted:#5F6B4A; --line:#DDE5C8;
+  --display:'Outfit',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.dr-wrap{font-family:'Outfit',Inter,system-ui,sans-serif;background:linear-gradient(180deg,#F3F7E9 0%,#EAF0D8 100%);color:#243013;padding:60px 20px 80px;}.dr-inner{max-width:1080px;margin:0 auto;}.dr-head{text-align:center;margin-bottom:32px;}.dr-logo{font-size:54px;}.dr-head h1{font-size:clamp(34px,5.2vw,54px);font-weight:700;letter-spacing:-.01em;margin:14px 0 10px;line-height:1.05;}.dr-tag{color:#5F6B4A;font-size:18px;margin:0;font-family:Inter,system-ui,sans-serif;}.dr-tray{background:#fff;border:1px solid #DDE5C8;border-radius:24px;padding:28px;box-shadow:0 18px 44px rgba(77,124,15,.10);max-width:820px;margin:0 auto;font-family:Inter,system-ui,sans-serif;}.dr-tray h2{font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:#4D7C0F;margin:0 0 16px;font-weight:700;}.dr-form{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}.dr-form input{padding:12px 14px;font-size:15.5px;border:2px solid #DDE5C8;border-radius:13px;font-family:inherit;color:#243013;}.dr-form input:focus{outline:none;border-color:#4D7C0F;}.dr-form input[name=nm]{flex:2;min-width:160px;}.dr-form input[name=du]{flex:0 0 96px;width:96px;text-align:center;}.dr-min{font-size:12.5px;color:#5F6B4A;align-self:center;margin-left:-4px;font-family:Inter,system-ui,sans-serif;}.dr-btn{background:#4D7C0F;color:#fff;border:none;border-radius:13px;padding:12px 22px;font-size:15.5px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;}.dr-btn:hover{filter:brightness(1.08);}.dr-btn.ghost{background:#fff;color:#4D7C0F;border:2px solid #4D7C0F;}.dr-btnrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:16px 0 6px;}.dr-btnrow label{font-size:13.5px;font-weight:700;color:#5F6B4A;display:flex;align-items:center;gap:8px;}.dr-btnrow input{width:74px;padding:10px 12px;font-size:15px;border:2px solid #DDE5C8;border-radius:12px;font-family:inherit;color:#243013;text-align:center;}.dr-presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}.dr-chip{background:#F3F7E9;border:1px solid #DDE5C8;border-radius:999px;padding:8px 15px;font-size:13.5px;cursor:pointer;color:#243013;font-family:inherit;}.dr-chip:hover{border-color:#4D7C0F;color:#4D7C0F;}.dr-stops{margin-top:14px;}.dr-stop{display:flex;align-items:center;gap:10px;background:#F8FAF0;border:1px solid #DDE5C8;border-radius:13px;padding:9px 14px;margin-bottom:8px;font-size:14.5px;}.dr-stop .nm{flex:1;font-weight:600;}.dr-stop .du{color:#5F6B4A;font-size:13.5px;white-space:nowrap;}.dr-stop button{border:none;background:#fff;border:1px solid #DDE5C8;border-radius:9px;width:30px;height:30px;cursor:pointer;color:#5F6B4A;font-size:14px;flex:0 0 auto;}.dr-stop button:hover{border-color:#4D7C0F;color:#4D7C0F;}.dr-stop button.del:hover{border-color:#B3261E;color:#B3261E;}.dr-empty{color:#8A9578;font-size:14px;text-align:center;padding:14px;}.dr-decksec{margin-top:44px;}.dr-decksec h3{font-size:25px;margin:0 0 6px;text-align:center;font-weight:700;}.dr-decksec p.sub{text-align:center;color:#5F6B4A;font-family:Inter,system-ui,sans-serif;font-size:15px;margin:0 0 20px;}.dr-deck{display:flex;gap:18px;overflow-x:auto;padding:12px 6px 24px;scroll-snap-type:x mandatory;align-items:stretch;}.dr-day{flex:0 0 290px;scroll-snap-align:start;background:#fff;border:1px solid #DDE5C8;border-radius:22px;padding:22px;box-shadow:0 16px 38px rgba(77,124,15,.12);font-family:Inter,system-ui,sans-serif;display:flex;flex-direction:column;transform:rotate(-.7deg);}.dr-day:nth-child(even){transform:rotate(.7deg);}.dr-day .dh{font-family:'Outfit',sans-serif;font-weight:800;font-size:19px;margin-bottom:2px;}.dr-day .dt{font-size:13px;color:#5F6B4A;margin-bottom:12px;}.dr-meter{height:10px;background:#EBF0DC;border-radius:999px;overflow:hidden;margin-bottom:6px;}.dr-meter i{display:block;height:100%;border-radius:999px;background:#4D7C0F;transition:width .3s;}.dr-meter.warn i{background:#C98A0B;}.dr-meter.over i{background:#B3261E;}.dr-mcap{font-size:12.5px;color:#5F6B4A;margin-bottom:12px;}.dr-dstop{background:#F8FAF0;border:1px solid #E4EACF;border-radius:11px;padding:9px 12px;margin-bottom:8px;font-size:14px;}.dr-dstop .t{font-weight:600;}.dr-dstop .mv{display:flex;gap:6px;margin-top:8px;}.dr-dstop .mv button{flex:1;border:1px solid #DDE5C8;background:#fff;border-radius:8px;padding:6px;font-size:12px;cursor:pointer;color:#5F6B4A;font-family:inherit;}.dr-dstop .mv button:hover{border-color:#4D7C0F;color:#4D7C0F;}.dr-dstop .rm{width:100%;margin-top:6px;}.dr-actions{display:flex;gap:10px;justify-content:center;margin-top:8px;flex-wrap:wrap;}.dr-foot{text-align:center;font-family:Inter,system-ui,sans-serif;color:#5F6B4A;font-size:13px;margin-top:26px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.6;}@media (max-width:640px){.dr-tray{padding:20px 16px;}.dr-day{flex-basis:250px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="DayRoute home">
+      <span class="fx-logo-tile" aria-hidden="true">🗺️</span>
+      <span class="fx-brand">DayRoute</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-deck-stack" aria-label="DayRoute tool">
+<section class='dr-wrap'><div class='dr-inner'><div class='dr-head'><div class='dr-logo' aria-hidden='true'>🗺️</div><h1>Trip Itinerary Day Planner</h1><p class='dr-tag'>Too many sights, too few days? Drop in your stops — DayRoute balances them into perfect days.</p></div><div class='dr-tray'><h2>Your stops</h2><div class='dr-form'><input type='text' name='nm' id='dr-name' placeholder='Stop name — e.g. Old Town walking tour' aria-label='Stop name'><input type='number' name='du' id='dr-dur' value='120' min='15' max='720' step='15' aria-label='Duration in minutes'><span class='dr-min'>mins</span><button class='dr-btn' id='dr-add' type='button'>Add stop</button></div><div class='dr-presets' id='dr-presets'></div><div class='dr-stops' id='dr-stops'></div><div class='dr-btnrow'><button class='dr-btn' id='dr-balance' type='button' style='flex:1;min-width:200px'>⚖️ Auto-balance into days</button><label>Sightseeing hrs/day <input type='number' id='dr-hours' value='7' min='2' max='14' step='0.5'></label></div><div class='dr-actions'><button class='dr-btn ghost' id='dr-copy' type='button'>Copy itinerary</button><button class='dr-btn ghost' id='dr-print' type='button'>Print</button><button class='dr-btn ghost' id='dr-clear' type='button'>Start over</button></div></div><div class='dr-decksec'><h3>Your days</h3><p class='sub'>Green means breathing room — red means move a stop. Swipe through the deck.</p><div class='dr-deck' id='dr-deck'><p class='sub' id='dr-deck-empty' style='padding:30px'>Add stops above, then hit “Auto-balance into days”.</p></div></div><p class='dr-foot'>Durations should be door-to-door: time inside plus transit, queues and a buffer. Your plan autosaves in this browser.</p></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The Real Question: How Much Fits in a Day?</h2><p>Every trip plan collapses at the same point: a list of thirty “must-see” sights and five days to see them. Most itinerary tools make you drag those sights onto days one by one, which answers the wrong question. The question is not <em>where</em> each sight goes — it is <em>how many days the list actually needs</em>, and whether any single day is overloaded. DayRoute answers that directly: give it your stops and their durations, set how many hours a day you actually want to spend sightseeing, and it balances the list into days with a visible time budget for each.</p><p>The honest math surprises most planners. A “full sightseeing day” is rarely more than 6–8 hours of actual attraction time once meals, transit, queues and rest are accounted for. A list that looks like “three easy days” at two hours per sight is really five days the moment you add the hour of transit between sights and the ninety minutes lunch actually takes. Budgeting in honest hours is the difference between a trip that flows and one that sprints.</p><h2>The 2–3 Anchor Rule</h2><p>Experienced travelers plan days around <strong>two or three anchors</strong>: the big-ticket sights that define the day, each taking 2–3 hours. Everything else — the viewpoint, the market stroll, the café — fills the gaps around them. Days built this way have a natural rhythm (anchor, wander, anchor, dinner) and survive disruption: if the morning anchor runs long, you drop a filler, not another anchor.</p><p>The failure mode is the six-anchor day: six “unmissable” sights back to back, each with transit and queues, totaling eleven hours before dinner. It looks ambitious on paper and feels like a forced march by 3 PM. When the balancer on this page shows a day meter in the red, it is telling you the day has too many anchors — move one to tomorrow and watch both days turn green.</p><h2>Time Budgeting: The Honest Hours</h2><p>Set your daily sightseeing hours <em>below</em> what you think you can do. The research-backed pattern: tourists consistently overestimate their stamina by 30–40% on days 1–2, then crash mid-trip. A sustainable pace is 5–7 hours of structured sightseeing for most travelers, 7–9 for the energetic, with one deliberately light day per week on longer trips.</p><p>Inside those hours, budget three invisible taxes. <strong>Transit</strong>: 20–45 minutes between sights in a city, more for day trips — cluster geographically and the tax shrinks. <strong>Queues and entry</strong>: popular sights add 30–90 minutes of waiting unless you pre-book timed entry (do this; it is the highest-ROI planning move). <strong>Recovery</strong>: fifteen unplanned minutes per sight for photos, bathrooms, coffee and simply standing still. A “2-hour museum” is really 2h45m door to door. The durations you enter should be door-to-door, not just “time inside.”</p><h2>Geography Beats Chronology</h2><p>The single biggest efficiency gain in day planning is <strong>clustering by neighborhood, not by theme</strong>. All the museums on Tuesday and all the viewpoints on Wednesday feels organized but wastes hours crossing the city twice. Grouping by district — everything in the old town Monday morning, everything riverside Monday afternoon — can cut daily transit by half.</p><p>The balancer distributes by time, which is the right first cut; your second pass is geographic. Look at each generated day and reorder its stops into a sensible walking route. If two stops on the same day are across town from each other, swap one with a stop from another day. Ten minutes of this reordering typically saves an hour of transit per day.</p><h2>Pacing Across the Trip</h2><p>Front-load the trip correctly: <strong>day one light, heaviest days in the middle, last day easy</strong>. Day one is jet lag, orientation and logistics — schedule one anchor, not three. Days two through four (or the middle of a long trip) are peak energy: this is where the big sights go. The final full day should be flexible — the sights you missed, the neighborhood you want to revisit, the souvenir run — because something always slips, and a buffer day absorbs it gracefully instead of turning it into a crisis.</p><p>On trips longer than a week, schedule a <strong>rest half-day every 4–5 days</strong>: sleep in, one sight, a long lunch. Travelers who do this report enjoying their trips more and remembering them better; the science on memory consolidation agrees — the brain files experiences during downtime, and a sprint leaves blurrier memories than a paced journey.</p><h2>Food Is an Attraction</h2><p>The most common planning error after overstuffing is treating meals as logistics. In most destinations worth visiting, food is a primary attraction — and it is also non-negotiable downtime. Budget <strong>90 minutes for lunch and two hours for dinner</strong> when the cuisine matters to you, and place meals geographically: lunch near the morning's last sight, dinner near the evening's. A well-placed long lunch is also the cheapest rest stop in travel — air conditioning, a chair, and no ticket queue.</p><h2>Solo vs. Group: Planning for Different Parties</h2><p>The same itinerary behaves differently with different parties. <strong>Solo travelers</strong> move fastest — no consensus needed, no stragglers — and can sustain the upper end of daily hours; the risk is overpacking days because there is nobody to object. If you travel solo, deliberately schedule the rest half-days, because nobody will suggest them for you. <strong>Couples</strong> need the 2–3 anchor structure most, since anchor choices are where taste differences surface; agree on the anchors, stay flexible on fillers.</p><p><strong>Groups and families</strong> move at the speed of the slowest member — budget 20% fewer sightseeing hours than you think, and make every day's plan public the night before so there are no morning negotiations. With kids, the anchor rule inverts: one anchor per day, everything else optional, and the day's success is measured in moods, not sights. With older travelers, cluster tightly, sit often, and treat the afternoon rest as sacred. The balancer's hours-per-day setting is where you encode all of this: 8 for the solo sprinter, 5 for the family with a toddler.</p><h2>When the Plan Meets Reality: The Daily Reset</h2><p>No itinerary survives contact with the trip unchanged — rain, closures, a museum so good you stay three extra hours, a neighborhood so charming you abandon the plan entirely. The pros do a <strong>five-minute reset each evening</strong>: look at tomorrow's day card, move one stop if needed, and confirm opening hours for the morning anchor. That tiny ritual is what keeps a plan useful instead of decorative.</p><p>Build the plan to be rescheduled, not just scheduled. Keep a “parking lot” — sights with no assigned day — for the overflow the balancer could not fit; they become the flexible final day or the next trip's seed list. And remember the hierarchy: the plan serves the trip, never the reverse. The best-planned day of a trip is often the one where you threw the plan away by noon — but you can only throw away a plan you had, and the good days are the ones where the discarded plan had already put you in the right neighborhood.</p><h2>Using the Day Meters</h2><p>Each day card on this page shows a time meter: hours assigned versus your daily budget. Green means breathing room, amber means full, red means overloaded. Treat amber as the target and green as a gift — a day at 80% of budget absorbs the delays that every trip produces. A day at 110% does not need “trying harder”; it needs one stop moved. The up/down controls let you rebalance by hand after the auto-balance, because you know things the algorithm does not: that the sunset viewpoint must be day three, that the museum is closed Mondays, that you would rather do the long day trip on the sunny day.</p><p>When the whole plan is green, copy it or print it. A one-page-per-day printout — stops, durations, running total — is the most reliable travel document ever invented: no battery, no signal, no app updates required.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many attractions should I plan per day?</summary><p>For most travelers, 2–3 major sights (anchors) plus a few small fillers, totaling 5–7 hours of structured sightseeing. More than that consistently leads to mid-trip burnout — pace beats volume.</p></details>
+<details><summary>How do I split my sightseeing list across days?</summary><p>Add each stop with a realistic door-to-door duration, set your daily sightseeing hours, and the tool distributes stops into balanced days. Then reorder each day geographically and move stops between days to taste.</p></details>
+<details><summary>How long should I budget per attraction?</summary><p>Enter door-to-door time: time inside the attraction plus transit, queues and a 15-minute buffer. A '2-hour museum' is really about 2h45m. Pre-booking timed entry removes most queue time.</p></details>
+<details><summary>Should I group sights by area or by type?</summary><p>Cluster by neighborhood, not by theme — grouping nearby sights cuts transit dramatically. After auto-balancing, reorder each day's stops into a sensible walking route and swap cross-town stops between days.</p></details>
+<details><summary>How should I pace a multi-day trip?</summary><p>Day one light (one anchor — it is for orientation and jet lag), heaviest days in the middle when energy peaks, and a flexible final day as a buffer for anything that slipped. On trips over a week, add a rest half-day every 4–5 days.</p></details>
+<details><summary>Does my itinerary save if I close the page?</summary><p>Yes — your plan autosaves to this browser as you build it, so you can close the tab and come back. Use the copy button for a text version to share, or print for an offline one-page-per-day copy.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">DayRoute</div>
+    <p>DayRoute turns a pile of must-see stops into balanced travel days — add attractions with durations, set your daily hours, and get day-by-day plans with time-budget meters.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function daysNeeded(durations,minutesPerDay){var days=1,used=0;for(var i=0;i<durations.length;i++){var d=+durations[i];if(used+d>minutesPerDay&&used>0){days++;used=0;}used+=d;}return durations.length?days:0;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var nameI=document.getElementById('dr-name'),durI=document.getElementById('dr-dur'),add=document.getElementById('dr-add'),stopsBox=document.getElementById('dr-stops'),bal=document.getElementById('dr-balance'),hrsI=document.getElementById('dr-hours'),deck=document.getElementById('dr-deck');if(!add)return;var KEY='dr_plan';var stops=[];try{stops=JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){stops=[];}var PRESETS=[['3-day city break',[['Old town walking tour',180],['Cathedral & tower climb',120],['Riverside museum',150],['Food market lunch crawl',120],['Viewpoint at sunset',90],['Modern art gallery',120],['Castle & gardens',180],['Local cooking class',150]]],['Museum-heavy weekend',[['National museum',180],['Contemporary wing',120],['Historic house tour',90],['Gallery quarter stroll',120],['Science museum',150]]],['Nature escape',[['Waterfall hike',240],['Lake viewpoint picnic',120],['Botanical gardens',120],['Sunset ridge walk',90]]]];var presBox=document.getElementById('dr-presets');PRESETS.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='dr-chip';b.textContent=p[0];b.addEventListener('click',function(){stops=p[1].map(function(x){return{n:x[0],d:x[1]};});save();renderStops();balance();});presBox.appendChild(b);});function save(){try{localStorage.setItem(KEY,JSON.stringify(stops));}catch(e){}}function fmt(m){var h=Math.floor(m/60),mm=m%60;return(h?h+'h ':'')+mm+'m';}function renderStops(){stopsBox.innerHTML='';if(!stops.length){stopsBox.innerHTML='<div class="dr-empty">No stops yet — add your first one above.</div>';return;}stops.forEach(function(s,i){var d=document.createElement('div');d.className='dr-stop';d.innerHTML='<span class="nm">'+s.n+'</span><span class="du">'+fmt(s.d)+'</span><button aria-label="Move up">▲</button><button aria-label="Move down">▼</button><button class="del" aria-label="Remove">✕</button>';var bs=d.querySelectorAll('button');bs[0].addEventListener('click',function(){if(i>0){var t=stops[i-1];stops[i-1]=stops[i];stops[i]=t;save();renderStops();}});bs[1].addEventListener('click',function(){if(i<stops.length-1){var t=stops[i+1];stops[i+1]=stops[i];stops[i]=t;save();renderStops();}});bs[2].addEventListener('click',function(){stops.splice(i,1);save();renderStops();});stopsBox.appendChild(d);});}function perDay(){return Math.max(60,Math.round((parseFloat(hrsI.value)||7)*60));}function balance(){var pd=perDay();var days=[];stops.forEach(function(s){var placed=false;for(var i=0;i<days.length;i++){var tot=days[i].reduce(function(a,b){return a+b.d;},0);if(tot+s.d<=pd){days[i].push(s);placed=true;break;}}if(!placed)days.push([s]);});renderDeck(days,pd);}function renderDeck(days,pd){deck.innerHTML='';if(!days.length){deck.innerHTML='<p class="sub" style="padding:30px">Add stops above, then hit “Auto-balance into days”.</p>';return;}days.forEach(function(day,i){var tot=day.reduce(function(a,b){return a+b.d;},0);var pct=Math.min(100,Math.round(tot/pd*100));var cls=tot>pd?'over':(tot>pd*0.85?'warn':'');var card=document.createElement('div');card.className='dr-day';var inner='<div class="dh">Day '+(i+1)+'</div><div class="dt">'+day.length+' stops</div><div class="dr-meter '+cls+'"><i style="width:'+pct+'%"></i></div><div class="dr-mcap">'+fmt(tot)+' of '+fmt(pd)+(tot>pd?' — over by '+fmt(tot-pd):' — '+fmt(pd-tot)+' spare')+'</div>';day.forEach(function(s){inner+='<div class="dr-dstop"><div class="t">'+s.n+'</div><div style="font-size:12.5px;color:#5F6B4A">'+fmt(s.d)+'</div><div class="mv"><button data-m="-1">← Prev day</button><button data-m="1">Next day →</button></div><button class="rm" data-m="x">Remove</button></div>';});card.innerHTML=inner;var btns=card.querySelectorAll('button');btns.forEach(function(b){b.addEventListener('click',function(){var m=b.getAttribute('data-m');var dstop=b.closest('.dr-dstop');var title=dstop.querySelector('.t').textContent;if(m==='x'){for(var k=stops.length-1;k>=0;k--){if(stops[k].n===title){stops.splice(k,1);break;}}}else{moveStop(b,m);}save();renderStops();balance();});});deck.appendChild(card);});}add.addEventListener('click',function(){var n=nameI.value.trim()||('Stop '+(stops.length+1));var d=Math.max(15,Math.min(720,parseInt(durI.value)||60));stops.push({n:n,d:d});nameI.value='';nameI.focus();save();renderStops();});nameI.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();add.click();}});bal.addEventListener('click',balance);hrsI.addEventListener('change',function(){if(deck.children.length&&stops.length)balance();});document.getElementById('dr-copy').addEventListener('click',function(){var pd=perDay();var days=[];stops.forEach(function(s){var placed=false;for(var i=0;i<days.length;i++){var tot=days[i].reduce(function(a,b){return a+b.d;},0);if(tot+s.d<=pd){days[i].push(s);placed=true;break;}}if(!placed)days.push([s]);});var t='Trip itinerary ('+days.length+' days):\n';days.forEach(function(day,i){t+='\nDay '+(i+1)+':\n';day.forEach(function(s){t+='• '+s.n+' — '+fmt(s.d)+'\n';});});if(navigator.clipboard)navigator.clipboard.writeText(t);var b=document.getElementById('dr-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy itinerary';},1500);});document.getElementById('dr-print').addEventListener('click',function(){window.print();});document.getElementById('dr-clear').addEventListener('click',function(){if(confirm('Clear all stops?')){stops=[];save();renderStops();deck.innerHTML='<p class="sub" style="padding:30px">Add stops above, then hit “Auto-balance into days”.</p>';}});function moveStop(btn,m){var card=btn.closest('.dr-day');var cards=Array.prototype.slice.call(deck.querySelectorAll('.dr-day'));var di=cards.indexOf(card);var dstop=btn.closest('.dr-dstop');var title=dstop.querySelector('.t').textContent;var si=-1;for(var i=0;i<stops.length;i++){if(stops[i].n===title){si=i;break;}}if(si<0)return;var s=stops[si];var ti=di+(m==='1'?1:-1);if(ti<0||ti>=cards.length)return;var td=cards[ti].querySelectorAll('.dr-dstop').length;var order=[];cards.forEach(function(c,ci){var arr=[];c.querySelectorAll('.dr-dstop .t').forEach(function(t){arr.push(t.textContent);});order.push(arr);});var src=order[di].indexOf(title);order[di].splice(src,1);if(m==='1')order[ti].push(title);else order[ti].unshift(title);var map={};stops.forEach(function(x){map[x.n]=x;});stops=[];order.forEach(function(arr){arr.forEach(function(t){if(map[t])stops.push(map[t]);});});}renderStops();if(stops.length)balance();});}
+</script>
+</body>
+</html>
