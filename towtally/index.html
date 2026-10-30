@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Towing Capacity Calculator — Check All 3 Limits | TowTally</title>
+<meta name="description" content="Towing capacity calculator: check your trailer against tow rating, GCWR and payload limits, with tongue-weight math and the 80% safety rule. Free.">
+<link rel="canonical" href="https://fun.fixoraa.tech/towtally/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Towing Capacity Calculator — Check All 3 Limits | TowTally">
+<meta property="og:description" content="Towing capacity calculator: check your trailer against tow rating, GCWR and payload limits, with tongue-weight math and the 80% safety rule. Free.">
+<meta property="og:url" content="https://fun.fixoraa.tech/towtally/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "TowTally",
+      "url": "https://fun.fixoraa.tech/towtally/",
+      "applicationCategory": "Automotive Tools",
+      "operatingSystem": "Web",
+      "description": "Towing capacity calculator: check your trailer against tow rating, GCWR and payload limits, with tongue-weight math and the 80% safety rule. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate my real towing capacity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The smallest of three numbers: (1) the manufacturer's max tow rating, (2) GCWR minus your loaded truck weight, and (3) (payload \u2212 passengers \u2212 cargo) \u00f7 tongue-weight %. Most owners are limited by payload, not the headline tow rating. TowTally computes all three."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should my trailer's tongue weight be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "10\u201315% of the loaded trailer's weight for a conventional bumper-pull trailer (12% is the standard estimate). Too little causes dangerous sway; too much unloads the steering axle. Fifth-wheels run 15\u201325%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does tongue weight count against payload?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because tongue weight presses down on the hitch, it rides on the truck \u2014 so it consumes payload capacity, not towing capacity. A 1,200-lb tongue weight on a truck with 1,500 lb of payload leaves only 300 lb for people and gear."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is GCWR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GCWR (Gross Combined Weight Rating) is the maximum weight of the entire rig \u2014 truck, passengers, cargo and loaded trailer combined. Your trailer allowance under GCWR is GCWR minus your loaded truck's weight. Find it on the door-jamb certification label."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 80% towing rule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 80% rule says to tow at no more than 80% of any rated limit, keeping margin for hills, wind, heat and extra gear. TowTally flags anything over 80% as Caution even when it technically passes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I trust a towing calculator completely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 a calculator gives estimates from the ratings you enter. Verify every rating on your door-jamb label and owner's manual, weigh the loaded rig on a CAT scale for real numbers, and never exceed a manufacturer limit. When in doubt, a professional hitch setup is worth it."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F1F6F0; --surface:#FFFFFF; --accent:#2F6B3A; --accent-ink:#FFFFFF;
+  --ink:#1C2B21; --muted:#55665A; --line:#D5E2D6;
+  --display:'Bricolage Grotesque',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.tt-wrap{font-family:'Bricolage Grotesque',Inter,system-ui,sans-serif;background:#F1F6F0;color:#1C2B21;padding:56px 20px 72px;}.tt-inner{max-width:1020px;margin:0 auto;}.tt-hero{display:flex;gap:26px;align-items:center;margin-bottom:30px;flex-wrap:wrap;}.tt-badge{width:92px;height:92px;border-radius:28px;background:#2F6B3A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:48px;flex-shrink:0;box-shadow:0 14px 30px rgba(47,107,58,.25);transform:rotate(-4deg);}.tt-inner h1{font-size:clamp(32px,4.6vw,50px);font-weight:800;letter-spacing:-.02em;margin:0 0 8px;line-height:1.05;}.tt-tag{color:#55665A;font-size:18px;margin:0;font-family:Inter,system-ui,sans-serif;}.tt-grid{display:grid;grid-template-columns:380px 1fr;gap:22px;align-items:start;}@media(max-width:900px){.tt-grid{grid-template-columns:1fr;}}.tt-card{background:#FFFFFF;border:1px solid #D5E2D6;border-radius:20px;padding:26px 24px;box-shadow:0 16px 40px rgba(47,107,58,.07);}.tt-card h2{font-size:17px;margin:0 0 4px;font-weight:800;}.tt-sub{color:#55665A;font-size:13.5px;margin:0 0 18px;font-family:Inter,system-ui,sans-serif;}.tt-field{margin-bottom:14px;font-family:Inter,system-ui,sans-serif;}.tt-field label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#55665A;margin-bottom:7px;}.tt-inrow{display:flex;gap:8px;}.tt-inrow input{flex:1;min-width:0;padding:11px 13px;font-size:17px;font-weight:600;border:2px solid #D5E2D6;border-radius:12px;font-family:inherit;color:#1C2B21;}.tt-inrow input:focus{outline:none;border-color:#2F6B3A;}.tt-unit{display:flex;border:2px solid #D5E2D6;border-radius:12px;overflow:hidden;flex-shrink:0;}.tt-unit button{border:none;background:#fff;padding:11px 13px;font-size:13.5px;font-weight:700;cursor:pointer;color:#55665A;font-family:inherit;}.tt-unit button.on{background:#2F6B3A;color:#fff;}.tt-toggle{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#1C2B21;cursor:pointer;}.tt-toggle input{width:20px;height:20px;accent-color:#2F6B3A;}.tt-verdict{border-radius:18px;padding:20px 22px;margin-bottom:20px;font-family:Inter,system-ui,sans-serif;border:2px solid;}.tt-verdict.safe{background:#EDF7EF;border-color:#2F6B3A;}.tt-verdict.caution{background:#FFF8E6;border-color:#B45309;}.tt-verdict.over{background:#FDECEC;border-color:#B91C1C;}.tt-verdict .vh{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:800;margin:0 0 6px;}.tt-verdict.safe .vh{color:#2F6B3A;}.tt-verdict.caution .vh{color:#B45309;}.tt-verdict.over .vh{color:#B91C1C;}.tt-verdict p{margin:0;font-size:14.5px;color:#1C2B21;}.tt-zones{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}@media(max-width:640px){.tt-zones{grid-template-columns:1fr;}}.tt-zone{background:#FFFFFF;border:1px solid #D5E2D6;border-radius:16px;padding:18px 16px;font-family:Inter,system-ui,sans-serif;}.tt-zone h3{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin:0 0 4px;color:#1C2B21;}.tt-zone .zv{font-size:22px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;}.tt-meter{height:12px;border-radius:999px;background:#E7EFE8;margin:12px 0 8px;overflow:hidden;}.tt-meter i{display:block;height:100%;border-radius:999px;background:#2F6B3A;transition:width .4s ease;}.tt-meter.warn i{background:#D97706;}.tt-meter.bad i{background:#DC2626;}.tt-zone .zp{font-size:12.5px;color:#55665A;line-height:1.55;}.tt-hitch{width:100%;border-collapse:collapse;font-size:13.5px;font-family:Inter,system-ui,sans-serif;margin-top:8px;}.tt-hitch th,.tt-hitch td{padding:9px 8px;border-bottom:1px solid #D5E2D6;text-align:left;}.tt-hitch th{color:#2F6B3A;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;}.tt-note{margin-top:16px;font-size:13px;color:#55665A;font-family:Inter,system-ui,sans-serif;line-height:1.6;}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="TowTally home">
+      <span class="fx-logo-tile" aria-hidden="true">🛻</span>
+      <span class="fx-brand">TowTally</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-atlas-map" aria-label="TowTally tool">
+<section class='tt-wrap'><div class='tt-inner'><div class='tt-hero'><div class='tt-badge' aria-hidden='true'>🛻</div><div><h1>Towing Capacity Checker</h1><p class='tt-tag'>Three limits, one honest answer — can your rig tow it?</p></div></div><div class='tt-grid'><div class='tt-card'><h2>Your rig</h2><p class='tt-sub'>From the door-jamb label &amp; owner's manual.</p><div class='tt-field'><label>Units</label><div class='tt-unit' role='group' aria-label='Units'><button id='tt-lb' class='on' type='button'>lb</button><button id='tt-kg' type='button'>kg</button></div></div><div class='tt-field'><label for='tt-gcwr'>GCWR — max combined weight</label><div class='tt-inrow'><input type='number' id='tt-gcwr' value='18500' min='0' inputmode='decimal'></div></div><div class='tt-field'><label for='tt-curb'>Truck curb weight</label><div class='tt-inrow'><input type='number' id='tt-curb' value='5200' min='0' inputmode='decimal'></div></div><div class='tt-field'><label for='tt-load'>People + cargo in the truck</label><div class='tt-inrow'><input type='number' id='tt-load' value='600' min='0' inputmode='decimal'></div></div><div class='tt-field'><label for='tt-rating'>Max tow rating (manufacturer)</label><div class='tt-inrow'><input type='number' id='tt-rating' value='13000' min='0' inputmode='decimal'></div></div><div class='tt-field'><label for='tt-payload'>Payload capacity</label><div class='tt-inrow'><input type='number' id='tt-payload' value='2350' min='0' inputmode='decimal'></div></div><div class='tt-field'><label for='tt-trailer'>Trailer loaded weight</label><div class='tt-inrow'><input type='number' id='tt-trailer' value='9000' min='0' inputmode='decimal'></div></div><div class='tt-field'><label class='tt-toggle'><input type='checkbox' id='tt-auto' checked> Auto tongue weight (12%)</label></div><div class='tt-field' id='tt-tonguewrap' style='display:none;'><label for='tt-tongue'>Tongue weight (measured)</label><div class='tt-inrow'><input type='number' id='tt-tongue' value='1080' min='0' inputmode='decimal'></div></div></div><div><div class='tt-verdict safe' id='tt-verdict'><p class='vh' id='tt-vh'>—</p><p id='tt-vp'></p></div><div class='tt-zones'><div class='tt-zone'><h3>Tow rating zone</h3><div class='zv' id='tt-z1v'>–</div><div class='tt-meter' id='tt-z1m'><i style='width:0%'></i></div><p class='zp' id='tt-z1p'></p></div><div class='tt-zone'><h3>GCWR zone</h3><div class='zv' id='tt-z2v'>–</div><div class='tt-meter' id='tt-z2m'><i style='width:0%'></i></div><p class='zp' id='tt-z2p'></p></div><div class='tt-zone'><h3>Payload zone</h3><div class='zv' id='tt-z3v'>–</div><div class='tt-meter' id='tt-z3m'><i style='width:0%'></i></div><p class='zp' id='tt-z3p'></p></div></div><div class='tt-card' style='margin-top:20px;'><h2>Hitch class reference</h2><p class='ss-sub tt-sub'>The weakest component sets the limit.</p><div style='overflow-x:auto;'><table class='tt-hitch'><thead><tr><th>Class</th><th>Max trailer</th><th>Max tongue</th></tr></thead><tbody><tr><td>I</td><td>2,000 lb</td><td>200 lb</td></tr><tr><td>II</td><td>3,500 lb</td><td>350 lb</td></tr><tr><td>III</td><td>5,000 lb (8,000 w/ WD)</td><td>500 lb</td></tr><tr><td>IV</td><td>10,000 lb (14,000 w/ WD)</td><td>1,000 lb</td></tr><tr><td>V</td><td>20,000 lb</td><td>2,700 lb</td></tr></tbody></table></div><p class='tt-note'>WD = weight distribution. Verify every rating on your door-jamb certification label — never exceed a manufacturer limit. Estimates only; weigh the loaded rig on a CAT scale for real numbers.</p></div></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The Brochure Number Is Not Your Towing Capacity</h2><p>Every pickup ad shouts a maximum tow rating — 10,000 lb! 13,000 lb! — and almost nobody can actually tow that number. The brochure figure assumes a base truck, one 150-lb driver, no cargo, no options, and ideal conditions. Your real towing capacity is the <strong>smallest</strong> trailer weight allowed by three separate limits, and for most owners the binding limit is not the famous one. This tool checks all three at once, because a setup that passes the tow rating but fails payload or GCWR is still overloaded — and overloaded is both illegal and dangerous.</p><h2>The Three Limits That Matter</h2><h3>1. The tow rating (GTWR)</h3><p>The manufacturer's maximum trailer weight for your exact configuration. This is the number everyone quotes, and it is a genuine hard limit — but it is only one of three.</p><h3>2. GCWR — Gross Combined Weight Rating</h3><p>The maximum allowed weight of the <em>entire rig</em>: truck + passengers + cargo + loaded trailer, all together. Your GCWR limit on trailer weight is <strong>GCWR − your loaded truck weight</strong>. Note that tongue weight is not subtracted twice here — it is already part of the trailer's loaded weight, which is part of the combination.</p><h3>3. Payload and the tongue-weight trap</h3><p>This is the limit that surprises people. Tongue weight — the downward force of the trailer coupler on your hitch — rides on the <em>truck</em>, so it counts against payload, not towing capacity. A truck rated to tow 10,000 lb may only have 1,500 lb of payload. If passengers and gear already use 600 lb, only 900 lb of tongue weight remains — and at 12% tongue weight, that caps the trailer at 7,500 lb, far below the headline rating. Your payload limit on trailer weight is roughly <strong>(payload − passengers − cargo) ÷ tongue-weight %</strong>. For most half-ton trucks with a family aboard, payload is the binding limit.</p><p>Find all three ratings on the certification label inside your driver-side door jamb and in the owner's manual. TowTally's verdict is the minimum of the three — that is your true, safe towing capacity.</p><h2>Tongue Weight: The 10–15% Rule</h2><p>For a conventional bumper-pull trailer, tongue weight should be <strong>10–15% of the loaded trailer weight</strong> (use 12% if you are estimating). Too little tongue weight — under 10% — and the trailer becomes sway-prone; a gust of wind or a passing semi can start an oscillation that the driver cannot recover. Too much — over 15% — and the truck's front axle unloads, hurting steering and headlight aim while overloading the rear suspension. Fifth-wheel and gooseneck trailers run heavier: <strong>15–25%</strong> pin weight, which is why they tow so stably.</p><p>Always use the trailer's <em>loaded</em> weight, not the dry weight on the spec sheet. Water, propane, food, gear and options routinely add 20–40% over dry weight. The most honest number comes from a tongue-weight scale (about $150) or a trip across a CAT scale at a truck stop.</p><h2>The 80% Comfort Rule</h2><p>Legal is not the same as comfortable. Experienced towers derate the manufacturer's maximum by <strong>20%</strong> — towing at 80% of a limit leaves margin for hills, headwinds, altitude power loss, and the gear you will inevitably add later. TowTally flags anything above 80% of any limit as <em>Caution</em> even when it technically passes. A rig at 95% of its payload rating will tow; it just will not be pleasant on a mountain pass in August.</p><h2>Hitch Classes, Simply</h2><p>Your hitch receiver has its own rating, and the weakest component in the chain sets the limit:</p><ul><li><strong>Class I:</strong> up to 2,000 lb trailer / 200 lb tongue — small cars, bike racks.</li><li><strong>Class II:</strong> up to 3,500 / 350 — midsize crossovers, small utility trailers.</li><li><strong>Class III:</strong> up to 5,000 / 500 (8,000 with weight distribution) — the common SUV/truck hitch.</li><li><strong>Class IV:</strong> up to 10,000 / 1,000 (14,000 with weight distribution) — full-size trucks.</li><li><strong>Class V:</strong> up to 20,000 / 2,700 — heavy-duty trucks.</li></ul><p>A weight-distribution hitch does not increase your truck's ratings, but it spreads tongue weight across both axles, restoring front-axle load and sway control on heavier bumper-pull setups. Above about 5,000 lb of trailer, most manufacturers require one.</p><h2>Trailer Brakes and Sway Control</h2><p>Most states and provinces require trailer brakes above 3,000 lb (rules vary — check yours), and any trailer near your limits should have them regardless of law. A brake controller in the cab lets you tune trailer braking so the trailer neither pushes the truck nor drags. For sway, a friction or dual-cam sway-control device is cheap insurance on bumper-pull trailers, but remember: proper tongue weight prevents sway; devices only manage it.</p><h2>Weigh It: The CAT Scale Method</h2><p>The gold standard is three passes over a truck-stop scale (about $15 total): (1) truck + trailer loaded as for travel, with weight-distribution engaged; (2) truck + trailer without the distribution bars; (3) truck alone. From these you derive tongue weight, each axle's load, and total combination weight — real numbers instead of brochure guesses. Do it once when you buy the trailer and again whenever your loading changes substantially.</p><h2>Common Overloading Mistakes</h2><ul><li><strong>Counting dry weight.</strong> Loaded weight is what the law and physics see.</li><li><strong>Forgetting passengers and gear.</strong> Four adults and a bed full of firewood can erase 800 lb of capacity before the trailer is even hitched.</li><li><strong>Ignoring payload.</strong> The #1 cause of overloaded half-ton setups.</li><li><strong>Assuming the max tow package.</strong> Ratings vary hugely by engine, axle ratio, cab and drivetrain — verify your exact configuration.</li><li><strong>Skipping the 80% margin.</strong> Towing at 100% of a rating leaves no room for a mountain grade or a hot day.</li></ul><h2>SAE J2807: What the Rating Actually Tests</h2><p>Since the mid-2010s, major manufacturers rate light-duty tow capacity under <strong>SAE J2807</strong>, a standardized test including a launch on a 12% grade, acceleration benchmarks, and the brutal Davis Dam climb in 100°F heat with the air conditioning on full. That makes modern ratings far more honest than the old marketing numbers — but J2807 still assumes a properly equipped truck, correct hitch setup, and the driver respecting payload and GCWR. The standard made the headline number trustworthy; it did not make the other two limits disappear.</p><h2>Weight-Distribution Hitches, Explained</h2><p>A weight-distribution (WD) hitch uses spring bars to lever some of the tongue weight forward onto the truck's front axle and backward onto the trailer's axles. The effect is dramatic on heavy bumper-pull setups: steering feel returns, headlight aim corrects, and porpoising over bumps calms down. Most manufacturers <em>require</em> a WD hitch above 5,000 lb of trailer, and hitch ratings themselves reflect it — a Class III hitch rated 5,000/500 lb becomes 8,000/800 lb with weight distribution. But understand what it does not do: it does not increase your truck's GVWR, GCWR or tow rating by a single pound. It improves how the load is carried, not how much you may carry. Setup matters enormously — a poorly adjusted WD hitch can be worse than none — so have it dialed in on a scale or by a hitch professional, and re-check it whenever your loading changes.</p><h2>Sway: Causes and Cures</h2><p>Trailer sway — the side-to-side oscillation that can escalate into a jackknife — almost always starts with too little tongue weight. Below 10%, the trailer's center of mass sits behind its axles and any disturbance (wind gust, passing truck, steering correction) feeds on itself. The cure hierarchy is: first, fix tongue weight into the 10–15% window by moving cargo forward of the trailer axles; second, slow down (sway energy rises with speed, so dropping 10 mph often kills it); third, add a sway-control device as a supplement, not a substitute. If sway starts while driving: stay calm, ease off the accelerator, keep the wheel straight, and manually apply the trailer brakes with the controller if you have one — never stab the tow vehicle's brakes, which can pivot the rig.</p><h2>Know Your Local Towing Law</h2><p>Towing law varies more than most drivers expect. Trailer-brake thresholds are commonly 3,000 lb but range from 1,500 to 4,500 lb by jurisdiction; maximum towing speeds are lower than car limits in many places (55–65 mph in several US states, 60 mph / 100 km/h in parts of Europe and Australia); and some regions require safety chains crossed under the coupler, breakaway brakes, or specific mirror extensions. Licensing can matter too — several jurisdictions require an upgraded license endorsement above certain combination weights. Look up your state or country's current rules before a big trip; 'I didn't know' is not a defense at a weigh station.</p><h2>Towing With an EV</h2><p>Electric trucks tow beautifully — instant torque, low center of gravity, no gear hunting on grades — but range is the reality check. Expect <strong>40–60% of normal range</strong> when towing a boxy travel trailer at highway speed; aerodynamics punish EVs harder than diesel trucks because there is no idling waste heat to mask it. Plan charging stops at roughly half your solo intervals, confirm chargers have pull-through or trailer-friendly access (many don't), and remember that payload limits apply just as strictly — battery weight already eats into the truck's GVWR. For occasional towers the math can still work; for full-time RVers, a diesel remains the pragmatic choice for now.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate my real towing capacity?</summary><p>The smallest of three numbers: (1) the manufacturer's max tow rating, (2) GCWR minus your loaded truck weight, and (3) (payload − passengers − cargo) ÷ tongue-weight %. Most owners are limited by payload, not the headline tow rating. TowTally computes all three.</p></details>
+<details><summary>What should my trailer&#x27;s tongue weight be?</summary><p>10–15% of the loaded trailer's weight for a conventional bumper-pull trailer (12% is the standard estimate). Too little causes dangerous sway; too much unloads the steering axle. Fifth-wheels run 15–25%.</p></details>
+<details><summary>Why does tongue weight count against payload?</summary><p>Because tongue weight presses down on the hitch, it rides on the truck — so it consumes payload capacity, not towing capacity. A 1,200-lb tongue weight on a truck with 1,500 lb of payload leaves only 300 lb for people and gear.</p></details>
+<details><summary>What is GCWR?</summary><p>GCWR (Gross Combined Weight Rating) is the maximum weight of the entire rig — truck, passengers, cargo and loaded trailer combined. Your trailer allowance under GCWR is GCWR minus your loaded truck's weight. Find it on the door-jamb certification label.</p></details>
+<details><summary>What is the 80% towing rule?</summary><p>The 80% rule says to tow at no more than 80% of any rated limit, keeping margin for hills, wind, heat and extra gear. TowTally flags anything over 80% as Caution even when it technically passes.</p></details>
+<details><summary>Can I trust a towing calculator completely?</summary><p>No — a calculator gives estimates from the ratings you enter. Verify every rating on your door-jamb label and owner's manual, weigh the loaded rig on a CAT scale for real numbers, and never exceed a manufacturer limit. When in doubt, a professional hitch setup is worth it.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">TowTally</div>
+    <p>TowTally checks your trailer against all three real towing limits — tow rating, GCWR and payload — with tongue-weight math and an 80% comfort rule.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function towLimit(gcwr,veh){return gcwr-veh;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var ids=['tt-gcwr','tt-curb','tt-load','tt-rating','tt-payload','tt-trailer','tt-tongue'];var el={};ids.forEach(function(id){el[id]=document.getElementById(id);});var lbB=document.getElementById('tt-lb'),kgB=document.getElementById('tt-kg'),auto=document.getElementById('tt-auto'),twrap=document.getElementById('tt-tonguewrap');if(!el['tt-gcwr'])return;var unit='lb';function num(id){return parseFloat(el[id].value)||0;}function conv(x){return unit==='kg'?x/2.20462:x;}function fmt(x){return Math.round(conv(x)).toLocaleString('en-US')+' '+unit;}function zone(pct,text,label){var m=label==='z1'?'tt-z1m':label==='z2'?'tt-z2m':'tt-z3m';var v=label==='z1'?'tt-z1v':label==='z2'?'tt-z2v':'tt-z3v';var p=label==='z1'?'tt-z1p':label==='z2'?'tt-z2p':'tt-z3p';var meter=document.getElementById(m);meter.querySelector('i').style.width=Math.min(100,Math.max(0,pct))+'%';meter.classList.toggle('warn',pct>80&&pct<=100);meter.classList.toggle('bad',pct>100);document.getElementById(v).textContent=Math.round(pct)+'%';document.getElementById(p).textContent=text;}function render(){var gcwr=num('tt-gcwr'),curb=num('tt-curb'),load=num('tt-load'),rating=num('tt-rating'),payload=num('tt-payload'),trailer=num('tt-trailer');var tongue=auto.checked?trailer*0.12:num('tt-tongue');var truckLoaded=curb+load;var limTow=rating,limGcwr=towLimit(gcwr,truckLoaded),limPayload=payload-load>0?(payload-load)/0.12:0;zone(trailer/limTow*100,fmt(trailer)+' of '+fmt(limTow)+' max','z1');var combo=truckLoaded+trailer;zone(combo/gcwr*100,fmt(combo)+' of '+fmt(gcwr)+' combined','z2');var usedPayload=load+tongue;zone(usedPayload/payload*100,fmt(usedPayload)+' of '+fmt(payload)+' (incl. '+fmt(tongue)+' tongue)','z3');var verdict=document.getElementById('tt-verdict'),vh=document.getElementById('tt-vh'),vp=document.getElementById('tt-vp');var worst=Math.max(trailer/limTow,combo/gcwr,usedPayload/payload);var limiting=limTow<=limGcwr&&limTow<=limPayload?'tow rating':(limGcwr<=limPayload?'GCWR':'payload');verdict.className='tt-verdict '+(worst>1?'over':worst>0.8?'caution':'safe');if(worst>1){vh.textContent='⛔ Over a limit — do not tow this setup';vp.textContent='Your limiting factor is '+limiting+'. Reduce trailer weight, lighten the truck, or shift cargo before towing.';}else if(worst>0.8){vh.textContent='⚠️ Within limits — but tight';vp.textContent='You pass, but you are over 80% of the '+limiting+' limit. The 80% comfort rule says keep margin for hills, wind and heat.';}else{vh.textContent='✅ Good to tow';vp.textContent='Comfortably inside all three limits. Limiting factor: '+limiting+' ('+fmt(Math.min(limTow,limGcwr,limPayload))+' max trailer).';}}function setUnit(u){unit=u;lbB.classList.toggle('on',u==='lb');kgB.classList.toggle('on',u==='kg');render();}lbB.addEventListener('click',function(){setUnit('lb');});kgB.addEventListener('click',function(){setUnit('kg');});auto.addEventListener('change',function(){twrap.style.display=auto.checked?'none':'block';render();});ids.forEach(function(id){el[id].addEventListener('input',render);});render();});}
+</script>
+</body>
+</html>
