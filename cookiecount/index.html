@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Batch Calculator — How Many Cookies From My Dough | CookieCount</title>
+<meta name="description" content="CookieCount turns dough weight into cookies, trays and oven batches, so bake sales, parties and holiday cookie trays come out exactly right.">
+<link rel="canonical" href="https://fun.fixoraa.tech/cookiecount/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "CookieCount", "url": "https://fun.fixoraa.tech/cookiecount/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "CookieCount turns dough weight into cookies, trays and oven batches, so bake sales, parties and holiday cookie trays come out exactly right."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many cookies does 600 grams of dough make?", "acceptedAnswer": {"@type": "Answer", "text": "At 30 grams per cookie, 600 grams of dough makes exactly 20 cookies, which fills two trays."}}, {"@type": "Question", "name": "What is a good cookie weight?", "acceptedAnswer": {"@type": "Answer", "text": "25 grams for small cookies, 30 grams for classic home cookies, and 50 to 60 grams for large bakery-style cookies."}}, {"@type": "Question", "name": "How many cookies fit on one baking tray?", "acceptedAnswer": {"@type": "Answer", "text": "About 12 cookies per standard tray, spaced about 5 centimetres apart so they can spread without merging."}}, {"@type": "Question", "name": "How long do cookies take to bake?", "acceptedAnswer": {"@type": "Answer", "text": "Most medium cookies bake in 10 to 12 minutes at around 180 degrees, with large cookies needing a few minutes more."}}, {"@type": "Question", "name": "Should I chill cookie dough before baking?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, chilling for 30 minutes firms the butter, reduces spreading and deepens flavour, especially for butter-based recipes."}}, {"@type": "Question", "name": "Can I freeze cookie dough?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, scooped dough balls freeze for up to three months and bake straight from frozen with about two extra minutes."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Georgia, serif;background:#fef3c7;color:#451a03;line-height:1.6}
+
+.mx-auto{margin-left:auto;margin-right:auto}.text-center{text-align:center}.block{display:block}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.shrink-0{flex-shrink:0}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(max-width:640px){div.origin-top{transform:scale(.44);transform-origin:top center}}
+@media(min-width:641px){div.origin-top{transform:scale(1)}}
+
+.board{max-width:820px;margin:0 auto;background:#1c1917;color:#fef3c7;border-radius:14px;padding:26px}
+.board label{color:#fef3c7}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.score-panel{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.score-panel div{background:#44403c;border-radius:10px;padding:14px;flex:1;min-width:120px;text-align:center}
+.score-panel b{font-size:1.8rem;display:block;color:#fcd34d}
+details{border:1px solid #78350f;border-radius:10px;padding:10px 14px;margin:8px 0;background:#fff;color:#451a03}
+@media(max-width:640px){.grid2,.grid3,.cols,.dealrow,.mixrow{grid-template-columns:1fr!important;flex-direction:column!important}
+header .hwrap{flex-direction:column;align-items:flex-start!important;gap:10px}
+.toolbox,.card,.pad,.sheet{padding:18px!important} h1{font-size:1.6rem!important} .bignum{font-size:2rem!important}}
+</style>
+</head>
+<body>
+<header style="background:#fde68a;border-bottom:3px solid #92400e">
+  <div class="hwrap" style="max-width:1020px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#92400e;color:#fff;font-size:26px">🍪</span>
+      <span>
+        <span style="display:block;font-size:1.5rem;font-weight:800;color:#451a03;letter-spacing:-.5px">CookieCount</span>
+        <span style="font-size:.85rem;color:#78350f">The scoreboard for serious bakers</span>
+      </span>
+    </div>
+    <nav style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://fixoraa.tech" style="background:#92400e;color:#fff;text-decoration:none;padding:9px 16px;border-radius:999px;font-weight:700">Home</a>
+      <a href="https://fixoraa.tech" style="background:#fff;color:#92400e;border:2px solid #92400e;text-decoration:none;padding:7px 14px;border-radius:999px;font-weight:700">More Tools</a>
+    </nav>
+  </div>
+  <div style="max-width:1020px;margin:0 auto;padding:0 20px 14px"><span style="display:inline-block;background:#fcd34d;color:#451a03;font-weight:700;font-size:.8rem;padding:5px 12px;border-radius:999px">Unlimited Free Usage</span></div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<section class="toolsec" style="max-width:1020px;margin:0 auto;padding:26px 20px">
+<h1>Cookie Batch Calculator — How Many Cookies Will My Dough Make?</h1>
+<p class="intro" style="font-size:1.05rem;color:#451a03">Welcome to the bake-off scoreboard: enter your dough weight and cookie size, and CookieCount tallies cookies, trays and oven batches like a championship final.</p>
+<div class="board"><div style="font-weight:900;font-size:1.4rem;text-align:center">🍪 COOKIE CHAMPIONSHIP — FINAL SCORE</div><p style="text-align:center;color:#d6d3d1">Home Bakers vs. The Dough &nbsp;•&nbsp; Oven at 180°C &nbsp;•&nbsp; 12 cookies per tray</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"><span style="font-weight:700;align-self:center">Quick presets:</span><button onclick="setPreset(600,30)" style="background:#fff;border:2px solid #92400e;color:#92400e;padding:8px 14px;border-radius:999px;font-weight:700;cursor:pointer">Weekend batch</button><button onclick="setPreset(1500,25)" style="background:#fff;border:2px solid #92400e;color:#92400e;padding:8px 14px;border-radius:999px;font-weight:700;cursor:pointer">Bake sale</button><button onclick="setPreset(3000,30)" style="background:#fff;border:2px solid #92400e;color:#92400e;padding:8px 14px;border-radius:999px;font-weight:700;cursor:pointer">Holiday trays</button></div>
+<div class="grid2"><div><label style="display:block;font-weight:700;margin-bottom:6px">Dough weight (g)</label><input id="dough" type="number" min="0" step="any" value="600" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Cookie weight (g each)</label><input id="size" type="number" min="0" step="any" value="30" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div></div>
+<button onclick="calc()" style="background:#f59e0b;color:#451a03;border:0;padding:14px 26px;border-radius:12px;font-size:1.05rem;font-weight:800;cursor:pointer;width:100%;margin-top:16px">Calculate</button>
+<div id="result" style="margin-top:18px;padding:18px;border-radius:12px;background:#fff;color:#451a03;font-size:1.05rem">Enter your dough weight and press Calculate.</div>
+<div class="score-panel"><div><b>12</b>per tray</div><div><b>2</b>trays per batch</div><div><b>10-12</b>min bake</div></div></div>
+<div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+<button onclick="copyResult()" style="background:#92400e;color:#fff;border:0;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer">Copy Result</button>
+<button onclick="exportCSV()" style="background:#fff;color:#92400e;border:2px solid #92400e;padding:8px 16px;border-radius:10px;font-weight:700;cursor:pointer">Export CSV</button>
+<button onclick="saveHistory()" style="background:#fff;color:#451a03;border:2px solid #451a03;padding:8px 16px;border-radius:10px;font-weight:700;cursor:pointer">Save to History</button>
+</div>
+<div id="history" style="margin-top:14px;font-size:.9rem"></div>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<article style="max-width:1020px;margin:0 auto;padding:10px 20px 30px">
+<h2>About this tool</h2>
+<p>Baking cookies for a crowd starts with a question that sounds simple and is surprisingly hard to answer: how many cookies will this dough actually make? The answer matters for bake sales, holiday trays and party platters, because promising forty cookies and delivering twenty-eight is embarrassing, while baking twice as many as needed wastes ingredients and time. The maths is simple division, but it depends on two numbers that bakers rarely measure: the total dough weight and the weight of each cookie.</p><p>Weighing dough is the single habit that separates consistent bakers from guessing bakers. A recipe that says it makes twenty-four cookies might make eighteen large ones or thirty small ones, depending on how generously you scoop, and that variation compounds across a double batch. Weigh the whole dough ball on a kitchen scale, decide on a cookie weight, and divide: 600 grams of dough at 30 grams per cookie makes exactly twenty cookies, with no remainder to argue about. A small cookie scoop helps, but the scale is the truth.</p><p>Cookie weight is a choice with consequences for texture as much as for count. Small cookies of 20 to 25 grams bake quickly, crisp up nicely and suit lunchboxes and bake sales, where variety matters more than size. Medium cookies of 30 grams are the classic home cookie, with crisp edges and a soft centre, while large bakery-style cookies of 50 to 60 grams stay gooey inside and make a statement, but they take longer to bake and spread more. Whatever size you choose, keep it consistent within a batch, because mixed sizes bake unevenly and the small ones burn while the large ones stay raw.</p><p>Trays are the next conversion, and the standard is twelve cookies per standard baking tray, spaced about five centimetres apart so they can spread without merging. Twenty cookies need two trays, sixty cookies need five trays, and each tray takes ten to twelve minutes in the oven at around 180 degrees. If your oven holds two trays at once, divide trays by two and round up for oven batches, which tells you the total baking time: five trays in two-tray batches means three batches and roughly thirty to thirty-six minutes of oven time, plus cooling and reloading between batches.</p><p>Dough temperature and resting change the outcome in ways that counting cannot capture. Chilled dough spreads less, which means cookies hold their shape and stay thicker, while warm dough spreads thin and wide, which can merge neighbouring cookies and reduce the effective count. Resting dough for thirty minutes in the fridge also deepens flavour, especially for butter-based recipes, because the flour hydrates and the butter firms. For a large batch, scoop all the cookies first, chill the trays, and bake in order, so every tray behaves the same way.</p><p>Scaling recipes up is not just multiplication, because leavening and salt behave differently in very large batches. Doubling a cookie recipe usually works perfectly, but tripling or quadrupling can produce uneven mixing, because home mixers struggle with very large dough masses and ingredients distribute less evenly. For a bake sale needing hundreds of cookies, make the recipe twice in separate batches rather than once at quadruple scale, because two identical batches are more reliable than one heroic one. Weigh each batch separately and you will know exactly how many cookies each one yields.</p><p>Storage and gifting depend on the count being right, because boxes and trays have fixed capacities. A standard cookie box holds about twelve medium cookies, a holiday tin holds about twenty-four, and a bake sale table needs a clear count per bag for pricing. Count cookies as they come off the tray, not as they go into the oven, because a few always break, a few get tasted, and a few go to the baker&#x27;s helpers. Building a small tasting allowance into the plan, about ten percent extra dough, is the professional approach, and it keeps everyone happy.</p><p>Dietary variations change weight and count in small but real ways. Gluten-free dough is often wetter and spreads more, so cookies may need a slightly larger weight to hold their shape, while vegan dough made with oil instead of butter spreads faster and bakes quicker. Nut flours add weight without adding structure, so cookies made with them are denser and more filling, which means guests eat fewer. When baking for mixed diets, make separate batches with separate counts, because mixing dietary batches on one tray risks cross-contact and confusion.</p><p>Freezing dough is the secret weapon of the organised baker, because scooped dough balls freeze beautifully for up to three months and bake straight from frozen with just two extra minutes. Counting frozen dough balls is easy, because each ball is one cookie, and you can bake exactly the number you need for each occasion instead of baking everything at once. Label the bag with the cookie type, weight and bake time, because frozen dough all looks the same and the label is the only thing standing between you and a mystery bake.</p><p>The pleasure of cookie baking is partly in the counting, because a tray of evenly sized cookies cooling on a rack is a small visual triumph. Weigh the dough, pick a cookie size, and let CookieCount tally the score: cookies, trays and batches, all settled before the oven even preheats. Then bake with confidence, knowing that the number on the scoreboard is the number that will come out of the oven, give or take the few that never make it past the baker&#x27;s own tasting.</p><p>A final tip for the finishing stretch: cooling and packing, because cookies continue to bake on the hot tray for several minutes after leaving the oven, and moving them too early breaks them while leaving them too long makes them crisp right through. Let cookies rest on the tray for about five minutes until they are firm enough to lift, then transfer them to a wire rack to cool completely before stacking or packing, because warm cookies trapped in a box steam themselves soft and stick together. Pack different flavours separately if possible, because strong flavours like mint or spice migrate to plainer cookies in a shared container, and layer cookies with baking paper between them to protect decorated tops. A cooled, well-packed cookie tastes as good on day three as it did on day one, which is exactly what a bake sale or a gift box needs.</p><p>One more scaling truth applies to decorating and gifting, because a counted batch is only half the job when cookies are destined for boxes, bags or a bake sale table. Royal icing, chocolate drizzle and sprinkles add time rather than weight, so budget about two minutes of decorating per cookie for simple designs and five minutes for elaborate ones, which means sixty cookies need two to five hours of decorating time, not the thirty minutes most bakers imagine. Work in stages, baking one day and decorating the next, because warm cookies reject icing and tired decorators make mistakes. For bake sales, price by the bag with a clear count, such as four cookies per bag, because buyers trust a counted bag more than a loose pile, and a consistent count makes pricing, change and stock-taking simple for everyone involved.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>How many cookies does 600 grams of dough make?</summary><p>At 30 grams per cookie, 600 grams of dough makes exactly 20 cookies, which fills two trays.</p></details><details><summary>What is a good cookie weight?</summary><p>25 grams for small cookies, 30 grams for classic home cookies, and 50 to 60 grams for large bakery-style cookies.</p></details><details><summary>How many cookies fit on one baking tray?</summary><p>About 12 cookies per standard tray, spaced about 5 centimetres apart so they can spread without merging.</p></details><details><summary>How long do cookies take to bake?</summary><p>Most medium cookies bake in 10 to 12 minutes at around 180 degrees, with large cookies needing a few minutes more.</p></details><details><summary>Should I chill cookie dough before baking?</summary><p>Yes, chilling for 30 minutes firms the butter, reduces spreading and deepens flavour, especially for butter-based recipes.</p></details><details><summary>Can I freeze cookie dough?</summary><p>Yes, scooped dough balls freeze for up to three months and bake straight from frozen with about two extra minutes.</p></details>
+</article>
+<footer style="background:#292524;color:#fef3c7;padding:28px 20px;margin-top:10px">
+<div style="max-width:1020px;margin:0 auto">
+<p style="font-weight:800;font-size:1.1rem;margin:0 0 6px">CookieCount — The scoreboard for serious bakers</p>
+<p style="margin:0 0 12px">CookieCount turns dough weight into cookies, trays and oven batches, so bake sales, parties and holiday cookie trays come out exactly right.</p>
+<p><a href="https://fixoraa.tech" style="color:#fcd34d">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech" style="color:#fcd34d">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech" style="color:#fcd34d">Fixoraa</a></p>
+</div>
+</footer>
+<script>
+function setPreset(v){var p=v.split(',');document.getElementById('dough').value=p[0];document.getElementById('size').value=p[1];calc();}
+function calc(){var d=parseFloat(document.getElementById('dough').value)||0;var s=parseFloat(document.getElementById('size').value)||30;var cookies=Math.floor(d/s);var trays=Math.ceil(cookies/12);var batches=Math.ceil(trays/2);document.getElementById('result').innerHTML='<strong>Cookies:</strong> '+cookies+' &nbsp;|&nbsp; <strong>Trays:</strong> '+trays+' &nbsp;|&nbsp; <strong>Oven batches:</strong> '+batches+' &nbsp;|&nbsp; <strong>Leftover dough:</strong> '+(d-cookies*s)+' g';}
+function copyResult(){var el=document.getElementById('result');if(!el)return;navigator.clipboard&&navigator.clipboard.writeText(el.innerText);el.style.outline='2px solid #92400e';setTimeout(function(){el.style.outline='none'},800);}
+function exportCSV(){var el=document.getElementById('result');if(!el)return;var blob=new Blob([el.innerText],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cookiecount-result.csv';a.click();}
+function saveHistory(){var el=document.getElementById('result');if(!el)return;var h=JSON.parse(localStorage.getItem('hx-cookiecount')||'[]');h.unshift(new Date().toLocaleString()+': '+el.innerText.replace(/\s+/g,' ').slice(0,160));localStorage.setItem('hx-cookiecount',JSON.stringify(h.slice(0,8)));renderHistory();}
+function renderHistory(){var h=JSON.parse(localStorage.getItem('hx-cookiecount')||'[]');document.getElementById('history').innerHTML=h.length?'<strong>Recent results:</strong><br>'+h.map(function(x){return x}).join('<br>'):'';}
+renderHistory();
+</script>
+</body>
+</html>
