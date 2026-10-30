@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Party Budget Planner — Cost Breakdown Calculator | PartyBudget</title>
+<meta name="description" content="Plan your party budget by category, track per-guest cost and stay under your cap.">
+<link rel="canonical" href="https://fun.fixoraa.tech/partybudget/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Party Budget Planner — Cost Breakdown Calculator | PartyBudget">
+<meta property="og:description" content="Plan your party budget by category, track per-guest cost and stay under your cap.">
+<meta property="og:url" content="https://fun.fixoraa.tech/partybudget/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PartyBudget",
+      "url": "https://fun.fixoraa.tech/partybudget/",
+      "applicationCategory": "Event Tools",
+      "operatingSystem": "Web",
+      "description": "Plan your party budget by category, track per-guest cost and stay under your cap.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a birthday party cost on average?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A home birthday party for 15 to 20 guests typically runs $300 to $800; a venue party with catering runs $1,000 to $3,000+. The biggest variables are guest count, venue, and whether you cook or cater. Compute your per-guest cost first \u2014 it predicts the total better than any average."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What percentage of a party budget should go to food?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 35% for food and drinks combined is a healthy target. Venue around 25%, decorations 10%, entertainment 12%, cake 8%, and 10% miscellaneous including a contingency. If one category runs far over its share, pull from another deliberately rather than letting the total drift."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I throw a party on a tight budget?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cut the guest list first \u2014 it multiplies every cost. Use a free venue (home, park pavilion), cook or do a potluck instead of catering, decorate with lights and one focal point, and use a playlist instead of a DJ. A $300 party with 12 happy guests beats a $1,500 party that stressed everyone out."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much cake do I need for 20 guests?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One serving per guest: a 10-inch round cake serves about 20. For bigger crowds, use the display-cake-plus-sheet-cakes trick \u2014 a small beautiful cake for photos, inexpensive sheet cakes from the kitchen for serving. Budget roughly $4 to $7 per serving for custom bakery cake."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I include a contingency in my party budget?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 hold 10% of the total unassigned inside your miscellaneous line. Last-minute guests, forgotten supplies, and price surprises are near-certain. An unspent contingency becomes guilt-free splurge money or the seed fund for the next party."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the most common party budget mistake?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Letting three categories each run 30% over while watching only the total. Food upgrades, venue add-ons, and decoration creep each feel small alone. Track planned vs. actual per category weekly, and the overruns stay decisions instead of becoming surprises."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#FAF8F2;--accent:#886E20;--tint:#F4EEDD;--ink:#332E1F;--muted:#786F54;--accent-ink:#FFFFFF;--paper:#FFFDF7}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Special Elite','Courier New',monospace;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:1060px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--paper);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-headrow{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 0 rgba(0,0,0,.2);transform:rotate(-3deg);font-family:'Special Elite',monospace}
+.fx-name{font-size:23px}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 18px;border-radius:6px;font-size:15px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:var(--paper);transition:transform .12s;font-family:inherit}
+.fx-btn:hover{transform:translateY(-2px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:6px;background:var(--tint);color:var(--ink);font-size:14px;border:2px dashed var(--accent)}
+.hero{padding:42px 0 8px}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);padding:6px 2px}
+.hero h1{font-size:clamp(32px,5vw,50px);line-height:1.1;margin-bottom:10px}
+.lede{font-size:18px;color:var(--muted);max-width:640px;font-family:system-ui}
+.tool{margin:28px 0 10px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.pb-form{background:var(--paper);border:2px solid var(--tint);border-radius:6px;padding:26px}
+.pb-form h3{font-size:20px;margin-bottom:16px;border-bottom:2px dashed var(--tint);padding-bottom:10px}
+.pb-field{margin-bottom:14px}
+.pb-field label{display:block;font-size:15px;margin-bottom:6px}
+.pb-field input{font-family:inherit;font-size:17px;padding:10px 12px;border:2px solid var(--tint);border-radius:6px;background:#fff;color:var(--ink);width:100%}
+.pb-field input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.pb-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pb-receipt{background:var(--paper);border-radius:4px;padding:30px 28px;position:relative;box-shadow:0 12px 30px rgba(136,110,32,.14);font-size:16px}
+.pb-receipt::before,.pb-receipt::after{content:'';position:absolute;left:0;right:0;height:12px;background:linear-gradient(-45deg,transparent 8px,var(--paper) 0) 0 0/16px 16px repeat-x,linear-gradient(45deg,transparent 8px,var(--paper) 0) 8px 0/16px 16px repeat-x}
+.pb-receipt::before{top:-12px;transform:scaleY(-1)}
+.pb-receipt::after{bottom:-12px}
+.pb-receipt h3{text-align:center;font-size:20px;letter-spacing:.1em;margin-bottom:4px}
+.pb-receipt .storeline{text-align:center;font-size:13px;color:var(--muted);margin-bottom:16px}
+.pb-line{display:flex;justify-content:space-between;gap:10px;padding:7px 0;font-size:16px}
+.pb-line .dots{flex:1;border-bottom:2px dotted var(--tint);margin:0 8px;transform:translateY(-5px)}
+.pb-line .cap{display:block;font-size:12px;color:var(--muted)}
+.pb-line.over .amt{color:#A52727;font-weight:700}
+.pb-total{border-top:3px double var(--ink);margin-top:12px;padding-top:12px}
+.pb-total .pb-line{font-size:20px}
+.pb-stamp{display:inline-block;border:3px solid #A52727;color:#A52727;border-radius:6px;padding:6px 16px;font-size:18px;transform:rotate(-6deg);margin:12px auto;letter-spacing:.08em}
+.pb-ok{display:inline-block;border:3px solid var(--accent);color:var(--accent);border-radius:6px;padding:6px 16px;font-size:18px;transform:rotate(-3deg);margin:12px auto;letter-spacing:.08em}
+.pb-center{text-align:center}
+.pb-alerts{margin-top:10px;font-size:14px;color:#A52727;text-align:center}
+.article-sec{margin:44px 0;max-width:780px}
+.article-sec h2{font-size:24px;margin:36px 0 12px}
+.article-sec p{margin-bottom:14px;color:#4a4132;font-family:system-ui}
+.article-sec ul,.article-sec ol{margin:0 0 14px 24px;color:#4a4132;font-family:system-ui}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0 10px;max-width:780px}
+.faq-sec h2{font-size:24px;margin-bottom:16px}
+.faq-sec details{background:var(--paper);border:2px solid var(--tint);border-radius:8px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:15px 18px;cursor:pointer;list-style:none;font-size:17px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--tint);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#4a4132;font-size:15px;font-family:system-ui}
+.fx-footer{background:#2b251a;color:#f0e8d4;margin-top:48px;padding:42px 0 36px}
+.fx-footer .fx-brand{font-size:24px;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#c4b48e;max-width:640px;margin-bottom:14px;font-family:system-ui}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;text-decoration:none;border-bottom:2px solid var(--accent);font-family:system-ui}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#e8cf8a;font-weight:700}
+@media(max-width:760px){.tool{grid-template-columns:1fr}.fx-nav{margin-left:0}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-headrow">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/partybudget/" aria-label="PartyBudget home">
+      <span class="fx-tile" aria-hidden="true">🧾</span>
+      <span class="fx-name">PartyBudget</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="hero">
+    <span class="eyebrow">Every dollar, receipted</span>
+    <h1>Party Budget Planner</h1>
+    <p class="lede">Set your total budget and per-category spending to see your per-guest cost, category caps, and exactly where the money is going — before it is gone.</p>
+  </section>
+  <section class="tool" aria-label="PartyBudget tool">
+<div class="pb-form">
+      <h3>Your party plan</h3>
+      <div class="pb-2col">
+        <div class="pb-field"><label for="pb-guests">Guests</label><input type="number" id="pb-guests" value="20" min="1" max="1000"></div>
+        <div class="pb-field"><label for="pb-budget">Total budget ($)</label><input type="number" id="pb-budget" value="1000" min="0" max="1000000"></div>
+      </div>
+      <div class="pb-2col">
+        <div class="pb-field"><label for="pb-venue">Venue ($)</label><input type="number" id="pb-venue" value="200" min="0"></div>
+        <div class="pb-field"><label for="pb-food">Food &amp; drinks ($)</label><input type="number" id="pb-food" value="400" min="0"></div>
+        <div class="pb-field"><label for="pb-decor">Decorations ($)</label><input type="number" id="pb-decor" value="100" min="0"></div>
+        <div class="pb-field"><label for="pb-ent">Entertainment ($)</label><input type="number" id="pb-ent" value="150" min="0"></div>
+        <div class="pb-field"><label for="pb-cake">Cake ($)</label><input type="number" id="pb-cake" value="80" min="0"></div>
+        <div class="pb-field"><label for="pb-misc">Misc ($)</label><input type="number" id="pb-misc" value="50" min="0"></div>
+      </div>
+    </div>
+    <div class="pb-receipt" aria-live="polite">
+      <h3>PARTY RECEIPT</h3>
+      <div class="storeline" id="pb-store">20 guests &middot; budget $1,000</div>
+      <div id="pb-lines"></div>
+      <div class="pb-total">
+        <div class="pb-line"><span>TOTAL</span><span class="dots"></span><span class="amt" id="pb-total">$980</span></div>
+        <div class="pb-line"><span>Per guest</span><span class="dots"></span><span class="amt" id="pb-pg">$49.00</span></div>
+        <div class="pb-line"><span>Remaining</span><span class="dots"></span><span class="amt" id="pb-rem">$20</span></div>
+      </div>
+      <div class="pb-center" id="pb-stampwrap"><span class="pb-ok" id="pb-stamp">UNDER BUDGET</span></div>
+      <div class="pb-alerts" id="pb-alerts"></div>
+    </div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>Start With the Per-Guest Number</h2>
+<p>Every party budget argument — with yourself, a partner, or a venue — gets simpler once you know your per-guest cost. A $1,000 party for 20 guests is $50 a head; the same party for 40 guests is either $25 a head or a $2,000 party. Guests are the multiplier on nearly everything: food, drinks, favors, seating, and often the venue itself. So the first decision is not "what is my budget" but "what is my budget divided by my guest count, and does that number buy the party I am imagining?" If it does not, you change the guest count or the vision before you spend a dollar.</p>
+<p>The calculator above makes this concrete by splitting your spending into six categories, each with a suggested cap as a share of the total: venue 25 percent, food and drinks 35 percent, decorations 10 percent, entertainment 12 percent, cake 8 percent, miscellaneous 10 percent. These are guardrails, not laws — a backyard party spends nearly zero on venue and can push that 25 percent into food. But when a category blows past its cap, the tool stamps it, because that is exactly how budgets die: not in one big splurge, but in three categories each running 30 percent over while nobody was watching.</p>
+<h2>The 35 Percent Rule for Food</h2>
+<p>Food and drinks are the biggest line at most parties, and the suggested 35 percent cap is where the math of hospitality lives. For a $1,000 party, that is $350 — about $17.50 a head for 20 guests. That buys a serious homemade spread or a modest catered one, but not a premium caterer, and knowing that in advance prevents the classic mistake: falling in love with a $28-a-head taco bar and then discovering it ate 56 percent of the budget before you bought a single balloon.</p>
+<p>Catering math has three tiers. DIY cooking runs $8 to $15 a head but costs you two days. Drop-off catering (pans of food, you serve) runs $15 to $25 a head. Full-service catering starts around $30 a head and climbs fast. The potluck hybrid — you provide mains, guests bring sides — can land under $10 a head and is socially delightful, not cheap-looking, if you frame it right. Drinks deserve their own line inside the food budget: plan one drink per guest per hour, and remember that a single signature cocktail batch is dramatically cheaper than a full bar.</p>
+<h2>Venue: The 25 Percent That Varies Most</h2>
+<p>Venue spending has the widest range of any category because "venue" spans "my living room" ($0) to a rented hall ($2,000+). The 25 percent cap keeps it proportional: a $500 backyard party should not rent a $400 hall. Before booking anything, price the free options seriously — homes, apartment clubhouses (often $50 to $200 for residents), public park pavilions ($25 to $150 permits), and community centers. The venue does not need to impress; it needs to hold everyone comfortably with a plan for weather.</p>
+<p>When you do pay, read what the fee includes. A $300 hall that includes tables, chairs, a kitchen and cleanup beats a $150 hall that rents you an empty box. Ask about the hidden costs that ambush budgets: security deposits, required insurance riders, overtime hourly rates, mandatory in-house caterers, and cleanup fees. Get the total in writing — the quote is never the total. And book early for Saturdays in May, June, September and December; peak dates carry peak prices, and a Friday or Sunday can cut 20 to 30 percent.</p>
+<h2>Decorations: High Impact, Low Budget</h2>
+<p>Decorations get 10 percent because they are the category with the highest joy-per-dollar when done simply and the worst ROI when overdone. Guests remember lighting, one great focal point, and whether the tables looked intentional — not the $200 balloon arch. String lights ($15), a tablecloth in a real color instead of white plastic ($20), and one statement piece (a photo wall, a balloon garland in the party colors) transform a room for under $75.</p>
+<p>The decoration traps: themed everything (the theme tax is real — plain gold balloons cost half of licensed-character ones), fresh flowers for a kids' party (they will be destroyed), and buying instead of borrowing. Party supply stores count on your urgency; thrift stores, dollar stores and borrowing from friends cover 80 percent of needs. And plan the teardown when you plan the setup — decorations you cannot easily remove become trash you paid to haul. Reusable beats disposable twice: once for the wallet, once for the planet.</p>
+<h2>Entertainment: Buy Moments, Not Stuff</h2>
+<p>The 12 percent entertainment slice covers DJs, games, performers, photo booths and activities. The principle: pay for moments, not stuff. A $150 magician who holds 20 kids spellbound for 45 minutes is worth more than $150 of party favors nobody keeps. For adults, a great playlist (free), two lawn games ($40), and a simple photo backdrop ($25) outperform a mediocre DJ at ten times the price.</p>
+<p>Match entertainment to the crowd's age and the party's energy curve. Kids under 7 need structured activity every 20 to 30 minutes or chaos fills the vacuum — a performer, organized games, or a craft station. Teens need a hangout zone more than activities; good music, food access, and space beat scheduled fun. Adults need exactly one icebreaker early (a toast, a game, a slideshow) and then conversation does the work. The most common entertainment overspend is buying for the party you wish you were throwing instead of the guests actually coming.</p>
+<h2>The Cake Math</h2>
+<p>Cake gets its own 8 percent because it is simultaneously food, decoration and tradition — and because bakery pricing surprises people. A custom bakery cake runs $4 to $7 per serving; for 20 guests that is $80 to $140, which is exactly the cap. Grocery store bakery cakes run $1.50 to $3 per serving and are genuinely good now. Or bake it: a spectacular homemade cake costs $15 to $25 in ingredients and buys enormous goodwill, if you have the time and a reliable recipe.</p>
+<p>Size the cake to the guest count, not the fantasy: you need about one serving per guest, and servings are smaller than the bakery suggests. A 10-inch round serves 20 modest slices. For big crowds, the sheet-cake-behind-the-counter trick — a small beautiful display cake plus kitchen sheet cakes — delivers the photo moment at half the price. And if the guest of honor does not actually like cake, skip it entirely; a donut wall, pie bar or ice cream sundae station costs the same or less and gets eaten completely.</p>
+<h2>Tracking Planned vs. Actual</h2>
+<p>A budget you do not track is a wish. The receipt above is your planned spending; the discipline is recording actual spending as it happens. Keep every receipt in one envelope (physical or digital) and update the numbers weekly as the party approaches. The two numbers will diverge — that is normal and exactly why you track. A $30 overrun on decorations in week three is a decision you can make; a $300 surprise the day after the party is a regret.</p>
+<p>Build in a 10 percent contingency inside the miscellaneous line, not on top of the budget. If the total budget is $1,000, plan categories to $900 and hold $100 unassigned. Something always costs more than expected — the ice, the last-minute extra guests, the extension cord you did not know you needed. The contingency is not pessimism; it is the difference between absorbing surprises calmly and blowing the budget on the final week. If you reach party day with contingency unspent, it becomes the world's most satisfying guilt-free splurge or the seed of the next party fund.</p>
+<h2>After the Party: The Real Receipt</h2>
+<p>When it is over, do the final accounting within a week while receipts still exist. Total every category, compute the real per-guest cost, and note what you would change. This takes 20 minutes and pays for itself forever: your next party starts with real data instead of guesses. Most people discover the same three things — food cost more than planned, decorations cost less than feared, and the per-guest number is the figure they will actually remember.</p>
+<p>Then do the highest-ROI step: write down what worked. The taco bar was a hit, the balloon arch was a waste, the park pavilion was perfect. Save the vendor names, the quantities that fed everyone, and the timeline. Party planning is a skill that compounds — the second party costs less and impresses more than the first, because you are no longer paying the ignorance tax. The receipt is not just a record of what you spent; it is the first draft of every great party you will throw from here on.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How much does a birthday party cost on average?</summary><p>A home birthday party for 15 to 20 guests typically runs $300 to $800; a venue party with catering runs $1,000 to $3,000+. The biggest variables are guest count, venue, and whether you cook or cater. Compute your per-guest cost first — it predicts the total better than any average.</p></details>
+    <details><summary>What percentage of a party budget should go to food?</summary><p>About 35% for food and drinks combined is a healthy target. Venue around 25%, decorations 10%, entertainment 12%, cake 8%, and 10% miscellaneous including a contingency. If one category runs far over its share, pull from another deliberately rather than letting the total drift.</p></details>
+    <details><summary>How do I throw a party on a tight budget?</summary><p>Cut the guest list first — it multiplies every cost. Use a free venue (home, park pavilion), cook or do a potluck instead of catering, decorate with lights and one focal point, and use a playlist instead of a DJ. A $300 party with 12 happy guests beats a $1,500 party that stressed everyone out.</p></details>
+    <details><summary>How much cake do I need for 20 guests?</summary><p>One serving per guest: a 10-inch round cake serves about 20. For bigger crowds, use the display-cake-plus-sheet-cakes trick — a small beautiful cake for photos, inexpensive sheet cakes from the kitchen for serving. Budget roughly $4 to $7 per serving for custom bakery cake.</p></details>
+    <details><summary>Should I include a contingency in my party budget?</summary><p>Yes — hold 10% of the total unassigned inside your miscellaneous line. Last-minute guests, forgotten supplies, and price surprises are near-certain. An unspent contingency becomes guilt-free splurge money or the seed fund for the next party.</p></details>
+    <details><summary>What is the most common party budget mistake?</summary><p>Letting three categories each run 30% over while watching only the total. Food upgrades, venue add-ons, and decoration creep each feel small alone. Track planned vs. actual per category weekly, and the overruns stay decisions instead of becoming surprises.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PartyBudget</div>
+    <p>PartyBudget plans party spending by category with per-guest costs, suggested caps and over-budget alerts — like a receipt for the whole party.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function partyBudget(guests, budget, spends){
+  var g=Math.max(1,Math.round(Number(guests))||1);
+  var b=Math.max(0,Number(budget)||0);
+  var cats=['venue','food','decor','entertainment','cake','misc'];
+  var labels={venue:'Venue',food:'Food & drinks',decor:'Decorations',entertainment:'Entertainment',cake:'Cake',misc:'Misc'};
+  var shares={venue:0.25,food:0.35,decor:0.10,entertainment:0.12,cake:0.08,misc:0.10};
+  var s=spends||{};
+  var items=[], total=0, alerts=[];
+  cats.forEach(function(c){
+    var amt=Math.max(0,Number(s[c])||0);
+    total+=amt;
+    var cap=b>0?b*shares[c]:0;
+    if(b>0 && amt>cap+1e-9){ alerts.push(labels[c]+' is over its suggested cap of $'+Math.round(cap)); }
+    items.push({category:labels[c], amount:Math.round(amt*100)/100, suggestedCap:Math.round(cap*100)/100});
+  });
+  total=Math.round(total*100)/100;
+  return {
+    guests:g, budget:b, total:total,
+    perGuest:Math.round(total/g*100)/100,
+    remaining:Math.round((b-total)*100)/100,
+    overBudget:total>b,
+    items:items, alerts:alerts
+  };
+}
+(function(){
+var ids=['pb-guests','pb-budget','pb-venue','pb-food','pb-decor','pb-ent','pb-cake','pb-misc'];
+function val(id){return parseFloat(document.getElementById(id).value)||0;}
+function money(n){return '$'+n.toLocaleString('en-US',{maximumFractionDigits:n%1?2:0});}
+function render(){
+  var r=partyBudget(val('pb-guests'),val('pb-budget'),{venue:val('pb-venue'),food:val('pb-food'),decor:val('pb-decor'),entertainment:val('pb-ent'),cake:val('pb-cake'),misc:val('pb-misc')});
+  document.getElementById('pb-store').textContent=r.guests+' guests · budget '+money(r.budget);
+  var lines=document.getElementById('pb-lines');lines.innerHTML='';
+  r.items.forEach(function(it){
+    var over=r.budget>0&&it.amount>it.suggestedCap+1e-9;
+    var d=document.createElement('div');d.className='pb-line'+(over?' over':'');
+    d.innerHTML='<span>'+it.category+'<span class="cap">cap '+money(it.suggestedCap)+'</span></span><span class="dots"></span><span class="amt">'+money(it.amount)+'</span>';
+    lines.appendChild(d);
+  });
+  document.getElementById('pb-total').textContent=money(r.total);
+  document.getElementById('pb-pg').textContent='$'+r.perGuest.toFixed(2);
+  var rem=document.getElementById('pb-rem');rem.textContent=(r.remaining<0?'-':'')+money(Math.abs(r.remaining));
+  var stamp=document.getElementById('pb-stamp');
+  stamp.textContent=r.overBudget?'OVER BUDGET':'UNDER BUDGET';
+  stamp.className=r.overBudget?'pb-stamp':'pb-ok';
+  var al=document.getElementById('pb-alerts');al.innerHTML='';
+  r.alerts.forEach(function(a){var p=document.createElement('div');p.textContent='⚠ '+a;al.appendChild(p);});
+}
+ids.forEach(function(id){var el=document.getElementById(id);el.addEventListener('input',render);el.addEventListener('change',render);});
+render();
+})();
+</script>
+</body>
+</html>
