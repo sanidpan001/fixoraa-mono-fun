@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gift Wrapping Paper Calculator — How Much Paper Do You Need?</title>
+<meta name="description" content="Calculate the gift wrapping paper sheet size for any box, plus paper area, ribbon length and how many gifts one roll covers.">
+<link rel="canonical" href="https://fun.fixoraa.tech/giftwrap/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Gift Wrapping Paper Calculator — How Much Paper Do You Need?">
+<meta property="og:description" content="Calculate the gift wrapping paper sheet size for any box, plus paper area, ribbon length and how many gifts one roll covers.">
+<meta property="og:url" content="https://fun.fixoraa.tech/giftwrap/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GiftWrap",
+      "url": "https://fun.fixoraa.tech/giftwrap/",
+      "applicationCategory": "Everyday",
+      "operatingSystem": "Web",
+      "description": "Calculate the gift wrapping paper sheet size for any box, plus paper area, ribbon length and how many gifts one roll covers.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much wrapping paper do I need for a box?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sheet length = box length + 2 \u00d7 height + about 5 cm overlap; sheet width = box width + 2 \u00d7 height + 5 cm. This calculator does both sums for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do I add twice the height?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The paper must travel up one side of the box, across the top, and down the other side. That journey is height + top dimension + height, hence twice the height."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I wrap lengthwise or widthwise?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Run the paper's long direction around the box's longest path, usually length plus heights. If your roll is narrow, rotate the box and check both orientations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much ribbon do I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A good estimate is twice the box length plus twice the width, plus about 60 cm for a bow. For a cross wrap (both directions), double the wrap length."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my roll is too narrow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cut two sheets and overlap them by a few centimetres on the underside, or wrap the box diagonally. For large boxes, buy wide-format paper rather than joining many pieces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I wrap an odd-shaped gift?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Box it first if you can \u2014 odd shapes waste paper and tear easily. If boxing is impossible, use a gift bag or fabric wrap instead of forcing paper around curves."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fff1f2; --surface:#ffe4e6; --accent:#be123c; --accent-ink:#ffffff;
+  --ink:#3f0d1d; --muted:#6b2436; --line:#fecdd3;
+  --display:'Playfair Display',serif; --body:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:56rem}.boxdiag,.wrap-in,.wrap-out{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}.boxdiag{grid-column:1/-1;text-align:center}.box{font-size:3rem;border:2px dashed var(--accent);border-radius:14px;padding:1rem;margin-bottom:.7rem}.box span{display:block;font-size:1rem;font-weight:700}.wrap-in label{display:block;font-weight:600;margin-bottom:.8rem}.wrap-in input{width:100%;padding:.6rem;border:1px solid var(--line);border-radius:10px;margin-top:.3rem;font-size:1rem}.presets{display:flex;flex-wrap:wrap;gap:.45rem;margin:.5rem 0 1rem}.presets button,.go,.copy{border:2px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:.5rem 1rem;font-weight:600;cursor:pointer;min-height:44px}.go{background:var(--accent);color:var(--accent-ink);width:100%}.big{font-family:var(--display);font-size:2rem;font-weight:700}.biglab{color:var(--muted)}.sub{color:var(--muted);margin:.4rem 0 1.2rem;max-width:44rem}.note{color:var(--accent);font-weight:600}@media(max-width:640px){.wrap{grid-template-columns:1fr}.big{font-size:1.7rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="GiftWrap home">
+      <span class="fx-logo-tile" aria-hidden="true">🎁</span>
+      <span class="fx-brand">GiftWrap</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-wrap-sheet" aria-label="GiftWrap tool">
+<h1>Gift Wrapping Paper Calculator</h1><p class="sub">No more paper that is just too short. Measure the box, get the sheet, wrap with confidence.</p><div class="wrap"><div class="boxdiag"><div class="box">📦<span>Box: L × W × H</span></div><p>Sheet = length + 2 × height + overlap, by width + 2 × height + overlap.</p></div><div class="wrap-in"><label>Box length (cm)<input id="L" type="number" min="0" step="any" value="30"></label><label>Box width (cm)<input id="W" type="number" min="0" step="any" value="20"></label><label>Box height (cm)<input id="H" type="number" min="0" step="any" value="10"></label><label>Roll length you have (m)<input id="roll" type="number" min="0" step="any" value="5"></label><div class="presets"><span>Boxes:</span><button type="button" data-l="30" data-w="20" data-h="10">Book box</button><button type="button" data-l="40" data-w="30" data-h="15">Shoe box</button><button type="button" data-l="20" data-w="20" data-h="20">Cube gift</button></div><button class="go" id="calc">Calculate paper</button></div><div class="wrap-out"><p class="big" id="rS">&mdash;</p><p class="biglab">paper sheet needed (cm)</p><p>Paper area: <b id="rA">&mdash;</b></p><p>Ribbon (wrap + bow): <b id="rR">&mdash;</b></p><p>Gifts from your roll: <b id="rG">&mdash;</b></p><button class="copy" id="copy">Copy result</button><button class="copy" id="save">Save to history</button><ul id="hist"></ul></div></div><p class="note" id="err"></p>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>The last-centimetre problem</h2><p>Everyone who wraps gifts knows the same frustration: the paper looks generous, the box is centred, the fold starts well — and then, on the final side, the paper runs out three centimetres short. The gift is half-wrapped, the roll is empty, and the only fixes are an ugly patch or starting over with a new sheet. The problem is not bad luck; it is geometry. Wrapping paper must cover not just the top of the box but both sides as well, and people consistently underestimate how much those sides add. A box that is 10 centimetres tall needs 20 extra centimetres of paper just for the two sides, plus overlap for taping. This calculator removes the guesswork: measure length, width and height, and it returns the exact sheet size, the paper area, a ribbon estimate, and how many gifts your roll will cover.</p><p>The method is the standard one professional gift wrappers use. Lay the box on the paper and think of the paper travelling around it: up one side, across the top, and down the other side. That path is height + top dimension + height. Add a few centimetres of overlap so the join can be taped neatly underneath or on top, and you have the sheet dimension for that direction. Do the same for the other direction. The two results are your sheet size. It sounds obvious once stated, but the height term is the one people forget, because when a box sits on paper you see only its top, not the journey the paper must make around it.</p><h2>The formulas</h2><p>Sheet length = box length + 2 × box height + 5 centimetres overlap. Sheet width = box width + 2 × box height + 5 centimetres overlap. Paper area = sheet length × sheet width. Ribbon for a single-direction wrap with a bow = 2 × (length + width) + 60 centimetres. Gifts from a roll = floor(roll length in centimetres ÷ sheet length), assuming you cut sheets from the roll along its length and the roll is wide enough for the sheet width. If the roll is narrower than the sheet width, you will need to join sheets or rotate the box, and the gifts-per-roll figure becomes optimistic — check roll width against sheet width before buying.</p><table><tr><th>Box (L × W × H)</th><th>Sheet needed</th><th>Paper area</th><th>Ribbon</th></tr><tr><td>30 × 20 × 10 cm</td><td>55 × 45 cm</td><td>2,475 cm²</td><td>160 cm</td></tr><tr><td>40 × 30 × 15 cm</td><td>75 × 65 cm</td><td>4,875 cm²</td><td>200 cm</td></tr><tr><td>20 × 20 × 20 cm</td><td>65 × 65 cm</td><td>4,225 cm²</td><td>140 cm</td></tr></table><p>Notice how height dominates for tall boxes. A cube 20 centimetres on each side needs a 65 by 65 centimetre sheet — far larger than its 20 centimetre top suggests, because 40 centimetres of the sheet is consumed by the two sides in each direction. That is why cube and tall gifts are the ones that most often run short, and why measuring height carefully matters more than measuring length or width to the millimetre. A centimetre of error in height costs two centimetres of paper in each sheet dimension.</p><h2>A worked example</h2><p>Take a book box 30 centimetres long, 20 wide and 10 tall. Sheet length is 30 + 2 × 10 + 5 = 55 centimetres. Sheet width is 20 + 2 × 10 + 5 = 45 centimetres. Paper area is 55 × 45 = 2,475 square centimetres. Ribbon is 2 × (30 + 20) + 60 = 160 centimetres. From a 5 metre roll, you can cut floor(500 ÷ 55) = 9 sheets along the length, assuming the roll is at least 45 centimetres wide. If the roll is only 40 centimetres wide, the sheet width does not fit and you must either rotate the box — checking whether 45 fits the other way, which it does not if the roll width is fixed — or join two pieces. Roll width is therefore the second number to check after sheet size, and it is the one most often forgotten when buying paper online.</p><p>Now a shoe box: 40 long, 30 wide, 15 tall. Sheet length is 40 + 30 + 5 = 75 centimetres; sheet width is 30 + 30 + 5 = 65 centimetres; area is 4,875 square centimetres; ribbon is 2 × 70 + 60 = 200 centimetres. A 5 metre roll yields floor(500 ÷ 75) = 6 sheets. Compare the two boxes: the shoe box is only modestly larger in footprint, but its extra height pushes sheet size and area up sharply. For a batch of Christmas gifts, that difference decides whether one roll suffices or two are needed, and the calculator's gifts-per-roll figure answers that question before you are halfway through wrapping on Christmas Eve.</p><h2>Technique tips for a neat finish</h2><ul><li><b>Measure twice, cut once:</b> measure height at the tallest point, including any lid lip or bow already attached.</li><li><b>Centre the box:</b> equal overhang on both sides avoids a short side and a wasteful long side.</li><li><b>Fold, do not bunch:</b> fold edges sharply with a bone folder or ruler edge for crisp corners; bunched paper tears and looks untidy.</li><li><b>Tape underneath:</b> place the final join on the underside or back of the box where it will not show.</li><li><b>Cut with a long straight edge:</b> a ruler and craft knife beat scissors for long straight cuts on thick paper.</li><li><b>Save offcuts:</b> strips make tags, bows and small-gift wraps; do not bin them.</li></ul><h2>Choosing paper and ribbon</h2><ul><li><b>Standard paper (60–80 gsm):</b> easiest to fold, best for most boxes, tears if pulled hard.</li><li><b>Thick / foil paper:</b> looks luxurious but creases permanently; fold carefully and do not refold.</li><li><b>Kraft paper:</b> strong, cheap, and ideal for heavy boxes; decorate with ribbon and a tag.</li><li><b>Double-sided paper:</b> the reverse colour shows at folds and makes simple wraps look designed.</li><li><b>Ribbon:</b> wired ribbon holds bows best; grosgrain suits rustic wraps; curling ribbon suits light, festive gifts.</li></ul><h2>Common mistakes</h2><p>The classic mistake is measuring only the top of the box and forgetting height entirely, which guarantees a short sheet. The second is buying a roll without checking its width against the sheet width, which matters as much as its length. The third is cutting the first sheet from the roll before measuring all the gifts: cut the largest box first, so a short roll fails on the big gift while you still have time to buy more, not on the last small one. The fourth is wrapping odd shapes in paper at all: balls, bottles and soft toys wrap badly, tear, and waste paper, while a box or bag solves the problem instantly. Measure the box, check the roll, cut the biggest first, and wrapping stops being a gamble.</p><h3>Planning a wrapping session</h3><p>For a batch of gifts, list every box's dimensions, run each through this calculator, and add up paper areas and ribbon lengths before shopping. Buy one extra roll beyond the total if gifts are numerous: offcuts, mistakes and last-minute additions consume paper faster than the sums suggest. Keep a tape dispenser, scissors, ribbon and tags in one box so the session flows, and wrap the largest, hardest gifts first while patience is fresh. Good wrapping is mostly measurement and preparation; the folding itself, once the sheet is right, is the easy and enjoyable part.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much wrapping paper do I need for a box?</summary><p>Sheet length = box length + 2 × height + about 5 cm overlap; sheet width = box width + 2 × height + 5 cm. This calculator does both sums for you.</p></details>
+<details><summary>Why do I add twice the height?</summary><p>The paper must travel up one side of the box, across the top, and down the other side. That journey is height + top dimension + height, hence twice the height.</p></details>
+<details><summary>Should I wrap lengthwise or widthwise?</summary><p>Run the paper's long direction around the box's longest path, usually length plus heights. If your roll is narrow, rotate the box and check both orientations.</p></details>
+<details><summary>How much ribbon do I need?</summary><p>A good estimate is twice the box length plus twice the width, plus about 60 cm for a bow. For a cross wrap (both directions), double the wrap length.</p></details>
+<details><summary>What if my roll is too narrow?</summary><p>Cut two sheets and overlap them by a few centimetres on the underside, or wrap the box diagonally. For large boxes, buy wide-format paper rather than joining many pieces.</p></details>
+<details><summary>How do I wrap an odd-shaped gift?</summary><p>Box it first if you can — odd shapes waste paper and tear easily. If boxing is impossible, use a gift bag or fabric wrap instead of forcing paper around curves.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">GiftWrap</div>
+    <p>GiftWrap sizes the paper sheet for your box, estimates ribbon, and tells you how many gifts a roll will wrap.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(L,W,H,roll){if(!(L>0)||!(W>0)||!(H>0))return{sl:0,sw:0,area:0,ribbon:0,gifts:0};var sl=L+2*H+5;var sw=W+2*H+5;var area=sl*sw;var ribbon=2*(L+W)+60;var gifts=(roll>0)?Math.floor(roll*100/sl):0;return{sl:sl,sw:sw,area:area,ribbon:ribbon,gifts:gifts};}
+function go(){var L=parseFloat(document.getElementById('L').value)||0;var W=parseFloat(document.getElementById('W').value)||0;var H=parseFloat(document.getElementById('H').value)||0;var roll=parseFloat(document.getElementById('roll').value)||0;var r=compute(L,W,H,roll);document.getElementById('rS').textContent=r.sl+' × '+r.sw+' cm';document.getElementById('rA').textContent=r.area+' cm²';document.getElementById('rR').textContent=r.ribbon+' cm';document.getElementById('rG').textContent=r.gifts+' gifts';document.getElementById('err').textContent=(L>0&&W>0&&H>0)?'':'Enter positive box dimensions.';}
+document.getElementById('calc').addEventListener('click',go);
+document.querySelectorAll('.presets button').forEach(function(b){b.addEventListener('click',function(){document.getElementById('L').value=b.dataset.l;document.getElementById('W').value=b.dataset.w;document.getElementById('H').value=b.dataset.h;go();});});
+document.getElementById('copy').addEventListener('click',function(){navigator.clipboard.writeText(document.getElementById('rS').textContent+' wrapping paper');});
+document.getElementById('save').addEventListener('click',function(){var li=document.createElement('li');li.textContent=document.getElementById('rS').textContent;document.getElementById('hist').appendChild(li);});
+go();
+</script>
+</body>
+</html>
