@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pergola: Pergola Lumber &amp; Shade Calculator - Posts, Rafters, Slats &amp; Shade %</title>
+<meta name="description" content="Calculate pergola lumber and shade: posts, rafters and slats from length, width and slat gap.">
+<link rel="canonical" href="https://fun.fixoraa.tech/pergola/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Pergola: Pergola Lumber &amp; Shade Calculator - Posts, Rafters, Slats &amp; Shade %">
+<meta property="og:description" content="Calculate pergola lumber and shade: posts, rafters and slats from length, width and slat gap.">
+<meta property="og:url" content="https://fun.fixoraa.tech/pergola/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pergola",
+      "url": "https://fun.fixoraa.tech/pergola/",
+      "applicationCategory": "Home / Garden",
+      "operatingSystem": "Web",
+      "description": "Calculate pergola lumber and shade: posts, rafters and slats from length, width and slat gap.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many posts does a 4 metre pergola need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Four posts, one at each corner. Pergolas longer than 5 metres need six, with a middle pair so beams do not span too far."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What slat gap gives 75% shade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "15 cm slats with a 5 cm gap give about 75% shade. A 10 cm gap gives about 60% shade."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far apart should pergola rafters be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 60 cm apart is a standard spacing that balances strength, appearance and cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I attach a pergola to my house?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The house wall replaces one row of posts, but beams and rafters still follow the same spacing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What timber is best for a pergola?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pressure-treated softwood is the most affordable common choice. Cedar is lighter and naturally rot-resistant but costs more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need planning permission for a pergola?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on height and position, especially near boundaries. Check local planning rules before building."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F0FDF9; --surface:#FFFFFF; --accent:#0F766E; --accent-ink:#FFFFFF;
+  --ink:#1F2937; --muted:#475569; --line:#99F6E4;
+  --display:'Fraunces',serif; --body:'Public Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.pe-top{background:#CCFBF1;border:1.5px solid var(--line);border-radius:18px;padding:1rem;margin-bottom:1.2rem}.pe-beam{height:14px;background:var(--accent);border-radius:7px;margin-bottom:.6rem;opacity:.85}.pe-top p{color:var(--muted);font-weight:600}.pe-form{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:1.3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem}.pe-form label{font-weight:600;display:flex;flex-direction:column;gap:.35rem}.pe-form input{padding:.7rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;min-height:44px}.pe-go,.pe-copy{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.8rem 1.2rem;font-weight:700;min-height:44px;cursor:pointer}.pe-go{grid-column:1/-1}.pe-result{margin-top:1.2rem;background:#CCFBF1;border-radius:16px;padding:1.4rem}.pe-result .big{font-size:2.2rem;font-weight:800;font-family:var(--display)}.pe-sub{color:var(--muted);margin:.4rem 0 1.2rem}.pe-note{color:var(--muted);margin-top:1rem}@media(max-width:640px){.pe-form{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="Pergola home">
+      <span class="fx-logo-tile" aria-hidden="true">🌳</span>
+      <span class="fx-brand">Pergola</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-pergola-beam" aria-label="Pergola tool">
+<h1>Pergola: Pergola Lumber &amp; Shade Calculator</h1><p class="pe-sub">Posts, rafters, slats and real shade percentage for your garden pergola.</p><div class="pe-top" aria-hidden="true"><div class="pe-beam"></div><div class="pe-beam"></div><div class="pe-beam"></div><div class="pe-beam"></div><div class="pe-beam"></div><p>Top view: slats over rafters</p></div><div class="pe-form"><label>Length (m)<input id="len" type="number" min="0" step="0.1" value="4"></label><label>Width (m)<input id="wid" type="number" min="0" step="0.1" value="3"></label><label>Slat gap (cm)<input id="gap" type="number" min="0" value="5"></label><button class="pe-go" id="go">Calculate lumber</button></div><div class="pe-result" id="res"><p>Enter your pergola size and slat gap.</p></div><button class="pe-copy" id="copy">Copy materials list</button><p class="pe-note">Slats assumed 15 cm wide. Posts: 4 up to 5 m long, 6 above. Check planning rules near boundaries.</p>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What a pergola does, and why its lumber matters</h2><p>A pergola is an open garden structure of posts, beams and cross slats that gives partial shade, defines an outdoor room and supports climbing plants, without the full enclosure of a roof. Done well, it turns a hot patio into a usable living space for most of the year. Done badly, it is either too flimsy to be safe, too dense to feel open, or too expensive because the lumber was guessed rather than calculated. The key numbers are the posts that carry the structure, the beams that span between them, and the slats that create the shade, plus the shade percentage those slats actually give. Pergola calculates those numbers from your length, width and slat spacing, so you can buy the right timber and build a structure that is both safe and pleasant.</p><h2>How the pergola calculation works</h2><p>The calculator starts from the overall length and width of the pergola you want. Posts are placed at the corners, with an extra pair in the middle for longer structures: up to five metres needs four posts, while longer pergolas need six, so no beam spans too far unsupported. Rafters, the cross pieces that run across the width, are spaced about 60 centimetres apart, which is a standard spacing that balances strength, appearance and cost. Slats run along the length on top of the rafters, and their count depends on the slat width, taken as 15 centimetres, plus the gap you choose between slats. The shade percentage is simply the slat width divided by the slat width plus the gap, which tells you honestly how much sun the pergola will block.</p><h2>Choosing slat spacing and shade level</h2><p>Slat spacing is the single biggest design decision in a pergola, because it controls both shade and light. A small gap of about 5 centimetres, with 15 centimetre slats, gives about 75 percent shade, which feels cool and sheltered but still lets dappled light through. A gap of 10 centimetres gives about 60 percent shade, a good balance for most gardens, bright enough to sit under comfortably but shaded enough to make a hot day bearable. A gap of 15 centimetres or more gives 50 percent shade or less, which suits cooler climates or gardens where light matters more than shade. Remember that shade changes with the sun's angle: a pergola gives the most shade at midday in summer and less in the morning and evening, and climbing plants will add shade over time, so do not over-build the slats at the start.</p><h2>Step by step: planning with the calculator</h2><p>Measure the area you want to cover, allowing room for chairs and a table underneath, not just the table itself. Enter the length, width and the slat gap you prefer, and the calculator returns the post count, the rafter count and the slat count, plus the shade percentage. Sketch the structure on paper, marking the post positions, and check that the posts do not block a path, a door swing or a view you value. Check for underground services before digging post holes, and check overhead clearance for trees and power lines. If the pergola will attach to the house on one side, the house wall replaces one row of posts, but the beams and rafters still follow the same spacing, so adjust the post count accordingly when ordering.</p><h2>Posts, beams and structural safety</h2><p>Pergola posts are usually 15 by 15 centimetre timber or similar, set into the ground on concrete footings or fixed to a patio with proper post bases, not simply buried in soil, where they will rot. Beams must span between posts without sagging, so keep spans to about three metres or less, and add a middle post pair for longer pergolas, as the calculator does. Rafters sit on top of the beams, and slats sit on top of the rafters, each layer fixed securely so wind cannot lift it. If you plan to hang a swing, a heavy planter or a shade sail from the pergola, tell your timber supplier, because those loads change the beam and fixing requirements. A pergola is a structure people sit under, so structural safety is not an area to improvise: when in doubt, use larger timber and stronger fixings, and consult a builder.</p><h2>Timber choices: softwood, hardwood and composite</h2><p>Pressure-treated softwood is the most common pergola timber: affordable, widely available and durable when treated properly, though it needs regular staining or oiling to look its best. Cedar is lighter, naturally resistant to rot and insects, and weathers to an attractive silver-grey if left untreated, but it costs more and is softer, so it dents more easily. Hardwood such as oak is beautiful and extremely durable, but heavy, expensive and harder to work with. Composite boards will not rot or splinter, but they behave differently under load and heat, so they are better for decking than for structural pergola beams. Whatever timber you choose, use stainless or properly coated fixings, because ordinary steel fixings will stain and corrode outdoors, especially in cedar.</p><h2>Common pergola mistakes</h2><p>The most common mistake is spacing the posts too far apart, which leads to sagging beams and a structure that feels unsafe, even if it has not failed yet. The second is choosing slats that are too close together, which turns a pergola into a dark, heavy roof that blocks the breeze and the light it was meant to filter. A third mistake is setting posts directly into soil or concrete without drainage, which rots the timber from the bottom up within a few years. A fourth is forgetting that a pergola needs maintenance: timber moves, fixings loosen and finishes wear, so inspect the structure each spring and tighten, treat and repair as needed. Finally, do not build a pergola without checking local planning rules, especially near boundaries or above a certain height, because a structure that must be altered later is an expensive lesson.</p><h2>Climbing plants and shade over time</h2><p>Climbing plants transform a pergola from a timber frame into a living ceiling, but they also add weight, shade and maintenance. Wisteria is spectacular but heavy and vigorous, so it needs a strong structure and regular pruning. Grape vines give excellent summer shade and autumn colour, and they fruit as a bonus. Jasmine and climbing roses are lighter and fragrant, and they suit smaller pergolas. Plant at the base of the posts, guide the first shoots along wires or the slats, and prune annually to keep the growth balanced and the structure visible for inspection. Remember that a plant-covered pergola gives far more shade than the slats alone, so if you plan to plant climbers, choose a wider slat gap at the start and let the plants do the rest.</p><h2>Finishing, lighting and enjoying the pergola</h2><p>Finish timber before assembly where you can, because it is much easier to treat all sides of a board on a bench than overhead after it is built. Stain or oil protects against weather and keeps the colour you want, while leaving timber untreated gives a natural weathered look that some gardens suit perfectly. Lighting turns a pergola into an evening room: string lights along the beams, a lantern on the table, or low-voltage lights in the posts all work, provided the electrics are properly outdoor-rated and installed safely. Add comfortable seating, a table that fits the space, and perhaps an outdoor rug, and the pergola becomes the room you use most in summer. With the lumber calculated, the shade chosen and the structure built safely, you have an outdoor space that will serve you for many years.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many posts does a 4 metre pergola need?</summary><p>Four posts, one at each corner. Pergolas longer than 5 metres need six, with a middle pair so beams do not span too far.</p></details>
+<details><summary>What slat gap gives 75% shade?</summary><p>15 cm slats with a 5 cm gap give about 75% shade. A 10 cm gap gives about 60% shade.</p></details>
+<details><summary>How far apart should pergola rafters be?</summary><p>About 60 cm apart is a standard spacing that balances strength, appearance and cost.</p></details>
+<details><summary>Can I attach a pergola to my house?</summary><p>Yes. The house wall replaces one row of posts, but beams and rafters still follow the same spacing.</p></details>
+<details><summary>What timber is best for a pergola?</summary><p>Pressure-treated softwood is the most affordable common choice. Cedar is lighter and naturally rot-resistant but costs more.</p></details>
+<details><summary>Do I need planning permission for a pergola?</summary><p>It depends on height and position, especially near boundaries. Check local planning rules before building.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">Pergola</div>
+    <p>Pergola calculates pergola posts, rafters, slats and shade percentage from size and slat gap.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function computePergola(lenM,widM,gapCm){if(!(lenM>0)||!(widM>0)||!(gapCm>=0))return{posts:0,rafters:0,slats:0,shade:0};var posts=lenM>5?6:4;var rafters=Math.ceil(widM/0.6)+1;var slats=Math.ceil(lenM*100/(15+gapCm));var shade=Math.round(15/(15+gapCm)*100);return{posts:posts,rafters:rafters,slats:slats,shade:shade};}
+function render(){var l=+document.getElementById('len').value,w=+document.getElementById('wid').value,g=+document.getElementById('gap').value;var r=computePergola(l,w,g);if(!r.slats){document.getElementById('res').innerHTML='<p>Enter a length and width above zero.</p>';return;}document.getElementById('res').innerHTML='<p class="big">'+r.shade+'% shade</p><p>'+r.posts+' posts &middot; '+r.rafters+' rafters &middot; '+r.slats+' slats (15 cm wide)</p><p>Keep beam spans to about 3 m or less; add a middle post pair for longer pergolas.</p>';}
+document.getElementById('go').addEventListener('click',render);
+document.getElementById('copy').addEventListener('click',function(){var t=document.getElementById('res').innerText;navigator.clipboard&&navigator.clipboard.writeText(t);});
+render();
+</script>
+</body>
+</html>
