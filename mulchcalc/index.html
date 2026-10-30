@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mulch Calculator: Cubic Yards, Bags &amp; Cost Estimator</title>
+<meta name="description" content="How much mulch do you need? Enter bed area and depth to get cubic yards and bag counts, with bulk versus bagged pricing compared side by side.">
+<link rel="canonical" href="https://fun.fixoraa.tech/mulchcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Mulch Calculator: Cubic Yards, Bags &amp; Cost Estimator">
+<meta property="og:description" content="How much mulch do you need? Enter bed area and depth to get cubic yards and bag counts, with bulk versus bagged pricing compared side by side.">
+<meta property="og:url" content="https://fun.fixoraa.tech/mulchcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "MulchCalc",
+      "url": "https://fun.fixoraa.tech/mulchcalc/",
+      "applicationCategory": "Garden & Lawn",
+      "operatingSystem": "Web",
+      "description": "How much mulch do you need? Enter bed area and depth to get cubic yards and bag counts, with bulk versus bagged pricing compared side by side.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate how much mulch I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cubic yards = (area in sq ft \u00d7 depth in inches) \u00f7 324. A 200 sq ft bed at 3 inches needs 1.85 cubic yards, or about 25 two-cubic-foot bags."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How deep should mulch be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "3 inches for new beds, 1\u20132 inches to refresh existing mulch, 2\u20133 inches around trees (kept clear of trunks). Never exceed 4 inches."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many bags of mulch are in a cubic yard?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One cubic yard equals 13.5 two-cubic-foot bags. Multiply your cubic yards by 13.5 and round up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is bulk or bagged mulch cheaper?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For under ~1.5 cubic yards, bagged is usually cheaper after delivery fees. Above that, bulk mulch ($25\u201345/yard) wins decisively."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is volcano mulching bad for trees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It causes bark rot, invites pests and creates girdling roots. Keep mulch 3\u20136 inches from trunks with the root flare visible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the best time to mulch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Late spring, after soil has warmed \u2014 mulching too early keeps soil cold. Top up once a year; organic mulches decompose 1\u20132 inches annually."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FAF6ED; --surface:#FFFFFF; --accent:#7A4C1B; --accent-ink:#FFFFFF;
+  --ink:#2D251A; --muted:#685C46; --line:#E6DAC4;
+  --display:'Hanken Grotesk',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.mu-wrap{max-width:920px;margin:0 auto;padding:28px 18px 56px;color:#2D251A;font-family:Inter,system-ui,sans-serif}
+.mu-hero{text-align:center;margin-bottom:20px}
+.mu-hero h1{font-family:"Hanken Grotesk",sans-serif;font-weight:800;font-size:clamp(32px,6vw,48px);margin:0 0 8px;color:#2D251A;letter-spacing:-.5px}
+.mu-tagline{font-size:16px;color:#685C46;margin:0}
+.mu-bento{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mu-card{background:#fff;border:1px solid #E6DAC4;border-radius:20px;padding:22px;box-shadow:0 2px 12px rgba(122,76,27,.07)}
+.mu-card.mu-wide{grid-column:1/-1}
+.mu-h2{font-family:"Hanken Grotesk",sans-serif;font-size:19px;font-weight:800;margin:0 0 4px;color:#2D251A}
+.mu-sub{font-size:13.5px;color:#685C46;margin:0 0 14px}
+.mu-field{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#685C46}
+.mu-field input{font:inherit;font-size:18px;color:#2D251A;border:1px solid #E6DAC4;border-radius:12px;padding:12px;background:#FAF6ED;min-height:52px}
+.mu-depth{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.mu-depth button{border:1px solid #E6DAC4;background:#FAF6ED;border-radius:14px;padding:12px 4px;cursor:pointer;font:inherit;min-height:56px}
+.mu-depth button b{display:block;font-size:16px;color:#2D251A}
+.mu-depth button span{font-size:11.5px;color:#685C46}
+.mu-depth button.mu-on{background:#7A4C1B;border-color:#7A4C1B}
+.mu-depth button.mu-on b,.mu-depth button.mu-on span{color:#fff}
+.mu-result{background:linear-gradient(135deg,#7A4C1B,#a3763f);border-radius:20px;color:#fff;padding:24px;text-align:center}
+.mu-result small{display:block;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:.9}
+.mu-result .mu-big{font-family:"Hanken Grotesk",sans-serif;font-size:52px;font-weight:800;line-height:1.15}
+.mu-result .mu-alt{font-size:14px;opacity:.95;margin-top:6px}
+.mu-cost{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.mu-cost div{background:#FAF6ED;border:1px solid #E6DAC4;border-radius:14px;padding:14px;text-align:center}
+.mu-cost dt{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#685C46}
+.mu-cost dd{margin:6px 0 0;font-weight:800;font-size:20px;color:#7A4C1B}
+.mu-toggle{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:14.5px;font-weight:600;color:#685C46;cursor:pointer}
+.mu-toggle input{width:22px;height:22px;accent-color:#7A4C1B}
+.mu-verdict{font-size:14px;color:#685C46;background:#F3EDDF;border-radius:12px;padding:10px 14px;margin:12px 0 0;line-height:1.6}
+.mu-verdict b{color:#7A4C1B}
+@media(max-width:720px){
+.mu-bento{grid-template-columns:1fr}
+.mu-depth{grid-template-columns:repeat(2,1fr)}
+.mu-cost{grid-template-columns:1fr 1fr}
+.mu-wrap{padding:20px 12px 44px}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="MulchCalc home">
+      <span class="fx-logo-tile" aria-hidden="true">🍂</span>
+      <span class="fx-brand">MulchCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-play-cards" aria-label="MulchCalc tool">
+<section class="mu-wrap" aria-label="Mulch calculator">
+  <div class="mu-hero">
+    <h1>🍂 Mulch Calculator</h1>
+    <p class="mu-tagline">Bed area in, bags out: buy exactly the mulch your garden needs.</p>
+  </div>
+  <div class="mu-bento">
+    <div class="mu-card">
+      <h2 class="mu-h2">Bed size</h2>
+      <p class="mu-sub">Area × depth → cubic yards.</p>
+      <label class="mu-field">Bed area (sq ft)
+        <input id="muArea" type="number" min="10" value="200" inputmode="numeric">
+      </label>
+      <div class="mu-depth" id="muDepth">
+        <button data-d="2"><b>2″</b><span>Top-up</span></button>
+        <button data-d="3" class="mu-on"><b>3″</b><span>New beds</span></button>
+        <button data-d="4"><b>4″</b><span>Max depth</span></button>
+        <button data-d="1"><b>1″</b><span>Refresh</span></button>
+      </div>
+    </div>
+    <div class="mu-card">
+      <h2 class="mu-h2">Pricing</h2>
+      <p class="mu-sub">Bagged vs bulk, compared live.</p>
+      <label class="mu-field">Price per 2 cu ft bag ($)
+        <input id="muBagPrice" type="number" min="1" step="0.5" value="4" inputmode="decimal">
+      </label>
+      <label class="mu-field" style="margin-top:10px">Bulk price per cubic yard ($)
+        <input id="muBulkPrice" type="number" min="10" step="1" value="35" inputmode="numeric">
+      </label>
+      <label class="mu-toggle"><input type="checkbox" id="muDelivery" checked> Include $50 bulk delivery fee</label>
+    </div>
+    <div class="mu-card mu-wide">
+      <div class="mu-result">
+        <small>You need</small>
+        <div class="mu-big"><span id="muYd">1.85</span> yd³ · <span id="muBags">25</span> bags</div>
+        <div class="mu-alt">2 cu ft bags · formula: area × depth ÷ 324</div>
+      </div>
+      <dl class="mu-cost">
+        <div><dt>Bagged total</dt><dd>$<span id="muBagTotal">100</span></dd></div>
+        <div><dt>Bulk total</dt><dd>$<span id="muBulkTotal">115</span></dd></div>
+      </dl>
+      <p class="mu-verdict" id="muVerdict"></p>
+    </div>
+  </div>
+</section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How much mulch do you need? The formula</h2><p>Mulch volume is simple geometry: <strong>cubic yards = (area in sq ft × depth in inches) ÷ 324</strong>. The 324 comes from converting units — 1 cubic yard is 27 cubic feet, and depth in inches divided by 12 gives feet, so area × (depth/12) ÷ 27 = area × depth ÷ 324. A 200 sq ft bed at 3 inches deep needs 200 × 3 ÷ 324 = 1.85 cubic yards. Most bagged mulch comes in 2 cubic-foot bags, and one cubic yard equals 13.5 such bags — so 1.85 yards is 25 bags.</p><h2>How deep should mulch be?</h2><table><thead><tr><th>Situation</th><th>Depth</th><th>Why</th></tr></thead><tbody><tr><td>New beds, bare soil</td><td><strong>3–4 inches</strong></td><td>Suppresses weeds, retains moisture</td></tr><tr><td>Refreshing existing mulch</td><td><strong>1–2 inches</strong></td><td>Top-up only — don't bury the old layer deeper</td></tr><tr><td>Around trees</td><td><strong>2–3 inches</strong></td><td>Keep 3–6 inches clear of the trunk</td></tr><tr><td>Vegetable gardens</td><td><strong>2–3 inches</strong></td><td>Straw or shredded leaves preferred</td></tr></tbody></table><p>More is not better: mulch deeper than 4 inches can suffocate roots, trap excess moisture against stems, and invite rodents. The infamous "mulch volcano" piled against tree trunks causes bark rot and girdling roots — always leave a doughnut-shaped gap around trunks.</p><h3>Quick reference: bags per 100 sq ft</h3><table><thead><tr><th>Depth</th><th>Cubic yards</th><th>2 cu ft bags</th></tr></thead><tbody><tr><td>2 in</td><td>0.62</td><td>9</td></tr><tr><td>3 in</td><td>0.93</td><td>13</td></tr><tr><td>4 in</td><td>1.23</td><td>17</td></tr></tbody></table><h2>Bulk vs bagged mulch: the price maths</h2><p>Bagged mulch typically costs $3–5 per 2 cu ft bag. Bulk mulch from a landscape yard runs $25–45 per cubic yard — equivalent to roughly $2–3.30 per bag-equivalent. The crossover: for <strong>under ~1.5 cubic yards (20 bags)</strong>, bagged is usually cheaper once delivery fees are counted; above that, bulk wins decisively. A 500 sq ft bed at 3 inches needs 4.6 yards — about $150–200 bulk versus $250+ bagged. Bulk delivery often has a minimum (commonly 2–3 yards) and a delivery fee, so factor that in.</p><h2>Types of mulch and where to use them</h2><ul><li><strong>Shredded bark:</strong> the all-rounder — knits together, resists washing away, good for slopes.</li><li><strong>Wood chips:</strong> cheap and long-lasting; best for paths and around trees, not against stems (nitrogen tie-up at the soil surface).</li><li><strong>Straw:</strong> ideal for vegetable gardens — light, easy to move, breaks down fast.</li><li><strong>Compost:</strong> feeds soil as it mulches; use 1–2 inches as a top-dress on beds.</li><li><strong>Stone/gravel:</strong> permanent, zero maintenance, but heats soil and never improves it — reserve for cactus beds and drainage areas.</li><li><strong>Dyed mulch:</strong> looks tidy but the colour fades in a season; undyed bark ages to a natural brown anyway.</li></ul><h2>How to spread mulch properly</h2><p>Weed first — mulch suppresses new weeds but will not kill established ones. Edge the bed for a crisp line that keeps mulch in and grass out. Spread evenly with a rake, keeping mulch 3–6 inches from stems and trunks. Water after spreading to settle it. In spring, fluff matted winter mulch with a rake before topping up so water penetrates instead of sheeting off.</p><h2>When and how often to mulch</h2><p>Mulch in <strong>late spring</strong> after soil warms — mulching too early keeps soil cold and slows growth. Top up <strong>once a year</strong>; organic mulches decompose 1–2 inches annually, so a 1–2 inch refresh maintains depth without overbuilding. In autumn, shredded fallen leaves make free mulch — run the mower over them and spread 2–3 inches on beds.</p><h2>Common mistakes</h2><ul><li><strong>Volcano mulching trees:</strong> bark rot, pests, girdling roots. Keep the trunk flare visible.</li><li><strong>Too deep:</strong> over 4 inches suffocates roots and shelters slugs.</li><li><strong>Mulching weeds:</strong> pull or smother first; mulch is prevention, not cure.</li><li><strong>Fresh wood chips against stems:</strong> fine on paths, but keep fresh chips away from plant bases.</li></ul><p>Measure the bed, pick the depth, run the numbers — and buy once, not twice.</p><h2>Mulch and soil pH: the real story</h2><p>Pine needles and bark are often blamed for acidifying soil, but research shows the effect is negligible — mulch breaks down slowly and soil buffers pH strongly. Fresh wood chips can temporarily tie up nitrogen <em>at the soil surface</em> as microbes decompose them, which is why you keep fresh chips away from plant stems but can use them freely on paths. If a soil test shows acidity, lime corrects it far more effectively than changing mulch type. Choose mulch for texture, cost and appearance; manage pH separately.</p><h2>Living mulches and groundcovers</h2><p>The cheapest mulch is a plant. Low groundcovers — creeping thyme, sedum, clover, sweet woodruff — suppress weeds, hold moisture and never need topping up. White clover even fixes nitrogen, feeding neighbouring plants. Living mulch suits areas where you will not walk much and do not need a crisp formal edge. Many gardeners combine approaches: bark mulch for the first year while groundcover plugs establish, then let the plants take over.</p><h2>Measuring irregular beds</h2><p>Real gardens are not rectangles. For curved beds, break the shape into rough rectangles and triangles, estimate each area, and add them — precision to the nearest 10 sq ft is plenty since you will round up bags anyway. For a quick field estimate, pace the bed: one adult pace is roughly 2.5 ft, so length in paces × width in paces × 6.25 gives square feet. Always round up to whole bags or half yards; a little extra mulch finds a use somewhere.</p><h2>Sheet mulching: killing grass without digging</h2><p>Converting lawn to garden beds? <strong>Sheet mulching</strong> (lasagna gardening) does it with zero digging: mow the grass short, lay overlapping cardboard (tape removed), wet it thoroughly, then pile 4–6 inches of compost and mulch on top. In 2–3 months the grass underneath dies and decomposes, and you plant straight through. A 100 sq ft conversion needs about 2 cubic yards of material — run it through the calculator with 5-inch depth to estimate. It is slower than a sod cutter but far less work and builds soil instead of removing it.</p><h2>Rubber mulch: an honest assessment</h2><p>Shredded-tyre mulch lasts essentially forever and does not attract termites, which sells a lot of playgrounds. But it does not feed soil, it heats up dramatically in sun (surface temperatures 20–30°F above wood mulch), it can leach zinc and other tyre compounds, and stray pieces migrate everywhere. For play areas where permanence matters, it has a case. For garden beds, it is all downside: plants want organic matter, not rubber. Wood mulch costs less per year once you account for rubber's premium price.</p><h2>Mulch rings around trees: the right way</h2><p>A proper mulch ring extends to the tree's drip line where feasible, 2–3 inches deep, with a clear 3–6 inch gap at the trunk so the root flare stays visible and dry. This single practice does more for urban tree health than almost anything else: it eliminates mower and string-trimmer damage (the #1 killer of young street trees), retains soil moisture, and moderates root-zone temperature. For a tree with a 6 ft diameter ring at 3 inches, you need about 0.65 cubic yards — roughly 9 bags. Refresh yearly without deepening.</p><h2>Dyed vs natural mulch colour</h2><p>Black and red dyed mulches use iron oxide and carbon-based colorants generally regarded as safe, and they hold colour one season before fading to brown-grey. Natural shredded bark starts brown and silvers gracefully. The practical difference is mostly aesthetic and short-lived — within a year, dyed and undyed look similar. Dyed mulch sometimes contains recycled wood of uncertain origin, so for vegetable gardens, stick to natural bark, straw or compost. Buy colour for instant curb appeal; buy natural for everything else.</p><h2>A worked example: mulching a whole front yard</h2><p>Say your front yard has three beds: 120 sq ft, 80 sq ft and a 60 sq ft tree ring, all needing 3 inches. Total area = 260 sq ft; volume = 260 × 3 ÷ 324 ≈ <strong>2.4 cubic yards</strong>, or about 33 bags (2.4 × 13.5). Bulk at $35/yard = $84 plus a $50 delivery fee = $134; bagged at $4/bag = $132. At this size it is nearly a tie — but add one more bed and bulk wins clearly. This is exactly the crossover the calculator flags: price both options before you buy.</p><h2>Ordering from the yard: what to ask</h2><p>When you call a landscape supplier, ask four things: the <strong>minimum delivery</strong> (usually 2–3 yards), the <strong>delivery fee and truck access</strong> (they need a clear dumping spot), whether the mulch is <strong>aged or fresh</strong> (aged is better near plants), and the <strong>pickup price per yard</strong> if you have a truck — pickup often skips the fee entirely. Order 10% more than the calculator says; settling and uneven spreading eat the margin.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I calculate how much mulch I need?</summary><p>Cubic yards = (area in sq ft × depth in inches) ÷ 324. A 200 sq ft bed at 3 inches needs 1.85 cubic yards, or about 25 two-cubic-foot bags.</p></details>
+<details><summary>How deep should mulch be?</summary><p>3 inches for new beds, 1–2 inches to refresh existing mulch, 2–3 inches around trees (kept clear of trunks). Never exceed 4 inches.</p></details>
+<details><summary>How many bags of mulch are in a cubic yard?</summary><p>One cubic yard equals 13.5 two-cubic-foot bags. Multiply your cubic yards by 13.5 and round up.</p></details>
+<details><summary>Is bulk or bagged mulch cheaper?</summary><p>For under ~1.5 cubic yards, bagged is usually cheaper after delivery fees. Above that, bulk mulch ($25–45/yard) wins decisively.</p></details>
+<details><summary>Why is volcano mulching bad for trees?</summary><p>It causes bark rot, invites pests and creates girdling roots. Keep mulch 3–6 inches from trunks with the root flare visible.</p></details>
+<details><summary>When is the best time to mulch?</summary><p>Late spring, after soil has warmed — mulching too early keeps soil cold. Top up once a year; organic mulches decompose 1–2 inches annually.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">MulchCalc</div>
+    <p>MulchCalc converts bed area and depth into cubic yards, bag counts and a cost estimate.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function mulch(areaSqft, depthIn){
+  if(!(areaSqft > 0) || !(depthIn > 0)) return { cuYd: NaN, bags: NaN };
+  var raw = areaSqft * depthIn / 324;
+  return { cuYd: Math.round(raw*100)/100, bags: Math.ceil(raw*13.5) };
+}
+if(typeof document !== 'undefined'){
+document.addEventListener('DOMContentLoaded', function(){
+  var depth = 3;
+  function refresh(){
+    var area = parseFloat(document.getElementById('muArea').value) || 0;
+    var m = mulch(area, depth);
+    var yd = isNaN(m.cuYd) ? 0 : m.cuYd, bags = isNaN(m.bags) ? 0 : m.bags;
+    document.getElementById('muYd').textContent = yd.toFixed(2);
+    document.getElementById('muBags').textContent = bags;
+    var bagP = parseFloat(document.getElementById('muBagPrice').value) || 0;
+    var bulkP = parseFloat(document.getElementById('muBulkPrice').value) || 0;
+    var bagTotal = bags * bagP;
+    var bulkTotal = yd * bulkP + (document.getElementById('muDelivery').checked ? 50 : 0);
+    document.getElementById('muBagTotal').textContent = Math.round(bagTotal);
+    document.getElementById('muBulkTotal').textContent = Math.round(bulkTotal);
+    var v = document.getElementById('muVerdict');
+    if(bagTotal <= bulkTotal){ v.innerHTML = '<b>Bagged wins</b> for this size — no delivery fee and easier to handle. Bulk beats bagged above ~1.5 yd³.'; }
+    else { v.innerHTML = '<b>Bulk wins</b> — you save about $' + Math.round(bagTotal - bulkTotal) + ' vs bagged on this order.'; }
+  }
+  ['muArea','muBagPrice','muBulkPrice'].forEach(function(id){ document.getElementById(id).addEventListener('input', refresh); });
+  document.getElementById('muDelivery').addEventListener('change', refresh);
+  document.querySelectorAll('#muDepth button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#muDepth button').forEach(function(x){ x.classList.remove('mu-on'); });
+      b.classList.add('mu-on');
+      depth = parseInt(b.getAttribute('data-d'));
+      refresh();
+    });
+  });
+  refresh();
+});}
+</script>
+</body>
+</html>
