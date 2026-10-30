@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caulk Calculator — How Many Tubes Do You Need? | CaulkCalc</title>
+<meta name="description" content="Free caulk calculator: enter your joint lengths and bead size to find exactly how many tubes of caulk you need, with waste factor and cost estimate.">
+<link rel="canonical" href="https://fun.fixoraa.tech/caulkcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Caulk Calculator — How Many Tubes Do You Need? | CaulkCalc">
+<meta property="og:description" content="Free caulk calculator: enter your joint lengths and bead size to find exactly how many tubes of caulk you need, with waste factor and cost estimate.">
+<meta property="og:url" content="https://fun.fixoraa.tech/caulkcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CaulkCalc",
+      "url": "https://fun.fixoraa.tech/caulkcalc/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Free caulk calculator: enter your joint lengths and bead size to find exactly how many tubes of caulk you need, with waste factor and cost estimate.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How many linear feet does one tube of caulk cover?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A standard 10-ounce tube covers about 30 linear feet with a 1/4-inch bead. Coverage scales with the square of the bead diameter: a 1/8-inch bead stretches to roughly 120 feet, while a fat 1/2-inch bead drops to about 8 feet. This calculator uses the true volume math so you get the right number for your bead size." } },
+        { "@type": "Question", "name": "What bead size should I use for windows and baseboards?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For most trim, windows and baseboards, a 1/4-inch bead is the sweet spot — wide enough to bridge small gaps, narrow enough to tool cleanly. Use 1/8 inch for hairline cracks and tile edges, and 3/8 inch or more only for wide, uneven gaps like between a tub and tile. Cut the tube tip to match: the opening should be slightly smaller than your target bead." } },
+        { "@type": "Question", "name": "Should I add extra tubes for waste?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — plan 10 to 15 percent extra. You lose caulk to the initial purge, tip cutoffs, restarted beads, and the bit left in the tube you can never squeeze out. This calculator adds a 10 percent waste factor by default, which you can adjust." } },
+        { "@type": "Question", "name": "Silicone vs latex caulk — which should I buy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Use 100% silicone for wet areas (tubs, showers, sinks) — it stays flexible and resists mold. Use paintable latex or siliconized acrylic for trim, baseboards and windows you plan to paint, since paint will not stick to silicone. Polyurethane is the heavy-duty choice for concrete and exterior gaps." } },
+        { "@type": "Question", "name": "Can I caulk over old caulk?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You should not. New caulk bonds poorly to old, dirty caulk and will peel within months. Cut out the old bead completely, clean the joint with rubbing alcohol, let it dry, and then apply the new bead. The few minutes of prep double the life of the job." } },
+        { "@type": "Question", "name": "How do I get a smooth caulk line?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Cut the tip at 45 degrees to slightly less than your target bead size, keep steady pressure and a consistent speed, and tool the bead immediately with a wet finger or caulk tool in one smooth pass. Painter's tape on both sides of the joint gives razor-sharp edges — pull the tape while the caulk is still wet." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9E1E1; --surface:#FFFFFF; --tint:#F4D2D2;
+  --accent:#841515; --accent-deep:#6E1B1B; --accent-ink:#FFFFFF;
+  --ink:#2B1D1D; --muted:#725C5C; --line:#EAD3D3;
+  --ok:#2F7D32;
+  --display:'Karla',system-ui,sans-serif; --body:'Karla',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+/* header */
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+/* hero */
+.cc-hero{padding:44px 0 8px;text-align:left}
+.cc-eyebrow{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:1px solid var(--line);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.cc-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:-.025em;font-weight:800;margin-bottom:10px}
+.cc-hero p{font-size:18px;color:var(--muted);max-width:640px}
+/* workbench tool */
+.cc-bench{margin:26px 0 8px;background:var(--surface);border:2px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 12px 32px rgba(139,35,35,.08)}
+.cc-bench-head{background:repeating-linear-gradient(-45deg,var(--tint),var(--tint) 14px,#F9ECEC 14px,#F9ECEC 28px);border-bottom:2px solid var(--line);padding:16px 24px;display:flex;align-items:center;gap:12px}
+.cc-bench-head .screw{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9a9a9,var(--accent));box-shadow:inset 0 -2px 3px rgba(0,0,0,.25)}
+.cc-bench-head h2{font-size:18px;font-weight:800;letter-spacing:-.01em}
+.cc-bench-body{display:grid;grid-template-columns:1.15fr .85fr;gap:0}
+.cc-inputs{padding:26px;border-right:2px dashed var(--line)}
+.cc-results{padding:26px;background:linear-gradient(180deg,#FFFDFD,var(--bg))}
+.field{margin-bottom:20px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.field .hint{font-weight:400;font-size:13px;color:var(--muted)}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;color:var(--ink);transition:all .12s}
+.seg button.on{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 3px 0 var(--accent-deep)}
+.joint-row{display:grid;grid-template-columns:1fr 110px 44px;gap:8px;margin-bottom:8px;align-items:center}
+.joint-row input,.field input[type=number],.field select{font:inherit;padding:11px 13px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%}
+.joint-row input:focus,.field input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.joint-del{border:2px solid var(--line);background:#fff;border-radius:12px;font-size:18px;cursor:pointer;color:var(--muted);height:46px}
+.joint-del:hover{color:var(--accent);border-color:var(--accent)}
+.cc-add{border:2px dashed var(--accent);background:transparent;color:var(--accent);border-radius:12px;padding:11px;width:100%;font:inherit;font-weight:800;cursor:pointer;margin-top:4px}
+.cc-add:hover{background:var(--tint)}
+.cc-total{background:var(--accent);color:#fff;border-radius:16px;padding:22px;text-align:center;margin-bottom:18px;box-shadow:0 6px 0 var(--accent-deep)}
+.cc-total .n{font-size:56px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.cc-total .l{font-size:14px;font-weight:700;opacity:.92;margin-top:6px;letter-spacing:.06em;text-transform:uppercase}
+.cc-lines{list-style:none;font-size:15px}
+.cc-lines li{display:flex;justify-content:space-between;gap:12px;padding:9px 2px;border-bottom:1px dashed var(--line)}
+.cc-lines li:last-child{border-bottom:0}
+.cc-lines .k{color:var(--muted)}
+.cc-lines .v{font-weight:800;text-align:right}
+.cc-note{background:var(--tint);border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;font-size:14px;color:var(--accent-deep);margin-top:16px}
+/* article */
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800}
+.article-sec p{margin-bottom:14px;color:#3d2c2c}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#3d2c2c}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#3d2c2c;font-size:15px}
+/* footer */
+.fx-footer{background:#241a1a;color:#f3e4e4;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#c9aeae;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#ffb4b4;font-weight:700}
+.no-print{}
+@media(max-width:760px){
+  .cc-bench-body{grid-template-columns:1fr}
+  .cc-inputs{border-right:0;border-bottom:2px dashed var(--line)}
+  .fx-nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/caulkcalc/" aria-label="CaulkCalc home">
+      <span class="fx-tile" aria-hidden="true">C</span>
+      <span class="fx-name">CaulkCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="cc-hero">
+    <span class="cc-eyebrow">Workshop math</span>
+    <h1>Caulk Calculator</h1>
+    <p>Stop guessing at the hardware store. Add up your joints, pick your bead size, and get the exact tube count — with waste and cost figured in.</p>
+  </section>
+
+  <section class="cc-bench" aria-label="CaulkCalc tool">
+    <div class="cc-bench-head"><span class="screw"></span><h2>Your caulking job</h2><span class="screw"></span></div>
+    <div class="cc-bench-body">
+      <div class="cc-inputs">
+        <div class="field">
+          <label>Bead size <span class="hint">— the diameter of the caulk line</span></label>
+          <div class="seg" id="cc-beadseg" role="group" aria-label="Bead size">
+            <button type="button" data-d="0.125">1/8&Prime;</button>
+            <button type="button" data-d="0.1875">3/16&Prime;</button>
+            <button type="button" data-d="0.25" class="on">1/4&Prime;</button>
+            <button type="button" data-d="0.375">3/8&Prime;</button>
+            <button type="button" data-d="0.5">1/2&Prime;</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Joints to caulk <span class="hint">— length in feet per joint</span></label>
+          <div id="cc-joints"></div>
+          <button type="button" class="cc-add" id="cc-add">+ Add another joint</button>
+        </div>
+        <div class="field">
+          <label for="cc-waste">Waste allowance <span class="hint">— purge, restarts, tube leftovers</span></label>
+          <select id="cc-waste">
+            <option value="0">None (0%)</option>
+            <option value="0.10" selected>Standard (10%)</option>
+            <option value="0.15">Generous (15%)</option>
+            <option value="0.20">First-timer (20%)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cc-price">Price per tube ($) <span class="hint">— optional, for cost estimate</span></label>
+          <input type="number" id="cc-price" value="8.50" min="0" max="30" step="0.50">
+        </div>
+      </div>
+      <div class="cc-results" aria-live="polite">
+        <div class="cc-total">
+          <div class="n" id="cc-tubes">4</div>
+          <div class="l">tubes needed</div>
+        </div>
+        <ul class="cc-lines">
+          <li><span class="k">Total joint length</span><span class="v" id="cc-feet">100 ft</span></li>
+          <li><span class="k">Coverage per tube</span><span class="v" id="cc-cov">32 ft</span></li>
+          <li><span class="k">Exact tubes (with waste)</span><span class="v" id="cc-exact">3.4</span></li>
+          <li><span class="k">Estimated cost</span><span class="v" id="cc-cost">$34.00</span></li>
+        </ul>
+        <div class="cc-note" id="cc-note">A 10&thinsp;oz tube holds about 18.9&thinsp;in&sup3; of caulk. Coverage is real volume math, not a guess.</div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-sec" aria-label="Guide">
+    <h2>Why Bead Size Decides Everything</h2>
+    <p>Every caulk job starts with the same hardware-store dilemma: how many tubes? Buy too few and you are back in the car mid-project with a half-caulked tub. Buy too many and you own a small museum of dried-out tubes. The answer lives in one number most people ignore — <strong>bead size</strong>, the diameter of the caulk line you lay down.</p>
+    <p>Here is the uncomfortable math: caulk coverage does not scale linearly with bead size, it scales with the <strong>square</strong> of the diameter. Double the bead from 1/4 inch to 1/2 inch and you do not use twice the caulk — you use <strong>four times</strong> as much. A standard 10-ounce tube lays roughly 120 feet of a skinny 1/8-inch bead, about 32 feet of the everyday 1/4-inch bead, and a mere 8 feet of a fat 1/2-inch bead. That is why two people caulking the "same" bathroom can need wildly different tube counts: one is laying a neat 3/16-inch line, the other is filling the Grand Canyon.</p>
+    <p>This calculator does the honest volume math. A 10-ounce tube holds about 18.9 cubic inches of caulk; a bead is a cylinder, so length per tube equals volume divided by the bead's cross-sectional area. Pick your bead size, add up your joint lengths, and the tube count falls out — with a waste allowance, because the real world is messier than geometry.</p>
+    <h2>Measuring Your Joints Like a Pro</h2>
+    <p>Walk the job with a tape measure and list every joint as its own line. The usual suspects: <strong>windows</strong> (measure the perimeter of each frame, typically 14–20 feet per window), <strong>doors</strong> (two sides plus the top, about 17 feet per door), <strong>baseboards</strong> (the room perimeter minus door openings), <strong>tub and shower surrounds</strong> (where tile meets tub, plus vertical corners), and <strong>countertops</strong> (the backsplash joint). Add each as a separate joint in the calculator so you can sanity-check the total — a whole-house trim job often lands between 300 and 600 feet, which surprises first-timers.</p>
+    <p>Measure in feet and do not overthink fractions; the waste allowance absorbs small errors. What matters far more is not missing joints entirely. The classic miss is the <strong>top of baseboards in closets</strong> and the <strong>inside of window jambs</strong> — small individually, but they add up across a house.</p>
+    <h2>Choosing the Right Bead Size</h2>
+    <p>Match the bead to the gap, not to your ambition. A <strong>1/8-inch</strong> bead suits hairline cracks, tile grout-line touch-ups, and the edge where a countertop meets a wall. The everyday <strong>3/16 to 1/4 inch</strong> covers trim, baseboards, window frames, and door casing — the bread and butter of interior caulking. Step up to <strong>3/8 inch</strong> for uneven gaps like an old tub-to-tile joint or wavy drywall corners. Reserve <strong>1/2 inch</strong> for genuinely wide gaps, and consider backer rod first (see below) rather than filling a canyon with expensive caulk.</p>
+    <p>Cut the tube tip to match: the opening should be <strong>slightly smaller</strong> than your target bead, cut at 45 degrees. You can always cut more off; you cannot put plastic back. Poke the inner seal with a long nail or the poker built into many caulk guns before you start squeezing.</p>
+    <h2>Silicone, Latex, or Polyurethane?</h2>
+    <p>Buying the right chemistry matters as much as the right quantity. <strong>100% silicone</strong> is the king of wet areas — tubs, showers, sinks — because it stays flexible for decades and resists mold. Its curse: paint will not stick to it, so never use it on trim you plan to paint. <strong>Siliconized acrylic latex</strong> is the trim painter's friend: it tools beautifully, cleans up with water, and takes paint perfectly, but it shrinks more and lasts fewer years in harsh sun. <strong>Polyurethane</strong> (like the classic OSI Quad) is the exterior heavyweight for siding, concrete, and dissimilar materials — incredibly durable, paintable after curing, but sticky, messy, and mineral-spirits cleanup only.</p>
+    <p>For this calculator, tube size is what matters: most tubes are <strong>10 ounces</strong>, the math above assumes that. Big 28-ounce cartridges exist for pros — they hold 2.8 times the caulk, so divide the tube count accordingly if you go that route.</p>
+    <h2>The Backer Rod Trick</h2>
+    <p>Gaps wider than about 1/2 inch should not be filled with caulk alone — the bead gets too thick to cure properly and wastes money. Press <strong>foam backer rod</strong> into the gap first (it comes in diameters from 1/4 to 1 inch), leaving about 1/4 to 3/8 inch of depth, then caulk over it. The rod does three jobs: it cuts caulk usage dramatically, it gives the bead the ideal hourglass shape that flexes without tearing, and it prevents three-sided adhesion, which is the main reason thick caulk joints fail. A $6 roll of backer rod can save two or three tubes on a tub surround.</p>
+    <h2>Technique: The 45-Degree Rule</h2>
+    <p>Good caulk lines are 90% technique. Hold the gun at <strong>45 degrees</strong> to the joint and <strong>push</strong> the bead forward rather than dragging it — pushing forces caulk into the gap instead of skimming over it. Keep a steady speed and constant trigger pressure; speeding up thins the bead, slowing down fattens it. Tool the bead <strong>immediately</strong> — within a couple of minutes — with a wet finger or a dedicated caulk finishing tool, in one smooth continuous pass. Re-tooling a skinned-over bead tears it.</p>
+    <p>For razor edges, run <strong>painter's tape</strong> on both sides of the joint, caulk, tool, then pull the tape while the caulk is still wet, pulling away from the joint at a sharp angle. Keep a damp rag and a cup of water handy; silicone demands mineral spirits instead, so lay down drop cloths you do not love.</p>
+    <h2>Common Mistakes That Waste Tubes</h2>
+    <p>The number-one waste is <strong>cutting the tip too big</strong> — a 3/8-inch opening when you wanted 1/4 inch quadruples nothing, but it roughly doubles usage and every line looks amateur. Number two is <strong>caulking over old caulk</strong>: the new bead bonds to a dirty, moving surface and peels within a year, so the whole job (and its tubes) gets redone. Cut the old bead out with a utility knife or oscillating tool, scrub with rubbing alcohol, and let it dry fully.</p>
+    <p>Number three is <strong>caulking in the wrong weather</strong> outdoors: below about 40°F (5°C) most caulks will not cure, and on a hot direct-sun wall the surface skins before you can tool it. Work in morning shade, and check the tube — "all weather" formulas genuinely exist now. Number four: <strong>painting too soon</strong>. Latex caulk needs its full cure (often 24 hours, sometimes longer in humidity) before paint, or the paint cracks as the caulk shrinks underneath.</p>
+    <h2>How Long Does Caulk Last?</h2>
+    <p>Set expectations honestly: interior latex on trim lasts <strong>5–10 years</strong>, silicone in a shower <strong>10–20 years</strong> if the joint was prepped, and exterior polyurethane <strong>10+ years</strong>. Sunlight, joint movement, and standing water are the killers. Inspect exterior beads every spring — if you see gaps, cracks, or beads pulling away, it is a 20-minute fix now versus water damage later. And store partial tubes with a nail in the tip and tape over it; even so, expect an opened tube to be usable for weeks, not months.</p>
+    <h2>Putting It All Together</h2>
+    <p>The workflow that never fails: choose your caulk chemistry for the location, walk the job and list every joint length, pick an honest bead size (when in doubt, 1/4 inch), add the waste allowance, and buy that many tubes plus one spare — the spare lives happily in a closet until touch-ups. Run the numbers above, and the hardware store trip becomes a five-minute errand instead of a guessing game. Your future self, mid-project with caulk on one glove, will thank you.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many linear feet does one tube of caulk cover?</summary><p>A standard 10-ounce tube covers about 30 linear feet with a 1/4-inch bead. A 1/8-inch bead stretches to roughly 120 feet, while a 1/2-inch bead drops to about 8 feet. Coverage follows the square of the bead diameter, which is why bead size matters so much.</p></details>
+    <details><summary>What bead size should I use for windows and baseboards?</summary><p>A 1/4-inch bead is the sweet spot for trim, windows and baseboards. Use 1/8 inch for hairline cracks, 3/8 inch for wide uneven gaps, and backer rod plus caulk for anything over 1/2 inch. Cut the tip slightly smaller than your target bead.</p></details>
+    <details><summary>Should I add extra tubes for waste?</summary><p>Yes — 10 to 15 percent. You lose caulk to purging, tip cutoffs, restarted beads and the bit left in the tube. The calculator adds 10% by default; bump it to 20% if it is your first caulking job.</p></details>
+    <details><summary>Silicone vs latex caulk — which should I buy?</summary><p>100% silicone for wet areas (tubs, showers) — flexible and mold-resistant, but unpaintable. Paintable latex or siliconized acrylic for trim and windows. Polyurethane for exterior, concrete and dissimilar materials.</p></details>
+    <details><summary>Can I caulk over old caulk?</summary><p>No — cut it out completely first. New caulk bonds poorly to old caulk and peels within months. Remove, clean with rubbing alcohol, dry, then apply the new bead.</p></details>
+    <details><summary>How do I get a smooth caulk line?</summary><p>Cut the tip at 45&deg; slightly smaller than the bead, push (do not drag) at steady speed, and tool immediately with a wet finger in one pass. Use painter's tape on both sides and pull it while the caulk is wet.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CaulkCalc</div>
+    <p>CaulkCalc figures the exact number of caulk tubes your job needs — from joint lengths and bead size, with honest volume math, waste allowance and cost estimate.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+var TUBE_IN3 = 18.9; // 10 oz tube
+var beadD = 0.25, joints = [{label:'Bathroom — tub surround', ft:55},{label:'Bedroom — baseboards', ft:45}];
+var jointsEl = document.getElementById('cc-joints');
+function coverageFt(d){ var area = Math.PI*Math.pow(d/2,2); return TUBE_IN3/area/12; }
+function renderJoints(){
+  jointsEl.innerHTML = '';
+  joints.forEach(function(j,i){
+    var row = document.createElement('div'); row.className = 'joint-row';
+    var lab = document.createElement('input'); lab.type='text'; lab.value=j.label; lab.setAttribute('aria-label','Joint name');
+    lab.addEventListener('input',function(){ j.label = lab.value; });
+    var ft = document.createElement('input'); ft.type='number'; ft.min='0'; ft.max='5000'; ft.step='1'; ft.value=j.ft; ft.setAttribute('aria-label','Length in feet');
+    ft.addEventListener('input',function(){ j.ft = parseFloat(ft.value)||0; calc(); });
+    var del = document.createElement('button'); del.type='button'; del.className='joint-del'; del.textContent='×'; del.setAttribute('aria-label','Remove joint');
+    del.addEventListener('click',function(){ joints.splice(i,1); renderJoints(); calc(); });
+    row.appendChild(lab); row.appendChild(ft); row.appendChild(del);
+    jointsEl.appendChild(row);
+  });
+}
+document.getElementById('cc-add').addEventListener('click',function(){
+  joints.push({label:'Joint '+(joints.length+1), ft:20}); renderJoints(); calc();
+});
+document.getElementById('cc-beadseg').addEventListener('click',function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  beadD = parseFloat(b.getAttribute('data-d'));
+  this.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); });
+  b.classList.add('on'); calc();
+});
+['cc-waste','cc-price'].forEach(function(id){
+  document.getElementById(id).addEventListener('input',calc);
+  document.getElementById(id).addEventListener('change',calc);
+});
+function fmt(n,d){ return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d}); }
+function calc(){
+  var totalFt = joints.reduce(function(s,j){ return s + (j.ft>0?j.ft:0); },0);
+  var cov = coverageFt(beadD);
+  var waste = parseFloat(document.getElementById('cc-waste').value)||0;
+  var price = parseFloat(document.getElementById('cc-price').value)||0;
+  var exact = totalFt>0 ? (totalFt/cov)*(1+waste) : 0;
+  var tubes = Math.ceil(exact - 1e-9);
+  document.getElementById('cc-tubes').textContent = tubes;
+  document.getElementById('cc-feet').textContent = fmt(totalFt,0)+' ft';
+  document.getElementById('cc-cov').textContent = fmt(cov,0)+' ft';
+  document.getElementById('cc-exact').textContent = fmt(exact,1);
+  document.getElementById('cc-cost').textContent = '$'+fmt(tubes*price,2);
+  var note = document.getElementById('cc-note');
+  if(totalFt===0){ note.textContent = 'Add your joint lengths above — every window, door, baseboard run and tub joint.'; }
+  else if(tubes===1){ note.textContent = 'One tube does it. Buy a spare anyway — dried tubes are useless and touch-ups are inevitable.'; }
+  else { note.textContent = 'Pro tip: buy tubes in the same batch/lot for consistent color, and store spares tip-down.'; }
+}
+renderJoints(); calc();
+})();
+</script>
+</body>
+</html>
