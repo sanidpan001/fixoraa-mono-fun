@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sod Calculator — Pallets, Rolls &amp; Cost for Your Lawn | SodCalc</title>
+<meta name="description" content="Sod pallets and rolls for your lawn area, with waste and watering plan.">
+<link rel="canonical" href="https://fun.fixoraa.tech/sodcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Sod Calculator — Pallets, Rolls &amp; Cost for Your Lawn | SodCalc">
+<meta property="og:description" content="Sod pallets and rolls for your lawn area, with waste and watering plan.">
+<meta property="og:url" content="https://fun.fixoraa.tech/sodcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SodCalc",
+      "url": "https://fun.fixoraa.tech/sodcalc/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "description": "Sod pallets and rolls for your lawn area, with waste and watering plan.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How much sod do I need for 1,000 square feet?",
+          "acceptedAnswer": { "@type": "Answer", "text": "About 1,050 square feet of sod with a 5% waste allowance — that is two 500 sq ft pallets plus 5 rolls (50 sq ft) for cuts and edges. Curved or irregular lawns need 10% waste instead of 5%." } },
+        { "@type": "Question", "name": "How many square feet does a pallet of sod cover?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A standard pallet covers about 500 square feet (some suppliers sell 450 sq ft pallets — always confirm). It holds roughly 50 rolls at 10 sq ft each, weighs over a ton, and needs a forklift or pallet jack to unload." } },
+        { "@type": "Question", "name": "How much does sod cost per pallet installed vs DIY?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sod itself runs roughly $0.30–$0.80 per sq ft ($150–$400 per pallet) depending on grass type and region. Professional installation typically doubles the total to $1–$2 per sq ft including prep. DIY saves the labor but not the delivery fee." } },
+        { "@type": "Question", "name": "How often should I water new sod?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Keep it soaked for the first 2 weeks — water 2–3 times daily so the sod and the top inch of soil never dry out. Weeks 3–4: once daily, deeper. After a month, transition to 1 inch per week in 2–3 deep waterings. Morning watering prevents disease." } },
+        { "@type": "Question", "name": "When can I mow new sod?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Mow when the grass reaches about 4 inches — usually 2–3 weeks after laying — and never remove more than one-third of the blade. Make sure the sod has rooted first: tug a corner; if it resists, the roots have taken hold." } },
+        { "@type": "Question", "name": "Should I lay sod in a brick pattern?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — stagger the seams like bricks so no four corners meet. Staggered joints knit together faster, resist erosion on slopes, and hide the seams as the lawn matures. Butt edges tightly with no gaps or overlaps." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#E1EEF9; --surface:#FFFFFF; --tint:#D2E4F4;
+  --accent:#154F84; --accent-deep:#4F1866; --accent-ink:#FFFFFF;
+  --ink:#2E2140; --muted:#6E6084; --line:#DCCBEA;
+  --display:'Nunito',system-ui,sans-serif; --body:'Nunito',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+/* header */
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#9A4FC0,var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;position:relative;overflow:hidden}
+.fx-tile::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 9px,rgba(255,255,255,.25) 9px,rgba(255,255,255,.25) 11px)}
+.fx-name{font-weight:900;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:800;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:800;font-size:13px;border:1.5px dashed var(--accent)}
+/* hero */
+.sd-hero{padding:44px 0 6px}
+.sd-eyebrow{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.sd-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.1;letter-spacing:-.025em;font-weight:900;margin-bottom:12px}
+.sd-hero p{font-size:18px;color:var(--muted);max-width:680px}
+/* planner */
+.sd-plan{margin:28px 0 10px;background:var(--surface);border:2px solid var(--line);border-radius:24px;overflow:hidden}
+.sd-tabs{display:flex;border-bottom:2px solid var(--line)}
+.sd-tabs button{flex:1;font:inherit;font-weight:800;font-size:15px;padding:16px;background:var(--tint);border:0;border-right:2px solid var(--line);cursor:pointer;color:var(--accent-deep)}
+.sd-tabs button:last-child{border-right:0}
+.sd-tabs button.on{background:var(--accent);color:#fff}
+.sd-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.sd-left{padding:28px;border-right:2px dashed var(--line)}
+.sd-right{padding:28px;background:linear-gradient(180deg,#FDFBFE,var(--bg))}
+.sd-field{margin-bottom:18px}
+.sd-field label{display:block;font-weight:800;font-size:14px;margin-bottom:8px}
+.sd-field label .hint{font-weight:600;color:var(--muted);font-size:13px}
+.sd-row{display:flex;gap:8px}
+.sd-row input,.sd-row select{font:inherit;font-weight:700;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:#fff;color:var(--ink)}
+.sd-row input{flex:1;min-width:0}
+.sd-row input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.sd-rects .sd-r{display:grid;grid-template-columns:1fr 1fr 44px;gap:8px;margin-bottom:8px;align-items:center}
+.sd-r input{font:inherit;font-weight:700;padding:11px 13px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%;min-width:0}
+.sd-del{border:2px solid var(--line);background:#fff;border-radius:12px;font-size:18px;cursor:pointer;color:var(--muted);height:46px}
+.sd-add{border:2px dashed var(--accent);background:transparent;color:var(--accent);border-radius:12px;padding:11px;width:100%;font:inherit;font-weight:800;cursor:pointer}
+.sd-map{background:#fff;border:2px solid var(--line);border-radius:16px;padding:18px;margin-bottom:18px}
+.sd-map svg{width:100%;height:auto;display:block}
+.sd-order{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.sd-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px;text-align:center}
+.sd-card.big{background:var(--accent);border-color:var(--accent);color:#fff;grid-column:1/-1}
+.sd-card .n{font-size:32px;font-weight:900}
+.sd-card.big .n{font-size:40px}
+.sd-card .k{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-top:4px}
+.sd-card .k2{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.sd-card.big .k{color:#EBD9F5}
+.sd-lines{list-style:none;font-size:14px;background:#fff;border:2px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.sd-lines li{display:flex;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px dashed var(--line)}
+.sd-lines li:last-child{border-bottom:0}
+.sd-lines .k{color:var(--muted);font-weight:600}
+.sd-lines .v{font-weight:800;text-align:right}
+.sd-water h3{font-size:17px;font-weight:900;margin-bottom:10px}
+.sd-week{background:#fff;border:2px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:8px;font-size:14px}
+.sd-week .w{font-weight:900;color:var(--accent-deep)}
+@media(max-width:760px){
+  .sd-grid{grid-template-columns:1fr}
+  .sd-left{border-right:0;border-bottom:2px dashed var(--line)}
+  .fx-nav{margin-left:0}
+}
+/* article */
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:900}
+.article-sec p{margin-bottom:14px;color:#352a4a}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#352a4a}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:900;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:800;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#352a4a;font-size:15px}
+/* footer */
+.fx-footer{background:#2a1540;color:#e8dbf5;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:900;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bfa9d8;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:800;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#d3aef5;font-weight:800}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/sodcalc/" aria-label="SodCalc home">
+      <span class="fx-tile" aria-hidden="true">S</span>
+      <span class="fx-name">SodCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="sd-hero">
+    <span class="sd-eyebrow">lawn journal &middot; measure twice</span>
+    <h1>Sod Calculator — Pallets, Rolls &amp; Cost for Your Lawn</h1>
+    <p>Sketch your lawn as rectangles, add waste for the curves, and get the exact pallet-and-roll order — plus the watering schedule that keeps it alive.</p>
+  </section>
+
+  <section class="sd-plan" aria-label="SodCalc tool">
+    <div class="sd-tabs" role="tablist" aria-label="Area mode">
+      <button type="button" class="on" data-m="rect" role="tab">One rectangle</button>
+      <button type="button" data-m="multi" role="tab">Irregular: add shapes</button>
+    </div>
+    <div class="sd-grid">
+      <div class="sd-left">
+        <div id="sd-single">
+          <div class="sd-field">
+            <label>Lawn length &amp; width <span class="hint">— feet</span></label>
+            <div class="sd-row">
+              <input type="number" id="sd-l" value="50" min="0" step="any" aria-label="Length in feet">
+              <input type="number" id="sd-w" value="40" min="0" step="any" aria-label="Width in feet">
+            </div>
+          </div>
+        </div>
+        <div id="sd-multi" style="display:none">
+          <div class="sd-field">
+            <label>Rectangles <span class="hint">— L × W in feet each</span></label>
+            <div class="sd-rects" id="sd-rects"></div>
+            <button type="button" class="sd-add" id="sd-add">+ Add rectangle</button>
+          </div>
+        </div>
+        <div class="sd-field">
+          <label for="sd-waste">Waste allowance <span class="hint">— cuts, curves, mistakes</span></label>
+          <select id="sd-waste">
+            <option value="0.05" selected>Simple rectangle (5%)</option>
+            <option value="0.10">Curves &amp; beds (10%)</option>
+            <option value="0.15">Very irregular (15%)</option>
+          </select>
+        </div>
+        <div class="sd-field">
+          <label>Price <span class="hint">— optional, for the estimate</span></label>
+          <div class="sd-row">
+            <input type="number" id="sd-pp" value="180" min="0" step="any" aria-label="Price per pallet">
+            <select aria-label="Pallet price unit"><option>$/pallet</option></select>
+            <input type="number" id="sd-pr" value="4" min="0" step="any" aria-label="Price per roll">
+            <select aria-label="Roll price unit"><option>$/roll</option></select>
+          </div>
+        </div>
+        <div class="sd-field">
+          <label for="sd-date">Lay date <span class="hint">— starts your watering plan</span></label>
+          <input type="date" id="sd-date" value="2026-10-24">
+        </div>
+      </div>
+      <div class="sd-right" aria-live="polite">
+        <div class="sd-map"><svg id="sd-svg" viewBox="0 0 400 220" role="img" aria-label="Lawn area diagram"></svg></div>
+        <div class="sd-order">
+          <div class="sd-card big"><div class="n" id="sd-sqft">2,100 sq ft</div><div class="k">sod to order (with waste)</div></div>
+          <div class="sd-card"><div class="n" id="sd-pallets">4</div><div class="k2">pallets × 500 sq ft</div></div>
+          <div class="sd-card"><div class="n" id="sd-rolls">10</div><div class="k2">extra rolls × 10 sq ft</div></div>
+        </div>
+        <ul class="sd-lines">
+          <li><span class="k">Measured area</span><span class="v" id="sd-area">2,000 sq ft</span></li>
+          <li><span class="k">Coverage ordered</span><span class="v" id="sd-cov">2,100 sq ft</span></li>
+          <li><span class="k">Estimated cost</span><span class="v" id="sd-cost">$760</span></li>
+          <li><span class="k">Pallet weight note</span><span class="v">≈1 ton each — plan unloading</span></li>
+        </ul>
+        <div class="sd-water">
+          <h3>New-sod watering schedule</h3>
+          <div id="sd-water"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec" aria-label="Guide">
+    <h2>Measure Like a Sod Farm</h2>
+    <p>Sod is sold by the square foot, so the entire project starts with honest measurement. For a rectangle, length × width is the whole story. For everything else, break the lawn into rectangles — a separate one for the main lawn, the side yard, the strip by the driveway — and add them up. That is exactly what the irregular mode above does. Curves get approximated: measure the bounding rectangle of a curved bed and accept the waste allowance will absorb the trimmings, or split the curve into two or three smaller rectangles for a tighter number.</p>
+    <p>Do not subtract small obstacles under about 10 square feet — a tree ring or a sprinkler box. You will trim around them and the offcuts rarely piece together usefully elsewhere. Do subtract the big stuff: patios, driveways, planting beds, sheds. Walk the yard with a 100-foot tape and a sketch pad; fifteen minutes of measuring beats a second delivery fee every time.</p>
+    <h2>Pallets, Rolls and the Waste Allowance</h2>
+    <p>A standard sod pallet covers about <strong>500 square feet</strong> — roughly fifty 2×5-foot rolls — though some suppliers sell 450 sq ft pallets, so confirm before ordering. Rolls (10 sq ft each) fill the gap between full pallets and your exact number. The calculator does the split that minimizes cost: full pallets first, then individual rolls for the remainder.</p>
+    <p>Waste is not optional. Every lawn needs cuts — around curves, along edges, at corners — and cut pieces rarely fit elsewhere. Budget <strong>5% for simple rectangles</strong>, <strong>10% for lawns with curves and beds</strong>, and <strong>15% for complex shapes</strong>. Running short mid-install is the expensive mistake: a second delivery costs more than the extra half-pallet would have, and sod from a different harvest may not match in color or texture.</p>
+    <h2>What Sod Really Costs</h2>
+    <p>Sod itself typically runs <strong>$0.30–$0.80 per square foot</strong> ($150–$400 per pallet), varying by grass species and region — Bermuda and zoysia cost more than tall fescue in most markets. Delivery adds $50–$150. Professional installation roughly doubles the project to <strong>$1–$2 per square foot</strong> including soil prep. DIY saves the labor but not the delivery, and remember the hidden cost: a pallet weighs over a ton, so you need a way to get it from the curb to the backyard — a wheelbarrow and a strong back, or a pallet jack on hard surfaces.</p>
+    <p>Order timing matters more than price shopping. Sod is a living product cut to order — it starts dying the moment it leaves the field. Schedule delivery for the <strong>morning of installation day</strong>, never the day before, and never let pallets sit in summer sun. If the farm cuts at dawn and you lay by noon, the grass barely notices it moved.</p>
+    <h2>Prep: the 80% Nobody Sees</h2>
+    <p>A sod lawn is only as good as the soil under it, and prep is most of the work. Kill existing weeds or grass 2–3 weeks ahead (solarize or use herbicide — do not lay sod over living weeds). Rough-grade for drainage, keeping soil <strong>1 inch below</strong> sidewalks and driveways so the finished lawn sits flush. Till or loosen the top 4–6 inches, work in 1–2 inches of compost, and rake smooth — footprints and rake marks telegraph through new sod for months. A starter fertilizer raked into the top inch gives roots a reason to dive.</p>
+    <p>Test two things before the truck arrives: <strong>drainage</strong> (fill a 12-inch hole with water; it should drain within a few hours, not days) and <strong>pH</strong> (most turfgrasses want 6.0–7.0; lime or sulfur corrections need weeks to work). Water the bare soil the evening before laying so the sod meets damp — not muddy — ground.</p>
+    <h2>Laying Day Technique</h2>
+    <p>Start along the longest straight edge — driveway or sidewalk — and work outward. <strong>Stagger the seams like brickwork</strong> so no four corners meet; staggered joints knit faster and resist washout on slopes. Butt edges tightly together with no gaps and no overlaps — gaps dry out, overlaps create ridges that scalp under the mower. On slopes, lay across the slope (not up and down) and pin pieces with landscape staples.</p>
+    <p>Cut with a sharp utility knife or a sod knife, soil-side up, and save the trimmings: half-rolls fill narrow strips along edges. Work from planks or plywood sheets to avoid compressing the prepped soil and denting fresh sod. When the last piece is down, <strong>roll the entire lawn</strong> with a water-filled roller to press roots into soil contact — air pockets are the number-one cause of patchy establishment. Then water immediately, deeply, until the soil beneath is moist 3–4 inches down.</p>
+    <h2>The Watering Schedule That Saves Lawns</h2>
+    <p>New sod dies of thirst far more often than anything else, and the schedule has three phases. <strong>Weeks 1–2: keep it soaked.</strong> Water 2–3 times daily — enough that the sod and the top inch of soil never dry out. In summer heat this can mean 20+ minutes per zone, twice a day. Lift a corner daily: the soil beneath should be moist, not soggy. <strong>Weeks 3–4: back off gradually.</strong> Water once daily but deeper, training roots downward. Tug a corner — resistance means roots are knitting. <strong>Week 5+: transition</strong> to normal lawn watering: about 1 inch per week in 2–3 deep sessions.</p>
+    <p>Always water in the <strong>morning</strong>. Evening watering leaves blades wet overnight, inviting fungus — the brown patches that appear in week three are usually disease from night watering, not drought. The schedule generator above dates each phase from your lay date so there is no guessing.</p>
+    <h2>First Mow and First Feed</h2>
+    <p>Mow when the grass hits about <strong>4 inches tall</strong> — typically 2–3 weeks after laying — and follow the one-third rule: never remove more than a third of the blade in one cut. Keep mower blades sharp; dull blades tear young grass and invite disease. Confirm rooting first with the tug test — mowing unrooted sod shifts the pieces and breaks new roots.</p>
+    <p>Hold fertilizer for 4–6 weeks after the starter application; pushing soft growth on young roots causes more harm than good. Then feed on a normal schedule for your grass type. Skip weed killers entirely for the first 2–3 months — most herbicides damage young sod, and hand-pulling the occasional weed is safer.</p>
+    <h2>Troubleshooting the First Month</h2>
+    <p><strong>Brown edges on rolls:</strong> usually drying at the seams — water more, especially along edges and south-facing strips. <strong>Spongy, lifting sod after 3 weeks:</strong> overwatering or poor soil contact — back off water and roll again. <strong>Yellowing:</strong> often nitrogen demand as roots establish; a light feeding after week 4 helps. <strong>Mushrooms:</strong> harmless decomposers feeding on the sod's thatch layer — they vanish as the lawn settles. <strong>Seams still visible at 6 weeks:</strong> normal — topdress thinly with compost and they disappear by the second month. Patience is a lawn-care input; most "failures" at week three are lawns mid-transition, not dead lawns.</p>
+    <h2>Sod vs. Seed: Making the Call</h2>
+    <p>Sod is not the only route to a lawn, and honesty demands the comparison. <strong>Seed</strong> costs roughly a tenth of sod — $0.05–$0.15 per square foot — offers far more cultivar choices, and establishes deeper roots from day one since it never suffers transplant shock. Its downsides are time (8–12 weeks to a usable lawn), weed pressure during establishment, and vulnerability to washout on slopes and to birds everywhere. <strong>Sod</strong> gives an instant lawn, usable in 2–3 weeks, with near-perfect weed suppression from day one and erosion control on slopes the day it is laid. Its downsides are cost, limited cultivar choice, and a shallow initial root system that demands the disciplined watering schedule above.</p>
+    <p>The tiebreaker is usually <em>timing and slope</em>. Need a lawn before a wedding, a home sale or the rainy season on a slope? Sod, without question. Renovating a flat backyard in early fall with time to spare? Seed wins on cost and root depth. Many professionals split the difference: sod the high-visibility front and the slope, seed the back. Whichever you choose, the soil prep is identical — seed sown on unprepared ground fails just as surely as sod laid on it.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How much sod do I need for 1,000 square feet?</summary><p>About 1,050 square feet of sod with a 5% waste allowance — that is two 500 sq ft pallets plus 5 rolls (50 sq ft) for cuts and edges. Curved or irregular lawns need 10% waste instead of 5%.</p></details>
+    <details><summary>How many square feet does a pallet of sod cover?</summary><p>A standard pallet covers about 500 square feet (some suppliers sell 450 sq ft pallets — always confirm). It holds roughly 50 rolls at 10 sq ft each, weighs over a ton, and needs a forklift or pallet jack to unload.</p></details>
+    <details><summary>How much does sod cost per pallet installed vs DIY?</summary><p>Sod itself runs roughly $0.30–$0.80 per sq ft ($150–$400 per pallet) depending on grass type and region. Professional installation typically doubles the total to $1–$2 per sq ft including prep. DIY saves the labor but not the delivery fee.</p></details>
+    <details><summary>How often should I water new sod?</summary><p>Keep it soaked for the first 2 weeks — water 2–3 times daily so the sod and the top inch of soil never dry out. Weeks 3–4: once daily, deeper. After a month, transition to 1 inch per week in 2–3 deep waterings. Morning watering prevents disease.</p></details>
+    <details><summary>When can I mow new sod?</summary><p>Mow when the grass reaches about 4 inches — usually 2–3 weeks after laying — and never remove more than one-third of the blade. Make sure the sod has rooted first: tug a corner; if it resists, the roots have taken hold.</p></details>
+    <details><summary>Should I lay sod in a brick pattern?</summary><p>Yes — stagger the seams like bricks so no four corners meet. Staggered joints knit together faster, resist erosion on slopes, and hide the seams as the lawn matures. Butt edges tightly with no gaps or overlaps.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SodCalc</div>
+    <p>SodCalc orders sod by the pallet and roll — with waste allowances, cost estimates and a new-sod watering schedule.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+var mode='rect';
+var $=function(id){return document.getElementById(id);};
+var rects=[{l:20,w:30},{l:10,w:10}];
+function fmt(n,d){ return n.toLocaleString('en-US',{maximumFractionDigits:d===undefined?0:d}); }
+var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fdate(d){ return MONTHS[d.getMonth()]+' '+d.getDate(); }
+document.querySelectorAll('.sd-tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.sd-tabs button').forEach(function(x){x.classList.toggle('on',x===b);});
+    mode=b.getAttribute('data-m');
+    $('sd-single').style.display=mode==='rect'?'block':'none';
+    $('sd-multi').style.display=mode==='multi'?'block':'none';
+    calc();
+  });
+});
+function renderRects(){
+  var el=$('sd-rects'); el.innerHTML='';
+  rects.forEach(function(r,i){
+    var row=document.createElement('div'); row.className='sd-r';
+    var l=document.createElement('input'); l.type='number'; l.min='0'; l.step='any'; l.value=r.l; l.setAttribute('aria-label','Length feet');
+    l.addEventListener('input',function(){r.l=parseFloat(l.value)||0; calc();});
+    var w=document.createElement('input'); w.type='number'; w.min='0'; w.step='any'; w.value=r.w; w.setAttribute('aria-label','Width feet');
+    w.addEventListener('input',function(){r.w=parseFloat(w.value)||0; calc();});
+    var del=document.createElement('button'); del.type='button'; del.className='sd-del'; del.textContent='×'; del.setAttribute('aria-label','Remove rectangle');
+    del.addEventListener('click',function(){rects.splice(i,1); if(!rects.length) rects.push({l:10,w:10}); renderRects(); calc();});
+    row.appendChild(l); row.appendChild(w); row.appendChild(del);
+    el.appendChild(row);
+  });
+}
+$('sd-add').addEventListener('click',function(){rects.push({l:10,w:10}); renderRects(); calc();});
+['sd-l','sd-w','sd-waste','sd-pp','sd-pr','sd-date'].forEach(function(id){
+  $(id).addEventListener('input',calc); $(id).addEventListener('change',calc);
+});
+function draw(area){
+  var svg=$('sd-svg');
+  var s='<rect x="8" y="8" width="384" height="204" rx="12" fill="#E1EEF9" stroke="#DCCBEA" stroke-width="2"/>';
+  var items = mode==='rect'?[{l:parseFloat($('sd-l').value)||0,w:parseFloat($('sd-w').value)||0}]:rects;
+  var tot=items.reduce(function(a,r){return a+r.l*r.w;},0)||1;
+  var x=30;
+  var palette=['#154F84','#9A4FC0','#B57EDC','#7E2FA0'];
+  items.forEach(function(r,i){
+    var aw=Math.max(24,(r.l*r.w/tot)*340);
+    var ah=120+((i*37)%50);
+    if(x+aw>380){aw=380-x;}
+    s+='<rect x="'+x+'" y="'+(110-ah/2)+'" width="'+aw+'" height="'+ah+'" rx="8" fill="'+palette[i%4]+'" opacity="0.8"/>';
+    s+='<text x="'+(x+aw/2)+'" y="118" text-anchor="middle" font-size="12" fill="#fff" font-weight="800">'+fmt(r.l*r.w,0)+' ft²</text>';
+    x+=aw+6;
+  });
+  s+='<text x="200" y="200" text-anchor="middle" font-size="13" fill="#6E6084" font-weight="700">total '+fmt(tot,0)+' sq ft measured</text>';
+  svg.innerHTML=s;
+}
+function calc(){
+  var area = mode==='rect'
+    ? (parseFloat($('sd-l').value)||0)*(parseFloat($('sd-w').value)||0)
+    : rects.reduce(function(a,r){return a+r.l*r.w;},0);
+  var waste=parseFloat($('sd-waste').value)||0;
+  var need=area*(1+waste);
+  var pallets=Math.floor(need/500), rem=need-pallets*500;
+  var rolls=Math.ceil(rem/10-1e-9);
+  if(rolls>=50){pallets++;rolls=0;}
+  var pp=parseFloat($('sd-pp').value)||0, pr=parseFloat($('sd-pr').value)||0;
+  $('sd-sqft').textContent=fmt(need,0)+' sq ft';
+  $('sd-pallets').textContent=pallets;
+  $('sd-rolls').textContent=rolls;
+  $('sd-area').textContent=fmt(area,0)+' sq ft';
+  $('sd-cov').textContent=fmt(pallets*500+rolls*10,0)+' sq ft';
+  $('sd-cost').textContent='$'+fmt(pallets*pp+rolls*pr,0);
+  draw(area);
+  var d=$('sd-date').valueAsDate, el=$('sd-water'); el.innerHTML='';
+  if(d){
+    d=new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());
+    var phases=[
+      ['Weeks 1–2 · establish', fdate(d)+' – '+fdate(new Date(d.getTime()+13*864e5)), 'Water 2–3× daily. Sod + top inch of soil never dry.'],
+      ['Weeks 3–4 · root down', fdate(new Date(d.getTime()+14*864e5))+' – '+fdate(new Date(d.getTime()+27*864e5)), 'Once daily, deeper. Tug test: resistance = rooted.'],
+      ['Week 5+ · normal lawn', 'from '+fdate(new Date(d.getTime()+28*864e5)), '≈1 inch/week in 2–3 deep morning waterings.']
+    ];
+    phases.forEach(function(p){
+      var div=document.createElement('div'); div.className='sd-week';
+      div.innerHTML='<span class="w">'+p[0]+'</span> <span style="color:#6E6084">· '+p[1]+'</span><br>'+p[2];
+      el.appendChild(div);
+    });
+  }
+}
+renderRects(); calc();
+})();
+</script>
+</body>
+</html>
