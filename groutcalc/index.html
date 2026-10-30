@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grout Calculator: How Much Grout Per m² by Tile Size</title>
+<meta name="description" content="Calculate exactly how much grout you need in kg from tile size, joint width and area. Includes a sanded vs unsanded guide and wastage allowance.">
+<link rel="canonical" href="https://fun.fixoraa.tech/groutcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Grout Calculator: How Much Grout Per m² by Tile Size">
+<meta property="og:description" content="Calculate exactly how much grout you need in kg from tile size, joint width and area. Includes a sanded vs unsanded guide and wastage allowance.">
+<meta property="og:url" content="https://fun.fixoraa.tech/groutcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GroutCalc",
+      "url": "https://fun.fixoraa.tech/groutcalc/",
+      "applicationCategory": "Home Improvement",
+      "operatingSystem": "Web",
+      "description": "Calculate exactly how much grout you need in kg from tile size, joint width and area. Includes a sanded vs unsanded guide and wastage allowance.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much grout do I need for 10 square metres?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For 300\u00d7300 mm tiles with 3 mm joints, you need about 0.41 kg per m\u00b2 \u2014 so roughly 4.1 kg for 10 m\u00b2, plus 10% wastage. Small tiles need far more grout than large ones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use sanded or unsanded grout?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use unsanded grout for joints under 3 mm and sanded grout for 3 mm and wider. Sanded grout resists shrinkage and cracking in wide joints; unsanded gives a smooth finish in narrow ones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much extra grout should I buy for wastage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add 10% for straightforward layouts, 15% for diagonal patterns or floors, and 20% for mosaics or if it's your first time grouting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does grout need to be sealed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 cement-based grout is porous and should be sealed 48\u201372 hours after application in wet areas like showers. Epoxy grout is waterproof and needs no sealer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my grout cracking and crumbling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most likely too much water in the mix or washing the joints too aggressively. Mix grout to a thick peanut-butter consistency and wipe with a damp, not wet, sponge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does grout take to dry before sealing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cement grout needs 48\u201372 hours to cure before sealing, though light foot traffic is fine after 24 hours. Epoxy grout cures faster \u2014 always check the product label."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F2F9FA; --surface:#FFFFFF; --accent:#0E7490; --accent-ink:#FFFFFF;
+  --ink:#1E2C31; --muted:#52646A; --line:#D8E7EA;
+  --display:'Karla',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.gr-wrap{max-width:860px;margin:0 auto;padding:28px 18px 56px;color:#1E2C31;font-family:Inter,system-ui,sans-serif}
+.gr-hero{text-align:center;margin-bottom:16px}
+.gr-hero h1{font-family:Karla,sans-serif;font-weight:800;font-size:clamp(32px,6vw,48px);margin:0 0 8px;color:#1E2C31}
+.gr-tagline{font-size:16px;color:#52646A;margin:0}
+.gr-tabs{display:flex;gap:8px;justify-content:center;margin:20px 0;flex-wrap:wrap}
+.gr-tab{border:1px solid #D8E7EA;background:#fff;color:#52646A;font:inherit;font-size:15px;font-weight:700;border-radius:12px;padding:12px 20px;cursor:pointer;min-height:48px}
+.gr-tab.gr-on{background:#0E7490;border-color:#0E7490;color:#fff}
+.gr-panel{display:none}
+.gr-panel.gr-on{display:block}
+.gr-card{background:#fff;border:1px solid #D8E7EA;border-radius:20px;padding:24px;box-shadow:0 2px 12px rgba(14,116,144,.06)}
+.gr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.gr-field{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#52646A}
+.gr-field input,.gr-field select{font:inherit;font-size:16px;color:#1E2C31;border:1px solid #D8E7EA;border-radius:12px;padding:12px;background:#F2F9FA;min-height:48px;width:100%;box-sizing:border-box}
+.gr-result{margin-top:18px;background:#0E7490;border-radius:16px;color:#fff;text-align:center;padding:20px}
+.gr-result small{display:block;font-size:13px;opacity:.9;letter-spacing:1px;text-transform:uppercase}
+.gr-result b{font-family:Karla,sans-serif;font-size:44px}
+.gr-presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.gr-presets button{border:1px solid #D8E7EA;background:#F2F9FA;color:#0E7490;font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:10px 16px;cursor:pointer;min-height:44px}
+.gr-waste{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.gr-waste button{border:1px solid #D8E7EA;background:#fff;color:#52646A;font:inherit;font-size:14px;font-weight:700;border-radius:12px;padding:10px 18px;cursor:pointer;min-height:48px}
+.gr-waste button.gr-on{background:#0E7490;color:#fff;border-color:#0E7490}
+.gr-h2{font-family:Karla,sans-serif;font-size:22px;font-weight:800;margin:0 0 10px;color:#1E2C31}
+.gr-p{font-size:15px;color:#52646A;line-height:1.7;margin:0 0 10px}
+.gr-compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.gr-compare div{border:1px solid #D8E7EA;border-radius:14px;padding:16px;background:#F2F9FA}
+.gr-compare h3{font-family:Karla,sans-serif;margin:0 0 6px;font-size:17px;color:#0E7490}
+.gr-compare p{margin:0;font-size:14px;color:#52646A;line-height:1.6}
+.gr-compare ul{margin:8px 0 0;padding-left:18px;font-size:14px;color:#52646A;line-height:1.6}
+@media(max-width:640px){
+.gr-grid{grid-template-columns:1fr}
+.gr-compare{grid-template-columns:1fr}
+.gr-tab{flex:1}
+.gr-wrap{padding:20px 12px 44px}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="GroutCalc home">
+      <span class="fx-logo-tile" aria-hidden="true">🧱</span>
+      <span class="fx-brand">GroutCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-tab-bench" aria-label="GroutCalc tool">
+<section class="gr-wrap" aria-label="Grout calculator">
+  <div class="gr-hero">
+    <h1>🧱 Grout Calculator</h1>
+    <p class="gr-tagline">Tile size in, grout kilograms out — never mid-job at the hardware store.</p>
+  </div>
+  <div class="gr-tabs" role="tablist">
+    <button class="gr-tab gr-on" data-tab="calc" role="tab">Calculator</button>
+    <button class="gr-tab" data-tab="type" role="tab">Sanded vs unsanded</button>
+    <button class="gr-tab" data-tab="waste" role="tab">Wastage</button>
+  </div>
+  <div class="gr-panel gr-on" id="gr-calc">
+    <div class="gr-card">
+      <div class="gr-grid">
+        <label class="gr-field">Tile length (mm)<input id="grL" type="number" min="20" value="300" inputmode="numeric"></label>
+        <label class="gr-field">Tile width (mm)<input id="grW" type="number" min="20" value="300" inputmode="numeric"></label>
+        <label class="gr-field">Joint width (mm)<input id="grGap" type="number" min="1" max="20" step="0.5" value="3" inputmode="decimal"></label>
+        <label class="gr-field">Area (m²)<input id="grArea" type="number" min="0.5" step="0.5" value="10" inputmode="decimal"></label>
+      </div>
+      <div class="gr-presets">
+        <button data-l="100" data-w="100" data-g="3">Mosaic 100×100</button>
+        <button data-l="300" data-w="300" data-g="3">Standard 300×300</button>
+        <button data-l="300" data-w="600" data-g="3">Subway 300×600</button>
+        <button data-l="600" data-w="600" data-g="2">Large 600×600</button>
+      </div>
+      <div class="gr-result"><small>Grout needed</small><b><span id="grKg">4.1</span> kg</b></div>
+    </div>
+  </div>
+  <div class="gr-panel" id="gr-type">
+    <div class="gr-card">
+      <h2 class="gr-h2">Which grout type?</h2>
+      <p class="gr-p">The rule is simple: it depends on your joint width.</p>
+      <div class="gr-compare">
+        <div><h3>Unsanded</h3><p>For joints <b>under 3 mm</b>.</p><ul><li>Smooth finish in narrow joints</li><li>Safe for polished stone &amp; glass</li><li>Easier to clean off tiles</li></ul></div>
+        <div><h3>Sanded</h3><p>For joints <b>3 mm and wider</b>.</p><ul><li>Sand resists shrinkage &amp; cracking</li><li>Stronger in wide joints</li><li>Not for soft polished stone</li></ul></div>
+      </div>
+      <p class="gr-p" style="margin-top:12px">💡 Your current joint: <b id="grGapEcho">3 mm</b> → <b id="grTypeEcho" style="color:#0E7490">sanded grout</b></p>
+    </div>
+  </div>
+  <div class="gr-panel" id="gr-waste">
+    <div class="gr-card">
+      <h2 class="gr-h2">Wastage allowance</h2>
+      <p class="gr-p">Spills, re-mixed batches and deep joints eat grout. Pick your safety margin:</p>
+      <div class="gr-waste" id="grWaste">
+        <button data-w="0">None (0%)</button>
+        <button data-w="0.10" class="gr-on">Standard (+10%)</button>
+        <button data-w="0.15">Diagonal/floor (+15%)</button>
+        <button data-w="0.20">Mosaic/first-timer (+20%)</button>
+      </div>
+      <div class="gr-result"><small>With wastage</small><b><span id="grKgW">4.5</span> kg</b></div>
+    </div>
+  </div>
+</section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why grout estimates go wrong</h2><p>Most DIY tilers buy grout by gut feeling — one bag per room — and end up either mid-job at the hardware store or with three half-used bags hardening in the garage. Grout consumption is pure geometry: it depends on how many joints your tile layout creates, how wide and deep those joints are, and how much area you are covering. Small mosaic tiles can need five times more grout per square metre than large-format slabs. A quick calculation before you shop saves money and a ruined weekend.</p><h2>How the calculation works</h2><p>For every square metre of tiling, the total length of joints equals <strong>2 × (length + width) ÷ (length × width)</strong>, with tile dimensions in metres. Multiply that joint length by the joint width and a standard 6 mm depth to get the grout volume, then multiply by grout's density (about 1700 kg per cubic metre). Add 10% wastage for a straightforward layout, or 15–20% for diagonal patterns, mosaics, or uneven substrates that swallow extra grout.</p><h2>Sanded vs unsanded grout</h2><p>The choice depends entirely on joint width:</p><table><thead><tr><th>Joint width</th><th>Use</th><th>Why</th></tr></thead><tbody><tr><td>Under 3 mm (1/8 in)</td><td><strong>Unsanded</strong></td><td>Sand particles are too coarse to pack into narrow joints; unsanded gives a smooth finish</td></tr><tr><td>3 mm and over</td><td><strong>Sanded</strong></td><td>Sand adds body, resists shrinkage and cracking in wide joints</td></tr></tbody></table><p>Unsanded grout is also the safer choice for polished marble, soft stone and glass tiles, which sand can scratch. Epoxy grout is a third option: far more stain-resistant and waterproof, but harder to apply and roughly three times the price — worth it for showers and kitchen splashbacks.</p><h3>How much grout per square metre?</h3><table><thead><tr><th>Tile size</th><th>Joint</th><th>Approx. grout per m²</th></tr></thead><tbody><tr><td>100 × 100 mm mosaic</td><td>3 mm</td><td>~1.2 kg</td></tr><tr><td>300 × 300 mm</td><td>3 mm</td><td>~0.4 kg</td></tr><tr><td>300 × 600 mm</td><td>3 mm</td><td>~0.3 kg</td></tr><tr><td>600 × 600 mm</td><td>2 mm</td><td>~0.14 kg</td></tr></tbody></table><p>Notice how dramatically tile size matters: mosaics need nearly ten times the grout of large slabs per square metre.</p><h2>Step-by-step: grouting like a pro</h2><ul><li><strong>Wait for the adhesive to cure</strong> — usually 24 hours — before grouting.</li><li><strong>Mix small batches.</strong> Grout starts setting in 20–30 minutes; mix only what you can apply in that window.</li><li><strong>Work diagonally.</strong> Hold the float at 45° and push grout firmly into joints with diagonal strokes.</li><li><strong>Clean in two passes.</strong> First wipe with a damp (not wet) sponge after 15–20 minutes, then buff haze off with a dry cloth once fully dry.</li><li><strong>Seal cement grout</strong> after 48–72 hours in wet areas; epoxy grout needs no sealer.</li></ul><h2>Wastage: when to add extra</h2><p>The base calculation assumes perfect conditions. Add 10% for standard straight layouts on flat walls. Bump to 15% for floors (thicker beds, deeper joints), diagonal or herringbone patterns (more cuts, more joints), and natural stone with irregular edges. Go to 20% for mosaics and for first-time tilers — spilled grout and re-mixed batches are part of learning. Buying one spare bag is always cheaper than a second trip.</p><h2>Common grout mistakes</h2><ul><li><strong>Too much water in the mix:</strong> weak, powdery grout that crumbles. Add water sparingly to reach a peanut-butter consistency.</li><li><strong>Washing too early or too wet:</strong> pulls grout out of joints and causes colour variation. Wait until it firms up.</li><li><strong>Wrong grout for the joint:</strong> sanded grout in 2 mm joints leaves voids; unsanded in 6 mm joints cracks.</li><li><strong>Skipping expansion joints:</strong> large floors need silicone-filled movement joints every few metres, not grout.</li></ul><h2>How much does grouting cost?</h2><p>Cement grout typically costs a few pounds/dollars per kilogram bag, and an average bathroom (10 m² of 300 mm tiles) needs roughly 4–5 kg including wastage — so the grout itself is one of the cheapest parts of a tiling job. Epoxy grout costs 2–3× more but lasts far longer in showers. Labour, if you hire a tiler, dwarfs material cost, which is another reason DIY grouting is so popular: it is the most forgiving part of the job.</p><p>Measure your tiles, measure your joints, run the numbers, and buy once. Your weekend will thank you.</p><h2>Epoxy grout: when it's worth the premium</h2><p>Epoxy grout costs two to three times more than cement grout and is fussier to apply — it sets fast and demands prompt, thorough cleanup. In return you get a joint that is effectively waterproof, stain-proof and never needs sealing. It is the right call for showers, steam rooms, kitchen splashbacks behind hobs, and any floor that sees heavy soiling. For dry bedroom walls, cement grout is perfectly adequate and far more forgiving for a first-timer. The quantity calculation is identical; only the price per kilogram changes.</p><h2>Choosing grout colour</h2><p>Grout colour changes the whole look of tiling. Matching the tile colour closely creates a seamless, expansive feel and hides uneven joints; contrasting grout (dark grout with white subway tile) makes the pattern pop but mercilessly exposes wobbly spacing. Mid-tone greys are the practical default — they hide dirt far better than white and suit most tiles. Remember that cement grout dries lighter than it looks when wet, so judge colour from a dried sample, not the bucket.</p><h2>Keeping grout clean for years</h2><p>Sealed cement grout resists staining but is not invincible. Squeegee shower walls after use, ventilate bathrooms to dry joints quickly, and clean with pH-neutral cleaners — bleach and harsh acids erode grout over time. Re-seal every 1–2 years in wet areas; the water-bead test tells you when: if water stops beading on the joints, the sealer has worn off. Cracked or crumbling joints should be raked out and re-grouted rather than sealed over.</p><h2>Your grouting toolkit</h2><p>You need less equipment than you think: a grout float (the flat rubber kind, not a trowel), two buckets (one for mixing, one for wash water), a large grout sponge, and clean dry cloths for haze removal. A margin trowel helps scoop and mix small batches. For large floors, a washboy system — the rolling bucket with wringer rings — is worth every penny and keeps wash water cleaner. Knee pads are non-negotiable for floor work. Total toolkit cost is modest, and everything except the sponge is reusable for years.</p><h2>Floor grout vs wall grout</h2><p>The product is the same; the demands differ. Floor joints take foot traffic, grit and cleaning chemicals, so sanded grout (for 3 mm+ joints) and a quality sealer matter more. Floors also need <strong>movement joints</strong> — flexible silicone-filled gaps every 4–6 metres and at wall junctions — because buildings move and rigid grout cracks. Wall joints face mostly moisture and gravity; unsanded grout gives the crisp lines that showpiece splashbacks deserve. On floors, slightly darker grout hides a multitude of sins.</p><h2>Regrouting without retiling</h2><p>Tired grout does not mean tired tiles. A grout rake or oscillating multi-tool removes old joints to two-thirds depth, and fresh grout goes straight in — a weekend refresh that transforms bathrooms and kitchens for the cost of a bag of grout. This is also the fix for permanently stained or cracked joints: sealant over damage just seals the damage in. Regrouting uses the same quantity calculation as new grouting.</p><h2>Cleaning haze and final finishing</h2><p>Grout haze — the dull film left on tiles — is the most common cosmetic complaint. The fix is timing: do the first sponge wipe when joints are firm but not hard (about 15–30 minutes), then buff with a dry microfibre cloth once everything is fully dry. For stubborn haze the next day, a purpose-made grout haze remover beats vinegar, which can etch natural stone. Change wash water frequently; dirty water just redistributes haze. Patience here is the difference between a professional-looking job and a cloudy one.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much grout do I need for 10 square metres?</summary><p>For 300×300 mm tiles with 3 mm joints, you need about 0.41 kg per m² — so roughly 4.1 kg for 10 m², plus 10% wastage. Small tiles need far more grout than large ones.</p></details>
+<details><summary>Should I use sanded or unsanded grout?</summary><p>Use unsanded grout for joints under 3 mm and sanded grout for 3 mm and wider. Sanded grout resists shrinkage and cracking in wide joints; unsanded gives a smooth finish in narrow ones.</p></details>
+<details><summary>How much extra grout should I buy for wastage?</summary><p>Add 10% for straightforward layouts, 15% for diagonal patterns or floors, and 20% for mosaics or if it's your first time grouting.</p></details>
+<details><summary>Does grout need to be sealed?</summary><p>Yes — cement-based grout is porous and should be sealed 48–72 hours after application in wet areas like showers. Epoxy grout is waterproof and needs no sealer.</p></details>
+<details><summary>Why is my grout cracking and crumbling?</summary><p>Most likely too much water in the mix or washing the joints too aggressively. Mix grout to a thick peanut-butter consistency and wipe with a damp, not wet, sponge.</p></details>
+<details><summary>How long does grout take to dry before sealing?</summary><p>Cement grout needs 48–72 hours to cure before sealing, though light foot traffic is fine after 24 hours. Epoxy grout cures faster — always check the product label.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">GroutCalc</div>
+    <p>GroutCalc estimates grout in kilograms from tile size, joint width and area, with sanded-vs-unsanded guidance.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function groutNeeded(tileL_mm, tileW_mm, gap_mm, area_m2){
+  var L = tileL_mm/1000, W = tileW_mm/1000;
+  if(!(L>0) || !(W>0) || !(gap_mm>0) || !(area_m2>0)) return NaN;
+  var joints = 2*(L+W)/(L*W);
+  var kg = area_m2 * joints * (gap_mm/1000) * 0.006 * 1700;
+  return Math.round(kg*100)/100;
+}
+if(typeof document !== 'undefined'){
+document.addEventListener('DOMContentLoaded', function(){
+  var waste = 0.10;
+  function vals(){
+    return {
+      l: parseFloat(document.getElementById('grL').value),
+      w: parseFloat(document.getElementById('grW').value),
+      g: parseFloat(document.getElementById('grGap').value),
+      a: parseFloat(document.getElementById('grArea').value)
+    };
+  }
+  function refresh(){
+    var v = vals();
+    var kg = groutNeeded(v.l, v.w, v.g, v.a);
+    if(isNaN(kg)) kg = 0;
+    document.getElementById('grKg').textContent = kg.toFixed(1);
+    document.getElementById('grKgW').textContent = (kg*(1+waste)).toFixed(1);
+    document.getElementById('grGapEcho').textContent = v.g + ' mm';
+    document.getElementById('grTypeEcho').textContent = v.g < 3 ? 'unsanded grout' : 'sanded grout';
+  }
+  ['grL','grW','grGap','grArea'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', refresh);
+  });
+  document.querySelectorAll('.gr-presets button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.getElementById('grL').value = b.getAttribute('data-l');
+      document.getElementById('grW').value = b.getAttribute('data-w');
+      document.getElementById('grGap').value = b.getAttribute('data-g');
+      refresh();
+    });
+  });
+  document.querySelectorAll('#grWaste button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#grWaste button').forEach(function(x){ x.classList.remove('gr-on'); });
+      b.classList.add('gr-on');
+      waste = parseFloat(b.getAttribute('data-w'));
+      refresh();
+    });
+  });
+  document.querySelectorAll('.gr-tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.gr-tab').forEach(function(x){ x.classList.remove('gr-on'); });
+      t.classList.add('gr-on');
+      document.querySelectorAll('.gr-panel').forEach(function(p){ p.classList.remove('gr-on'); });
+      document.getElementById('gr-' + t.getAttribute('data-tab')).classList.add('gr-on');
+    });
+  });
+  refresh();
+});}
+</script>
+</body>
+</html>
