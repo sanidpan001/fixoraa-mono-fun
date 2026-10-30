@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ski Length Calculator — Ski Size by Height &amp; Ability</title>
+<meta name="description" content="Calculate ski length from height and ability level, with carving, all-mountain, and powder guidance.">
+<link rel="canonical" href="https://fun.fixoraa.tech/skisize/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Ski Length Calculator — Ski Size by Height &amp; Ability">
+<meta property="og:description" content="Calculate ski length from height and ability level, with carving, all-mountain, and powder guidance.">
+<meta property="og:url" content="https://fun.fixoraa.tech/skisize/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SkiSize",
+      "url": "https://fun.fixoraa.tech/skisize/",
+      "applicationCategory": "Sports",
+      "operatingSystem": "Web",
+      "description": "Calculate ski length from height and ability level, with carving, all-mountain, and powder guidance.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What ski length do I need for my height?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As a starting point, beginners use about eighty-eight percent of height, intermediates ninety-three percent, and advanced skiers ninety-eight percent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should beginners choose shorter skis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Shorter skis turn more easily, feel lighter, and forgive mistakes, which builds confidence faster."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are powder skis longer than carving skis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Powder skis run longer and wider for flotation, while carving skis run shorter for quick turns on groomed snow."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does rocker change ski length choice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Rocker lifts tip and tail off the snow, so a rockered ski feels shorter and can be bought a few centimetres longer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I size skis for children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally between chin and nose height when stood upright, favouring control now over growing into them later."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I set my own bindings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Bindings must be set by a qualified technician for your weight, height, boot size, and ability."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#f4f7ff; --surface:#ffffff; --accent:#312e81; --accent-ink:#ffffff;
+  --ink:#1a1a2e; --muted:#43435e; --line:#c9d2f0;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}}
+.layout-compare .compare{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1rem} .layout-compare .compare span{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.7rem;font-size:.9rem} @media(max-width:640px){.layout-compare .compare{grid-template-columns:1fr}} @media(min-width:760px){.layout-compare .resultcard{border-left:8px solid var(--accent)}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="SkiSize home">
+      <span class="fx-logo-tile" aria-hidden="true">⛷️</span>
+      <span class="fx-brand">SkiSize</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-slope-ruler" aria-label="SkiSize tool">
+<div class="layout-compare">
+<h1>Ski Length Calculator</h1>
+<p class="sub">Find a starting ski length from your height and ability level.</p>
+<div class="formcard">
+<label>Your height (cm)<input id="ht" type="number" value="175" step="1" min="0"></label><label>Ability level<select id="lvl"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label>
+<div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div>
+<div class="presets" id="presets"></div>
+</div>
+<div class="resultcard" id="result" aria-live="polite"><p>Enter height and level to see a ski length.</p></div>
+<div class='compare'><span>Chin: beginner</span><span>Nose: intermediate</span><span>Forehead: advanced</span></div>
+</div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What length skis should you buy?</h2>
+<p>Ski length is the first decision in buying skis, and it affects almost everything about how they feel. Shorter skis turn more easily, feel lighter, and forgive mistakes, which is why beginners and park skiers often choose them. Longer skis are more stable at speed, float better in powder, and hold an edge more confidently on steep, firm snow, which is why advanced skiers and racers choose them. This calculator gives a starting length from your height and ability level, using a simple proportion: beginners at about eighty-eight percent of height, intermediates at about ninety-three percent, and advanced skiers at about ninety-eight percent. A 175 centimetre intermediate skier gets about 163 centimetres by that rule, which sits in the classic range for an all-mountain ski.</p>
+<p>Height is a useful starting point because it correlates with leg length, centre of mass, and leverage over the ski, but it is not the whole story. Weight matters too: a heavier skier of the same height can flex a longer ski more easily and may prefer a slightly longer length, while a lighter skier may prefer a slightly shorter length for the same ski model. Ski type matters even more. Carving skis for groomed pistes are usually chosen shorter, near chin to nose height, because their deep sidecut turns quickly. All-mountain skis sit in the middle, roughly nose height. Powder skis are chosen longer, often at or above head height, because length and width together provide flotation in deep snow. Freestyle and park skis are shorter for spinning and control in the park.</p>
+<h2>Ability levels, honestly assessed</h2>
+<p>Ability level is where buyers most often misjudge themselves. A beginner is someone still learning to link turns and control speed on easy slopes, and they benefit most from shorter, softer skis that turn with little effort. An intermediate skis linked turns on most groomed runs, handles varied snow with some confidence, and is starting to ski faster and steeper terrain. An advanced skier skis confidently on steep, icy, and off-piste terrain, carves at speed, and can handle a longer, stiffer ski without it handling them. If you are between levels, choose the lower level's length, because a ski that is easy to turn builds confidence and technique faster than a ski that fights you. You can always move up a length on your next pair.</p>
+<p>Children's skis follow a different logic. A child's ski should generally reach between chin and nose height when stood upright, and growing children often benefit from a slightly shorter ski that they can control now rather than a longer ski they will grow into next year. Rental shops size children this way for good reason: control and fun matter more than future growth. For adults, the old rule of standing the ski next to you still works as a sanity check. A beginner's ski should reach roughly chin height, an intermediate's ski roughly nose to forehead height, and an advanced all-mountain ski roughly forehead to head height. If the calculator's result looks wildly different from that check, recheck your height and level inputs.</p>
+<h2>Width, rocker, and stiffness</h2>
+<p>Length alone does not define a ski. Waist width, measured in millimetres underfoot, decides where the ski works best. Narrow waists around seventy to eighty-five millimetres excel on firm, groomed snow and carve precisely. Mid widths around eighty-five to one hundred millimetres suit all-mountain use, handling groomed runs and soft snow competently. Wide waists above one hundred millimetres float in powder but feel slower edge to edge on hard snow. Rocker, the upward curve at tip and tail, makes a ski feel shorter than its length because less of the edge contacts the snow, so a rockered ski can be bought a few centimetres longer than a traditional cambered ski. Stiffness matters too: softer skis are forgiving, stiffer skis are stable at speed but demand good technique.</p>
+<p>Boots and bindings complete the system, and they deserve as much attention as length. Boots should fit snugly without pain, with toes just touching the front when standing upright and pulling back slightly when flexed forward. Rental boots are a good way to learn your size and flex preference before buying. Bindings must be set to your weight, height, boot size, and ability by a qualified technician, using the DIN setting system, and they should be checked regularly. A binding set too high will not release in a fall, increasing injury risk, while one set too low releases too easily. Never adjust bindings by guesswork. A good ski shop will size skis, fit boots, and set bindings as one job, which is worth paying for.</p>
+<h2>A worked example and buying advice</h2>
+<p>Take a 180 centimetre advanced skier. The calculator gives about 176 centimetres, which is a sensible all-mountain length, perhaps a little longer for powder or a little shorter for dedicated carving skis. A 165 centimetre beginner gets about 145 centimetres, which is easy to turn and confidence-building. A 175 centimetre intermediate gets about 163 centimetres, a classic all-mountain choice. These are starting points, not orders. Demo days, where you can try several lengths and models on snow, are the best way to confirm a choice, and many shops credit demo fees against a purchase. Renting for a first season is also sensible if you ski only a few days a year, because it lets you try lengths and learn your preferences before committing.</p>
+<p>Second-hand skis can be excellent value, but check length, condition, and binding age carefully. Look for deep scratches, edge damage, delamination, and worn bindings, and have bindings checked by a technician before use, because old bindings may no longer meet safety standards. Skis do not last forever: after many seasons, flex softens and edges wear, and a well-used ski will feel less precise than a new one. Store skis dry, waxed, and out of direct sun in summer, and wax regularly during the season, because a waxed base glides better and lasts longer. The right length, fitted boots, and correctly set bindings together make skiing safer, easier, and far more enjoyable.</p>
+<h3>Length guide by height and level</h3>
+<table><tr><th>Height</th><th>Beginner (88%)</th><th>Intermediate (93%)</th><th>Advanced (98%)</th></tr>
+<tr><td>165 cm</td><td>145 cm</td><td>153 cm</td><td>162 cm</td></tr>
+<tr><td>175 cm</td><td>154 cm</td><td>163 cm</td><td>172 cm</td></tr>
+<tr><td>180 cm</td><td>158 cm</td><td>167 cm</td><td>176 cm</td></tr>
+<tr><td>190 cm</td><td>167 cm</td><td>177 cm</td><td>186 cm</td></tr></table>
+<ul><li>When between levels, choose the shorter length.</li><li>Carving skis run shorter, powder skis run longer.</li><li>Rocker makes a ski feel shorter than its length.</li><li>Have bindings set by a qualified technician.</li><li>Demo or rent before buying if you ski rarely.</li><li>Check second-hand bindings for age and safety.</li></ul>
+<p>Start with height and honest ability, sanity-check against chin-to-nose height, adjust for ski type, and then get out on snow. The best ski length is the one that lets you turn confidently, ski all day without fatigue, and come back wanting more.</p><p>Your ideal ski length may change as you improve, and that is normal. Many skiers start short for confidence, move up a length as turns become automatic, and settle on a length that suits their favourite terrain. Changing ski type can also change length: moving from groomed carving to powder, or to a freestyle ski, means rethinking length for that discipline rather than copying your old pair. Keep notes on skis you demo, including length, width, and how they felt on different snow, so future purchases build on real experience rather than guesswork. The right ski is the one that matches your skiing today, not the skiing you hope to do someday.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What ski length do I need for my height?</summary><p>As a starting point, beginners use about eighty-eight percent of height, intermediates ninety-three percent, and advanced skiers ninety-eight percent.</p></details>
+<details><summary>Should beginners choose shorter skis?</summary><p>Yes. Shorter skis turn more easily, feel lighter, and forgive mistakes, which builds confidence faster.</p></details>
+<details><summary>Are powder skis longer than carving skis?</summary><p>Yes. Powder skis run longer and wider for flotation, while carving skis run shorter for quick turns on groomed snow.</p></details>
+<details><summary>Does rocker change ski length choice?</summary><p>Yes. Rocker lifts tip and tail off the snow, so a rockered ski feels shorter and can be bought a few centimetres longer.</p></details>
+<details><summary>How do I size skis for children?</summary><p>Generally between chin and nose height when stood upright, favouring control now over growing into them later.</p></details>
+<details><summary>Can I set my own bindings?</summary><p>No. Bindings must be set by a qualified technician for your weight, height, boot size, and ability.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SkiSize</div>
+    <p>SkiSize matches height and ability level to a starting ski length.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function compute(height,level){if(height<=0)return{len:0};var f={beginner:0.88,intermediate:0.93,advanced:0.98}[level]||0.93;return{len:Math.round(height*f)};}
+function run(){var r=compute(+document.getElementById('ht').value,document.getElementById('lvl').value);document.getElementById('result').innerHTML='<p class="big">About '+r.len+' cm skis</p><p class="muted">Sanity check: beginners near chin height, intermediates near nose height, advanced near forehead height.</p>';window._last='SkiSize: about '+r.len+' cm skis';}
+document.getElementById('calcBtn').onclick=run;
+document.getElementById('copyBtn').onclick=function(){if(window._last)navigator.clipboard.writeText(window._last);};
+var P=[['Beginner: 165 cm',[165,'beginner']],['Intermediate: 175 cm',[175,'intermediate']],['Advanced: 180 cm',[180,'advanced']]];
+document.getElementById('presets').innerHTML=P.map(function(p,i){return '<button type="button" data-i="'+i+'">'+p[0]+'</button>'}).join('');
+document.querySelectorAll('#presets button').forEach(function(b){b.onclick=function(){var v=P[+b.dataset.i][1];document.getElementById('ht').value=v[0];document.getElementById('lvl').value=v[1];run();};});
+run();
+</script>
+</body>
+</html>
