@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thermostat Setback Savings Calculator | ThermostatSave</title>
+<meta name="description" content="Thermostat setback savings calculator: estimate heating/cooling savings with the DOE 1%-per-degree rule, plus smart-thermostat payback. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/thermostatsave/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Thermostat Setback Savings Calculator | ThermostatSave">
+<meta property="og:description" content="Thermostat setback savings calculator: estimate heating/cooling savings with the DOE 1%-per-degree rule, plus smart-thermostat payback. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/thermostatsave/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ThermostatSave",
+      "url": "https://fun.fixoraa.tech/thermostatsave/",
+      "applicationCategory": "Home Comfort",
+      "operatingSystem": "Web",
+      "description": "Thermostat setback savings calculator: estimate heating/cooling savings with the DOE 1%-per-degree rule, plus smart-thermostat payback. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much can I save by turning down the thermostat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 1% per degree of setback sustained for 8 hours \u2014 so 8 degrees back for 8 hours saves roughly 8% on heating energy. The calculator applies this DOE rule to your exact setback hours and bill. Recovery reheating costs far less than maintaining the higher temperature all day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the furnace work harder to recover, erasing the savings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 this is a persistent myth. Reheating a set-back house uses far less energy than holding the higher temperature all day would have. Heat loss is proportional to the indoor-outdoor temperature gap, so the setback hours are pure savings minus a small recovery cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best thermostat setting for winter savings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "68\u00b0F while awake and home, set back to 60-62\u00b0F while asleep or away. Never drop below 55\u00b0F in freezing weather \u2014 pipes can freeze. Many people sleep better in a cooler bedroom, making the night setback the easiest savings of all."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do setbacks work with heat pumps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 keep setbacks to 2-4 degrees with a heat pump. Deep setbacks can trigger inefficient electric resistance backup heat during recovery, erasing the savings. Use a smart thermostat with adaptive recovery that ramps gradually without backup heat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast does a smart thermostat pay for itself?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically under a year in cold or hot climates: ~8% of a $2,400 annual HVAC spend is ~$190/year against a $130-250 thermostat. Even a $30 programmable thermostat captures most of the savings \u2014 automation's value is doing the setbacks you'd forget."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about summer cooling setbacks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Set it higher when away or asleep \u2014 78\u00b0F home, 85\u00b0F away is the DOE suggestion. Ceiling fans make 78\u00b0F feel like 74-75\u00b0F, effectively amplifying every setback degree. Don't overcool in advance of hot afternoons."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EFF6F9; --surface:#FFFFFF; --accent:#0369A1; --accent-ink:#FFFFFF;
+  --ink:#2A2530; --muted:#57606E; --line:#D1E4EE;
+  --display:'Kanit',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ts-wrap{font-family:Inter,system-ui,sans-serif;background:#EFF6F9;color:#2A2530;padding:56px 20px 76px;}.ts-inner{max-width:960px;margin:0 auto;}.ts-head{display:flex;align-items:center;gap:18px;margin-bottom:28px;}.ts-logo{width:66px;height:66px;border-radius:50%;background:linear-gradient(135deg,#0369A1,#4aa3d8);color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 12px 26px rgba(3,105,161,.25);}.ts-head h1{font-family:Kanit,sans-serif;font-weight:700;font-size:clamp(28px,4.4vw,42px);margin:0;letter-spacing:-.01em;}.ts-head p{margin:4px 0 0;color:#57606E;font-size:15.5px;}.ts-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}.ts-panel{background:#FFFFFF;border:1px solid #D1E4EE;border-radius:22px;padding:28px;box-shadow:0 16px 40px rgba(3,105,161,.08);}.ts-panel h2{font-family:Kanit,sans-serif;font-size:20px;margin:0 0 16px;}.ts-field{margin-bottom:16px;}.ts-field label{display:block;font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#57606E;margin-bottom:8px;}.ts-field input,.ts-field select{width:100%;padding:13px;font-size:16px;border:2px solid #D1E4EE;border-radius:12px;font-family:inherit;color:#2A2530;background:#EFF6F9;box-sizing:border-box;min-height:52px;}.ts-field input[type=range]{padding:0;background:none;border:none;min-height:0;accent-color:#0369A1;}.ts-field input:focus,.ts-field select:focus{outline:none;border-color:#0369A1;}.ts-rval{font-weight:800;color:#0369A1;}.ts-dial{text-align:center;padding:10px 0 4px;}.ts-dial svg{width:220px;height:130px;}.ts-dial .ts-pct{font-family:Kanit,sans-serif;font-size:44px;font-weight:700;fill:#0369A1;}.ts-dial .ts-plabel{font-size:12px;fill:#57606E;letter-spacing:.08em;}.ts-money{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}.ts-m{background:#EFF6F9;border:1px solid #D1E4EE;border-radius:14px;padding:16px;text-align:center;}.ts-m .ts-v{font-family:Kanit,sans-serif;font-size:26px;color:#0369A1;font-weight:700;}.ts-m .ts-l{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:#57606E;font-weight:700;margin-top:4px;}.ts-presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;}.ts-preset{border:2px solid #D1E4EE;background:#fff;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;color:#2A2530;}.ts-preset.on{border-color:#0369A1;background:#EFF6F9;color:#0369A1;}.ts-sched{margin-top:18px;font-size:14.5px;line-height:2;color:#57606E;}.ts-sched strong{color:#2A2530;}.ts-pay{margin-top:16px;background:#EFF6F9;border:1px dashed #0369A1;border-radius:14px;padding:16px;font-size:14.5px;line-height:1.7;color:#57606E;}.ts-pay strong{color:#0369A1;}@media (max-width:760px){.ts-grid{grid-template-columns:1fr;}.ts-head{flex-direction:column;text-align:center;}.ts-money{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ThermostatSave home">
+      <span class="fx-logo-tile" aria-hidden="true">🌡️</span>
+      <span class="fx-brand">ThermostatSave</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-chart-dial" aria-label="ThermostatSave tool">
+<section class='ts-wrap'><div class='ts-inner'><div class='ts-head'><div class='ts-logo' aria-hidden='true'>🌡️</div><div><h1>Thermostat Setback Savings Calculator</h1><p>Turn the dial down. Watch savings add up.</p></div></div><div class='ts-grid'><div class='ts-panel'><h2>Your setback</h2><div class='ts-field'><label for='ts-deg'>Setback depth: <span class='ts-rval' id='ts-degval'>8°F</span></label><input id='ts-deg' type='range' min='0' max='15' step='1' value='8'></div><div class='ts-field'><label for='ts-hrs'>Setback hours per day: <span class='ts-rval' id='ts-hrsval'>8 h</span></label><input id='ts-hrs' type='range' min='0' max='24' step='1' value='8'></div><div class='ts-field'><label for='ts-bill'>Monthly heating + cooling bill ($)</label><input id='ts-bill' type='number' min='0' step='10' value='200' inputmode='numeric'></div><div class='ts-field'><label>Season preset</label><div class='ts-presets' id='ts-presets'><button type='button' class='ts-preset on' data-d='8' data-h='14'>Winter</button><button type='button' class='ts-preset' data-d='7' data-h='8'>Summer</button><button type='button' class='ts-preset' data-d='10' data-h='16'>Aggressive</button><button type='button' class='ts-preset' data-d='4' data-h='8'>Heat pump safe</button></div></div></div><div class='ts-panel'><h2>Your savings</h2><div class='ts-dial' role='status'><svg viewBox='0 0 220 130' aria-hidden='true'><path d='M20 115 A90 90 0 0 1 200 115' fill='none' stroke='#D1E4EE' stroke-width='18' stroke-linecap='round'/><path id='ts-arc' d='M20 115 A90 90 0 0 1 200 115' fill='none' stroke='#0369A1' stroke-width='18' stroke-linecap='round' stroke-dasharray='283' stroke-dashoffset='283'/><text x='110' y='92' text-anchor='middle' class='ts-pct' id='ts-pct'>–</text><text x='110' y='112' text-anchor='middle' class='ts-plabel'>HVAC SAVINGS</text></svg></div><div class='ts-money'><div class='ts-m'><div class='ts-v' id='ts-year'>–</div><div class='ts-l'>Saved per year</div></div><div class='ts-m'><div class='ts-v' id='ts-payback'>–</div><div class='ts-l'>Smart thermostat payback</div></div></div><div class='ts-pay' id='ts-pay'></div><div class='ts-sched'><strong>Sample schedule:</strong> 68°F 6–8am → setback 8am–5pm → 68°F 5–10pm → setback 10pm–6am. Shift 30 min early for recovery time.</div></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The 1% Rule: Small Setbacks, Real Money</h2><p>The U.S. Department of Energy's most quoted efficiency statistic is also one of the simplest: you can save about <strong>1 percent on your heating bill for every degree you set back the thermostat for 8 hours a day</strong>. Set back 8 degrees overnight and while at work, and that is roughly 8 percent off the heating portion of your bill — hundreds of dollars a year in cold climates, for pressing a button. The calculator above applies this rule to your setback, your schedule, and your bill, then shows what a smart thermostat would pay back.</p><p>The physics is straightforward. Heat loss is proportional to the temperature difference between inside and outside — the smaller the gap, the slower your house bleeds heat, the less the furnace runs. A setback does not make the furnace "work harder" to recover in any way that erases the savings; recovery reheating costs far less than maintaining the higher temperature all day would have. This has been measured repeatedly in field studies. The myth persists because it <em>feels</strong> like reheating a cold house should cost more — but thermodynamics disagrees.</p><h2>How the Math Works</h2><p>The DOE rule gives a clean formula: <strong>savings % = setback degrees × setback hours ÷ 8</strong>. A 4-degree setback for 8 hours saves about 4 percent; an 8-degree setback for 8 hours saves about 8 percent; a 10-degree setback for 10 hours saves about 12.5 percent. The tool computes this percentage, then applies it to the heating (or cooling) portion of your bill to get dollars.</p><p>One important nuance: the percentage applies to your <strong>heating/cooling energy</strong>, not your total utility bill. If heating is 60 percent of your winter gas bill, an 8 percent heating saving is about 4.8 percent off the total bill. The calculator asks for your monthly bill and the heating share so the dollar figure reflects reality, not the headline percentage.</p><h2>Heating Setbacks: The Winter Playbook</h2><table><thead><tr><th>Scenario</th><th>Setback</th><th>Hours/day</th><th>Approx. heating savings</th></tr></thead><tbody><tr><td>Night only</td><td>8°F</td><td>8</td><td>~8%</td></tr><tr><td>Workday + night</td><td>8°F</td><td>14</td><td>~14%</td></tr><tr><td>Aggressive</td><td>10°F</td><td>16</td><td>~20%</td></tr><tr><td>Vacation</td><td>15°F</td><td>24</td><td>~45%</td></tr></tbody></table><p>The classic recommendation — 68°F while awake, lower while asleep or away — exists because most people sleep fine (or better) in a cooler bedroom. Dropping to 60–62°F overnight is comfortable under blankets and captures the full 8-degree setback. Going below 55°F risks frozen pipes in cold snaps, so that is the floor for winter setbacks in freezing climates.</p><h3>Heat pumps need a gentler touch</h3><p>If you heat with a heat pump, aggressive setbacks can backfire. Many heat pumps switch to inefficient electric resistance backup heat during recovery, which can erase the savings. For heat pumps, limit setbacks to 2–4 degrees, or use a smart thermostat with adaptive recovery that ramps up gradually without triggering backup heat. This is the one heating system where "set it and forget it" has real merit.</p><h2>Cooling Setbacks: The Summer Version</h2><p>The same physics works in reverse: in summer, set the thermostat <em>higher</em> when away or asleep. The DOE suggests 78°F while home, 85°F while away — a 7-degree setback that saves roughly 7 percent of cooling energy over 8 hours. Ceiling fans let you feel comfortable 3–4 degrees warmer, effectively amplifying every setback degree. The biggest summer wins come from pre-cooling discipline: do not overcool the house "in advance" of a hot afternoon; the setback math punishes every degree of unnecessary cooling just as it rewards every degree of setback.</p><h2>Smart Thermostats: The Payback Math</h2><p>A smart thermostat ($130–$250 installed) earns its keep by automating setbacks you would forget — geofencing that drops the temperature when the last person leaves, learning schedules, and (for heat pumps) intelligent recovery. The payback calculation:</p><ul><li><strong>Annual savings:</strong> ~8% of heating + cooling energy. On a $2,400/year HVAC spend, that is ~$190/year.</li><li><strong>Payback period:</strong> $170 thermostat ÷ $190/year ≈ under a year in cold or hot climates.</li><li><strong>Where it pays fastest:</strong> big houses, extreme climates, erratic schedules — anywhere manual setbacks get forgotten.</li></ul><p>The tool's payback estimator runs these numbers with your bill. Even without a smart thermostat, a $30 programmable model captures most of the savings — the expensive part was never the hardware, it is the discipline, which automation supplies.</p><h2>Building Your Setback Schedule</h2><p>The schedule builder in the tool structures the day around occupancy:</p><ul><li><strong>Wake (6–8 AM):</strong> comfort temp — 68°F heating, 78°F cooling.</li><li><strong>Away (8 AM–5 PM):</strong> setback — 60–62°F heating, 85°F cooling.</li><li><strong>Evening (5–10 PM):</strong> comfort temp.</li><li><strong>Sleep (10 PM–6 AM):</strong> setback — 60–62°F heating, 82°F cooling (many sleep better slightly cool).</li></ul><p>Two refinements: shift the schedule 30 minutes <em>before</em> transitions (recovery takes time), and use a milder sleep setback if anyone in the house runs cold at night — savings you abandon after a week of complaints are not savings.</p><h3>Season presets</h3><p><strong>Winter:</strong> 68°F day / 60°F night &amp; away. <strong>Summer:</strong> 78°F home / 85°F away. <strong>Shoulder seasons:</strong> wider setbacks are free — the system barely runs anyway, so push away-temps aggressively. <strong>Vacation:</strong> 55°F heating (pipe protection) / 85°F cooling, and water heater to vacation mode too.</p><h2>What Setbacks Cannot Do</h2><p>Setbacks reduce the energy your HVAC uses; they do not fix a leaky house. If your home loses heat fast — poor insulation, leaky ducts, drafty windows — the furnace works hard during recovery and comfort suffers. The highest-return efficiency sequence is: <strong>air-seal first</strong> (cheap, huge impact), <strong>insulate second</strong>, <strong>then optimize the thermostat</strong>. A setback in a tight house coasts for hours; in a leaky one it just makes mornings cold. Also note the limits: setbacks do not help with water heating, and they cannot overcome an oversized or failing system that short-cycles.</p><h2>Troubleshooting</h2><ul><li><strong>House never recovers by morning:</strong> start recovery earlier, reduce the setback depth, or check whether the system is undersized or filters are clogged.</li><li><strong>Heat pump backup heat keeps firing:</strong> shrink setbacks to 2–4°F and enable adaptive/intelligent recovery on the thermostat.</li><li><strong>Family vetoes the cold bedroom:</strong> compromise at a 4–5°F night setback, or zone the bedrooms separately — half the setback still pays.</li><li><strong>Savings smaller than estimated:</strong> check the heating share of your bill — mild climates and gas-heated water dilute the percentage. The absolute dollars are what matter.</li></ul><p>Thermostat setbacks are the rare efficiency measure that is free, immediate, and proven. Set the schedule once — or let a smart thermostat do it — and collect the savings every month without thinking about it again.</p><h2>Zoning: Heating Only What You Use</h2><p>The deepest setback of all is not lowering the temperature — it is not heating rooms you are not in. <strong>Zoned systems</strong> (dampers in ductwork, or mini-split heads per room) let bedrooms sit at 62°F all evening while the living room holds 68°F, then swap overnight. Even without true zoning, the manual version works: close vents and doors in unused rooms (never fully close more than about 30 percent of vents — backpressure strains the blower), and use a space heater for the one room you occupy instead of heating the whole house for one person. A family that lives in three rooms of an eight-room house in the evening is heating five rooms for nobody; zoning captures that waste directly.</p><h2>The Biggest Energy Wasters After HVAC</h2><p>Once the thermostat is optimized, the next tier of savings: <strong>water heating</strong> (typically the second-largest energy use — drop the tank to 120°F and insulate it), <strong>air leaks</strong> (a tube of caulk and weatherstripping often beats a new furnace on payback), <strong>old refrigerators</strong> (a 1990s fridge in the garage can cost $150/year to run), and <strong>lighting</strong> (LEDs cut lighting energy by about 75 percent). None of these require lifestyle sacrifice — they are the same philosophy as the setback: stop paying to maintain conditions nobody is enjoying.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How much can I save by turning down the thermostat?</summary><p>About 1% per degree of setback sustained for 8 hours — so 8 degrees back for 8 hours saves roughly 8% on heating energy. The calculator applies this DOE rule to your exact setback hours and bill. Recovery reheating costs far less than maintaining the higher temperature all day.</p></details>
+<details><summary>Does the furnace work harder to recover, erasing the savings?</summary><p>No — this is a persistent myth. Reheating a set-back house uses far less energy than holding the higher temperature all day would have. Heat loss is proportional to the indoor-outdoor temperature gap, so the setback hours are pure savings minus a small recovery cost.</p></details>
+<details><summary>What is the best thermostat setting for winter savings?</summary><p>68°F while awake and home, set back to 60-62°F while asleep or away. Never drop below 55°F in freezing weather — pipes can freeze. Many people sleep better in a cooler bedroom, making the night setback the easiest savings of all.</p></details>
+<details><summary>Do setbacks work with heat pumps?</summary><p>Yes — keep setbacks to 2-4 degrees with a heat pump. Deep setbacks can trigger inefficient electric resistance backup heat during recovery, erasing the savings. Use a smart thermostat with adaptive recovery that ramps gradually without backup heat.</p></details>
+<details><summary>How fast does a smart thermostat pay for itself?</summary><p>Typically under a year in cold or hot climates: ~8% of a $2,400 annual HVAC spend is ~$190/year against a $130-250 thermostat. Even a $30 programmable thermostat captures most of the savings — automation's value is doing the setbacks you'd forget.</p></details>
+<details><summary>What about summer cooling setbacks?</summary><p>Set it higher when away or asleep — 78°F home, 85°F away is the DOE suggestion. Ceiling fans make 78°F feel like 74-75°F, effectively amplifying every setback degree. Don't overcool in advance of hot afternoons.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ThermostatSave</div>
+    <p>ThermostatSave estimates heating and cooling savings from thermostat setbacks, with smart-thermostat payback math.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function setbackSave(degrees,hours){var d=Number(degrees),h=Number(hours);if(!(d>=0)||!(h>=0))return 0;return Math.round(d*h/8*100)/100;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){function el(id){return document.getElementById(id);}var ARC=283;function render(){var deg=el('ts-deg'),hrs=el('ts-hrs'),bill=el('ts-bill');if(!deg||!hrs||!bill)return;var d=Number(deg.value),h=Number(hrs.value);el('ts-degval').textContent=d+'°F';el('ts-hrsval').textContent=h+' h';var pct=setbackSave(d,h);var arc=el('ts-arc');if(arc)arc.style.strokeDashoffset=String(ARC*(1-Math.min(pct,50)/50));el('ts-pct').textContent=pct+'%';var monthly=Math.max(0,Number(bill.value)||0);var annual=monthly*12;var saved=annual*pct/100;el('ts-year').textContent='$'+Math.round(saved).toLocaleString();var cost=170;var pb=saved>0?(cost/saved):0;var pbEl=el('ts-payback');if(pbEl)pbEl.textContent=saved>0?(pb<1?Math.round(pb*12)+' mo':pb.toFixed(1)+' yr'):'–';var pay=el('ts-pay');if(pay)pay.innerHTML=saved>0?('<strong>Payback math:</strong> a $170 smart thermostat pays for itself in '+(pb<1?Math.round(pb*12)+' months':pb.toFixed(1)+' years')+' at $'+Math.round(saved).toLocaleString()+'/yr savings. DOE rule: ~1% per degree per 8 hours.'):'Enter your bill to see payback math.';}var dg=el('ts-deg'),hr=el('ts-hrs');if(dg)dg.addEventListener('input',render);if(hr)hr.addEventListener('input',render);var bl=el('ts-bill');if(bl)bl.addEventListener('input',render);var pr=el('ts-presets');if(pr){var btns=pr.querySelectorAll('.ts-preset');for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){for(var j=0;j<btns.length;j++)btns[j].classList.remove('on');this.classList.add('on');el('ts-deg').value=this.getAttribute('data-d');el('ts-hrs').value=this.getAttribute('data-h');render();});}}render();});}
+</script>
+</body>
+</html>
