@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bike Tire Pressure Calculator — Road, Gravel & MTB | TirePressure</title>
+<meta name="description" content="Bike tire pressure by weight, tire width and terrain, with front/rear split.">
+<link rel="canonical" href="https://fun.fixoraa.tech/tirepressure/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Bike Tire Pressure Calculator — Road, Gravel & MTB | TirePressure">
+<meta property="og:description" content="Bike tire pressure by weight, tire width and terrain, with front/rear split.">
+<meta property="og:url" content="https://fun.fixoraa.tech/tirepressure/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "TirePressure",
+      "url": "https://fun.fixoraa.tech/tirepressure/",
+      "applicationCategory": "Sports",
+      "operatingSystem": "Web",
+      "description": "Bike tire pressure by weight, tire width and terrain, with front/rear split.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What PSI should my road bike tires be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a 170 lb rider on 28 mm tires, roughly 85 PSI front and 100 PSI rear. Scale with weight and width: heavier riders and narrower tires need more, lighter riders and wider tires need less. The calculator above gives your exact numbers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should front and rear tire pressure be the same?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. About 55% of your weight sits on the rear wheel, so run the rear ~8% higher than baseline and the front ~8% lower. Equal pressures over-inflate the front (harsh, skittish) or under-inflate the rear (slow, flat-prone)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much lower can I go with tubeless tires?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 8% lower than tubed, because eliminating the inner tube removes pinch flats. The calculator applies this automatically when you check the tubeless box. Gravel and MTB riders gain the most."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does wider tire mean lower pressure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 pressure scales inversely with width. A wider tire supports the same weight at lower pressure thanks to a larger contact patch. Moving from 25 mm to 32 mm typically drops optimal pressure by 20+ PSI while reducing rolling resistance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What tire pressure for gravel vs road?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gravel runs roughly 70% of equivalent road pressure \u2014 the tire becomes suspension, conforming to rocks for traction and comfort. MTB drops further to about 45% of road pressure, deep into the 20s PSI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I check tire pressure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Before every ride. Tires lose 1\u20132 PSI per day just sitting (latex tubes fastest). Temperature matters too: pressure rises about 2% per 10\u00b0F, so check at riding temperature for precision."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#E9E1F9; --surface:#FFFFFF; --tint:#DDD2F4;
+  --accent:#391584; --accent-deep:#2A1B6E; --btn-ink:#FFFFFF;
+  --ink:#262033; --muted:#57506E; --line:#D8D2EA;
+  --display:'Barlow Condensed',system-ui,sans-serif; --body:'Barlow Condensed',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:var(--surface)}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--btn-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px;color:var(--ink)}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:var(--ink)}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--ink)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px;color:var(--ink)}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:var(--ink);font-size:15px}
+.fx-footer{background:var(--footbg,#26211c);color:#f0e6da;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#cbb9a8;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#ffd9a8;font-weight:700}
+.no-print{}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+
+.tp-hero{padding:46px 0 6px;text-align:center}
+.tp-eyebrow{display:inline-block;font-size:15px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.tp-hero h1{font-size:clamp(46px,7vw,72px);font-weight:700;letter-spacing:.01em;text-transform:uppercase;line-height:1;margin-bottom:8px}
+.tp-hero h1 span{color:var(--accent)}
+.tp-hero p{font-size:17px;color:var(--muted);max-width:640px;margin:0 auto;font-family:system-ui,sans-serif}
+.tp-dash{margin:28px auto 10px;max-width:940px}
+.tp-tabs{display:flex;gap:10px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
+.tp-tabs button{font-family:inherit;font-weight:700;font-size:19px;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:12px;padding:10px 26px;cursor:pointer}
+.tp-tabs button.on{background:var(--accent);color:#fff;box-shadow:0 4px 0 var(--accent-deep)}
+.tp-main{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:28px;box-shadow:0 12px 30px rgba(55,35,139,.08)}
+.tp-gauge{text-align:center}
+.tp-gauge svg{width:100%;max-width:300px;height:auto}
+.tp-read{display:flex;justify-content:center;gap:26px;margin-top:6px}
+.tp-read .cell{text-align:center}
+.tp-read .n{font-size:52px;font-weight:700;color:var(--accent);line-height:1}
+.tp-read .l{font-family:system-ui,sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tp-controls h2{font-size:26px;font-weight:700;margin-bottom:2px}
+.tp-controls .sub{font-family:system-ui,sans-serif;font-size:14px;color:var(--muted);margin-bottom:18px}
+.tp-f{margin-bottom:18px}
+.tp-f label{display:block;font-family:system-ui,sans-serif;font-weight:700;font-size:14px;margin-bottom:8px}
+.tp-f .hint{font-weight:400;color:var(--muted);font-size:13px}
+.tp-row{display:flex;align-items:center;gap:12px}
+.tp-row input[type=range]{flex:1;accent-color:var(--accent)}
+.tp-row output{font-size:24px;font-weight:700;color:var(--accent-deep);min-width:92px;text-align:right}
+.tp-f input[type=number],.tp-f select{font-family:system-ui,sans-serif;font-size:16px;padding:11px 13px;border:2px solid var(--line);border-radius:12px;width:100%;color:var(--ink);background:#fff}
+.tp-f input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.tp-toggle{display:flex;align-items:center;gap:12px;font-family:system-ui,sans-serif;font-weight:700;font-size:15px;cursor:pointer}
+.tp-toggle input{width:22px;height:22px;accent-color:var(--accent)}
+.tp-split{margin-top:18px}
+.tp-bar-row{display:grid;grid-template-columns:64px 1fr 52px;gap:10px;align-items:center;margin-bottom:10px;font-family:system-ui,sans-serif;font-size:14px;font-weight:700}
+.tp-bar{height:16px;background:var(--tint);border-radius:999px;overflow:hidden}
+.tp-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));border-radius:999px}
+.tp-tip{font-family:system-ui,sans-serif;font-size:14px;background:var(--tint);border-radius:12px;padding:12px 16px;color:var(--accent-deep);margin-top:14px}
+.article-sec,.faq-sec{font-family:system-ui,sans-serif}
+@media(max-width:860px){.tp-main{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/tirepressure/" aria-label="TirePressure home">
+      <span class="fx-tile" aria-hidden="true">🚲</span>
+      <span class="fx-name">TirePressure</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tp-hero">
+    <span class="tp-eyebrow">Dial it in · Cycling</span>
+    <h1>TirePressure</h1>
+    <p>The fastest free speed in cycling is correct tire pressure. Enter rider plus bike weight, tire width, and terrain — get front and rear PSI tuned for grip, comfort, and speed.</p>
+  </section>
+
+  <section class="tp-dash" aria-label="TirePressure tool">
+
+  <div class="tp-tabs" role="group" aria-label="Discipline">
+    <button type="button" data-d="road" class="on">Road</button>
+    <button type="button" data-d="gravel">Gravel</button>
+    <button type="button" data-d="mtb">MTB</button>
+  </div>
+  <div class="tp-main">
+    <div class="tp-gauge" aria-live="polite">
+      <svg id="tp-svg" viewBox="0 0 300 190" role="img" aria-label="Rear tire pressure gauge"></svg>
+      <div class="tp-read">
+        <div class="cell"><div class="n" id="tp-front">0</div><div class="l">Front PSI</div></div>
+        <div class="cell"><div class="n" id="tp-rear">0</div><div class="l">Rear PSI</div></div>
+      </div>
+    </div>
+    <div class="tp-controls">
+      <h2>Race setup</h2>
+      <p class="sub">Weight is rider + bike + gear, ready to ride.</p>
+      <div class="tp-f">
+        <label for="tp-w">Total weight <span class="hint">— lb</span></label>
+        <div class="tp-row">
+          <input type="range" id="tp-w" min="100" max="300" step="1" value="170">
+          <output id="tp-w-out" for="tp-w">170 lb</output>
+        </div>
+      </div>
+      <div class="tp-f">
+        <label for="tp-width">Tire width <span class="hint" id="tp-width-hint">— mm</span></label>
+        <input type="number" id="tp-width" value="28" min="18" max="75" step="1">
+      </div>
+      <label class="tp-toggle"><input type="checkbox" id="tp-tubeless"> Tubeless setup <span class="hint" style="font-weight:400;color:var(--muted)">(−8% pressure)</span></label>
+      <div class="tp-split" aria-hidden="true">
+        <div class="tp-bar-row"><span>Front</span><div class="tp-bar"><i id="tp-bar-f" style="width:0%"></i></div><span id="tp-bar-fv"></span></div>
+        <div class="tp-bar-row"><span>Rear</span><div class="tp-bar"><i id="tp-bar-r" style="width:0%"></i></div><span id="tp-bar-rv"></span></div>
+      </div>
+      <div class="tp-tip" id="tp-tip"></div>
+    </div>
+  </div>
+
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec" aria-label="Guide">
+
+<h2>Why Tire Pressure Is Free Speed</h2>
+<p>Ask a bike fitter for the cheapest upgrade in cycling and you will hear the same answer: a pump. Tire pressure controls <strong>rolling resistance, grip, comfort, and flat protection</strong> all at once — and most riders get it wrong, usually too high. The old wisdom ("pump it to the max on the sidewall") came from an era of narrow tires on smooth tracks. Modern testing is unambiguous: on real roads, slightly lower pressure is <em>faster</em> because the tire absorbs bumps instead of bouncing the whole bike over them.</p>
+<p>The science centers on <strong>tire drop</strong> — how much the tire squashes under load. Around 15% drop is the sweet spot where hysteresis losses (energy lost flexing the casing) balance suspension losses (energy lost bouncing over bumps). This calculator targets that zone, scaled by your weight, tire width, and surface.</p>
+<h2>Weight: The Input Everyone Skips</h2>
+<p>Pressure exists to support <strong>weight</strong> — rider, bike, water bottles, the lock in your jersey pocket. Two riders on identical tires need different pressures if one weighs 140 lb and the other 200 lb. Heavier riders need more pressure to reach the same tire drop; lighter riders need less. The slider above takes total system weight because the tire cannot tell where the pounds came from.</p>
+<p>Weigh yourself kitted up, add the bike (most road bikes are 17–22 lb, MTBs 28–35), and add a few pounds for bottles and gear. Guessing low is the common error — and it is the error that causes pinch flats.</p>
+<h2>Wider Tires, Lower Pressure</h2>
+<p>Pressure and width trade off directly: a wider tire holds the same load at lower pressure because the <strong>contact patch</strong> is larger. Going from 25 mm to 32 mm road tires typically drops optimal pressure by 20+ PSI — with lower rolling resistance and far more comfort as a bonus. This is why the entire peloton moved to 28–30 mm tires: the math won.</p>
+<p>The formula behind this page scales pressure inversely with width (PSI ≈ weight ÷ width × constant), which matches published pressure tables from tire makers within a few PSI across the normal range. At the extremes — 23 mm track tires, 4-inch fat bike tires — consult the manufacturer's chart, because casing construction starts to dominate.</p>
+<h2>Front vs Rear: The 45/55 Split</h2>
+<p>Weight does not sit evenly on a bike — roughly <strong>45% front, 55% rear</strong> in a normal riding position. So the rear tire carries more load and needs more pressure: about 8% above the baseline, with the front 8% below. Running both tires equal either over-inflates the front (harsh, skittish in corners) or under-inflates the rear (slow, pinch-flat prone).</p>
+<p>Time trialists and triathletes, heads up: your weight distribution is more forward on aerobars, so narrow the split. Loaded tourists with panniers: add the luggage weight and consider narrowing it the other way — or just add 5 PSI both ends and enjoy the peace of mind.</p>
+<h2>Terrain Changes Everything</h2>
+<p><strong>Road:</strong> smooth tarmac rewards higher pressure, but "higher" no longer means 120 PSI — for a 170 lb rider on 28 mm tires, the fast number is around 85–100 PSI, not the sidewall max. Rough chipseal: subtract 5 PSI; the vibration you eliminate costs more watts than the hysteresis you add.</p>
+<p><strong>Gravel:</strong> drop to roughly 70% of road pressure. The tire becomes part of the suspension, conforming to rocks instead of deflecting off them — more traction, fewer pinch flats, dramatically more comfort. This is also where tubeless pays hardest: lower pressures without the snakebite risk.</p>
+<p><strong>MTB:</strong> around 45% of road pressure, deep into the 20s PSI. Knobs need to conform to roots and rocks to grip; a rock-hard MTB tire skips across the trail like a stone on water. Tune the last 2 PSI by feel, because riding style and rim width matter as much as weight here.</p>
+<h2>Tubeless: The 8% Discount</h2>
+<p>Removing the inner tube removes the <strong>pinch flat</strong> — the tube getting pinched between rim and obstacle. Without that failure mode, you can run about 8% lower pressure for free grip and comfort, which the calculator applies when you check the tubeless box. Sealant handles small punctures automatically, and modern tubeless road setups are reliable enough for everyday riding.</p>
+<p>Caveats: tubeless needs compatible rims and tires, sealant dries out (top up every few months), and seating a stubborn bead sometimes requires a compressor or charger pump. But for gravel and MTB, it is the single best upgrade after correct pressure itself.</p>
+<h2>How to Fine-Tune by Feel</h2>
+<p>Start with the calculator's numbers, then ride and observe. <strong>Too high:</strong> the bike chatters over small bumps, the front wheel skips in corners, your hands go numb. <strong>Too low:</strong> the bike feels squirmy leaning into turns, you feel the rim thud on sharp edges, rolling feels sluggish on smooth road. Adjust in <strong>2–3 PSI steps</strong> — smaller than you think — and change only one end at a time.</p>
+<p>Check pressure <strong>before every ride</strong>. Tires lose 1–2 PSI per day (latex tubes faster, tubeless slowest). A floor pump with a gauge is mandatory equipment; "squeeze test" calibration varies with hand strength and wishful thinking.</p>
+<h2>Common Mistakes</h2>
+<p>Mistake one: <strong>max sidewall pressure</strong> — the number on the tire is a safety maximum, not a recommendation. Mistake two: <strong>equal front/rear</strong>, covered above. Mistake three: <strong>ignoring temperature</strong> — pressure rises ~2% per 10°F, so tires pumped in a warm house read low on a cold morning; check at riding temperature for precision. Mistake four: <strong>pumping to "feel fast"</strong> — rock-hard tires feel fast because vibration feels like speed. The stopwatch disagrees.</p>
+<h2>Rim Width Changes the Answer</h2>
+<p>There is a second width that matters: <strong>internal rim width</strong>. A tire mounted on a wide rim sits broader and shorter than the same tire on a narrow rim, which changes the casing shape and therefore the optimal pressure — typically 1–3 PSI lower on modern wide rims. The calculator's numbers assume a contemporary rim (around 21–25 mm internal for road, wider for gravel/MTB); if you are on very narrow vintage rims, add a couple PSI, and on very wide rims, subtract a couple.</p>
+<p>Rim width also sets the <strong>minimum safe pressure</strong>: too low on too narrow a rim and the tire can burp (tubeless) or roll off in hard corners. Respect the tire maker's minimum printed on the sidewall — it assumes a sensible rim. And remember the system works as a whole: wider rims plus wider tires plus correct pressure is why modern bikes ride so much better than their 23 mm ancestors. Each piece enables the next.</p>
+<p>Finally, write your numbers down. Tape them inside your saddlebag or save them in your phone: front and rear PSI for each bike, plus a wet-weather variant 3 PSI lower. Conditions change — rain, loaded touring, a new tire model — but a recorded baseline means you adjust from knowledge instead of starting over every time. The best pressure is the one you actually run, consistently, before every ride.</p>
+<h2>Putting It All Together</h2>
+<p>Weigh yourself with the bike, measure your tire width, pick your terrain, check tubeless if it applies — and pump to the numbers. Then ride, feel, and nudge. Correct pressure is the rare upgrade that is free, instant, and makes every ride better: faster on smooth roads, grippier on loose ones, and kinder to your hands everywhere. The gauge on your pump is a performance tool — use it like one.</p>
+
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What PSI should my road bike tires be?</summary><p>For a 170 lb rider on 28 mm tires, roughly 85 PSI front and 100 PSI rear. Scale with weight and width: heavier riders and narrower tires need more, lighter riders and wider tires need less. The calculator above gives your exact numbers.</p></details>
+    <details><summary>Should front and rear tire pressure be the same?</summary><p>No. About 55% of your weight sits on the rear wheel, so run the rear ~8% higher than baseline and the front ~8% lower. Equal pressures over-inflate the front (harsh, skittish) or under-inflate the rear (slow, flat-prone).</p></details>
+    <details><summary>How much lower can I go with tubeless tires?</summary><p>About 8% lower than tubed, because eliminating the inner tube removes pinch flats. The calculator applies this automatically when you check the tubeless box. Gravel and MTB riders gain the most.</p></details>
+    <details><summary>Does wider tire mean lower pressure?</summary><p>Yes — pressure scales inversely with width. A wider tire supports the same weight at lower pressure thanks to a larger contact patch. Moving from 25 mm to 32 mm typically drops optimal pressure by 20+ PSI while reducing rolling resistance.</p></details>
+    <details><summary>What tire pressure for gravel vs road?</summary><p>Gravel runs roughly 70% of equivalent road pressure — the tire becomes suspension, conforming to rocks for traction and comfort. MTB drops further to about 45% of road pressure, deep into the 20s PSI.</p></details>
+    <details><summary>How often should I check tire pressure?</summary><p>Before every ride. Tires lose 1–2 PSI per day just sitting (latex tubes fastest). Temperature matters too: pressure rises about 2% per 10°F, so check at riding temperature for precision.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">TirePressure</div>
+    <p>TirePressure dials in bike tire pressure from rider and bike weight, tire width, and terrain — road, gravel, and MTB — with tubeless adjustment and a front/rear split.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+
+function tirePSI(weightLb, widthMm, surface, tubeless){
+  var k = {road:1, gravel:0.72, mtb:0.45}[surface];
+  if(k === undefined) k = 1;
+  var base = weightLb / widthMm * 15.2 * k;
+  if(tubeless) base *= 0.92;
+  return {front: Math.round(base*0.92), rear: Math.round(base*1.08)};
+}
+
+
+(function(){
+var surface='road';
+var $=function(id){return document.getElementById(id);};
+var NS='http://www.w3.org/2000/svg';
+function polar(cx,cy,r,ang){var a=(ang-180)*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)];}
+function drawGauge(rear){
+  var svg=$('tp-svg');svg.innerHTML='';
+  var cx=150,cy=160,r=120,max=130;
+  for(var v=0;v<=max;v+=10){
+    var ang=180-(v/max)*180;
+    var p1=polar(cx,cy,r,ang),p2=polar(cx,cy,r-(v%30===0?18:10),ang);
+    var t=document.createElementNS(NS,'line');
+    t.setAttribute('x1',p1[0]);t.setAttribute('y1',p1[1]);t.setAttribute('x2',p2[0]);t.setAttribute('y2',p2[1]);
+    t.setAttribute('stroke',v%30===0?'#391584':'#B9B2D6');t.setAttribute('stroke-width',v%30===0?4:2);
+    svg.appendChild(t);
+    if(v%30===0){
+      var lp=polar(cx,cy,r-32,ang);
+      var tx=document.createElementNS(NS,'text');
+      tx.setAttribute('x',lp[0]);tx.setAttribute('y',lp[1]+5);tx.setAttribute('text-anchor','middle');
+      tx.setAttribute('font-size','14');tx.setAttribute('fill','#57506E');tx.setAttribute('font-weight','700');
+      tx.textContent=v;svg.appendChild(tx);
+    }
+  }
+  var na=180-Math.min(max,Math.max(0,rear))/max*180;
+  var np=polar(cx,cy,r-24,na);
+  var nd=document.createElementNS(NS,'line');
+  nd.setAttribute('x1',cx);nd.setAttribute('y1',cy);nd.setAttribute('x2',np[0]);nd.setAttribute('y2',np[1]);
+  nd.setAttribute('stroke','#391584');nd.setAttribute('stroke-width','6');nd.setAttribute('stroke-linecap','round');
+  svg.appendChild(nd);
+  var hub=document.createElementNS(NS,'circle');
+  hub.setAttribute('cx',cx);hub.setAttribute('cy',cy);hub.setAttribute('r','10');hub.setAttribute('fill','#391584');
+  svg.appendChild(hub);
+  var lbl=document.createElementNS(NS,'text');
+  lbl.setAttribute('x',cx);lbl.setAttribute('y',cy+34);lbl.setAttribute('text-anchor','middle');
+  lbl.setAttribute('font-size','15');lbl.setAttribute('fill','#57506E');lbl.setAttribute('font-weight','700');
+  lbl.textContent='REAR PSI';svg.appendChild(lbl);
+}
+function calc(){
+  var w=parseFloat($('tp-w').value)||0;
+  var width=parseFloat($('tp-width').value)||28;
+  var tl=$('tp-tubeless').checked;
+  $('tp-w-out').textContent=w+' lb';
+  var p=tirePSI(w,width,surface,tl);
+  $('tp-front').textContent=p.front;
+  $('tp-rear').textContent=p.rear;
+  $('tp-bar-f').style.width=Math.min(100,p.front/130*100)+'%';
+  $('tp-bar-r').style.width=Math.min(100,p.rear/130*100)+'%';
+  $('tp-bar-fv').textContent=p.front;$('tp-bar-rv').textContent=p.rear;
+  drawGauge(p.rear);
+  var tip;
+  if(surface==='road'){tip='Road: run the rear about 8% above the baseline and the front 8% below — weight sits rearward. On rough chipseal, drop both 5 PSI; comfort is speed when vibration slows you down.';}
+  else if(surface==='gravel'){tip='Gravel: these pressures balance pinch-flat protection with traction. For chunky gravel, favor the high end; for smooth hardpack, you can drop 2–3 PSI for comfort.';}
+  else{tip='MTB: start here, then tune by feel — if the tire squirms in hard corners add 1–2 PSI; if it skips over roots instead of gripping, drop 1–2 PSI. Never go below the tire maker’s minimum.';}
+  if(tl)tip+=' Tubeless lets you run ~8% lower without pinch flats — already applied above.';
+  $('tp-tip').textContent=tip;
+}
+document.querySelector('.tp-tabs').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  surface=b.getAttribute('data-d');
+  this.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+  b.classList.add('on');
+  var w=$('tp-width');
+  if(surface==='road'&&parseFloat(w.value)>35)w.value=28;
+  if(surface==='gravel'&&parseFloat(w.value)<32)w.value=40;
+  if(surface==='mtb'&&parseFloat(w.value)<50)w.value=58;
+  $('tp-width-hint').textContent=surface==='mtb'?'— mm (2.3″ ≈ 58)':'— mm';
+  calc();
+});
+['tp-w','tp-width','tp-tubeless'].forEach(function(id){
+  $(id).addEventListener('input',calc);$(id).addEventListener('change',calc);
+});
+calc();
+})();
+
+</script>
+</body>
+</html>
