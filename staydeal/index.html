@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Price Comparison Calculator — Compare Total Stay Costs | StayDeal</title>
+<meta name="description" content="StayDeal compares up to three hotel deals by true total cost: nightly rate, nights, taxes and fees, so the cheapest headline rate does not fool you.">
+<link rel="canonical" href="https://fun.fixoraa.tech/staydeal/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "StayDeal", "url": "https://fun.fixoraa.tech/staydeal/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "StayDeal compares up to three hotel deals by true total cost: nightly rate, nights, taxes and fees, so the cheapest headline rate does not fool you."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is the total hotel price higher than the nightly rate?", "acceptedAnswer": {"@type": "Answer", "text": "Taxes and fees are added on top of the nightly rate, so a 100 dollar room for three nights with 10 percent tax and a 20 dollar fee costs 350 dollars, not 300."}}, {"@type": "Question", "name": "What is a resort fee?", "acceptedAnswer": {"@type": "Answer", "text": "A nightly charge, often 20 to 50 dollars, that supposedly covers wifi, pool and gym access, whether you use those facilities or not."}}, {"@type": "Question", "name": "Should I compare flexible or non-refundable rates?", "acceptedAnswer": {"@type": "Answer", "text": "Compare like with like: flexible with flexible and non-refundable with non-refundable, because non-refundable rates are usually 10 to 20 percent cheaper."}}, {"@type": "Question", "name": "Does free breakfast make a hotel cheaper overall?", "acceptedAnswer": {"@type": "Answer", "text": "For a family it can save about 40 dollars a day, which often outweighs a higher room rate, but for a solo traveller who skips breakfast it adds no value."}}, {"@type": "Question", "name": "Is booking direct ever cheaper than a booking site?", "acceptedAnswer": {"@type": "Answer", "text": "Often yes, because direct bookings can include free breakfast, upgrades or flexible cancellation that aggregators do not offer."}}, {"@type": "Question", "name": "How do cleaning fees affect short stays?", "acceptedAnswer": {"@type": "Answer", "text": "A fixed cleaning fee hurts short stays most: 100 dollars over two nights adds 50 dollars a night, but over ten nights it adds only 10 dollars a night."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Verdana, Geneva, sans-serif;background:#eff6ff;color:#172554;line-height:1.6}
+
+.mx-auto{margin-left:auto;margin-right:auto}.text-center{text-align:center}.block{display:block}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.shrink-0{flex-shrink:0}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(max-width:640px){div.origin-top{transform:scale(.44);transform-origin:top center}}
+@media(min-width:641px){div.origin-top{transform:scale(1)}}
+
+.desk{max-width:860px;margin:0 auto;background:#fff;border:2px solid #93c5fd;border-radius:14px;padding:26px}
+.dealrow{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:14px}
+details{border:1px solid #93c5fd;border-radius:10px;padding:10px 14px;margin:8px 0;background:#fff}
+@media(max-width:640px){.grid2,.grid3,.cols,.dealrow,.mixrow{grid-template-columns:1fr!important;flex-direction:column!important}
+header .hwrap{flex-direction:column;align-items:flex-start!important;gap:10px}
+.toolbox,.card,.pad,.sheet{padding:18px!important} h1{font-size:1.6rem!important} .bignum{font-size:2rem!important}}
+</style>
+</head>
+<body>
+<header style="background:#dbeafe;border-bottom:3px solid #1d4ed8">
+  <div class="hwrap" style="max-width:1020px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:10px;background:#1d4ed8;color:#fff;font-size:26px">🏨</span>
+      <span>
+        <span style="display:block;font-size:1.5rem;font-weight:800;color:#172554;letter-spacing:-.5px">StayDeal</span>
+        <span style="font-size:.85rem;color:#1e40af">The desk where hidden fees get caught</span>
+      </span>
+    </div>
+    <nav style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://fixoraa.tech" style="background:#1d4ed8;color:#fff;text-decoration:none;padding:9px 16px;border-radius:999px;font-weight:700">Home</a>
+      <a href="https://fixoraa.tech" style="background:#fff;color:#1d4ed8;border:2px solid #1d4ed8;text-decoration:none;padding:7px 14px;border-radius:999px;font-weight:700">More Tools</a>
+    </nav>
+  </div>
+  <div style="max-width:1020px;margin:0 auto;padding:0 20px 14px"><span style="display:inline-block;background:#bfdbfe;color:#172554;font-weight:700;font-size:.8rem;padding:5px 12px;border-radius:999px">Unlimited Free Usage</span></div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<section class="toolsec" style="max-width:1020px;margin:0 auto;padding:26px 20px">
+<h1>Hotel Price Comparison Calculator — Find the True Cheapest Stay</h1>
+<p class="intro" style="font-size:1.05rem;color:#172554">Lay the deals out on the desk: enter three hotel options with rates, nights, taxes and fees, and StayDeal stamps the real winner, not the cheapest headline.</p>
+<div class="desk"><div style="font-weight:900;color:#172554;font-size:1.25rem">🏨 DEAL DESK — Three offers, one truth</div>
+<div style="margin-top:16px"><strong>Deal A</strong><div class="dealrow"><div><label style="display:block;font-weight:700;margin-bottom:6px">Nightly rate ($)</label><input id="a_rate" type="number" min="0" step="any" value="100" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Tax (%)</label><input id="a_tax" type="number" min="0" step="any" value="10" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Fees total ($)</label><input id="a_fee" type="number" min="0" step="any" value="20" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Nights</label><input id="nights" type="number" min="0" step="any" value="3" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div></div>
+<strong>Deal B</strong><div class="dealrow"><div><label style="display:block;font-weight:700;margin-bottom:6px">Nightly rate ($)</label><input id="b_rate" type="number" min="0" step="any" value="120" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Tax (%)</label><input id="b_tax" type="number" min="0" step="any" value="0" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Fees total ($)</label><input id="b_fee" type="number" min="0" step="any" value="0" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div></div></div>
+<strong>Deal C</strong><div class="dealrow"><div><label style="display:block;font-weight:700;margin-bottom:6px">Nightly rate ($)</label><input id="c_rate" type="number" min="0" step="any" value="90" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Tax (%)</label><input id="c_tax" type="number" min="0" step="any" value="15" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Fees total ($)</label><input id="c_fee" type="number" min="0" step="any" value="10" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div></div></div></div>
+<button onclick="calc()" style="background:#1d4ed8;color:#fff;border:0;padding:14px 26px;border-radius:12px;font-size:1.05rem;font-weight:800;cursor:pointer;width:100%;margin-top:16px">Calculate</button><div id="result" style="margin-top:18px;padding:18px;border-radius:12px;background:#fff;border:2px dashed #c9c2b2;font-size:1.05rem">Enter your details and press Calculate.</div>
+<p style="font-size:.9rem">Desk rule: always compare the total for the whole stay, never the nightly headline. Taxes and resort fees are where cheap deals hide their real price.</p></div>
+<div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+<button onclick="copyResult()" style="background:#1d4ed8;color:#fff;border:0;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer">Copy Result</button>
+<button onclick="exportCSV()" style="background:#fff;color:#1d4ed8;border:2px solid #1d4ed8;padding:8px 16px;border-radius:10px;font-weight:700;cursor:pointer">Export CSV</button>
+<button onclick="saveHistory()" style="background:#fff;color:#172554;border:2px solid #172554;padding:8px 16px;border-radius:10px;font-weight:700;cursor:pointer">Save to History</button>
+</div>
+<div id="history" style="margin-top:14px;font-size:.9rem"></div>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<article style="max-width:1020px;margin:0 auto;padding:10px 20px 30px">
+<h2>About this tool</h2>
+<p>Hotel booking sites are designed to make comparison hard, because the cheapest headline rate is rarely the cheapest stay. Taxes, resort fees, cleaning charges and breakfast inclusions all change the real price, and they appear at different stages of different booking flows, so two hotels that look twenty dollars apart can actually be fifty dollars apart in the opposite direction. A hotel price comparison calculator cuts through that fog by reducing every deal to one number: the total cost of the whole stay, including everything you will actually pay.</p><p>The formula is simple once you see it: nightly rate multiplied by nights, plus tax on that subtotal, plus fixed fees. A hotel at 100 dollars a night for three nights with ten percent tax and a twenty dollar fee costs 350 dollars in total, not 300, and its true nightly cost is about 117 dollars, not 100. A competing hotel at 120 dollars a night with no tax and no fees costs 360 dollars, which looks more expensive per night but is only ten dollars more in total, and it may include breakfast that the cheaper hotel charges extra for. Without the total, you are comparing advertisements, not prices.</p><p>Taxes vary enormously by destination, and they are the largest hidden component in most hotel bills. Some cities charge a simple percentage, others add a fixed nightly occupancy tax, and resort destinations often add both, plus a resort fee that can reach fifty dollars a night. Always read the tax line before comparing, because a hotel in a low-tax city can beat a hotel in a high-tax city even when its headline rate is higher. StayDeal lets you enter the tax percentage for each deal separately, which is essential when comparing hotels in different cities or countries.</p><p>Resort fees and cleaning fees are the most controversial charges in travel, because they are often excluded from headline rates and revealed only at checkout. A resort fee supposedly covers wifi, pool access and gym facilities, whether you use them or not, and it is rarely refundable. Cleaning fees apply mostly to apartments and vacation rentals, and they punish short stays, because a hundred dollar cleaning fee spread over two nights adds fifty dollars a night, but spread over ten nights adds only ten. When comparing a hotel with a rental, always include these fees in the total, or the rental will look falsely cheap.</p><p>Breakfast, parking and wifi change the comparison in ways that depend entirely on your plans. A hotel that includes breakfast saves a family of four perhaps forty dollars a day, which can easily outweigh a higher room rate, while a solo traveller who skips breakfast gains nothing from the inclusion. Parking can cost thirty dollars a day in a city centre, so a hotel with free parking beats a cheaper hotel without it for drivers, but means nothing for travellers arriving by train. Wifi is now usually free, but in some hotels it still costs extra, and for remote workers that cost matters every day of the stay.</p><p>Cancellation terms have a price too, and it is worth paying for flexibility when plans are uncertain. A non-refundable rate is usually ten to twenty percent cheaper than a flexible rate, which is a good deal when your plans are fixed and a bad deal when they might change. If there is even a twenty percent chance you will cancel, the flexible rate is usually worth it, because losing the whole stay costs far more than the saving. Compare flexible rates with flexible rates and non-refundable with non-refundable, because mixing them is like comparing a sale price with a full price.</p><p>Location is the factor that no calculator can price, but it interacts with price in a predictable way. A hotel ten minutes further from the centre is often twenty percent cheaper, but it adds transport costs and time every day, which for a family can erase the saving. A central hotel that lets you walk everywhere can be cheaper overall than a suburban hotel plus daily taxi fares, and it gives you back hours of holiday time. When two totals are within ten percent of each other, choose the better location, because the money difference is small and the experience difference is large.</p><p>Booking channels add another layer, because the same room can cost different amounts on different sites, and direct booking sometimes includes perks that aggregators do not. Hotels often give direct bookers free breakfast, room upgrades or flexible cancellation, because direct bookings avoid commission fees. Price comparison sites are excellent for finding the range, but before booking, check the hotel&#x27;s own site with the same dates, because the direct total, including perks, sometimes wins even when the headline rate looks higher. Screenshot the totals as you compare, because prices change and memory is unreliable.</p><p>Loyalty programmes and memberships reward repeat travellers in ways that distort single-trip comparisons. A hotel chain&#x27;s member rate may be ten percent lower, and points earned on one stay discount the next, which means the cheapest stay today is not always the cheapest stay over a year of travel. For a one-off trip, ignore loyalty and compare totals; for frequent travel to the same chain, factor in the value of points and status benefits, but value them conservatively, because points devalue and blackout dates frustrate.</p><p>The disciplined way to book a hotel is to compare totals, not headlines, and to decide what matters beyond price before you start. Enter your three best options into StayDeal, let it stamp the real winner, and then check location, cancellation and inclusions before you commit. A hotel chosen this way is rarely a regret, because you knew the full price before you paid it, and that is a rare and satisfying feeling in travel.</p><p>A final caution concerns price changes and booking timing, because hotel rates move constantly and the deal you compared yesterday may not be the deal you book tomorrow. Rates typically rise as occupancy increases, so booking early usually beats waiting, except in cities with heavy last-minute discounting, where patience can pay. If your dates are flexible, compare shifting the stay by a day or two, because a Sunday night can cost half as much as a Saturday night in business districts, while the reverse is true in leisure destinations. Set a price alert for your preferred hotel and check the total, not the headline, whenever the alert fires, because a drop in the nightly rate can be cancelled out by a rise in taxes or fees. Once you have booked a total you are happy with, stop comparing, because endlessly rechecking prices after booking only produces regret, and a good deal enjoyed beats a perfect deal chased.</p><p>One more comparison trap deserves a warning: the advertised nightly rate on aggregator sites often reflects the cheapest room category, while the room you actually want, with a view, a larger bed or a higher floor, costs significantly more. When comparing deals, make sure you are comparing the same room type, the same bed configuration and the same occupancy, because a double room for two and a twin room for two can differ in price, and a room that sleeps three costs more than one that sleeps two. Check whether the rate includes breakfast for all guests or only for one, whether children stay free, and whether extra beds are charged, because family travellers are the most likely to be caught by these differences. A comparison is only fair when every deal describes the same stay, and the few minutes spent verifying room types can save an unpleasant surprise at check-in.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>Why is the total hotel price higher than the nightly rate?</summary><p>Taxes and fees are added on top of the nightly rate, so a 100 dollar room for three nights with 10 percent tax and a 20 dollar fee costs 350 dollars, not 300.</p></details><details><summary>What is a resort fee?</summary><p>A nightly charge, often 20 to 50 dollars, that supposedly covers wifi, pool and gym access, whether you use those facilities or not.</p></details><details><summary>Should I compare flexible or non-refundable rates?</summary><p>Compare like with like: flexible with flexible and non-refundable with non-refundable, because non-refundable rates are usually 10 to 20 percent cheaper.</p></details><details><summary>Does free breakfast make a hotel cheaper overall?</summary><p>For a family it can save about 40 dollars a day, which often outweighs a higher room rate, but for a solo traveller who skips breakfast it adds no value.</p></details><details><summary>Is booking direct ever cheaper than a booking site?</summary><p>Often yes, because direct bookings can include free breakfast, upgrades or flexible cancellation that aggregators do not offer.</p></details><details><summary>How do cleaning fees affect short stays?</summary><p>A fixed cleaning fee hurts short stays most: 100 dollars over two nights adds 50 dollars a night, but over ten nights it adds only 10 dollars a night.</p></details>
+</article>
+<footer style="background:#172554;color:#eff6ff;padding:28px 20px;margin-top:10px">
+<div style="max-width:1020px;margin:0 auto">
+<p style="font-weight:800;font-size:1.1rem;margin:0 0 6px">StayDeal — The desk where hidden fees get caught</p>
+<p style="margin:0 0 12px">StayDeal compares up to three hotel deals by true total cost: nightly rate, nights, taxes and fees, so the cheapest headline rate does not fool you.</p>
+<p><a href="https://fixoraa.tech" style="color:#93c5fd">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech" style="color:#93c5fd">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech" style="color:#93c5fd">Fixoraa</a></p>
+</div>
+</footer>
+<script>
+function tot(r,t,f,n){return r*n*(1+t/100)+f;}
+function calc(){var n=parseFloat(document.getElementById('nights').value)||0;var A=tot(parseFloat(document.getElementById('a_rate').value)||0,parseFloat(document.getElementById('a_tax').value)||0,parseFloat(document.getElementById('a_fee').value)||0,n);var B=tot(parseFloat(document.getElementById('b_rate').value)||0,parseFloat(document.getElementById('b_tax').value)||0,parseFloat(document.getElementById('b_fee').value)||0,n);var C=tot(parseFloat(document.getElementById('c_rate').value)||0,parseFloat(document.getElementById('c_tax').value)||0,parseFloat(document.getElementById('c_fee').value)||0,n);var best=Math.min(A,B,C);var name=best===A?'A':best===B?'B':'C';document.getElementById('result').innerHTML='<strong>Deal A total: $'+A.toFixed(2)+'</strong> ('+(n?('$'+(A/n).toFixed(2)+' / night'):'')+') &nbsp;|&nbsp; <strong>Deal B total: $'+B.toFixed(2)+'</strong> &nbsp;|&nbsp; <strong>Deal C total: $'+C.toFixed(2)+'</strong> &nbsp;|&nbsp; <span style="background:#1d4ed8;color:#fff;padding:2px 10px;border-radius:999px">BEST DEAL: '+name+'</span>';}
+function copyResult(){var el=document.getElementById('result');if(!el)return;navigator.clipboard&&navigator.clipboard.writeText(el.innerText);el.style.outline='2px solid #1d4ed8';setTimeout(function(){el.style.outline='none'},800);}
+function exportCSV(){var el=document.getElementById('result');if(!el)return;var blob=new Blob([el.innerText],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='staydeal-result.csv';a.click();}
+function saveHistory(){var el=document.getElementById('result');if(!el)return;var h=JSON.parse(localStorage.getItem('hx-staydeal')||'[]');h.unshift(new Date().toLocaleString()+': '+el.innerText.replace(/\s+/g,' ').slice(0,160));localStorage.setItem('hx-staydeal',JSON.stringify(h.slice(0,8)));renderHistory();}
+function renderHistory(){var h=JSON.parse(localStorage.getItem('hx-staydeal')||'[]');document.getElementById('history').innerHTML=h.length?'<strong>Recent results:</strong><br>'+h.map(function(x){return x}).join('<br>'):'';}
+renderHistory();
+</script>
+</body>
+</html>
