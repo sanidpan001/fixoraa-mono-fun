@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NoteRead — Learn to Read Music Notes (Treble &amp; Bass)</title>
+<meta name="description" content="Learn to read music notes free with a calm, effective quiz: treble &amp; bass clef on a real SVG staff, landmark-based levels and timed mode. Start today.">
+<link rel="canonical" href="https://fun.fixoraa.tech/noteread/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="NoteRead — Learn to Read Music Notes (Treble &amp; Bass)">
+<meta property="og:description" content="Learn to read music notes free with a calm, effective quiz: treble &amp; bass clef on a real SVG staff, landmark-based levels and timed mode. Start today.">
+<meta property="og:url" content="https://fun.fixoraa.tech/noteread/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "NoteRead",
+      "url": "https://fun.fixoraa.tech/noteread/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Learn to read music notes free with a calm, effective quiz: treble & bass clef on a real SVG staff, landmark-based levels and timed mode. Start today.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's the fastest way to learn to read music notes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with landmarks (G4 in treble, F3 in bass) plus the FACE / ACEG space notes, then derive everything else by stepping up or down. Quizzing small sets daily beats memorising charts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What note is middle C and where does it sit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MIDI 60 is middle C, written C4. It sits on a ledger line between the treble and bass staves and is the landmark that connects both clefs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I remember the space notes in treble and bass clef?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Treble clef spaces spell FACE (F4-A4-C5-E5) bottom to top. Bass clef spaces spell ACEG (A2-C3-E3-G3). These two words cover every space note in both clefs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I practice note reading with a timer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Accuracy first, always. Practice untimed until you consistently score around 90%, then add the timer. Speed built on shaky accuracy just trains fast mistakes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I figure out a note that isn't a landmark?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each step from a line to the next space (or space to line) moves one letter in A-B-C-D-E-F-G, wrapping from G back to A. One space above B4 is C5; one line below G4 is F4."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I really need to learn bass clef too?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pianists need both clefs from day one, and singers, guitarists and producers all meet bass clef eventually. Learning both together takes barely more effort than treble alone and prevents a painful catch-up later."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FAFAF5; --surface:#FFFFFF; --accent:#4E6E58; --accent-ink:#FFFFFF;
+  --ink:#22281F; --muted:#525D4B; --line:#E1E4D5;
+  --display:'Mulish',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.nr-wrap{max-width:560px;margin:0 auto;text-align:center;padding:6px}.nr-kicker{display:inline-block;background:#E7EFE4;color:#4E6E58;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin:0 0 14px}.nr-wrap h1{font-family:'Mulish',Inter,sans-serif;font-weight:800;font-size:clamp(2.6rem,7vw,4rem);margin:0 0 8px;letter-spacing:-.02em;color:#22281F}.nr-tag{color:#525D4B;font-size:1.15rem;margin:0 0 26px;line-height:1.5}.nr-card{background:#fff;border:2px solid #E1E4D5;border-radius:28px;padding:28px 22px;box-shadow:0 16px 36px rgba(78,110,88,.08)}.nr-modes{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}.nr-mode{border:2px solid #E1E4D5;background:#FAFAF5;color:#22281F;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;cursor:pointer;min-height:44px}.nr-mode.active{background:#4E6E58;border-color:#4E6E58;color:#fff}.nr-timerow{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;color:#525D4B;font-weight:600;font-size:14px}.nr-timerow input{width:22px;height:22px;accent-color:#4E6E58}.nr-timerbar{height:8px;background:#EDEFE3;border-radius:99px;margin-bottom:14px;overflow:hidden}.nr-timerfill{height:100%;width:100%;background:#4E6E58;border-radius:99px;transition:width 1s linear}.nr-staff{background:#FAFAF5;border-radius:18px;padding:10px;margin-bottom:18px}.nr-choices{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.nr-choice{border:2px solid #E1E4D5;background:#FAFAF5;border-radius:14px;padding:14px 6px;font-size:16px;font-weight:800;color:#22281F;cursor:pointer;min-height:56px}.nr-choice.correct{background:#2E8B57;border-color:#2E8B57;color:#fff}.nr-choice.wrong{background:#C0392B;border-color:#C0392B;color:#fff}.nr-choice:disabled{opacity:.9;cursor:default}.nr-feedback{font-weight:700;min-height:28px;margin:14px 0 4px;font-size:16px}.nr-scoreline{display:flex;justify-content:center;gap:28px;color:#525D4B;font-weight:700;font-size:14px}.nr-scoreline b{color:#4E6E58;font-size:1.25rem;display:block}@media(max-width:640px){.nr-choices{grid-template-columns:repeat(2,1fr)}.nr-card{padding:20px 14px}.nr-wrap h1{font-size:2.4rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="NoteRead home">
+      <span class="fx-logo-tile" aria-hidden="true">𝄞</span>
+      <span class="fx-brand">NoteRead</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-zen-single" aria-label="NoteRead tool">
+<div class="nr-wrap"><p class="nr-kicker">Sight-reading practice</p><h1>NoteRead</h1><p class="nr-tag">See a note. Name it instantly. A calm quiz that makes the staff click.</p><div class="nr-card"><div class="nr-modes" role="group" aria-label="Clef and level"><button class="nr-mode active" data-mode="treble1">Treble · Start</button><button class="nr-mode" data-mode="treble2">Treble · Full</button><button class="nr-mode" data-mode="bass1">Bass · Start</button><button class="nr-mode" data-mode="bass2">Bass · Full</button></div><div class="nr-timerow"><input type="checkbox" id="nrTimed"><label for="nrTimed">Timed mode (8 seconds per note)</label></div><div class="nr-timerbar" id="nrTimerBar" hidden><div class="nr-timerfill" id="nrTimerFill"></div></div><div class="nr-staff"><svg id="nrStaff" viewBox="0 0 400 190" width="100%" role="img" aria-label="Music staff with a note"></svg></div><div class="nr-choices" id="nrChoices"></div><div class="nr-feedback" id="nrFeedback"></div><div class="nr-scoreline"><div><b id="nrStreak">0</b>streak</div><div><b id="nrAcc">—</b>accuracy</div><div><b id="nrBest">0</b>best streak</div></div></div></div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why reading notes feels hard (and why it isn't)</h2><p>Most beginners try to memorise 88 keys' worth of notes at once, which is like learning to read by memorising the dictionary. Real sight-reading works differently: you learn a handful of landmark notes deeply, then read everything else by distance from those landmarks. NoteRead's quiz is built on exactly that principle — small sets, instant feedback, and landmarks first.</p><h2>How notes map to the staff</h2><p>A note's name comes from two facts: which line or space it sits on, and which clef the staff uses. The treble clef (𝄞) curls around the G line — the second line from the bottom — so every treble-clef note is read relative to G4. The bass clef (𝄢) dots surround the F line — the fourth line from the bottom — making F3 the anchor. Middle C (C4) sits on a ledger line between the two staves and is the bridge landmark connecting both clefs.</p><h3>Treble clef landmarks</h3><p>Learn these five first: E4 (bottom line), G4 (second line — the clef's anchor), B4 (middle line), D5 (fourth line), F5 (top line). The spaces spell FACE from bottom to top: F4, A4, C5, E5. With landmarks plus FACE, you can derive any treble note within seconds.</p><h3>Bass clef landmarks</h3><p>G2 (bottom line), B2 (second line), D3 (middle line), F3 (fourth line — the clef's anchor), A3 (top line). The spaces spell ACEG from bottom to top: A2, C3, E3, G3. Bass clef feels harder only because pianists meet it later; the logic is identical.</p><h2>The landmark method, step by step</h2><p>When a note appears, don't count from the bottom every time — that's slow and error-prone. Instead: find the nearest landmark, then step up or down by lines and spaces (each line-to-space is one note name in the musical alphabet A–B–C–D–E–F–G, wrapping around). A note one space above B4 (middle line)? B → C, so C5. A note one line below G4? G → F, so F4. With practice this two-step becomes instant, which is precisely what the quiz trains.</p><h2>Sharps, flats and the notes between</h2><p>The quiz starts with natural notes (the white keys), because landmarks come first. Once naturals feel easy, add accidentals: each line and space can also host a sharp (one semitone up) or flat (one semitone down). C♯4 sits on the same ledger line as C4 — the symbol tells you to raise it. In real music, key signatures declare sharps and flats for the whole piece, so you rarely read them as surprises.</p><h2>Why timed mode works</h2><p>Untimed practice builds accuracy; timed practice builds fluency. Reading music in the real world happens at tempo — you don't get ten seconds per note in an orchestra. Timed mode adds gentle pressure (answer before the bar runs out), which forces your brain to stop counting lines and start recognising shapes. Start untimed until you hit 90% accuracy, then switch the timer on. If accuracy collapses, the level is too hard — drop back down. Fluency is accuracy under time pressure, in that order.</p><h2>A 10-minute daily routine</h2><table><thead><tr><th>Minutes</th><th>Activity</th><th>Why</th></tr></thead><tbody><tr><td>0–2</td><td>Warm up: name your landmarks aloud</td><td>Activates the anchor notes</td></tr><tr><td>2–7</td><td>Untimed quiz at your current level</td><td>Builds accurate recognition</td></tr><tr><td>7–10</td><td>Timed mode, one level down</td><td>Converts accuracy into speed safely</td></tr></tbody></table><p>Three weeks of this routine takes most beginners from "I can't read music" to comfortably naming notes in both clefs. The breakthrough moment — when you stop translating and just <em>see</em> the note name — arrives suddenly, usually around week two or three. It feels like the staff snaps into focus.</p><h2>Common mistakes to avoid</h2><p><strong>Counting from the bottom every time:</strong> it works for three notes and fails at tempo. Use landmarks.</p><p><strong>Learning treble only:</strong> pianists, guitarists reading notation, and singers all eventually need bass clef. Learn both from the start — it's barely extra effort.</p><p><strong>Ignoring rhythm:</strong> note names are half of reading; note values (how long each lasts) are the other half. Once pitches feel easy, give rhythm the same landmark treatment.</p><p><strong>Practising only when inspired:</strong> note recognition is motor-like memory. Five daily minutes beats a monthly hour.</p><h2>From quiz to real sheet music</h2><p>The quiz isolates pitch recognition, which is the foundation. Next steps: read one hand of easy piano pieces slowly, clap rhythms separately, then combine. Apps and method books help, but the core loop never changes — see a note, name it instantly, move on. NoteRead exists to make that loop as pleasant and repeatable as possible.</p><h2>Ledger lines without fear</h2><p>Ledger lines — the short extra lines for notes above or below the staff — intimidate beginners, but they're just the staff continuing. Middle C (C4) hangs on one ledger line below the treble staff; the pattern continues downward (B3, A3…) and upward above the staff (G5, A5…). The trick: read ledger-line notes by counting from the nearest staff line, not from the note itself. One ledger line below treble = C4, always. Two ledger lines below = A3. Learn these anchor points and the fear evaporates — they're the same five lines, just extended.</p><h2>Key signatures: the 30-second crash course</h2><p>A key signature — the cluster of sharps or flats after the clef — declares accidentals for the whole piece so composers don't have to write them on every note. One sharp (F♯) means the key of G: every F you see is played as F♯ unless marked otherwise. Two flats (B♭, E♭) means B♭ major. The order of sharps is always F-C-G-D-A-E-B (\"Father Charles Goes Down And Ends Battle\"); flats go in reverse (\"Battle Ends And Down Goes Charles' Father\"). You don't need to memorise all fifteen keys — just know that the signature modifies the staff globally, and check it before you start reading.</p><h2>Rhythm: the other half of reading</h2><p>Pitch is only half the job — rhythm tells you <em>when</em> and <em>how long</em>. The essentials fit on an index card: a whole note lasts 4 beats, half note 2, quarter note 1, eighth note half a beat. The time signature (like 4/4) tells you beats per bar. Start clapping rhythms separately from pitch — tap quarter notes while counting \"1-2-3-4,\" then add eighth notes (\"1-and-2-and\"). When pitch reading feels easy in NoteRead, give rhythm the same treatment: ten minutes of clapping drills does for timing what the quiz does for notes.</p><h2>Sight-reading real music: your first pieces</h2><p>Graduate from the quiz with music designed for beginners: Bach's Minuet in G (treble landmarks everywhere), Beethoven's Ode to Joy (stepwise motion — perfect for the landmark method), and any \"easy piano\" book's first ten pages. Play slowly — half tempo is fine — and keep going through mistakes rather than stopping. The goal of early sight-reading isn't perfection; it's training your eyes to keep moving forward, which is the skill that separates readers from stumblers.</p><h2>Progressive overload for readers</h2><p>Just like lifting, reading improves with progressive overload. Week one: landmark notes, untimed. Week two: add the notes between landmarks. Week three: full range in one clef. Week four: both clefs. Week five: timed mode. Each step should feel slightly hard but doable — if accuracy drops below 70%, the jump was too big. NoteRead's levels map to this progression; follow them in order and the staff unfolds naturally.</p><h2>Alto and tenor clefs: the same logic, new anchors</h2><p>Clefs exist because one staff can't comfortably cover every instrument's range — and once treble and bass feel easy, alto and tenor clefs are the natural next step. The good news: everything you've learned about landmarks transfers directly; only the anchors change.</p><p>The <em>alto clef</em> centres its squiggle on the middle line, making that line middle C (C4). Violists live here — the clef keeps their whole range neatly on the staff. Learn two anchors: middle line = C4, top line = G4. From there, the same line-space stepping does the rest: one space above the top line is A4; one line below middle C is A3.</p><p>The <em>tenor clef</em> centres one line higher, so the <em>fourth</em> line is middle C. Cellists, bassoonists and trombonists meet it whenever a passage climbs. Anchor on the fourth line (C4) and the bottom line (E3), then step up or down as usual.</p><p>Why bother? Because real ensemble parts switch clefs mid-piece — cello music bounces between bass and tenor clef constantly. The drill that makes it stick: take any simple melody you can read in treble clef and re-read it in alto clef, where every note sits one line-and-space lower relative to middle C. Ten minutes of clef-switching a day and new clefs stop looking like new languages — they're the same alphabet, re-anchored.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What&#x27;s the fastest way to learn to read music notes?</summary><p>Start with landmarks (G4 in treble, F3 in bass) plus the FACE / ACEG space notes, then derive everything else by stepping up or down. Quizzing small sets daily beats memorising charts.</p></details>
+<details><summary>What note is middle C and where does it sit?</summary><p>MIDI 60 is middle C, written C4. It sits on a ledger line between the treble and bass staves and is the landmark that connects both clefs.</p></details>
+<details><summary>How do I remember the space notes in treble and bass clef?</summary><p>Treble clef spaces spell FACE (F4-A4-C5-E5) bottom to top. Bass clef spaces spell ACEG (A2-C3-E3-G3). These two words cover every space note in both clefs.</p></details>
+<details><summary>Should I practice note reading with a timer?</summary><p>Accuracy first, always. Practice untimed until you consistently score around 90%, then add the timer. Speed built on shaky accuracy just trains fast mistakes.</p></details>
+<details><summary>How do I figure out a note that isn&#x27;t a landmark?</summary><p>Each step from a line to the next space (or space to line) moves one letter in A-B-C-D-E-F-G, wrapping from G back to A. One space above B4 is C5; one line below G4 is F4.</p></details>
+<details><summary>Do I really need to learn bass clef too?</summary><p>Pianists need both clefs from day one, and singers, guitarists and producers all meet bass clef eventually. Learning both together takes barely more effort than treble alone and prevents a painful catch-up later.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">NoteRead</div>
+    <p>NoteRead teaches you to read music notes with a treble and bass clef quiz — SVG staff, levels and timed mode.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function noteName(midi){var names=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];var n=((midi%12)+12)%12;var oct=Math.floor(midi/12)-1;return names[n]+oct;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+var MODES={treble1:{clef:'treble',midis:[64,65,67,69,71,72,74,76,77,79],label:'Treble landmarks + FACE'},treble2:{clef:'treble',midis:[60,62,64,65,67,69,71,72,74,76,77,79,81],label:'Full treble range'},bass1:{clef:'bass',midis:[43,45,47,48,50,52,53,55,57],label:'Bass landmarks + ACEG'},bass2:{clef:'bass',midis:[40,41,43,45,47,48,50,52,53,55,57,59,60],label:'Full bass range'}};
+var mode='treble1',current=null,streak=0,best=0,correct=0,total=0,timer=null,timeLeft=0;
+var DIATONIC={C:0,D:1,E:2,F:3,G:4,A:5,B:6};
+function staffStep(midi,clef){var name=noteName(midi).replace('#','');var letter=name[0];var oct=+name.slice(1);var d=DIATONIC[letter]+oct*7;if(clef==='treble'){return d-(DIATONIC['E']+4*7);}return d-(DIATONIC['G']+2*7);}
+function drawStaff(midi,clef){var svg=document.getElementById('nrStaff');var NS='http://www.w3.org/2000/svg';svg.innerHTML='';var top=40,gap=18;
+for(var i=0;i<5;i++){var l=document.createElementNS(NS,'line');l.setAttribute('x1',20);l.setAttribute('x2',380);l.setAttribute('y1',top+i*gap);l.setAttribute('y2',top+i*gap);l.setAttribute('stroke','#22281F');l.setAttribute('stroke-width',2);svg.appendChild(l);}
+var clefT=document.createElementNS(NS,'text');clefT.setAttribute('x',34);clefT.setAttribute('y',top+4*gap-2);clefT.setAttribute('font-size',64);clefT.setAttribute('fill','#4E6E58');clefT.textContent=clef==='treble'?'𝄞':'𝄢';svg.appendChild(clefT);
+var step=staffStep(midi,clef);var y=top+4*gap-step*(gap/2);
+var minY=Math.min(y,top),maxY=Math.max(y,top+4*gap);
+for(var ly=top-2*gap;ly<=top+6*gap;ly+=gap){if(ly<minY-1||ly>maxY+1)continue;if(ly>=top&&ly<=top+4*gap)continue;var led=document.createElementNS(NS,'line');led.setAttribute('x1',170);led.setAttribute('x2',230);led.setAttribute('y1',ly);led.setAttribute('y2',ly);led.setAttribute('stroke','#22281F');led.setAttribute('stroke-width',2);svg.appendChild(led);}
+var head=document.createElementNS(NS,'ellipse');head.setAttribute('cx',200);head.setAttribute('cy',y);head.setAttribute('rx',11);head.setAttribute('ry',8);head.setAttribute('fill','#22281F');head.setAttribute('transform','rotate(-18 200 '+y+')');svg.appendChild(head);
+var stem=document.createElementNS(NS,'line');var up=y>top+2*gap;stem.setAttribute('x1',up?209:191);stem.setAttribute('x2',up?209:191);stem.setAttribute('y1',y);stem.setAttribute('y2',up?y-52:y+52);stem.setAttribute('stroke','#22281F');stem.setAttribute('stroke-width',3);svg.appendChild(stem);}
+function stopTimer(){if(timer){clearInterval(timer);timer=null;}document.getElementById('nrTimerBar').hidden=true;}
+function startTimer(){stopTimer();if(!document.getElementById('nrTimed').checked)return;document.getElementById('nrTimerBar').hidden=false;timeLeft=8;var fill=document.getElementById('nrTimerFill');fill.style.width='100%';timer=setInterval(function(){timeLeft--;fill.style.width=(timeLeft/8*100)+'%';if(timeLeft<=0){stopTimer();reveal(false);}},1000);}
+function newRound(){var pool=MODES[mode].midis;current=pool[Math.floor(Math.random()*pool.length)];drawStaff(current,MODES[mode].clef);var opts=[current];while(opts.length<4){var c=pool[Math.floor(Math.random()*pool.length)];if(opts.indexOf(c)<0)opts.push(c);}
+opts.sort(function(){return Math.random()-0.5;});var box=document.getElementById('nrChoices');box.innerHTML='';document.getElementById('nrFeedback').textContent='';opts.forEach(function(m){var b=document.createElement('button');b.className='nr-choice';b.textContent=noteName(m);b.addEventListener('click',function(){reveal(m===current,b);});box.appendChild(b);});startTimer();}
+function reveal(ok,btn){stopTimer();var buttons=document.getElementById('nrChoices').children;for(var i=0;i<buttons.length;i++)buttons[i].disabled=true;total++;var fb=document.getElementById('nrFeedback');if(ok){correct++;streak++;best=Math.max(best,streak);btn.classList.add('correct');fb.textContent='✓ '+noteName(current)+' — correct!';fb.style.color='#2E8B57';}else{streak=0;if(btn)btn.classList.add('wrong');fb.textContent=(btn?'✗':'⏱ Time! ')+' That was '+noteName(current)+'.';fb.style.color='#C0392B';for(var j=0;j<buttons.length;j++){if(buttons[j].textContent===noteName(current))buttons[j].classList.add('correct');}}
+document.getElementById('nrStreak').textContent=streak;document.getElementById('nrBest').textContent=best;document.getElementById('nrAcc').textContent=total?Math.round(100*correct/total)+'%':'—';setTimeout(newRound,1700);}
+var modes=document.querySelectorAll('.nr-mode');modes.forEach(function(m){m.addEventListener('click',function(){modes.forEach(function(x){x.classList.remove('active');});m.classList.add('active');mode=m.dataset.mode;streak=0;newRound();});});
+document.getElementById('nrTimed').addEventListener('change',newRound);
+newRound();
+});}
+</script>
+</body>
+</html>
