@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Many Shingles Do I Need? — Roofing Calculator | ShingleCalc</title>
+<meta name="description" content="Shingle bundles done right — pitch-adjusted, with starter, ridge and waste included.">
+<link rel="canonical" href="https://fun.fixoraa.tech/shinglecalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="How Many Shingles Do I Need? — Roofing Calculator | ShingleCalc">
+<meta property="og:description" content="Shingle bundles done right — pitch-adjusted, with starter, ridge and waste included.">
+<meta property="og:url" content="https://fun.fixoraa.tech/shinglecalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Secular+One:wght@400;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ShingleCalc",
+      "url": "https://fun.fixoraa.tech/shinglecalc/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Shingle bundles done right — pitch-adjusted, with starter, ridge and waste included.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many bundles of shingles do I need per square?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three bundles cover one square (100 sq ft of roof area). So a 15-square roof needs 45 bundles of field shingles, plus starter strips and ridge caps. This calculator does that math with your pitch and waste factored in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate shingles for my roof?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Measure the building footprint (length × width including overhangs), multiply by the pitch factor — 1.118 for a 6/12 pitch — divide by 100 for squares, multiply by 3 for bundles, and add 10% waste. Or just enter the numbers above."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does roof pitch affect how many shingles I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, significantly. A 12/12 pitch roof has 41% more surface area than its footprint, while a 4/12 has only 5% more. Ignoring pitch is the most common reason DIY shingle orders come up short."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many shingles do I need for a 2000 sq ft house?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 2,000 sq ft footprint at 6/12 pitch is about 22.4 squares of roof, needing roughly 67 bundles plus 10% waste (about 74 bundles), plus starter and ridge. Steeper pitches need more — run your exact numbers above."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a roofing square?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One square equals 100 square feet of roof area. It is the industry’s standard unit: shingles are sold 3 bundles to the square, and labor is often quoted per square. A typical US home is 20–30 squares."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I add extra shingles for waste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — 10% for a simple gable roof, 15% if you have hips, valleys or dormers. Waste covers cut pieces at rakes and valleys plus handling damage. Keep one full bundle after the job for future repairs."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#FAF3F2;--surface:#FFFFFF;--tint:#F4E0DD;--accent:#A53C27;--accent-deep:#7C2B1B;--accent-ink:#FFFFFF;--ink:#33221F;--muted:#785A54;--line:#E8CFC7;--mono:'SFMono-Regular',Consolas,'Liberation Mono',monospace;--display:'Secular One',system-ui,sans-serif;--body:system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
+.fx-wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-wrap{display:flex;align-items:center;gap:12px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;font-family:var(--display);box-shadow:inset 0 -4px 0 rgba(0,0,0,.18)}
+.fx-name{font-weight:800;font-size:20px;font-family:var(--display);letter-spacing:.01em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:8px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.sg-hero{padding:44px 0 6px}
+.sg-eyebrow{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:var(--tint);padding:6px 14px;border-radius:6px;margin-bottom:14px}
+.sg-hero h1{font-family:var(--display);font-size:clamp(28px,4.4vw,44px);line-height:1.12;margin-bottom:10px}
+.sg-hero p{font-size:17px;color:var(--muted);max-width:640px}
+.sg-sheet{margin:26px 0 8px;background:var(--surface);border:2px solid var(--accent);border-radius:6px;overflow:hidden;box-shadow:0 12px 30px rgba(165,60,39,.12)}
+.sg-sheethead{background:var(--accent);color:#fff;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.sg-sheethead h2{font-family:var(--display);font-size:18px;letter-spacing:.02em}
+.sg-sheethead span{font-family:var(--mono);font-size:12px;opacity:.85}
+.sg-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.sg-inputs{padding:26px;border-right:2px dashed var(--line)}
+.sg-field{margin-bottom:16px}
+.sg-field label{display:block;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.sg-field input,.sg-field select{font-family:var(--mono);font-size:16px;width:100%;padding:11px 13px;border:2px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
+.sg-field input:focus,.sg-field select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.sg-out{padding:26px;background:repeating-linear-gradient(0deg,#fff,#fff 34px,#FBF3F1 34px,#FBF3F1 35px)}
+.sg-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 2px;border-bottom:1px dotted var(--line);font-size:15px}
+.sg-row .k{color:var(--muted)}
+.sg-row .v{font-family:var(--mono);font-weight:700;font-size:17px}
+.sg-total{display:flex;justify-content:space-between;align-items:center;background:var(--accent);color:#fff;border-radius:6px;padding:16px 20px;margin-bottom:14px}
+.sg-total .n{font-family:var(--mono);font-size:44px;font-weight:700}
+.sg-total .l{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:right}
+.sg-note{font-family:var(--mono);font-size:12.5px;color:var(--accent-deep);background:var(--tint);border-radius:6px;padding:12px 14px;margin-top:12px}
+.article-sec{margin:40px 0;max-width:780px}.article-sec h2{font-family:var(--display);font-size:23px;margin:34px 0 12px}
+.article-sec p{margin-bottom:14px;color:#46342f}.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#46342f}.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:780px}.faq-sec h2{font-family:var(--display);font-size:23px;margin-bottom:16px}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:6px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:15px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#46342f;font-size:15px}
+.fx-footer{background:#2a1a15;color:#f0dcd4;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-family:var(--display);font-size:22px;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#c79c8b;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}.fx-credit a{color:#f0a88e;font-weight:700}
+@media(max-width:760px){.sg-body{grid-template-columns:1fr}.sg-inputs{border-right:0;border-bottom:2px dashed var(--line)}.fx-nav{margin-left:0}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-wrap">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/shinglecalc/" aria-label="ShingleCalc home">
+      <span class="fx-tile" aria-hidden="true">S</span>
+      <span class="fx-name">ShingleCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-wrap">
+  <section class="sg-hero">
+    <span class="sg-eyebrow">Pitch-adjusted roofing math</span>
+      <h1>How Many Shingles Do I Need?</h1>
+      <p>Enter your roof footprint and pitch — get bundles, squares, starter strips, ridge caps and weight, with waste already figured in.</p>
+  </section>
+
+<section class="sg-sheet" aria-label="ShingleCalc tool">
+  <div class="sg-sheethead"><h2>Roofing takeoff sheet</h2><span>SPEC SC-01 · GABLE ROOF</span></div>
+  <div class="sg-body">
+    <div class="sg-inputs">
+      <div class="sg-field"><label for="sg-len">Eave length (ft)</label><input type="number" id="sg-len" value="40" min="0" max="500" step="1"></div>
+      <div class="sg-field"><label for="sg-wid">Building width (ft)</label><input type="number" id="sg-wid" value="30" min="0" max="500" step="1"></div>
+      <div class="sg-field"><label for="sg-pitch">Roof pitch (rise / 12)</label><select id="sg-pitch"><option value="0">Flat (0/12)</option><option value="4">4/12 — low slope</option><option value="6" selected>6/12 — typical</option><option value="8">8/12 — steep</option><option value="10">10/12 — very steep</option><option value="12">12/12 — 45&deg;</option></select></div>
+      <div class="sg-field"><label for="sg-waste">Waste allowance</label><select id="sg-waste"><option value="0.05">5% — simple gable</option><option value="0.10" selected>10% — standard</option><option value="0.15">15% — hips, valleys, dormers</option></select></div>
+    </div>
+    <div class="sg-out" aria-live="polite">
+      <div class="sg-total"><span class="n" id="sg-bundles">45</span><span class="l">bundles<br>of shingles</span></div>
+      <div class="sg-row"><span class="k">Roofing squares</span><span class="v" id="sg-squares">14.8</span></div>
+      <div class="sg-row"><span class="k">Starter strip</span><span class="v" id="sg-starter">—</span></div>
+      <div class="sg-row"><span class="k">Ridge cap</span><span class="v" id="sg-ridge">—</span></div>
+      <div class="sg-row"><span class="k">Shingle weight</span><span class="v" id="sg-weight">—</span></div>
+      <div class="sg-note" id="sg-note"></div>
+    </div>
+  </div>
+</section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>The Square: Roofing’s Unit</h2>
+<p>Roofers do not talk in square feet — they talk in <strong>squares</strong>. One square is 100 square feet of roof area, and shingles are sold to match: a standard bundle covers roughly one-third of a square (about 33 sq ft), so <strong>3 bundles = 1 square</strong>. The moment you think in squares, shingle math gets simple: measure the roof, convert to squares, multiply by three, add waste.</p><p>The catch is that "roof area" is not "footprint area." A pitched roof has more surface than the floor plan beneath it, because the slopes are longer than the horizontal run. That is why this calculator asks for pitch — skip it and you will under-order on every roof steeper than a gentle slope. A 12/12 pitch (45 degrees) has 41 percent more area than the footprint; on a 2,000 sq ft house that is 8 extra squares you would have missed.</p><p>For a simple gable roof, the takeoff above is the whole job. Hips, valleys, and dormers add cutting waste but the same unit math applies — you just raise the waste percentage and measure each plane.</p><p>A quick sanity check helps before you order: a typical American home runs 20 to 30 squares. If your takeoff says 12 squares on a 2,500-square-foot house, you probably forgot the pitch factor or the overhangs. If it says 45, double-check your measurements — a misplaced decimal in the building width is the classic error. The calculator shows roof square footage alongside the bundle count precisely so you can catch those mistakes before money changes hands.</p>
+<h2>Why Pitch Changes Everything</h2>
+<p>Pitch is written as rise over a 12-inch run: 6/12 means the roof rises 6 inches for every 12 inches of horizontal run. The area multiplier is the hypotenuse factor — <strong>√(1 + (rise/12)²)</strong>. At 4/12 the factor is 1.054 (barely more than flat); at 6/12 it is 1.118; at 8/12 it is 1.202; at 12/12 it is 1.414.</p><p>Pitch also changes labor and safety, not just materials. Anything above 7/12 is genuinely steep to walk — roofers charge more, staging gets serious, and DIY becomes inadvisable for most homeowners. If your pitch is 8/12 or steeper, the material estimate from this calculator is still right, but strongly consider getting the installation quoted professionally.</p><p>To find your pitch safely from the ground: hold a level horizontally against the rake edge and measure the vertical drop over 12 inches of level. Or measure from inside the attic — rafter rise over a 12-inch horizontal run. Never guess pitch from the street; a 6/12 and an 8/12 look similar and order very differently.</p>
+<h2>Measuring Your Roof Safely</h2>
+<p>The footprint method is the safest: measure the building’s length and width at the ground (eave to eave, including overhangs) and let the pitch factor do the work. This calculator takes those two ground measurements — no ladder required. Add overhangs honestly: a 2-foot overhang on each eave adds real squares.</p><p>For complex roofs, break the roof into rectangles — each dormer, each hip plane — and measure or estimate each footprint separately, then add the squares. Satellite measuring tools can cross-check your numbers, but verify against your own tape: eave lengths from imagery are often off by a few percent.</p><p>Do not measure by counting existing shingles or guessing from the attic floor. And never walk a wet, mossy, or steep roof to measure — the ground method plus pitch is accurate enough for ordering, which is all you need before the tear-off reveals the deck.</p>
+<h2>Bundles, Starter and Ridge</h2>
+<p>Field shingles are only part of the order. <strong>Starter strips</strong> run along both eaves — the calculator figures one bundle per 120 linear feet of eave. Many roofers cut starters from 3-tab shingles, but purpose-made starter is faster and seals better. Do not skip it: the eave edge is where wind uplift starts.</p><p><strong>Ridge caps</strong> cover the peak where the two slopes meet. A bundle of ridge cap covers about 33 linear feet; the ridge length on a gable roof equals the eave length. On hip roofs, add up all the hip ridges too — hips eat ridge cap fast.</p><p>The calculator rounds bundles <em>up</em> — you cannot buy half a bundle, and running short mid-job means a second trip with a possibly different dye lot. The rounding plus your waste allowance is the buffer that keeps the job moving.</p>
+<h2>Waste: The 10% Rule</h2>
+<p>Waste is cut shingles: the triangles trimmed at rakes, the pieces around vents and valleys, the occasional miscut. On a simple gable roof, <strong>10 percent</strong> covers it. Add hips, valleys, or dormers and step up to 15 percent — every valley is a cutting factory, and complex roofs can genuinely waste a sixth of the material.</p><p>Waste also covers the human factor. Shingles get damaged in handling, a bundle gets rained on, a starter course gets mismeasured. The 10 percent is not pessimism; it is the industry standard because it matches reality across thousands of jobs.</p><p>Keep one full bundle after the job for repairs. Shingle colors drift between manufacturing lots, and a matching bundle in the garage is worth more than its price the day a branch falls on the roof.</p>
+<h2>Shingle Types and Weight</h2>
+<p><strong>3-tab shingles</strong> are the flat, single-layer economy option — about 200 lb per square, 20–25 year life. <strong>Architectural (dimensional) shingles</strong> are the modern standard: thicker, layered look, around 250–430 lb per square depending on the line, 25–50 year warranties. The calculator’s weight estimate assumes architectural shingles.</p><p>Weight matters for the structure and the delivery. A 20-square roof in architectural shingles is roughly 5,000–6,000 pounds — two to three tons that the roof deck and your driveway must handle. If you are layering over an existing roof (where code allows), confirm the structure can carry two layers; most can, but check.</p><p>Premium lines — impact-resistant, algae-resistant, "lifetime" architectural — weigh more and cost more per square, but the bundle math does not change. Three bundles per square holds across all asphalt shingles.</p>
+<h2>Ordering Smart</h2>
+<p>Order everything from <strong>one supplier in one lot</strong>. Shingle color varies slightly between production runs, and a roof patched from two lots can show a visible line. Tell the supplier it is one job and ask for same-lot bundles.</p><p>Schedule delivery close to installation day. Shingles stored for weeks can develop a set curl, and pallets in the driveway annoy everyone. Have the supplier boom the bundles onto the roof if possible — carrying 70-pound bundles up a ladder is the worst part of roofing.</p><p>Buy the accessories in the same order: underlayment (synthetic is worth it over felt), ice-and-water shield for eaves and valleys in cold climates, drip edge, flashing, and ridge vent. The shingles are only half the roofing system, and a missing $40 roll of ice-and-water shield can stall a whole crew.</p>
+<h2>When to Call a Pro</h2>
+<p>DIY roofing suits a simple, walkable gable — 6/12 or less, single story, easy access. Beyond that, the risk math changes: steep slopes, two stories, hips and valleys, or any structural doubt (soft decking, sagging ridges) all argue for a licensed roofer with insurance and a crew.</p><p>Get three quotes and compare them in squares, not just dollars — a quote of $450/square for 20 squares is directly comparable, while lump sums hide differences. Ask about tear-off versus overlay, underlayment type, and warranty (manufacturer plus workmanship).</p><p>Whether you DIY or hire out, the material takeoff from this calculator keeps everyone honest. You will know if a quote’s material count is wildly off — and on roofing, wildly off in either direction is a red flag. A quote that lists far fewer bundles than your takeoff may be planning an overlay without telling you; one listing far more may be padding the material line.</p><p>Finally, check licensing and insurance before anyone climbs a ladder, and never pay the full amount upfront — a third down, a third at material delivery, and the balance on completion is the standard rhythm. A roofer who demands full payment before starting is telling you everything you need to know.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many bundles of shingles do I need per square?</summary><p>Three bundles cover one square (100 sq ft of roof area). So a 15-square roof needs 45 bundles of field shingles, plus starter strips and ridge caps. This calculator does that math with your pitch and waste factored in.</p></details>
+<details><summary>How do I calculate shingles for my roof?</summary><p>Measure the building footprint (length × width including overhangs), multiply by the pitch factor — 1.118 for a 6/12 pitch — divide by 100 for squares, multiply by 3 for bundles, and add 10% waste. Or just enter the numbers above.</p></details>
+<details><summary>Does roof pitch affect how many shingles I need?</summary><p>Yes, significantly. A 12/12 pitch roof has 41% more surface area than its footprint, while a 4/12 has only 5% more. Ignoring pitch is the most common reason DIY shingle orders come up short.</p></details>
+<details><summary>How many shingles do I need for a 2000 sq ft house?</summary><p>A 2,000 sq ft footprint at 6/12 pitch is about 22.4 squares of roof, needing roughly 67 bundles plus 10% waste (about 74 bundles), plus starter and ridge. Steeper pitches need more — run your exact numbers above.</p></details>
+<details><summary>What is a roofing square?</summary><p>One square equals 100 square feet of roof area. It is the industry’s standard unit: shingles are sold 3 bundles to the square, and labor is often quoted per square. A typical US home is 20–30 squares.</p></details>
+<details><summary>Should I add extra shingles for waste?</summary><p>Yes — 10% for a simple gable roof, 15% if you have hips, valleys or dormers. Waste covers cut pieces at rakes and valleys plus handling damage. Keep one full bundle after the job for future repairs.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-wrap">
+    <div class="fx-brand">ShingleCalc</div>
+    <p>ShingleCalc converts roof footprint and pitch into an order-ready shingle count: bundles, squares, starter, ridge and weight.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function _r(n, d) { var p = Math.pow(10, d); return Math.round(n * p) / p; }
+
+// Shingle estimate for a simple gable roof.
+// lenFt/widFt: building footprint (eave length x building width); the pitch
+// factor converts footprint to true roof area (both slopes).
+// risePer12: roof pitch (inches of rise per 12 in of run). wastePct: 0.10 etc.
+function shingleCalc(lenFt, widFt, risePer12, wastePct) {
+  var L = Math.max(0, lenFt || 0), W = Math.max(0, widFt || 0);
+  var rise = Math.max(0, risePer12 || 0);
+  var factor = Math.sqrt(1 + Math.pow(rise / 12, 2)); // pitch multiplier
+  var grossSqft = L * W * factor;                     // footprint -> true roof area
+  var waste = wastePct > 0 ? wastePct : 0;
+  var squares = grossSqft / 100 * (1 + waste);
+  var bundles = Math.ceil(squares * 3 - 1e-9);        // 3 bundles per square
+  var eaveFt = 2 * L;                                 // starter along both eaves
+  var starterBundles = Math.ceil(eaveFt / 120 - 1e-9);// ~120 lin ft per starter bundle
+  var ridgeFt = L;                                    // ridge runs the eave length
+  var ridgeBundles = Math.ceil(ridgeFt / 33 - 1e-9);  // ~33 ft per hip&ridge bundle
+  var weightLb = Math.round(squares * 250);           // architectural shingles ~250 lb/sq
+  return {
+    pitchFactor: _r(factor, 3),
+    roofSqft: Math.round(grossSqft),
+    squares: _r(squares, 1),
+    bundles: bundles,
+    eaveFt: Math.round(eaveFt),
+    starterBundles: starterBundles,
+    ridgeFt: Math.round(ridgeFt),
+    ridgeBundles: ridgeBundles,
+    weightLb: weightLb
+  };
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', function () {
+    var len = document.getElementById('sg-len'),
+        wid = document.getElementById('sg-wid'),
+        pitch = document.getElementById('sg-pitch'),
+        waste = document.getElementById('sg-waste');
+    if (!len) return;
+    function run() {
+      var r = shingleCalc(parseFloat(len.value) || 0, parseFloat(wid.value) || 0,
+                          parseFloat(pitch.value) || 0, parseFloat(waste.value) || 0);
+      document.getElementById('sg-squares').textContent = r.squares;
+      document.getElementById('sg-bundles').textContent = r.bundles;
+      document.getElementById('sg-starter').textContent = r.starterBundles + ' (' + r.eaveFt + ' ft eaves)';
+      document.getElementById('sg-ridge').textContent = r.ridgeBundles + ' (' + r.ridgeFt + ' ft ridge)';
+      document.getElementById('sg-weight').textContent = r.weightLb.toLocaleString('en-US') + ' lb';
+      document.getElementById('sg-note').textContent =
+        'Roof area ' + r.roofSqft.toLocaleString('en-US') + ' sq ft × ' + r.pitchFactor + ' pitch factor. ' +
+        'Order the full bundle count — shingles from one lot match best.';
+    }
+    [len, wid, pitch, waste].forEach(function (el) {
+      el.addEventListener('input', run);
+      el.addEventListener('change', run);
+    });
+    run();
+  });
+}
+
+</script>
+</body>
+</html>
