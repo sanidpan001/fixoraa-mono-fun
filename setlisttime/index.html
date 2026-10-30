@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gig Setlist Duration Calculator | SetlistTime</title>
+<meta name="description" content="Setlist duration calculator: turn song count, average length and breaks into total stage time so your gig fits the venue slot. Free music tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/setlisttime/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Gig Setlist Duration Calculator | SetlistTime">
+<meta property="og:description" content="Setlist duration calculator: turn song count, average length and breaks into total stage time so your gig fits the venue slot. Free music tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/setlisttime/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SetlistTime",
+      "url": "https://fun.fixoraa.tech/setlisttime/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Setlist duration calculator: turn song count, average length and breaks into total stage time so your gig fits the venue slot. Free music tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many songs do I need for a 1-hour gig?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 12\u201314 songs at an average of 4 minutes each, with minimal breaks. Most bands should plan 12 songs plus one spare \u2014 the spare covers the 'one more!' moment without forcing an unplanned overrun."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you calculate setlist duration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the number of songs by your true average song length, then add break minutes and encore songs. Example: 12 songs \u00d7 4 minutes + 15 minutes of breaks = 63 minutes. Measure your actual average at a full timed rehearsal \u2014 most bands underestimate by about 20%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I include the encore in my set time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, always. An unbudgeted two-song encore adds 8\u201310 minutes of overrun. Decide in advance whether you'll do a real walk-off encore or stay on stage, and keep encores under about 15% of the total set."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an energy arc in a setlist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The shape of intensity across your set: open hot, dip slightly, build to a peak around the 70% mark, breathe once, then close huge. Avoid three slow songs in a row and never put your biggest song third \u2014 everything after it will feel like a comedown."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much banter time should I plan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Budget 30\u201360 seconds of between-song overhead per song for tuning, swaps and talk \u2014 that's 6\u201312 hidden minutes in a 12-song set. Group songs by tuning, keep a second guitar on a stand, and agree on one story per set, not five."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should be on a printed setlist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Song titles in order, keys and tempos ('Am \u2014 128bpm'), and marks for flex/cut songs and big lighting moments. Print one large-font copy per member and tape it to the stage floor \u2014 plus share the total timed duration so the whole band sees the budget."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F4F0F2; --surface:#FFFFFF; --accent:#500F28; --accent-ink:#FFFFFF;
+  --ink:#292524; --muted:#5A6478; --line:#DFD3D8;
+  --display:'Fjalla One',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.st-wrap{font-family:'Fjalla One',Inter,system-ui,sans-serif;background:#F4F0F2;color:#292524;padding:56px 20px 72px;}.st-hero{max-width:880px;margin:0 auto 34px;text-align:center;}.st-logo{width:78px;height:78px;margin:0 auto 18px;border-radius:22px;background:linear-gradient(135deg,#500F28,#93355c);color:#fff;font-size:38px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(80,15,40,.28);}.st-hero h1{font-size:clamp(30px,5vw,50px);line-height:1.08;margin:0 0 12px;letter-spacing:.01em;font-weight:400;}.st-tag{font-size:18px;color:#5A6478;margin:0;font-family:Inter,sans-serif;}.st-card{max-width:880px;margin:0 auto 22px;background:#FFFFFF;border:1px solid #DFD3D8;border-radius:24px;padding:36px;box-shadow:0 24px 60px rgba(80,15,40,.10);}.st-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px;}.st-field label{display:block;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5A6478;margin-bottom:8px;font-family:Inter,sans-serif;}.st-field input,.st-field select{width:100%;padding:13px;font-size:18px;font-weight:700;border:2px solid #DFD3D8;border-radius:14px;font-family:Inter,sans-serif;color:#292524;background:#fff;box-sizing:border-box;}.st-total{background:#500F28;color:#fff;border-radius:20px;padding:28px;text-align:center;margin:6px 0 20px;}.st-total .st-big{font-size:64px;line-height:1;letter-spacing:.02em;}.st-total .st-cap{font-family:Inter,sans-serif;font-size:14px;opacity:.85;margin-top:6px;font-weight:600;}.st-fit{border-radius:16px;padding:18px;font-family:Inter,sans-serif;font-size:15.5px;line-height:1.6;display:none;margin-bottom:6px;}.st-fit.show{display:block;}.st-fit.ok{background:#EAF4EA;border:2px solid #2E7D5B;}.st-fit.over{background:#FBE9E9;border:2px solid #B91C1C;}.st-row{display:flex;gap:10px;margin-top:14px;}.st-row input{flex:1;padding:12px 14px;font-size:15px;border:2px solid #DFD3D8;border-radius:12px;font-family:Inter,sans-serif;}.st-row input.len{flex:0 0 110px;}.st-addbtn{padding:12px 22px;border:none;border-radius:12px;background:#500F28;color:#fff;font-weight:800;font-size:15px;cursor:pointer;font-family:Inter,sans-serif;}.st-songlist{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px;font-family:Inter,sans-serif;}.st-songlist li{display:flex;align-items:center;gap:10px;background:#F4F0F2;border:1px solid #DFD3D8;border-radius:12px;padding:10px 14px;font-size:15px;}.st-songlist .st-n{font-weight:800;color:#500F28;width:28px;}.st-songlist .st-t{flex:1;}.st-songlist .st-l{color:#5A6478;font-weight:700;}.st-songlist .st-e{font-size:12px;font-weight:800;}.st-songlist button{border:none;background:none;color:#B91C1C;font-size:18px;cursor:pointer;}.st-arc{display:flex;align-items:flex-end;gap:6px;height:90px;margin-top:14px;padding:12px;background:#F4F0F2;border-radius:14px;border:1px solid #DFD3D8;}.st-bar{flex:1;background:linear-gradient(180deg,#93355c,#500F28);border-radius:6px 6px 0 0;min-height:8px;}.st-sec{font-size:20px;margin:28px 0 4px;font-weight:400;}.st-sub{font-family:Inter,sans-serif;color:#5A6478;font-size:14px;margin:0 0 12px;}.st-copy{margin-top:14px;padding:13px 26px;border:2px solid #500F28;border-radius:12px;background:#fff;color:#500F28;font-weight:800;font-size:15px;cursor:pointer;font-family:Inter,sans-serif;}.st-copy:hover{background:#500F28;color:#fff;}@media(max-width:640px){.st-grid{grid-template-columns:1fr 1fr;}.st-card{padding:26px 18px;}.st-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="SetlistTime home">
+      <span class="fx-logo-tile" aria-hidden="true">🎸</span>
+      <span class="fx-brand">SetlistTime</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-play-cards" aria-label="SetlistTime tool">
+<section class="st-wrap"><div class="st-hero"><div class="st-logo" aria-hidden="true">🎸</div><h1>Gig Setlist Duration Calculator</h1><p class="st-tag">Plan a set that fits the slot — down to the encore.</p></div><div class="st-card"><div class="st-grid"><div class="st-field"><label for="st-songs">Songs</label><input id="st-songs" type="number" value="12" min="0" max="60"></div><div class="st-field"><label for="st-len">Avg length (min)</label><input id="st-len" type="number" value="4" min="1" max="20" step="0.5"></div><div class="st-field"><label for="st-breaks">Breaks (min)</label><input id="st-breaks" type="number" value="15" min="0" max="120"></div><div class="st-field"><label for="st-encore">Encore</label><select id="st-encore"><option value="0" selected>No encore</option><option value="1">1 song</option><option value="2">2 songs</option></select></div></div><div class="st-total"><div class="st-big"><span id="st-big">63</span> min</div><div class="st-cap" id="st-cap">12 songs · 15 min breaks</div></div><div class="st-row"><input id="st-slot" type="number" placeholder="Venue slot length (minutes)" min="1"><button class="st-addbtn" id="st-check" type="button">Check fit</button></div><div class="st-fit" id="st-fit" role="status"></div><h2 class="st-sec">Setlist builder</h2><p class="st-sub">Add your actual songs — the total above updates live. Set energy 1–5 to shape the arc.</p><div class="st-row"><input id="st-title" placeholder="Song title"><input id="st-slen" class="len" type="number" placeholder="Min" min="0.5" max="30" step="0.5" value="4"><input id="st-energy" class="len" type="number" placeholder="Energy 1–5" min="1" max="5" value="3"><button class="st-addbtn" id="st-add" type="button">Add</button></div><ul class="st-songlist" id="st-list"></ul><div class="st-arc" id="st-arc" aria-hidden="true"></div><button class="st-copy" id="st-copy" type="button">Copy setlist as text</button></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Setlists Always Run Long</h2><p>Every gigging musician knows the feeling: the setlist said 60 minutes, the clock says 78, and the venue manager is making throat-cutting gestures from the bar. Sets overrun for predictable reasons — tuning between songs, banter that felt like ten seconds but took two minutes, the singer's extended intro, the drummer's solo that nobody approved. The calculator above fights this with the only weapon that works: <strong>honest arithmetic</strong>. Songs times average length, plus breaks, plus encore. Twelve 4-minute songs with a 15-minute break is 63 minutes on stage. Write it down before the gig, not after.</p><p>The formula is total = songs × average song length + break minutes, with encore songs added at the same average length. It looks almost insultingly simple, which is exactly why bands skip it — and exactly why they overrun. The discipline is not the math; it is measuring your <em>actual</em> average song length (most bands overestimate their tightness by 20%) and counting every pause.</p><h2>How Long Should Each Part Be?</h2><p>Different rooms expect different sets. Use these as starting frames, then adjust to your material:</p><table><thead><tr><th>Gig type</th><th>Typical slot</th><th>Songs (at ~4 min)</th><th>Breaks</th><th>Total stage time</th></tr></thead><tbody><tr><td>Bar / pub set</td><td>45–60 min</td><td>10–12</td><td>0–5 min</td><td>45–55 min</td></tr><tr><td>Support slot</td><td>30–40 min</td><td>7–9</td><td>0 min</td><td>30–38 min</td></tr><tr><td>Headline club show</td><td>75–90 min</td><td>14–16</td><td>10–15 min</td><td>70–85 min</td></tr><tr><td>Two-set evening</td><td>2 × 60 min</td><td>12 + 12</td><td>20 min interval</td><td>~120 min</td></tr><tr><td>Festival slot</td><td>40–50 min</td><td>9–11</td><td>0 min</td><td>40–48 min</td></tr></tbody></table><p>Notice the festival row: no breaks, no banter, no mercy. Festival changeovers run on military time, and going over can literally cut the next band's set. Plan festival sets 5 minutes <em>under</em> the slot.</p><h2>The Encore Question</h2><p>Encores are theatre, and theatre needs staging. If you plan an encore, it must be in the time budget — an unbudgeted two-song encore is 8–10 minutes of overrun. Decide in advance: is the encore real (leave the stage, wait for the chant, return) or is it the modern "we never leave, here's two more" style? Either way, the songs count. A good rule: <strong>never encore more than 15% of the set</strong>. Two songs after a twelve-song set is the sweet spot; four starts to feel like a second gig nobody asked for.</p><p>Also plan the <em>walk-off</em>. The gap between set end and encore is dead air the audience fills with bar trips. Keep it under two minutes or the room's energy leaks out the door.</p><h2>Building an Energy Arc</h2><p>A setlist is a narrative, and energy is its plot. The classic arc: open hot (your second-best song — never the best first), dip slightly for a groove tune, build through the middle third to the peak (best song around the 70% mark), ease off for one breather, then close huge. The energy arc builder in the tool visualizes this — rate each song 1–5 and look at the shape. Warning signs:</p><ul><li><strong>Three slow songs in a row</strong> anywhere except a deliberate mid-set breather. The room will start checking phones.</li><li><strong>Peak too early.</strong> If song 3 is the biggest moment, everything after feels like a comedown.</li><li><strong>No dynamic contrast.</strong> Twelve songs at energy 4 is exhausting; the ear needs valleys to feel peaks.</li><li><strong>New song buried at the end.</strong> Unfamiliar material works best mid-set when attention is highest, never as the closer.</li></ul><h2>The Hidden Time: Tuning, Banter and Breakdowns</h2><p>Measure these once with a stopwatch at rehearsal and you will never guess again. Average per-song overhead for a typical four-piece: <strong>30–60 seconds</strong> for tuning and instrument swaps, plus banter. That is 6–12 unbudgeted minutes in a twelve-song set — the entire overrun, explained. Solutions: a dedicated tuner and a second guitar on a stand, a setlist with keys and tempos grouped to minimize retuning, and a band agreement that banter gets <em>one</em> story per set, not five.</p><p>Technical failures need a plan, not panic. Agree in advance: if a string breaks mid-song, does the band vamp or stop? (Vamp — always vamp. Stopping kills the room.) Keep spare everything within arm's reach of the stage, not in the van.</p><h2>Reading the Room</h2><p>The setlist is a plan, not a prison. Professional bands build in <strong>flex slots</strong>: two or three marked songs that can be swapped, skipped, or extended based on the crowd. Signs to stretch: dancing from song one, singing along, the bar queue empty because nobody wants to leave the floor. Signs to tighten: chatter rising over the music, phones out, the dreaded slow drift toward the exit. Have a designated "cut" song — ideally a mid-tempo one nobody will miss — that you can drop without breaking the arc.</p><p>Never announce the flex. "We're going to skip one because you're boring" has never improved a gig.</p><h2>Festival vs Bar vs Theatre</h2><p>Bars want familiarity and volume discipline; the set can breathe, requests are fine, and a 10-minute overrun costs you nothing. Festivals want impact per minute; trim intros, stack the hits, end early rather than late. Theatres want dynamics and narrative; the audience is seated and listening, so the quiet song that dies in a bar becomes the night's highlight. One setlist does not fit all three — the calculator lets you re-time the same material for each room in seconds.</p><h2>Rehearsal Timing vs Stage Timing</h2><p>Rehearsal lies. Adrenaline speeds tempos up 5–10% on stage (songs get shorter), while crowd interaction stretches gaps (sets get longer). Net effect is usually +10–15% over rehearsal time. Rehearse the set <em>as a performance</em> at least once: no stopping, no "let's take that chorus again," full banter, timed with a phone on a music stand. The number you get is the only honest one.</p><h2>Printing and Sharing the Setlist</h2><p>Tape it to the stage floor — one copy per member, large font, with keys and tempos. ("Am — 128bpm" prevents the 45-second "what key is this in?" conference.) The copy-as-text button produces a clean list you can paste into the group chat, including the total time so everyone sees the budget. For the sound engineer, add the input list and any track cues; for the lighting person, mark the big moments. A setlist that only the band can read is a missed opportunity.</p><h2>Common Mistakes</h2><ul><li><strong>Counting songs, not minutes.</strong> Twelve songs at 3 minutes and twelve at 5 minutes are different gigs.</li><li><strong>Forgetting the changeover.</strong> Your slot includes getting on and off. A 60-minute slot with 10 minutes of changeover is a 50-minute set.</li><li><strong>Soundcheck songs in the set math.</strong> Soundcheck is not the gig; do not let it eat set time.</li><li><strong>No contingency.</strong> One spare song, rehearsed, for the "one more!" moment you actually want.</li><li><strong>Ending on a slow song.</strong> The last thing the audience hears is what they remember. Close big, always.</li></ul><p>Do the math before the gig, build the arc, leave headroom for the chaos — and you will be the band that finishes exactly on time, which venues remember and rebook.</p><h2>Soundcheck and Changeover Math</h2><p>Your slot is not your set. A 60-minute slot with a 10-minute changeover is a 50-minute set, and bands that forget this start 10 minutes late and finish 10 minutes over — the cardinal sin of gigging. Work backwards from doors: changeover (get on, line-check, get off) typically eats 10–15 minutes for a four-piece with a shared backline, 20+ with full kit changes. Agree the changeover plan with the band before and after you <em>before</em> the gig, not in the corridor. If you are headlining, your changeover is part of the audience's evening — keep the house music up and the stage dark until you are genuinely ready, rather than noodling audibly for fifteen minutes.</p><p>Soundcheck itself deserves its own arithmetic. A proper check runs 20–30 minutes for a full band: drums first (kick, snare, toms, overheads), then bass, guitars, keys, vocals last. The classic time-waster is the guitarist "just checking one more tone" while everyone stands around — set a rule that soundcheck is for the engineer, not for rehearsing. If doors are at 7 and the first band is at 8, the last soundcheck must end by 7:30, full stop.</p><h2>After the Gig: Reviewing the Set</h2><p>The bands that improve fastest debrief. Within 48 hours, while memory is fresh, ask three questions: where did the energy dip (check the arc you planned against what happened), what ran long (compare the calculator's number to reality), and what got the best reaction (that song moves earlier next time). Record every gig on a phone from the back of the room — audio is enough. You will hear what the audience heard, which is never what you heard on stage: the bass too loud, the vocals buried, the between-song dead air twice as long as it felt. Keep a gig log with date, venue, set length planned vs actual, and one line on the crowd. After ten gigs you will have a data-driven setlist instead of a hopeful one — and the calculator above makes re-timing it for the next room a two-minute job.</p><h3>Pacing the energy across the night</h3><p>Total minutes get you booked; pacing gets you rebooked. Map the set as a wave: open two songs hot to earn attention, dip into a mid-tempo groove while the room settles, then climb toward the peak three quarters in. Place the singalong where the crowd is loosest, never first. Talking between songs costs real time — budget thirty to forty five seconds per break and rehearse the transitions, not just the songs. If the venue cuts your slot by fifteen minutes mid-show, know in advance which two songs are droppable without breaking the arc, and keep the closer sacred.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many songs do I need for a 1-hour gig?</summary><p>About 12–14 songs at an average of 4 minutes each, with minimal breaks. Most bands should plan 12 songs plus one spare — the spare covers the 'one more!' moment without forcing an unplanned overrun.</p></details>
+<details><summary>How do you calculate setlist duration?</summary><p>Multiply the number of songs by your true average song length, then add break minutes and encore songs. Example: 12 songs × 4 minutes + 15 minutes of breaks = 63 minutes. Measure your actual average at a full timed rehearsal — most bands underestimate by about 20%.</p></details>
+<details><summary>Should I include the encore in my set time?</summary><p>Yes, always. An unbudgeted two-song encore adds 8–10 minutes of overrun. Decide in advance whether you'll do a real walk-off encore or stay on stage, and keep encores under about 15% of the total set.</p></details>
+<details><summary>What is an energy arc in a setlist?</summary><p>The shape of intensity across your set: open hot, dip slightly, build to a peak around the 70% mark, breathe once, then close huge. Avoid three slow songs in a row and never put your biggest song third — everything after it will feel like a comedown.</p></details>
+<details><summary>How much banter time should I plan?</summary><p>Budget 30–60 seconds of between-song overhead per song for tuning, swaps and talk — that's 6–12 hidden minutes in a 12-song set. Group songs by tuning, keep a second guitar on a stand, and agree on one story per set, not five.</p></details>
+<details><summary>What should be on a printed setlist?</summary><p>Song titles in order, keys and tempos ('Am — 128bpm'), and marks for flex/cut songs and big lighting moments. Print one large-font copy per member and tape it to the stage floor — plus share the total timed duration so the whole band sees the budget.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SetlistTime</div>
+    <p>SetlistTime turns songs, average song length and breaks into total stage time for gigs.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function setlistMinutes(songs,avgLen,breakMin){songs=Math.max(0,Number(songs)||0);avgLen=Math.max(0,Number(avgLen)||0);breakMin=Math.max(0,Number(breakMin)||0);return songs*avgLen+breakMin;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var songsEl=document.getElementById('st-songs'),lenEl=document.getElementById('st-len'),brkEl=document.getElementById('st-breaks'),encEl=document.getElementById('st-encore');var songs=[];function totals(){var n=songsEl?Math.max(0,parseInt(songsEl.value,10)||0):0;var l=lenEl?Math.max(0,parseFloat(lenEl.value)||0):0;var b=brkEl?Math.max(0,parseFloat(brkEl.value)||0):0;var e=encEl?parseInt(encEl.value,10)||0:0;var listTotal=songs.reduce(function(a,s){return a+s.len;},0);var useList=songs.length>0;var songMin=useList?listTotal:n*l;var total=setlistMinutes(useList?songs.length:n,useList?(songs.length?listTotal/songs.length:0):l,b)+e*(useList&&songs.length?listTotal/songs.length:l);return {n:useList?songs.length:n,total:total,b:b,e:e};}function render(){var t=totals();var big=document.getElementById('st-big');if(big)big.textContent=Math.round(t.total*10)/10;var cap=document.getElementById('st-cap');if(cap)cap.textContent=t.n+' songs · '+t.b+' min breaks'+(t.e?' · '+t.e+'-song encore':'');var ul=document.getElementById('st-list');if(ul){ul.innerHTML='';songs.forEach(function(s,i){var li=document.createElement('li');var en=document.createElement('span');en.className='st-e';en.textContent='⚡'+s.energy;li.innerHTML='<span class="st-n">'+(i+1)+'</span><span class="st-t"></span><span class="st-l">'+s.len+' min</span>';li.querySelector('.st-t').textContent=s.title;li.appendChild(en);var x=document.createElement('button');x.type='button';x.textContent='×';x.setAttribute('aria-label','Remove song');x.addEventListener('click',function(){songs.splice(i,1);render();});li.appendChild(x);ul.appendChild(li);});}var arc=document.getElementById('st-arc');if(arc){arc.innerHTML='';if(songs.length){songs.forEach(function(s){var bar=document.createElement('div');bar.className='st-bar';bar.style.height=(s.energy/5*100)+'%';bar.title=s.title+' — energy '+s.energy;arc.appendChild(bar);});}else{arc.innerHTML='<span style="font-family:Inter,sans-serif;color:#5A6478;font-size:13px;margin:auto;">Add songs to see your energy arc</span>';}}}function check(){var t=totals();var slotEl=document.getElementById('st-slot'),fit=document.getElementById('st-fit');if(!slotEl||!fit)return;var slot=parseFloat(slotEl.value)||0;if(slot<=0){fit.className='st-fit';fit.textContent='';return;}var diff=Math.round((slot-t.total)*10)/10;if(diff>=0){fit.className='st-fit show ok';fit.innerHTML='<b>✓ Fits the slot</b> — '+diff+' min of headroom. Leave it for tuning and crowd energy.';}else{fit.className='st-fit show over';fit.innerHTML='<b>✗ Over by '+Math.abs(diff)+' min</b> — cut a song, trim a break, or drop the encore.';}}[songsEl,lenEl,brkEl,encEl].forEach(function(el){if(el)el.addEventListener('input',render);});var add=document.getElementById('st-add');if(add)add.addEventListener('click',function(){var ti=document.getElementById('st-title'),li=document.getElementById('st-slen'),ei=document.getElementById('st-energy');var title=ti&&ti.value.trim()?ti.value.trim():'Untitled '+(songs.length+1);var len=li?Math.max(0.5,parseFloat(li.value)||4):4;var en=ei?Math.min(5,Math.max(1,parseInt(ei.value,10)||3)):3;songs.push({title:title,len:len,energy:en});if(ti)ti.value='';render();});var chk=document.getElementById('st-check');if(chk)chk.addEventListener('click',check);var cp=document.getElementById('st-copy');if(cp)cp.addEventListener('click',function(){var t=totals();var lines=['SETLIST — '+t.n+' songs, ~'+(Math.round(t.total*10)/10)+' min'];songs.forEach(function(s,i){lines.push((i+1)+'. '+s.title+' ('+s.len+' min) [energy '+s.energy+']');});lines.push('Breaks: '+t.b+' min'+(t.e?' | Encore: '+t.e+' songs':''));var txt=lines.join('\n');if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){cp.textContent='Copied!';setTimeout(function(){cp.textContent='Copy setlist as text';},1500);});}});render();});}
+</script>
+</body>
+</html>
