@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maze Puzzle Generator — Create a Seeded, Solvable Maze Puzzle Online</title>
+<meta name="description" content="Generate a solvable maze puzzle from any seed, print it or solve it on screen, with a guaranteed path from start to finish.">
+<link rel="canonical" href="https://fun.fixoraa.tech/mazegen/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Maze Puzzle Generator — Create a Seeded, Solvable Maze Puzzle Online">
+<meta property="og:description" content="Generate a solvable maze puzzle from any seed, print it or solve it on screen, with a guaranteed path from start to finish.">
+<meta property="og:url" content="https://fun.fixoraa.tech/mazegen/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "MazeGen",
+      "url": "https://fun.fixoraa.tech/mazegen/",
+      "applicationCategory": "Games",
+      "operatingSystem": "Web",
+      "description": "Generate a solvable maze puzzle from any seed, print it or solve it on screen, with a guaranteed path from start to finish.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is every maze from this generator solvable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every maze is a perfect maze, so there is exactly one path from the start to the exit and every cell is reachable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the seed do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The seed controls the random choices made while carving the maze. The same seed and size always produce the same maze; a different seed produces a different maze."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do S and E mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "S marks the start cell in the top-left corner and E marks the exit cell in the bottom-right corner."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the solution length?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the number of steps in the shortest possible route from start to exit, found by searching the maze. It is a useful measure of difficulty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I print the maze?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Use the copy button to copy the maze as text, then paste it into a document using a monospace font so the walls align."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What size maze should I choose for children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with 8 by 6 cells. Increase the size gradually as confidence grows, rather than jumping straight to a large maze."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the wall-following rule always work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In a perfect maze, yes. Keeping one hand on the wall will eventually lead you to the exit, though it may not be the shortest route."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can two people solve the same maze?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Share the seed and the size, and both people can generate the identical maze on their own devices."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EDF7ED; --surface:#FFFFFF; --accent:#1E6B34; --accent-ink:#ffffff;
+  --ink:#14281A; --muted:#475569; --line:#BFD8C2;
+  --display:'Fraunces',serif; --body:'Public Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-card{max-width:720px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.tool-card h1{font-family:var(--display);font-size:1.7rem;line-height:1.2;margin-bottom:.4rem}
+.tool-card .sub{color:var(--muted);margin-bottom:1.2rem}
+.tool-card label{display:block;font-weight:600;margin:.9rem 0 .3rem}
+.tool-card input,.tool-card select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;font-size:1rem;background:#fff;color:#111;min-height:44px}
+.tool-card .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.calc-btn{width:100%;margin-top:1.2rem;padding:.85rem;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1.05rem;cursor:pointer;min-height:48px}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin:.8rem 0}
+.presets button{padding:.5rem .9rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer;min-height:40px}
+.result{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:14px;background:var(--bg);border:1px solid var(--line);font-size:1.05rem}
+.result .big{font-size:1.5rem;font-weight:800}
+.muted{color:var(--muted);font-size:.95rem}
+.hist{margin-top:1rem;font-size:.95rem}
+.hist li{margin:.3rem 0}
+.copy-btn{margin-top:.7rem;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;cursor:pointer}
+.maze-grid{font-family:monospace;line-height:1;letter-spacing:0;white-space:pre;overflow-x:auto;font-size:14px}
+@media (max-width:640px){.tool-card{padding:1rem;border-radius:16px}.tool-card .row{grid-template-columns:1fr}.tool-card h1{font-size:1.35rem}.result .big{font-size:1.25rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="MazeGen home">
+      <span class="fx-logo-tile" aria-hidden="true">🧩</span>
+      <span class="fx-brand">MazeGen</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-maze-path" aria-label="MazeGen tool">
+<div class="tool-card"><h1>Maze Puzzle Generator</h1><p class="sub">Pick a size and a seed. The same seed always makes the same maze, and every maze has a solution.</p>
+<div class="row"><div><label for="mz-w">Width (cells)</label><input id="mz-w" type="number" value="12" min="2" max="30"></div><div><label for="mz-h">Height (cells)</label><input id="mz-h" type="number" value="8" min="2" max="30"></div></div>
+<label for="mz-seed">Seed (any whole number)</label><input id="mz-seed" type="number" value="42" step="1">
+<div class="presets"><button type="button" data-preset="easy">Easy 8 × 6</button><button type="button" data-preset="medium">Medium 14 × 10</button><button type="button" data-preset="hard">Hard 22 × 16</button></div>
+<button class="calc-btn" id="mz-calc" type="button">Generate maze</button>
+<div class="result" id="mz-result" aria-live="polite"><div class="maze-grid" id="mz-grid">Press Generate maze.</div></div>
+<button class="copy-btn" id="mz-copy" type="button">Copy maze as text</button>
+<div class="hist"><strong>Recent mazes</strong><ul id="mz-hist"></ul></div></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What makes a good maze puzzle?</h2>
+<p>A good maze is not just a tangle of walls. It has exactly one satisfying quality: a solver who keeps trying will eventually reach the exit, and a solver who thinks ahead will find a shorter route than someone who wanders. The mazes on this page are perfect mazes, which means every cell is reachable from every other cell and there is exactly one path between any two cells without backtracking through walls. That property is what makes them fair puzzles: there are no sealed-off sections, no impossible corners, and no need to guess. If you follow a wall, you will eventually arrive, and if you plan a route, you can measure how good it was.</p>
+<p>MazeGen builds its mazes with a classic algorithm called depth-first search carving. Imagine a grid of rooms, each separated by walls. The generator starts in one room, knocks down a wall into a neighbouring room it has not visited, and keeps going, backtracking only when it reaches a dead end. When every room has been visited, the result is a single connected maze with no loops and no isolated areas. A seeded random number generator decides the order in which neighbours are tried, so changing the seed changes the maze, while reusing the same seed reproduces exactly the same maze. That is useful for classrooms, puzzle books, and competitions, where everyone should solve the identical puzzle.</p>
+<h2>How to use this generator</h2>
+<p>Choose a width and height in cells. Small mazes of 8 by 6 cells suit young children and quick warm-ups, medium mazes of about 14 by 10 cells suit most adults, and large mazes of 22 by 16 cells or more are a serious challenge. Enter a seed, which is simply a whole number that controls the maze layout. Press Generate maze, and the maze appears as a text grid: the start is marked S in the top-left cell and the exit is marked E in the bottom-right cell. You can solve it on screen by tracing with your finger, copy it as text to print or share, or generate a new maze by changing the seed. The solution length shown beneath the maze tells you the shortest possible route in steps, which is a handy way to compare difficulty.</p>
+<h2>Maze sizes and who they suit</h2>
+<table><tr><th>Size</th><th>Cells</th><th>Shortest path (typical)</th><th>Best for</th></tr>
+<tr><td>Easy</td><td>8 × 6</td><td>15–30 steps</td><td>Children, quick puzzles, classroom warm-ups</td></tr>
+<tr><td>Medium</td><td>14 × 10</td><td>40–90 steps</td><td>Most adults, puzzle pages, daily challenges</td></tr>
+<tr><td>Hard</td><td>22 × 16</td><td>100–250 steps</td><td>Enthusiasts, competitions, printed puzzle books</td></tr>
+<tr><td>Expert</td><td>30 × 30</td><td>300+ steps</td><td>Patient solvers, posters, long activities</td></tr></table>
+<p>Size is not the only measure of difficulty. A maze with many long corridors and few branches feels different from a maze with constant choices, even at the same size. The shortest path length is a better difficulty signal than size alone, because it measures how much of the maze a solver must actually traverse. Two mazes of the same size can have very different shortest paths, which is why the generator reports that number. If you are building a puzzle book, aim for a spread of path lengths rather than a spread of sizes alone, so solvers meet both quick wins and long journeys.</p>
+<h2>How to solve a maze well</h2>
+<p>Beginners usually solve mazes by following one wall. The right-hand rule, keeping your right hand on the wall as you walk, guarantees that you will reach the exit in a perfect maze, because there are no loops to trap you forever. It is reliable, but it is not fast: it explores every dead end along the chosen wall. A stronger approach is to look ahead at junctions and avoid entering a corridor that clearly ends in a dead end a few cells away. Mark dead ends mentally as you go, so you never re-enter them, and at each junction choose the corridor that heads most directly toward the exit while keeping an alternative in mind.</p>
+<p>Experienced solvers also use the structure of the maze. Long corridors usually lead somewhere important, while short spurs are usually dead ends. If you find yourself backtracking over ground you have already covered, you have learned something: that whole branch is exhausted and can be ignored. In a printed maze, lightly shading dead ends as you discover them turns the puzzle into a process of elimination, and the true path emerges as the only unshaded route. Children benefit from this approach too, because it teaches planning, patience, and the idea that a wrong turn is information, not failure.</p>
+<h2>Why seeded mazes matter</h2>
+<p>A seeded generator solves a practical problem for teachers and puzzle makers. Without a seed, every maze is a one-off: you cannot reprint the same puzzle, you cannot give the same puzzle to two classes on different days, and you cannot verify that a solver faced the maze you intended. With a seed, the maze becomes a reproducible object, like a page number in a book. Write down the seed and the size, and anyone can regenerate the identical maze anywhere, at any time. That makes seeded mazes ideal for homework, timed challenges, and puzzle competitions where fairness depends on everyone solving the same problem.</p>
+<p>Seeds also make difficulty testing possible. A puzzle maker can generate dozens of mazes from different seeds at the same size, record their shortest path lengths, and pick the ones that fit the intended difficulty band. That is far better than publishing the first maze the generator produces, which might be unusually easy or unusually hard. If you are making a puzzle book, generate a batch, sort by solution length, and select a smooth progression from easy to hard. Your solvers will feel the difference, even if they never see the numbers behind it.</p>
+<h2>Using mazes in teaching and play</h2>
+<ul><li>Classrooms: give every pupil the same seed and compare solution strategies, not just finishing times.</li><li>Parties: print a large maze as a poster and let guests solve it together with markers.</li><li>Waiting rooms: a medium maze on a single sheet keeps children occupied without a screen.</li><li>Logic practice: ask solvers to find the shortest path, not just any path, to add a second layer of challenge.</li><li>Art projects: colour the solution path after solving, or design a maze with a picture hidden in its walls.</li><li>Family challenges: race with the same seed, then swap strategies and race again.</li></ul>
+<h2>Common maze-making mistakes</h2>
+<p>The most common mistake in hand-drawn mazes is accidentally sealing off a section, creating a region that cannot be reached. Computer-generated perfect mazes avoid this by construction, which is one reason to generate rather than draw when fairness matters. Another mistake is making the start and exit ambiguous: always mark them clearly, as this generator does with S and E. A third mistake is printing a maze too small, so walls blur together; for paper, keep cells at least a centimetre wide for children and at least half a centimetre for adults. Finally, remember that a maze with many loops is a different kind of puzzle: loops allow shortcuts and multiple routes, which can be fun, but they break the guarantee of a single solution path, so use them deliberately rather than by accident.</p>
+<h2>From mazes to problem solving</h2>
+<p>Mazes are a gentle introduction to ideas that appear throughout computing and mathematics. Finding a shortest path is the same problem as routing a delivery van, planning a robot's journey, or finding the quickest route on a map. The wall-following rule is an example of an algorithm: a precise recipe that always works, even if it is not the fastest recipe. The depth-first carving used here is related to the search strategies that explore a problem space systematically. When a child learns to shade dead ends and backtrack, they are practising the same thinking that programmers use when they search for a solution. A maze is therefore more than a pastime; it is a small, friendly model of problem solving itself, which is why it has survived as a puzzle for centuries and why it still belongs in classrooms today.</p>
+<h3>Printing and sharing tips</h3>
+<p>For printing, copy the maze as text and paste it into a document with a monospace font, so the walls line up. Increase the font size for younger solvers, and add a title line with the seed and size so the maze can be regenerated later. If you share a maze online, share the seed and size rather than a screenshot, so others can generate a crisp copy themselves. And if you run a competition, keep the solution length private until after solving, so competitors cannot judge difficulty in advance; reveal it afterwards as a score to beat.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>Is every maze from this generator solvable?</summary><p>Yes. Every maze is a perfect maze, so there is exactly one path from the start to the exit and every cell is reachable.</p></details>
+<details><summary>What does the seed do?</summary><p>The seed controls the random choices made while carving the maze. The same seed and size always produce the same maze; a different seed produces a different maze.</p></details>
+<details><summary>What do S and E mean?</summary><p>S marks the start cell in the top-left corner and E marks the exit cell in the bottom-right corner.</p></details>
+<details><summary>What is the solution length?</summary><p>It is the number of steps in the shortest possible route from start to exit, found by searching the maze. It is a useful measure of difficulty.</p></details>
+<details><summary>Can I print the maze?</summary><p>Yes. Use the copy button to copy the maze as text, then paste it into a document using a monospace font so the walls align.</p></details>
+<details><summary>What size maze should I choose for children?</summary><p>Start with 8 by 6 cells. Increase the size gradually as confidence grows, rather than jumping straight to a large maze.</p></details>
+<details><summary>Does the wall-following rule always work?</summary><p>In a perfect maze, yes. Keeping one hand on the wall will eventually lead you to the exit, though it may not be the shortest route.</p></details>
+<details><summary>Can two people solve the same maze?</summary><p>Yes. Share the seed and the size, and both people can generate the identical maze on their own devices.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">MazeGen</div>
+    <p>MazeGen builds a fresh, guaranteed-solvable maze from any seed you choose.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function genMaze(seed,w,h){var rnd=mulberry32(seed);var cells=[];for(var y=0;y<h;y++){var row=[];for(var x=0;x<w;x++){row.push({n:1,e:1,s:1,w:1,v:0});}cells.push(row);}
+var stack=[[0,0]];cells[0][0].v=1;
+while(stack.length){var cur=stack[stack.length-1];var cx=cur[0],cy=cur[1];var nb=[];if(cy>0&&!cells[cy-1][cx].v)nb.push([cx,cy-1,'n','s']);if(cx<w-1&&!cells[cy][cx+1].v)nb.push([cx+1,cy,'e','w']);if(cy<h-1&&!cells[cy+1][cx].v)nb.push([cx,cy+1,'s','n']);if(cx>0&&!cells[cy][cx-1].v)nb.push([cx-1,cy,'w','e']);if(!nb.length){stack.pop();continue;}var pick=nb[Math.floor(rnd()*nb.length)];cells[cy][cx][pick[2]]=0;cells[pick[1]][pick[0]][pick[3]]=0;cells[pick[1]][pick[0]].v=1;stack.push([pick[0],pick[1]]);}
+var dist=[];for(var yy=0;yy<h;yy++){dist.push(new Array(w).fill(-1));}dist[0][0]=0;var q=[[0,0]];
+while(q.length){var c=q.shift();var qx=c[0],qy=c[1];var cell=cells[qy][qx];var moves=[];if(!cell.n)moves.push([qx,qy-1]);if(!cell.e)moves.push([qx+1,qy]);if(!cell.s)moves.push([qx,qy+1]);if(!cell.w)moves.push([qx-1,qy]);for(var i=0;i<moves.length;i++){var mx=moves[i][0],my=moves[i][1];if(dist[my][mx]<0){dist[my][mx]=dist[qy][qx]+1;q.push([mx,my]);}}}
+var grid=[];for(var gy=0;gy<h;gy++){var top='';for(var gx=0;gx<w;gx++){top+='+'+(cells[gy][gx].n?'---':'   ');}top+='+';grid.push(top);var mid='';for(var gx=0;gx<w;gx++){mid+=(cells[gy][gx].w?'|':' ');if(gx===0&&gy===0)mid+=' S ';else if(gx===w-1&&gy===h-1)mid+=' E ';else mid+='   ';}mid+=(cells[gy][w-1].e?'|':' ');grid.push(mid);}var bot='';for(var gx=0;gx<w;gx++){bot+='+'+(cells[h-1][gx].s?'---':'   ');}bot+='+';grid.push(bot);
+return {width:w,height:h,pathLength:dist[h-1][w-1],grid:grid};}
+function mazePathLength(seed,w,h){return genMaze(seed,w,h).pathLength;}
+if (typeof document !== 'undefined') {
+var hist2=[];
+function renderMaze(){var w=+document.getElementById('mz-w').value,h=+document.getElementById('mz-h').value,s=+document.getElementById('mz-seed').value;if(w<2)w=2;if(h<2)h=2;var m=genMaze(s,w,h);var text='Start S (top-left) to E (bottom-right). Shortest solution: '+m.pathLength+' steps.\n'+m.grid.join('\n');document.getElementById('mz-grid').textContent=text;hist2.unshift(w+'x'+h+' seed '+s+' ('+m.pathLength+' steps)');if(hist2.length>5)hist2.pop();document.getElementById('mz-hist').innerHTML=hist2.map(function(x){return '<li>'+x+'</li>';}).join('');}
+document.getElementById('mz-calc').onclick=renderMaze;
+var ps2=document.querySelectorAll('[data-preset]');
+ps2.forEach(function(b){b.onclick=function(){if(b.dataset.preset==='easy'){document.getElementById('mz-w').value=8;document.getElementById('mz-h').value=6;}if(b.dataset.preset==='medium'){document.getElementById('mz-w').value=14;document.getElementById('mz-h').value=10;}if(b.dataset.preset==='hard'){document.getElementById('mz-w').value=22;document.getElementById('mz-h').value=16;}renderMaze();};});
+document.getElementById('mz-copy').onclick=function(){var t=document.getElementById('mz-grid').textContent||'';if(typeof navigator!=='undefined'&&navigator.clipboard){navigator.clipboard.writeText(t);} };
+}
+</script>
+</body>
+</html>
