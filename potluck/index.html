@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Potluck Signup Sheet — Dish Organizer | PotLuck</title>
+<meta name="description" content="Organize a potluck with balanced dish categories and servings math for your guest count.">
+<link rel="canonical" href="https://fun.fixoraa.tech/potluck/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Potluck Signup Sheet — Dish Organizer | PotLuck">
+<meta property="og:description" content="Organize a potluck with balanced dish categories and servings math for your guest count.">
+<meta property="og:url" content="https://fun.fixoraa.tech/potluck/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PotLuck",
+      "url": "https://fun.fixoraa.tech/potluck/",
+      "applicationCategory": "Event Tools",
+      "operatingSystem": "Web",
+      "description": "Organize a potluck with balanced dish categories and servings math for your guest count.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much food do I need for a potluck with 20 guests?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Plan about 13 dishes: 2 mains, 3 sides, 2 salads, 2 desserts, 2 drinks and 2 snacks. Each dish should serve roughly the guest count divided by its category's slots, plus a 15% buffer \u2014 so each main serves about 12. Total planned servings should be around 23 for 20 guests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I stop everyone from bringing the same dish?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use category slots instead of a blank signup sheet. Assign a fixed number of slots per category (mains, sides, desserts, etc.) and let people claim a slot, then pick their dish within it. Suggest specific dish ideas for hesitant cooks \u2014 a concrete suggestion beats an open-ended ask."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I bring to a potluck if I can't cook?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Drinks, ice, paper goods, a store-bought dessert, a cheese board, or a veggie tray with dip. These contributions are genuinely valuable and failure-proof. Tell the organizer upfront \u2014 they will happily slot you where reliability matters most."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle food allergies at a potluck?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ask about restrictions when you send the signup sheet and reserve specific slots for them (e.g. a vegetarian main, a gluten-free dessert). Label every dish with its name and major allergens. Keep one backup dish yourself that covers most restrictions, like a vegan gluten-free chili."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long can potluck food sit out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two hours maximum at room temperature \u2014 hot food should stay above 140\u00b0F and cold below 40\u00b0F. Use slow cookers on warm, chafing dishes, and coolers with ice. For outdoor summer events, keep everything in shade and be extra strict with mayo-based dishes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good potluck dish that serves a crowd cheaply?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Baked ziti, pulled pork sliders, white chicken chili, and mac and cheese all serve 10 to 12 people for under $20. Sheet-pan desserts like brownies or sheet cake are the cheapest crowd desserts. The formula: starch + sauce + one protein feeds a crowd for the least money."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#F5FAF2;--accent:#47801E;--tint:#E6F4DD;--ink:#27331F;--muted:#637854;--accent-ink:#FFFFFF;--card:#FFFDF8;--rule:#D9E8CF}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Acme',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:1060px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--card);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-headrow{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#2F5A12);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 0 rgba(0,0,0,.15);transform:rotate(3deg)}
+.fx-name{font-size:23px}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 18px;border-radius:999px;font-size:15px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:var(--card);transition:transform .12s}
+.fx-btn:hover{transform:translateY(-2px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--ink);font-size:14px;border:2px dashed var(--accent)}
+.hero{padding:42px 0 8px}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:var(--tint);padding:7px 16px;border-radius:999px;margin-bottom:14px}
+.hero h1{font-size:clamp(32px,5vw,50px);line-height:1.1;margin-bottom:10px}
+.lede{font-size:18px;color:var(--muted);max-width:640px;font-family:system-ui}
+.tool{margin:28px 0 10px;background:var(--card);border:2px solid var(--rule);border-radius:16px;padding:28px;box-shadow:0 10px 28px rgba(71,128,30,.10);background-image:repeating-linear-gradient(transparent,transparent 31px,var(--rule) 31px,var(--rule) 32px)}
+.pl-guests{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px;background:var(--bg);border:2px dashed var(--accent);border-radius:14px;padding:16px 20px}
+.pl-guests label{font-size:18px}
+.pl-guests input{font:inherit;font-size:20px;width:110px;padding:9px 12px;border:2px solid var(--accent);border-radius:10px;background:#fff;color:var(--ink);text-align:center}
+.pl-need{font-size:16px;color:var(--muted);font-family:system-ui}
+.pl-need strong{color:var(--accent);font-size:19px}
+.pl-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pl-cat{background:#fff;border:2px solid var(--rule);border-radius:14px;padding:18px;position:relative}
+.pl-cat::before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:5px;border-radius:3px;background:var(--accent)}
+.pl-cat h3{font-size:19px;margin:0 0 4px 8px;color:var(--ink)}
+.pl-slots{font-size:14px;color:var(--muted);margin:0 0 10px 8px;font-family:system-ui}
+.pl-slots strong{color:var(--accent)}
+.pl-cat ul{list-style:none;margin-left:8px}
+.pl-cat li{font-family:system-ui;font-size:14.5px;padding:7px 0 7px 26px;position:relative;border-bottom:1px dotted var(--rule);color:#3d4a35}
+.pl-cat li:last-child{border-bottom:0}
+.pl-cat li::before{content:'';position:absolute;left:2px;top:11px;width:13px;height:13px;border:2px solid var(--accent);border-radius:4px;background:var(--tint)}
+.pl-copy{margin-top:20px;text-align:center}
+.pl-copy button{font-family:inherit;font-size:17px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:13px 34px;cursor:pointer;box-shadow:0 4px 0 #2F5A12;transition:transform .12s}
+.pl-copy button:hover{transform:translateY(-2px)}
+.pl-copied{font-family:system-ui;color:var(--accent);margin-top:8px;font-size:14px;min-height:20px}
+.article-sec{margin:44px 0;max-width:780px}
+.article-sec h2{font-size:24px;margin:36px 0 12px}
+.article-sec p{margin-bottom:14px;color:#3d4a35;font-family:system-ui}
+.article-sec ul,.article-sec ol{margin:0 0 14px 24px;color:#3d4a35;font-family:system-ui}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0 10px;max-width:780px}
+.faq-sec h2{font-size:24px;margin-bottom:16px}
+.faq-sec details{background:var(--card);border:2px solid var(--rule);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:15px 18px;cursor:pointer;list-style:none;font-size:17px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--rule);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#3d4a35;font-size:15px;font-family:system-ui}
+.fx-footer{background:#22301c;color:#e8f0e2;margin-top:48px;padding:42px 0 36px}
+.fx-footer .fx-brand{font-size:24px;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#b9c9ae;max-width:640px;margin-bottom:14px;font-family:system-ui}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;text-decoration:none;border-bottom:2px solid var(--accent);font-family:system-ui}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#c8e6a8;font-weight:700}
+@media(max-width:760px){.pl-cats{grid-template-columns:1fr}.fx-nav{margin-left:0}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-headrow">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/potluck/" aria-label="PotLuck home">
+      <span class="fx-tile" aria-hidden="true">🍲</span>
+      <span class="fx-name">PotLuck</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="hero">
+    <span class="eyebrow">No more eight pasta salads</span>
+    <h1>Potluck Signup Sheet</h1>
+    <p class="lede">Enter your guest count and get a balanced signup sheet — the right number of mains, sides, salads, desserts and drinks, with servings math done for you.</p>
+  </section>
+  <section class="tool" aria-label="PotLuck tool">
+<div class="pl-guests">
+      <label for="pl-n">How many guests?</label>
+      <input type="number" id="pl-n" value="20" min="2" max="500" step="1">
+      <span class="pl-need">Plan for <strong id="pl-need">23</strong> servings total (15% buffer for big appetites &amp; seconds).</span>
+    </div>
+    <div class="pl-cats" id="pl-cats"></div>
+    <div class="pl-copy">
+      <button type="button" id="pl-copybtn">Copy signup sheet</button>
+      <div class="pl-copied" id="pl-copied"></div>
+    </div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>The Eight-Pasta-Salad Problem</h2>
+<p>Every potluck organizer knows the nightmare: you open the signup sheet and find eight pasta salads, three bags of chips, zero desserts, and one brave soul bringing "ice." The problem is not generosity — it is coordination failure. Without category structure, people default to what is easy and familiar, and easy-and-familiar clusters. The fix is embarrassingly simple: instead of a blank list, give people a balanced set of slots by category, sized to your guest count. That is exactly what the organizer above generates — mains, sides, salads, desserts, drinks and snacks in proportions that actually feed a crowd.</p>
+<p>The math behind it matters more than it looks. A potluck is not a restaurant where everyone orders one dish; it is a buffet where everyone samples many dishes. That means you need variety across categories but also enough volume within each. The rule of thumb baked into this tool: mains get the most slots (about one per ten guests), sides slightly more (one per eight), and everything scaled with a 15 percent servings buffer, because there is always someone with a legendary appetite and someone who goes back for thirds. Plan for abundance and you get a feast; plan exactly and you get the last guest staring at an empty tray.</p>
+<h2>How Many Dishes Per Category?</h2>
+<p>For a 20-person potluck, the balanced sheet looks like this: 2 mains, 3 sides, 2 salads, 2 desserts, 2 drinks, 2 snacks — 13 dishes total. That ratio holds surprisingly well as you scale: mains at roughly one slot per ten guests (minimum two, because one main is a single point of failure), sides at one per eight, desserts at one per twelve. Drinks are the category everyone underestimates — plan one drink slot per fifteen guests, and make at least one of them non-alcoholic and interesting, not an afterthought.</p>
+<p>The minimums matter more than the ratios for small groups. Eight guests still need two mains, because if one main-giver cancels or their dish fails, the meal collapses. This is the "no single point of failure" principle: every critical category gets redundancy. Desserts can survive on one slot for a small group because nobody's dinner depends on brownies — but the meal itself needs backup. As guest counts climb past 50, stop adding variety and start adding volume: twelve different sides for 80 people creates a logistics nightmare; six sides with bigger servings each is calmer and cheaper.</p>
+<h2>Servings Math That Actually Works</h2>
+<p>Here is where most potluck advice goes vague ("bring enough to share!") and where real math helps. Each dish slot should serve the guest count divided by the number of slots in its category, plus a 15 percent buffer. For 20 guests and 2 mains, each main serves about 12. That sounds like a lot until you remember buffet dynamics: not everyone takes every dish, but popular dishes get hammered. The 15 percent buffer absorbs the variance between the dish everyone wants and the dish nobody touches.</p>
+<p>Translate "serves 12" into real quantities for your cooks: a main that serves 12 means roughly 3 to 4 pounds of protein or a full 9x13 pan of something hearty. A side serving 8 to 10 means about 2 to 2.5 quarts. Desserts: plan 1.5 servings per guest, because dessert is where the "just a small piece" lie lives and everyone takes two. Drinks: one gallon of punch or lemonade serves about 16 small cups — and you need roughly one drink per guest per hour of the event. Put these conversions on the signup sheet next to each slot and watch the "is this enough?" anxiety evaporate.</p>
+<h2>Assigning Dishes Without Being a Dictator</h2>
+<p>Nobody wants to be told what to cook, but everybody is relieved to be given a category. The sweet spot: let people claim a category slot first, then choose their specific dish within it. The idea lists above give hesitant cooks a starting point — "baked ziti" is much easier to say yes to than the void of "bring a main." For the confident cooks, an open slot in their category is an invitation to show off. Both types get what they need.</p>
+<p>Handle the edge cases explicitly on the sheet. Dietary needs: reserve at least one main and one side slot as vegetarian, and label everything. The "I can't cook" guests: assign them drinks, ice, paper goods, or a store-bought dessert — contributions that matter and cannot fail. The over-eager guest who wants to bring three dishes: thank them and cap it at one, because variety across cooks beats volume from one. And always, always have a signup deadline three days before the event, with a personal nudge to the empty slots. The sheet only works if it is full.</p>
+<h2>The Timeline: When to Do What</h2>
+<p>Three weeks out: set the date, estimate the guest count, and generate the signup sheet. Two weeks out: send the sheet with a clear deadline and dish ideas. One week out: close signups, review the balance (this is when you spot the missing dessert), and fill gaps — either by recruiting specific people or by covering it yourself. Three days out: confirm the critical slots (mains especially) with a quick message. Day of: set up the buffet 30 minutes before eating, with labels, serving utensils for every single dish, and an outlet strip for slow cookers.</p>
+<p>The confirmation step is the one organizers skip and regret. A gentle "hey, still good for the pulled pork Saturday?" catches the cancellations while there is still time to adapt. Keep one emergency backup in your pocket: a frozen lasagna, a big salad kit, or a dessert from the bakery. The organizer's secret weapon is not perfect planning — it is a calm plan B that nobody ever sees.</p>
+<h2>Buffet Logistics Nobody Tells You</h2>
+<p>The food is only half the event; the flow is the other half. Set the buffet against a wall with a clear start and end so lines move one direction. Put plates at the start, napkins and utensils at the end (people juggling full plates drop things). Drinks go on a separate table — nothing kills a buffet line like someone parked at the lemonade for five minutes. Label every dish with its name and major allergens; a stack of index cards and a marker costs two dollars and prevents the anxious hovering of guests with allergies.</p>
+<p>Temperature is the silent killer of potlucks. Hot food needs to stay above 140°F and cold below 40°F, and the danger zone in between is a two-hour clock. Slow cookers on warm, chafing dishes, and coolers with ice are not fussy — they are food safety. Ask hot-dish bringers to arrive with food already hot, and have oven space or outlets ready. For outdoor summer potlucks, keep cold dishes on ice and put the whole buffet in shade; mayonnaise-based salads in direct sun are a countdown, not a side dish.</p>
+<h2>Dietary Restrictions Without the Drama</h2>
+<p>Every group of 20 has vegetarians, and probably someone gluten-free, someone with a nut allergy, and someone dairy-free. Handle it structurally, not awkwardly: when you send the signup sheet, ask about restrictions up front and bake them into the slot plan. Designate specific slots — "Main (vegetarian)", "Dessert (gluten-free)" — so coverage is guaranteed rather than hoped for. This beats the alternative, which is a guest quietly eating dinner rolls and feeling like a burden.</p>
+<p>Labeling does the rest of the work. Dish name, cook's name, and the big flags: vegetarian, vegan, gluten-free, contains nuts, contains dairy. Cooks generally love being asked — it makes their dish important rather than incidental. And keep one "safe" dish in reserve yourself: a big vegan, gluten-free option like a rice-and-bean chili covers almost every restriction at once and costs almost nothing. Inclusivity at a potluck is not a separate project; it is just good slot planning.</p>
+<h2>After the Party: Leftovers and Thanks</h2>
+<p>Plan the ending at the beginning. Bring disposable containers and invite cooks to take their leftovers or send them home with guests — nobody wants to wash twelve serving dishes at midnight. A good rule: the cook gets first claim on their leftovers, then it is open season. Have foil, bags and containers ready before the meal, not discovered in a frantic drawer search afterward.</p>
+<p>Then close the loop: a thank-you message with a photo of the spread does more for next year's turnout than anything else. People who feel appreciated bring their A-game next time. Save the signup sheet — the category ratios that worked for 20 guests will work again, and you will thank yourself for not reinventing the math. The best potluck tradition is a system that gets smoother every time, until organizing it feels less like herding cats and more like conducting a very delicious orchestra.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How much food do I need for a potluck with 20 guests?</summary><p>Plan about 13 dishes: 2 mains, 3 sides, 2 salads, 2 desserts, 2 drinks and 2 snacks. Each dish should serve roughly the guest count divided by its category's slots, plus a 15% buffer — so each main serves about 12. Total planned servings should be around 23 for 20 guests.</p></details>
+    <details><summary>How do I stop everyone from bringing the same dish?</summary><p>Use category slots instead of a blank signup sheet. Assign a fixed number of slots per category (mains, sides, desserts, etc.) and let people claim a slot, then pick their dish within it. Suggest specific dish ideas for hesitant cooks — a concrete suggestion beats an open-ended ask.</p></details>
+    <details><summary>What should I bring to a potluck if I can't cook?</summary><p>Drinks, ice, paper goods, a store-bought dessert, a cheese board, or a veggie tray with dip. These contributions are genuinely valuable and failure-proof. Tell the organizer upfront — they will happily slot you where reliability matters most.</p></details>
+    <details><summary>How do you handle food allergies at a potluck?</summary><p>Ask about restrictions when you send the signup sheet and reserve specific slots for them (e.g. a vegetarian main, a gluten-free dessert). Label every dish with its name and major allergens. Keep one backup dish yourself that covers most restrictions, like a vegan gluten-free chili.</p></details>
+    <details><summary>How long can potluck food sit out?</summary><p>Two hours maximum at room temperature — hot food should stay above 140°F and cold below 40°F. Use slow cookers on warm, chafing dishes, and coolers with ice. For outdoor summer events, keep everything in shade and be extra strict with mayo-based dishes.</p></details>
+    <details><summary>What is a good potluck dish that serves a crowd cheaply?</summary><p>Baked ziti, pulled pork sliders, white chicken chili, and mac and cheese all serve 10 to 12 people for under $20. Sheet-pan desserts like brownies or sheet cake are the cheapest crowd desserts. The formula: starch + sauce + one protein feeds a crowd for the least money.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PotLuck</div>
+    <p>PotLuck builds a balanced potluck signup sheet from your guest count — category slots, servings per dish, and shareable lists.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function potluck(guests){
+  var g=Math.max(1,Math.round(Number(guests))||1);
+  var cats=[
+    {name:'Mains',per:10,min:2,ideas:['Baked ziti','Pulled pork sliders','Chicken enchiladas','Lasagna','Slow-cooker meatballs','White chicken chili']},
+    {name:'Sides',per:8,min:2,ideas:['Garlic mashed potatoes','Mac and cheese','Roasted vegetables','Cornbread','Green bean casserole','Dinner rolls']},
+    {name:'Salads',per:10,min:1,ideas:['Caesar salad','Greek salad','Coleslaw','Pasta salad','Fruit salad']},
+    {name:'Desserts',per:12,min:1,ideas:['Brownies','Apple pie','Chocolate chip cookies','Sheet cake','Banana pudding']},
+    {name:'Drinks',per:15,min:1,ideas:['Lemonade','Iced tea','Soda & sparkling water','Fruit punch']},
+    {name:'Snacks & appetizers',per:12,min:1,ideas:['Veggie tray with dip','Chips & salsa','Cheese board','Deviled eggs']}
+  ];
+  var out=cats.map(function(c){
+    var slots=Math.max(c.min,Math.ceil(g/c.per));
+    var servingsEach=Math.ceil(g/slots*1.15);
+    return {category:c.name, slots:slots, servingsEach:servingsEach, ideas:c.ideas.slice(0,slots)};
+  });
+  var totalSlots=out.reduce(function(s,c){ return s+c.slots; },0);
+  return {
+    guests:g, servingsNeeded:Math.ceil(g*1.15), totalSlots:totalSlots,
+    categories:out
+  };
+}
+(function(){
+var n=document.getElementById('pl-n'),cats=document.getElementById('pl-cats');
+function render(){
+  var r=potluck(n.value);
+  document.getElementById('pl-need').textContent=r.servingsNeeded;
+  cats.innerHTML='';
+  r.categories.forEach(function(c){
+    var d=document.createElement('div');d.className='pl-cat';
+    var h=document.createElement('h3');h.textContent=c.category;d.appendChild(h);
+    var s=document.createElement('p');s.className='pl-slots';
+    s.innerHTML='<strong>'+c.slots+'</strong> slots × <strong>'+c.servingsEach+'</strong> servings each';
+    d.appendChild(s);
+    var ul=document.createElement('ul');
+    c.ideas.forEach(function(idea){
+      var li=document.createElement('li');li.textContent=idea+' — serves ~'+c.servingsEach;ul.appendChild(li);
+    });
+    d.appendChild(ul);cats.appendChild(d);
+  });
+  return r;
+}
+var last=render();
+n.addEventListener('input',function(){last=render();});
+document.getElementById('pl-copybtn').addEventListener('click',function(){
+  var lines=['POTLUCK SIGNUP — '+last.guests+' guests',''];
+  last.categories.forEach(function(c){
+    lines.push(c.category.toUpperCase()+' ('+c.slots+' slots, ~'+c.servingsEach+' servings each):');
+    c.ideas.forEach(function(idea,i){lines.push('  '+(i+1)+'. '+idea+' — __________');});
+    lines.push('');
+  });
+  var txt=lines.join('\n');
+  function done(){document.getElementById('pl-copied').textContent='Copied! Paste it into email, chat, or a doc.';}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,done);}
+  else{var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);done();}
+});
+})();
+</script>
+</body>
+</html>
