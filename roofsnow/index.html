@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roof Snow Load Calculator — Check Your Roof Snow Weight | RoofSnow</title>
+<meta name="description" content="Free roof snow load calculator: snow depth and density give pounds per square foot and total roof load, so you know when to clear.">
+<link rel="canonical" href="https://fun.fixoraa.tech/roofsnow/">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"RoofSnow","applicationCategory":"Home","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "How much does snow weigh on a roof?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on density: a foot of fresh powder weighs about 8 pounds per square foot, while a foot of wet snow weighs about 30 pounds per square foot."}},{"@type": "Question", "name": "How much snow load can a typical roof hold?", "acceptedAnswer": {"@type": "Answer", "text": "Most residential roofs are designed for 20 to 40 pounds per square foot, depending on the region's building code. Snowy areas are designed higher."}},{"@type": "Question", "name": "When should I remove snow from my roof?", "acceptedAnswer": {"@type": "Answer", "text": "When your calculated load approaches your local design load, or you see warning signs like sagging, sticking doors, or creaking \u2014 clear it or call a professional."}},{"@type": "Question", "name": "Is it safe to shovel my own roof?", "acceptedAnswer": {"@type": "Answer", "text": "Only on low, accessible roofs with proper footing and fall protection. Steep, high or icy roofs should be left to professionals."}},{"@type": "Question", "name": "Does rain on snow make it heavier?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, dramatically. Rain soaks into the snowpack and can double its weight without adding visible depth."}},{"@type": "Question", "name": "Why is roof snow deeper than yard snow?", "acceptedAnswer": {"@type": "Answer", "text": "Wind drifts snow against ridges, valleys, parapets and dormers, so roof depth varies and can far exceed ground depth."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:'Work Sans',sans-serif;background:#FDF6EC;color:#3A2A20;line-height:1.6}
+a{color:#C2410C} header{background:#C2410C;color:#FFFFFF;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#FFFFFF;text-decoration:none}
+.mark{width:44px;height:44px;border-radius:16px;background:#C2410C;color:#fff;display:grid;place-items:center;font-size:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#C2410C;color:#fff;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+.btn2{background:transparent;color:#FFFFFF;border:2px solid #FFFFFF}
+.wrap{max-width:960px;margin:0 auto;padding:16px} .badge{display:inline-block;background:#F3DCC8;color:#3A2A20;border:1px solid #C2410C;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px}
+.card{background:#fff;border:1px solid #F3DCC8;border-radius:16px;padding:20px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.atlas{border:3px solid #C2410C;border-radius:16px;padding:20px;background:linear-gradient(180deg,#FFF7ED,#FDF6EC)}.statstrip{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}.statstrip span{background:#fff;border:2px solid #C2410C;border-radius:12px;padding:8px 14px;font-weight:700}h1,h2{font-family:'Cormorant Garamond',serif}
+label{display:block;font-weight:700;margin:12px 0 4px} input,select,textarea{width:100%;padding:12px;border:1.5px solid #F3DCC8;border-radius:10px;font-size:16px;font-family:inherit}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px} @media(max-width:600px){.grid{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start}}
+.res{margin-top:16px;padding:16px;background:#F3DCC8;border-radius:16px;font-size:18px} .res b{font-size:26px}
+.err{color:#b91c1c;font-weight:700} article{background:#fff;border-radius:16px;padding:24px;margin-top:20px} article h2{margin-top:28px}
+.faq details{background:#fff;border:1px solid #F3DCC8;border-radius:12px;padding:14px;margin:10px 0} .faq summary{font-weight:700;cursor:pointer}
+footer{background:#C2410C;color:#FFFFFF;padding:28px 16px;margin-top:24px} footer a{color:#FFFFFF;font-weight:700}
+.hist{font-size:14px;background:#fff;border:1px dashed #C2410C;padding:10px;border-radius:10px;margin-top:12px;white-space:pre-wrap}
+</style></head>
+<body>
+<header><a class="logo" href="https://fixoraa.tech"><span class="mark">▲</span>RoofSnow</a>
+<nav><a class="btn btn2" href="https://fixoraa.tech">Home</a> <a class="btn btn2" href="https://fixoraa.tech">More Tools</a></nav></header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="wrap">
+<div class="atlas"><span class="badge">Unlimited Free Usage</span><h1>Roof Snow Load Calculator</h1><p>Fresh powder is light. Wet spring snow is brutally heavy. Enter depth and density to find the real load on your roof.</p><div class="statstrip"><span>Fresh snow ≈ 8 lb/cu ft</span><span>Packed ≈ 22 lb/cu ft</span><span>Wet ≈ 30 lb/cu ft</span></div></div>
+<section class="card" aria-label="Tool">
+<div class="grid"><div><label for="depth">Snow depth on roof (inches)</label><input id="depth" type="number" step="any" value="12" placeholder="Snow depth on roof (inches)"></div><div><label for="dens">Snow density</label><select id="dens"><option value="8">Fresh powder (8 lb/cu ft)</option><option value="15">Average settled (15 lb/cu ft)</option><option value="22">Packed / old (22 lb/cu ft)</option><option value="30">Wet spring snow (30 lb/cu ft)</option></select></div><div><label for="roofarea">Roof area (sq ft)</label><input id="roofarea" type="number" step="any" value="1000" placeholder="Roof area (sq ft)"></div></div><div style="margin-top:14px"><button class="btn" onclick="calc()">Calculate</button> <button class="btn" onclick="resetF()">Reset</button></div><div style="margin-top:10px">Presets: <button class="btn" type="button" onclick="applyPreset({"depth": 4})">Light dusting</button> <button class="btn" type="button" onclick="applyPreset({"depth": 12})">One foot average</button> <button class="btn" type="button" onclick="applyPreset({"depth": 24})">Two feet wet</button> </div>
+<div id="err" class="err" role="alert"></div>
+<div id="res" class="res" style="display:none"></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+<button class="btn" onclick="saveHist()">Save to history</button>
+<button class="btn" onclick="copyRes()">Copy result</button>
+<button class="btn" onclick="dlCSV()">Export CSV</button></div>
+<div id="hist" class="hist" style="display:none"></div>
+<p><strong>When to act:</strong> most residential roofs are designed for 20–40 pounds per square foot of snow load, depending on region. If your result approaches your local design load — or you hear creaking, see sagging, or doors start sticking — clear snow or call a professional. Never work on an icy roof alone.</p>
+</section>
+<div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article><p>Snow looks weightless as it falls, but it stops looking weightless the moment it sits on a roof. A single foot of wet spring snow can weigh as much as a foot of water spread across your entire roof — tens of thousands of pounds pressing on rafters, trusses and walls. Roof collapses are rare, but they are almost never sudden mysteries: the load builds for days, the warning signs are visible, and the arithmetic is simple. The roof snow load calculator does that arithmetic. Enter the depth of snow on your roof and the kind of snow it is, and you get the load in pounds per square foot plus the total weight on your roof — the two numbers that tell you whether to relax, watch, or call for help.</p>
+<h2>How to use this calculator</h2>
+<p>Snow load in pounds per square foot comes from two measurements: depth in inches and density in pounds per cubic foot. Multiply them and divide by 12 to convert inches to feet, and you have the pressure on the roof surface. Fresh powder is light, around 8 pounds per cubic foot; settled average snow is about 15; packed old snow reaches 22; and wet spring snow can hit 30 or more. Multiply the per-square-foot load by your roof area and you get the total weight the structure is carrying. The calculator shows both figures, because a per-square-foot number tells you about design limits while the total tells you the scale of the problem.</p>
+<ol><li>Measure snow depth on the roof itself, not on the ground — wind drifts make roof depth very different from yard depth.</li><li>Take several readings, including near drifts and valleys, and use the deepest representative depth for a cautious estimate.</li><li>Judge the snow type: light and fluffy is fresh, dense and hard to shovel is packed, heavy and slushy is wet.</li><li>Enter your roof area — the footprint of the roof, in square feet — and press Calculate.</li><li>Compare your pounds-per-square-foot result with your local design snow load, found in building codes or from a local engineer.</li></ol>
+<h2>Understanding your results</h2>
+<p><strong>Pounds per square foot.</strong> The pressure the snow exerts. Most homes are designed for 20 to 40 pounds per square foot, with snowy regions designed higher. Approaching that figure is your warning zone.</p>
+<p><strong>Total roof load.</strong> Per-square-foot load times roof area. A 1,000-square-foot roof at 30 pounds per square foot carries 30,000 pounds — the weight of several cars.</p>
+<p><strong>Why density dominates.</strong> Two feet of fresh powder weighs less than one foot of wet snow. Depth alone tells you almost nothing; depth plus density tells you everything.</p>
+<p><strong>Zero results.</strong> Zero depth means zero load. If snow is on the roof and you see zero, check that the depth field is filled in.</p>
+<h2>Practical tips</h2><ul><li>Measure after every major storm, not just once a winter — loads accumulate and a rain-on-snow event can double weight overnight.</li><li>Watch for warning signs: sagging ceilings, sticking doors and windows, new cracks, and creaking sounds.</li><li>Clear snow in balanced strips from the ridge outward, never all from one side, to avoid unbalanced loading.</li><li>Keep gutters and roof edges clear so meltwater drains instead of refreezing into heavy ice dams.</li><li>Hire professionals for steep, high or icy roofs — a fall from a roof is a far greater risk than the snow itself.</li><li>After a heavy winter, have the roof structure inspected for deflection before the next one.</li></ul>
+<h2>Common mistakes to avoid</h2><ul><li>Judging danger by depth alone and ignoring wet, heavy snow.</li><li>Measuring snow in the yard instead of on the roof, where drifts pile much deeper.</li><li>Assuming a new roof can carry anything — design loads are limits, not guarantees, and older roofs may have weakened.</li><li>Clearing snow from only one side of the roof, which creates uneven stress on the structure.</li><li>Climbing onto an icy, snow-covered roof alone without fall protection.</li><li>Waiting for a collapse warning sign that never comes — some failures give little visible warning.</li></ul>
+<h2>Who benefits most</h2>
+<p>This calculator is for homeowners in snowy climates, landlords with properties in winter regions, facility managers responsible for warehouses and schools, and anyone who has looked at a sagging carport and wondered whether to worry. It is also useful for insurers and inspectors who need a quick, documented load estimate after a storm. If your winters regularly leave a foot or more of snow on the roof, this is a number worth knowing before the forecast turns serious.</p>
+<h2>Worked example</h2>
+<p>Take 12 inches of average settled snow at 15 pounds per cubic foot: the load is 12 × 15 ÷ 12 = 15 pounds per square foot, or 15,000 pounds on a 1,000-square-foot roof. Now take 24 inches of wet spring snow at 30 pounds per cubic foot: 24 × 30 ÷ 12 = 60 pounds per square foot — 60,000 pounds on the same roof, far beyond most residential design loads. And 12 inches of fresh powder at 8 pounds per cubic foot is only 8 pounds per square foot. Same depth, wildly different danger — which is exactly why density is part of the calculation.</p>
+<h2>Checking and re-running your result</h2>
+<p>Recheck your result after each storm and after any rain-on-snow event, since wet snow gains weight fast. If your result approaches your local design load, clear the roof or call a professional promptly, and save each calculation to history so you can show an inspector or insurer exactly how the load built up over the season. Re-measure whenever drifting changes the depth, because the deepest drift — not the average depth — is what stresses the structure. Ice dams and local codes deserve attention alongside the raw load number, because they decide how snow behaves on your particular roof. An ice dam forms when heat escaping through the roof melts snow from below, and the meltwater refreezes at the cold eaves, building a ridge that traps further meltwater behind it. That trapped water weighs heavily, seeps under shingles, and damages ceilings — and it is driven by attic insulation and ventilation as much as by snowfall. Keeping the attic cold, with even insulation and clear soffit-to-ridge airflow, is the long-term fix, while a roof rake used carefully from the ground can relieve the lower edge after storms. Building codes also matter: your local design snow load, published in the code for your region, is the number to compare against the calculator's result, and it varies enormously — from under 10 pounds per square foot in warm regions to over 100 in mountain towns. If your home predates modern codes or has had structural changes, an engineer's opinion is worth more than any online figure. Document each storm's depth and your calculated load with dated photos; insurers and inspectors value that record after a collapse or leak claim. And remember the human risk: roof falls kill more people than roof collapses, so the safest snow removal is often a professional crew with harnesses, or a ground-based rake, rather than a solo climb onto an icy slope. A quick reference for the loads you are most likely to meet: six inches of fresh powder is about 4 pounds per square foot; a foot of average snow is about 15; a foot of packed snow is about 22; and a foot of wet spring snow is about 30. Two feet of wet snow reaches 60 pounds per square foot, which exceeds most residential design loads outright. Memorise the wet-snow figures, because they are the ones that turn an ordinary winter into a structural emergency.</p></article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary>How much does snow weigh on a roof?</summary><p>It depends on density: a foot of fresh powder weighs about 8 pounds per square foot, while a foot of wet snow weighs about 30 pounds per square foot.</p></details><details><summary>How much snow load can a typical roof hold?</summary><p>Most residential roofs are designed for 20 to 40 pounds per square foot, depending on the region's building code. Snowy areas are designed higher.</p></details><details><summary>When should I remove snow from my roof?</summary><p>When your calculated load approaches your local design load, or you see warning signs like sagging, sticking doors, or creaking — clear it or call a professional.</p></details><details><summary>Is it safe to shovel my own roof?</summary><p>Only on low, accessible roofs with proper footing and fall protection. Steep, high or icy roofs should be left to professionals.</p></details><details><summary>Does rain on snow make it heavier?</summary><p>Yes, dramatically. Rain soaks into the snowpack and can double its weight without adding visible depth.</p></details><details><summary>Why is roof snow deeper than yard snow?</summary><p>Wind drifts snow against ridges, valleys, parapets and dormers, so roof depth varies and can far exceed ground depth.</p></details></section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer><p><strong>RoofSnow</strong> — Know the weight on your roof before it matters.</p>
+<p>RoofSnow converts snow depth and density into roof load in pounds per square foot — the number that decides whether to clear.</p>
+<p><a href="https://fixoraa.tech">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p></footer>
+<script id="pure">function snowLoad(depthIn, density){return Math.round(depthIn*density/12*10)/10;}</script>
+<script>function calc(){var d=num('depth'),den=parseFloat(document.getElementById('dens').value||15),a=num('roofarea');
+    if(d<0||a<0){showErr('Values cannot be negative.');return;} document.getElementById('err').textContent='';
+    var psf=snowLoad(d,den); var total=Math.round(psf*a);
+    var html='<b>'+psf+' lb per sq ft</b> — about <b>'+total.toLocaleString()+' lb</b> total on '+a+' sq ft of roof.';
+    if(psf>=40) html+=' This is a very heavy load: consider professional snow removal promptly.';
+    else if(psf>=20) html+=' A significant load: monitor it and plan clearing if more snow is forecast.';
+    if(d===0) html='No snow on the roof, so the snow load is 0 lb per sq ft.';
+    showRes(html);}
+  
+function applyPreset(o){for(var k in o){var e=document.getElementById(k);if(e)e.value=o[k];}calc();}
+function resetF(){var els=document.querySelectorAll('input,select');els.forEach(function(e){if(e.type!=='button')e.value='';});document.getElementById('res').style.display='none';document.getElementById('err').textContent='';}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+
+function showRes(html){var r=document.getElementById('res');r.style.display='block';r.innerHTML=html;window._last=html.replace(/<[^>]+>/g,' ');}
+function showErr(m){document.getElementById('err').textContent=m;}
+function saveHist(){if(!window._last)return;var k='hist_roofsnow';var a=JSON.parse(localStorage.getItem(k)||'[]');a.unshift(new Date().toLocaleString()+': '+window._last);localStorage.setItem(k,JSON.stringify(a.slice(0,10)));var d=document.getElementById('hist');d.style.display='block';d.textContent=a.join('\n');}
+function copyRes(){if(window._last&&navigator.clipboard)navigator.clipboard.writeText(window._last);}
+function dlCSV(){if(!window._last)return;var b=new Blob([window._last],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='roofsnow-result.csv';a.click();}
+</script>
+</body></html>
