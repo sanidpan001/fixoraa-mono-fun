@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harmonic Mixing Planner — Camelot Set-Path Tool for DJs | MixPath</title>
+<meta name="description" content="Free harmonic mixing planner: interactive Camelot wheel, set-path route builder with energy scoring, and one-click route generation. No signup.">
+<link rel="canonical" href="https://fun.fixoraa.tech/mixpath/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Harmonic Mixing Planner — Camelot Set-Path Tool for DJs | MixPath">
+<meta property="og:description" content="Free harmonic mixing planner: interactive Camelot wheel, set-path route builder with energy scoring, and one-click route generation. No signup.">
+<meta property="og:url" content="https://fun.fixoraa.tech/mixpath/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "MixPath",
+      "url": "https://fun.fixoraa.tech/mixpath/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Free harmonic mixing planner: interactive Camelot wheel, set-path route builder with energy scoring, and one-click route generation. No signup.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Camelot wheel in DJing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Camelot wheel relabels the 24 major and minor keys as codes 1A\u201312A (minor) and 1B\u201312B (major), arranged so compatible keys sit next to each other. Instead of music theory, DJs read codes: from 8A you can mix into 7A, 8A, 9A or 8B, and 10A is the energy boost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which keys mix well together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The four always-safe moves: the same key, one step up or down on the number (\u00b11), and the relative major/minor (same number, flip A/B). The +2 move on the same letter is the energy-boost mix. MixPath shows all of these for any selected key, labeled by move type."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 8A mean in the Camelot system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "8A is A minor. The number (1\u201312) is the position on the wheel and the letter is the mode: A = minor, B = major. So 8B is C major \u2014 the relative major of A minor, sharing the same notes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I plan an entire DJ set harmonically?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Treat the set as a path: start from your opening key, then chain compatible moves. Open with holds and \u22121 steps, build with +1 steps and A/B flips, peak with +2 energy boosts spaced apart, and land with a step down or relative flip. MixPath's route builder chains exactly this and scores the energy curve."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is harmonic mixing enough for a smooth transition?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No \u2014 key is half the equation. Match tempo within about \u00b13%, mix on phrase boundaries (every 16\u201332 bars), and always check by ear: key detection is 80\u201390% accurate, so audition any surprising match before playing it live."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an energy boost mix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Moving +2 on the Camelot number with the same letter (e.g. 8A \u2192 10A) \u2014 a whole-step key lift that the crowd feels as a surge. It's the classic peak-time move. Use it sparingly: back-to-back boosts exhaust the effect, so space them a few tracks apart."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F4FAF1; --surface:#FFFFFF; --accent:#166534; --accent-ink:#FFFFFF;
+  --ink:#22301F; --muted:#5C6B58; --line:#DCE8D4;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.mx-wrap{font-family:'Sora',Inter,system-ui,sans-serif;background:#F4FAF1;color:#22301F;padding:58px 20px 76px;}
+.mx-inner{max-width:1080px;margin:0 auto;}
+.mx-topline{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.mx-dot{width:11px;height:11px;border-radius:50%;background:#3E9B4F;box-shadow:0 0 0 4px rgba(62,155,79,.18);}
+.mx-status{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:#5C6B58;font-weight:600;}
+.mx-inner h1{font-size:clamp(32px,5vw,50px);line-height:1.05;letter-spacing:-.015em;margin:0 0 10px;font-weight:700;text-wrap:balance;}
+.mx-tag{color:#5C6B58;font-size:17px;max-width:660px;margin:0 0 30px;line-height:1.55;font-family:Inter,system-ui,sans-serif;}
+.mx-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:start;}
+.mx-panel{background:#fff;border:1px solid #DCE8D4;border-radius:22px;padding:26px;box-shadow:0 18px 44px rgba(22,101,52,.08);}
+.mx-panel h2{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:#166534;margin:0 0 4px;font-weight:700;}
+.mx-panel .mx-sub{font-size:13.5px;color:#5C6B58;margin:0 0 16px;font-family:Inter,system-ui,sans-serif;line-height:1.55;}
+.mx-wheelbox{display:flex;justify-content:center;}
+#mx-wheel{width:100%;max-width:400px;height:auto;}
+.mx-w{fill:#EFF4EA;stroke:#fff;stroke-width:2;}
+.mx-w.comp{fill:#CFE6C8;}
+.mx-w.boost{fill:#FFF3D6;stroke:#D9A419;stroke-width:2.5;}
+.mx-w.sel{fill:#166534;}
+.mx-wt{font-size:13px;font-weight:700;fill:#22301F;font-family:'Sora',sans-serif;}
+.mx-wt.s{fill:#fff;}
+.mx-c{fill:#fff;stroke:#DCE8D4;stroke-width:2;}
+.mx-ct{font-size:30px;font-weight:700;fill:#166534;font-family:'Sora',sans-serif;}
+.mx-ck{font-size:12.5px;fill:#5C6B58;font-family:Inter,system-ui,sans-serif;}
+.mx-legend{display:flex;gap:14px;justify-content:center;margin-top:12px;flex-wrap:wrap;font-size:12.5px;color:#5C6B58;font-family:Inter,system-ui,sans-serif;}
+.mx-sw{width:14px;height:14px;border-radius:4px;display:inline-block;vertical-align:-2px;margin-right:5px;}
+.mx-selrow{display:flex;align-items:baseline;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
+.mx-selcode{font-size:38px;font-weight:700;color:#166534;}
+.mx-selkey{font-size:17px;color:#5C6B58;font-family:Inter,system-ui,sans-serif;}
+.mx-next{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:9px;margin-bottom:18px;}
+.mx-nb{border:2px solid #DCE8D4;background:#F8FBF5;border-radius:13px;padding:10px 8px;cursor:pointer;text-align:center;font-family:Inter,system-ui,sans-serif;}
+.mx-nb:hover{border-color:#166534;}
+.mx-nb.b{border-color:#D9A419;background:#FFFBEB;}
+.mx-nb b{display:block;font-size:17px;color:#166534;font-family:'Sora',sans-serif;}
+.mx-nb span{display:block;font-size:11.5px;color:#5C6B58;}
+.mx-nb em{display:block;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A6D1B;margin-top:3px;}
+.mx-nb:not(.b) em{color:#5C6B58;}
+.mx-path{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;max-height:300px;overflow:auto;}
+.mx-step{display:flex;align-items:center;gap:12px;background:#F8FBF5;border:1px solid #DCE8D4;border-radius:12px;padding:9px 13px;font-family:Inter,system-ui,sans-serif;}
+.mx-sn{width:26px;height:26px;border-radius:8px;background:#166534;color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mx-sc{flex:1;font-size:14px;}
+.mx-sc b{font-family:'Sora',sans-serif;color:#166534;}
+.mx-mv{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:999px;padding:4px 11px;white-space:nowrap;}
+.mx-mv.e0{background:#E4EBE0;color:#5C6B58;}
+.mx-mv.e1{background:#D9EBD2;color:#166534;}
+.mx-mv.e2{background:#FFE9A8;color:#8A5A00;}
+.mx-mv.e3{background:#FFD3D3;color:#B91C1C;}
+.mx-energy{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.mx-ebar{flex:1;height:10px;background:#EFF4EA;border-radius:999px;overflow:hidden;}
+.mx-ebar span{display:block;height:100%;background:linear-gradient(90deg,#4C9A52,#166534,#D9A419);border-radius:999px;}
+.mx-et{font-size:13px;color:#5C6B58;font-family:Inter,system-ui,sans-serif;font-weight:600;white-space:nowrap;}
+.mx-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.mx-btn{background:#166534;color:#fff;border:none;border-radius:12px;padding:12px 18px;font-size:14px;font-weight:700;cursor:pointer;font-family:Inter,system-ui,sans-serif;}
+.mx-btn:hover{filter:brightness(1.08);}
+.mx-btn.ghost{background:#fff;color:#166534;border:2px solid #166534;}
+.mx-startrow{display:flex;gap:10px;align-items:center;margin-top:16px;font-family:Inter,system-ui,sans-serif;font-size:13.5px;color:#5C6B58;flex-wrap:wrap;}
+.mx-startrow select{padding:10px 12px;border:2px solid #DCE8D4;border-radius:11px;font-size:14px;font-family:inherit;color:#22301F;background:#fff;max-width:220px;}
+.mx-foot{margin-top:20px;font-size:13px;color:#5C6B58;font-family:Inter,system-ui,sans-serif;line-height:1.6;}
+@media(max-width:920px){.mx-grid{grid-template-columns:1fr;}}
+@media(max-width:520px){.mx-wrap{padding:40px 14px 56px;}.mx-panel{padding:20px 16px;}.mx-selcode{font-size:30px;}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="MixPath home">
+      <span class="fx-logo-tile" aria-hidden="true">🎧</span>
+      <span class="fx-brand">MixPath</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-console-dash" aria-label="MixPath tool">
+<section class='mx-wrap'><div class='mx-inner'>
+<div class='mx-topline'><span class='mx-dot' aria-hidden='true'></span><span class='mx-status'>Harmonic Route Console &middot; Live</span></div>
+<h1>Harmonic Mixing Planner — Camelot Set-Path Tool for DJs</h1>
+<p class='mx-tag'>Pick the key that's playing, chain compatible moves into a full set path, and watch the energy curve build — no clashes, no guesswork.</p>
+<div class='mx-grid'>
+<div class='mx-panel'>
+<h2>Camelot Wheel</h2>
+<p class='mx-sub'>Tap any segment. Green = compatible moves, gold = energy boost, dark = selected.</p>
+<div class='mx-wheelbox'><svg id='mx-wheel' viewBox='0 0 400 400' role='img' aria-label='Interactive Camelot wheel'></svg></div>
+<div class='mx-legend'>
+<span><span class='mx-sw' style='background:#CFE6C8'></span>compatible</span>
+<span><span class='mx-sw' style='background:#FFF3D6;border:1px solid #D9A419'></span>energy boost</span>
+<span><span class='mx-sw' style='background:#166534'></span>selected</span>
+</div>
+<div class='mx-startrow'><label for='mx-start'>Start key</label><select id='mx-start'></select></div>
+</div>
+<div class='mx-panel'>
+<h2>Route Builder</h2>
+<p class='mx-sub'>Chain your set key by key. Every step is labeled with its harmonic move.</p>
+<div class='mx-selrow'><span class='mx-selcode' id='mx-sel'>8A</span><span class='mx-selkey' id='mx-keyname'>A minor</span></div>
+<div class='mx-next' id='mx-next'></div>
+<div class='mx-path' id='mx-path' aria-live='polite'></div>
+<div class='mx-energy' id='mx-energy'></div>
+<div class='mx-controls'>
+<button class='mx-btn' id='mx-auto' type='button'>Generate route</button>
+<button class='mx-btn ghost' id='mx-clear' type='button'>Reset path</button>
+<button class='mx-btn ghost' id='mx-copy' type='button'>Copy set plan</button>
+</div>
+</div>
+</div>
+<p class='mx-foot'>A = minor keys (inner ring) &middot; B = major keys (outer ring). Compatible moves: same key, &plusmn;1 on the number, or the relative major/minor. +2 is the energy-boost mix. Camelot compatibility is a starting point — always check BPM, phrasing and the actual tracks by ear.</p>
+</div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Harmonic Mixing Actually Is</h2><p>Two tracks can share a tempo and still feel wrong together. A sustained vocal, a bass note, a lead synth from one record pulls against the harmony of the other, and the blend sounds uncomfortable even though the beats are locked. <strong>Harmonic mixing</strong> fixes this by matching the <em>musical keys</em> of the tracks you blend, so their harmonies agree instead of fighting. It is the difference between a transition the crowd feels as one continuous song and one they feel as a collision.</p><p>The <strong>Camelot wheel</strong> (popularized by Mixed In Key) makes key-matching DJ-friendly: it relabels the 24 major and minor keys as codes from 1A to 12A (minor, inner ring) and 1B to 12B (major, outer ring), arranged so that harmonically compatible keys sit next to each other. You never need to think &ldquo;is E minor compatible with G major?&rdquo; &mdash; you just read the codes: 9A and 9B are relatives, and everything you need is arithmetic.</p><h2>The Four Basic Moves</h2><p>From any key, four moves are always safe:</p><ol><li><strong>Same key (8A &rarr; 8A).</strong> The closest possible match &mdash; the two tracks share a key center entirely. Perfect for long blends where you want the mix to feel like one song evolving.</li><li><strong>One step up or down (8A &rarr; 9A or 7A).</strong> Move one number, keep the letter. The keys share most of their notes, so the blend is smooth with a gentle lift (+1) or easing (&minus;1) in energy.</li><li><strong>Relative major/minor (8A &rarr; 8B).</strong> Keep the number, flip the letter. A minor and C major contain the same notes &mdash; the mood shifts from dark to bright (or back) with zero harmonic friction.</li><li><strong>Energy boost (8A &rarr; 10A).</strong> Move +2 on the number, keep the letter. This is the classic peak-time move: the key jumps up a whole step, the crowd feels a lift, and it still mixes cleanly. Save it for the moment you want hands in the air.</li></ol><p>The numbering wraps: 12A connects back to 1A, 12B to 1B. A diagonal move like 9A &rarr; 10B changes both coordinates and sits outside the basic rules &mdash; it can work, but audition it by ear first rather than trusting the wheel.</p><h2>Planning a Set as a Path, Not a Pile</h2><p>Beginners pick tracks; professionals pick <em>paths</em>. A set is a journey through keys, and MixPath's route builder treats it that way: start from the key playing now, and each step offers only the compatible next moves, labeled by type. The energy meter totals the journey &mdash; holds and &plusmn;1 steps keep the cruise smooth, flips add color, and +2 boosts are the climbs.</p><p>A reliable set arc: <strong>open</strong> 3&ndash;4 tracks in closely related keys (holds and &minus;1 steps) to settle the room; <strong>build</strong> with +1 steps and the occasional A/B flip; <strong>peak</strong> with energy boosts (+2) spaced a few tracks apart &mdash; back-to-back boosts exhaust the trick; <strong>close</strong> by stepping down or flipping to the relative for the last track's emotional landing. The wheel gives you the grammar; the arc is your authorship.</p><h2>Reading the Wheel: A and B Rings</h2><p>The inner ring (A) is minor keys, the outer ring (B) is major. Adjacent numbers on the same ring follow the circle of fifths &mdash; each +1 step moves up a fifth, which is why the energy rises. The two rings join relative minor/major pairs at the same number: 8A (A minor) and 8B (C major) share a key signature. When you flip A/B mid-set, you are keeping every note and changing only the tonal center &mdash; the subtlest dramatic move in the book.</p><p>Learn the wheel's geography and you can plan without the tool: the 8A/8B/9A/9B neighborhood (A minor, C major, E minor, G major) is the most common territory in pop and house music, which is why so many tracks seem to &ldquo;just mix.&rdquo; They do &mdash; because the whole genre lives in four adjacent codes.</p><h2>Key Is Half the Equation: BPM and Phrasing</h2><p>Harmonic compatibility is necessary but not sufficient. A 124-BPM track in 8A will not blend with a 100-BPM track in 8A without a tempo transition &mdash; keep blends within about &plusmn;3% tempo unless you are deliberately doing a stop/drop transition. <strong>Phrasing</strong> matters as much: mix on phrase boundaries (every 16 or 32 bars in most dance music) so the incoming track's sections align with the outgoing one's. A harmonically perfect mix that lands mid-phrase still sounds amateur.</p><p>And the eternal caveat: <strong>trust your ears over the code</strong>. Key detection (from your DJ software's analysis) agrees with a trained listener roughly 80&ndash;90% of the time &mdash; good enough to plan with, not good enough to bet a peak-time moment on. If a &ldquo;compatible&rdquo; pair sounds wrong, it is wrong; re-analyze or re-key the track by ear.</p><h2>Generating Routes: From Seed to Set</h2><p>MixPath's <strong>Generate route</strong> button builds an 8-step random walk from your start key using only compatible moves and boosts &mdash; a brainstorming partner, not a final set. Use it when you are stuck: generate three routes, keep the moves you like, discard the rest. The real workflow is hybrid &mdash; generate, then replace steps with tracks from your actual library that sit in those codes. Your crate has the tracks; the wheel has the grammar; the route is the sentence.</p><p>When replacing generated codes with real tracks, work backwards from your peak: decide which track <em>must</em> play at the peak moment, note its code, and build the path so the 2&ndash;3 tracks before it arrive there through smooth moves. Audiences remember peaks and endings; the path exists to make those two moments land.</p><h2>Beyond the Basics: Advanced Harmonic Tricks</h2><p>Once the four moves are instinct, three advanced techniques open up. <strong>Modulation mixing:</strong> plan a deliberate key change <em>within</em> a long blend by moving +1 twice across two tracks &mdash; the audience perceives a slow lift without a discrete &ldquo;moment.&rdquo; <strong>Relative flips for energy management:</strong> when the room is peaking too early, flip to the relative minor (B &rarr; A at the same number) to cool the mood without losing harmonic lock &mdash; it is the only move that changes energy <em>down</em> while staying perfectly compatible. <strong>Camelot jumping for mashups:</strong> acapellas in one code sit cleanly over instrumentals in any of its four basic matches, which is why bootleg mashups cluster around the 8A/9A/8B/9B neighborhood.</p><h2>Common Mistakes</h2><p><strong>Boost addiction:</strong> chaining +2 moves feels powerful the first time and exhausting the third &mdash; the lift only works against a calm background. <strong>Ignoring the B ring:</strong> minor-key DJs who never flip to the relative major leave half the wheel &mdash; and half the emotional range &mdash; unused. <strong>Planning codes, not tracks:</strong> a route of perfect codes played with tracks whose energy profiles clash (a deep roller into a big-room banger) still fails; key is one axis, energy is the other. <strong>Never practicing the blend:</strong> the wheel tells you the move is <em>legal</em>; only rehearsal tells you it is <em>good</em>. Record your practice mixes and listen the next day &mdash; the recording never flatters.</p><h2>Your First Harmonic Set: A Worked Example</h2><p>Start in 8A (A minor) &mdash; the most common key in the library. Track 1: 8A, let it breathe. Track 2: hold 8A for the long blend, teasing the incoming bass. Track 3: step to 9A (+1) &mdash; gentle lift. Track 4: flip to 9B (relative major) &mdash; the room brightens. Track 5: hold 9B, longer blend. Track 6: energy boost to 11B (+2) &mdash; peak moment, hands up. Track 7: step down to 10B &mdash; ease off the peak without killing it. Track 8: flip to 10A (relative minor) &mdash; darker, deeper, the night's final statement. Eight tracks, every move legal, energy arc: settle &rarr; lift &rarr; brighten &rarr; peak &rarr; land. That is harmonic mixing &mdash; not a trick, but a language for the whole set.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is the Camelot wheel in DJing?</summary><p>The Camelot wheel relabels the 24 major and minor keys as codes 1A–12A (minor) and 1B–12B (major), arranged so compatible keys sit next to each other. Instead of music theory, DJs read codes: from 8A you can mix into 7A, 8A, 9A or 8B, and 10A is the energy boost.</p></details>
+<details><summary>Which keys mix well together?</summary><p>The four always-safe moves: the same key, one step up or down on the number (±1), and the relative major/minor (same number, flip A/B). The +2 move on the same letter is the energy-boost mix. MixPath shows all of these for any selected key, labeled by move type.</p></details>
+<details><summary>What does 8A mean in the Camelot system?</summary><p>8A is A minor. The number (1–12) is the position on the wheel and the letter is the mode: A = minor, B = major. So 8B is C major — the relative major of A minor, sharing the same notes.</p></details>
+<details><summary>How do I plan an entire DJ set harmonically?</summary><p>Treat the set as a path: start from your opening key, then chain compatible moves. Open with holds and −1 steps, build with +1 steps and A/B flips, peak with +2 energy boosts spaced apart, and land with a step down or relative flip. MixPath's route builder chains exactly this and scores the energy curve.</p></details>
+<details><summary>Is harmonic mixing enough for a smooth transition?</summary><p>No — key is half the equation. Match tempo within about ±3%, mix on phrase boundaries (every 16–32 bars), and always check by ear: key detection is 80–90% accurate, so audition any surprising match before playing it live.</p></details>
+<details><summary>What is an energy boost mix?</summary><p>Moving +2 on the Camelot number with the same letter (e.g. 8A → 10A) — a whole-step key lift that the crowd feels as a surge. It's the classic peak-time move. Use it sparingly: back-to-back boosts exhaust the effect, so space them a few tracks apart.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">MixPath</div>
+    <p>MixPath turns the Camelot wheel into a set planner: tap keys on the interactive wheel, chain compatible moves into a full route, and watch the energy curve build.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var MX_KEYS={"1A":"Ab minor","2A":"Eb minor","3A":"Bb minor","4A":"F minor","5A":"C minor","6A":"G minor","7A":"D minor","8A":"A minor","9A":"E minor","10A":"B minor","11A":"F# minor","12A":"C# minor","1B":"B major","2B":"F# major","3B":"Db major","4B":"Ab major","5B":"Eb major","6B":"Bb major","7B":"F major","8B":"C major","9B":"G major","10B":"D major","11B":"A major","12B":"E major"};
+function mxParse(code){var m=String(code||"").trim().toUpperCase().match(/^(\d{1,2})([AB])$/);if(!m)return null;var n=Number(m[1]);if(n<1||n>12)return null;return{n:n,l:m[2]};}
+function mxCode(n,l){n=((n-1)%12+12)%12+1;return n+l;}
+function camelotCompatible(code){
+  var p=mxParse(code);if(!p)return null;
+  var c=p.n+p.l;
+  return{code:c,key:MX_KEYS[c],
+    matches:[mxCode(p.n-1,p.l),c,mxCode(p.n+1,p.l),mxCode(p.n,p.l==="A"?"B":"A")],
+    boost:mxCode(p.n+2,p.l)};
+}
+function mxMoveType(from,to){
+  var a=mxParse(from),b=mxParse(to);if(!a||!b)return null;
+  var fa=a.n+a.l,fb=b.n+b.l;
+  if(fa===fb)return{label:"hold",energy:0,desc:"Same key — the smoothest blend."};
+  var dn=((b.n-a.n)%12+12)%12;
+  if(a.l===b.l&&dn===1)return{label:"step up",energy:1,desc:"+1 around the wheel — lift the energy a notch."};
+  if(a.l===b.l&&dn===11)return{label:"step down",energy:1,desc:"\u22121 around the wheel — ease the energy down."};
+  if(a.n===b.n&&a.l!==b.l)return{label:"flip A/B",energy:1,desc:"Relative major/minor — same notes, new mood."};
+  if(a.l===b.l&&dn===2)return{label:"energy boost",energy:2,desc:"The classic +2 — the crowd feels this one."};
+  return{label:"wild jump",energy:3,desc:"Outside the basic moves — audition by ear first."};
+}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+  var wheel=document.getElementById('mx-wheel'),selEl=document.getElementById('mx-sel'),
+      keyName=document.getElementById('mx-keyname'),nextEl=document.getElementById('mx-next'),
+      pathEl=document.getElementById('mx-path'),energyEl=document.getElementById('mx-energy'),
+      autoB=document.getElementById('mx-auto'),clearB=document.getElementById('mx-clear'),
+      copyB=document.getElementById('mx-copy'),startSel=document.getElementById('mx-start');
+  if(!wheel||!pathEl)return;
+  var NS="http://www.w3.org/2000/svg";
+  var selected="8A",path=["8A"];
+  function pol(cx,cy,r,a){a=(a-90)*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];}
+  function wedge(r0,r1,i){
+    var a0=i*30,a1=(i+1)*30;
+    var p0=pol(200,200,r1,a0),p1=pol(200,200,r1,a1),p2=pol(200,200,r0,a1),p3=pol(200,200,r0,a0);
+    var large=(a1-a0)>180?1:0;
+    return "M"+p0[0].toFixed(1)+","+p0[1].toFixed(1)+" A"+r1+","+r1+" 0 "+large+" 1 "+p1[0].toFixed(1)+","+p1[1].toFixed(1)+
+      " L"+p2[0].toFixed(1)+","+p2[1].toFixed(1)+" A"+r0+","+r0+" 0 "+large+" 0 "+p3[0].toFixed(1)+","+p3[1].toFixed(1)+" Z";
+  }
+  function drawWheel(){
+    var comp=camelotCompatible(selected);
+    wheel.innerHTML='';
+    var rings=[{l:"B",r0:128,r1:188},{l:"A",r0:66,r1:126}];
+    rings.forEach(function(rg){
+      for(var i=0;i<12;i++){
+        var code=(i+1)+rg.l;
+        var g=document.createElementNS(NS,"g");
+        var pa=document.createElementNS(NS,"path");
+        pa.setAttribute("d",wedge(rg.r0,rg.r1,i));
+        var cls="mx-w";
+        if(code===selected)cls+=" sel";
+        else if(code===comp.boost)cls+=" boost";
+        else if(comp.matches.indexOf(code)>=0)cls+=" comp";
+        pa.setAttribute("class",cls);
+        pa.style.cursor="pointer";
+        (function(cd){pa.addEventListener("click",function(){selectKey(cd);});})(code);
+        var mid=pol(200,200,(rg.r0+rg.r1)/2,i*30+15);
+        var tx=document.createElementNS(NS,"text");
+        tx.setAttribute("x",mid[0].toFixed(1));tx.setAttribute("y",(mid[1]+5).toFixed(1));
+        tx.setAttribute("text-anchor","middle");tx.setAttribute("class","mx-wt"+(code===selected?" s":""));
+        tx.textContent=code;tx.style.pointerEvents="none";
+        g.appendChild(pa);g.appendChild(tx);wheel.appendChild(g);
+      }
+    });
+    var c=document.createElementNS(NS,"circle");
+    c.setAttribute("cx",200);c.setAttribute("cy",200);c.setAttribute("r",60);c.setAttribute("class","mx-c");
+    var t1=document.createElementNS(NS,"text");
+    t1.setAttribute("x",200);t1.setAttribute("y",196);t1.setAttribute("text-anchor","middle");t1.setAttribute("class","mx-ct");t1.textContent=selected;
+    var t2=document.createElementNS(NS,"text");
+    t2.setAttribute("x",200);t2.setAttribute("y",216);t2.setAttribute("text-anchor","middle");t2.setAttribute("class","mx-ck");t2.textContent=MX_KEYS[selected];
+    wheel.appendChild(c);wheel.appendChild(t1);wheel.appendChild(t2);
+  }
+  function selectKey(code){
+    selected=code;
+    var comp=camelotCompatible(code);
+    selEl.textContent=code;keyName.textContent=MX_KEYS[code];
+    nextEl.innerHTML=comp.matches.concat([comp.boost]).map(function(k){
+      var mv=mxMoveType(code,k);
+      return '<button class="mx-nb'+(k===comp.boost?' b':'')+'" data-k="'+k+'" type="button"><b>'+k+'</b><span>'+MX_KEYS[k]+'</span><em>'+mv.label+'</em></button>';
+    }).join('');
+    var btns=nextEl.querySelectorAll('.mx-nb');
+    for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){addStep(this.getAttribute('data-k'));});}
+    drawWheel();
+  }
+  function addStep(code){
+    path.push(code);selected=code;renderPath();selectKey(code);
+  }
+  function renderPath(){
+    var tot=0,rows=[];
+    for(var i=0;i<path.length;i++){
+      var mv=i===0?null:mxMoveType(path[i-1],path[i]);
+      if(mv)tot+=mv.energy;
+      rows.push('<div class="mx-step"><span class="mx-sn">'+(i+1)+'</span>'+
+        '<span class="mx-sc"><b>'+path[i]+'</b> '+MX_KEYS[path[i]]+'</span>'+
+        (mv?'<span class="mx-mv e'+mv.energy+'">'+mv.label+'</span>':'<span class="mx-mv e0">start</span>')+'</div>');
+    }
+    pathEl.innerHTML=rows.join('');
+    var lvl=tot===0?"warming up":tot<=3?"smooth cruise":tot<=6?"rising energy":"peak-time drive";
+    energyEl.innerHTML='<div class="mx-ebar"><span style="width:'+Math.min(100,tot*9)+'%"></span></div><span class="mx-et">'+tot+' energy &middot; '+lvl+'</span>';
+  }
+  if(autoB)autoB.addEventListener('click',function(){
+    var comp=camelotCompatible(selected);
+    var pool=comp.matches.concat([comp.boost]);
+    path=[selected];
+    for(var i=0;i<7;i++){
+      var nxt=pool[Math.floor(Math.random()*pool.length)];
+      path.push(nxt);
+      pool=camelotCompatible(nxt).matches.concat([camelotCompatible(nxt).boost]);
+    }
+    selected=path[path.length-1];renderPath();selectKey(selected);
+  });
+  if(clearB)clearB.addEventListener('click',function(){path=[selected];renderPath();});
+  if(copyB)copyB.addEventListener('click',function(){
+    var lines=path.map(function(k,i){
+      var mv=i===0?"start":mxMoveType(path[i-1],k).label;
+      return (i+1)+". "+k+" ("+MX_KEYS[k]+") — "+mv;
+    });
+    if(navigator.clipboard)navigator.clipboard.writeText("MixPath set plan:\n"+lines.join("\n"));
+    copyB.textContent="Copied!";setTimeout(function(){copyB.textContent="Copy set plan";},1600);
+  });
+  if(startSel){
+    var opts=[];for(var n=1;n<=12;n++){opts.push(n+"A");opts.push(n+"B");}
+    startSel.innerHTML=opts.map(function(c){return '<option value="'+c+'"'+(c==="8A"?" selected":"")+'>'+c+" — "+MX_KEYS[c]+"</option>";}).join("");
+    startSel.addEventListener("change",function(){path=[startSel.value];selectKey(startSel.value);renderPath();});
+  }
+  selectKey("8A");renderPath();
+});}
+
+</script>
+</body>
+</html>
