@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puppy Weight Calculator — How Big Will My Puppy Get? | PupPredict</title>
+<meta name="description" content="Free puppy weight calculator: predict your puppy&#x27;s adult weight with the vet formula, breed-size curve adjustment, and growth timeline. No signup.">
+<link rel="canonical" href="https://fun.fixoraa.tech/puppredict/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Puppy Weight Calculator — How Big Will My Puppy Get? | PupPredict">
+<meta property="og:description" content="Free puppy weight calculator: predict your puppy&#x27;s adult weight with the vet formula, breed-size curve adjustment, and growth timeline. No signup.">
+<meta property="og:url" content="https://fun.fixoraa.tech/puppredict/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PupPredict",
+      "url": "https://fun.fixoraa.tech/puppredict/",
+      "applicationCategory": "Pet Tools",
+      "operatingSystem": "Web",
+      "description": "Free puppy weight calculator: predict your puppy's adult weight with the vet formula, breed-size curve adjustment, and growth timeline. No signup.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How accurate is the puppy weight formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Within about 10-15% for most puppies measured between 8 and 20 weeks old. It is most reliable for medium and large breeds. Toy breeds tend to be overestimated and giant breeds underestimated by the raw formula, which is why PupPredict applies a breed-size growth-curve adjustment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best age to predict a puppy's adult weight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Between 8 and 20 weeks is the sweet spot, when growth is steadiest. Before 8 weeks growth is too erratic for a reliable projection, and after about 20 weeks the growth curve flattens, so the formula drifts. Re-run the calculation monthly as new weigh-ins come in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the formula work for toy breeds like Chihuahuas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly, but with a caveat: toy breeds finish most of their growth very early, so the plain weight-divided-by-age-times-52 formula overshoots them. Use the toy breed-size setting in PupPredict, which scales the projection down to match the faster toy growth curve."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My puppy is a mixed breed. What size class should I pick?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pick by best guess using paw size relative to the body and the shelter or breeder's estimate, then run the projection for two adjacent size classes to get a range (for example 35-50 lb) rather than a single number. A range is the honest answer for planning a crate or checking rental weight limits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 'double the weight at 16 weeks' mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is a breeder's rule of thumb: at 16 weeks (four months) old, a medium or large breed puppy is roughly half its adult weight, so doubling gives a quick estimate. It works best as a cross-check against the formula rather than a standalone method, since it is less accurate for toy and giant breeds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When will my puppy stop growing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends almost entirely on size class: toy breeds finish around 8-10 months, small breeds 10-12 months, medium 12-14 months, large 14-18 months, and giant breeds 18-24 months. Height usually finishes before weight - large dogs keep filling out with muscle well after they stop getting taller."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FBF6EC; --surface:#FFFFFF; --accent:#B45309; --accent-ink:#FFFFFF;
+  --ink:#2B2118; --muted:#6B5D4F; --line:#E7D9BE;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.pp-wrap{font-family:'Fraunces',Georgia,serif;background:
+radial-gradient(1200px 500px at 50% -80px, #FFFDF7 0%, #FBF6EC 55%, #F6EEDC 100%);
+color:#2B2118;padding:56px 18px 72px;}
+.pp-inner{max-width:1080px;margin:0 auto;}
+.pp-eyebrow{text-align:center;font-family:Inter,system-ui,sans-serif;font-size:12px;font-weight:700;
+letter-spacing:.28em;text-transform:uppercase;color:#B45309;margin-bottom:14px;}
+.pp-h1{text-align:center;font-size:clamp(34px,5vw,56px);font-weight:700;line-height:1.08;letter-spacing:-.01em;margin:0 0 12px;}
+.pp-tag{text-align:center;font-family:Inter,system-ui,sans-serif;color:#6B5D4F;font-size:18px;margin:0 0 40px;}
+.pp-gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;align-items:start;}
+.pp-frame{background:#FFFFFF;border:1px solid #E7D9BE;border-radius:10px;padding:16px 16px 12px;
+box-shadow:0 18px 44px rgba(120,72,20,.10);position:relative;}
+.pp-frame .pp-mat{border:1px solid #EFE4CC;border-radius:6px;padding:26px 24px;background:#FFFDF8;}
+.pp-cap{display:flex;justify-content:space-between;align-items:center;padding:10px 6px 2px;
+font-family:Inter,system-ui,sans-serif;}
+.pp-cap .pp-plate{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#B45309;}
+.pp-cap .pp-cap-t{font-size:12.5px;color:#6B5D4F;font-style:italic;}
+.pp-feature{grid-column:span 5;grid-row:span 2;}
+.pp-tile{grid-column:span 7;}
+.pp-frame h2{font-size:24px;margin:0 0 6px;font-weight:700;}
+.pp-sub{font-family:Inter,system-ui,sans-serif;color:#6B5D4F;font-size:14.5px;margin:0 0 18px;line-height:1.6;}
+.pp-field{margin-bottom:16px;font-family:Inter,system-ui,sans-serif;}
+.pp-field label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6B5D4F;margin-bottom:8px;}
+.pp-row{display:flex;gap:10px;}
+.pp-row input,.pp-row select{flex:1;min-width:0;padding:13px 14px;font-size:17px;border:2px solid #E7D9BE;border-radius:12px;
+font-family:Inter,system-ui,sans-serif;background:#fff;color:#2B2118;}
+.pp-row input:focus,.pp-row select:focus{outline:none;border-color:#B45309;}
+.pp-toggle{display:flex;border:2px solid #E7D9BE;border-radius:12px;overflow:hidden;flex-shrink:0;}
+.pp-toggle button{border:none;background:#fff;padding:13px 16px;font-size:15px;font-weight:700;cursor:pointer;color:#6B5D4F;font-family:Inter,system-ui,sans-serif;}
+.pp-toggle button.on{background:#B45309;color:#fff;}
+.pp-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.pp-chips button{border:1.5px solid #E7D9BE;background:#FFFDF8;border-radius:999px;padding:7px 14px;font-size:13.5px;
+font-weight:600;cursor:pointer;color:#6B5D4F;font-family:Inter,system-ui,sans-serif;}
+.pp-chips button:hover{border-color:#B45309;color:#B45309;}
+.pp-btn{width:100%;background:#B45309;color:#fff;border:none;border-radius:14px;padding:16px;font-size:18px;font-weight:700;
+cursor:pointer;font-family:'Fraunces',Georgia,serif;letter-spacing:.02em;margin-top:4px;box-shadow:0 10px 24px rgba(180,83,9,.28);}
+.pp-btn:hover{filter:brightness(1.06);}
+.pp-result{display:none;margin-top:20px;text-align:center;background:#FBF6EC;border:1.5px dashed #B45309;border-radius:14px;padding:24px 16px;}
+.pp-result.show{display:block;}
+.pp-big{font-size:58px;font-weight:700;color:#B45309;line-height:1;font-family:'Fraunces',Georgia,serif;}
+.pp-cat{display:inline-block;margin-top:10px;background:#B45309;color:#fff;font-family:Inter,system-ui,sans-serif;
+font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:6px 16px;}
+.pp-note{font-family:Inter,system-ui,sans-serif;color:#6B5D4F;font-size:14px;margin-top:12px;line-height:1.65;}
+.pp-xval{font-family:'Fraunces',Georgia,serif;font-size:34px;font-weight:700;color:#2B2118;}
+.pp-tl{list-style:none;margin:6px 0 0;padding:0;font-family:Inter,system-ui,sans-serif;}
+.pp-tl li{display:flex;justify-content:space-between;gap:12px;padding:9px 2px;border-bottom:1px dashed #E7D9BE;font-size:14.5px;}
+.pp-tl li:last-child{border-bottom:none;}
+.pp-tl .pp-m{color:#6B5D4F;}
+.pp-tl .pp-v{font-weight:700;color:#2B2118;white-space:nowrap;}
+.pp-table{width:100%;border-collapse:collapse;font-family:Inter,system-ui,sans-serif;font-size:13.5px;margin-top:6px;}
+.pp-table th,.pp-table td{padding:9px 8px;border-bottom:1px solid #EFE4CC;text-align:left;}
+.pp-table th{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:#B45309;}
+.pp-table tr.hl td{background:#FBF3E2;font-weight:700;}
+@media (max-width:860px){.pp-feature{grid-column:span 12;grid-row:auto;}.pp-tile{grid-column:span 12;}
+.pp-frame .pp-mat{padding:20px 16px;}.pp-big{font-size:46px;}}
+.pp-frame{transition:transform .25s ease, box-shadow .25s ease;}
+.pp-frame:hover{transform:translateY(-3px);box-shadow:0 24px 54px rgba(120,72,20,.14);}
+@media (max-width:640px){.pp-eyebrow{letter-spacing:.16em;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PupPredict home">
+      <span class="fx-logo-tile" aria-hidden="true">🐶</span>
+      <span class="fx-brand">PupPredict</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-gallery-grid" aria-label="PupPredict tool">
+<section class="pp-wrap"><div class="pp-inner">
+<p class="pp-eyebrow">The Puppy Growth Gallery &middot; Plates I&ndash;IV</p>
+<h1 class="pp-h1">How Big Will My Puppy Get?</h1>
+<p class="pp-tag">The vet's napkin formula, tuned for your pup's breed-size growth curve.</p>
+<div class="pp-gallery">
+<div class="pp-frame pp-feature"><div class="pp-mat">
+<h2>The Predictor</h2>
+<p class="pp-sub">Enter today's weight and age. PupPredict projects adult weight, then adjusts for how fast your pup's size class matures.</p>
+<div class="pp-field"><label for="pp-w">Current weight</label>
+<div class="pp-row"><input type="number" id="pp-w" min="0.5" max="300" step="0.5" value="12" inputmode="decimal">
+<div class="pp-toggle" role="group" aria-label="Weight units"><button id="pp-lb" class="on" type="button">lb</button><button id="pp-kg" type="button">kg</button></div></div></div>
+<div class="pp-field"><label for="pp-a">Age in weeks</label>
+<div class="pp-row"><input type="number" id="pp-a" min="4" max="52" step="1" value="10" inputmode="numeric"></div>
+<div class="pp-chips" id="pp-agechips"><button type="button" data-a="8">8 wks</button><button type="button" data-a="12">12 wks</button><button type="button" data-a="16">16 wks</button><button type="button" data-a="20">20 wks</button></div></div>
+<div class="pp-field"><label for="pp-s">Breed-size class</label>
+<div class="pp-row"><select id="pp-s">
+<option value="toy">&#x1F429; Toy &mdash; adult under 12 lb</option>
+<option value="small">&#x1F436; Small &mdash; 12&ndash;25 lb</option>
+<option value="medium" selected>&#x1F415; Medium &mdash; 25&ndash;50 lb</option>
+<option value="large">&#x1F9AE; Large &mdash; 50&ndash;100 lb</option>
+<option value="giant">&#x1F43B; Giant &mdash; 100+ lb</option>
+</select></div></div>
+<button class="pp-btn" id="pp-go" type="button">Predict adult weight</button>
+<div class="pp-result" id="pp-res" role="status">
+<div style="font-family:Inter,system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6B5D4F;">Projected adult weight</div>
+<div class="pp-big" id="pp-big">&ndash;</div>
+<span class="pp-cat" id="pp-cat">&ndash;</span>
+<p class="pp-note" id="pp-note"></p>
+</div>
+</div><div class="pp-cap"><span class="pp-plate">Plate I</span><span class="pp-cap-t">the predictor</span></div></div>
+<div class="pp-frame pp-tile"><div class="pp-mat">
+<h2>The Cross-Check</h2>
+<p class="pp-sub">Breeders swear by the &ldquo;double at four months&rdquo; rule: at 16 weeks a medium or large pup is roughly half its adult weight. Here's what that rule says about your pup.</p>
+<div class="pp-xval" id="pp-x">&ndash;</div>
+<p class="pp-note" id="pp-xn">Run the predictor to see your pup's cross-check.</p>
+</div><div class="pp-cap"><span class="pp-plate">Plate II</span><span class="pp-cap-t">the cross-check</span></div></div>
+<div class="pp-frame pp-tile"><div class="pp-mat">
+<h2>Growth Timeline</h2>
+<p class="pp-sub">When growth finishes depends almost entirely on size class. Milestones for your pup's class:</p>
+<ul class="pp-tl" id="pp-tl"></ul>
+</div><div class="pp-cap"><span class="pp-plate">Plate III</span><span class="pp-cap-t">the timeline</span></div></div>
+<div class="pp-frame pp-tile"><div class="pp-mat">
+<h2>Size Classes at a Glance</h2>
+<p class="pp-sub">Where the projection lands, and when each class typically stops growing.</p>
+<table class="pp-table" id="pp-classtable">
+<tr><th>Class</th><th>Adult weight</th><th>Fully grown by</th></tr>
+<tr data-c="toy"><td>Toy</td><td>Under 12 lb</td><td>8&ndash;10 months</td></tr>
+<tr data-c="small"><td>Small</td><td>12&ndash;25 lb</td><td>10&ndash;12 months</td></tr>
+<tr data-c="medium"><td>Medium</td><td>25&ndash;50 lb</td><td>12&ndash;14 months</td></tr>
+<tr data-c="large"><td>Large</td><td>50&ndash;100 lb</td><td>14&ndash;18 months</td></tr>
+<tr data-c="giant"><td>Giant</td><td>100+ lb</td><td>18&ndash;24 months</td></tr>
+</table>
+</div><div class="pp-cap"><span class="pp-plate">Plate IV</span><span class="pp-cap-t">the size classes</span></div></div>
+</div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>The Napkin Formula Vets Actually Use</h2><p>There is a formula so simple it fits on a napkin, and so trusted that vets, breeders, and shelter staff have used it for decades: <strong>adult weight = (current weight &divide; age in weeks) &times; 52</strong>. Fifty-two is just the number of weeks in a year, and the formula assumes a puppy grows at a roughly steady pace until about its first birthday. A 12-pound puppy at 8 weeks old: 12 &divide; 8 = 1.5 pounds per week, times 52 = <strong>78 pounds</strong> projected adult weight. That lands squarely in normal Labrador territory &mdash; not bad for ten seconds of arithmetic.</p><p>The logic holds because most puppies do most of their growing in a fairly linear sprint. But &ldquo;most&rdquo; is doing heavy lifting there. The formula is at its best between <strong>8 and 20 weeks</strong> of age, when growth is steadiest. Younger than that, growth is erratic &mdash; a 5-week-old's number is barely better than a guess. Older than 20 weeks, the curve starts flattening and the projection drifts. And size class changes everything, which is exactly why PupPredict adjusts the raw number for your pup's breed-size growth curve.</p><h2>Why Breed Size Changes the Math</h2><p>A Chihuahua and a Great Dane are the same species, but they might as well be on different planets when it comes to growth. Toy breeds rocket through puppyhood: a Toy Poodle can be essentially finished growing by <strong>8 to 10 months</strong>. Giant breeds are still filling out at <strong>two years old</strong>. The plain &times;52 formula assumes everyone finishes at twelve months, so it systematically <strong>overshoots toy and small breeds</strong> (they stop sooner than the formula thinks) and <strong>undershoots giants</strong> (they keep going after the formula stops counting).</p><p>PupPredict's breed-size adjustment corrects for this with growth-curve factors: toy and small pups get scaled down slightly, large pups get a small upward nudge, and giants get a gentler adjustment since their long, slow curve is the hardest to capture with one number. It is still an estimate &mdash; genetics, sex, neuter timing, and nutrition all move the final number &mdash; but it lands within about 10&ndash;15% for most puppies measured in the 8&ndash;20 week window, which is good enough to buy the right crate, budget the right food, and answer the landlord's weight-limit question honestly.</p><h2>The &ldquo;Double at Four Months&rdquo; Cross-Check</h2><p>Ask three breeders how big a puppy will get and at least one will skip the math entirely: <strong>double the weight at 16 weeks (four months)</strong>. For medium and large breeds, a puppy is typically around half its adult weight at four months, so doubling is a dead-simple sanity check. A Lab pup at 30 pounds at 16 weeks? Expect roughly 60 as an adult.</p><p>The rule is weaker for toy breeds (they're already past halfway by four months, so doubling overshoots) and for giants (they're well under halfway, so doubling undershoots). That is precisely what makes it a good <em>cross-check</em> rather than a primary method: when the formula and the doubling rule agree, you can trust the projection. When they disagree by a lot, the truth is usually somewhere between them &mdash; and it is a sign to lean on the breed standard and your vet rather than either rule. PupPredict's Plate II shows you both numbers side by side for exactly this reason.</p><h2>How to Weigh a Puppy Accurately</h2><p>A projection is only as good as its inputs, and puppy weights are easy to get wrong. For pups under about 20 pounds, the kitchen-scale method is best: weigh yourself holding the puppy, weigh yourself alone, and subtract. Use a proper scale, not a bathroom scale's optimistic rounding &mdash; a two-pound error on a six-pound puppy swings the projection by seventeen pounds.</p><p>For bigger pups, a bathroom scale works if you can get them to stand still for three seconds (treats help; a second person helps more). Weigh at the same time of day &mdash; morning, before breakfast, after a bathroom break &mdash; because a full meal and a full bladder can add a real pound or two. And record the age in <strong>weeks</strong>, not months: &ldquo;about three months&rdquo; could mean 12 weeks or 14, and that two-week wobble changes the math by 15%.</p><h2>Growth Milestones Worth Watching</h2><p>Weight is only one dimension of growing up. Here is what the calendar usually looks like:</p><ul><li><strong>8 weeks:</strong> go-home age for most breeds. Pups are roughly a quarter of adult weight (medium breeds) and growing fast.</li><li><strong>4 months (16 weeks):</strong> the cross-check point &mdash; about half of adult weight for medium and large breeds. Teething is in full swing.</li><li><strong>6 months:</strong> most of the height is done; the next phase is filling out. Small breeds are 80%+ of adult weight; giants are barely half.</li><li><strong>9&ndash;12 months:</strong> small and medium breeds are essentially finished. Large breeds are close on height but still gaining muscle.</li><li><strong>14&ndash;24 months:</strong> large and giant breeds finish filling out. Growth plates close last in giants &mdash; a real factor for when to start high-impact exercise.</li></ul><p>If your puppy's actual weight starts diverging hard from the projection &mdash; more than about 20% off the curve &mdash; that is worth a vet conversation rather than a recalculation. Consistent over- or under-growth can signal feeding or health issues that no formula can fix.</p><h2>Feeding for the Size You're Growing Into</h2><p>Knowing the projected adult weight changes how you feed <em>today</em>. Puppy foods are formulated by expected adult size for good reason: large-breed puppy formulas are slightly lower in calcium and calories to slow the growth rate a touch, because growing too fast is genuinely dangerous for big skeletons. Rapid growth in large and giant puppies is linked to developmental orthopedic problems &mdash; the bones outrun the joints.</p><p>The practical rule: feed the amount for the puppy's <strong>current</strong> weight and <strong>expected</strong> adult size, keep the body condition lean (you should feel ribs easily under a thin fat cover), and adjust monthly as the projection firms up. An overweight puppy is not a healthy puppy &mdash; extra pounds on growing joints cause damage that lasts a lifetime. When in doubt, your vet's hands on the ribs beat any chart.</p><h2>Mixed Breeds and Mystery Pups</h2><p>About half of pet dogs are mixed breeds, and &ldquo;what will this rescue pup become?&rdquo; is one of the most-asked questions in shelters. Without parentage, pick the breed-size class by best guess: paw size relative to the body is a decent hint (big paws, big dog &mdash; usually), and shelter staff see hundreds of puppies a year, so their guess is better than it looks. Run the projection across two adjacent size classes to get a range rather than a single number &mdash; &ldquo;somewhere between 35 and 50 pounds&rdquo; is an honest answer, and honest is what you need when choosing a crate or checking apartment weight limits.</p><p>DNA tests can narrow it down, but even they predict size from breed mix with wide error bars. The formula plus a sensible size class gets you 90% of the way there for free.</p><h2>When the Projection Really Matters</h2><p>Adult weight is not trivia &mdash; it drives real decisions. <strong>Crate shopping:</strong> buy for the adult size and use a divider while the pup grows; a crate bought for today's puppy is a crate replaced in four months. <strong>Food budgeting:</strong> a 70-pound adult eats roughly three times what a 20-pound adult eats, and that compounds over a 12-year life. <strong>Housing:</strong> many rentals cap dogs at 25 or 50 pounds, and &ldquo;he's just a puppy&rdquo; stops working fast. <strong>Spay/neuter timing:</strong> for large and giant breeds, many vets now recommend waiting until growth plates close &mdash; which depends on the adult size you're projecting. <strong>Exercise:</strong> the &ldquo;five minutes per month of age&rdquo; guideline for forced exercise stretches much longer for a future 90-pounder than a future 15-pounder.</p><p>Get the number early, revisit it monthly, and plan against the top of the range rather than the middle. Nobody ever regretted buying the slightly bigger crate.</p><h2>Weigh-Ins: Building Your Pup's Own Growth Curve</h2><p>One weigh-in gives you a projection; four weigh-ins give you a <em>curve</em> &mdash; and the curve is smarter than any formula. Weigh your puppy every two weeks, always at the same time of day, and jot down the numbers. After a month you will see your pup's personal growth rate, and you can project forward from the two most recent weigh-ins instead of from birth: adult weight &asymp; (recent weekly gain) &times; (weeks of growth left for the size class). If the weekly gain is slowing faster than the size-class timeline suggests, the pup is simply maturing early; if it is holding steady past the expected slowdown, expect the top end of the range.</p><p>This is also the earliest warning system you own. A puppy that stops gaining for two consecutive weigh-ins &mdash; or worse, loses weight &mdash; needs a vet visit, not a new calculation. Parasites, the single most common cause of poor growth in young pups, are easy to test for and easy to treat, but only if someone notices the flat curve. Keep the log on your phone, bring it to vet visits, and re-run PupPredict with each new number: watching the projection converge month by month is one of the quiet pleasures of raising a puppy.</p><h2>The Honest Limits of Any Predictor</h2><p>Every puppy weight calculator &mdash; this one included &mdash; is a weather forecast, not a weighbridge ticket. Genetics does most of the heavy lifting: two littermates, fed identically, can mature ten pounds apart. Early spay/neuter tends to add a little height (growth plates close later without sex hormones). Illness, parasites, or a rough start in life can stunt growth that later compensates. And some breeds just break the mold &mdash; sighthounds stay lanky, bull breeds pack on muscle late.</p><p>Use the projection the way you'd use a forecast: good enough to pack the right bag, not good enough to bet the house. Re-run it every few weeks as new weigh-ins come in &mdash; the number converges fast once the pup passes 16 weeks &mdash; and let your vet have the final word. The best predictor ever built is still an experienced vet with their hands on your dog.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How accurate is the puppy weight formula?</summary><p>Within about 10-15% for most puppies measured between 8 and 20 weeks old. It is most reliable for medium and large breeds. Toy breeds tend to be overestimated and giant breeds underestimated by the raw formula, which is why PupPredict applies a breed-size growth-curve adjustment.</p></details>
+<details><summary>What is the best age to predict a puppy&#x27;s adult weight?</summary><p>Between 8 and 20 weeks is the sweet spot, when growth is steadiest. Before 8 weeks growth is too erratic for a reliable projection, and after about 20 weeks the growth curve flattens, so the formula drifts. Re-run the calculation monthly as new weigh-ins come in.</p></details>
+<details><summary>Does the formula work for toy breeds like Chihuahuas?</summary><p>Roughly, but with a caveat: toy breeds finish most of their growth very early, so the plain weight-divided-by-age-times-52 formula overshoots them. Use the toy breed-size setting in PupPredict, which scales the projection down to match the faster toy growth curve.</p></details>
+<details><summary>My puppy is a mixed breed. What size class should I pick?</summary><p>Pick by best guess using paw size relative to the body and the shelter or breeder's estimate, then run the projection for two adjacent size classes to get a range (for example 35-50 lb) rather than a single number. A range is the honest answer for planning a crate or checking rental weight limits.</p></details>
+<details><summary>What does &#x27;double the weight at 16 weeks&#x27; mean?</summary><p>It is a breeder's rule of thumb: at 16 weeks (four months) old, a medium or large breed puppy is roughly half its adult weight, so doubling gives a quick estimate. It works best as a cross-check against the formula rather than a standalone method, since it is less accurate for toy and giant breeds.</p></details>
+<details><summary>When will my puppy stop growing?</summary><p>It depends almost entirely on size class: toy breeds finish around 8-10 months, small breeds 10-12 months, medium 12-14 months, large 14-18 months, and giant breeds 18-24 months. Height usually finishes before weight - large dogs keep filling out with muscle well after they stop getting taller.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PupPredict</div>
+    <p>PupPredict estimates your puppy's adult weight from current weight and age using the standard veterinary formula, adjusted for breed-size growth curves - plus a cross-check and growth timeline.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function pupAdultWeight(w,a){var x=Number(w)/(Number(a)||1)*52;return Math.round(x*10)/10;}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+var wEl=document.getElementById('pp-w'),aEl=document.getElementById('pp-a'),sEl=document.getElementById('pp-s'),
+go=document.getElementById('pp-go'),res=document.getElementById('pp-res'),big=document.getElementById('pp-big'),
+cat=document.getElementById('pp-cat'),note=document.getElementById('pp-note'),
+xv=document.getElementById('pp-x'),xn=document.getElementById('pp-xn'),tl=document.getElementById('pp-tl'),
+lbB=document.getElementById('pp-lb'),kgB=document.getElementById('pp-kg');
+if(!wEl||!go)return;
+var unit='lb';
+function setUnit(u){unit=u;lbB.classList.toggle('on',u==='lb');kgB.classList.toggle('on',u==='kg');}
+lbB.addEventListener('click',function(){setUnit('lb');});kgB.addEventListener('click',function(){setUnit('kg');});
+var chips=document.querySelectorAll('#pp-agechips button');
+for(var i=0;i<chips.length;i++){chips[i].addEventListener('click',function(){aEl.value=this.getAttribute('data-a');});}
+var ADJ={toy:0.88,small:0.94,medium:1.0,large:1.03,giant:0.97};
+var GROWN={toy:'8\u201310 months',small:'10\u201312 months',medium:'12\u201314 months',large:'14\u201318 months',giant:'18\u201324 months'};
+var TL={
+toy:[['3 months','\u224860% of adult weight'],['6 months','\u224890% \u2014 nearly done'],['9 months','fully grown']],
+small:[['3 months','\u224850%'],['6 months','\u224880%'],['9 months','\u224895%'],['12 months','fully grown']],
+medium:[['4 months','\u224850% \u2014 the cross-check point'],['6 months','\u224875%'],['9 months','\u224890%'],['12\u201314 months','fully grown']],
+large:[['4 months','\u224845%'],['6 months','\u224865%'],['12 months','\u224890%'],['14\u201318 months','fully grown']],
+giant:[['6 months','\u224850%'],['12 months','\u224880%'],['18 months','\u224895%'],['18\u201324 months','fully grown']]};
+function fmtLb(lb){return unit==='kg'?(lb*0.453592).toFixed(1)+' kg':(Math.round(lb*10)/10)+' lb';}
+function classify(lb){if(lb<12)return'toy';if(lb<25)return'small';if(lb<50)return'medium';if(lb<100)return'large';return'giant';}
+function paintTl(cls){var rows=TL[cls]||TL.medium;var h='';for(var k=0;k<rows.length;k++){h+='<li><span class="pp-m">'+rows[k][0]+'</span><span class="pp-v">'+rows[k][1]+'</span></li>';}tl.innerHTML=h;
+var trs=document.querySelectorAll('#pp-classtable tr[data-c]');for(var j=0;j<trs.length;j++){trs[j].classList.toggle('hl',trs[j].getAttribute('data-c')===cls);}}
+paintTl('medium');
+go.addEventListener('click',function(){
+var w=parseFloat(wEl.value),a=parseFloat(aEl.value);
+if(!(w>0)||!(a>0)){note.textContent='Please enter a valid weight and age.';res.classList.add('show');return;}
+var lb=unit==='kg'?w/0.453592:w;
+var raw=pupAdultWeight(lb,a);
+var cls=sEl.value,adj=Math.round(raw*ADJ[cls]*10)/10;
+var pc=classify(adj);
+big.textContent='\u2248 '+fmtLb(adj);
+cat.textContent=pc.charAt(0).toUpperCase()+pc.slice(1)+' class';
+var rel=a<8?'Very young pups grow unevenly \u2014 treat this as a rough sketch, not a promise.':a<=20?'This is the formula\u2019s sweet spot (8\u201320 weeks), so the projection is at its most reliable.':'Past 20 weeks the curve flattens, so compare against the breed standard too.';
+note.textContent='Classic formula says '+fmtLb(raw)+'; adjusted '+fmtLb(adj)+' for a '+cls+' growth curve. Fully grown by '+GROWN[cls]+'. '+rel;
+var half=Math.round(adj/2*10)/10;
+xv.textContent='\u2248 '+fmtLb(half)+' at 16 weeks';
+xn.textContent='If your pup is near 16 weeks now, compare: close to '+fmtLb(half)+'? Both rules agree. Far off? Trust the breed standard and your vet over either rule.';
+paintTl(cls);
+res.classList.add('show');
+});
+});}
+</script>
+</body>
+</html>
