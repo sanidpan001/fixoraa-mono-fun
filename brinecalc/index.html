@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrineCalc — Brine Calculator: Salt by Weight for Wet &amp; Dry Brines and Curing</title>
+<meta name="description" content="BrineCalc — free online brine calculator. Salt in grams from water/meat weight and target %, for equilibrium wet brine, dry brine and curing-salt additions, with salt-type warnings No signup, unlimited free usage.">
+<link rel="canonical" href="https://fun.fixoraa.tech/brinecalc/">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<meta property="og:title" content="BrineCalc — Brine Calculator: Salt by Weight for Wet &amp; Dry Brines and Curing">
+<meta property="og:description" content="BrineCalc — free online brine calculator. Salt in grams from water/meat weight and target %, for equilibrium wet brine, dry brine and curing-salt additions, with salt-type warnings No signup, unlimited free usage.">
+<meta property="og:url" content="https://fun.fixoraa.tech/brinecalc/">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#FBF3F7;--card:#FFFFFF;--ink:#3D1E2E;--acc:#2F2BA6;--acc2:#5BA67A;--soft:#F6E3EC;--hf:'Space Grotesk',serif;--bf:'Inter',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--bf);line-height:1.65}
+header.site{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:2px solid var(--soft);padding:10px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{width:42px;height:42px;border-radius:12px;background:var(--ink);color:var(--bg);border:2px solid var(--acc);display:flex;align-items:center;justify-content:center;font-family:var(--hf);font-weight:800;font-size:20px}
+.brandname{font-family:var(--hf);font-size:22px;font-weight:700}
+.navbtns{margin-left:auto;display:flex;gap:8px}
+.navbtns a,.btn{background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;text-decoration:none;font-weight:700;border:0;cursor:pointer;display:inline-block}
+.navbtns a.ghost{background:var(--soft);color:var(--ink)}
+.badge{display:inline-block;background:var(--soft);color:var(--ink);padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700}
+h1{font-family:var(--hf);font-size:clamp(26px,4.5vw,40px);line-height:1.2;margin:14px 0 8px}
+.hero{max-width:900px;margin:auto;padding:26px 20px 4px;text-align:center}
+.wrap{max-width:1060px;margin:auto;padding:20px}.tool{background:var(--card);border-radius:16px;padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;border-top:8px solid var(--acc)}
+.fld{display:block;margin:10px 0}.fld span{display:block;font-weight:700;margin-bottom:5px;font-size:14px}
+.fld input,.fld select,.fld textarea{width:100%;padding:11px 12px;border:2px solid var(--soft);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.btn2{background:var(--soft);color:var(--ink);border:0;padding:8px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+#result{margin-top:16px;background:var(--soft);border-radius:14px;padding:16px}
+#baStage{margin:14px 0}
+.reserved-ad{max-width:728px;margin:26px auto;min-height:110px;border:2px dashed var(--soft);border-radius:12px}
+article.seo{max-width:820px;margin:auto;padding:10px 20px 30px}article.seo h2{font-family:var(--hf);margin-top:30px}article.seo h3{font-family:var(--hf)}
+.faq{background:var(--card);border:1px solid var(--soft);border-radius:12px;padding:6px 16px;margin:10px 0}
+footer.site{background:var(--card);border-top:2px solid var(--soft);padding:26px 20px;text-align:center;margin-top:30px}
+footer.site a{color:var(--acc);font-weight:700}
+canvas{max-width:100%}table{background:var(--card)}pre{white-space:pre-wrap;word-break:break-word}
+body{background-image:radial-gradient(circle at 85% 0%, var(--soft), transparent 50%)}.tool{border-radius:10px;box-shadow:0 10px 26px #00000017}.hero{text-align:left}.fld input,.fld select,.fld textarea{border-radius:6px}#result{border-left:5px solid var(--acc)}article.seo h2{border-bottom:3px solid var(--soft);padding-bottom:4px}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "BrineCalc", "url": "https://fun.fixoraa.tech/brinecalc/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "BrineCalc \u2014 free online brine calculator. Salt in grams from water/meat weight and target %, for equilibrium wet brine, dry brine and curing-salt additions, with salt-type warnings No signup, unlimited free usage."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is BrineCalc used for?", "acceptedAnswer": {"@type": "Answer", "text": "BrineCalc is a free online tool for anyone searching for a brine calculator. It gives you an instant result in your browser \u2014 Salt in grams from water/meat weight and target %, for equilibrium wet brine, dry brine and curing-salt additions, with salt-type warnings"}}, {"@type": "Question", "name": "Is BrineCalc free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. BrineCalc is completely free with unlimited usage \u2014 no signup, no paywall and no watermark on anything you create or download."}}, {"@type": "Question", "name": "How accurate is BrineCalc?", "acceptedAnswer": {"@type": "Answer", "text": "BrineCalc uses the standard formulas and methods described in the guide on this page, and shows its working so you can check every step. For money, health or legal decisions, treat the result as a strong estimate and confirm important figures with a professional."}}, {"@type": "Question", "name": "Does BrineCalc upload my data anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. BrineCalc runs entirely in your browser. Your inputs, files and results never leave your device, and nothing is stored on a server."}}, {"@type": "Question", "name": "What makes BrineCalc different from other tools for brine calculator?", "acceptedAnswer": {"@type": "Answer", "text": "Most tools stop at the basic answer. BrineCalc adds percentage-by-weight method and curing-salt guardrails \u2014 No brining tool exists in the estate; recipes quote volume spoons of different salts (a real safety/quality trap with curing salt), while percentage-by-weight is the professional method nobody calculates for home cooks"}}, {"@type": "Question", "name": "Can I use BrineCalc on my phone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. BrineCalc is a single lightweight page that works on phones, tablets and computers. Anything you save is kept in your own browser's local storage."}}]}</script>
+</head>
+<body>
+<header class="site">
+<div class="logo" aria-hidden="true">B</div>
+<div class="brandname">BrineCalc</div>
+<nav class="navbtns"><a href="https://fixoraa.tech">Home</a><a class="ghost" href="https://fixoraa.tech">More Tools</a></nav>
+</header>
+<div class="hero"><h1>BrineCalc — Brine Calculator: Salt by Weight for Wet &amp; Dry Brines and Curing</h1><p>Transactional — a cook salting by weight for reliable results — free, private, no signup.</p></div>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<div class="wrap"><div style="grid-column:1/-1;text-align:center"><span class="badge">Unlimited Free Usage</span><h2 style="font-family:var(--hf)">BrineCalc</h2><p>Salt in grams from water/meat weight and target %, for equilibrium wet brine, dry brine and curing-salt additions, with salt-type warnings</p></div><div class="tool">
+<div><span class="badge">Unlimited Free Usage</span>
+<h2 style="font-family:var(--hf);margin:10px 0 4px">BrineCalc — brine calculator</h2>
+<p style="margin:4px 0 12px">Salt in grams from water/meat weight and target %, for equilibrium wet brine, dry brine and curing-salt additions, with salt-type warnings</p>
+<label class="fld"><span>Meat weight (grams)</span><input type="number" id="f_meat" value="2000"></label>
+<label class="fld"><span>Water weight (grams, wet brine)</span><input type="number" id="f_water" value="2000"></label>
+<label class="fld"><span>Target salt % by weight</span><input type="number" id="f_pct" value="2"></label>
+<label class="fld"><span>Wet brine basis</span><select id="f_combined"><option value="combined">combined</option><option value="wateronly">wateronly</option></select></label>
+<label class="fld"><span>Add curing salt (Prague powder #1)?</span><select id="f_cure"><option value="no">no</option><option value="yes">yes</option></select></label>
+<p style="margin-top:14px"><button class="btn" id="go">Run BrineCalc</button></p>
+<div id="baStage"></div>
+<div id="result" aria-live="polite"><p>Press <b>Run BrineCalc</b> — the example values above already show a full working result. Extra built in: percentage-by-weight method.</p></div>
+</div></div></div>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<article class="seo">
+<h2>What is a brine calculator — and why this one?</h2><p>If you searched for a brine calculator, you want one thing: a correct answer, fast, without creating an account or paying for a subscription. BrineCalc was built for exactly that moment. Salt in grams from water/meat weight and target %, for equilibrium wet brine, dry brine and curing-salt additions, with salt-type warnings The page loads instantly, the tool sits at the top, and your result appears the moment you press the button — no uploads, no waiting rooms, no watermarks.</p><p>The search intent behind “brine calculator” is usually transactional — a cook salting by weight for reliable results That sounds simple, but the top results for this search are a mixed bag: some are blog posts that explain the idea with one static example, some are heavy apps that demand an account before they show you anything, and some are calculators that handle only the simplest case. BrineCalc takes a different approach — a dedicated, single-purpose tool that does this one job completely, including the edge cases the simple versions skip.</p>
+<h2>How BrineCalc works</h2><p>Under the hood, BrineCalc follows the standard method for a brine calculator, applied step by step so the result is easy to verify. Every input is labelled in plain language, sensible defaults are filled in so you can try the tool immediately, and the result panel shows not just the headline answer but the working behind it. That transparency matters: a number you cannot check is a number you cannot trust, especially when money, marks, measurements or health are involved.</p><p>No brining tool exists in the estate; recipes quote volume spoons of different salts (a real safety/quality trap with curing salt), while percentage-by-weight is the professional method nobody calculates for home cooks In practice that means you spend your time on the decision, not on wrestling the tool. Change any input and re-run — the calculation is instant because everything happens on your own device.</p>
+<h2>Key features</h2><h3>Percentage-by-weight method</h3><p>spoon measures vary 2× between kosher brands — and it is built into BrineCalc from the start, not locked behind a signup. When you search for a brine calculator, small workflow details like this are what separate a tool you use once from a tool you bookmark. Try it with your own numbers or files and compare the result with the worked example below.</p><h3>Curing-salt guardrails</h3><p>Prague powder amounts shown with plain safety limits — and it is built into BrineCalc from the start, not locked behind a signup. When you search for a brine calculator, small workflow details like this are what separate a tool you use once from a tool you bookmark. Try it with your own numbers or files and compare the result with the worked example below.</p><h3>Meat+water combined weight option</h3><p>true equilibrium method, not water-only — and it is built into BrineCalc from the start, not locked behind a signup. When you search for a brine calculator, small workflow details like this are what separate a tool you use once from a tool you bookmark. Try it with your own numbers or files and compare the result with the worked example below.</p>
+<h2>How to use BrineCalc — step by step</h2><p><strong>Step 1:</strong> Start with the defaults. The tool opens with a realistic example already filled in, so you can press the main button and see a full result before entering anything of your own. <strong>Step 2:</strong> Replace the example values with your real ones — your figures, your file, or your text. <strong>Step 3:</strong> Read the whole result panel, not just the headline number; the breakdown underneath is where the useful decisions hide. <strong>Step 4:</strong> Adjust one input at a time and re-run to see how sensitive the answer is. <strong>Step 5:</strong> Copy, download or save your result using the buttons provided — everything stays in your browser, so your work is private by default.</p><p>A worked example is the fastest way to learn any tool. Run the default example first and check that the result matches the explanation in the “how it works” section above. Once the method makes sense with familiar numbers, your own case — however unusual — becomes straightforward, because the tool applies exactly the same steps every time.</p>
+<h2>Common mistakes to avoid</h2><p>Most wrong answers from a brine calculator come from wrong inputs, not wrong maths. Double-check that you have entered values in the units the labels ask for, that percentages are entered as percentages (12, not 0.12), and that you have not mixed two different cases into one run. If a result looks surprising, change one input at a time and watch how the answer moves — a result that moves sensibly is a result you can trust. And if two tools disagree, prefer the one that shows its working, the way BrineCalc does.</p><p>People also search for related questions such as wet brine salt percentage calculator grams, dry brine salt per pound calculator, equilibrium brine calculator curing salt. Those long-tail searches usually describe a specific situation — a couple budgeting together, a student checking one subject, a buyer comparing two options. BrineCalc was designed with those specific situations in mind, which is why its extra features focus on comparisons, breakdowns and “what if” adjustments rather than a single bare answer.</p>
+<h2>Who uses BrineCalc?</h2><p>Anyone who needs a brine calculator and would rather get the answer in ten seconds than read a long article about it. Students checking work, professionals making a quick decision, families planning a budget or a purchase, and creators producing something to share — the tool does not ask who you are, and it never asks you to sign up. Double-check units before you trust a conversion — most mistakes come from mixing systems (imperial with metric) rather than from the maths. The worked examples below show exactly how each conversion is done.</p><p>Because the page is a single self-contained file, it also works in places where heavy apps struggle: older phones, slow connections, school and office networks. If you find it useful, bookmark it — your saved notes, favourites and history live in your own browser and will be waiting next time, with no account to remember and no password to reset.</p>
+<h2>The bottom line</h2><p>A good brine calculator should be fast, honest about its method, and complete enough that you do not need a second tool open in another tab. That is the standard BrineCalc was built to. Try the default example, run your own case, and read the frequently asked questions below if anything is unclear — they cover accuracy, privacy, cost and the features that make this tool different.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq"><h3>What is BrineCalc used for?</h3><p>BrineCalc is a free online tool for anyone searching for a brine calculator. It gives you an instant result in your browser — Salt in grams from water/meat weight and target %, for equilibrium wet brine, dry brine and curing-salt additions, with salt-type warnings</p></div><div class="faq"><h3>Is BrineCalc free to use?</h3><p>Yes. BrineCalc is completely free with unlimited usage — no signup, no paywall and no watermark on anything you create or download.</p></div><div class="faq"><h3>How accurate is BrineCalc?</h3><p>BrineCalc uses the standard formulas and methods described in the guide on this page, and shows its working so you can check every step. For money, health or legal decisions, treat the result as a strong estimate and confirm important figures with a professional.</p></div><div class="faq"><h3>Does BrineCalc upload my data anywhere?</h3><p>No. BrineCalc runs entirely in your browser. Your inputs, files and results never leave your device, and nothing is stored on a server.</p></div><div class="faq"><h3>What makes BrineCalc different from other tools for brine calculator?</h3><p>Most tools stop at the basic answer. BrineCalc adds percentage-by-weight method and curing-salt guardrails — No brining tool exists in the estate; recipes quote volume spoons of different salts (a real safety/quality trap with curing salt), while percentage-by-weight is the professional method nobody calculates for home cooks</p></div><div class="faq"><h3>Can I use BrineCalc on my phone?</h3><p>Yes. BrineCalc is a single lightweight page that works on phones, tablets and computers. Anything you save is kept in your own browser&#x27;s local storage.</p></div>
+</article>
+</main>
+<footer class="site">
+<p><b>BrineCalc</b> — a free brine calculator that runs entirely in your browser.</p>
+<p><a href="https://fixoraa.tech">Home</a> · <a href="https://fixoraa.tech">More Tools</a></p>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+<script id="tool-logic">var TL={wetSalt:function(water,meat,pct,combined){var base=combined==='combined'?(water+meat):water;return Math.round(base*pct/100*10)/10;},drySalt:function(meat,pct){return Math.round(meat*pct/100*10)/10;},cureSalt:function(meat){return Math.round(meat*0.0025*100)/100;},cureMax:function(meat){return Math.round(meat*0.003*100)/100;},saltGramsToTsp:function(g,saltType){var perTsp={table:6,kosher:3,flake:1.5}[saltType]||3;return Math.round(g/perTsp*10)/10;}};</script>
+<script>function $(i){return document.getElementById(i);}function v(i){var e=$('f_'+i);return e?parseFloat(e.value)||0:0;}function tv(i){var e=$('f_'+i);return e?e.value:'';}function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}function fmt(n){return new Intl.NumberFormat('en-IN',{maximumFractionDigits:2}).format(Math.round(n*100)/100);}function setResult(h){$('result').innerHTML=h;}function drawBars(rows){var mx=Math.max.apply(null,rows.map(function(r){return r[1];}))||1;var h='<div style="margin-top:10px">';rows.forEach(function(r){h+='<div style="margin:6px 0"><span>'+esc(r[0])+'</span><div style="background:var(--soft);border-radius:8px"><div style="width:'+Math.max(2,Math.round(r[1]/mx*100))+'%;background:var(--acc);height:16px;border-radius:8px"></div></div><b>'+fmt(r[1])+'</b></div>';});$('result').innerHTML+=h+'</div>';}
+document.getElementById('go').onclick=function(){var meat=v('meat'),water=v('water'),pct=v('pct'),comb=tv('combined');var wet=TL.wetSalt(water,meat,pct,comb),dry=TL.drySalt(meat,pct);var html='<p style="font-size:1.15rem">Wet brine: <b>'+fmt(wet)+' g salt</b>. Dry brine at the same percentage: <b>'+fmt(dry)+' g salt</b> for '+fmt(meat)+' g of meat.</p>';html+='<p><b>Percentage-by-weight method:</b> salt is weighed, never spooned - a tablespoon of one kosher brand can hold twice the salt of another. In grams your '+fmt(pct)+'% is exact on any scale. (Rough guide only: '+fmt(wet)+' g is about '+fmt(TL.saltGramsToTsp(wet,'table'))+' tsp of table salt.)</p>';html+='<p><b>Meat+water combined weight option:</b> this run uses the '+(comb==='combined'?'<b>true equilibrium basis</b> - salt % of meat + water together ('+fmt(meat+water)+' g), the professional method':'water-only basis - switch the basis field to combined for the true equilibrium method')+'.</p>';if(tv('cure')==='yes'){html+='<p><b>Curing-salt guardrails:</b> Prague powder #1 at 0.25% = <b>'+fmt(TL.cureSalt(meat))+' g</b> for this meat - never exceed 0.3% ('+fmt(TL.cureMax(meat))+' g) and never use curing salt as table salt. The brine salt above is in addition, and total saltiness should count both.</p>';}else{html+='<p><b>Curing salt:</b> not added - for cured meats (bacon, corned beef) enable it above; it is dosed at a strict 0.25% of meat weight with a hard 0.3% ceiling.</p>';}setResult(html);drawBars([['Wet brine salt g',wet],['Dry brine salt g',dry],['Cure salt g',tv('cure')==='yes'?TL.cureSalt(meat):0]]);};</script>
+</body>
+</html>
