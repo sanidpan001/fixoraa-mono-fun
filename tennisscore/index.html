@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tennis Scoring Explained: Live Score Keeper | TennisScore</title>
+<meta name="description" content="Tennis score keeper with correct love/15/30/40, deuce and advantage logic, set tracking and tiebreak mode. Free sports tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/tennisscore/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Tennis Scoring Explained: Live Score Keeper | TennisScore">
+<meta property="og:description" content="Tennis score keeper with correct love/15/30/40, deuce and advantage logic, set tracking and tiebreak mode. Free sports tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/tennisscore/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "TennisScore",
+      "url": "https://fun.fixoraa.tech/tennisscore/",
+      "applicationCategory": "Sports Tools",
+      "operatingSystem": "Web",
+      "description": "Tennis score keeper with correct love/15/30/40, deuce and advantage logic, set tracking and tiebreak mode. Free sports tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does love mean in tennis scoring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Love means zero \u2014 it likely comes from the French l'oeuf (the egg), for the shape of a zero. The server's score is always called first, so 'fifteen\u2013love' means the server has one point and the receiver has none."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is deuce in tennis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Deuce is the call at 3\u20133 (40\u201340). From deuce, a player must win two consecutive points to take the game: the first point gives 'advantage,' and winning the next point wins the game. Losing after advantage returns the score to deuce."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does advantage scoring work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After deuce, the player who wins the next point has 'advantage' (ad in for the server, ad out for the receiver). If they win the following point, they win the game; if they lose it, the score goes back to deuce. This can repeat indefinitely."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many points do you need to win a tennis game?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At least 4 points with a 2-point margin. At 40\u201330 or 40\u201315, one more point wins; from deuce (3\u20133), you need two in a row. That's why games can run long when players are evenly matched."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a tiebreak in tennis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A tiebreak settles a set at 6\u20136. Points are counted plainly (1, 2, 3\u2026) and the first player to 7 points with a 2-point margin wins the set. Serve rotates every two points after the first, and players switch ends every six points."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are tennis sets and matches scored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A set is won by the first player to 6 games with a 2-game margin (or via tiebreak at 6\u20136). A match is best of 3 sets at most levels, or best of 5 sets in men's Grand Slam singles. In written scores the winner's score always comes first: 6\u20134, 3\u20136, 7\u20135."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F0F2F1; --surface:#FFFFFF; --accent:#052E16; --accent-ink:#FFFFFF;
+  --ink:#23272F; --muted:#5B6472; --line:#D2D9D5;
+  --display:'Archivo Black',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ts-wrap{font-family:'Archivo Black',Inter,system-ui,sans-serif;background:#F0F2F1;color:#23272F;padding:56px 20px 72px;}.ts-hero{max-width:860px;margin:0 auto 34px;text-align:center;}.ts-logo{width:78px;height:78px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,#052E16,#2d7a4f);color:#fff;font-size:38px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(5,46,22,.25);}.ts-hero h1{font-size:clamp(28px,4.6vw,46px);line-height:1.1;margin:0 0 12px;font-weight:400;}.ts-tag{font-size:17px;color:#5B6472;margin:0;font-family:Inter,sans-serif;font-weight:600;}.ts-board{max-width:860px;margin:0 auto;background:#052E16;border-radius:24px;padding:34px;color:#fff;box-shadow:0 24px 60px rgba(5,46,22,.25);}.ts-names{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;}.ts-names input{background:#0b3a20;border:2px solid #2d7a4f;color:#fff;border-radius:12px;padding:12px 14px;font-size:16px;font-weight:700;font-family:Inter,sans-serif;text-align:center;}.ts-score{text-align:center;padding:18px 0 8px;}.ts-gamescore{font-size:64px;letter-spacing:.02em;}.ts-gamescore small{font-size:22px;color:#9fd4b4;font-family:Inter,sans-serif;font-weight:700;}.ts-setrow{display:flex;justify-content:center;gap:26px;margin:10px 0 4px;font-family:Inter,sans-serif;}.ts-setrow div{text-align:center;}.ts-setrow b{font-size:34px;display:block;}.ts-setrow span{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#9fd4b4;font-weight:700;}.ts-pointbtns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 12px;}.ts-pointbtns button{padding:20px;border:none;border-radius:16px;background:#fff;color:#052E16;font-size:19px;font-weight:800;font-family:Inter,sans-serif;cursor:pointer;}.ts-pointbtns button:hover{background:#e6f2ea;}.ts-tools{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:6px;}.ts-tools button,.ts-tools label{padding:10px 18px;border-radius:999px;border:2px solid #2d7a4f;background:transparent;color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:Inter,sans-serif;display:inline-flex;align-items:center;gap:8px;}.ts-tools button:hover{border-color:#fff;}.ts-hist{max-width:860px;margin:18px auto 0;background:#FFFFFF;border:1px solid #D2D9D5;border-radius:20px;padding:26px;}.ts-hist h2{font-size:18px;margin:0 0 4px;font-weight:400;}.ts-hist p{font-family:Inter,sans-serif;color:#5B6472;font-size:13.5px;margin:0 0 12px;}.ts-hist ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-family:Inter,sans-serif;font-size:14.5px;max-height:220px;overflow-y:auto;}.ts-hist li{background:#F0F2F1;border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;}.ts-explain{max-width:860px;margin:18px auto 0;background:#FFFFFF;border:1px solid #D2D9D5;border-radius:20px;padding:26px;font-family:Inter,sans-serif;}.ts-explain h2{font-family:'Archivo Black',sans-serif;font-size:18px;margin:0 0 10px;font-weight:400;}.ts-explain table{width:100%;border-collapse:collapse;font-size:14px;}.ts-explain th,.ts-explain td{padding:9px 8px;border:1px solid #D2D9D5;text-align:left;}.ts-explain th{background:#F0F2F1;}@media(max-width:600px){.ts-gamescore{font-size:48px;}.ts-board{padding:24px 16px;}.ts-names{grid-template-columns:1fr;}.ts-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="TennisScore home">
+      <span class="fx-logo-tile" aria-hidden="true">🎾</span>
+      <span class="fx-brand">TennisScore</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-stat-dash" aria-label="TennisScore tool">
+<section class="ts-wrap"><div class="ts-hero"><div class="ts-logo" aria-hidden="true">🎾</div><h1>Tennis Scoring Explained &amp; Score Keeper</h1><p class="ts-tag">Love, deuce, advantage — scored correctly, every point.</p></div><div class="ts-board"><div class="ts-names"><input id="ts-namea" value="Player A" maxlength="16" aria-label="Player A name"><input id="ts-nameb" value="Player B" maxlength="16" aria-label="Player B name"></div><div class="ts-score"><div class="ts-gamescore"><span id="ts-game">love – love</span></div><div class="ts-setrow"><div><b id="ts-ga">0</b><span>games A</span></div><div><b id="ts-gb">0</b><span>games B</span></div><div><b id="ts-sa">0</b><span>sets A</span></div><div><b id="ts-sb">0</b><span>sets B</span></div></div></div><div class="ts-pointbtns"><button id="ts-pa" type="button">Point — <span id="ts-pan">A</span></button><button id="ts-pb" type="button">Point — <span id="ts-pbn">B</span></button></div><div class="ts-tools"><button id="ts-undo" type="button">Undo point</button><button id="ts-newgame" type="button">New game</button><button id="ts-newmatch" type="button">New match</button><label><input type="checkbox" id="ts-tiebreak" style="accent-color:#2d7a4f;transform:scale(1.3)"> Tiebreak mode</label></div></div><div class="ts-hist"><h2>Point-by-point history</h2><p>Every point is logged with the running score. Undo steps back one point.</p><ul id="ts-log"></ul></div><div class="ts-explain"><h2>How tennis scoring works</h2><table><thead><tr><th>Points won</th><th>Called</th><th>What it means</th></tr></thead><tbody><tr><td>0</td><td>Love</td><td>From French l'oeuf (egg) — zero</td></tr><tr><td>1</td><td>15</td><td>First point</td></tr><tr><td>2</td><td>30</td><td>Second point</td></tr><tr><td>3</td><td>40</td><td>Third point</td></tr><tr><td>3–3</td><td>Deuce</td><td>Tied — win two straight from here</td></tr><tr><td>4–3</td><td>Advantage</td><td>One point ahead after deuce</td></tr></tbody></table></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Tennis Counts So Strangely</h2><p>Every other racket sport counts 1, 2, 3. Tennis counts love, 15, 30, 40 — then abandons numbers entirely for deuce and advantage. The system is a medieval relic that survived because it works dramatically: the scoring creates constant mini-climaxes, and a game can never be won by a single lucky point once it reaches deuce. Understanding the logic takes five minutes; the keeper above handles the arithmetic while you learn.</p><p>The most repeated origin story: the numbers come from a clock face, with points moving the hand 15 minutes at a time — 15, 30, 45. The 45 got shortened to 40 over centuries of shouting across courts, possibly because "forty" is quicker to say than "forty-five" at full volume. "Love" likely descends from the French <em>l'oeuf</em> — the egg — for the zero's eggy shape. "Deuce" comes from <em>à deux</em>, "at two" — two points from the game. Historians argue the details, but the clock theory remains the favourite for a reason: it is the only one that makes the numbers feel inevitable.</p><h2>The Anatomy of a Game</h2><p>A game is won by the first player to take <strong>4 points with a margin of 2</strong>. The calls run:</p><ul><li><strong>0 points — love.</strong> "Fifteen–love" means the server has one point, the receiver none. The server's score is always called first.</li><li><strong>1 point — 15. 2 points — 30. 3 points — 40.</strong> So 2–1 is called "thirty–fifteen."</li><li><strong>3–3 — deuce.</strong> Not "forty–all" (though you will hear it). From here, someone must win <em>two consecutive points</em>.</li><li><strong>4–3 — advantage.</strong> "Advantage server" or "ad in"; "advantage receiver" or "ad out." Win the next point and the game is yours; lose it and it is back to deuce.</li></ul><p>Deuce can cycle indefinitely — some professional games have run to 10+ deuces. This is the scoring system's genius: the closer the players, the longer the tension lasts.</p><h2>Games, Sets and Matches</h2><p>Games stack into <strong>sets</strong>: first to 6 games with a 2-game margin. At 6–6, most formats play a <strong>tiebreak</strong> — first to 7 points (2 clear), counting plain 1, 2, 3. Sets stack into <strong>matches</strong>: best of 3 sets for most tour events and all women's singles; best of 5 for men's Grand Slams. A 6–0 set is a "bagel"; 6–1 a "breadstick." The keeper above tracks games and sets automatically and includes a tiebreak mode toggle.</p><table><thead><tr><th>Level</th><th>Won by</th><th>Example score</th></tr></thead><tbody><tr><td>Point</td><td>Winning a rally</td><td>15, 30, 40…</td></tr><tr><td>Game</td><td>4 points, 2 clear</td><td>—</td></tr><tr><td>Set</td><td>6 games, 2 clear (or tiebreak at 6–6)</td><td>6–4</td></tr><tr><td>Match</td><td>Best of 3 (or 5) sets</td><td>6–4, 3–6, 7–5</td></tr></tbody></table><h2>Serving Rules in Sixty Seconds</h2><p>The server alternates the serve between the deuce court (right) and ad court (left) each point, starting from the deuce court. A serve must land in the diagonally opposite service box; a <strong>let</strong> (serve clips the net and lands in) is replayed without penalty. Two faults in a row — a <strong>double fault</strong> — loses the point. Players alternate serving each game, and in doubles the serving order rotates. None of this affects the score arithmetic, but knowing it stops the most common beginner argument.</p><h2>Strategy Hidden in the Score</h2><p>The score changes optimal play, which is why keeping it correctly matters beyond bookkeeping:</p><ul><li><strong>At 40–love up:</strong> the server can swing freely — three chances to close. Aggression is cheap here.</li><li><strong>At love–40 down:</strong> the returner should take risks; the pressure is entirely on the server.</li><li><strong>At deuce:</strong> first serves become conservative weapons — a double fault at deuce hands the opponent advantage and all the momentum.</li><li><strong>Break point</strong> (receiver at 30–40 or advantage): statistically the highest-leverage point in tennis. Servers win roughly two-thirds of break points saved or lost on nerve alone.</li><li><strong>Tiebreaks:</strong> mini-breaks (winning a point on the opponent's serve) decide them. The player who starts steadier usually wins — going down 0–3 in a tiebreak is recovered less than a third of the time.</li></ul><h2>Keeping Score Without Arguments</h2><p>Recreational tennis runs on trust, so score discipline is etiquette:</p><ul><li><strong>Call the score before every serve.</strong> Server's score first, loudly enough to hear. Most disputes come from two silent points in a row.</li><li><strong>Confirm at deuce.</strong> "Deuce — second deuce" or "ad in" after every point from 3–3 on. Nobody remembers the third deuce correctly.</li><li><strong>Resolve disagreements by replaying the point</strong> when the score genuinely cannot be reconstructed. At club level, goodwill beats correctness.</li><li><strong>Write it down in matches that matter.</strong> The history log in the keeper exists for exactly this — a point-by-point record ends every "wait, was that 30–all or 40–30?" debate.</li></ul><h2>Tiebreak Variations You'll Meet</h2><p>The standard 7-point tiebreak (first to 7, win by 2) settles sets at 6–6 almost everywhere now — even the Grand Slams, which finally standardized after the legendary Isner–Mahut 70–68 final set at Wimbledon 2010 made the case unanswerable. You may still meet the <strong>10-point match tiebreak</strong> (first to 10) used instead of a third set in many doubles and junior events, and the old <strong>advantage final set</strong> (no tiebreak, play until 2 games clear) in a few traditional competitions. The keeper's tiebreak mode counts plain points to 7; for a 10-pointer, just keep tapping past 7.</p><h2>Scoring Lingo Worth Knowing</h2><ul><li><strong>Bagel / breadstick:</strong> winning a set 6–0 / 6–1.</li><li><strong>Golden set:</strong> winning a set without losing a single point — 24 straight points. It has happened only a handful of times in pro history.</li><li><strong>Breadstick, double bagel:</strong> 6–0, 6–0. The ultimate statement.</li><li><strong>Break / hold:</strong> winning / keeping serve games. Matches are usually decided by a handful of breaks.</li><li><strong>Love game:</strong> winning a game without dropping a point.</li><li><strong>On serve:</strong> neither player has broken — the set is proceeding by holds.</li></ul><h2>Common Scoring Mistakes</h2><ul><li><strong>Calling 3–3 "forty–all."</strong> It is deuce. "Forty–all" marks you as a beginner instantly.</li><li><strong>Server's score second.</strong> Always server first: "thirty–fifteen," never "fifteen–thirty" when the server has 30.</li><li><strong>Forgetting the two-point margin.</strong> At deuce, winning one point is advantage, not the game. New players celebrate early constantly.</li><li><strong>Tiebreak serve order.</strong> In a tiebreak, the serve rotates every two points (after the first single point), and players switch ends every six points. Getting this wrong is the most common club tiebreak error.</li><li><strong>Announcing sets wrong.</strong> The winner's score is always first in the written score: 6–4, 3–6, 7–5 means our player won sets one and three.</li></ul><p>Score correctly, call it loudly, and the strange old numbers become second nature within a week. The keeper above never forgets a deuce — use it until you do not need it.</p><h2>Doubles Scoring: What's Different</h2><p>The scoring arithmetic is identical in doubles — love through deuce works exactly the same. What changes is everything around it. Service order rotates through all four players across games, and each team's serving order must stay fixed for the set. In the tiebreak, the serving rotation continues in the same order, with serves alternating every two points after the first. The big strategic difference: at deuce in doubles, many club formats use <strong>no-ad scoring</strong> (next point wins the game) to keep matches on schedule — the receiver chooses which side to receive from, which adds a delicious tactical wrinkle. If you play league doubles, confirm before the match whether it is traditional ad scoring or no-ad; assuming wrong has started more arguments than any line call.</p><h2>Formats You'll Meet Beyond the Tour</h2><p>Recreational tennis is full of scoring variants designed to fit matches into court-booking slots. <strong>Fast4</strong> uses first-to-4-games sets, no-ad games, and no lets on serve — a match fits in about an hour. <strong>Short sets</strong> (first to 4 or 5) appear in junior and senior events. Many doubles leagues replace the third set with a <strong>10-point match tiebreak</strong> (first to 10, win by 2). Junior tennis scales further: 10-and-under plays on smaller courts with lower nets and sometimes first-to-7-games "short sets." Wheelchair tennis uses identical scoring with one adaptation — the ball may bounce twice. Knowing the variant before you walk on court is part of the game; when in doubt, the keeper's tiebreak mode and game tracking adapt to all of them.</p><h2>The Mental Game of the Score</h2><p>Scores are psychological weather. Leading 5–2 in a set, players famously tighten — "serving it out" is one of tennis's hardest skills because the finish line creates tension that the rally does not. Trailing players, freed from expectation, often swing their best. The practical techniques: between points, turn away, breathe, and reset to a single process cue ("toss high," "move feet") rather than the score. Never check the time or the next court's match. And remember the scoreboard never tells the truth about momentum — a 6–1 set can hide five deuces, and the "easy" winner is often one shaky game from a decider. Respect every point, especially the ones that look routine.</p><h3>Scoring edge cases players argue about</h3><p>Most scoring disputes come from the corners of the rules. A tiebreak is first to seven with a two point margin, and it counts as one game in the set score. If a set reaches six all and the format uses a match tiebreak instead of a third set, that tiebreak is usually first to ten. Advantage scoring can theoretically run forever — there is no cap on deuces, which is why some club formats switch to no-ad at deuce to keep evenings on schedule. When in doubt during a friendly match, replay the point; the friendship outlasts the score.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What does love mean in tennis scoring?</summary><p>Love means zero — it likely comes from the French l'oeuf (the egg), for the shape of a zero. The server's score is always called first, so 'fifteen–love' means the server has one point and the receiver has none.</p></details>
+<details><summary>What is deuce in tennis?</summary><p>Deuce is the call at 3–3 (40–40). From deuce, a player must win two consecutive points to take the game: the first point gives 'advantage,' and winning the next point wins the game. Losing after advantage returns the score to deuce.</p></details>
+<details><summary>How does advantage scoring work?</summary><p>After deuce, the player who wins the next point has 'advantage' (ad in for the server, ad out for the receiver). If they win the following point, they win the game; if they lose it, the score goes back to deuce. This can repeat indefinitely.</p></details>
+<details><summary>How many points do you need to win a tennis game?</summary><p>At least 4 points with a 2-point margin. At 40–30 or 40–15, one more point wins; from deuce (3–3), you need two in a row. That's why games can run long when players are evenly matched.</p></details>
+<details><summary>What is a tiebreak in tennis?</summary><p>A tiebreak settles a set at 6–6. Points are counted plainly (1, 2, 3…) and the first player to 7 points with a 2-point margin wins the set. Serve rotates every two points after the first, and players switch ends every six points.</p></details>
+<details><summary>How are tennis sets and matches scored?</summary><p>A set is won by the first player to 6 games with a 2-game margin (or via tiebreak at 6–6). A match is best of 3 sets at most levels, or best of 5 sets in men's Grand Slam singles. In written scores the winner's score always comes first: 6–4, 3–6, 7–5.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">TennisScore</div>
+    <p>TennisScore keeps tennis score with proper love/15/30/40, deuce and advantage logic plus set tracking.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function scoreString(a,b){a=Math.max(0,Math.floor(Number(a)||0));b=Math.max(0,Math.floor(Number(b)||0));var pts=["love","15","30","40"];if(a>=3&&b>=3){var d=a-b;if(d===0)return "deuce";if(d===1)return "advantage A";if(d===-1)return "advantage B";return d>0?"game A":"game B";}if((a>=4||b>=4)&&Math.abs(a-b)>=2)return a>b?"game A":"game B";return pts[Math.min(a,3)]+"-"+pts[Math.min(b,3)];}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var pa=0,pb=0,ga=0,gb=0,sa=0,sb=0;var hist=[];function names(){var na=document.getElementById('ts-namea'),nb=document.getElementById('ts-nameb');return [(na&&na.value.trim())||'A',(nb&&nb.value.trim())||'B'];}function fmt(){var tb=document.getElementById('ts-tiebreak');var isTB=tb&&tb.checked;if(isTB)return pa+' – '+pb+'  (tiebreak)';var s=scoreString(pa,pb);if(s==='game A'||s==='game B')return s;if(s==='deuce')return 'deuce';if(s.indexOf('advantage')===0){var n=names();return s.replace('A',n[0]).replace('B',n[1]);}var parts=s.split('-');return parts[0]+' – '+parts[1];}function render(){var g=document.getElementById('ts-game');if(g)g.textContent=fmt();var e1=document.getElementById('ts-ga'),e2=document.getElementById('ts-gb'),e3=document.getElementById('ts-sa'),e4=document.getElementById('ts-sb');if(e1)e1.textContent=ga;if(e2)e2.textContent=gb;if(e3)e3.textContent=sa;if(e4)e4.textContent=sb;var n=names();var q1=document.getElementById('ts-pan'),q2=document.getElementById('ts-pbn');if(q1)q1.textContent=n[0];if(q2)q2.textContent=n[1];var log=document.getElementById('ts-log');if(log){log.innerHTML='';for(var i=hist.length-1;i>=0;i--){var li=document.createElement('li');var left=document.createElement('span');left.textContent=hist[i].label;var right=document.createElement('span');right.textContent=hist[i].score;li.appendChild(left);li.appendChild(right);log.appendChild(li);}}}function gameWon(w){var n=names();if(w==='A')ga++;else gb++;hist.push({label:'Game — '+n[w==='A'?0:1],score:ga+' – '+gb+' games'});var gameDone=false;if((ga>=6||gb>=6)&&Math.abs(ga-gb)>=2)gameDone=true;if(ga===7||gb===7)gameDone=true;pa=0;pb=0;if(gameDone){if(ga>gb)sa++;else sb++;hist.push({label:'Set — '+n[ga>gb?0:1],score:sa+' – '+sb+' sets'});ga=0;gb=0;}}function point(w){var tb=document.getElementById('ts-tiebreak');var isTB=tb&&tb.checked;hist.push({label:'snapshot',score:''});hist.pop();if(isTB){if(w==='A')pa++;else pb++;var n=names();if((pa>=7||pb>=7)&&Math.abs(pa-pb)>=2){hist.push({label:'Tiebreak — '+n[pa>pb?0:1]+' ('+pa+'–'+pb+')',score:'games '+ga+' – '+gb});if(pa>pb)ga++;else gb++;pa=0;pb=0;}else{hist.push({label:'Point — '+n[w==='A'?0:1],score:pa+' – '+pb});}}else{if(w==='A')pa++;else pb++;var s=scoreString(pa,pb);var nn=names();if(s==='game A'||s==='game B'){gameWon(s==='game A'?'A':'B');}else{hist.push({label:'Point — '+nn[w==='A'?0:1],score:fmt()});}}render();}function snapshot(){return {pa:pa,pb:pb,ga:ga,gb:gb,sa:sa,sb:sb,hist:hist.slice()};}var snaps=[];var bpa=document.getElementById('ts-pa'),bpb=document.getElementById('ts-pb');if(bpa)bpa.addEventListener('click',function(){snaps.push(snapshot());point('A');});if(bpb)bpb.addEventListener('click',function(){snaps.push(snapshot());point('B');});var un=document.getElementById('ts-undo');if(un)un.addEventListener('click',function(){var s=snaps.pop();if(s){pa=s.pa;pb=s.pb;ga=s.ga;gb=s.gb;sa=s.sa;sb=s.sb;hist=s.hist;render();}});var ng=document.getElementById('ts-newgame');if(ng)ng.addEventListener('click',function(){snaps.push(snapshot());pa=0;pb=0;render();});var nm=document.getElementById('ts-newmatch');if(nm)nm.addEventListener('click',function(){snaps.push(snapshot());pa=0;pb=0;ga=0;gb=0;sa=0;sb=0;hist=[];render();});var tb2=document.getElementById('ts-tiebreak');if(tb2)tb2.addEventListener('change',function(){pa=0;pb=0;render();});var na2=document.getElementById('ts-namea'),nb2=document.getElementById('ts-nameb');if(na2)na2.addEventListener('input',render);if(nb2)nb2.addEventListener('input',render);render();});}
+</script>
+</body>
+</html>
