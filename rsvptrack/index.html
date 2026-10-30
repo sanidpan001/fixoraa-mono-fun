@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RSVP Tracker — Wedding Guest Counts &amp; Meals | RsvpTrack</title>
+<meta name="description" content="Wedding RSVP counts with meal choices, plus-ones and deadlines.">
+<link rel="canonical" href="https://fun.fixoraa.tech/rsvptrack/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="RSVP Tracker — Wedding Guest Counts &amp; Meals | RsvpTrack">
+<meta property="og:description" content="Wedding RSVP counts with meal choices, plus-ones and deadlines.">
+<meta property="og:url" content="https://fun.fixoraa.tech/rsvptrack/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RsvpTrack",
+      "url": "https://fun.fixoraa.tech/rsvptrack/",
+      "applicationCategory": "Wedding Tools",
+      "operatingSystem": "Web",
+      "description": "Wedding RSVP counts with meal choices, plus-ones and deadlines.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How do I keep track of wedding RSVPs?",
+          "acceptedAnswer": { "@type": "Answer", "text": "List every invited party with its headcount, mark each as accepted, declined or pending, and record meal choices for accepted guests. Tally the columns weekly — your caterer needs final headcounts and meal totals about two weeks before the wedding." } },
+        { "@type": "Question", "name": "When should the RSVP deadline be?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Set the deadline two to four weeks before the wedding — typically three weeks. That gives you one week to chase stragglers and still hit your caterer's final headcount date, which is usually 10 to 14 days out." } },
+        { "@type": "Question", "name": "What should the RSVP deadline wording say?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Keep it warm and firm: 'Kindly respond by May 1st.' Avoid softening it with 'if you can' — a clear date gets twice the response rate. For online RSVPs, the button itself can read 'RSVP by May 1.'" } },
+        { "@type": "Question", "name": "How do I handle plus-ones on the guest list?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Decide your plus-one rule early — commonly wedding party, out-of-town guests, and couples who live together — and apply it evenly. Each plus-one adds one to the party's headcount and needs a meal choice, so track them as part of the party, not as separate guests." } },
+        { "@type": "Question", "name": "What do I do about guests who never RSVP?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Start personal follow-ups the day after the deadline: a quick text or call, not a group message. Give a 48-hour grace window, then mark non-responders as declined for the headcount — you can always add them back if they surface." } },
+        { "@type": "Question", "name": "How do meal choices work for the caterer?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Collect one choice per accepted guest (plus kids' meals separately) and report totals by dish to the caterer at the final headcount. Use place cards or table charts marked with each guest's choice so servers can deliver without asking." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9E1ED; --surface:#FFFFFF; --tint:#F4D2E2;
+  --accent:#84154A; --accent-deep:#671C1A; --accent-ink:#FFFFFF;
+  --ink:#2C1F1D; --muted:#6E5753; --line:#E8CFCB;
+  --display:'Shantell Sans',cursive; --body:'Shantell Sans',cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+/* header */
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:50%;background:var(--surface);border:3px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:23px}
+.fx-name{font-weight:700;font-size:21px}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:var(--surface)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:600;font-size:13px;border:2px dashed var(--accent)}
+/* hero */
+.rt-hero{padding:40px 0 4px}
+.rt-eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.rt-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.08;font-weight:700;margin-bottom:8px}
+.rt-hero p{font-size:17px;color:var(--muted);max-width:640px}
+/* tally counters */
+.rt-tallies{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0 0}
+.rt-tally{background:var(--surface);border:2px solid var(--line);border-radius:50%;aspect-ratio:1;max-width:170px;width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 8px 20px rgba(139,38,35,.10);padding:10px}
+.rt-tally .n{font-size:40px;font-weight:700;line-height:1;color:var(--accent-deep);font-variant-numeric:tabular-nums}
+.rt-tally .l{font-size:12.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.rt-tally.hot{border-color:var(--accent);background:var(--tint)}
+/* meter */
+.rt-meter{margin:20px 0 0;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:16px 20px}
+.rt-meter .top{display:flex;justify-content:space-between;font-weight:600;font-size:14.5px;margin-bottom:8px;flex-wrap:wrap;gap:6px}
+.rt-bar{height:18px;background:var(--tint);border-radius:999px;overflow:hidden;display:flex}
+.rt-bar div{height:100%}
+.rt-bar .a{background:var(--accent)}
+.rt-bar .d{background:#c9a9a6}
+.rt-bar .p{background:repeating-linear-gradient(45deg,#e8d5d2,#e8d5d2 6px,#f5e9e7 6px,#f5e9e7 12px)}
+.rt-legend{display:flex;gap:16px;font-size:13.5px;color:var(--muted);margin-top:8px;flex-wrap:wrap}
+.rt-legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px}
+/* guest list */
+.rt-grid{display:grid;grid-template-columns:1fr 290px;gap:22px;margin:22px 0 8px;align-items:start}
+.rt-list{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 12px 30px rgba(139,38,35,.10)}
+.rt-list h2{font-size:20px;font-weight:700;color:var(--accent-deep);margin-bottom:10px}
+.rt-add{display:grid;grid-template-columns:1.4fr .6fr .8fr auto;gap:8px;margin-bottom:14px}
+.rt-add input,.rt-add select{font:inherit;font-size:14.5px;padding:9px 10px;border:2px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);width:100%}
+.rt-add input:focus,.rt-add select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.rt-addbtn{background:var(--accent);color:#fff;border:0;border-radius:10px;font:inherit;font-weight:700;padding:9px 16px;cursor:pointer;font-size:14.5px}
+.rt-addbtn:hover{background:var(--accent-deep)}
+.rt-guest{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;align-items:center;padding:9px 4px;border-bottom:2px dotted var(--line);font-size:15px}
+.rt-guest:last-child{border-bottom:0}
+.rt-guest .nm{font-weight:600}
+.rt-guest .nm small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+.rt-status{display:flex;gap:4px}
+.rt-status button{border:2px solid var(--line);background:#fff;border-radius:8px;font:inherit;font-size:12.5px;font-weight:600;padding:5px 9px;cursor:pointer;color:var(--muted)}
+.rt-status button.on-a{background:var(--accent);border-color:var(--accent);color:#fff}
+.rt-status button.on-d{background:#5a5a5a;border-color:#5a5a5a;color:#fff}
+.rt-status button.on-p{background:#fff;border-color:var(--accent);color:var(--accent-deep)}
+.rt-meal{font:inherit;font-size:13px;padding:5px 6px;border:2px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+.rt-del{border:0;background:none;color:var(--muted);font-size:19px;cursor:pointer;padding:4px}
+.rt-del:hover{color:var(--accent)}
+.rt-empty{color:var(--muted);font-style:italic;padding:18px 4px;text-align:center}
+/* side */
+.rt-side{display:flex;flex-direction:column;gap:18px;position:sticky;top:86px}
+.rt-card{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:18px}
+.rt-card h3{font-size:17px;font-weight:700;color:var(--accent-deep);margin-bottom:10px}
+.rt-meals div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dotted var(--line);font-size:15px;font-variant-numeric:tabular-nums}
+.rt-meals div:last-child{border-bottom:0}
+.rt-meals b{color:var(--accent-deep)}
+.rt-card label.cb{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;margin-bottom:9px;cursor:pointer}
+.rt-card input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);margin-top:2px;flex:none}
+.rt-card input[type=date],.rt-card input[type=number]{font:inherit;font-size:14.5px;padding:8px 10px;border:2px solid var(--line);border-radius:10px;width:100%;color:var(--ink)}
+.rt-card input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.rt-deadline{font-size:15px;margin-top:8px;font-weight:600;color:var(--accent-deep)}
+/* article */
+.article-sec{margin:42px 0;max-width:780px}
+.article-sec h2{font-size:24px;margin:34px 0 12px;font-weight:700;color:var(--accent-deep)}
+.article-sec p{margin-bottom:14px;color:#3a2b29}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#3a2b29}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:700;margin-bottom:14px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:14px 18px;font-weight:600;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::before{content:"\2713  ";color:var(--accent);font-weight:700}
+.faq-sec details[open] summary{color:var(--accent-deep)}
+.faq-sec details p{padding:0 18px 14px;color:#3a2b29;font-size:15px}
+/* footer */
+.fx-footer{background:#331d1b;color:#f3e2e0;margin-top:46px;padding:42px 0 36px}
+.fx-footer .fx-brand{font-size:22px;font-weight:700;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#cfa9a6;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:600;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#e8a9a5;font-weight:700}
+@media(max-width:860px){
+  .rt-grid{grid-template-columns:1fr}
+  .rt-side{position:static}
+  .rt-tallies{grid-template-columns:repeat(2,1fr)}
+  .rt-add{grid-template-columns:1fr 1fr}
+  .rt-addbtn{grid-column:1/-1}
+  .fx-nav{margin-left:0}
+  .rt-guest{grid-template-columns:1fr auto;row-gap:6px}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/rsvptrack/" aria-label="RsvpTrack home">
+      <span class="fx-tile" aria-hidden="true">&#9998;</span>
+      <span class="fx-name">RsvpTrack</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="rt-hero">
+    <span class="rt-eyebrow">Guest list notebook</span>
+    <h1>RSVP Tracker</h1>
+    <p>Every party, every head, every meal choice — tallied live so your caterer gets perfect numbers and no straggler slips through.</p>
+  </section>
+
+  <section aria-label="RsvpTrack tool">
+    <div class="rt-tallies" aria-live="polite">
+      <div class="rt-tally hot"><div class="n" id="rt-invited">0</div><div class="l">Invited</div></div>
+      <div class="rt-tally"><div class="n" id="rt-accepted">0</div><div class="l">Accepted</div></div>
+      <div class="rt-tally"><div class="n" id="rt-declined">0</div><div class="l">Declined</div></div>
+      <div class="rt-tally"><div class="n" id="rt-pending">0</div><div class="l">Pending</div></div>
+    </div>
+    <div class="rt-meter">
+      <div class="top"><span>Response progress</span><span id="rt-rate">0% responded</span></div>
+      <div class="rt-bar" aria-hidden="true"><div class="a" id="rt-bar-a" style="width:0%"></div><div class="d" id="rt-bar-d" style="width:0%"></div><div class="p" id="rt-bar-p" style="width:100%"></div></div>
+      <div class="rt-legend"><span><i style="background:var(--accent)"></i>Accepted</span><span><i style="background:#c9a9a6"></i>Declined</span><span><i style="background:#e8d5d2"></i>Pending</span></div>
+    </div>
+    <div class="rt-grid">
+      <div class="rt-list">
+        <h2>Guest list</h2>
+        <div class="rt-add">
+          <input type="text" id="rt-name" placeholder="Party name (e.g. The Smiths)" aria-label="Party name">
+          <input type="number" id="rt-size" value="2" min="1" max="20" aria-label="Party size">
+          <select id="rt-mealin" aria-label="Default meal choice">
+            <option value="Chicken">Chicken</option><option value="Beef">Beef</option>
+            <option value="Vegetarian">Vegetarian</option><option value="Kids">Kids meal</option>
+          </select>
+          <button class="rt-addbtn" id="rt-add" type="button">+ Add</button>
+        </div>
+        <label class="cb" style="display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);margin-bottom:12px;cursor:pointer">
+          <input type="checkbox" id="rt-plusone" style="width:17px;height:17px;accent-color:var(--accent)"> Include a plus-one (+1 head)
+        </label>
+        <div id="rt-guests"><p class="rt-empty">No parties yet — add your first invitation above.</p></div>
+      </div>
+      <div class="rt-side">
+        <div class="rt-card">
+          <h3>Meal count for caterer</h3>
+          <div class="rt-meals" id="rt-meals"><div><span>Chicken</span><b>0</b></div><div><span>Beef</span><b>0</b></div><div><span>Vegetarian</span><b>0</b></div><div><span>Kids meal</span><b>0</b></div></div>
+        </div>
+        <div class="rt-card">
+          <h3>Deadline &amp; rules</h3>
+          <label for="rt-deadline" style="font-size:14px;font-weight:600">RSVP deadline</label>
+          <input type="date" id="rt-deadline" style="margin:6px 0 10px">
+          <div class="rt-deadline" id="rt-ddays"></div>
+          <label class="cb"><input type="checkbox" id="rt-kidsrule" checked> Kids get kids' meals automatically</label>
+          <label class="cb"><input type="checkbox" id="rt-seatnote"> Show seating-chart reminder at 80% response</label>
+          <div id="rt-seatwarn" style="font-size:14px;color:var(--accent-deep);font-weight:600;margin-top:6px" hidden>Over 80% responded — time to draft the seating chart!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec" aria-label="Guide">
+    <h2>Why RSVP Tracking Breaks Down</h2>
+    <p>Every couple starts with a spreadsheet and good intentions. Three weeks later the spreadsheet has seventeen versions, Aunt Carol RSVP'd by texting your mother, two plus-ones appeared out of nowhere, and the caterer is asking for meal counts you cannot produce. <strong>RSVP tracking fails not from laziness but from fragmentation</strong> — responses arrive by mail, text, phone call, and wedding website, and nobody funnels them into one list with headcounts attached.</p>
+    <p>The fix is a single source of truth where each <em>party</em> (not each person) is one row with a headcount, a status, and meal choices. Parties are the right unit because invitations go to households, plus-ones attach to parties, and kids belong to parties. The tracker above works exactly this way: add a party, set its size, flip its status as replies arrive, and the tallies, meal counts, and response meter stay correct automatically.</p>
+    <h2>Setting the Deadline (and the Wording)</h2>
+    <p>Set your RSVP deadline <strong>three weeks before the wedding</strong>. This is not arbitrary: caterers typically require final headcounts 10–14 days out, which leaves you about a week to chase the inevitable stragglers. Send invitations 8–10 weeks before a local wedding (10–12 for destination), so guests get roughly a month to decide.</p>
+    <p>Wording matters more than couples expect. <strong>"Kindly respond by June 1st"</strong> outperforms hedged phrasing ("please let us know if you can make it") dramatically — a clear date creates a clear action. Number your RSVP cards subtly in pencil on the back, so when a card arrives with no name (it will happen), you can match it to your list. For digital RSVPs, make the deadline the button text itself.</p>
+    <h2>Plus-Ones and Kids: Decide Once, Apply Evenly</h2>
+    <p>Plus-one drama consumes more couple energy than any other guest-list topic, and it is entirely avoidable with <strong>one rule, applied evenly</strong>. Common workable rules: wedding party gets plus-ones; out-of-town guests get plus-ones; couples who live together are both invited by name; everyone else, no plus-one. Write it down. When someone asks (they will), you have an answer that is about policy, not about them.</p>
+    <p>Each plus-one adds one head to the party's count <em>and</em> needs a meal choice — track them inside the party, not as separate guests, or your meal math drifts. Kids follow the same logic: decide whether the wedding is kid-inclusive, and if so, count kids' meals separately for the caterer (most caterers price kids' meals lower, so accurate counts save real money). The tracker's plus-one toggle adds the head automatically so the count never lags the decision.</p>
+    <h2>Chasing the Non-Responders</h2>
+    <p>Expect 15–25% of guests to miss the deadline — this is normal, not personal. Start follow-ups <strong>the day after the deadline</strong> with a warm, direct text: <em>"Hi! We're finalizing numbers with our caterer this week — will we see you on June 22nd?"</em> Phone beats text for older relatives; a call from a parent works wonders on family stragglers. Give a 48-hour grace window, then <strong>mark non-responders as declined</strong> for headcount purposes. This feels harsh and is correct — you can always add someone back, but you cannot un-pay for their plate.</p>
+    <p>Track your chase list separately from your pending list: pending means "invited, awaiting reply," chase means "deadline passed, contacted, awaiting final answer." The distinction keeps you from re-texting the same cousin three times.</p>
+    <h2>Meal Choices: From RSVP Card to Banquet Hall</h2>
+    <p>If you offer meal choices, collect <strong>one choice per accepted guest</strong> (kids' meals as their own category) and report <strong>totals by dish</strong> to the caterer — they need "42 chicken, 31 beef, 12 vegetarian, 8 kids," not a list of names. The meal counter above produces exactly that. Then bridge the last mile: mark each guest's choice on the <strong>place card or seating chart</strong> (a small icon or colored dot per dish) so servers deliver correctly without interrogating your grandmother.</p>
+    <p>Pro move: cap the choices at two or three plus a vegetarian option. Every additional dish multiplies kitchen complexity and error rates. And always ask about allergies separately from meal choice — a nut allergy is not a "preference," and the caterer needs it flagged per person, not per dish total.</p>
+    <h2>The Final Headcount and the B-List</h2>
+    <p>Your caterer's final headcount date is the real deadline everything serves. Pad it slightly: if they need numbers 14 days out, promise yourself 16. <strong>Build in a 2–3% buffer</strong> on the guarantee — vendors you forgot (like the photographer's assistant who needs a vendor meal) and last-minute reconciliations come out of this buffer, not out of panic.</p>
+    <p>The B-list — backup guests invited as declines arrive — is legitimate but requires choreography: B-list invitations go out <em>only</em> after declines free real seats, and never let a B-list guest discover their status (stagger the mailings so timing looks natural). Track B-list parties as pending with a note, and promote them the moment a matching decline lands.</p>
+    <h2>Your Week-by-Week Playbook</h2>
+    <p><strong>8–10 weeks out:</strong> invitations mailed, tracker seeded with every party. <strong>5 weeks out:</strong> first tally review — you want 40%+ responded. <strong>3 weeks out:</strong> deadline hits; chase begins next morning. <strong>2 weeks out:</strong> final headcount and meal totals to caterer; seating chart drafted. <strong>1 week out:</strong> confirm vendor meals, print place cards with meal markers. Follow the rhythm above and the only surprise on the day will be how smoothly dinner service runs.</p>
+    <h2>Feeding the Seating Chart</h2>
+    <p>Your RSVP data becomes your seating chart's raw material — but only if you captured the right fields. Beyond headcount and meals, note <strong>relationships</strong> (who must sit together, who must not), <strong>mobility needs</strong> (elderly guests near exits and restrooms, away from speakers), and <strong>kids' ages</strong> (toddlers need space for high chairs; teens want the fun table). A guest list with bare names produces a seating chart built on guesswork; a list with two extra columns produces one built in an afternoon.</p>
+    <p>The practical workflow: once response passes 80%, export your accepted parties and <strong>draft by table, not by seat</strong> — assign parties to tables first (keeping groups of 8–10 with a shared thread: college friends, work friends, family), then arrange seats within tables. Keep one "flex table" partially empty for last-minute additions rather than reworking the whole chart when your cousin's plus-one materializes. And build the chart from the <em>accepted</em> tally only — seating pending guests is how you end up with a table for six holding three.</p>
+    <h2>Tracking the Rehearsal Dinner and Other Events</h2>
+    <p>The wedding is rarely the only event. Rehearsal dinners, welcome parties, farewell brunches, and bachelor/bachelorette weekends each need their own mini guest list — and <strong>never assume the wedding RSVP covers them</strong>. A guest who accepted the wedding may skip the welcome party; a local friend might attend the brunch but not the wedding. Track each event as a separate list with its own deadline (usually a week after the wedding RSVP deadline, since these are smaller and more flexible).</p>
+    <p>Two rules prevent chaos. First, <strong>the rehearsal dinner list is the wedding party plus immediate family plus out-of-town VIPs</strong> — keep it tight, because per-head costs at intimate dinners run high and every extra seat is conspicuous. Second, collect <strong>dietary restrictions per event</strong>, not just per wedding: the brunch caterer and the rehearsal-dinner restaurant are different vendors who each need the allergy list. The same party-based tracking works — clone your accepted list, trim it to the event's invitees, and tally again.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How do I keep track of wedding RSVPs?</summary><p>List every invited party with its headcount, mark each accepted, declined or pending, and record meal choices for accepted guests. Tally weekly — your caterer needs final headcounts and meal totals about two weeks before the wedding.</p></details>
+    <details><summary>When should the RSVP deadline be?</summary><p>Three weeks before the wedding. That leaves a week to chase stragglers before the caterer's final headcount date, which is usually 10–14 days out.</p></details>
+    <details><summary>What should the RSVP deadline wording say?</summary><p>Keep it warm and firm: "Kindly respond by May 1st." A clear date gets far better response rates than hedged phrasing. Number cards in pencil on the back to identify nameless replies.</p></details>
+    <details><summary>How do I handle plus-ones on the guest list?</summary><p>Set one rule and apply it evenly — e.g., wedding party, out-of-town guests, and live-in couples. Track each plus-one inside its party's headcount and meal choice, not as a separate guest.</p></details>
+    <details><summary>What do I do about guests who never RSVP?</summary><p>Follow up personally the day after the deadline, allow 48 hours' grace, then mark non-responders as declined for the headcount. You can always add them back if they surface.</p></details>
+    <details><summary>How do meal choices work for the caterer?</summary><p>Collect one choice per accepted guest, report totals by dish at the final headcount, and mark each choice on place cards so servers deliver without asking.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RsvpTrack</div>
+    <p>RsvpTrack keeps your wedding guest list honest — party headcounts, accept/decline/pending tallies, meal totals for the caterer, and deadline pressure, all in one place.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* ===== pure ===== */
+function rsvpTally(guests){
+  var t = {invited:0, accepted:0, declined:0, pending:0, meals:{Chicken:0,Beef:0,Vegetarian:0,'Kids meal':0}};
+  guests.forEach(function(g){
+    t.invited += g.size;
+    if(g.status==='accepted'){ t.accepted += g.size; for(var i=0;i<g.size;i++){ var m=g.meals[i]||'Chicken'; t.meals[m]=(t.meals[m]||0)+1; } }
+    else if(g.status==='declined'){ t.declined += g.size; }
+    else { t.pending += g.size; }
+  });
+  t.responseRate = t.invited>0 ? (t.accepted+t.declined)/t.invited*100 : 0;
+  return t;
+}
+function daysUntil(deadlineISO, todayISO){
+  var d = new Date(deadlineISO+'T12:00:00'), t = new Date(todayISO+'T12:00:00');
+  return Math.round((d-t)/86400000);
+}
+/* ===== dom ===== */
+(function(){
+var guests = [];
+var MEALS = ['Chicken','Beef','Vegetarian','Kids meal'];
+function render(){
+  var box = document.getElementById('rt-guests');
+  box.innerHTML='';
+  if(!guests.length){ box.innerHTML='<p class="rt-empty">No parties yet — add your first invitation above.</p>'; }
+  guests.forEach(function(g,idx){
+    var row = document.createElement('div'); row.className='rt-guest';
+    var nm = document.createElement('div'); nm.className='nm';
+    nm.innerHTML = ''; nm.appendChild(document.createTextNode(g.name));
+    var sm = document.createElement('small'); sm.textContent = g.size+(g.size===1?' guest':' guests');
+    nm.appendChild(sm);
+    var st = document.createElement('div'); st.className='rt-status';
+    [['accepted','A','on-a'],['declined','D','on-d'],['pending','P','on-p']].forEach(function(s){
+      var b=document.createElement('button'); b.type='button'; b.textContent=s[1];
+      b.setAttribute('aria-label','Mark '+g.name+' '+s[0]);
+      if(g.status===s[0]) b.classList.add(s[2]);
+      b.addEventListener('click',function(){ g.status=s[0]; render(); });
+      st.appendChild(b);
+    });
+    var meal = document.createElement('select'); meal.className='rt-meal';
+    meal.setAttribute('aria-label','Meal choice for '+g.name);
+    MEALS.forEach(function(m){ var o=document.createElement('option'); o.value=m; o.textContent=m; meal.appendChild(o); });
+    meal.value = g.meal;
+    meal.addEventListener('change',function(){ g.meal=meal.value; g.meals=g.meals.map(function(){return g.meal;}); render(); });
+    var del=document.createElement('button'); del.type='button'; del.className='rt-del'; del.textContent='×';
+    del.setAttribute('aria-label','Remove '+g.name);
+    del.addEventListener('click',function(){ guests.splice(idx,1); render(); });
+    row.appendChild(nm); row.appendChild(st); row.appendChild(meal); row.appendChild(del);
+    box.appendChild(row);
+  });
+  update();
+}
+function update(){
+  var t = rsvpTally(guests);
+  document.getElementById('rt-invited').textContent = t.invited;
+  document.getElementById('rt-accepted').textContent = t.accepted;
+  document.getElementById('rt-declined').textContent = t.declined;
+  document.getElementById('rt-pending').textContent = t.pending;
+  document.getElementById('rt-rate').textContent = t.responseRate.toFixed(1)+'% responded';
+  var a = t.invited? t.accepted/t.invited*100:0, d = t.invited? t.declined/t.invited*100:0;
+  document.getElementById('rt-bar-a').style.width = a+'%';
+  document.getElementById('rt-bar-d').style.width = d+'%';
+  document.getElementById('rt-bar-p').style.width = Math.max(0,100-a-d)+'%';
+  var mh = document.getElementById('rt-meals'); mh.innerHTML='';
+  MEALS.forEach(function(m){
+    var div=document.createElement('div');
+    div.innerHTML='<span></span><b></b>';
+    div.children[0].textContent=m; div.children[1].textContent=t.meals[m]||0;
+    mh.appendChild(div);
+  });
+  var sw = document.getElementById('rt-seatwarn');
+  sw.hidden = !(document.getElementById('rt-seatnote').checked && t.responseRate>=80 && t.invited>0);
+  var dl = document.getElementById('rt-deadline').value;
+  var dd = document.getElementById('rt-ddays');
+  if(dl){
+    var n = daysUntil(dl, new Date().toISOString().slice(0,10));
+    dd.textContent = n>0 ? n+' days until the deadline — chase stragglers!' : (n===0 ? 'Deadline is TODAY — lock the headcount!' : 'Deadline passed '+Math.abs(n)+' days ago.');
+  } else dd.textContent='';
+}
+document.getElementById('rt-add').addEventListener('click',function(){
+  var name = document.getElementById('rt-name').value.trim()||('Party '+(guests.length+1));
+  var size = Math.max(1, parseInt(document.getElementById('rt-size').value,10)||1);
+  if(document.getElementById('rt-plusone').checked) size+=1;
+  var meal = document.getElementById('rt-mealin').value;
+  var meals = []; for(var i=0;i<size;i++) meals.push(meal);
+  guests.push({name:name, size:size, status:'pending', meal:meal, meals:meals});
+  document.getElementById('rt-name').value='';
+  document.getElementById('rt-plusone').checked=false;
+  render();
+});
+document.getElementById('rt-name').addEventListener('keydown',function(e){ if(e.key==='Enter') document.getElementById('rt-add').click(); });
+document.getElementById('rt-deadline').addEventListener('change',update);
+document.getElementById('rt-seatnote').addEventListener('change',update);
+render();
+})();
+</script>
+</body>
+</html>
