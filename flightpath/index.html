@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flight Distance Calculator — Air Miles, Flight Time &amp; Arrival | FlightPath</title>
+<meta name="description" content="Free flight distance calculator: air miles between airports, estimated flight time, timezone-aware arrival and CO2. Compare routes instantly.">
+<link rel="canonical" href="https://fun.fixoraa.tech/flightpath/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Flight Distance Calculator — Air Miles, Flight Time &amp; Arrival | FlightPath">
+<meta property="og:description" content="Free flight distance calculator: air miles between airports, estimated flight time, timezone-aware arrival and CO2. Compare routes instantly.">
+<meta property="og:url" content="https://fun.fixoraa.tech/flightpath/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "FlightPath",
+      "url": "https://fun.fixoraa.tech/flightpath/",
+      "applicationCategory": "Travel Tools",
+      "operatingSystem": "Web",
+      "description": "Free flight distance calculator: air miles between airports, estimated flight time, timezone-aware arrival and CO2. Compare routes instantly.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is flight distance calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Flight distance is the great-circle distance: the shortest path between two points on the Earth's surface, computed from the airports' latitudes and longitudes with the haversine formula. Airlines, award charts and flight planners all start from this number, though the route you actually fly is usually 3\u20138% longer because aircraft follow airways, wind-optimal tracks and airspace restrictions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the actual flight longer than the calculated distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The great-circle line is the geometric shortest path, but planes rarely fly it exactly. They follow published airways, ride jet-stream tailwinds (or dodge headwinds), route around restricted airspace and weather, and queue in holding patterns near busy airports. On long-haul routes the difference is typically 3\u20138%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is the flight-time estimate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is a planning estimate, not a schedule. The tool divides the great-circle distance by a typical cruise speed and adds about 40 minutes for climb, descent, taxi and routing inefficiency. Real block times vary with winds, aircraft type, congestion and the airline's schedule padding, so always check the airline's published timetable before booking connections."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the arrival time calculation work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter your local departure time and the tool adds the estimated flight duration plus the time-zone difference between the two airports, giving the local arrival time (with a +1d flag when you land the next day). Airport offsets use standard time, so around daylight-saving changes the result can be off by an hour \u2014 treat it as a planning figure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the CO2 estimate mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It multiplies the flight distance by an average per-passenger emissions factor for your cabin class (higher cabins take more space per seat, so a bigger share of the fuel). It is a rough planning number: real emissions depend on the aircraft, load factor and routing. Economy on a full modern jet is the lowest per-passenger figure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between miles, kilometers and nautical miles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Statute miles (1.609 km) are what award charts and road-style distances use; kilometers are the everyday unit in most of the world; nautical miles (1.852 km) are aviation's native unit \u2014 pilots, flight plans and charts all speak in nautical miles. One knot of speed equals one nautical mile per hour."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#EDF4FB; --surface:#FFFFFF; --accent:#0B5FA5; --accent-ink:#FFFFFF;
+  --ink:#102A43; --muted:#5B6B7F; --line:#D3E0EE;
+  --display:'Space Grotesk',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.fp-wrap{font-family:'Space Grotesk',Inter,system-ui,sans-serif;background:linear-gradient(180deg,#EDF4FB 0%,#E2EDF8 100%);color:#102A43;padding:60px 20px 80px;}.fp-inner{max-width:1060px;margin:0 auto;}.fp-head{text-align:center;margin-bottom:38px;}.fp-logo{font-size:54px;}.fp-head h1{font-size:clamp(34px,5.2vw,54px);font-weight:700;letter-spacing:-.01em;margin:14px 0 10px;line-height:1.04;}.fp-tag{color:#5B6B7F;font-size:18px;margin:0;font-family:Inter,system-ui,sans-serif;}.fp-deck{position:relative;display:flex;gap:0;justify-content:center;align-items:stretch;margin:0 auto 10px;max-width:860px;}.fp-card{background:#fff;border:1px solid #D3E0EE;border-radius:22px;padding:26px 26px 24px;box-shadow:0 18px 44px rgba(11,95,165,.10);flex:1;min-width:0;}.fp-card.from{transform:rotate(-1.6deg);margin-right:-34px;z-index:1;}.fp-card.to{transform:rotate(1.6deg);margin-left:-34px;}.fp-card h2{font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:#0B5FA5;margin:0 0 12px;font-weight:700;}.fp-card select{width:100%;padding:13px 12px;font-size:16.5px;border:2px solid #D3E0EE;border-radius:13px;font-family:Inter,system-ui,sans-serif;color:#102A43;background:#fff;}.fp-card select:focus{outline:none;border-color:#0B5FA5;}.fp-meta{font-size:13.5px;color:#5B6B7F;margin-top:10px;font-family:Inter,system-ui,sans-serif;min-height:20px;}.fp-swap{align-self:center;z-index:3;width:58px;height:58px;flex:0 0 58px;border-radius:50%;border:3px solid #fff;background:#0B5FA5;color:#fff;font-size:22px;cursor:pointer;box-shadow:0 10px 24px rgba(11,95,165,.35);margin:0 -8px;}.fp-swap:hover{transform:rotate(180deg);transition:transform .4s;}.fp-controls{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:26px 0 8px;font-family:Inter,system-ui,sans-serif;}.fp-toggle{display:flex;border:2px solid #D3E0EE;border-radius:13px;overflow:hidden;background:#fff;}.fp-toggle button{border:none;background:transparent;padding:11px 16px;font-size:14px;font-weight:700;color:#5B6B7F;cursor:pointer;font-family:inherit;}.fp-toggle button.on{background:#0B5FA5;color:#fff;}.fp-controls label{font-size:13.5px;font-weight:700;color:#5B6B7F;display:flex;align-items:center;gap:8px;}.fp-controls select,.fp-controls input{padding:11px 12px;font-size:14.5px;border:2px solid #D3E0EE;border-radius:13px;font-family:inherit;color:#102A43;background:#fff;}.fp-btn{background:#0B5FA5;color:#fff;border:none;border-radius:14px;padding:14px 30px;font-size:17px;font-weight:700;cursor:pointer;font-family:'Space Grotesk',sans-serif;letter-spacing:.02em;box-shadow:0 12px 26px rgba(11,95,165,.30);}.fp-btn:hover{filter:brightness(1.08);}.fp-btn.ghost{background:#fff;color:#0B5FA5;border:2px solid #0B5FA5;box-shadow:none;padding:12px 22px;font-size:15px;}.fp-results{display:none;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0 8px;}.fp-results.show{display:grid;}.fp-stat{background:#fff;border:1px solid #D3E0EE;border-radius:18px;padding:20px 16px;text-align:center;box-shadow:0 10px 26px rgba(11,95,165,.08);}.fp-stat .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.12em;color:#5B6B7F;font-weight:700;font-family:Inter,system-ui,sans-serif;}.fp-stat .v{font-size:30px;font-weight:700;color:#0B5FA5;margin-top:6px;line-height:1.1;}.fp-stat .u{font-size:13px;color:#5B6B7F;font-family:Inter,system-ui,sans-serif;margin-top:4px;}.fp-note{text-align:center;font-size:13px;color:#5B6B7F;font-family:Inter,system-ui,sans-serif;margin:6px 0 0;}.fp-sec{margin-top:44px;}.fp-sec h3{font-size:24px;margin:0 0 6px;font-weight:700;}.fp-sec p.sub{color:#5B6B7F;font-family:Inter,system-ui,sans-serif;font-size:15px;margin:0 0 18px;}.fp-cmp{position:relative;max-width:760px;margin:0 auto;}.fp-ccard{background:#fff;border:1px solid #D3E0EE;border-radius:18px;padding:18px 22px;margin-top:-8px;box-shadow:0 12px 30px rgba(11,95,165,.10);position:relative;font-family:Inter,system-ui,sans-serif;}.fp-ccard:first-child{margin-top:0;}.fp-ccard:nth-child(2){transform:translateX(14px);}.fp-ccard:nth-child(3){transform:translateX(28px);}.fp-ccard .route{font-weight:700;font-size:17px;}.fp-ccard .nums{color:#5B6B7F;font-size:14.5px;margin-top:6px;}.fp-ccard .rm{position:absolute;top:12px;right:12px;border:none;background:#EDF4FB;color:#5B6B7F;border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:15px;}.fp-hist{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-family:Inter,system-ui,sans-serif;}.fp-chip{background:#fff;border:1px solid #D3E0EE;border-radius:999px;padding:9px 16px;font-size:14px;cursor:pointer;color:#102A43;}.fp-chip:hover{border-color:#0B5FA5;color:#0B5FA5;}.fp-clear{background:none;border:none;color:#5B6B7F;font-size:13.5px;cursor:pointer;text-decoration:underline;font-family:Inter,system-ui,sans-serif;}@media (max-width:760px){.fp-deck{flex-direction:column;align-items:center;}.fp-card.from{transform:rotate(-1deg);margin:0 0 -22px;width:100%;}.fp-card.to{transform:rotate(1deg);margin:-22px 0 0;width:100%;}.fp-swap{margin:-6px 0;transform:rotate(90deg);}.fp-results{grid-template-columns:repeat(2,1fr);}.fp-ccard:nth-child(2){transform:translateX(8px);}.fp-ccard:nth-child(3){transform:translateX(16px);}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="FlightPath home">
+      <span class="fx-logo-tile" aria-hidden="true">✈️</span>
+      <span class="fx-brand">FlightPath</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-deck-stack" aria-label="FlightPath tool">
+<section class='fp-wrap'><div class='fp-inner'><div class='fp-head'><div class='fp-logo' aria-hidden='true'>✈️</div><h1>Flight Distance Calculator</h1><p class='fp-tag'>How far is that flight, really? Distance, flight time and arrival — in seconds.</p></div><div class='fp-deck'><div class='fp-card from'><h2>From</h2><select id='fp-from' aria-label='Departure airport'></select><div class='fp-meta' id='fp-from-meta'></div></div><button class='fp-swap' id='fp-swap' type='button' aria-label='Swap airports'>⇄</button><div class='fp-card to'><h2>To</h2><select id='fp-to' aria-label='Arrival airport'></select><div class='fp-meta' id='fp-to-meta'></div></div></div><div class='fp-controls'><div class='fp-toggle' role='group' aria-label='Distance units'><button type='button' data-u='km' class='on'>km</button><button type='button' data-u='mi'>miles</button><button type='button' data-u='nm'>nm</button></div><label>Cabin <select id='fp-cabin'><option value='0.12'>Economy</option><option value='0.18'>Premium economy</option><option value='0.25'>Business</option><option value='0.38'>First</option></select></label><label>Departs <input type='time' id='fp-dep' value='10:00'></label><button class='fp-btn' id='fp-go' type='button'>Calculate</button><button class='fp-btn ghost' id='fp-add' type='button'>+ Compare route</button></div><div class='fp-results' id='fp-results' role='status'><div class='fp-stat'><div class='k'>Distance</div><div class='v' id='fp-dist'>–</div><div class='u' id='fp-dist-u'>kilometers</div></div><div class='fp-stat'><div class='k'>Flight time</div><div class='v' id='fp-time'>–</div><div class='u'>gate to gate, approx</div></div><div class='fp-stat'><div class='k'>Arrival</div><div class='v' id='fp-arr' style='font-size:24px'>–</div><div class='u' id='fp-arr-u'>local time</div></div><div class='fp-stat'><div class='k'>CO₂ per passenger</div><div class='v' id='fp-co2'>–</div><div class='u'>estimate</div></div></div><p class='fp-note' id='fp-note'></p><div class='fp-sec'><h3 style='text-align:center'>Route compare deck</h3><p class='sub' style='text-align:center'>Stack up to three routes and see which one wins.</p><div class='fp-cmp' id='fp-cmp'><p class='sub' id='fp-cmp-empty' style='text-align:center'>No routes yet — hit “+ Compare route” to stack one.</p></div></div><div class='fp-sec'><h3 style='text-align:center'>Recent searches</h3><p class='sub' style='text-align:center'>Saved on this device only.</p><div class='fp-hist' id='fp-hist'></div><div style='text-align:center;margin-top:10px'><button class='fp-clear' id='fp-clear' type='button'>Clear history</button></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>What Flight Distance Really Means</h2><p>Ask how far it is from New York to London and most people picture the number on their ticket: about seven hours in the air. But behind that flight time sits a precise geographic fact — the <strong>great-circle distance</strong> — and understanding it makes you a sharper traveler. It tells you how award programs price your ticket, how much carbon your trip emits, what time you will actually land, and whether that tempting one-hour connection is physically possible.</p><p>The great-circle distance is the shortest path between two points on the surface of a sphere. On a flat map, the shortest-looking line between New York and London is a straight horizontal stroke. On the actual Earth, the shortest path arcs far north, passing near Newfoundland and southern Greenland. That is why transatlantic flights appear to detour toward the Arctic on the seatback map: they are not detouring at all. They are flying the shortest possible route, and the flat map is lying to you.</p><h2>The Haversine Formula, in Plain English</h2><p>Every flight distance calculator — including this one — starts from the latitudes and longitudes of the two airports and runs them through the <strong>haversine formula</strong>. The name comes from “half versed sine,” a trigonometric function, but the intuition is simple: convert both points to 3D positions on a sphere of radius 6,371 km (Earth's mean radius), find the central angle between them, and multiply by the radius to get the surface distance.</p><p>In practice the computation looks like this: take the differences in latitude and longitude, halve them, square their sines, weight the longitude term by the cosines of the two latitudes (lines of longitude converge toward the poles, so a degree of longitude is shorter up north), sum them, take the square root and the inverse sine, double it, and multiply by Earth's radius. The result is accurate to well within a fraction of a percent for flight planning — survey-grade refinements like Vincenty's ellipsoidal formula change the answer by only a few kilometers on intercontinental routes.</p><p>Why does any of this matter to a traveler? Because <strong>distance-banded frequent-flyer programs price awards directly off this number</strong>. British Airways' Avios chart, for example, charges different award amounts at 1,151, 2,000, 3,000 and 4,000-mile thresholds. A route that measures 2,950 miles costs meaningfully fewer points than one at 3,050. When you are deciding between two routings, the great-circle distance is the number that decides the price.</p><h2>From Distance to Flight Time</h2><p>Distance is fixed; flight time is not. A 5,500 km hop does not take a fixed number of minutes, because cruise speed, winds, climb and descent profiles, taxi times and air-traffic sequencing all intervene. Still, a good estimate follows a simple recipe: divide the distance by a typical cruise ground speed (around 850 km/h for a modern jet at altitude) and add a fixed buffer — roughly 40 minutes — for climb, descent, taxiing and the routing inefficiency of real airways.</p><p>That buffer is doing more work than it looks. A short 500 km flight spends a large fraction of its time climbing and descending, so its average speed is far below cruise; a 10,000 km ultra-long-haul spends nearly all of it at efficient cruise. This is why short flights feel disproportionately slow per kilometer, and why the per-kilometer fuel burn — and CO2 — is worst on short hops.</p><p>Winds are the other great variable. The jet stream flowing west-to-east across the North Atlantic routinely makes eastbound crossings 45–60 minutes faster than westbound ones on the same route. Airlines know this and schedule accordingly: the published timetable for New York to London is shorter than for London to New York, on identical aircraft, because the wind is doing part of the work one way and fighting it the other.</p><h2>Time Zones: Why You Land “Before” You Take Off</h2><p>Few travel experiences confuse first-timers like westbound arrival times. Leave Tokyo at noon, fly nine hours, and land in Los Angeles at 5 AM <em>the same morning</em> — you appear to arrive before you departed. There is no paradox, only arithmetic: local arrival time equals departure time plus flight duration plus the destination's UTC offset minus the origin's UTC offset.</p><p>This arithmetic is exactly what the arrival estimator on this page does, and it is worth doing by hand once so you trust it. The classic trap is the overnight eastbound flight: depart New York at 10 PM, fly seven hours, arrive London at “5 AM” — which is 10 PM + 7 hours + 5 hours of time-zone shift = 10 AM London time, not 5 AM. Forgetting the zone shift is how people book 6 AM airport pickups for 10 AM landings.</p><p>One caveat: the offsets used here are standard-time values. Around daylight-saving transitions, or for regions that do not observe DST uniformly, the real offset can differ by an hour. Treat the arrival figure as a planning aid and confirm with the airline's timetable for tight connections.</p><h2>The 3–8% Rule: Flown vs. Calculated</h2><p>Compare any calculator's great-circle number with the distance your airline's app reports for the same flight and the airline's figure will be bigger — typically 3–8% bigger. That gap has three main causes. First, <strong>airways</strong>: aircraft fly published corridors between navigation fixes, not arbitrary curves, and those corridors zigzag. Second, <strong>winds and weather</strong>: dispatchers route around jet-stream headwinds and thunderstorms, trading distance for time and fuel. Third, <strong>terminal sequencing</strong>: near busy airports, arrivals are vectored into holding patterns and long finals that add tens of kilometers.</p><p>On some city pairs the gap is structural. Flights between Europe and Southeast Asia thread specific corridors; transpacific flights ride or avoid the jet stream by season. None of this invalidates the great-circle number — it remains the reference every downstream calculation starts from — but it explains why your “5,540 km” flight shows 5,900 km of actual track on the flight-tracking app.</p><h2>CO2: What Your Seat Really Costs the Sky</h2><p>Aviation's climate impact scales, to first order, with distance flown — which is why the distance calculator doubles as an emissions estimator. The standard method multiplies passenger-kilometers by an emissions factor that depends on cabin class: a first-class seat occupies several times the floor space of an economy seat, so it carries a proportionally larger share of the flight's fuel burn.</p><p>Typical factors run around 0.10–0.15 kg of CO2 per passenger-kilometer in economy on long-haul, rising for premium cabins and for short-haul (where climb fuel dominates). These are planning figures — the real number depends on aircraft type, load factor and routing — but they are good enough to compare options: flying economy direct emits far less per person than a business-class seat on a connecting itinerary covering 30% more distance.</p><p>Worth knowing: the CO2 from burning jet fuel is only part of aviation's warming. High-altitude effects — contrails and nitrogen oxides — roughly double the total climate impact, which is why some estimators apply an uplift multiplier. The figure on this page is CO2 only; treat it as the conservative lower bound.</p><h2>Using Distance to Fly Smarter</h2><p>Once you think in great-circle terms, several travel decisions get easier. <strong>Connections:</strong> a one-stop itinerary via a hub far off the great-circle path can add 20–40% more distance — and time — versus a direct flight or a well-placed stop. The compare deck on this page exists for exactly this: stack two routings and see the distance penalty of the “cheap” connection. <strong>Award sweet spots:</strong> routes just under a program's distance-band threshold are the best value in the chart; routes just over it are the worst. <strong>Minimum connection times:</strong> knowing the true flight time helps you sanity-check itineraries — if the timetable's block time is much shorter than the distance implies, the schedule is optimistic and misconnect risk is high.</p><p>Finally, a sense of scale helps planning. Under 1,500 km is short-haul (2 hours or less, high per-km emissions, trains often competitive). 1,500–4,000 km is medium-haul. Beyond about 7,000 km you are in long-haul territory where time zones, jet lag and ultra-long-range aircraft economics start to dominate the experience. Measure first, then decide — that is what the calculator is for.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How is flight distance calculated?</summary><p>Flight distance is the great-circle distance: the shortest path between two points on the Earth's surface, computed from the airports' latitudes and longitudes with the haversine formula. Airlines, award charts and flight planners all start from this number, though the route you actually fly is usually 3–8% longer because aircraft follow airways, wind-optimal tracks and airspace restrictions.</p></details>
+<details><summary>Why is the actual flight longer than the calculated distance?</summary><p>The great-circle line is the geometric shortest path, but planes rarely fly it exactly. They follow published airways, ride jet-stream tailwinds (or dodge headwinds), route around restricted airspace and weather, and queue in holding patterns near busy airports. On long-haul routes the difference is typically 3–8%.</p></details>
+<details><summary>How accurate is the flight-time estimate?</summary><p>It is a planning estimate, not a schedule. The tool divides the great-circle distance by a typical cruise speed and adds about 40 minutes for climb, descent, taxi and routing inefficiency. Real block times vary with winds, aircraft type, congestion and the airline's schedule padding, so always check the airline's published timetable before booking connections.</p></details>
+<details><summary>How does the arrival time calculation work?</summary><p>Enter your local departure time and the tool adds the estimated flight duration plus the time-zone difference between the two airports, giving the local arrival time (with a +1d flag when you land the next day). Airport offsets use standard time, so around daylight-saving changes the result can be off by an hour — treat it as a planning figure.</p></details>
+<details><summary>What does the CO2 estimate mean?</summary><p>It multiplies the flight distance by an average per-passenger emissions factor for your cabin class (higher cabins take more space per seat, so a bigger share of the fuel). It is a rough planning number: real emissions depend on the aircraft, load factor and routing. Economy on a full modern jet is the lowest per-passenger figure.</p></details>
+<details><summary>What is the difference between miles, kilometers and nautical miles?</summary><p>Statute miles (1.609 km) are what award charts and road-style distances use; kilometers are the everyday unit in most of the world; nautical miles (1.852 km) are aviation's native unit — pilots, flight plans and charts all speak in nautical miles. One knot of speed equals one nautical mile per hour.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">FlightPath</div>
+    <p>FlightPath gives you the great-circle distance between any two airports, a realistic flight-time estimate, your arrival time across time zones, and a CO2 figure — with a compare deck for up to three routes.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function greatCircleKm(a,b,c,d){var R=6371,t=Math.PI/180;var dLa=(c-a)*t,dLo=(d-b)*t;var s=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(a*t)*Math.cos(c*t)*Math.sin(dLo/2)*Math.sin(dLo/2);return Math.round(R*2*Math.asin(Math.min(1,Math.sqrt(s))));}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var AP=[['JFK','New York','JFK Intl',40.6413,-73.7781,-5],['LAX','Los Angeles','LAX Intl',33.9416,-118.4085,-8],['ORD','Chicago',"O'Hare",41.9742,-87.9073,-6],['DFW','Dallas','Dallas/Fort Worth',32.8998,-97.0403,-6],['SFO','San Francisco','SFO Intl',37.6213,-122.379,-8],['MIA','Miami','Miami Intl',25.7932,-80.2906,-5],['YYZ','Toronto','Toronto Pearson',43.6777,-79.6248,-5],['MEX','Mexico City','Mexico City Intl',19.4363,-99.0721,-6],['GRU','São Paulo','Guarulhos',-23.4356,-46.4731,-3],['LHR','London','Heathrow',51.47,-0.4543,0],['CDG','Paris','Charles de Gaulle',49.0097,2.5479,1],['FRA','Frankfurt','Frankfurt Main',50.0379,8.5622,1],['AMS','Amsterdam','Schiphol',52.3105,4.7683,1],['MAD','Madrid','Barajas',40.4983,-3.5676,1],['IST','Istanbul','Istanbul Airport',41.2753,28.7519,3],['DXB','Dubai','Dubai Intl',25.2532,55.3657,4],['DOH','Doha','Hamad Intl',25.2731,51.6081,3],['DEL','New Delhi','Indira Gandhi Intl',28.5562,77.1,5.5],['BOM','Mumbai','Chhatrapati Shivaji',19.09,72.8656,5.5],['SIN','Singapore','Changi',1.3644,103.9915,8],['HKG','Hong Kong','Hong Kong Intl',22.308,113.9185,8],['BKK','Bangkok','Suvarnabhumi',13.69,100.7501,7],['HND','Tokyo','Haneda',35.5494,139.7798,9],['ICN','Seoul','Incheon',37.4602,126.4407,9],['SYD','Sydney','Kingsford Smith',-33.9461,151.1772,10],['JNB','Johannesburg','O.R. Tambo',-26.1367,28.2411,2]];var from=document.getElementById('fp-from'),to=document.getElementById('fp-to'),go=document.getElementById('fp-go'),add=document.getElementById('fp-add'),swap=document.getElementById('fp-swap');if(!from||!go)return;AP.forEach(function(a,i){var o1=document.createElement('option');o1.value=i;o1.textContent=a[0]+' — '+a[1];from.appendChild(o1);var o2=document.createElement('option');o2.value=i;o2.textContent=a[0]+' — '+a[1];to.appendChild(o2);});from.value=0;to.value=9;var unit='km';var cabin=document.getElementById('fp-cabin'),dep=document.getElementById('fp-dep');var res=document.getElementById('fp-results'),cmpBox=document.getElementById('fp-cmp'),histBox=document.getElementById('fp-hist'),note=document.getElementById('fp-note');function meta(i){var a=AP[i];return a[2]+' · UTC'+(a[5]>=0?'+':'')+a[5];}function updMeta(){document.getElementById('fp-from-meta').textContent=meta(+from.value);document.getElementById('fp-to-meta').textContent=meta(+to.value);}from.addEventListener('change',updMeta);to.addEventListener('change',updMeta);updMeta();document.querySelectorAll('.fp-toggle button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.fp-toggle button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');unit=b.getAttribute('data-u');calc(false);});});function fmtDist(km){if(unit==='mi')return[(km*0.621371).toLocaleString('en-US',{maximumFractionDigits:0}),'miles'];if(unit==='nm')return[(km*0.539957).toLocaleString('en-US',{maximumFractionDigits:0}),'nautical miles'];return[km.toLocaleString('en-US'),'kilometers'];}function fmtDur(mins){var h=Math.floor(mins/60),m=Math.round(mins%60);return h+'h '+m+'m';}function calc(save){var A=AP[+from.value],B=AP[+to.value];var km=greatCircleKm(A[3],A[4],B[3],B[4]);var mins=Math.max(45,Math.round(km/850*60+40));var fd=fmtDist(km);document.getElementById('fp-dist').textContent=fd[0];document.getElementById('fp-dist-u').textContent=fd[1];document.getElementById('fp-time').textContent=fmtDur(mins);var co2=(km*parseFloat(cabin.value));document.getElementById('fp-co2').textContent=co2>=1000?(co2/1000).toFixed(2)+' t':Math.round(co2)+' kg';var arr='–',arrU='local time';if(dep.value){var p=dep.value.split(':'),dm=(+p[0])*60+(+p[1])+mins+(B[5]-A[5])*60;var days=Math.floor(dm/1440);var mm=((dm%1440)+1440)%1440;var hh=Math.floor(mm/60),nn=mm%60;arr=(hh<10?'0':'')+hh+':'+(nn<10?'0':'')+nn;arrU='local time'+(days>0?' (+'+days+'d)':days<0?' ('+days+'d)':'');}document.getElementById('fp-arr').textContent=arr;document.getElementById('fp-arr-u').textContent=arrU;note.textContent='Great-circle distance is the shortest path over the Earth — real flown routes run ~3–8% longer. Time & CO₂ are estimates.';res.classList.add('show');if(save)pushHist(A[0]+' → '+B[0],fd[0]+' '+fd[1].split(' ')[0]);return{from:A[0],to:B[0],km:km,mins:mins,dist:fd[0]+' '+fd[1]};}swap.addEventListener('click',function(){var t=from.value;from.value=to.value;to.value=t;updMeta();calc(false);});go.addEventListener('click',function(){calc(true);});var cmp=[];function renderCmp(){cmpBox.innerHTML='';if(!cmp.length){cmpBox.innerHTML='<p class="sub" style="text-align:center">No routes yet — hit “+ Compare route” to stack one.</p>';return;}cmp.forEach(function(r,i){var d=document.createElement('div');d.className='fp-ccard';d.innerHTML='<button class="rm" aria-label="Remove route">✕</button><div class="route">'+r.from+' → '+r.to+'</div><div class="nums">'+r.dist+' · '+fmtDur(r.mins)+' in the air</div>';d.querySelector('.rm').addEventListener('click',function(){cmp.splice(i,1);renderCmp();});cmpBox.appendChild(d);});}add.addEventListener('click',function(){if(cmp.length>=3){note.textContent='Compare deck holds 3 routes — remove one to add another.';return;}var r=calc(false);cmp.push(r);renderCmp();});function getHist(){try{return JSON.parse(localStorage.getItem('fp_hist')||'[]');}catch(e){return[];}}function pushHist(route,dist){var h=getHist();h=h.filter(function(x){return x.r!==route;});h.unshift({r:route,d:dist});localStorage.setItem('fp_hist',JSON.stringify(h.slice(0,8)));renderHist();}function renderHist(){var h=getHist();histBox.innerHTML='';if(!h.length){histBox.innerHTML='<span class="sub">Nothing yet.</span>';return;}h.forEach(function(x){var c=document.createElement('button');c.className='fp-chip';c.type='button';c.textContent=x.r+' · '+x.d;var codes=x.r.split(' → ');c.addEventListener('click',function(){for(var i=0;i<AP.length;i++){if(AP[i][0]===codes[0])from.value=i;if(AP[i][0]===codes[1])to.value=i;}updMeta();calc(false);});histBox.appendChild(c);});}document.getElementById('fp-clear').addEventListener('click',function(){localStorage.removeItem('fp_hist');renderHist();});renderHist();calc(false);});}
+</script>
+</body>
+</html>
