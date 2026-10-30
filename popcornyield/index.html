@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Popcorn Yield Calculator — Popped Cups from Kernels &amp; Pop Rate</title>
+<meta name="description" content="Calculate how many cups of popped popcorn your kernels will make, adjusted for pop rate, so movie night never runs short.">
+<link rel="canonical" href="https://fun.fixoraa.tech/popcornyield/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Popcorn Yield Calculator — Popped Cups from Kernels &amp; Pop Rate">
+<meta property="og:description" content="Calculate how many cups of popped popcorn your kernels will make, adjusted for pop rate, so movie night never runs short.">
+<meta property="og:url" content="https://fun.fixoraa.tech/popcornyield/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "PopcornYield",
+      "url": "https://fun.fixoraa.tech/popcornyield/",
+      "applicationCategory": "Food",
+      "operatingSystem": "Web",
+      "description": "Calculate how many cups of popped popcorn your kernels will make, adjusted for pop rate, so movie night never runs short.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many cups does 100 g of popcorn kernels make?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 25 to 27 cups at a good pop rate, since 30 g of kernels makes roughly 8 cups. At a 95% pop rate, 100 g makes about 25 cups."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good pop rate for popcorn?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fresh kernels in a hot pan pop at 95% or better. Old or damp kernels may pop at only 80 to 90%, leaving many unpopped kernels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do some kernels never pop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Old kernels lose moisture, and moisture is what turns to steam and pops the kernel. Kernels older than a year, or stored in a dry place, pop poorly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much popcorn per person for a movie night?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 4 to 6 cups per person for a generous serving, or 2 to 3 cups as a light snack alongside other food."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is air-popped or oil-popped better?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Air-popped is lighter and lower in fat. Oil-popped tastes richer and seasons more evenly. Both pop to similar volumes from the same kernels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I store popcorn kernels?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Keep kernels in a sealed container in a cool, dark place. Avoid the fridge, which dries them out, and replace kernels that have been open for over a year."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I pop popcorn in the microwave without a bag?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, in a covered microwave-safe bowl with a vent, for two to three minutes, listening for pops to slow to two seconds apart. Stop promptly to avoid burning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much oil do I need for stovetop popcorn?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About one tablespoon of oil per 30 g of kernels, just enough to coat the bottom of the pan. Too much oil makes soggy popcorn."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fffbeb; --surface:#ffffff; --accent:#92400e; --accent-ink:#ffffff;
+  --ink:#2e1f0e; --muted:#6d5433; --line:#e8d5a8;
+  --display:'Bricolage Grotesque',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+.hist{margin-top:1rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.1rem}
+.hist h3{font-size:1rem;margin-bottom:.4rem} .hist ul{padding-left:1.2rem;color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}.formcard,.resultcard{padding:.9rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="PopcornYield home">
+      <span class="fx-logo-tile" aria-hidden="true">🍿</span>
+      <span class="fx-brand">PopcornYield</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-popcorn-pop" aria-label="PopcornYield tool">
+<div class="layout"><h1>Popcorn Yield Calculator</h1><p class="sub">Find out how many cups your kernels will pop, adjusted for pop rate.</p><div class="formcard"><label>Kernels (grams)<input id="grams" type="number" value="60" step="any" min="0"></label><label>Pop rate (%)<input id="rate" type="number" value="95" step="any" min="0"></label><div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div><div class="presets" id="presets"></div></div><div class="resultcard" id="result" aria-live="polite"><p>Enter your values to see the result.</p></div><div class="hist"><h3>Recent calculations</h3><ul id="histList"></ul></div><p class="muted">Tip: fresh kernels pop far better than old ones — replace kernels older than a year.</p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>The surprising maths of popcorn</h2>
+<p>Popcorn looks like a small snack until you measure it. A modest handful of kernels, barely a quarter of a cup, explodes into a bowl that feeds two people, because each kernel expands to roughly thirty times its original volume when the moisture inside it turns to steam. That expansion is why popcorn planning is so easy to get wrong: a cup of kernels is not a cup of snack, it is closer to a party bowl. The working figure is simple. Thirty grams of kernels, about a quarter of a cup, makes roughly eight cups of popped popcorn at a full pop rate. Scale from there, adjust for the kernels that never pop, and movie night is covered.</p>
+<h2>Pop rate: the hidden variable</h2>
+<p>Not every kernel pops, and the share that does is called the pop rate. Fresh kernels in a hot pan pop at ninety-five percent or better, while old, dry, or poorly stored kernels may manage only eighty to ninety percent. The difference matters: at ninety percent, a hundred grams of kernels gives about twenty-four cups instead of twenty-seven, and the unpopped kernels at the bottom of the bowl are a disappointment and a dental hazard. Moisture is the key. A kernel pops when the water inside it, about fourteen percent of its weight, turns to steam and bursts the hull. Kernels that have dried out below that moisture level simply cannot build enough pressure, no matter how hot the pan gets.</p>
+<h2>Freshness and storage</h2>
+<p>Kernels keep well in a sealed container in a cool, dark cupboard, but they do not keep forever. After a year, especially once opened, moisture drifts away and pop rates fall. Buying smaller bags more often beats buying a giant bag that sits open for two years. Do not store kernels in the fridge, which dries them further, and do not freeze them unless sealed airtight. A simple freshness test is to pop a small batch: if more than a tenth of kernels stay unpopped, the batch is stale and should be replaced. Good kernels also smell faintly sweet and starchy, while stale kernels smell dusty or flat.</p>
+<h2>Popping methods compared</h2>
+<p>Stovetop popping in a heavy pot with a little oil gives the most control and the best flavour. Heat the oil, add three test kernels, and when they pop, add the rest in a single layer, shaking the pot gently so kernels do not scorch. Air popping is lighter and lower in fat, and it produces a clean, crisp result that takes seasoning well, although unbuttered air-popped corn can taste dry. Microwave popping in a covered bowl works well for small batches, but stop as soon as pops slow to two seconds apart, because the last few seconds are when popcorn burns. Whichever method you use, a hot pan and a single layer of kernels give the best pop rate.</p>
+<h2>How much per person</h2>
+<p>Portion size depends on whether popcorn is the event or a side snack. For a movie night where popcorn is the main snack, plan four to six cups per person, which is a generous bowl each. For a party with other snacks, two to three cups per person is plenty. Children usually eat two to four cups, and they love refills, so plan for the top of the range if refills are expected. A useful rule is one large bowl per two people for a film, and one large bowl per four people for a party spread. Because popped popcorn is bulky but light, it is better to pop a little extra than to run out halfway through the film.</p>
+<h2>Seasoning and serving</h2>
+<p>Popcorn takes seasoning best while it is still warm and very lightly oiled, because dry seasoning slides off dry popcorn. A light mist of oil or melted butter helps salt, cheese powder, or spices stick. Toss in a large bowl rather than sprinkling over the top, so seasoning reaches every piece. Classic salted butter is hard to beat, but nutritional yeast gives a cheesy flavour, smoked paprika adds warmth, and a little sugar and cinnamon makes a sweet batch. Serve in wide bowls rather than tall ones, so people can reach the bottom without spilling, and keep unpopped kernels out by pouring popped corn into a serving bowl and leaving the duds in the pot.</p>
+<h2>A worked example</h2>
+<p>Sixty grams of kernels at a ninety-five percent pop rate gives sixty divided by thirty, times eight, times 0.95, which is 15.2 cups, with about three grams of unpopped kernels. That is enough for three generous movie-night servings or six party servings. A family batch of 120 grams at ninety percent gives 28.8 cups, enough for a film night for five or six people. A party batch of 240 grams at ninety-five percent gives 60.8 cups, which fills a large bowl several times over. The calculator handles these figures instantly, so you can scale from a quiet evening to a party without guessing.</p>
+<h2>Troubleshooting poor pops</h2>
+<p>A batch with many unpopped kernels is usually stale, under-heated, or overcrowded. Check kernel age first, then heat: the pan should be hot enough that test kernels pop within a minute. Overcrowding is the other common fault, because a thick layer of kernels insulates the ones underneath. Pop in batches if the pot is small. Scorched popcorn usually means the heat was too high or the pot was not shaken, so lower the heat slightly and keep the pot moving. Soggy popcorn means too much oil or a lid that trapped steam, so use less oil and vent the lid slightly. With fresh kernels, a hot pot, and a single layer, most batches pop beautifully.</p>
+<h2>Popcorn for parties and gifts</h2>
+<p>Popcorn scales beautifully for parties, and it is one of the cheapest snacks per guest. For a party of twenty with popcorn as one of several snacks, plan about three cups per person, or sixty cups, which needs roughly 240 grams of kernels at a good pop rate, popped in three or four batches. Pop ahead of time if the party is large, since popping live for twenty people takes a while and the cook misses the party. Popped corn keeps crisp for a day in a sealed container or paper bag, and it travels well as a gift: fill a decorative bag with a flavoured batch, such as cinnamon sugar or parmesan and herb, tie it with a ribbon, and it becomes a thoughtful, inexpensive present. For children's parties, plain lightly salted popcorn is safest, since strong flavours and sticky coatings divide young tastes.</p>
+<h2>Popcorn nutrition in context</h2>
+<p>Popcorn is one of the healthiest snack foods when it is air-popped and lightly seasoned, because it is a whole grain with good fibre and relatively few calories per cup. A cup of air-popped popcorn has roughly 30 calories, which makes it far lighter than crisps or nuts for the same volume of snacking. Oil-popped corn is richer, and butter or cheese toppings add fat and salt quickly, so the health profile depends heavily on what goes on top. For everyday snacking, air-popped corn with a little salt, nutritional yeast, or herbs is an excellent choice, while buttery cinema-style popcorn is best as an occasional treat. Portion awareness matters less with popcorn than with most snacks, since its volume fills you up before its calories do.</p>
+<h3>Popcorn yield guide (95% pop rate)</h3><table><tr><th>Kernels</th><th>Popped cups</th><th>Serves (movie night)</th></tr><tr><td>30 g</td><td>7.6 cups</td><td>1 to 2 people</td></tr><tr><td>60 g</td><td>15.2 cups</td><td>3 people</td></tr><tr><td>120 g</td><td>30.4 cups</td><td>5 to 6 people</td></tr><tr><td>240 g</td><td>60.8 cups</td><td>10 to 12 people</td></tr></table>
+<ul><li>30 g of kernels makes about 8 cups at a full pop rate.</li><li>Fresh kernels pop at 95% or better; old kernels much worse.</li><li>Pop in a single layer in a hot pan for the best rate.</li><li>Plan 4 to 6 cups per person for a movie night.</li><li>Stop microwaving when pops slow to two seconds apart.</li></ul>
+<p>Popcorn is one of the cheapest, simplest pleasures, and a little maths makes it even better. Weigh your kernels, allow for the pop rate, and pop a touch extra. Then the only question at movie night is what to watch, not whether the bowl will last to the credits.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many cups does 100 g of popcorn kernels make?</summary><p>About 25 to 27 cups at a good pop rate, since 30 g of kernels makes roughly 8 cups. At a 95% pop rate, 100 g makes about 25 cups.</p></details>
+<details><summary>What is a good pop rate for popcorn?</summary><p>Fresh kernels in a hot pan pop at 95% or better. Old or damp kernels may pop at only 80 to 90%, leaving many unpopped kernels.</p></details>
+<details><summary>Why do some kernels never pop?</summary><p>Old kernels lose moisture, and moisture is what turns to steam and pops the kernel. Kernels older than a year, or stored in a dry place, pop poorly.</p></details>
+<details><summary>How much popcorn per person for a movie night?</summary><p>About 4 to 6 cups per person for a generous serving, or 2 to 3 cups as a light snack alongside other food.</p></details>
+<details><summary>Is air-popped or oil-popped better?</summary><p>Air-popped is lighter and lower in fat. Oil-popped tastes richer and seasons more evenly. Both pop to similar volumes from the same kernels.</p></details>
+<details><summary>How do I store popcorn kernels?</summary><p>Keep kernels in a sealed container in a cool, dark place. Avoid the fridge, which dries them out, and replace kernels that have been open for over a year.</p></details>
+<details><summary>Can I pop popcorn in the microwave without a bag?</summary><p>Yes, in a covered microwave-safe bowl with a vent, for two to three minutes, listening for pops to slow to two seconds apart. Stop promptly to avoid burning.</p></details>
+<details><summary>How much oil do I need for stovetop popcorn?</summary><p>About one tablespoon of oil per 30 g of kernels, just enough to coat the bottom of the pan. Too much oil makes soggy popcorn.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">PopcornYield</div>
+    <p>PopcornYield turns kernel weight and pop rate into popped cups for movie night or a party.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function popcornYield(grams, rate) { if (grams <= 0 || rate <= 0) return {cups: 0, unpopped: 0}; var c = Math.round(grams / 30 * 8 * rate / 100 * 10) / 10; return {cups: c, unpopped: Math.round(grams * (100 - rate) / 100)}; }
+
+if (typeof document !== 'undefined') {
+  var _hist = [];
+  function _renderHist() {
+    var el = document.getElementById('histList');
+    if (el) el.innerHTML = _hist.map(function(h) { return '<li>' + h + '</li>'; }).join('') || '<li>No calculations yet.</li>';
+  }
+  function run() {
+    var r=popcornYield(+document.getElementById('grams').value,+document.getElementById('rate').value);document.getElementById('result').innerHTML='<p class="big">About '+r.cups+' cups popped</p><p>Expect about '+r.unpopped+' g of unpopped kernels. Fresh kernels and a hot pan raise the pop rate.</p>';window._last='PopcornYield: '+r.cups+' cups from '+document.getElementById('grams').value+' g kernels';
+    if (window._last) { _hist.unshift(window._last); _hist = _hist.slice(0, 5); _renderHist(); }
+  }
+  document.getElementById('calcBtn').onclick = run;
+  document.getElementById('copyBtn').onclick = function() { if (window._last && navigator.clipboard) navigator.clipboard.writeText(window._last); };
+  var P = [['Movie night for 2: 60 g, 95%',[60,95]],['Family bowl: 120 g, 90%',[120,90]],['Party batch: 240 g, 95%',[240,95]]];
+  document.getElementById('presets').innerHTML = P.map(function(p, i) { return '<button type="button" data-i="' + i + '">' + p[0] + '</button>'; }).join('');
+  document.querySelectorAll('#presets button').forEach(function(b) {
+    b.onclick = function() {
+      var v = P[+b.dataset.i][1];
+      document.getElementById('grams').value=v[0];document.getElementById('rate').value=v[1];
+      run();
+    };
+  });
+  _renderHist();
+  run();
+}
+
+</script>
+</body>
+</html>
