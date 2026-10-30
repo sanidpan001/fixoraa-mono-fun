@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shoe Rack Capacity Calculator — How Many Shoe Pairs Fit Your Rack</title>
+<meta name="description" content="Find out exactly how many shoe pairs fit your rack: enter shelf width, shelf count and shoe type to get pairs per shelf and total capacity instantly.">
+<link rel="canonical" href="https://fun.fixoraa.tech/shoerack/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Shoe Rack Capacity Calculator — How Many Shoe Pairs Fit Your Rack">
+<meta property="og:description" content="Find out exactly how many shoe pairs fit your rack: enter shelf width, shelf count and shoe type to get pairs per shelf and total capacity instantly.">
+<meta property="og:url" content="https://fun.fixoraa.tech/shoerack/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ShoeRack",
+      "url": "https://fun.fixoraa.tech/shoerack/",
+      "applicationCategory": "Home",
+      "operatingSystem": "Web",
+      "description": "Find out exactly how many shoe pairs fit your rack: enter shelf width, shelf count and shoe type to get pairs per shelf and total capacity instantly.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many pairs of shoes fit on a 36-inch shoe rack shelf?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 7 pairs of adult shoes at 5 inches per pair, or 9 pairs of kids shoes at 4 inches per pair. Boots fit about 4 pairs per 36-inch shelf at 8 inches per pair. Multiply pairs per shelf by your shelf count for the total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you calculate shoe rack capacity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide the usable inside shelf width by the width of one pair, round down to a whole pair, then multiply by the number of shelves. For example, 36 inches divided by 5 inches is 7 pairs per shelf, and 3 shelves give 21 pairs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How wide is a pair of shoes on a rack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Plan on about 5 inches per adult pair, 4 inches per kids pair, and 8 inches per boots pair. These planning widths leave a small gap so shoes are easy to grab without scuffing each other."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many shelves does a shoe rack need for a family of four?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the collection, but a family of four often needs 24 to 40 pairs of capacity. A 36-inch rack with 4 shelves holds about 28 adult pairs, which suits many families if seasonal shoes are rotated."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do boots need a different shoe rack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Boots need wider spacing and more vertical clearance than sneakers. At 8 inches per pair, boots nearly halve capacity, and tall boots may need 14 inches of shelf height, so many households use a separate boot tray or an adjustable rack."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I measure the inside or outside width of a shoe rack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Always measure the inside width, between the frames or dividers, because that is the space shoes can actually use. Outside width can overstate capacity by a pair per shelf."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much vertical space do shoes need on a rack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Flat shoes and sneakers need about 6 inches of clearance, ankle boots need 8 to 10 inches, and tall boots can need 14 inches or more. Check shelf spacing before buying, not just total rack height."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my shoe collection is bigger than my rack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can buy a wider or taller rack, split storage between the entryway and a closet, or rotate out-of-season shoes elsewhere. Leaving 10 to 20 percent spare capacity also keeps the rack comfortable in daily use."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FFFDF7; --surface:#FFFFFF; --accent:#0F766E; --accent-ink:#FFFFFF;
+  --ink:#1F2937; --muted:#4B5563; --line:#E8E0D0;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.sr-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.4rem;box-shadow:0 6px 20px rgba(15,118,110,.08)}.sr-sub{color:var(--muted);margin:.5rem 0 1.2rem;max-width:44rem}.sr-presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}.sr-chip{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:.45rem .9rem;font-weight:600;cursor:pointer;min-height:44px}.sr-chip:hover{background:var(--accent);color:var(--accent-ink)}.sr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}.sr-grid label{display:block;font-weight:600;margin-bottom:.35rem}.sr-grid input,.sr-grid select{width:100%;padding:.7rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:var(--ink);min-height:44px}.sr-btn{background:var(--accent);color:var(--accent-ink);border:none;border-radius:999px;padding:.7rem 1.4rem;font-weight:700;font-size:1rem;cursor:pointer;min-height:44px}.sr-btn.secondary{background:transparent;color:var(--accent);border:2px solid var(--accent);margin-top:.8rem}.sr-result{margin-top:1rem;font-size:1.05rem}.sr-result .big{font-size:1.4rem;font-weight:800}.sr-hist{margin-top:1.2rem}.sr-hist h2{font-size:1.05rem;margin-bottom:.4rem}.sr-hist li{margin-left:1.2rem;color:var(--muted)}.sr-features{margin:1.2rem 0;list-style:disc;padding-left:1.4rem}.sr-features li{margin-bottom:.5rem}
+@media (max-width:640px){.sr-grid{grid-template-columns:1fr}.sr-card{padding:1rem}.sr-presets{flex-direction:column}.sr-chip{width:100%;text-align:center}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ShoeRack home">
+      <span class="fx-logo-tile" aria-hidden="true">👟</span>
+      <span class="fx-brand">ShoeRack</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-shoe-rack" aria-label="ShoeRack tool">
+<h1>Shoe Rack Capacity Calculator</h1><p class="sr-sub">Enter your shelf width, how many shelves you have, and what kind of shoes you store. Get pairs per shelf and total capacity in one click.</p><div class="sr-card"><div class="sr-presets" role="group" aria-label="Presets"><button type="button" class="sr-chip" data-preset="36,3,adult">Entryway · 36″ × 3 shelves</button><button type="button" class="sr-chip" data-preset="30,4,kids">Kids closet · 30″ × 4 shelves</button><button type="button" class="sr-chip" data-preset="48,2,boots">Mudroom boots · 48″ × 2 shelves</button></div><div class="sr-grid"><div><label for="sr-width">Shelf width (inches)</label><input id="sr-width" type="number" min="1" max="120" step="1" value="36"></div><div><label for="sr-shelves">Number of shelves</label><input id="sr-shelves" type="number" min="1" max="12" step="1" value="3"></div><div><label for="sr-type">Shoe type</label><select id="sr-type"><option value="adult" selected>Adult shoes / sneakers (5″ per pair)</option><option value="kids">Kids shoes (4″ per pair)</option><option value="boots">Boots (8″ per pair)</option></select></div></div><button type="button" class="sr-btn" id="sr-calc">Calculate capacity</button><div class="sr-result" id="sr-result" aria-live="polite"></div><button type="button" class="sr-btn secondary" id="sr-copy">Copy result</button><div class="sr-hist"><h2>Recent calculations</h2><ul id="sr-hist"></ul></div></div><ul class="sr-features"><li><strong>Presets:</strong> one tap fills a common entryway, kids closet, or mudroom setup.</li><li><strong>History:</strong> your last five calculations stay on screen so you can compare sizes.</li><li><strong>Copy result:</strong> copy the capacity summary to share or paste into a shopping note.</li></ul>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How shoe rack capacity really works</h2><p>Most people buy a shoe rack by looking at a photo and guessing. Then the shoes arrive, the rack fills up in a week, and a second row of shoes starts living on the floor beside it. The fix is simple: capacity is not a mystery, it is arithmetic. A rack holds as many pairs per shelf as fit across the usable width of that shelf, multiplied by the number of shelves. Everything else — the style of the rack, the material, the colour — matters far less than those two numbers and the width of the shoes you actually own.</p><p>The reason guessing fails is that shoe widths vary more than people expect. A pair of adult sneakers takes up roughly five inches of shelf width when placed side by side. A pair of tall boots can take eight inches or more. Kids shoes are narrower, but a growing child moves through sizes quickly, so a rack sized tightly for toddler shoes will feel cramped within a year. Measuring first, even roughly, turns a hopeful purchase into a confident one, and it takes about two minutes.</p><h2>Measure your shelf the right way</h2><p>Start with the inside width of a single shelf, not the overall width of the rack. Side frames, brackets, and dividers eat into the space, sometimes by an inch or two on each side. Run a tape measure from the inside of one frame to the inside of the other, at the height where shoes will actually sit. If the rack is slanted or tiered, measure the narrowest usable shelf, because that shelf sets the limit for every row.</p><p>Next, count only shelves that will hold shoes. Some racks have a top surface meant for keys, a bag, or a plant, and some have a bottom shelf so close to the floor that tall shoes will not fit under the shelf above it. Count the shelves you will genuinely use for shoes, and note the vertical clearance separately. A rack that fits twenty pairs on paper is useless if boots cannot stand upright on any shelf.</p><p>Finally, measure a few of your own pairs. Place two shoes side by side the way they will sit on the rack, heel to heel, and measure across the widest point. Do this for your bulkiest pair, not your average pair, because the bulkiest pairs decide whether the last pair on each shelf fits or spills over. If your household mixes adults, kids, and boots, measure one pair of each type and plan around the mix you actually store.</p><h2>How wide is a pair of shoes?</h2><p>Widths vary by brand, style, and size, but planning widths give a reliable starting point. This calculator uses five inches per adult pair, four inches per kids pair, and eight inches per boots pair. Those figures assume shoes sit side by side, facing forward, with a small breathing gap. If you pack shoes tightly with no gap at all, you may squeeze in one extra pair per wide shelf, but the shoes will be harder to pull out and more likely to scuff each other.</p><table><thead><tr><th>Shoe type</th><th>Planning width per pair</th><th>Pairs on a 36-inch shelf</th><th>Notes</th></tr></thead><tbody><tr><td>Adult shoes and sneakers</td><td>5 inches</td><td>7 pairs</td><td>The default for most households</td></tr><tr><td>Kids shoes</td><td>4 inches</td><td>9 pairs</td><td>Allow room as kids grow into larger sizes</td></tr><tr><td>Boots</td><td>8 inches</td><td>4 pairs</td><td>Tall boots also need vertical clearance</td></tr><tr><td>Heels and dress shoes</td><td>5 inches</td><td>7 pairs</td><td>Heels may need extra height, not extra width</td></tr></tbody></table><p>Notice what the table reveals: switching from sneakers to boots nearly halves the capacity of the same rack. That is why a mudroom full of winter boots always feels smaller than the same rack looked in summer. If your household stores boots for part of the year, size the rack for boots, not for sneakers, or keep a separate boot tray for the winter months.</p><h2>The capacity formula, with worked examples</h2><p>The formula has two steps. First, divide the shelf width by the width of one pair and round down to a whole pair, because half a pair of shoes is not useful storage. That gives pairs per shelf. Second, multiply pairs per shelf by the number of shelves. That gives total capacity. Leftover width is the inches that remain unused on each shelf after whole pairs are placed.</p><p>Example one: a 36-inch shelf with adult shoes. Thirty-six divided by five is 7.2, which rounds down to 7 pairs per shelf. With three shelves, that is 21 pairs in total, with one inch left over on each shelf. Example two: a 48-inch shelf with boots. Forty-eight divided by eight is exactly 6 pairs per shelf. With two shelves, that is 12 pairs, with nothing left over. Example three: a 30-inch shelf with kids shoes. Thirty divided by four is 7.5, which rounds down to 7 pairs per shelf. With four shelves, that is 28 pairs, with two inches left over per shelf.</p><p>Rounding down matters. If you round up, the calculator will promise a pair that physically cannot fit, and the overflow pair ends up on the floor. The leftover inches are not wasted space either: they give your fingers room to grab a pair without knocking its neighbours over, and they absorb small differences between brands.</p><h2>Choosing shelf count and vertical spacing</h2><p>More shelves are not always better. Each shelf needs enough height for the shoes on it, plus a little room to lift a pair out. Flat shoes and sneakers are comfortable with about six inches of vertical clearance. Ankle boots want eight to ten inches. Tall winter boots can need fourteen inches or more, which is why they often end up on the floor or in a separate boot tray even in a large rack.</p><p>When you shop, check the distance between shelves, not just the total height of the unit. A tall rack with six closely spaced shelves may hold many pairs of flats but zero pairs of boots. A shorter rack with three generously spaced shelves may hold fewer pairs on paper but serve a real mixed household far better. If you can, choose a rack with adjustable shelves so the spacing can change as your shoe collection changes.</p><p>Also think about depth. A shelf should be deep enough for your longest shoe, usually ten to twelve inches for adult shoes. Shoes that stick out past the front edge look messy and get knocked off, and shoes stored sideways to save depth are harder to find. Width decides how many pairs fit; depth and height decide whether they fit comfortably.</p><h2>Planning for a real household</h2><p>A single person who owns eight pairs has a very different problem from a family of four in a rainy climate. Count the pairs you actually wear in a typical week, then add the pairs you keep for other seasons, sports, and occasions. Many households find that daily shoes are about half the collection, and the rest are seasonal or occasional. The daily shoes deserve the easiest shelf, usually the middle one at a comfortable grabbing height.</p><p>Children deserve special attention. Kids outgrow shoes fast, so a rack sized exactly for current kids shoes will feel tight within a year. Leaving one spare pair of capacity per shelf, or planning with adult widths for the top shelf, buys time. Equally, if teenagers in the house already wear adult sizes, count their shoes as adult shoes rather than kids shoes, or the calculator will overpromise by a pair or two per shelf.</p><p>Guests and growth matter too. If your entryway regularly hosts visitors, reserve a pair or two of capacity rather than filling every inch. A rack that is completely full is a rack that cannot absorb a wet afternoon, a new purchase, or a visiting family. Planning for eighty to ninety percent full is more comfortable in daily life than planning for one hundred percent full.</p><h2>Small entryways and tight spaces</h2><p>Small entryways reward narrow, tall racks and wall-mounted rails more than wide benches. A 24-inch wide rack with five shelves holds ten adult pairs if each shelf fits four pairs, which is plenty for one or two people. Stacking vertically uses wall space that would otherwise sit empty, and it keeps shoes off the floor where they become a tripping hazard.</p><p>In a tight space, also consider rotation. Not every pair needs to live by the door. Out-of-season shoes, formal shoes, and rarely worn pairs can live in a closet or under a bed, while daily shoes stay in the entryway rack. Rotating seasonally can cut the needed entryway capacity in half, which often means the difference between a rack that fits the space and a rack that blocks the door.</p><h2>Common mistakes that shrink a rack</h2><ul><li>Measuring the outside of the rack instead of the usable inside width, which overstates capacity by a pair per shelf.</li><li>Counting a decorative top surface or a too-low bottom shelf as a shoe shelf.</li><li>Sizing for sneakers when the household mostly wears boots in winter.</li><li>Forgetting vertical clearance, so tall boots fit nowhere despite plenty of width.</li><li>Packing shelves completely full, leaving no room to grab a pair without a small avalanche.</li><li>Counting kids shoes at kids widths long after the kids wear adult sizes.</li><li>Buying before counting, then discovering the collection is twice the size of the rack.</li></ul><h2>Buying checklist before you order</h2><p>Work through this short list before spending money. First, measure the inside width of one shelf, or the space where the rack will go. Second, count the pairs you want the rack to hold, by type. Third, run the numbers here and check the total against your count, with a little spare capacity. Fourth, check shelf height against your tallest boots. Fifth, check depth against your longest shoes. Sixth, measure the wall or floor space the rack will occupy, including room to open a nearby door. A rack that passes all six checks is very likely to work on arrival day, not just on the product page.</p><p>If the numbers do not work, you have three honest options rather than one hopeful purchase. You can choose a wider or taller rack, you can split storage between two locations, or you can rotate seasonal shoes out of the entryway. Any of the three beats buying a rack that looks right and holds half your shoes. The calculator above makes the first check take seconds; the rest of the list takes a single trip around the house with a tape measure.</p><h3>A final word on comfort</h3><p>A good shoe rack is not the one that holds the most pairs in theory. It is the one that holds your pairs, in your space, without a daily struggle. Leave a little breathing room on each shelf, keep daily shoes at easy reach, and give boots the height they need. Do that, and the entryway stays tidy not just on the day the rack arrives, but on every ordinary morning after.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many pairs of shoes fit on a 36-inch shoe rack shelf?</summary><p>About 7 pairs of adult shoes at 5 inches per pair, or 9 pairs of kids shoes at 4 inches per pair. Boots fit about 4 pairs per 36-inch shelf at 8 inches per pair. Multiply pairs per shelf by your shelf count for the total.</p></details>
+<details><summary>How do you calculate shoe rack capacity?</summary><p>Divide the usable inside shelf width by the width of one pair, round down to a whole pair, then multiply by the number of shelves. For example, 36 inches divided by 5 inches is 7 pairs per shelf, and 3 shelves give 21 pairs.</p></details>
+<details><summary>How wide is a pair of shoes on a rack?</summary><p>Plan on about 5 inches per adult pair, 4 inches per kids pair, and 8 inches per boots pair. These planning widths leave a small gap so shoes are easy to grab without scuffing each other.</p></details>
+<details><summary>How many shelves does a shoe rack need for a family of four?</summary><p>It depends on the collection, but a family of four often needs 24 to 40 pairs of capacity. A 36-inch rack with 4 shelves holds about 28 adult pairs, which suits many families if seasonal shoes are rotated.</p></details>
+<details><summary>Do boots need a different shoe rack?</summary><p>Boots need wider spacing and more vertical clearance than sneakers. At 8 inches per pair, boots nearly halve capacity, and tall boots may need 14 inches of shelf height, so many households use a separate boot tray or an adjustable rack.</p></details>
+<details><summary>Should I measure the inside or outside width of a shoe rack?</summary><p>Always measure the inside width, between the frames or dividers, because that is the space shoes can actually use. Outside width can overstate capacity by a pair per shelf.</p></details>
+<details><summary>How much vertical space do shoes need on a rack?</summary><p>Flat shoes and sneakers need about 6 inches of clearance, ankle boots need 8 to 10 inches, and tall boots can need 14 inches or more. Check shelf spacing before buying, not just total rack height.</p></details>
+<details><summary>What if my shoe collection is bigger than my rack?</summary><p>You can buy a wider or taller rack, split storage between the entryway and a closet, or rotate out-of-season shoes elsewhere. Leaving 10 to 20 percent spare capacity also keeps the rack comfortable in daily use.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ShoeRack</div>
+    <p>ShoeRack tells you how many shoe pairs fit your rack from shelf width, shelf count and shoe type — no guessing before you buy or build.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcShoeRack(width, shelves, type){var w={adult:5,kids:4,boots:8};var pw=w[type]||5;if(!(width>0)||!(shelves>0))return{perShelf:0,totalPairs:0,usedWidth:0,leftover:width>0?width:0};var per=Math.floor(width/pw);var used=per*pw;return{perShelf:per,totalPairs:per*shelves,usedWidth:used,leftover:width-used};}
+if (typeof document !== 'undefined') {
+var srHist=[];
+function srRender(){
+var w=+document.getElementById('sr-width').value;
+var s=+document.getElementById('sr-shelves').value;
+var t=document.getElementById('sr-type').value;
+var r=calcShoeRack(w,s,t);
+var label=document.getElementById('sr-type').options[document.getElementById('sr-type').selectedIndex].text;
+document.getElementById('sr-result').innerHTML='<p class="big">'+r.totalPairs+' pairs total &middot; '+r.perShelf+' per shelf</p><p>'+label+' &middot; '+w+'&Prime; shelves &times; '+s+' &middot; '+r.usedWidth+'&Prime; used, '+r.leftover+'&Prime; left over per shelf</p>';
+var entry=w+'&Prime; x '+s+' ('+t+'): '+r.totalPairs+' pairs';
+srHist.unshift(entry);if(srHist.length>5)srHist.pop();
+document.getElementById('sr-hist').innerHTML=srHist.map(function(h){return '<li>'+h+'</li>';}).join('');
+}
+document.getElementById('sr-calc').addEventListener('click',srRender);
+var chips=document.querySelectorAll('.sr-chip');
+chips.forEach(function(c){c.addEventListener('click',function(){var p=c.getAttribute('data-preset').split(',');document.getElementById('sr-width').value=p[0];document.getElementById('sr-shelves').value=p[1];document.getElementById('sr-type').value=p[2];srRender();});});
+document.getElementById('sr-copy').addEventListener('click',function(){var txt=document.getElementById('sr-result').innerText||'';if(navigator.clipboard){navigator.clipboard.writeText(txt);} });
+srRender();
+}
+</script>
+</body>
+</html>
