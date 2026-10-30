@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dough Proofing Time Calculator — Proof Time by Temperature &amp; Yeast</title>
+<meta name="description" content="Estimate dough proofing time from dough temperature and yeast amount, so your bread rises on schedule instead of by guesswork.">
+<link rel="canonical" href="https://fun.fixoraa.tech/proofbox/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Dough Proofing Time Calculator — Proof Time by Temperature &amp; Yeast">
+<meta property="og:description" content="Estimate dough proofing time from dough temperature and yeast amount, so your bread rises on schedule instead of by guesswork.">
+<meta property="og:url" content="https://fun.fixoraa.tech/proofbox/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "ProofBox",
+      "url": "https://fun.fixoraa.tech/proofbox/",
+      "applicationCategory": "Food",
+      "operatingSystem": "Web",
+      "description": "Estimate dough proofing time from dough temperature and yeast amount, so your bread rises on schedule instead of by guesswork.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long should dough proof?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most enriched doughs proof in 1 to 2 hours at warm room temperature, while lean doughs with little yeast can take 3 to 5 hours or an overnight cold ferment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What temperature is best for proofing dough?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Around 24 to 27\u00b0C is ideal for most breads. Warmer dough proofs faster but can taste flat, while cooler dough proofs slowly and develops more flavour."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know when dough is fully proofed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the poke test: press a floured finger in gently. If the dent springs back slowly and only partly, the dough is ready. Fast spring-back means under-proofed; no spring-back means over-proofed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does more yeast mean faster proofing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, roughly in proportion. Halving the yeast roughly doubles proof time at the same temperature, which is why slow recipes use tiny yeast amounts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I proof dough in the fridge overnight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Cold fermentation at 3 to 5\u00b0C slows yeast greatly, builds flavour, and lets you bake on your schedule. Allow time for the dough to warm and finish rising before baking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did my dough not rise?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common causes are dead or expired yeast, water that was too hot, a very cold kitchen, or too much salt added directly onto the yeast."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can dough be over-proofed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Over-proofed dough collapses in the oven, tears easily, and tastes sour or yeasty. Bake slightly early rather than late when unsure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does dough temperature or room temperature matter more?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dough temperature matters more, because the yeast lives in the dough. Measure it with a thermometer after mixing for the most reliable estimate."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fff8e7; --surface:#ffffff; --accent:#7c4a00; --accent-ink:#ffffff;
+  --ink:#33270f; --muted:#6d5a33; --line:#e8d9a8;
+  --display:'DM Serif Display',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+
+.tool-sec h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin-bottom:.4rem}
+.sub{color:var(--muted);margin-bottom:1.2rem;max-width:44rem}
+.formcard,.resultcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}
+label{display:block;font-weight:600;margin-bottom:.8rem} label input, label select{width:100%;padding:.65rem .8rem;margin-top:.3rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:#1c1c1c}
+button{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;min-height:44px}
+#copyBtn{background:transparent;color:var(--accent)} .btnrow{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+.presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem} .presets button{background:var(--surface);color:var(--accent);border-style:dashed;padding:.4rem .9rem;font-size:.9rem}
+.big{font-size:1.7rem;font-weight:800;font-family:var(--display)} .muted{color:var(--muted)}
+.hist{margin-top:1rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.1rem}
+.hist h3{font-size:1rem;margin-bottom:.4rem} .hist ul{padding-left:1.2rem;color:var(--muted)}
+@media(max-width:640px){.tool-sec h1{font-size:1.55rem}.big{font-size:1.4rem}.formcard,.resultcard{padding:.9rem}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="ProofBox home">
+      <span class="fx-logo-tile" aria-hidden="true">🍞</span>
+      <span class="fx-brand">ProofBox</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-proof-rise" aria-label="ProofBox tool">
+<div class="layout"><h1>Dough Proofing Time Calculator</h1><p class="sub">Estimate proof time from dough temperature and yeast amount, so bread fits your day.</p><div class="formcard"><label>Dough temperature (°C)<input id="temp" type="number" value="24" step="any" min="0"></label><label>Yeast (% of flour weight)<input id="yeast" type="number" value="2" step="any" min="0"></label><label>Flour weight (g, optional context)<input id="flour" type="number" value="500" step="any" min="0"></label><div class="btnrow"><button type="button" id="calcBtn">Calculate</button><button type="button" id="copyBtn">Copy result</button></div><div class="presets" id="presets"></div></div><div class="resultcard" id="result" aria-live="polite"><p>Enter your values to see the result.</p></div><div class="hist"><h3>Recent calculations</h3><ul id="histList"></ul></div><p class="muted">Tip: dough temperature matters more than room temperature — measure the dough itself.</p></div>
+  </section>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why proofing time varies so much</h2>
+<p>Every baker has met the recipe that says proof for one hour, only to find the dough barely moved or already collapsing. Proofing time is not a fixed number, because yeast is a living organism whose speed depends on temperature, food, and amount. Warm dough ferments fast, cold dough ferments slowly, and more yeast ferments faster than less. A recipe written in a warm test kitchen can take twice as long in a cool home kitchen, which is why experienced bakers watch the dough rather than the clock. This calculator models the two biggest levers, dough temperature and yeast percentage, so you can plan a bake around your kitchen instead of fighting it.</p>
+<h2>The temperature rule</h2>
+<p>As a useful rule of thumb, yeast activity roughly doubles with every ten degrees Celsius of warming, within the range where yeast is happy. That is why a dough at 34 degrees proofs in about half the time of the same dough at 24 degrees, and why a dough at 14 degrees takes about twice as long. The relationship is not perfectly exact, because dough type, salt, sugar, and yeast strain all play a part, but it is close enough to plan a day around. The practical lesson is to measure dough temperature after mixing, not room temperature, because flour temperature, water temperature, and friction from kneading all shift the dough away from the air around it. A ten-pound bag of flour stored in a cold pantry can drag a whole batch several degrees cooler.</p>
+<h2>The yeast rule</h2>
+<p>Yeast amount works in the opposite direction and roughly in proportion: halve the yeast and you roughly double the proof time at the same temperature. That simple relationship is the secret behind slow, flavourful breads. A recipe using two percent yeast, measured against flour weight, is a standard same-day dough. Dropping to one percent stretches the rise to several hours and gives bacteria time to build complex, tangy flavours. Dropping to a fraction of a percent, with an overnight rise, produces some of the best bread a home baker can make, with deep flavour from a tiny amount of yeast and a long, patient ferment. The trade-off is planning, which is exactly what a calculator is for.</p>
+<h2>Reading the dough, not just the clock</h2>
+<p>No calculator replaces the baker's senses, because every dough is a little different. The best test is volume: most doughs are ready when they have grown by roughly half to double, depending on the recipe. A dough that has doubled and feels airy and puffy is usually ready, while a dough that has barely grown needs more time regardless of what the timer says. The poke test adds a second opinion. Press a floured finger about a centimetre into the dough. If the dent springs back immediately, the dough needs more time. If it springs back slowly and leaves a shallow dent, it is ready. If it does not spring back at all, it is over-proofed and should be baked immediately or reshaped with care.</p>
+<h2>Warm, cool, and cold proofing</h2>
+<p>Warm proofing, around 27 to 30 degrees, is fast and convenient, but it can rush flavour and make dough sticky and hard to shape. A turned-off oven with the light on, or a bowl set in warm water, gives gentle warmth without overheating. Cool proofing, around 20 to 22 degrees, is the sweet spot for flavour and control, and it suits an unhurried afternoon bake. Cold proofing in the fridge, at 3 to 5 degrees, is the slowest method and one of the best: flavour deepens, the dough becomes easier to score, and baking can happen the next morning. Cold dough needs time to warm up and finish rising, so take it out an hour or so before baking and watch it rather than timing it strictly.</p>
+<h2>Ingredients that change the clock</h2>
+<p>Salt slows yeast slightly, which is why bread recipes keep salt around two percent of flour weight and add it after the yeast has mixed in. Sugar feeds yeast and speeds the early rise, but very sweet doughs, like brioche or cinnamon rolls, ferment slowly because high sugar draws water away from the yeast. Wholemeal flour ferments faster than white flour because it carries more nutrients and wild microbes, and it also absorbs more water, which changes dough feel. Enriched doughs with butter, eggs, or milk rise more slowly than lean doughs of flour, water, salt, and yeast. If a recipe feels sluggish, check these factors before blaming the yeast.</p>
+<h2>A worked example</h2>
+<p>Take a dough at 24 degrees with two percent yeast. The calculator estimates about 120 minutes, or two hours, for the proof. Warm that dough to 34 degrees and the estimate halves to about 60 minutes. Keep it at 24 degrees but halve the yeast to one percent, and the estimate doubles to about 240 minutes, or four hours. Cool it to 14 degrees at two percent yeast and the estimate is again about 240 minutes. These numbers are planning guides, and the dough itself has the final say, but they turn a vague recipe instruction into a schedule you can cook around, which is the whole point of measuring temperature and yeast.</p>
+<h2>Troubleshooting a slow or fast rise</h2>
+<p>A dough that will not rise is usually cold, under-yeasted, or made with expired yeast. Test yeast by stirring it into warm water with a pinch of sugar: it should foam within ten minutes. A dough that rises too fast is usually warm or over-yeasted, and the fix is a cooler spot or less yeast next time. Dough that rises well but collapses in the oven was almost certainly over-proofed, so bake the next batch a little earlier. Dough that tears when shaped may be under-proofed and tight, so give it more rest. Keep a simple baking notebook with temperature, yeast, time, and result, and your estimates will get sharper with every bake.</p>
+<h2>Using the calculator across a baking week</h2>
+<p>The calculator becomes most useful when it shapes a whole week of baking rather than a single loaf. A baker who knows that a dough at 22 degrees with one percent yeast needs roughly five hours can start a loaf after lunch and bake it for dinner, while a dough at the same temperature with two percent yeast fits a morning start and an afternoon bake. Weekend bakers can use cold fermentation to their advantage: mix on Friday evening, refrigerate overnight, shape on Saturday morning, and bake by lunchtime, with flavour that a fast same-day dough cannot match. Keep a simple log of dough temperature, yeast percentage, proof time, and result, and within a month the calculator's estimates will feel personal rather than generic, because they will be calibrated to your flour, your yeast, and your kitchen. That log is the difference between following recipes and understanding dough, and it turns every bake into data for the next one.</p>
+<h3>Proof time guide (2% yeast)</h3><table><tr><th>Dough temperature</th><th>Estimated proof</th><th>Character</th></tr><tr><td>14°C</td><td>~4 hours</td><td>Slow, flavourful</td></tr><tr><td>20°C</td><td>~2.5 hours</td><td>Balanced, controlled</td></tr><tr><td>24°C</td><td>~2 hours</td><td>Standard same-day</td></tr><tr><td>30°C</td><td>~1.5 hours</td><td>Fast, watch closely</td></tr></table>
+<ul><li>Measure dough temperature after mixing, not room temperature.</li><li>Halving yeast roughly doubles proof time.</li><li>Use the poke test alongside the clock.</li><li>Cool rises build more flavour than fast warm rises.</li><li>Bake slightly early rather than risk over-proofing.</li></ul>
+<p>Good bread is mostly good timing, and good timing starts with two numbers: how warm the dough is and how much yeast it holds. Use the calculator to sketch your schedule, then let the dough confirm it with volume and feel. With practice, the numbers become instinct, and proofing stops being a gamble and starts being the most satisfying part of baking day.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How long should dough proof?</summary><p>Most enriched doughs proof in 1 to 2 hours at warm room temperature, while lean doughs with little yeast can take 3 to 5 hours or an overnight cold ferment.</p></details>
+<details><summary>What temperature is best for proofing dough?</summary><p>Around 24 to 27°C is ideal for most breads. Warmer dough proofs faster but can taste flat, while cooler dough proofs slowly and develops more flavour.</p></details>
+<details><summary>How do I know when dough is fully proofed?</summary><p>Use the poke test: press a floured finger in gently. If the dent springs back slowly and only partly, the dough is ready. Fast spring-back means under-proofed; no spring-back means over-proofed.</p></details>
+<details><summary>Does more yeast mean faster proofing?</summary><p>Yes, roughly in proportion. Halving the yeast roughly doubles proof time at the same temperature, which is why slow recipes use tiny yeast amounts.</p></details>
+<details><summary>Can I proof dough in the fridge overnight?</summary><p>Yes. Cold fermentation at 3 to 5°C slows yeast greatly, builds flavour, and lets you bake on your schedule. Allow time for the dough to warm and finish rising before baking.</p></details>
+<details><summary>Why did my dough not rise?</summary><p>Common causes are dead or expired yeast, water that was too hot, a very cold kitchen, or too much salt added directly onto the yeast.</p></details>
+<details><summary>Can dough be over-proofed?</summary><p>Yes. Over-proofed dough collapses in the oven, tears easily, and tastes sour or yeasty. Bake slightly early rather than late when unsure.</p></details>
+<details><summary>Does dough temperature or room temperature matter more?</summary><p>Dough temperature matters more, because the yeast lives in the dough. Measure it with a thermometer after mixing for the most reliable estimate.</p></details>
+  </section>
+</main>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">ProofBox</div>
+    <p>ProofBox estimates how long dough needs to proof from its temperature and yeast percentage.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function proofTime(tempC, yeastPct) { if (tempC <= 0 || yeastPct <= 0) return {minutes: 0, hours: 0}; var m = Math.round(120 * (2 / yeastPct) * Math.pow(2, (24 - tempC) / 10)); return {minutes: m, hours: Math.round(m / 60 * 10) / 10}; }
+
+if (typeof document !== 'undefined') {
+  var _hist = [];
+  function _renderHist() {
+    var el = document.getElementById('histList');
+    if (el) el.innerHTML = _hist.map(function(h) { return '<li>' + h + '</li>'; }).join('') || '<li>No calculations yet.</li>';
+  }
+  function run() {
+    var r=proofTime(+document.getElementById('temp').value,+document.getElementById('yeast').value);document.getElementById('result').innerHTML='<p class="big">About '+r.minutes+' minutes ('+r.hours+' hours)</p><p>Estimated proof time at your dough temperature and yeast amount. Judge readiness by volume and feel, not the clock alone.</p>';window._last='ProofBox: '+r.minutes+' minutes proof at '+document.getElementById('temp').value+'°C, '+document.getElementById('yeast').value+'% yeast';
+    if (window._last) { _hist.unshift(window._last); _hist = _hist.slice(0, 5); _renderHist(); }
+  }
+  document.getElementById('calcBtn').onclick = run;
+  document.getElementById('copyBtn').onclick = function() { if (window._last && navigator.clipboard) navigator.clipboard.writeText(window._last); };
+  var P = [['Warm kitchen: 26°C, 2% yeast',[26,2,500]],['Cool rise: 20°C, 2% yeast',[20,2,500]],['Slow ferment: 24°C, 1% yeast',[24,1,500]]];
+  document.getElementById('presets').innerHTML = P.map(function(p, i) { return '<button type="button" data-i="' + i + '">' + p[0] + '</button>'; }).join('');
+  document.querySelectorAll('#presets button').forEach(function(b) {
+    b.onclick = function() {
+      var v = P[+b.dataset.i][1];
+      document.getElementById('temp').value=v[0];document.getElementById('yeast').value=v[1];document.getElementById('flour').value=v[2];
+      run();
+    };
+  });
+  _renderHist();
+  run();
+}
+
+</script>
+</body>
+</html>
