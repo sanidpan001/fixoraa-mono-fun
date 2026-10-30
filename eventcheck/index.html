@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Event Planning Checklist — Timeline Generator | EventCheck</title>
+<meta name="description" content="Turn your event date into a week-by-week planning timeline with checkable tasks.">
+<link rel="canonical" href="https://fun.fixoraa.tech/eventcheck/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Event Planning Checklist — Timeline Generator | EventCheck">
+<meta property="og:description" content="Turn your event date into a week-by-week planning timeline with checkable tasks.">
+<meta property="og:url" content="https://fun.fixoraa.tech/eventcheck/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Parkinsans&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "EventCheck",
+      "url": "https://fun.fixoraa.tech/eventcheck/",
+      "applicationCategory": "Event Tools",
+      "operatingSystem": "Web",
+      "description": "Turn your event date into a week-by-week planning timeline with checkable tasks.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How far in advance should I start planning an event?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Twelve weeks suits most parties and mid-size events. Small gatherings compress to 4 weeks with the same task order; weddings stretch the same backbone to 12 months. The sequence \u2014 budget, venue, vendors, invitations, confirmations \u2014 stays constant; only the spacing changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the first thing to do when planning an event?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Set the budget and the guest list, in that order. Every downstream decision \u2014 venue size, food quantity, invitation count, cake size \u2014 depends on those two numbers. Get both decision-makers to agree in writing before spending anything."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I send invitations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Send save-the-dates 8 weeks out when guests travel, formal invitations 4 weeks out, and set the RSVP deadline 2 weeks before the event. Plan to personally chase the 20 to 30 percent who miss the deadline \u2014 that follow-up is part of the system, not a failure of it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I keep track of vendors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Record every vendor's name, phone, what is included, total price, payment schedule and cancellation terms in writing \u2014 a confirmation email beats a verbal agreement every time. Re-confirm all vendors 2 weeks out, and name one day-of contact person who is not you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do the week before the event?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Buy non-perishables, confirm vendors with final details, finalize the headcount, draft an hour-by-hour day-of timeline, delegate stations explicitly, and assemble an emergency kit. Buy ice and perishables the day before, and do a venue walkthrough if possible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I handle tasks that are already overdue?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Triage: anything blocking other tasks (venue, headcount) gets done today; anything cosmetic gets cut or simplified. The overdue column is information, not judgment \u2014 work it top-down by dependency, and shrink the event's scope before you sacrifice its quality."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#F2F6FA;--accent:#2766A5;--tint:#DDE8F4;--ink:#1F2933;--muted:#546678;--accent-ink:#FFFFFF;--card:#FFFFFF;--warn:#A54627}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Parkinsans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--card);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-headrow{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:46px;height:46px;border-radius:12px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;box-shadow:0 3px 0 #1A4A7A}
+.fx-name{font-size:23px;font-weight:700}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 18px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid var(--accent);color:var(--accent);background:var(--card);transition:transform .12s}
+.fx-btn:hover{transform:translateY(-2px)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--ink);font-size:14px;font-weight:600;border:2px dashed var(--accent)}
+.hero{padding:42px 0 8px}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:var(--tint);padding:7px 16px;border-radius:8px;margin-bottom:14px;font-weight:700}
+.hero h1{font-size:clamp(32px,5vw,50px);line-height:1.1;margin-bottom:10px;letter-spacing:-.02em}
+.lede{font-size:18px;color:var(--muted);max-width:640px}
+.tool{margin:28px 0 10px}
+.ec-top{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+.ec-datecard{background:var(--card);border:2px solid var(--tint);border-radius:16px;padding:24px}
+.ec-datecard label{font-weight:700;display:block;margin-bottom:8px}
+.ec-datecard input{font:inherit;font-size:18px;padding:11px 14px;border:2px solid var(--tint);border-radius:10px;width:100%;color:var(--ink)}
+.ec-datecard input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.ec-count{background:linear-gradient(140deg,var(--accent),#1A4A7A);border-radius:16px;padding:24px;color:#fff;text-align:center}
+.ec-count .n{font-size:56px;font-weight:700;line-height:1}
+.ec-count .l{font-size:15px;opacity:.9;margin-top:4px}
+.ec-progress{background:var(--card);border:2px solid var(--tint);border-radius:16px;padding:20px 24px;margin-bottom:20px}
+.ec-progress .lbl{display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px}
+.ec-bar{height:16px;background:var(--tint);border-radius:999px;overflow:hidden}
+.ec-fill{height:100%;background:linear-gradient(90deg,var(--accent),#3E8FD4);border-radius:999px;transition:width .3s}
+.ec-board{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ec-col{background:var(--tint);border-radius:14px;padding:14px;min-height:180px}
+.ec-col h3{font-size:15px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ec-col h3 .cnt{background:var(--card);border-radius:999px;padding:1px 10px;font-size:13px}
+.ec-col.overdue h3{color:var(--warn)}
+.ec-card{background:var(--card);border-radius:10px;padding:13px 14px;margin-bottom:10px;box-shadow:0 2px 6px rgba(39,102,165,.10);display:flex;gap:10px;align-items:flex-start;border-left:5px solid var(--accent)}
+.ec-col.overdue .ec-card{border-left-color:var(--warn)}
+.ec-col.done .ec-card{border-left-color:#1E805F;opacity:.75}
+.ec-card input{width:19px;height:19px;margin-top:2px;accent-color:var(--accent);flex-shrink:0;cursor:pointer}
+.ec-card .tt{font-size:15px;font-weight:600}
+.ec-card.done .tt{text-decoration:line-through;color:var(--muted)}
+.ec-card .due{font-size:13px;color:var(--muted)}
+.ec-card .vendor{font-size:13px;color:var(--accent);margin-top:6px;display:block}
+.ec-card .vendor input{width:100%;height:auto;margin:4px 0 0;font:inherit;font-size:13px;border:1px dashed var(--tint);border-radius:6px;padding:5px 8px;color:var(--ink)}
+.article-sec{margin:44px 0;max-width:780px}
+.article-sec h2{font-size:24px;margin:36px 0 12px;letter-spacing:-.01em}
+.article-sec p{margin-bottom:14px;color:#33414f}
+.article-sec ul,.article-sec ol{margin:0 0 14px 24px;color:#33414f}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0 10px;max-width:780px}
+.faq-sec h2{font-size:24px;margin-bottom:16px}
+.faq-sec details{background:var(--card);border:2px solid var(--tint);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:15px 18px;font-weight:600;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--tint);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#33414f;font-size:15px}
+.fx-footer{background:#1c2530;color:#e2eaf2;margin-top:48px;padding:42px 0 36px}
+.fx-footer .fx-brand{font-size:24px;font-weight:700;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#a9bccd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:600;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#a9cdf0;font-weight:700}
+@media(max-width:820px){.ec-board{grid-template-columns:1fr}.ec-top{grid-template-columns:1fr}.fx-nav{margin-left:0}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-headrow">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/eventcheck/" aria-label="EventCheck home">
+      <span class="fx-tile" aria-hidden="true">✓</span>
+      <span class="fx-name">EventCheck</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="hero">
+    <span class="eyebrow">From date to done</span>
+    <h1>Event Planning Checklist</h1>
+    <p class="lede">Enter your event date and get a dated countdown timeline — every task with its due date, check-off boxes, and a progress bar that keeps you honest.</p>
+  </section>
+  <section class="tool" aria-label="EventCheck tool">
+<div class="ec-top">
+      <div class="ec-datecard">
+        <label for="ec-date">When is your event?</label>
+        <input type="date" id="ec-date" value="2026-12-25">
+        <p style="font-size:14px;color:var(--muted);margin-top:10px">Every task below gets a real due date counted back from this day. Check tasks off as you finish them.</p>
+      </div>
+      <div class="ec-count">
+        <div class="n" id="ec-days">–</div>
+        <div class="l" id="ec-when">days to go</div>
+      </div>
+    </div>
+    <div class="ec-progress">
+      <div class="lbl"><span>Planning progress</span><span id="ec-pct">0%</span></div>
+      <div class="ec-bar"><div class="ec-fill" id="ec-fill" style="width:0%"></div></div>
+    </div>
+    <div class="ec-board">
+      <div class="ec-col overdue"><h3>⚠ Overdue <span class="cnt" id="ec-c0">0</span></h3><div id="ec-col0"></div></div>
+      <div class="ec-col"><h3>📅 Upcoming <span class="cnt" id="ec-c1">0</span></h3><div id="ec-col1"></div></div>
+      <div class="ec-col done"><h3>✓ Done <span class="cnt" id="ec-c2">0</span></h3><div id="ec-col2"></div></div>
+    </div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec">
+<h2>Why Event Planning Fails (It Is Never the Big Things)</h2>
+<p>Ask anyone who has planned a wedding, a milestone birthday, or a company party what went wrong, and they never say "I forgot to have a party." They say the caterer needed a final headcount they never sent, the decorations arrived the morning of, or nobody confirmed the venue's setup time. Event planning fails on sequencing, not effort: tasks done in the wrong order, or tasks whose deadlines were invisible until they exploded. A generic checklist cannot fix that, because "book a venue" means nothing without knowing it is due ten weeks out and everything after it depends on it.</p>
+<p>That is the entire idea behind a date-driven timeline: enter the event date, and every task lands on a real calendar date counted backward. Twelve weeks out you set the budget and guest list. Ten weeks, the venue. Eight weeks, save-the-dates and food. The timeline above generates ten such milestones with exact due dates, sorts them into overdue and upcoming, and tracks your progress as you check them off. It is the difference between a to-do list and a plan — the plan knows what "late" means.</p>
+<h2>The 12-Week Master Timeline</h2>
+<p>Twelve weeks is the sweet spot for most parties and mid-size events: long enough to book good vendors, short enough to stay urgent. Weeks 12 to 10 are decisions: budget, guest count, venue, and the event's shape. Weeks 10 to 8 are bookings: venue signed, caterer or food plan locked, save-the-dates sent. Weeks 8 to 6 are details: decorations ordered, entertainment booked, rentals arranged. Weeks 6 to 4 are invitations and the RSVP system. Weeks 4 to 2 are confirmations: vendors re-confirmed, headcounts finalized, the day-of timeline drafted. The final two weeks are execution: shopping, prep, setup, and the event itself.</p>
+<p>Notice what is missing: there is no "plan the party" week. Every week has one or two concrete verbs. Vague tasks ("figure out food") get procrastinated; concrete tasks ("book caterer, pay deposit") get done. If your event is smaller — a dinner party, a backyard barbecue — compress the same sequence into four weeks: the order does not change, only the spacing. If it is a wedding, stretch to twelve months with the same backbone. The timeline scales; the sequence does not.</p>
+<h2>Budget and Guest List Come First (Always)</h2>
+<p>The timeline's first task — set budget and guest list at twelve weeks — is first for a structural reason: everything downstream depends on these two numbers. The venue must hold the guest count. The food budget is the guest count times the per-head cost. The invitation order, the seating plan, the favor count, the cake size — all of them are functions of the guest list. Planning food before the guest list is like tailoring a suit before measuring the person.</p>
+<p>Set the budget as a single total number first, then split it by category (the 25/35/10/12/8/10 split from party budgeting works well). Set the guest list in tiers: must-invite, should-invite, nice-to-invite. When — not if — the budget groans, you cut from the nice-to-invite tier instead of degrading the experience for everyone. And get the two decision-makers to sign off on both numbers in writing, even if it is just a text message. Most event conflict is really budget-and-guest-list conflict wearing a costume.</p>
+<h2>Booking Vendors: Order Matters</h2>
+<p>Vendors book in a dependency chain, and booking out of order creates rework. Venue first, because the date, capacity, kitchen facilities and restrictions (noise curfews, outside-caterer rules, alcohol policies) constrain every other vendor. Food second, because caterers need the venue's kitchen situation and the guest count. Then entertainment, rentals, and decor — in that order, because a DJ needs to know the venue's sound rules and a rental company needs the venue's dimensions.</p>
+<p>For each vendor, the timeline gives you a slot to record their contact — use it. The vendor contact list is the most valuable document on event day, and building it during planning beats assembling it in a panic. For every booking, capture four things in writing: what is included, the total price, the payment schedule, and the cancellation terms. Verbal agreements evaporate; a one-paragraph email confirmation ("Just confirming: Saturday June 14, 6–10pm, $800 including setup, $200 deposit paid") prevents 90 percent of vendor disputes. Re-confirm every vendor two weeks out — this single habit catches the double-bookings and miscommunications while there is still time to fix them.</p>
+<h2>Invitations and the RSVP Machine</h2>
+<p>Send save-the-dates at eight weeks for any event where guests travel; send formal invitations at four weeks. The RSVP deadline should be two weeks before the event — not one, because you need the final count for the caterer, the seating chart, and the rentals, all of which have their own lead times. And plan for the reality that 20 to 30 percent of invitees will not respond by the deadline; your timeline's "chase RSVPs" task at two weeks exists because chasing is not optional, it is the system working.</p>
+<p>Make responding frictionless: one clear RSVP method, a pre-filled response option, and the deadline printed larger than anything else on the invitation. Digital RSVPs (a simple form, not a wedding website labyrinth) get the highest response rates for casual events. Expect a 70 to 80 percent acceptance rate for local events and 40 to 60 percent when travel is involved, and do not take it personally — plan food and seating for the yeses plus a 5 percent buffer, not the invite list. The buffer covers the maybes who show up; the maybes who do not are a gift to the leftovers.</p>
+<h2>The Two-Week Confirmation Sprint</h2>
+<p>Two weeks out, the planning shifts from booking to verifying, and this phase decides whether event day is smooth or chaotic. Confirm every vendor with the final details: arrival times, setup windows, contact person on the day, and the balance due. Confirm the venue's setup and teardown times, kitchen access, and any restrictions you agreed to months ago and forgot. Finalize the headcount and communicate it to the caterer and rental company. Draft the day-of timeline — hour by hour, who does what — and share it with anyone helping.</p>
+<p>This is also when you buy the non-perishables: drinks, ice (buy it the day before, not the week before), paper goods, decorations, and the emergency kit (tape, scissors, phone chargers, stain remover, pain relievers, a sewing kit). The emergency kit sounds fussy until the moment it saves the event. Delegate explicitly: "you handle the music, you handle the food table" beats "can everyone just help?" Assign one person — not you — as the day-of point of contact for vendors, so you are not answering the florist's call during photos.</p>
+<h2>Event Week: The Final Countdown</h2>
+<p>The last seven days have a rhythm: early week is shopping and prep, midweek is confirmation calls, the day before is setup and perishables, event day is execution. Buy perishable food as late as freshness allows. Prep everything that can be prepped: chop, marinate, assemble, wrap. Charge every device. Print the timeline, the vendor contacts, and the seating chart — paper does not run out of battery. Do a venue walkthrough the day before if possible, placing tables mentally and finding the outlets, the thermostat, and the circuit breaker.</p>
+<p>On event day, follow the timeline and protect the host's energy. Eat a real meal before guests arrive. Build 30 minutes of empty buffer before the start time — something will run late, and buffer converts a crisis into a non-event. Greet early, then let the delegated people run their stations. Your job on event day is to be present, not to be the staff. The planning was the work; the party is the reward. If you are refilling ice at midnight, the timeline failed somewhere — note it for next time, and then go dance.</p>
+<h2>After: The Debrief That Makes the Next One Easy</h2>
+<p>Within a week, while memory is fresh, do a fifteen-minute debrief: what worked, what did not, what you would change. Save the vendor list with notes ("florist was amazing, DJ started 20 min late"), the quantities that worked, and the real timeline versus the planned one. This document is the seed of every future event — the second party you plan starts where the first one ended, not from zero.</p>
+<p>Send thank-yous to vendors you would rehire and to the helpers who carried the day; the event industry runs on reputation, and being a good client gets you better service next time. Return rentals on time, settle final payments promptly, and file the receipts with the budget. Then close the loop with yourself: the progress bar hit 100 percent, the overdue column emptied, and the thing happened. That is the whole game. Save the checklist, and next time the only hard part will be picking the date.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How far in advance should I start planning an event?</summary><p>Twelve weeks suits most parties and mid-size events. Small gatherings compress to 4 weeks with the same task order; weddings stretch the same backbone to 12 months. The sequence — budget, venue, vendors, invitations, confirmations — stays constant; only the spacing changes.</p></details>
+    <details><summary>What is the first thing to do when planning an event?</summary><p>Set the budget and the guest list, in that order. Every downstream decision — venue size, food quantity, invitation count, cake size — depends on those two numbers. Get both decision-makers to agree in writing before spending anything.</p></details>
+    <details><summary>When should I send invitations?</summary><p>Send save-the-dates 8 weeks out when guests travel, formal invitations 4 weeks out, and set the RSVP deadline 2 weeks before the event. Plan to personally chase the 20 to 30 percent who miss the deadline — that follow-up is part of the system, not a failure of it.</p></details>
+    <details><summary>How do I keep track of vendors?</summary><p>Record every vendor's name, phone, what is included, total price, payment schedule and cancellation terms in writing — a confirmation email beats a verbal agreement every time. Re-confirm all vendors 2 weeks out, and name one day-of contact person who is not you.</p></details>
+    <details><summary>What should I do the week before the event?</summary><p>Buy non-perishables, confirm vendors with final details, finalize the headcount, draft an hour-by-hour day-of timeline, delegate stations explicitly, and assemble an emergency kit. Buy ice and perishables the day before, and do a venue walkthrough if possible.</p></details>
+    <details><summary>How do I handle tasks that are already overdue?</summary><p>Triage: anything blocking other tasks (venue, headcount) gets done today; anything cosmetic gets cut or simplified. The overdue column is information, not judgment — work it top-down by dependency, and shrink the event's scope before you sacrifice its quality.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">EventCheck</div>
+    <p>EventCheck turns any event date into a dated planning timeline with checkable tasks, vendor slots and a live progress bar.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function eventCheck(eventISO, todayISO){
+  function p(iso){ var a=String(iso).split('-'); return Date.UTC(+a[0],+a[1]-1,+a[2]); }
+  function f(ms){ var d=new Date(ms); var m=d.getUTCMonth()+1, dd=d.getUTCDate(); return d.getUTCFullYear()+'-'+(m<10?'0':'')+m+'-'+(dd<10?'0':'')+dd; }
+  var ev=p(eventISO), td=p(todayISO);
+  var daysLeft=Math.round((ev-td)/86400000);
+  var raw=[
+    ['Set your budget and guest list',12],
+    ['Book the venue',10],
+    ['Send save-the-dates',8],
+    ['Book food or a caterer',8],
+    ['Order decorations and supplies',6],
+    ['Send invitations',4],
+    ['Confirm vendors and chase RSVPs',2],
+    ['Buy drinks, ice and last-minute supplies',1],
+    ['Set up and decorate the venue',0],
+    ['Party day \u2014 enjoy it!',0]
+  ];
+  var list=raw.map(function(x,i){
+    var due=f(ev-x[1]*7*86400000);
+    var status = due<todayISO ? 'overdue' : (due===todayISO ? 'due today' : 'upcoming');
+    return {task:x[0], due:due, weeksBefore:x[1], status:status, order:i};
+  });
+  list.sort(function(a,b){ return a.due<b.due?-1:(a.due>b.due?1:a.order-b.order); });
+  var overdue=list.filter(function(t){ return t.status==='overdue'; }).length;
+  return {
+    eventDate:eventISO, today:todayISO,
+    daysLeft:daysLeft, weeksLeft:Math.round(daysLeft/7*10)/10,
+    overdueCount:overdue, upcomingCount:list.length-overdue,
+    tasks:list
+  };
+}
+(function(){
+var dateEl=document.getElementById('ec-date');
+var done={};
+try{done=JSON.parse(localStorage.getItem('ec-done')||'{}');}catch(e){done={};}
+function todayISO(){var d=new Date();var m=d.getMonth()+1,dd=d.getDate();return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(dd<10?'0':'')+dd;}
+function fmtDue(iso){var a=iso.split('-');var ms=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return ms[+a[1]-1]+' '+ +a[2];}
+function render(){
+  var r=eventCheck(dateEl.value||todayISO(), todayISO());
+  document.getElementById('ec-days').textContent=r.daysLeft;
+  document.getElementById('ec-when').textContent=r.daysLeft===1?'day to go':(r.daysLeft<0?'days overdue':'days to go');
+  var cols=[document.getElementById('ec-col0'),document.getElementById('ec-col1'),document.getElementById('ec-col2')];
+  cols.forEach(function(c){c.innerHTML='';});
+  var counts=[0,0,0], doneCount=0;
+  r.tasks.forEach(function(t){
+    var key=r.eventDate+'|'+t.task;
+    var isDone=!!done[key];
+    if(isDone)doneCount++;
+    var card=document.createElement('div');card.className='ec-card'+(isDone?' done':'');
+    var cb=document.createElement('input');cb.type='checkbox';cb.checked=isDone;cb.setAttribute('aria-label','Mark done: '+t.task);
+    cb.addEventListener('change',function(){done[key]=cb.checked;try{localStorage.setItem('ec-done',JSON.stringify(done));}catch(e){}render();});
+    var body=document.createElement('div');
+    var tt=document.createElement('div');tt.className='tt';tt.textContent=t.task;
+    var due=document.createElement('div');due.className='due';due.textContent='Due '+fmtDue(t.due)+(t.status==='overdue'?' · overdue':(t.status==='due today'?' · today':''));
+    body.appendChild(tt);body.appendChild(due);
+    if(/vendor|caterer|venue/i.test(t.task)){
+      var v=document.createElement('label');v.className='vendor';v.textContent='Vendor / contact:';
+      var vi=document.createElement('input');vi.type='text';vi.placeholder='Name & phone';vi.value=done[key+'|v']||'';
+      vi.addEventListener('input',function(){done[key+'|v']=vi.value;try{localStorage.setItem('ec-done',JSON.stringify(done));}catch(e){}});
+      v.appendChild(vi);body.appendChild(v);
+    }
+    card.appendChild(cb);card.appendChild(body);
+    var colIdx=isDone?2:(t.status==='overdue'?0:1);
+    cols[colIdx].appendChild(card);counts[colIdx]++;
+  });
+  for(var i=0;i<3;i++)document.getElementById('ec-c'+i).textContent=counts[i];
+  var pct=r.tasks.length?Math.round(doneCount/r.tasks.length*100):0;
+  document.getElementById('ec-pct').textContent=pct+'%';
+  document.getElementById('ec-fill').style.width=pct+'%';
+}
+dateEl.addEventListener('change',render);render();
+})();
+</script>
+</body>
+</html>
