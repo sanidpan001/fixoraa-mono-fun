@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smoothie Calorie Calculator — Pick Your Mix | SmoothieMix</title>
+<meta name="description" content="SmoothieMix builds your smoothie like a jukebox playlist: pick a fruit track, a liquid track and extras, and it totals calories and ingredients per serving.">
+<link rel="canonical" href="https://fun.fixoraa.tech/smoothiemix/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "SmoothieMix", "url": "https://fun.fixoraa.tech/smoothiemix/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "SmoothieMix builds your smoothie like a jukebox playlist: pick a fruit track, a liquid track and extras, and it totals calories and ingredients per serving."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many calories are in a typical smoothie?", "acceptedAnswer": {"@type": "Answer", "text": "A light fruit smoothie is about 150 to 200 calories per serving, while a meal-style smoothie with protein and oats is 300 to 400 calories."}}, {"@type": "Question", "name": "Does fruit juice add a lot of calories to smoothies?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, about 110 calories per cup with almost no fibre, so water or plain yoghurt is usually a better liquid choice."}}, {"@type": "Question", "name": "Are smoothies healthy if they contain a lot of fruit sugar?", "acceptedAnswer": {"@type": "Answer", "text": "Whole fruit smoothies are fine as part of a balanced day, but juice, sweetened yoghurt and honey can push sugar above 50 grams, so keep added sweeteners out."}}, {"@type": "Question", "name": "How many servings does one blender jug make?", "acceptedAnswer": {"@type": "Answer", "text": "A typical home blender makes two to three servings, so always divide total calories by servings to get the honest per-serving number."}}, {"@type": "Question", "name": "What is the best liquid for a smoothie?", "acceptedAnswer": {"@type": "Answer", "text": "Water for the lightest option, milk for creaminess and protein, and plain yoghurt for a thick, meal-style blend."}}, {"@type": "Question", "name": "Does adding spinach change the taste?", "acceptedAnswer": {"@type": "Answer", "text": "Barely, a handful of spinach adds about 10 calories and disappears into the fruit flavour, especially with berries or mango."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:'Comic Sans MS', 'Chalkboard SE', cursive;background:#ecfdf5;color:#134e4a;line-height:1.6}
+
+.mx-auto{margin-left:auto;margin-right:auto}.text-center{text-align:center}.block{display:block}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.shrink-0{flex-shrink:0}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(max-width:640px){div.origin-top{transform:scale(.44);transform-origin:top center}}
+@media(min-width:641px){div.origin-top{transform:scale(1)}}
+
+.juke{max-width:820px;margin:0 auto;background:#fff;border:4px solid #059669;border-radius:30px 30px 14px 14px;padding:26px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.track{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+details{border:1px solid #6ee7b7;border-radius:10px;padding:10px 14px;margin:8px 0;background:#fff}
+@media(max-width:640px){.grid2,.grid3,.cols,.dealrow,.mixrow{grid-template-columns:1fr!important;flex-direction:column!important}
+header .hwrap{flex-direction:column;align-items:flex-start!important;gap:10px}
+.toolbox,.card,.pad,.sheet{padding:18px!important} h1{font-size:1.6rem!important} .bignum{font-size:2rem!important}}
+</style>
+</head>
+<body>
+<header style="background:#d1fae5;border-bottom:3px solid #047857">
+  <div class="hwrap" style="max-width:1020px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#047857;color:#fff;font-size:26px">🎵</span>
+      <span>
+        <span style="display:block;font-size:1.5rem;font-weight:800;color:#064e3b;letter-spacing:-.5px">SmoothieMix</span>
+        <span style="font-size:.85rem;color:#047857">Pick a track, blend a classic</span>
+      </span>
+    </div>
+    <nav style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://fixoraa.tech" style="background:#047857;color:#fff;text-decoration:none;padding:9px 16px;border-radius:999px;font-weight:700">Home</a>
+      <a href="https://fixoraa.tech" style="background:#fff;color:#047857;border:2px solid #047857;text-decoration:none;padding:7px 14px;border-radius:999px;font-weight:700">More Tools</a>
+    </nav>
+  </div>
+  <div style="max-width:1020px;margin:0 auto;padding:0 20px 14px"><span style="display:inline-block;background:#a7f3d0;color:#064e3b;font-weight:700;font-size:.8rem;padding:5px 12px;border-radius:999px">Unlimited Free Usage</span></div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<section class="toolsec" style="max-width:1020px;margin:0 auto;padding:26px 20px">
+<h1>Smoothie Calorie Calculator — Build Your Perfect Mix</h1>
+<p class="intro" style="font-size:1.05rem;color:#134e4a">Step up to the jukebox, pick your fruit track and your liquid track, add a protein encore if you like, and SmoothieMix plays back the calories per serving.</p>
+<div class="juke"><div style="text-align:center"><div style="font-size:56px">🎵</div><div style="font-weight:900;color:#064e3b;font-size:1.25rem">SMOOTHIE JUKEBOX — Now Playing: Your Blend</div></div>
+<div class="grid2"><div><label style="display:block;font-weight:700;margin-bottom:6px">Fruit track (calories)</label><select id="fruit" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"><option value="105">🍌 Banana — 105 cal</option><option value="150">🥭 Mango — 150 cal</option><option value="85">🫐 Berries — 85 cal</option><option value="60">🍓 Strawberry — 60 cal</option></select></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Liquid track (calories)</label><select id="liquid" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"><option value="100">🥛 Milk — 100 cal</option><option value="110">🧃 Juice — 110 cal</option><option value="0">💧 Water — 0 cal</option><option value="120">🥄 Yoghurt — 120 cal</option></select></div></div>
+<div style="margin-top:14px" class="grid2"><div><label style="display:block;font-weight:700;margin-bottom:6px">Servings</label><input id="serv" type="number" min="0" step="any" value="1" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"></div><div><label style="display:block;font-weight:700;margin-bottom:6px">Protein encore?</label><select id="protein" style="width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:1rem"><option value="0">No protein</option><option value="120">Yes — protein scoop (+120 cal)</option></select></div></div>
+<button onclick="calc()" style="background:#059669;color:#fff;border:0;padding:14px 26px;border-radius:12px;font-size:1.05rem;font-weight:800;cursor:pointer;width:100%;margin-top:16px">Calculate</button><div id="result" style="margin-top:18px;padding:18px;border-radius:12px;background:#fff;border:2px dashed #c9c2b2;font-size:1.05rem">Enter your details and press Calculate.</div>
+<p style="font-size:.9rem">Side A: fruit and liquid. Side B: ice, a handful of spinach (about 10 cal) and a spoon of oats (about 40 cal) if you want a thicker, more filling mix.</p></div>
+<div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+<button onclick="copyResult()" style="background:#047857;color:#fff;border:0;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer">Copy Result</button>
+<button onclick="exportCSV()" style="background:#fff;color:#047857;border:2px solid #047857;padding:8px 16px;border-radius:10px;font-weight:700;cursor:pointer">Export CSV</button>
+<button onclick="saveHistory()" style="background:#fff;color:#134e4a;border:2px solid #134e4a;padding:8px 16px;border-radius:10px;font-weight:700;cursor:pointer">Save to History</button>
+</div>
+<div id="history" style="margin-top:14px;font-size:.9rem"></div>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<article style="max-width:1020px;margin:0 auto;padding:10px 20px 30px">
+<h2>About this tool</h2>
+<p>Smoothies have a reputation problem, because the same word covers a light berry refresher and a thousand-calorie dessert in a gym cup. The difference is entirely in the ingredients, and most people have no idea how many calories they just blended, because fruit looks innocent and liquid looks like nothing. A smoothie calorie calculator fixes that blind spot in seconds, by adding up the real numbers behind each ingredient and dividing by servings, so you know whether you made a snack or a meal.</p><p>Fruit is the foundation, and its calories vary more than most people expect. A medium banana has about 105 calories, a cup of mango about 150, a cup of mixed berries about 85, and a cup of strawberries about 60. Berries are the calorie bargain of the smoothie world, because they are high in water and fibre and low in sugar per cup, while mango and banana are denser and more filling. Frozen fruit works exactly like fresh for calories, and it has the bonus of making the smoothie thick and cold without watering it down with ice.</p><p>Liquid is the silent calorie carrier, and it is where smoothies most often go wrong. Water adds zero calories and lets the fruit flavour shine, while milk adds about 100 calories per cup plus protein and creaminess. Fruit juice adds about 110 calories per cup but almost no fibre, because juicing strips out the pulp that makes whole fruit filling. Yoghurt adds about 120 calories per cup plus protein and tang, which makes it the best choice for a meal-style smoothie. Choosing water over juice saves over a hundred calories without changing the fruit at all.</p><p>Extras decide whether a smoothie is a snack or a meal replacement. A scoop of protein powder adds about 120 calories and twenty grams of protein, which turns a fruity drink into something that keeps you full for hours. A spoonful of peanut butter adds about 90 calories and healthy fats, while a spoonful of oats adds about 40 calories and soluble fibre that thickens the blend beautifully. A handful of spinach adds only about 10 calories and disappears into the flavour of the fruit, which makes it the easiest nutritional win in the whole smoothie world.</p><p>Servings are the trap that catches even careful cooks, because a blender rarely makes exactly one serving. A typical home blender holds four to six cups, which is two to three servings, but many people pour the whole jug into one giant glass and count it as one smoothie. Dividing the total calories by the number of servings is the only honest way to know what you drank, and it often reveals that a seemingly light smoothie was actually two servings in disguise. SmoothieMix makes this division explicit, so the per-serving number is the one you trust.</p><p>Sugar deserves honest attention, because fruit sugar is still sugar, even though it comes with fibre and vitamins. A smoothie made from two whole fruits has roughly the same sugar as eating those fruits, which is fine as part of a balanced day, but a smoothie made from juice plus sweetened yoghurt plus honey can easily pass 50 grams of sugar, which is more than a can of soda. The fix is simple: use whole fruit, use water or plain yoghurt as the liquid, and skip added sweeteners unless you truly need them, because ripe fruit is already sweet enough.</p><p>Texture is a matter of ratios, not luck. A good smoothie is about one part fruit to one part liquid by volume, plus a handful of ice or frozen fruit for thickness. Too much liquid makes a thin juice, too little makes a paste that strains the blender motor, and too much ice dilutes the flavour. If your smoothie is too thick, add liquid a splash at a time; if it is too thin, add frozen fruit rather than more ice. A squeeze of lemon or lime brightens almost any blend, and a pinch of salt makes sweet fruit taste sweeter without adding sugar.</p><p>Timing and purpose shape the ideal smoothie more than any single recipe. A post-workout smoothie benefits from protein and a banana for quick energy and muscle repair, while a breakfast smoothie benefits from oats and yoghurt for slow, lasting fullness. An afternoon snack smoothie should stay light, around 150 to 200 calories, so it does not spoil dinner, while a meal replacement needs 300 to 400 calories with protein, fibre and healthy fat to actually replace a meal. Matching the smoothie to the moment is what turns a nice drink into a useful habit.</p><p>Blender technique matters for both taste and safety. Add liquid first, then soft ingredients, then frozen fruit and ice on top, because this order lets the blades catch and circulate instead of spinning in an air pocket. Blend for forty to sixty seconds, stopping to tamp down if needed, and taste before pouring, because a final adjustment of lemon, sweetness or thickness is easy now and impossible later. Clean the blender immediately with warm soapy water, because dried smoothie cement is one of the great small miseries of kitchen life.</p><p>The joy of smoothies is experimentation, and a calculator should encourage it, not restrict it. Try berries with water and spinach for a light green refresher, mango with yoghurt and oats for a tropical breakfast, or banana with milk and peanut butter for a dessert-like treat that still counts as real food. Each combination has a number, and knowing that number lets you enjoy the experiment without wondering what it cost. Pick your tracks on the SmoothieMix jukebox, press blend, and let the music play.</p><p>A final note on equipment and cleanup, because the blender you own shapes the smoothies you make. High-powered blenders pulverise frozen fruit and ice into a silky texture, while smaller blenders need more liquid and softer ingredients to avoid stalling, so adjust your ratios to your machine rather than fighting it. Add ingredients in the order liquid first, soft fruit second and frozen items last, which helps the blades catch and circulate, and never fill the jug past its maximum line, because a smoothie volcano across the kitchen is memorable for all the wrong reasons. If your blender struggles with kale or fibrous greens, blend the greens with the liquid first into a smooth base, then add the fruit, which gives a silkier result with no visible flecks. Rinse the jug immediately after pouring, because dried smoothie residue sets like cement and turns a two-minute job into a ten-minute scrub.</p><p>One more dimension of smoothie making deserves attention: seasonality and cost, because the same blend can cost three times as much in winter as in summer if you insist on fresh out-of-season fruit. Frozen fruit solves this elegantly, because it is picked and frozen at peak ripeness, costs less than fresh imports, and is available all year, with no loss of nutrition and a better texture for blending. Buy fruit in season and freeze it yourself when you can, spreading berries on a tray to freeze individually before bagging them, so they do not clump into a solid block. Bananas freeze best peeled and halved, mangoes freeze well in chunks, and both keep for months, which means a well-stocked freezer is a smoothie bar that never closes and never charges summer prices in January.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>How many calories are in a typical smoothie?</summary><p>A light fruit smoothie is about 150 to 200 calories per serving, while a meal-style smoothie with protein and oats is 300 to 400 calories.</p></details><details><summary>Does fruit juice add a lot of calories to smoothies?</summary><p>Yes, about 110 calories per cup with almost no fibre, so water or plain yoghurt is usually a better liquid choice.</p></details><details><summary>Are smoothies healthy if they contain a lot of fruit sugar?</summary><p>Whole fruit smoothies are fine as part of a balanced day, but juice, sweetened yoghurt and honey can push sugar above 50 grams, so keep added sweeteners out.</p></details><details><summary>How many servings does one blender jug make?</summary><p>A typical home blender makes two to three servings, so always divide total calories by servings to get the honest per-serving number.</p></details><details><summary>What is the best liquid for a smoothie?</summary><p>Water for the lightest option, milk for creaminess and protein, and plain yoghurt for a thick, meal-style blend.</p></details><details><summary>Does adding spinach change the taste?</summary><p>Barely, a handful of spinach adds about 10 calories and disappears into the fruit flavour, especially with berries or mango.</p></details>
+</article>
+<footer style="background:#022c22;color:#ecfdf5;padding:28px 20px;margin-top:10px">
+<div style="max-width:1020px;margin:0 auto">
+<p style="font-weight:800;font-size:1.1rem;margin:0 0 6px">SmoothieMix — Pick a track, blend a classic</p>
+<p style="margin:0 0 12px">SmoothieMix builds your smoothie like a jukebox playlist: pick a fruit track, a liquid track and extras, and it totals calories and ingredients per serving.</p>
+<p><a href="https://fixoraa.tech" style="color:#6ee7b7">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech" style="color:#6ee7b7">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech" style="color:#6ee7b7">Fixoraa</a></p>
+</div>
+</footer>
+<script>
+function calc(){var f=parseFloat(document.getElementById('fruit').value)||0;var l=parseFloat(document.getElementById('liquid').value)||0;var s=parseFloat(document.getElementById('serv').value)||1;var p=parseFloat(document.getElementById('protein').value)||0;var total=f+l+p;var per=Math.round(total/s);document.getElementById('result').innerHTML='<strong>Total calories:</strong> '+total+' &nbsp;|&nbsp; <strong>Per serving:</strong> '+per+' cal &nbsp;|&nbsp; <strong>Servings:</strong> '+s+' &nbsp;|&nbsp; <strong>Verdict:</strong> '+(per<=150?'Light and refreshing':per<=300?'A solid snack':'A full meal replacement');}
+function copyResult(){var el=document.getElementById('result');if(!el)return;navigator.clipboard&&navigator.clipboard.writeText(el.innerText);el.style.outline='2px solid #047857';setTimeout(function(){el.style.outline='none'},800);}
+function exportCSV(){var el=document.getElementById('result');if(!el)return;var blob=new Blob([el.innerText],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='smoothiemix-result.csv';a.click();}
+function saveHistory(){var el=document.getElementById('result');if(!el)return;var h=JSON.parse(localStorage.getItem('hx-smoothiemix')||'[]');h.unshift(new Date().toLocaleString()+': '+el.innerText.replace(/\s+/g,' ').slice(0,160));localStorage.setItem('hx-smoothiemix',JSON.stringify(h.slice(0,8)));renderHistory();}
+function renderHistory(){var h=JSON.parse(localStorage.getItem('hx-smoothiemix')||'[]');document.getElementById('history').innerHTML=h.length?'<strong>Recent results:</strong><br>'+h.map(function(x){return x}).join('<br>'):'';}
+renderHistory();
+</script>
+</body>
+</html>
