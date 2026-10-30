@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Home Generator Size Calculator — Running + Starting Watts | GeneratorSize</title>
+<meta name="description" content="Free home generator size calculator: running watts plus your largest starting load give the generator size your home needs.">
+<link rel="canonical" href="https://fun.fixoraa.tech/generatorsize/">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GeneratorSize","applicationCategory":"Home","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What size generator do I need for my house?", "acceptedAnswer": {"@type": "Answer", "text": "Add your running watts to your largest motor's starting watts. Typical homes need 5,000 to 7,500 watts; large homes with air conditioning need 10,000 or more."}},{"@type": "Question", "name": "What are starting watts?", "acceptedAnswer": {"@type": "Answer", "text": "The brief surge a motor draws at startup, usually two to three times its running watts. Fridges, pumps and air conditioners have the biggest surges."}},{"@type": "Question", "name": "Can a generator be too big?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. An oversized generator wastes fuel, runs inefficiently at low load, and costs more than necessary. Size close to your calculated need."}},{"@type": "Question", "name": "Should I use running watts or surge watts when shopping?", "acceptedAnswer": {"@type": "Answer", "text": "Shop by the continuous running rating, and make sure it covers your calculated total. Headline surge ratings are brief peaks, not sustained output."}},{"@type": "Question", "name": "Can I run my whole house on a portable generator?", "acceptedAnswer": {"@type": "Answer", "text": "Only if its rating covers your total load. Most portable units cover essentials; whole-house coverage usually needs a standby generator with a transfer switch."}},{"@type": "Question", "name": "Is it safe to connect a generator to my house wiring?", "acceptedAnswer": {"@type": "Answer", "text": "Only through a transfer switch installed by a licensed electrician. Backfeeding through an outlet can kill utility workers and damage equipment."}}]}</script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:'DM Mono',monospace;background:#FFF7ED;color:#3A1218;line-height:1.6}
+a{color:#BE123C} header{background:#881337;color:#FFFFFF;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#FFFFFF;text-decoration:none}
+.mark{width:44px;height:44px;border-radius:8px;background:#BE123C;color:#fff;display:grid;place-items:center;font-size:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#BE123C;color:#fff;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+.btn2{background:transparent;color:#FFFFFF;border:2px solid #FFFFFF}
+.wrap{max-width:960px;margin:0 auto;padding:16px} .badge{display:inline-block;background:#FBD9C2;color:#3A1218;border:1px solid #BE123C;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px}
+.card{background:#fff;border:1px solid #FBD9C2;border-radius:8px;padding:20px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.ledger{border:2px solid #BE123C;border-radius:8px;padding:18px;background:#fff}.ledger .row{display:flex;justify-content:space-between;border-bottom:1px dashed #FBD9C2;padding:8px 0}.ledger .row:last-child{font-weight:700;border-bottom:0}h1,h2{font-family:Archivo,sans-serif}
+label{display:block;font-weight:700;margin:12px 0 4px} input,select,textarea{width:100%;padding:12px;border:1.5px solid #FBD9C2;border-radius:10px;font-size:16px;font-family:inherit}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px} @media(max-width:600px){.grid{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start}}
+.res{margin-top:16px;padding:16px;background:#FBD9C2;border-radius:8px;font-size:18px} .res b{font-size:26px}
+.err{color:#b91c1c;font-weight:700} article{background:#fff;border-radius:8px;padding:24px;margin-top:20px} article h2{margin-top:28px}
+.faq details{background:#fff;border:1px solid #FBD9C2;border-radius:12px;padding:14px;margin:10px 0} .faq summary{font-weight:700;cursor:pointer}
+footer{background:#881337;color:#FFFFFF;padding:28px 16px;margin-top:24px} footer a{color:#FFFFFF;font-weight:700}
+.hist{font-size:14px;background:#fff;border:1px dashed #BE123C;padding:10px;border-radius:10px;margin-top:12px;white-space:pre-wrap}
+</style></head>
+<body>
+<header><a class="logo" href="https://fixoraa.tech"><span class="mark">⌁</span>GeneratorSize</a>
+<nav><a class="btn btn2" href="https://fixoraa.tech">Home</a> <a class="btn btn2" href="https://fixoraa.tech">More Tools</a></nav></header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="wrap">
+<div class="ledger"><span class="badge">Unlimited Free Usage</span><h1>Home Generator Size Calculator</h1><div class="row"><span>Running watts</span><span>everything on at once</span></div><div class="row"><span>Starting watts</span><span>largest motor surge</span></div><div class="row"><span>Generator size</span><span>running + largest start</span></div></div>
+<section class="card" aria-label="Tool">
+<div class="grid"><div><label for="run_w">Running watts (everything on at once)</label><input id="run_w" type="number" step="any" value="3000" placeholder="Running watts (everything on at once)"></div><div><label for="start_w">Largest starting watts (biggest motor)</label><input id="start_w" type="number" step="any" value="2000" placeholder="Largest starting watts (biggest motor)"></div></div><div style="margin-top:14px"><button class="btn" onclick="calc()">Calculate</button> <button class="btn" onclick="resetF()">Reset</button></div><div style="margin-top:10px">Presets: <button class="btn" type="button" onclick="applyPreset({"run_w": 1500, "start_w": 1500})">Essentials only</button> <button class="btn" type="button" onclick="applyPreset({"run_w": 3000, "start_w": 2000})">Typical home</button> <button class="btn" type="button" onclick="applyPreset({"run_w": 6000, "start_w": 4000})">Large home + AC</button> </div>
+<div id="err" class="err" role="alert"></div>
+<div id="res" class="res" style="display:none"></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+<button class="btn" onclick="saveHist()">Save to history</button>
+<button class="btn" onclick="copyRes()">Copy result</button>
+<button class="btn" onclick="dlCSV()">Export CSV</button></div>
+<div id="hist" class="hist" style="display:none"></div>
+<p><strong>Why starting watts matter:</strong> motors draw two to three times their running watts for a few seconds at startup. A generator sized only for running watts will stall the moment the fridge or well pump kicks in. Always size for running watts plus the single largest starting surge.</p>
+</section>
+<div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article><p>A generator that is too small does not just underperform — it stalls, surges and can damage the very appliances it was bought to protect. A generator that is far too big wastes fuel, money and patience every time it runs. The right size sits in a narrow window, and finding it requires one insight most buyers miss: motors need a surge of extra power to start, far beyond what they use while running. The home generator size calculator captures that insight. Enter the watts of everything you will run at once, plus the starting watts of your largest motor, and it gives you the generator size that will start your loads and keep them running — the number to take to the store instead of a guess.</p>
+<h2>How to use this calculator</h2>
+<p>Generator sizing has two parts. Running watts are the steady draw of everything operating simultaneously — lights, fridge, furnace fan, electronics. Starting watts are the brief surge a motor needs at startup, typically two to three times its running watts; a fridge, well pump or air conditioner can demand thousands of extra watts for a few seconds. Because motors rarely start at exactly the same moment, the standard method adds running watts to the single largest starting surge, not to every surge at once. The calculator does exactly that, then rounds the recommendation up to the next 500-watt step, since generators are sold in standard ratings and a little headroom prevents nuisance stalls.</p>
+<ol><li>List everything you want to power during an outage, and add up their running watts from their labels.</li><li>Identify the largest motor among them — usually the fridge, freezer, well pump or air conditioner — and note its starting watts.</li><li>Enter running watts and that largest starting figure.</li><li>Press Calculate and read your total watts and recommended generator rating.</li><li>Shop for a generator rated at or above the recommendation, and test it under load before you truly need it.</li></ol>
+<h2>Understanding your results</h2>
+<p><strong>Total watts needed.</strong> Running watts plus the largest starting surge. This is the minimum continuous rating your generator must deliver.</p>
+<p><strong>Recommended rating.</strong> Total watts rounded up to the next 500-watt step. This headroom covers rating optimism and small loads you forgot.</p>
+<p><strong>Kilowatts.</strong> Total watts divided by 1,000 — the unit many generators are marketed in. A 5,000-watt need is a 5-kilowatt generator.</p>
+<p><strong>Zero results.</strong> Zero load means zero generator. If your home has loads and you see zero, check both watt fields.</p>
+<h2>Practical tips</h2><ul><li>Start the largest motor first when running on generator power, then add smaller loads one at a time.</li><li>Keep a printed load list on the generator so anyone in the household can run it correctly during an outage.</li><li>Run the generator monthly under load — an untested generator is a hope, not a plan.</li><li>Store fuel safely and rotate it; stale fuel is the most common reason generators fail to start.</li><li>Never run a generator indoors or in a garage — carbon monoxide kills silently and quickly.</li><li>Use a transfer switch installed by an electrician rather than backfeeding through an outlet, which endangers utility workers.</li></ul>
+<h2>Common mistakes to avoid</h2><ul><li>Sizing for running watts only and watching the generator stall when the fridge compressor starts.</li><li>Adding every starting surge together, which oversizes the generator by thousands of watts.</li><li>Counting appliances you will never run together, like the oven and the air conditioner during a winter outage.</li><li>Buying by headline watts — the surge rating — instead of the continuous running rating.</li><li>Forgetting the well pump or sump pump, which are often the largest motors in the house.</li><li>Never testing the generator until the storm arrives, when it is too late to fix a problem.</li></ul>
+<h2>Who benefits most</h2>
+<p>This calculator is for homeowners preparing for storm outages, rural households on well water, small business owners protecting freezers and servers, and anyone who has bought a generator and wondered whether it was the right one. It is also useful before a purchase: walking into a store with a watt figure turns a sales conversation into a specification check. If your power goes out more than once a year, a correctly sized generator is not a luxury — it is the difference between an inconvenience and a crisis.</p>
+<h2>Worked example</h2>
+<p>Take a typical home running 3,000 watts at once with a fridge whose starting surge is 2,000 watts: the need is 3,000 + 2,000 = 5,000 watts, or 5 kilowatts, so shop for a 5,000-watt generator. An essentials-only setup at 1,500 running watts with a 1,500-watt starting surge needs 3,000 watts. A large home with air conditioning at 6,000 running watts and a 4,000-watt starting surge needs 10,000 watts — a whole-house standby unit, not a portable. Three households, three very different answers, all from the same simple addition.</p>
+<h2>Checking and re-running your result</h2>
+<p>Verify your result by adding the wattages from your actual appliance labels — nameplate data beats memory — and by testing the generator with your real load list before storm season. If the generator struggles, re-run the calculator: either a load was missed or a motor's starting watts were underestimated. Save the calculation to history so the household's outage plan lives in one place, ready for the night the lights go out. Fuel choice and runtime planning turn a generator purchase into a real outage plan, and both deserve thought before the storm. Petrol is widely available and cheap, but it goes stale within months and needs stabiliser and rotation; propane stores indefinitely, burns cleaner and runs quieter, but delivers about ten percent less power from the same engine and needs tank storage; dual-fuel models give you both options and are worth the premium for serious preparedness. Runtime is the next calculation: a 5,000-watt generator at half load typically burns around half a gallon of petrol per hour, so a full day needs roughly twelve gallons — far more than most people store, which is why load discipline during an outage matters as much as generator size. Decide in advance what runs and what does not: fridge, freezer, furnace fan, a few lights and phone chargers are essentials, while the oven, dryer and air conditioner usually are not. Placement rules are non-negotiable: outdoors, at least twenty feet from the house, exhaust pointing away from windows and doors, never in a garage even with the door open, because carbon monoxide is odourless and deadly. A transfer switch, installed by an electrician, lets the generator power chosen house circuits safely and legally, while extension cords are fine only for individual appliances. Maintain the machine monthly — run it under load, change oil annually, keep the air filter clean — because the most common generator failure is simply a machine that has sat untouched since the last outage. A quick reference for the loads that define generator shopping: a fridge runs at about 200 watts but starts at 1,200; a freezer runs at 150 and starts at 1,200; a well pump runs at 1,000 and starts at 2,000; a furnace fan runs at 800 and starts at 1,400; and a small window air conditioner runs at 1,200 and starts at 3,600. Add your running loads, add only the single largest starting surge, and you have the size to shop for — the most common error is adding every surge together and buying far more generator than needed.</p></article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary>What size generator do I need for my house?</summary><p>Add your running watts to your largest motor's starting watts. Typical homes need 5,000 to 7,500 watts; large homes with air conditioning need 10,000 or more.</p></details><details><summary>What are starting watts?</summary><p>The brief surge a motor draws at startup, usually two to three times its running watts. Fridges, pumps and air conditioners have the biggest surges.</p></details><details><summary>Can a generator be too big?</summary><p>Yes. An oversized generator wastes fuel, runs inefficiently at low load, and costs more than necessary. Size close to your calculated need.</p></details><details><summary>Should I use running watts or surge watts when shopping?</summary><p>Shop by the continuous running rating, and make sure it covers your calculated total. Headline surge ratings are brief peaks, not sustained output.</p></details><details><summary>Can I run my whole house on a portable generator?</summary><p>Only if its rating covers your total load. Most portable units cover essentials; whole-house coverage usually needs a standby generator with a transfer switch.</p></details><details><summary>Is it safe to connect a generator to my house wiring?</summary><p>Only through a transfer switch installed by a licensed electrician. Backfeeding through an outlet can kill utility workers and damage equipment.</p></details></section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer><p><strong>GeneratorSize</strong> — Power, sized to your biggest moment.</p>
+<p>GeneratorSize adds your running watts and your largest motor starting surge to find the generator rating that will not stall.</p>
+<p><a href="https://fixoraa.tech">Home</a> &nbsp;|&nbsp; <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p></footer>
+<script id="pure">function genWatts(running,starting){return running+starting;}</script>
+<script>function calc(){var r=num('run_w'),s=num('start_w');
+    if(r<0||s<0){showErr('Watts cannot be negative.');return;} document.getElementById('err').textContent='';
+    var total=genWatts(r,s); var kw=Math.round(total/100)/10; var rec=(Math.ceil(total/500)*500);
+    var html='<b>'+total.toLocaleString()+' watts ('+kw.toFixed(1)+' kW)</b> — shop for a generator rated at least <b>'+rec.toLocaleString()+' watts</b>.';
+    if(total===0) html='No load entered, so no generator size is needed.';
+    showRes(html);}
+  
+function applyPreset(o){for(var k in o){var e=document.getElementById(k);if(e)e.value=o[k];}calc();}
+function resetF(){var els=document.querySelectorAll('input,select');els.forEach(function(e){if(e.type!=='button')e.value='';});document.getElementById('res').style.display='none';document.getElementById('err').textContent='';}
+function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+
+function showRes(html){var r=document.getElementById('res');r.style.display='block';r.innerHTML=html;window._last=html.replace(/<[^>]+>/g,' ');}
+function showErr(m){document.getElementById('err').textContent=m;}
+function saveHist(){if(!window._last)return;var k='hist_generatorsize';var a=JSON.parse(localStorage.getItem(k)||'[]');a.unshift(new Date().toLocaleString()+': '+window._last);localStorage.setItem(k,JSON.stringify(a.slice(0,10)));var d=document.getElementById('hist');d.style.display='block';d.textContent=a.join('\n');}
+function copyRes(){if(window._last&&navigator.clipboard)navigator.clipboard.writeText(window._last);}
+function dlCSV(){if(!window._last)return;var b=new Blob([window._last],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='generatorsize-result.csv';a.click();}
+</script>
+</body></html>
