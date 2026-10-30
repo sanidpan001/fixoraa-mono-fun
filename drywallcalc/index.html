@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drywall Calculator: Sheets, Screws &amp; Compound Estimator</title>
+<meta name="description" content="Estimate drywall sheets, screws and joint compound from wall and ceiling area. Subtract doors and windows; 10% cutting-waste allowance included.">
+<link rel="canonical" href="https://fun.fixoraa.tech/drywallcalc/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Drywall Calculator: Sheets, Screws &amp; Compound Estimator">
+<meta property="og:description" content="Estimate drywall sheets, screws and joint compound from wall and ceiling area. Subtract doors and windows; 10% cutting-waste allowance included.">
+<meta property="og:url" content="https://fun.fixoraa.tech/drywallcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "DrywallCalc",
+      "url": "https://fun.fixoraa.tech/drywallcalc/",
+      "applicationCategory": "Home Improvement",
+      "operatingSystem": "Web",
+      "description": "Estimate drywall sheets, screws and joint compound from wall and ceiling area. Subtract doors and windows; 10% cutting-waste allowance included.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many drywall sheets do I need per square foot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standard 4\u00d78 ft sheet covers 32 sq ft (2.98 m\u00b2). Divide your net area (minus doors and windows) by 32 and add 10% for cutting waste, then round up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many screws per sheet of drywall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Plan 32 screws per 4\u00d78 sheet \u2014 roughly one 5 lb box per 20 sheets. Use 1\u00bc-inch coarse-thread screws for wood studs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much joint compound do I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 1.5 kg per sheet for a standard three-coat finish. A 20-sheet room needs roughly 30 kg of joint compound."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I add waste allowance to drywall estimates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 add 10% for cutting waste on straightforward rooms, more for rooms with many angles, closets or bulkheads where offcuts pile up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use regular drywall in a bathroom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Use moisture-resistant (green) board in bathrooms and cement backer board behind tile in showers. Standard drywall fails quickly in wet areas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What thickness of drywall should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "\u00bd-inch for standard walls and ceilings, \u215d-inch Type X where fire rating is required (garages, furnace rooms), \u00bc-inch for curves or overlays."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FAF6F0; --surface:#FFFFFF; --accent:#A83E1C; --accent-ink:#FFFFFF;
+  --ink:#2C241D; --muted:#66594A; --line:#E7DCCB;
+  --display:'Work Sans',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.dw-wrap{max-width:960px;margin:0 auto;padding:28px 18px 56px;color:#2C241D;font-family:Inter,system-ui,sans-serif}
+.dw-hero{text-align:center;margin-bottom:20px}
+.dw-hero h1{font-family:"Work Sans",sans-serif;font-weight:800;font-size:clamp(32px,6vw,48px);margin:0 0 8px;color:#2C241D}
+.dw-tagline{font-size:16px;color:#66594A;margin:0}
+.dw-body{display:grid;grid-template-columns:210px 1fr;gap:16px;margin-top:8px}
+.dw-rail{background:#fff;border:1px solid #E7DCCB;border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:8px;align-self:start;position:sticky;top:12px}
+.dw-mode{border:1px solid #E7DCCB;background:#FAF6F0;border-radius:14px;padding:14px 12px;cursor:pointer;text-align:left;font:inherit;min-height:64px}
+.dw-mode .dw-ico{font-size:22px;display:block}
+.dw-mode .dw-lbl{font-size:14px;font-weight:700;color:#66594A}
+.dw-mode.dw-on{background:#A83E1C;border-color:#A83E1C}
+.dw-mode.dw-on .dw-lbl{color:#fff}
+.dw-work{background:#fff;border:1px solid #E7DCCB;border-radius:20px;padding:24px;min-height:380px}
+.dw-h2{font-family:"Work Sans",sans-serif;font-size:24px;font-weight:800;margin:0 0 6px;color:#2C241D}
+.dw-sub{font-size:14px;color:#66594A;margin:0 0 16px}
+.dw-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dw-field{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#66594A}
+.dw-field input{font:inherit;font-size:16px;color:#2C241D;border:1px solid #E7DCCB;border-radius:12px;padding:12px;background:#FAF6F0;min-height:48px}
+.dw-open{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.dw-open button{border:1px solid #E7DCCB;background:#FAF6F0;color:#A83E1C;font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:10px 14px;cursor:pointer;min-height:44px}
+.dw-big{margin-top:18px;background:#FAF6F0;border:1px solid #E7DCCB;border-radius:16px;padding:20px;text-align:center}
+.dw-big small{display:block;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#66594A}
+.dw-big b{font-family:"Work Sans",sans-serif;font-size:52px;color:#A83E1C}
+.dw-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+.dw-list li{display:flex;justify-content:space-between;background:#FAF6F0;border:1px solid #E7DCCB;border-radius:12px;padding:10px 14px;font-size:15px}
+.dw-list b{color:#A83E1C}
+.dw-note{font-size:13.5px;color:#66594A;background:#FFF7EC;border-radius:12px;padding:10px 14px;margin:14px 0 0}
+@media(max-width:700px){
+.dw-body{grid-template-columns:1fr}
+.dw-rail{position:static;flex-direction:row;overflow-x:auto}
+.dw-mode{flex:1;min-width:110px}
+.dw-grid{grid-template-columns:1fr}
+.dw-wrap{padding:20px 12px 44px}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="DrywallCalc home">
+      <span class="fx-logo-tile" aria-hidden="true">🧱</span>
+      <span class="fx-brand">DrywallCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-side-rail" aria-label="DrywallCalc tool">
+<section class="dw-wrap" aria-label="Drywall calculator">
+  <div class="dw-hero">
+    <h1>🧱 DrywallCalc</h1>
+    <p class="dw-tagline">Walls measured, materials sorted: sheets, screws and compound in seconds.</p>
+  </div>
+  <div class="dw-body">
+    <nav class="dw-rail" aria-label="Calculator modes">
+      <button class="dw-mode dw-on" data-mode="sheets"><span class="dw-ico">📐</span><span class="dw-lbl">Sheets</span></button>
+      <button class="dw-mode" data-mode="screws"><span class="dw-ico">🔩</span><span class="dw-lbl">Screws</span></button>
+      <button class="dw-mode" data-mode="compound"><span class="dw-ico">🪣</span><span class="dw-lbl">Compound</span></button>
+    </nav>
+    <div class="dw-work">
+      <h2 class="dw-h2" id="dwTitle">Drywall sheets</h2>
+      <p class="dw-sub" id="dwSub">4×8 ft sheets (2.98 m² each) with 10% cutting waste included.</p>
+      <div class="dw-grid">
+        <label class="dw-field">Wall + ceiling area (m²)<input id="dwArea" type="number" min="1" step="0.5" value="20" inputmode="decimal"></label>
+        <label class="dw-field">Openings — doors/windows (m²)<input id="dwOpen" type="number" min="0" step="0.5" value="0" inputmode="decimal"></label>
+      </div>
+      <div class="dw-open">
+        <button data-add="1.9">+ Door (1.9 m²)</button>
+        <button data-add="1.4">+ Window (1.4 m²)</button>
+        <button data-add="0">Clear openings</button>
+      </div>
+      <div class="dw-big"><small id="dwBigLbl">Sheets needed</small><b id="dwBig">8</b></div>
+      <ul class="dw-list" id="dwList"></ul>
+      <p class="dw-note" id="dwNote">💡 Hang ceilings first, then walls. Stagger joints like brickwork.</p>
+    </div>
+  </div>
+</section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How much drywall do you actually need?</h2><p>Drywall (plasterboard) estimating trips up DIYers because the material comes in fixed sheet sizes while rooms come in awkward dimensions. The reliable method: measure the total wall and ceiling area, subtract doors and windows, add 10% for cutting waste, then divide by the usable area of one sheet. A standard 4×8 ft sheet covers 32 sq ft, or about 2.98 m². Getting this right matters — drywall is cheap per sheet but bulky to transport, and a second delivery wipes out your savings.</p><h2>Measuring walls and ceilings</h2><p>For each wall, multiply width by height. A 12 ft × 8 ft wall is 96 sq ft. Do this for all four walls, then add the ceiling (length × width). Now subtract openings: a standard interior door is about 21 sq ft (3×7 ft), a typical window about 12–15 sq ft. Do not subtract tiny openings like electrical boxes. If your ceiling is higher than 8 ft, note that standard sheets are 8 ft long — a 9 ft wall needs either 9 ft sheets (available at most suppliers) or a horizontal strip, which adds waste.</p><table><thead><tr><th>Room</th><th>Walls + ceiling</th><th>Minus openings</th><th>Sheets (with 10% waste)</th></tr></thead><tbody><tr><td>10×12 ft bedroom, 8 ft ceiling</td><td>~500 sq ft</td><td>~450 sq ft</td><td>16</td></tr><tr><td>12×15 ft living room, 8 ft ceiling</td><td>~610 sq ft</td><td>~560 sq ft</td><td>20</td></tr><tr><td>8×10 ft bathroom, 8 ft ceiling</td><td>~370 sq ft</td><td>~330 sq ft</td><td>12</td></tr></tbody></table><h2>How many screws per sheet?</h2><p>Plan on <strong>32 screws per 4×8 sheet</strong>: screws every 12 inches along studs in the field and every 8 inches along edges. For a full room this adds up fast — a 20-sheet job needs 640 screws, so buy the 5 lb box rather than small packs. Use 1¼-inch coarse-thread screws for ½-inch drywall on wood studs, and fine-thread screws for metal studs. Drive heads just below the paper surface without tearing it; a dimpler bit or screw gun with depth control pays for itself on the first wall.</p><h3>Screws vs nails</h3><p>Screws beat nails for DIY: they hold better, rarely pop, and are easy to back out if you misplace one. Ring-shank nails are acceptable for professionals with nail guns, but screws are the safer choice for everyone else.</p><h2>Joint compound: how much to buy</h2><p>Budget roughly <strong>1.5 kg of joint compound per sheet</strong> for a standard three-coat finish. That covers taping, two fill coats and the final skim. All-purpose compound works for every coat, though pros often use quick-setting compound for the first coat and lightweight topping compound for the finish. A 20-sheet room needs about 30 kg — typically two large buckets or one bucket plus a bag of setting compound. Do not skimp: thin coats that need re-doing cost more time than generous first coats.</p><h2>Tape, corner bead and extras</h2><ul><li><strong>Joint tape:</strong> one 250 ft roll covers roughly 8–10 sheets. Paper tape is stronger than mesh; mesh is easier for beginners.</li><li><strong>Corner bead:</strong> count your outside corners and buy one 8 ft bead per corner, plus a few spares.</li><li><strong>Primer:</strong> always prime new drywall before painting — unprimed drywall drinks paint unevenly and flashes.</li><li><strong>Moisture areas:</strong> use moisture-resistant (green) board in bathrooms, never standard board behind tile in showers (use cement board there).</li></ul><h2>Hanging tips that save hours</h2><p>Hang ceilings first, then walls — wall sheets support the ceiling edges. Keep a ½-inch gap at the floor for expansion and to keep the board off damp concrete. Stagger vertical joints between rows like brickwork so no four corners meet. Mark stud centres on the floor and ceiling before hanging so you always know where to drive screws. And lift with your legs or rent a drywall lift for ceilings: a 4×8 sheet of ½-inch board weighs about 26 kg.</p><h2>Finishing levels, explained</h2><table><thead><tr><th>Level</th><th>What it means</th><th>When you need it</th></tr></thead><tbody><tr><td>Level 3</td><td>Tape + two coats</td><td>Heavy texture or tile going over it</td></tr><tr><td>Level 4</td><td>Tape + three coats</td><td>Standard paint or light texture</td></tr><tr><td>Level 5</td><td>Level 4 + skim coat</td><td>Glossy paint or critical lighting</td></tr></tbody></table><p>Most rooms want Level 4. Skim-coating to Level 5 doubles finishing time, so reserve it for feature walls with raking light.</p><p>Measure twice, add your 10%, and buy everything in one trip — sheets, screws, tape, compound and bead. The calculator above does the arithmetic; the only thing left is the lifting.</p><h2>Drywall thickness: which to buy</h2><table><thead><tr><th>Thickness</th><th>Use</th></tr></thead><tbody><tr><td>¼ inch (6 mm)</td><td>Curved surfaces, overlaying old walls</td></tr><tr><td>⅜ inch (10 mm)</td><td>Renovation overlays, patching</td></tr><tr><td>½ inch (12 mm)</td><td>Standard walls and ceilings — the default</td></tr><tr><td>⅝ inch (16 mm) Type X</td><td>Fire-rated assemblies, garages, ceilings with 24-inch joist spacing</td></tr></tbody></table><p>½-inch board suits almost every residential job. Step up to ⅝-inch Type X where building code demands fire resistance (between garage and house, furnace rooms) — it is heavier and harder to cut, so reserve it for where it is required.</p><h2>Cutting and hanging technique</h2><p>Score the paper face with a sharp utility knife, snap the board over a straight edge, then cut the back paper — clean cuts in seconds, no sawing. Cutouts for outlets: measure, mark, and use a jab saw or rotary tool. Hang sheets tight but not forced; ⅛-inch gaps at joints are fine and get filled with compound. Drive screws every 12 inches in the field and 8 inches on edges, dimpling heads just below the surface. A second pair of hands (or a rented lift for ceilings) turns a miserable job into a manageable one.</p><h2>What does drywalling cost?</h2><p>Materials are cheap: a 4×8 sheet of ½-inch board is a few dollars/pounds, so a 20-sheet room's materials (board, screws, tape, compound, bead) often total under $300. Labour is the real cost — professional hanging and finishing runs several dollars per square foot, which is why DIY drywall is one of the highest-payback skills a homeowner can learn. Finishing (taping and mudding) is the skill that takes practice; hanging is just measuring and lifting.</p><h2>Working around obstacles</h2><p>Real rooms have pipes, outlets and odd angles. For electrical boxes, measure from a fixed reference (floor and adjacent stud), transfer to the sheet, and cut with a jab saw — cut slightly small and enlarge; you cannot shrink a hole. Pipes get a U-shaped notch cut from the sheet edge, then the offcut is fitted back around the pipe. For angled bulkheads and sloped ceilings, make cardboard templates first — drywall is cheap but your time is not. Keep offcuts larger than a foot; they patch the inevitable mistakes.</p><h2>Soundproofing upgrades worth doing</h2><p>If you are opening walls anyway, consider acoustic upgrades while access is easy: <strong>resilient channel</strong> decouples drywall from studs and dramatically cuts sound transfer; a second layer of ⅝-inch board with acoustic sealant between layers adds mass cheaply; and mineral-wool insulation in the cavity absorbs mid-range frequencies. None of these change the sheet count much (double-layer jobs simply double it), but they must be planned before the first sheet goes up. For home theatres, bedrooms and party walls, the extra material cost pays back every quiet night.</p><h2>Estimating for whole-house jobs</h2><p>For multi-room projects, calculate each room separately rather than lumping areas together — waste does not average out across rooms with different shapes, and separate lists prevent one room's offcuts from being double-counted. Order 5% extra beyond the per-room 10% for whole-house work to cover damaged sheets in delivery. Schedule delivery after framing inspection passes but before flooring goes in; drywall dust and floor finishes are enemies. Stack sheets flat, off the floor, in the rooms where they will hang.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many drywall sheets do I need per square foot?</summary><p>A standard 4×8 ft sheet covers 32 sq ft (2.98 m²). Divide your net area (minus doors and windows) by 32 and add 10% for cutting waste, then round up.</p></details>
+<details><summary>How many screws per sheet of drywall?</summary><p>Plan 32 screws per 4×8 sheet — roughly one 5 lb box per 20 sheets. Use 1¼-inch coarse-thread screws for wood studs.</p></details>
+<details><summary>How much joint compound do I need?</summary><p>About 1.5 kg per sheet for a standard three-coat finish. A 20-sheet room needs roughly 30 kg of joint compound.</p></details>
+<details><summary>Should I add waste allowance to drywall estimates?</summary><p>Yes — add 10% for cutting waste on straightforward rooms, more for rooms with many angles, closets or bulkheads where offcuts pile up.</p></details>
+<details><summary>Can I use regular drywall in a bathroom?</summary><p>No. Use moisture-resistant (green) board in bathrooms and cement backer board behind tile in showers. Standard drywall fails quickly in wet areas.</p></details>
+<details><summary>What thickness of drywall should I use?</summary><p>½-inch for standard walls and ceilings, ⅝-inch Type X where fire rating is required (garages, furnace rooms), ¼-inch for curves or overlays.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">DrywallCalc</div>
+    <p>DrywallCalc turns wall and ceiling area into sheet counts, screw quantities and joint compound for any drywall job.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function drywall(area_m2, openings_m2){
+  var net = Math.max(0, area_m2 - (openings_m2 || 0));
+  var sheets = Math.ceil(net * 1.1 / 2.98);
+  return {
+    sheets: sheets,
+    screws: sheets * 32,
+    compoundKg: Math.round(sheets * 1.5 * 10) / 10
+  };
+}
+if(typeof document !== 'undefined'){
+document.addEventListener('DOMContentLoaded', function(){
+  var mode = 'sheets';
+  var copy = {
+    sheets: {t:'Drywall sheets', s:'4×8 ft sheets (2.98 m² each) with 10% cutting waste included.', n:'💡 Hang ceilings first, then walls. Stagger joints like brickwork.'},
+    screws: {t:'Screws & fasteners', s:'32 screws per sheet — 1¼″ coarse-thread for wood studs.', n:'💡 Drive heads just below the paper without tearing it.'},
+    compound: {t:'Joint compound', s:'About 1.5 kg per sheet for a three-coat Level 4 finish.', n:'💡 Thin coats that need re-doing cost more time than generous first coats.'}
+  };
+  function refresh(){
+    var a = parseFloat(document.getElementById('dwArea').value) || 0;
+    var o = parseFloat(document.getElementById('dwOpen').value) || 0;
+    var d = drywall(a, o);
+    document.getElementById('dwTitle').textContent = copy[mode].t;
+    document.getElementById('dwSub').textContent = copy[mode].s;
+    document.getElementById('dwNote').textContent = copy[mode].n;
+    var bigLbl = document.getElementById('dwBigLbl'), big = document.getElementById('dwBig');
+    if(mode === 'sheets'){ bigLbl.textContent = 'Sheets needed'; big.textContent = d.sheets; }
+    if(mode === 'screws'){ bigLbl.textContent = 'Screws needed'; big.textContent = d.screws; }
+    if(mode === 'compound'){ bigLbl.textContent = 'Compound needed'; big.textContent = d.compoundKg + ' kg'; }
+    document.getElementById('dwList').innerHTML =
+      '<li><span>📐 Sheets (4×8 ft)</span><b>' + d.sheets + '</b></li>' +
+      '<li><span>🔩 Screws (32/sheet)</span><b>' + d.screws + '</b></li>' +
+      '<li><span>🪣 Joint compound</span><b>' + d.compoundKg + ' kg</b></li>' +
+      '<li><span>📏 Joint tape (est.)</span><b>' + Math.ceil(d.sheets/9) + ' roll(s)</b></li>';
+  }
+  document.querySelectorAll('.dw-mode').forEach(function(m){
+    m.addEventListener('click', function(){
+      document.querySelectorAll('.dw-mode').forEach(function(x){ x.classList.remove('dw-on'); });
+      m.classList.add('dw-on');
+      mode = m.getAttribute('data-mode');
+      refresh();
+    });
+  });
+  document.querySelectorAll('.dw-open button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var add = parseFloat(b.getAttribute('data-add'));
+      var cur = parseFloat(document.getElementById('dwOpen').value) || 0;
+      document.getElementById('dwOpen').value = add === 0 ? 0 : (cur + add).toFixed(1);
+      refresh();
+    });
+  });
+  ['dwArea','dwOpen'].forEach(function(id){ document.getElementById(id).addEventListener('input', refresh); });
+  refresh();
+});}
+</script>
+</body>
+</html>
