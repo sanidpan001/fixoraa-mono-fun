@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Musical Note Frequency Calculator: Hz for Any Note</title>
+<meta name="description" content="Calculate the exact frequency in hertz for any musical note and octave, with the full octave table and A4 = 440 Hz reference.">
+<link rel="canonical" href="https://fun.fixoraa.tech/notefreq/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Musical Note Frequency Calculator: Hz for Any Note">
+<meta property="og:description" content="Calculate the exact frequency in hertz for any musical note and octave, with the full octave table and A4 = 440 Hz reference.">
+<meta property="og:url" content="https://fun.fixoraa.tech/notefreq/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "NoteFreq",
+      "url": "https://fun.fixoraa.tech/notefreq/",
+      "applicationCategory": "Music",
+      "operatingSystem": "Web",
+      "description": "Calculate the exact frequency in hertz for any musical note and octave, with the full octave table and A4 = 440 Hz reference.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What frequency is A4?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "440 hertz in standard concert pitch. A5 is 880 Hz and A3 is 220 Hz, since each octave doubles or halves the frequency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a note frequency calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By counting semitones from A4 and multiplying 440 Hz by 2 raised to the semitone count divided by 12."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is middle C's frequency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Middle C, written C4, is about 261.63 Hz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are C sharp and D flat the same?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. They are enharmonic equivalents: the same pitch with two names, one semitone above C and one below D."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do orchestras sometimes tune differently?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Some ensembles tune to 442 or 443 Hz for brightness, and period groups may use 415 Hz. The relationships between notes stay the same."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does frequency determine timbre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Frequency sets pitch, while timbre comes from harmonics, attack and decay, which is why instruments sound different at the same pitch."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#eef1f8; --surface:#ffffff; --accent:#2e3a8f; --accent-ink:#ffffff;
+  --ink:#1a1f33; --muted:#4f5670; --line:#cdd3e6;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.nf-sub{color:var(--muted);margin-bottom:1.2rem}.nf-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:1.2rem}.nf-form,.nf-out{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.3rem}.nf-form label{font-weight:600;display:block;margin-bottom:.8rem}.nf-form input,.nf-form select{width:100%;padding:.7rem;border:1px solid var(--line);border-radius:10px;margin-top:.3rem;font-size:1rem}.nf-go{background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:.85rem;width:100%;font-weight:700;cursor:pointer}.nf-presets{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}.nf-presets button{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:.45rem .9rem;font-weight:600;cursor:pointer}.nf-out strong{font-size:2.4rem;color:var(--accent)}.nf-table{width:100%;border-collapse:collapse;margin-top:1rem}.nf-table th,.nf-table td{border:1px solid var(--line);padding:.45rem;text-align:left;font-size:.95rem}@media(max-width:640px){.nf-wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="NoteFreq home">
+      <span class="fx-logo-tile" aria-hidden="true">🎵</span>
+      <span class="fx-brand">NoteFreq</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-note-scale" aria-label="NoteFreq tool">
+<h1>Musical Note Frequency Calculator</h1><p class="nf-sub">Enter any note and octave to get its exact frequency in hertz, plus neighbours and the full octave.</p><div class="nf-wrap"><div class="nf-form"><label>Note<select id="nfNote"><option>C</option><option>C#</option><option>D</option><option>D#</option><option>E</option><option>F</option><option>F#</option><option>G</option><option>G#</option><option selected>A</option><option>A#</option><option>B</option></select></label><label>Octave<input id="nfOct" type="number" value="4" min="0" max="8"></label><button class="nf-go" id="nfGo">Calculate frequency</button><div class="nf-presets"><button data-n="C" data-o="4">Middle C</button><button data-n="A" data-o="4">A4 · 440 Hz</button><button data-n="E" data-o="2">Low E (guitar)</button></div></div><div class="nf-out"><strong id="nfFreq">440 Hz</strong><p id="nfDetail"></p><table class="nf-table" id="nfTable"></table></div></div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What a musical note frequency is</h2><p>Every musical note you hear is a vibration at a particular frequency, measured in hertz, or cycles per second. Play a low note and the air vibrates slowly; play a high note and it vibrates quickly. The note A above middle C, written A4, vibrates at 440 hertz in the standard tuning used by most modern instruments, and every other note's frequency follows from that single reference by a precise mathematical relationship. This calculator turns any note name and octave into its frequency, so you can tune, compose, build instruments, or simply understand why notes sound the way they do.</p><p>The relationship between notes is exponential, not linear. Each semitone, the step from one piano key to the next, multiplies the frequency by the twelfth root of two, about 1.0595. Twelve semitones make an octave, and twelve multiplications by that factor exactly double the frequency, which is why an octave sounds like the same note, only higher. That is why A4 is 440 hertz, A5 is 880, and A3 is 220: each octave doubles or halves the frequency. Notes that are not A are found by counting semitones away from A4 and applying the same multiplication, which is exactly what this calculator does, including sharps and flats.</p><h2>Note names, sharps and octaves</h2><p>Western music uses twelve note names per octave: C, C sharp, D, D sharp, E, F, F sharp, G, G sharp, A, A sharp and B. A sharp raises a note by one semitone, and a flat lowers it by one, so C sharp and D flat are the same pitch, known as enharmonic equivalents. Octave numbers change at C, not at A, which confuses beginners: middle C is C4, and the A above it is A4, even though A comes before C in the alphabet. The calculator accepts sharps and flats and shows the octave clearly, so you can check a note on any instrument without guessing where its octave boundary falls.</p><p>Concert pitch, the decision that A4 equals 440 hertz, is a convention, not a law of nature. Orchestras have used slightly different standards through history, and some ensembles today tune to 442 or 443 hertz for a brighter sound, while period instrument groups may use 415 hertz for Baroque music. The calculator uses the modern 440 standard, because it is what tuners, apps and most instruments expect. If you play with an ensemble tuned differently, the relative relationships between notes stay the same; only the absolute frequencies shift slightly. For most practical purposes, from tuning a guitar to setting a synthesiser, 440 is the right reference.</p><h2>Using frequencies in practice</h2><p>Instrument makers and tuners use frequencies constantly. A guitar tuner listens for the target frequency of each open string, a piano technician tunes hundreds of strings to precise frequencies across the keyboard, and a synthesiser designer sets oscillator frequencies to create exact pitches. Singers use frequency knowledge to understand their range: a soprano who sings up to C6 is producing over 1000 hertz, while a bass singing E2 is near 82 hertz. Composers use it to choose voicings, because notes that are far apart in frequency sound open and clear, while notes clustered close together can sound muddy, especially in low registers where frequencies are numerically closer together.</p><p>The calculator also helps you explore intervals. Compare a note with the note a fifth above it, seven semitones higher, and you will see the frequency ratio is close to three to two, one of the most consonant relationships in music. Compare a major third and you will see a ratio near five to four. These simple ratios are why some intervals sound stable and restful while others sound tense: the vibrations line up neatly for consonant intervals and clash for dissonant ones. Try entering a scale, note by note, and watch the frequencies rise by the same multiplicative step each time, a pattern that is invisible on a keyboard but obvious in numbers.</p><h2>From frequency to sound</h2><p>Frequency alone does not determine how a note sounds. Timbre, the character that lets you tell a piano from a violin playing the same pitch, comes from the mix of harmonics, extra vibrations at multiples of the base frequency, and from how the sound starts and fades. Loudness, duration and vibrato, a slight regular variation in frequency, also shape what you hear. But frequency is the foundation: change it and you change the pitch itself. Understanding that foundation makes tuning less mysterious, composition more deliberate, and listening more rewarding, because you start to hear the mathematics underneath the music without losing any of its feeling.</p><h2>Frequencies across instruments and voices</h2><p>The piano spans from A0 at 27.5 hertz to C8 at over 4000 hertz, a range that covers nearly the entire audible spectrum used in music. A violin lives mostly in the higher middle of that range, a double bass in the lower end, and a flute near the top, which is why an orchestra can sound full without every instrument competing for the same frequencies. Guitar open strings run from low E2 at about 82 hertz to high E4 at about 330 hertz, with fretted notes extending well above that. Human voices are narrower: most singing voices span roughly 80 to 1100 hertz for fundamental pitches, with harmonics extending far higher and giving each voice its recognisable character.</p><p>Electronic music makes frequency explicit. A synthesiser oscillator set to 110 hertz produces A2, and detuning a second oscillator slightly sharp or flat creates the beating, shimmering sound heard in many pads and basses. Producers use frequency knowledge to carve space in a mix: if the bass occupies 40 to 200 hertz, the kick drum must share that space carefully, and vocals need clarity in the 1000 to 4000 hertz region where human hearing is most sensitive. Even without production ambitions, knowing these ranges helps you listen more analytically: you can hear when a bass line and a kick drum clash, or when a vocal sits cleanly above the instruments.</p><p>For learners, a useful exercise is to sing or play a scale slowly while watching the frequencies rise, noting that the steps near the bottom of the scale are small in hertz, a few hertz apart, while steps near the top are large, tens or hundreds of hertz apart, even though they sound like equal steps. That paradox is the exponential nature of pitch in action, and grasping it makes the whole system click. Music is organised by ratios, not by equal differences, and once you feel that, tuning, transposition, and harmony all become more intuitive. Use the calculator to explore, and let the numbers train your ear rather than replace it.</p><h2>Tuning by ear versus by tuner</h2><p>Electronic tuners give exact frequencies, but tuning by ear trains a skill no device can replace. Start by tuning one reference string or note with a tuner, then tune the rest by listening for beats, the slow pulsing heard when two nearly identical pitches sound together, which disappear when the pitches match exactly. Practising this way builds interval recognition and a finer sense of pitch, and it makes you less dependent on a screen during performance. Use the calculator to know your targets, use a tuner to check yourself, and use your ear to close the final gap, combining all three into a tuning habit that works anywhere.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What frequency is A4?</summary><p>440 hertz in standard concert pitch. A5 is 880 Hz and A3 is 220 Hz, since each octave doubles or halves the frequency.</p></details>
+<details><summary>How is a note frequency calculated?</summary><p>By counting semitones from A4 and multiplying 440 Hz by 2 raised to the semitone count divided by 12.</p></details>
+<details><summary>What is middle C&#x27;s frequency?</summary><p>Middle C, written C4, is about 261.63 Hz.</p></details>
+<details><summary>Are C sharp and D flat the same?</summary><p>Yes. They are enharmonic equivalents: the same pitch with two names, one semitone above C and one below D.</p></details>
+<details><summary>Why do orchestras sometimes tune differently?</summary><p>Some ensembles tune to 442 or 443 Hz for brightness, and period groups may use 415 Hz. The relationships between notes stay the same.</p></details>
+<details><summary>Does frequency determine timbre?</summary><p>No. Frequency sets pitch, while timbre comes from harmonics, attack and decay, which is why instruments sound different at the same pitch.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">NoteFreq</div>
+    <p>Free musical note frequency calculator for tuning, composing and learning.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var NF_NOTES=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+function noteFreq(note,octave){var idx=NF_NOTES.indexOf(note);if(idx<0||isNaN(octave))return null;var midi=(octave+1)*12+idx;return Math.round(440*Math.pow(2,(midi-69)/12)*100)/100;}
+function renderNote(){var n=document.getElementById('nfNote').value;var o=parseInt(document.getElementById('nfOct').value,10);var f=noteFreq(n,o);if(f===null){document.getElementById('nfDetail').textContent='Choose a valid note and octave.';return;}document.getElementById('nfFreq').textContent=f+' Hz';document.getElementById('nfDetail').textContent=n+o+' vibrates at '+f+' Hz (A4 = 440 Hz standard). One octave up is '+(f*2)+' Hz, one octave down is '+(Math.round(f/2*100)/100)+' Hz.';var rows='<tr><th>Note</th><th>Frequency</th></tr>';NF_NOTES.forEach(function(nn){rows+='<tr><td>'+nn+o+'</td><td>'+noteFreq(nn,o)+' Hz</td></tr>';});document.getElementById('nfTable').innerHTML=rows;}
+document.getElementById('nfGo').addEventListener('click',renderNote);
+document.querySelectorAll('.nf-presets button').forEach(function(b){b.addEventListener('click',function(){document.getElementById('nfNote').value=b.dataset.n;document.getElementById('nfOct').value=b.dataset.o;renderNote();});});
+renderNote();
+</script>
+</body>
+</html>
