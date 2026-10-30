@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golf Club Distance Calculator: Carry by Swing Speed &amp; Club</title>
+<meta name="description" content="Estimate golf carry distance for every club from your swing speed, with temperature and altitude adjustments for real courses.">
+<link rel="canonical" href="https://fun.fixoraa.tech/golfdist/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Golf Club Distance Calculator: Carry by Swing Speed &amp; Club">
+<meta property="og:description" content="Estimate golf carry distance for every club from your swing speed, with temperature and altitude adjustments for real courses.">
+<meta property="og:url" content="https://fun.fixoraa.tech/golfdist/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "GolfDist",
+      "url": "https://fun.fixoraa.tech/golfdist/",
+      "applicationCategory": "Sports",
+      "operatingSystem": "Web",
+      "description": "Estimate golf carry distance for every club from your swing speed, with temperature and altitude adjustments for real courses.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is carry distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Carry is how far the ball flies before its first bounce. It is the number that matters for clearing hazards and choosing a club into a green."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find my swing speed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a launch monitor at a driving range or golf shop. A few swings give a reliable average; guessing usually overstates speed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does altitude increase distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Thinner air at altitude offers less resistance, adding roughly 2 percent carry per 1,000 feet of elevation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does temperature really matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Warm air is less dense, so carry rises roughly 1 percent per 10 \u00b0F above 70 \u00b0F, with cold air having the opposite effect."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I trust this over my on-course distances?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use it as a starting point, then replace estimates with measured on-course carry distances for each club, updated once a season."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about wind?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wind matters more than temperature or altitude. As a guide, club up more into a headwind than you club down with a tailwind."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#f4f8ec; --surface:#ffffff; --accent:#3d5a1e; --accent-ink:#ffffff;
+  --ink:#1f2a14; --muted:#55644a; --line:#d9e2c6;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.gd-sub{color:var(--muted);margin-bottom:1.2rem}.gd-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:1.2rem}.gd-form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.3rem}.gd-form label{font-weight:600;display:block;margin-bottom:.8rem}.gd-form input{width:100%;padding:.7rem;border:1px solid var(--line);border-radius:10px;margin-top:.3rem;font-size:1rem}.gd-go{background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:.85rem;width:100%;font-weight:700;cursor:pointer}.gd-clubs{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;align-content:start}.gd-clubs button{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:.9rem;font-weight:600;cursor:pointer}.gd-clubs button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}.gd-out{margin-top:1.2rem;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.3rem}.gd-out strong{font-size:2rem;color:var(--accent)}.gd-note{color:var(--muted);font-size:.9rem}@media(max-width:640px){.gd-grid{grid-template-columns:1fr}.gd-clubs{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="GolfDist home">
+      <span class="fx-logo-tile" aria-hidden="true">⛳</span>
+      <span class="fx-brand">GolfDist</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-fairway-yard" aria-label="GolfDist tool">
+<h1>Golf Club Distance Calculator</h1><p class="gd-sub">Estimate carry distance for every club in your bag from your swing speed, temperature and altitude.</p><div class="gd-grid"><div class="gd-form"><label>Driver swing speed (mph)<input id="gdSwing" type="number" value="90" min="40" max="130"></label><label>Temperature (°F)<input id="gdTemp" type="number" value="70"></label><label>Altitude (feet)<input id="gdAlt" type="number" value="0" min="0"></label><button class="gd-go" id="gdGo">Calculate distances</button></div><div class="gd-clubs"><button data-f="2.4" class="on">Driver</button><button data-f="2.15">3 Wood</button><button data-f="2.0">Hybrid</button><button data-f="1.75">5 Iron</button><button data-f="1.6">7 Iron</button><button data-f="1.45">9 Iron</button><button data-f="1.2">Pitching Wedge</button></div></div><div class="gd-out"><strong id="gdDist">216 yards</strong><p id="gdDetail"></p><p class="gd-note">Carry distance, before roll. Into wind, club up more than you think; downwind, club down less.</p></div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>How golf club distance is estimated</h2><p>Every golfer has heard a playing partner claim a seven iron distance that belongs in a different postcode. Real club distances are personal, measurable, and far more useful than any tour professional average. This calculator estimates carry distance, how far the ball flies before its first bounce, from your swing speed, the club you choose, the air temperature, and the altitude. The logic is straightforward: faster clubhead speed launches the ball faster, and each club has a different loft and length that converts that speed into distance at a different rate. Temperature and altitude then adjust the result, because warm, thin air offers less resistance than cold, dense air at sea level.</p><p>Swing speed is the single biggest input, and it is worth measuring rather than guessing. A launch monitor at a driving range or golf shop gives you a reliable number in a few swings, and many modern ranges include one. If you do not have access, a rough guide is that an average male amateur swings a driver at roughly 85 to 95 miles per hour, while many women amateurs swing at 65 to 75 miles per hour, but these ranges are wide and individual variation is huge. Enter your own number if you have it, and update it as your swing changes. A distance estimate built on a guessed swing speed is only as good as the guess.</p><h2>Why clubs differ so much</h2><p>A driver has the longest shaft and the lowest loft, so it converts speed into distance most efficiently. As you move through the bag toward shorter irons and wedges, loft rises and shaft length falls, so the same swing speed produces less distance but more height and stopping power. That trade-off is the point: a pitching wedge is not a failed seven iron, it is a tool for landing softly on a green from short range. The calculator uses a per-club multiplier applied to your swing speed, with driver highest and wedges lowest, to reflect this. Use the club grid to compare your whole bag at your current speed, and look for gaps: if two clubs fly nearly the same distance, one of them is redundant, and if there is a gap of more than about 20 yards between consecutive clubs, you may need a hybrid or an extra wedge.</p><p>Carry is not total distance. Total distance adds roll after landing, which depends on fairway firmness, slope, and spin, and can vary by tens of yards from day to day. Carry is the number that matters for clearing hazards, water, and bunkers, and for choosing a club into a green. When in doubt between two clubs, especially into a green guarded by trouble short of it, take the longer club and swing smoothly. A smooth swing with the right club beats a forced swing with the wrong one almost every time, and it keeps the ball in play far more often.</p><h2>Temperature and altitude adjustments</h2><p>Golf balls fly farther in warm air and at altitude, and the effect is larger than most golfers expect. As a rule of thumb, carry increases by roughly one percent for every ten degrees Fahrenheit above about 70 degrees, and by roughly two percent per thousand feet of elevation. That means a drive that carries 240 yards at sea level in cool weather might carry 255 yards or more on a hot day in the mountains. The calculator applies both adjustments so you can compare a home course with a holiday course honestly. Wind matters even more than either factor: a headwind hurts more than a tailwind helps, roughly speaking, so club up more into the wind than you club down with it. Always treat wind as a separate judgement on top of the calculator result.</p><p>Knowing your distances changes course strategy. Instead of hitting driver everywhere, you can plan backwards from the green: if a hole is 380 yards and your comfortable approach is 150 yards, the ideal tee shot leaves 150, not the longest possible drive. That thinking turns a driver into a choice rather than a habit, and it often means a fairway wood or hybrid off the tee for a better angle. Write your carry distances on a card or in your phone, update them once a season, and trust them under pressure. Golf is hard enough without guessing at the most basic question on every shot: how far does this club actually go for me.</p><h2>Improving your distances honestly</h2><p>If your distances are shorter than you would like, the fix is usually better contact, not a faster swing. Centre strikes, a good angle of attack, and proper loft at impact add yards without extra effort, while a wild, fast swing adds distance only on the rare perfect strike and trouble everywhere else. Lessons focused on contact and sequencing help more than new equipment for most amateurs, and a club fitting ensures loft and shaft suit your speed rather than fighting it. Strength and flexibility training help too, especially rotational mobility and core strength, but they pay off over months. Measure, practise, re-measure, and let the numbers, not ego, choose your clubs.</p><h2>Measuring your real distances</h2><p>The fastest way to improve the usefulness of any distance estimate is to measure your own shots. On the range, note where well-struck shots land for each club, ignoring mishits and range balls that fly shorter than real balls. On the course, use a GPS watch, a laser rangefinder, or a phone app to record carry distances for shots that land on greens or clear hazards cleanly. After a few rounds, patterns emerge: your seven iron may carry 148 yards on a good strike and 138 on an average one, and that range, not a single number, is what should guide club choice under pressure. Write the range down and trust it more than any generic chart.</p><p>Range balls deserve a warning. Most ranges use limited-flight balls that travel noticeably shorter than premium course balls, sometimes by ten percent or more. If you measure only on the range, you will systematically underestimate your course distances and choose too much club on the course. Conversely, a downhill range or a strong following wind can flatter distances just as badly. The honest method combines both sources: range sessions for swing speed and strike quality, course data for real carry, and the calculator as a bridge between them when conditions change.</p><p>Finally, revisit your distances when anything significant changes: a new set of clubs, a swing change from lessons, a big gain or loss in strength or flexibility, or a move to a course at very different altitude. Distances drift slowly, and a card that was accurate two seasons ago may now be five yards out on every club, which is enough to turn good approaches into fringe putts. A short measuring session once a season keeps the whole system honest, and honest numbers are the foundation of confident course management.</p><h2>Club gaps and bag building</h2><p>Pay attention to the gaps between consecutive clubs, because even spacing matters more than any single distance. Ideally, gaps run about ten to fifteen yards for irons and fifteen to twenty-five yards for woods, with no two clubs doing the same job and no gap so large that you regularly face a shot between clubs. If you find a gap, a hybrid or a gap wedge usually fills it better than forcing a half swing with the longer club, which is harder to repeat under pressure. Building a bag around measured gaps, rather than around the fourteen clubs you happen to own, is one of the simplest ways to lower scores without changing your swing at all, and it is a habit worth revisiting whenever your distances change.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What is carry distance?</summary><p>Carry is how far the ball flies before its first bounce. It is the number that matters for clearing hazards and choosing a club into a green.</p></details>
+<details><summary>How do I find my swing speed?</summary><p>Use a launch monitor at a driving range or golf shop. A few swings give a reliable average; guessing usually overstates speed.</p></details>
+<details><summary>Why does altitude increase distance?</summary><p>Thinner air at altitude offers less resistance, adding roughly 2 percent carry per 1,000 feet of elevation.</p></details>
+<details><summary>Does temperature really matter?</summary><p>Yes. Warm air is less dense, so carry rises roughly 1 percent per 10 °F above 70 °F, with cold air having the opposite effect.</p></details>
+<details><summary>Should I trust this over my on-course distances?</summary><p>Use it as a starting point, then replace estimates with measured on-course carry distances for each club, updated once a season.</p></details>
+<details><summary>What about wind?</summary><p>Wind matters more than temperature or altitude. As a guide, club up more into a headwind than you club down with a tailwind.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">GolfDist</div>
+    <p>Free golf club distance calculator for carry, club gaps and course strategy.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var gdFactor=2.4;var gdClub='Driver';
+function computeGolf(swing,factor,temp,alt){if(swing<=0||isNaN(swing))return null;var base=swing*factor;var adj=base*(1+(temp-70)*0.001+alt/1000*0.02);return{base:Math.round(base),yards:Math.round(adj)};}
+function renderGolf(){var s=parseFloat(document.getElementById('gdSwing').value);var t=parseFloat(document.getElementById('gdTemp').value)||70;var a=parseFloat(document.getElementById('gdAlt').value)||0;var r=computeGolf(s,gdFactor,t,a);if(!r){document.getElementById('gdDetail').textContent='Enter a positive swing speed.';return;}document.getElementById('gdDist').textContent=r.yards+' yards';document.getElementById('gdDetail').textContent=gdClub+' at '+s+' mph: about '+r.base+' yards at standard conditions, adjusted to '+r.yards+' yards at '+t+'°F and '+a+' ft altitude.';}
+document.getElementById('gdGo').addEventListener('click',renderGolf);
+document.querySelectorAll('.gd-clubs button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.gd-clubs button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');gdFactor=parseFloat(b.dataset.f);gdClub=b.textContent;renderGolf();});});
+renderGolf();
+</script>
+</body>
+</html>
