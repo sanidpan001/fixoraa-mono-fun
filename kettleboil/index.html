@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KettleBoil — Water Boiling Time Calculator (Volume, Power &amp; Altitude)</title>
+<meta name="description" content="How long does water take to boil? Enter volume, kettle power, starting temperature and altitude to get an accurate boiling time, energy use and cost.">
+<link rel="canonical" href="https://fun.fixoraa.tech/kettleboil/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "KettleBoil", "url": "https://fun.fixoraa.tech/kettleboil/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "How long does water take to boil? Enter volume, kettle power, starting temperature and altitude to get an accurate boiling time, energy use and cost.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long does it take to boil 1 litre of water?", "acceptedAnswer": {"@type": "Answer", "text": "In a 1,500-watt kettle at sea level, 1 litre from 20°C takes about 3.7 minutes. A 2,200-watt kettle does it in about 2.5 minutes, and a 1,000-watt travel kettle takes about 5.6 minutes."}}, {"@type": "Question", "name": "Does altitude make water boil faster?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, slightly: water boils at about 95°C at 1,500 metres, so it reaches a boil sooner. But food cooks more slowly in that cooler water, so pasta and rice may need extra time."}}, {"@type": "Question", "name": "Why does my kettle take longer than the calculator says?", "acceptedAnswer": {"@type": "Answer", "text": "The usual causes are limescale on the element, a missing lid, a lower real wattage than the rating plate, or heat losses on a stovetop kettle, which is much less efficient than an electric one."}}, {"@type": "Question", "name": "Does boiling less water save electricity?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, directly. Energy needed is proportional to volume, so boiling half a litre instead of a full 1.7-litre kettle uses less than a third of the energy and finishes much sooner."}}, {"@type": "Question", "name": "What temperature should water be for tea and coffee?", "acceptedAnswer": {"@type": "Answer", "text": "Black tea suits a full rolling boil, green tea about 80°C, and coffee about 93–96°C. Stopping before a full boil for green tea saves roughly a quarter of the time."}}, {"@type": "Question", "name": "Is it cheaper to boil water in a kettle or on the hob?", "acceptedAnswer": {"@type": "Answer", "text": "An electric kettle is usually cheaper and faster because 80–90% of its energy reaches the water, while a hob loses much of its heat around the pan."}}]}</script>
+<style>
+  body{font-family:Georgia, 'Times New Roman', serif;background:#FFFBF2;color:#292524}
+  .accent{background:#0F766E;color:#FFFFFF}
+  .accent-tx{color:#0F766E}
+  .soft{background:#CCFBF1}
+  .card{background:#FFFFFF;border:1px solid #D6D3D1;border-radius:20px}
+  .logo-mark{background:#0F766E;color:#FFFFFF}
+  .faq{border:1px solid #D6D3D1;border-radius:12px;padding:14px 16px;margin:10px 0;background:#FFFFFF}
+  .faq summary{font-weight:700;cursor:pointer}
+  input,select{width:100%;padding:11px 12px;border:1.5px solid #D6D3D1;border-radius:10px;background:#fff;color:#1c1917;font-size:16px}
+  label{font-weight:700;font-size:14px;display:block;margin:12px 0 5px}
+  .btn{background:#0F766E;color:#FFFFFF;font-weight:800;padding:13px 22px;border-radius:999px;font-size:16px}
+  .btn2{border:1.5px solid #0F766E;color:#0F766E;font-weight:700;padding:9px 16px;border-radius:999px;font-size:14px}
+  @media (max-width:640px){ .stack{flex-direction:column !important} .grid2{grid-template-columns:1fr !important} .hero-pad{padding:22px 16px !important} }
+</style>
+</head>
+<body>
+<header class="mx-auto max-w-6xl px-4 sm:px-6 pt-5 pb-1 flex flex-wrap items-center gap-3 justify-between">
+  <div class="flex items-center gap-3">
+    <span class="logo-mark inline-flex items-center justify-center w-12 h-12 rounded-2xl text-2xl font-black" aria-hidden="true">♨</span>
+    <div><div class="text-2xl font-black leading-none">KettleBoil</div><div class="text-sm opacity-80 mt-1">Boiling time, worked out properly</div></div>
+  </div>
+  <nav class="flex items-center gap-2">
+    <a class="btn2" href="https://fixoraa.tech">Home</a>
+    <a class="btn2" href="https://fixoraa.tech">More Tools</a>
+    <span class="soft accent-tx text-xs font-bold px-3 py-2 rounded-full">Unlimited Free Usage</span>
+  </nav>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="mx-auto max-w-6xl px-4 sm:px-6 py-6">
+<section class="rounded-3xl soft">
+  <div class="hero-pad">
+    <h1 class="text-3xl sm:text-4xl font-black leading-tight">Water Boiling Time Calculator</h1>
+    <p class="mt-3 text-lg opacity-90">How long will your kettle actually take? Tell KettleBoil how much water, how powerful the kettle is, and where you are — it works out the boiling time, the energy used, and what it costs.</p>
+    <div class="card p-5 sm:p-6 mt-6">
+      
+<div class="grid2 grid grid-cols-2 gap-4">
+<div><label for="kb-vol">Water volume (litres)</label><input id="kb-vol" type="number" value="1" min="0" step="0.1"></div>
+<div><label for="kb-power">Kettle power (watts)</label><input id="kb-power" type="number" value="1500" min="0" step="50"></div>
+<div><label for="kb-start">Starting temperature (°C)</label><input id="kb-start" type="number" value="20" step="1"></div>
+<div><label for="kb-alt">Altitude (metres)</label><input id="kb-alt" type="number" value="0" step="50"></div>
+<div><label for="kb-eff">Efficiency (%)</label><input id="kb-eff" type="number" value="90" min="1" max="100" step="1"></div>
+<div><label for="kb-price">Electricity price (per kWh)</label><input id="kb-price" type="number" value="0.30" min="0" step="0.01"></div>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<button class="btn2" onclick="kbPreset(0.25,1500)">One mug</button>
+<button class="btn2" onclick="kbPreset(1.7,2200)">Full kettle</button>
+<button class="btn2" onclick="kbPreset(1,1000)">Travel kettle</button>
+</div>
+<button class="btn mt-5" onclick="kbCalc()">Calculate boiling time</button>
+<div id="kb-res" class="soft rounded-2xl p-5 mt-5 text-lg leading-relaxed" aria-live="polite">Enter your values and press Calculate to see the result.</div><div class="flex flex-wrap gap-2 mt-4"><button class="btn2" onclick="copyResult('kb-res')">Copy result</button><button class="btn2" onclick="saveHist('kb-res')">Save to history</button></div><div id="kb-res-hist" class="text-sm mt-3 opacity-80"></div>
+<script>
+function kbPreset(v,p){document.getElementById('kb-vol').value=v;document.getElementById('kb-power').value=p;kbCalc();}
+function kbCalc(){var L=parseFloat(document.getElementById('kb-vol').value)||0;var W=parseFloat(document.getElementById('kb-power').value)||0;var s=parseFloat(document.getElementById('kb-start').value)||0;var a=parseFloat(document.getElementById('kb-alt').value)||0;var e=(parseFloat(document.getElementById('kb-eff').value)||90)/100;var pr=parseFloat(document.getElementById('kb-price').value)||0;var r=boilResult(L,W,s,a,e,pr);document.getElementById('kb-res').innerHTML=r;}
+</script>
+<script>
+function copyResult(id){var el=document.getElementById(id);if(!el)return;navigator.clipboard&&navigator.clipboard.writeText(el.innerText);}
+function saveHist(id){var el=document.getElementById(id);if(!el)return;var h=JSON.parse(localStorage.getItem('fx-hist')||'[]');h.unshift(el.innerText);localStorage.setItem('fx-hist',JSON.stringify(h.slice(0,5)));var box=document.getElementById(id+'-hist');if(box)box.innerText='Saved: '+h.slice(0,3).join('  |  ');}
+</script><script>
+/*PURE-START*/
+
+function boilPoint(altM){return Math.round((100-altM/300)*10)/10;}
+function boilMin(L,W,startC,altM,eff){if(L<=0||W<=0)return 0;var dT=boilPoint(altM)-startC;if(dT<=0)return 0;var e=L*4.186*dT;return Math.round(e/(W/1000*eff)/60*10)/10;}
+function boilResult(L,W,startC,altM,eff,price){var m=boilMin(L,W,startC,altM,eff);var bp=boilPoint(altM);var kwh=(L*4.186*Math.max(bp-startC,0)/3600)/eff;var cost=Math.round(kwh*price*100)/100;if(m===0)return 'No boiling time: check that volume and power are above zero and the start temperature is below boiling point.';return '<strong>Boiling time: '+m+' minutes</strong> &nbsp;·&nbsp; Boiling point at your altitude: '+bp+'°C &nbsp;·&nbsp; Energy used: '+Math.round(kwh*1000)/1000+' kWh &nbsp;·&nbsp; Cost: '+cost+' &nbsp;·&nbsp; Tip: boil only what you need to save time and energy.';}
+/*PURE-END*/
+</script>
+    </div>
+    <p class="text-sm mt-4 opacity-80">Estimates assume a covered kettle and average heat losses. Uncovered kettles and very hard water can add a minute or two.</p>
+  </div>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<section class="mx-auto max-w-6xl px-4 sm:px-6 pb-8">
+  <article class="card hero-pad p-6 sm:p-8 leading-relaxed text-[17px]">
+    <h2 class="text-2xl font-black mb-4">How Long Does Water Take to Boil? The Physics, Simply Explained</h2>
+    <p>Everybody has stood in a kitchen watching a kettle, convinced it is taking far longer than it should. The truth is that boiling time is not a mystery at all: it follows a simple physical rule. Water needs a fixed amount of energy to rise from its starting temperature to boiling point, and your kettle supplies that energy at a fixed rate. Divide the energy needed by the power available and you get the time. Once you know the volume of water, the power of the kettle, the temperature the water starts at, and the altitude you are boiling at, the answer is almost entirely determined, and this calculator works through exactly that arithmetic for you.</p>
+<p>The key number is the specific heat capacity of water, which is 4.186 kilojoules per kilogram per degree Celsius. In plain language, heating one litre of water by one degree takes about 4.186 kilojoules. A litre of cold tap water at 20 degrees needs to rise by 80 degrees to reach 100 degrees at sea level, so it needs roughly 335 kilojoules. A 1,500-watt kettle delivers 1,500 joules per second, which is 1.5 kilojoules per second, so the maths gives about 223 seconds, or just under four minutes. That matches what most people actually observe with a modern electric kettle, and it is why a bigger kettle does not automatically mean a slower kettle: power matters as much as volume.</p>
+<p>Altitude changes the target, not just the journey. Water boils when its vapour pressure matches the surrounding air pressure, and air pressure falls as you climb. At 1,500 metres above sea level, water boils at around 95 degrees instead of 100, so the temperature rise is smaller and the water actually reaches a rolling boil sooner. The catch is that your tea, coffee, pasta and rice are then cooking in cooler water, so food may need longer even though the kettle finished sooner. Mountaineers know this well: at very high camps, water boils so cool that pasta can stay stubbornly firm no matter how long it simmers, which is why pressure cookers become essential at altitude.</p>
+<p>Starting temperature matters more than most people expect. Water straight from a cold tap in winter might be 10 degrees or lower, while water that has been sitting in a warm kitchen could be 25 degrees. That 15-degree difference on a litre of water is about 63 kilojoules, which is roughly 40 seconds on a 1,500-watt kettle. Using water that has already been through a hot tap, or water left standing at room temperature, therefore saves a measurable amount of time and electricity. The biggest saving of all, though, is simply boiling only what you need: heating a full 1.7-litre kettle for a single cup wastes more energy than any other habit in the kitchen.</p>
+<p>Kettle power is the other half of the equation, and it varies more than people realise. Travel kettles may be only 1,000 watts, standard kettles are usually 2,000 to 2,400 watts, and some stovetop kettles on a powerful gas ring can deliver far more heat but lose much of it around the sides of the kettle. Efficiency is the hidden variable here: an electric kettle transfers roughly 80 to 90 percent of its energy into the water, while a stovetop kettle may manage only 50 to 70 percent, with the rest warming the kitchen. That is why an electric kettle usually beats a pan on the hob for speed and cost, even when the hob burner is nominally more powerful on paper.</p>
+<p>Energy cost follows directly from the same numbers. A kilowatt-hour is 3,600 kilojoules, so boiling a litre of water needs roughly a tenth of a kilowatt-hour before losses. At typical household electricity prices, one boil costs only a few cents or pence, but the cost adds up across a household that boils a kettle ten times a day, especially when the kettle is always filled to the brim. KettleBoil shows the energy and cost next to the time, so you can see that boiling half a litre instead of a full kettle saves both minutes and money, every single time, without any change to your routine except filling less.</p>
+<p>There are a few practical tricks that genuinely help. A lid matters: an uncovered kettle loses heat from the surface and can take noticeably longer, as well as steaming up the kitchen. Descaling matters too: a thick layer of limescale insulates the heating element, so the element runs hotter while the water warms more slowly, and the kettle may even switch itself off early. In hard-water areas, a monthly descale with vinegar or citric acid keeps boiling times close to the calculated ideal. Finally, remember that a watched kettle really does seem slower, but the physics does not care: the same volume, power and starting temperature will give the same time whether you watch or not.</p>
+<p>Different drinks and dishes have different ideal water temperatures, which is another reason the starting point matters. Green tea is best around 80 degrees, coffee around 93 to 96 degrees, and black tea with a full rolling boil. If you only need 80-degree water for green tea, you do not need to reach a boil at all, and the calculator's temperature logic shows why stopping early saves a quarter of the time. For cooking, the rolling boil matters more than the exact temperature: pasta needs vigorous, well-salted boiling water, and rice needs a controlled simmer after the initial boil, so knowing when the boil arrives helps you time the rest of the meal.</p>
+<p>Safety deserves a brief note because boiling water causes more kitchen scalds than any other single hazard. Always fill a kettle below its maximum line, never open the lid while it is boiling, and keep the spout pointed away from you and from children when pouring. Kettles with automatic shut-off are worth having, and they also stop the small extra energy cost of a kettle boiling dry. If your kettle takes far longer than this calculator predicts, that is useful diagnostic information: it may be scaled, the element may be failing, or the supply voltage may be low, and each of those is worth checking.</p>
+<p>To get the most from this calculator, measure your kettle's real power from its rating plate rather than guessing, and try the presets for a single mug, a teapot, and a full kettle to see how the numbers move. Compare a cold winter fill with a room-temperature fill, and try your altitude if you live in the hills. The pattern you will see is consistent: volume is king, power is queen, altitude shaves a little off the top, and filling only what you need is the single best habit. Boiling water is one of the few kitchen tasks where the physics is simple, the savings are real, and a thirty-second calculation can change a daily habit for the better.</p>
+<p>KettleBoil is built for cooks, tea and coffee lovers, campers with travel kettles, science students checking their thermodynamics homework, and anyone curious about the energy hidden in everyday tasks. Use it before buying a new kettle to see whether extra watts are worth paying for, use it to settle the great household debate about whether the kettle is slow, and use it to teach children that energy, power and time are linked by one simple relationship. The kettle will still feel slow while you watch it, but at least now you will know exactly how slow, and exactly why.</p>
+  </article>
+  <h2 class="text-2xl font-black mt-10 mb-2">Frequently Asked Questions</h2>
+  <details class="faq"><summary>How long does it take to boil 1 litre of water?</summary><p>In a 1,500-watt kettle at sea level, 1 litre from 20°C takes about 3.7 minutes. A 2,200-watt kettle does it in about 2.5 minutes, and a 1,000-watt travel kettle takes about 5.6 minutes.</p></details>
+<details class="faq"><summary>Does altitude make water boil faster?</summary><p>Yes, slightly: water boils at about 95°C at 1,500 metres, so it reaches a boil sooner. But food cooks more slowly in that cooler water, so pasta and rice may need extra time.</p></details>
+<details class="faq"><summary>Why does my kettle take longer than the calculator says?</summary><p>The usual causes are limescale on the element, a missing lid, a lower real wattage than the rating plate, or heat losses on a stovetop kettle, which is much less efficient than an electric one.</p></details>
+<details class="faq"><summary>Does boiling less water save electricity?</summary><p>Yes, directly. Energy needed is proportional to volume, so boiling half a litre instead of a full 1.7-litre kettle uses less than a third of the energy and finishes much sooner.</p></details>
+<details class="faq"><summary>What temperature should water be for tea and coffee?</summary><p>Black tea suits a full rolling boil, green tea about 80°C, and coffee about 93–96°C. Stopping before a full boil for green tea saves roughly a quarter of the time.</p></details>
+<details class="faq"><summary>Is it cheaper to boil water in a kettle or on the hob?</summary><p>An electric kettle is usually cheaper and faster because 80–90% of its energy reaches the water, while a hob loses much of its heat around the pan.</p></details>
+</section>
+<footer class="mx-auto max-w-6xl px-4 sm:px-6 pb-10 pt-2 text-center text-sm">
+  <p class="font-bold text-base">KettleBoil — Boiling time, worked out properly</p>
+  <p class="opacity-80 mt-1">KettleBoil estimates boiling times from real physics: water volume, heater power, starting temperature and altitude.</p>
+  <p class="mt-3"><a class="accent-tx font-bold" href="https://fixoraa.tech">Home</a> &nbsp;·&nbsp; <a class="accent-tx font-bold" href="https://fixoraa.tech">More Tools</a></p>
+  <p class="mt-3">Made by <a class="accent-tx font-bold underline" href="https://fixoraa.tech">Fixoraa</a></p>
+</footer>
+</body>
+</html>
