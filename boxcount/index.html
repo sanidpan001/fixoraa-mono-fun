@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Many Moving Boxes Do I Need? Room-by-Room Calculator | BoxCount</title>
+<meta name="description" content="Moving box calculator: build your box list room by room, get counts by size plus tape, paper and wrap — with a printable checklist. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/boxcount/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="How Many Moving Boxes Do I Need? Room-by-Room Calculator | BoxCount">
+<meta property="og:description" content="Moving box calculator: build your box list room by room, get counts by size plus tape, paper and wrap — with a printable checklist. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/boxcount/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BoxCount",
+      "url": "https://fun.fixoraa.tech/boxcount/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Moving box calculator: build your box list room by room, get counts by size plus tape, paper and wrap \u2014 with a printable checklist. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many moving boxes do I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the room-by-room method: kitchens need 10\u201315 boxes, bedrooms 5\u201310 each, living rooms 5\u201310, bathrooms 2\u20134, offices 5\u201310, and garages/attics 5\u201325. As a rough check, plan 10\u201312 boxes per room. Add your rooms to the tool above and it totals everything by box size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the different moving box sizes for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Small boxes (books, dishes, tools), medium boxes (kitchenware, toys, clothes), large boxes (bedding, pillows, lampshades), wardrobe boxes (clothes on hangers) and dish packs (glassware/china with dividers). Match the box to the weight: heavy things in small boxes, bulky light things in large ones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much tape and packing paper do I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About one roll of tape per 12 boxes, half a pound of packing paper per box, and bubble wrap concentrated on kitchen and dining fragiles. Don't forget mattress bags, stretch wrap for drawers, and thick markers for labeling. The tool computes all of this from your box total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I declutter before counting boxes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 if it's priced by weight or truck space, every item you donate or discard saves twice: on supplies and on the move itself. Declutter first, then run the box estimate, because the count drops meaningfully once the dead weight is gone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I buy new boxes or get free ones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "New boxes are uniform and stackable and most suppliers buy back unused ones. Rentable plastic crates are excellent for local moves (no tape, no breakdown). Free scavenged boxes work for small moves but vary in size and strength. Whatever you choose, buy about 10% more than the estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far in advance should I start packing for a move?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start 4\u20136 weeks out with storage areas and decor, pack a little daily, and save the kitchen and daily essentials for the final week. Packing one room fully before starting the next keeps boxes organized by destination, which makes unloading dramatically faster."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FAF5EC; --surface:#FFFDF8; --accent:#9A4E00; --accent-ink:#FFFFFF;
+  --ink:#3A2E1E; --muted:#6F6250; --line:#E8DCC3;
+  --display:'Patrick Hand',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.bc-page{font-family:'Inter',system-ui,sans-serif;background:#FAF5EC;color:#3A2E1E;padding:56px 16px 72px;}.bc-wrap{max-width:980px;margin:0 auto;}.bc-kicker{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;}.bc-kicker .sk{font-family:'Patrick Hand',cursive;font-size:21px;color:#9A4E00;}.bc-kicker .pg{font-size:12.5px;color:#6F6250;font-style:italic;align-self:center;}.bc-wrap h1{font-size:clamp(32px,4.4vw,48px);margin:0 0 6px;letter-spacing:-.01em;}.bc-wrap h1 .hand{font-family:'Patrick Hand',cursive;font-weight:400;color:#9A4E00;}.bc-tag{color:#6F6250;font-size:17px;margin:0 0 28px;}.bc-board{background:#FFFDF8;border:1px solid #E8DCC3;border-radius:18px;box-shadow:0 18px 40px rgba(58,46,30,.10);padding:30px;position:relative;}.bc-board:before{content:'';position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:120px;height:34px;background:linear-gradient(180deg,#C9BFAE,#A89B83);border-radius:8px;box-shadow:0 4px 8px rgba(58,46,30,.25);}.bc-board h2{font-family:'Patrick Hand',cursive;font-size:29px;margin:6px 0 4px;color:#3A2E1E;font-weight:400;}.bc-board .sub{color:#6F6250;font-size:13.5px;margin:0 0 18px;}.bc-presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}.bc-presets button{border:2px solid #E8DCC3;background:#fff;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:600;cursor:pointer;color:#6F6250;font-family:inherit;}.bc-presets button:hover{border-color:#9A4E00;color:#9A4E00;}.bc-notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:18px;}.bc-note{background:#FFF9E8;border:1px solid #E8DCC3;border-top:6px solid #9A4E00;border-radius:4px 4px 10px 10px;padding:14px;box-shadow:0 6px 14px rgba(58,46,30,.10);transform:rotate(-.6deg);position:relative;}.bc-note:nth-child(even){transform:rotate(.7deg);background:#FFF4DE;}.bc-note .rn{font-family:'Patrick Hand',cursive;font-size:22px;line-height:1.2;}.bc-note .rc{font-size:12.5px;color:#6F6250;margin:4px 0 10px;line-height:1.5;}.bc-stepper{display:flex;align-items:center;gap:10px;}.bc-stepper button{width:32px;height:32px;border-radius:50%;border:2px solid #9A4E00;background:#fff;color:#9A4E00;font-size:18px;font-weight:700;cursor:pointer;line-height:1;}.bc-stepper .n{font-size:20px;font-weight:700;min-width:24px;text-align:center;}.bc-note .rm{position:absolute;top:8px;right:10px;border:none;background:none;color:#B0A48C;font-size:18px;cursor:pointer;font-family:inherit;}.bc-note .rm:hover{color:#9A4E00;}.bc-addrow{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-bottom:20px;background:#FAF5EC;border:1px dashed #9A4E00;border-radius:12px;padding:16px;}.bc-field{display:flex;flex-direction:column;gap:6px;}.bc-field label{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#6F6250;}.bc-field select{font-family:inherit;font-size:16px;padding:10px 14px;border:2px solid #E8DCC3;border-radius:10px;background:#fff;color:#3A2E1E;}.bc-btn{background:#9A4E00;color:#fff;border:none;border-radius:12px;padding:12px 26px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;}.bc-btn:hover{filter:brightness(1.08);}.bc-stuff{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;}.bc-stuff label{border:2px solid #E8DCC3;background:#fff;border-radius:12px;padding:10px 18px;cursor:pointer;font-size:14.5px;font-weight:600;color:#6F6250;}.bc-stuff label:has(input:checked){border-color:#9A4E00;background:#9A4E00;color:#fff;}.bc-stuff input{display:none;}.bc-manifest{margin-top:22px;background:#3A2E1E;color:#FAF5EC;border-radius:16px;padding:26px;}.bc-manifest h3{font-family:'Patrick Hand',cursive;font-size:27px;margin:0 0 4px;font-weight:400;color:#FFD9A0;}.bc-manifest .msub{font-size:13px;color:#C9BFAE;margin:0 0 16px;}.bc-sizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:18px;}.bc-size{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:14px;text-align:center;}.bc-size .n{font-size:34px;font-weight:800;color:#fff;}.bc-size .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#FFD9A0;font-weight:700;}.bc-size .d{font-size:11.5px;color:#C9BFAE;margin-top:4px;line-height:1.45;}.bc-total{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-top:1px dashed rgba(255,255,255,.25);padding-top:16px;margin-top:4px;}.bc-total .t{font-size:19px;font-weight:700;}.bc-total .t b{font-size:34px;color:#FFD9A0;}.bc-sup{margin-top:16px;font-size:14.5px;color:#EDE4D2;line-height:1.9;}.bc-sup b{color:#fff;}.bc-print{margin-top:18px;background:transparent;border:2px solid #FFD9A0;color:#FFD9A0;border-radius:12px;padding:11px 24px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}.bc-print:hover{background:#FFD9A0;color:#3A2E1E;}.bc-guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:22px;}.bc-g{border:1px solid #E8DCC3;border-radius:10px;padding:12px 14px;font-size:13px;background:#fff;}.bc-g b{display:block;font-size:14px;margin-bottom:2px;}.bc-g span{color:#6F6250;line-height:1.5;}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="BoxCount home">
+      <span class="fx-logo-tile" aria-hidden="true">📦</span>
+      <span class="fx-brand">BoxCount</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-field-notes" aria-label="BoxCount tool">
+<section class='bc-page'><div class='bc-wrap'><div class='bc-kicker'><span class='sk'>Packing manifest nº 04 — count every box</span><span class='pg'>mover's clipboard · please print me</span></div><h1>How Many <span class='hand'>Moving Boxes</span> Do I Need?</h1><p class='bc-tag'>Every room counted, every box sized — pack once, pack right.</p><div class='bc-board'><h2>The clipboard</h2><p class='sub'>Load a preset, then add or remove rooms until it matches your home.</p><div class='bc-presets' id='bc-presets'><button type='button' data-p='studio'>Studio</button><button type='button' data-p='one'>1-bedroom</button><button type='button' data-p='two'>2-bedroom</button><button type='button' data-p='three'>3-bedroom</button><button type='button' data-p='four'>4-bedroom</button></div><div class='bc-notes' id='bc-notes'></div><div class='bc-addrow'><div class='bc-field'><label for='bc-roomtype'>Room type</label><select id='bc-roomtype'><option value='kitchen'>Kitchen</option><option value='bedroom'>Bedroom</option><option value='living'>Living room</option><option value='bathroom'>Bathroom</option><option value='office'>Home office</option><option value='dining'>Dining room</option><option value='garage'>Garage / basement / attic</option></select></div><button class='bc-btn' id='bc-add' type='button'>+ Pin room note</button></div><div class='bc-field'><label>How much stuff do you have?</label><div class='bc-stuff' id='bc-stuff'><label><input type='radio' name='bc-s' value='0.8'>Light packer ×0.8</label><label><input type='radio' name='bc-s' value='1' checked>Average ×1</label><label><input type='radio' name='bc-s' value='1.25'>Heavy packer ×1.25</label></div></div><div class='bc-manifest'><h3>Shopping manifest</h3><p class='msub'>Box counts by size, plus the supplies everyone forgets.</p><div class='bc-sizes' id='bc-sizes'></div><div class='bc-total'><div class='t'><b id='bc-total'>0</b> boxes total</div><div class='t' style='font-size:15px;color:#C9BFAE' id='bc-perroom'></div></div><div class='bc-sup' id='bc-sup'></div><button class='bc-print' id='bc-print' type='button'>Print this manifest</button></div></div><div class='bc-guide'><div class='bc-g'><b>📕 Small</b><span>Books, dishes, tools, canned goods. Heavy things live here.</span></div><div class='bc-g'><b>📗 Medium</b><span>Kitchenware, toys, shoes, folded clothes. The workhorse.</span></div><div class='bc-g'><b>📦 Large</b><span>Bedding, pillows, lampshades. Bulky but light only.</span></div><div class='bc-g'><b>👔 Wardrobe</b><span>Clothes stay on hangers. Worth it for every closet.</span></div><div class='bc-g'><b>🍷 Dish pack</b><span>Double-walled with dividers. Glassware and china.</span></div></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How Many Moving Boxes You Actually Need</h2><p>Running out of boxes mid-pack is one of the most avoidable miseries of moving day. The industry rule of thumb — <strong>10 to 12 boxes per room</strong> — gets you in the right county: a studio needs 10 to 20 boxes, a one-bedroom 20 to 30, a two-bedroom 30 to 45, a three-bedroom 50 to 70, and a four-bedroom 70 to 100 or more. But home-size averages hide the real shape of the problem, because rooms are not created equal. A kitchen packs 10 to 15 boxes of dense, fragile chaos; a bathroom packs 2 to 4. The room-by-room method in this tool beats the flat average every time, because it counts what you actually own instead of what an average household owns.</p><p>The second variable is how much stuff you have relative to the average. Someone who has lived in the same two-bedroom for a decade with a full garage owns a fundamentally different move than a minimalist who arrived eighteen months ago. This tool's stuff-level dial — light, average, or heavy packer — scales the room counts by 0.8×, 1×, or 1.25× so the estimate matches your life, not a stranger's.</p><h2>Box Sizes and What Goes in Each</h2><p>Boxes are not interchangeable, and using the wrong size is how backs get injured and dishes get broken. <strong>Small boxes</strong> (about 16×12×12 in) are for heavy, dense things: books, canned goods, tools, framed photos. Never pack books in a large box — a large box of books weighs more than any human should lift. <strong>Medium boxes</strong> (about 18×18×16 in) are the workhorses: kitchenware, toys, shoes, folded clothes, pantry goods. <strong>Large boxes</strong> (about 24×18×18 in) are for bulky but light items: bedding, pillows, lampshades, towels. <strong>Extra-large</strong> handles comforters and stuffed animals. Then the specialists: <strong>wardrobe boxes</strong> with a hanging bar let clothes move on their hangers — worth every penny for closets — and <strong>dish packs</strong> (double-walled, with cell dividers) are the only sane way to move glassware and china.</p><p>Weight discipline matters more than box count: keep small boxes under 30–40 lbs, mediums under 40–50, and never fill a box past about 75 percent with heavy items. Fill remaining space with light soft goods — a half-empty box crushes in the stack, and a crushed box is how the box below it breaks.</p><h2>Room-by-Room Breakdown</h2><p>These are the per-room counts the tool's manifest is built from, drawn from mover surveys and box-retailer data:</p><ul><li><strong>Kitchen (10–15 boxes):</strong> the box-heaviest room in the house. Small boxes for dishes and pantry, mediums for pots and small appliances, 1–2 dish packs for glassware. Wrap every plate individually — paper is cheaper than replacements.</li><li><strong>Bedroom (5–10 per room):</strong> smalls for books and personal items, mediums for folded clothes, larges for bedding, plus 1–2 wardrobe boxes per closet.</li><li><strong>Living room (5–10):</strong> mediums for books, decor and electronics; larges for pillows and throws; specialty boxes for lamps and framed art.</li><li><strong>Bathroom (2–4):</strong> smalls only — toiletries, towels, cleaning supplies. Tape liquid bottles shut and bag them.</li><li><strong>Home office (5–10):</strong> smalls for books and files (paper is brutally heavy), mediums for equipment.</li><li><strong>Dining room (5–10):</strong> mediums for tableware, a dish pack for anything fragile, larges for linens.</li><li><strong>Garage / basement / attic (5–25):</strong> the great unknown — tools, seasonal gear, long-term storage. Larges and bins dominate here.</li></ul><h2>The Supplies Nobody Remembers</h2><p>Boxes are only two-thirds of the purchase. The tool computes the rest from your box total: <strong>packing tape</strong> at roughly one roll per 12 boxes (buy the dispenser gun — your wrists will thank you), <strong>packing paper</strong> at about half a pound per box (newspaper works but the ink transfers; unprinted newsprint is worth it for anything light-colored), and <strong>bubble wrap</strong> concentrated on kitchen and dining fragiles. Add mattress bags for every mattress, stretch wrap for dresser drawers (leave clothes in them — wrap the whole drawer), and a marker thick enough to read from across the room. Label every box on two sides plus the top with room and a one-line contents note; color-coded tape per room makes unloading dramatically faster.</p><h2>Packing Strategy That Saves Hours</h2><p>Pack in this order: storage areas first (garage, attic — you will not miss them), then decor and books, then off-season clothes, then kitchen non-essentials, saving daily essentials for the final box. That final <strong>essentials box</strong> — bedding, toiletries, phone chargers, basic tools, toilet paper, a change of clothes — rides with you, not in the truck, because the first night in a new place with no essentials box is a special kind of regret. Disassemble furniture the day before, bag the hardware and tape it to the piece it belongs to. Photograph cable setups before unplugging anything. And weigh as you go: if you cannot lift it comfortably, neither can the person helping you.</p><h2>Declutter Before You Count</h2><p>The cheapest box is the one you never pack. Moving priced by weight or by truck space means every item you donate, sell or discard before packing day is money saved twice — once on supplies, once on the move itself. The classic filter: if you have not used it in a year, if it is broken, or if replacing it costs less than moving it, let it go. Books you will never reread, expired pantry goods, the cable drawer of mystery — all of it has been waiting for permission to leave. Declutter first, <em>then</em> run the box estimate, because the count drops meaningfully.</p><h2>Buy, Rent or Scavenge?</h2><p>New boxes from a moving supplier are uniform, strong and stackable — worth it for a whole-house move, and most retailers buy back unused ones. <strong>Rentable plastic crates</strong> are the premium option: delivered, sturdy, no tape, no breakdown, picked up after — excellent for local moves. <strong>Scavenged boxes</strong> from grocery and liquor stores are free but inconsistent in size, sometimes damp, and occasionally buggy; fine for a studio move, risky for a house. Whatever the source, uniformity matters: same-size boxes stack safely in the truck, and a stable stack is a fast unload. Buy 10 percent more than the estimate — running out mid-pack costs more in emergency runs than the spare boxes ever will.</p><h2>Matching the Truck to the Box Count</h2><p>Your box total also predicts the truck you need, and getting this right saves either a second trip or money spent on empty air. As a rough guide: a studio or one-bedroom fits a 10 to 12 foot truck, a two-bedroom wants 16 feet, a three-bedroom needs 20 to 22 feet, and a four-bedroom or full house needs a 26 footer. When you are between sizes, rent up rather than down — a slightly larger truck rented once is almost always cheaper than two trips in a smaller one, and boxes stack tighter when you are not playing Tetris with the door half closed. Load heaviest items first against the cab wall, fill gaps with soft goods like bedding and pillows, and strap each tier before building the next. The manifest above gives you the box count; divide it by the truck's rough box capacity (a 16-foot truck swallows about 250 medium boxes) to sanity-check your choice before you reserve.</p><h2>Using Your Manifest</h2><p>Add every room in your home to the clipboard above — including the garage, the attic and the hall closet everyone forgets — set your stuff level honestly, and the tool produces a shopping list: exact counts of each box size plus tape, paper and wrap. Print it, take it to the supplier once, and pack with the confidence that box number 47 is the last one, not the one you ran out of.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many moving boxes do I need?</summary><p>Use the room-by-room method: kitchens need 10–15 boxes, bedrooms 5–10 each, living rooms 5–10, bathrooms 2–4, offices 5–10, and garages/attics 5–25. As a rough check, plan 10–12 boxes per room. Add your rooms to the tool above and it totals everything by box size.</p></details>
+<details><summary>What are the different moving box sizes for?</summary><p>Small boxes (books, dishes, tools), medium boxes (kitchenware, toys, clothes), large boxes (bedding, pillows, lampshades), wardrobe boxes (clothes on hangers) and dish packs (glassware/china with dividers). Match the box to the weight: heavy things in small boxes, bulky light things in large ones.</p></details>
+<details><summary>How much tape and packing paper do I need?</summary><p>About one roll of tape per 12 boxes, half a pound of packing paper per box, and bubble wrap concentrated on kitchen and dining fragiles. Don't forget mattress bags, stretch wrap for drawers, and thick markers for labeling. The tool computes all of this from your box total.</p></details>
+<details><summary>Should I declutter before counting boxes?</summary><p>Yes — if it's priced by weight or truck space, every item you donate or discard saves twice: on supplies and on the move itself. Declutter first, then run the box estimate, because the count drops meaningfully once the dead weight is gone.</p></details>
+<details><summary>Should I buy new boxes or get free ones?</summary><p>New boxes are uniform and stackable and most suppliers buy back unused ones. Rentable plastic crates are excellent for local moves (no tape, no breakdown). Free scavenged boxes work for small moves but vary in size and strength. Whatever you choose, buy about 10% more than the estimate.</p></details>
+<details><summary>How far in advance should I start packing for a move?</summary><p>Start 4–6 weeks out with storage areas and decor, pack a little daily, and save the kitchen and daily essentials for the final week. Packing one room fully before starting the next keeps boxes organized by destination, which makes unloading dramatically faster.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">BoxCount</div>
+    <p>BoxCount builds your moving-box shopping list room by room — box counts by size, a stuff-level adjustment, packing supplies math and a printable checklist.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function boxEstimate(roomKey){var T={kitchen:{small:6,medium:5,large:2,wardrobe:0,dish:2},bedroom:{small:4,medium:4,large:2,wardrobe:1,dish:0},living:{small:2,medium:5,large:3,wardrobe:0,dish:0},bathroom:{small:3,medium:0,large:0,wardrobe:0,dish:0},office:{small:4,medium:3,large:1,wardrobe:0,dish:0},dining:{small:2,medium:4,large:1,wardrobe:0,dish:1},garage:{small:2,medium:4,large:6,wardrobe:0,dish:0}};return T[roomKey]||{small:0,medium:0,large:0,wardrobe:0,dish:0};}
+var BC_NAMES={kitchen:'Kitchen',bedroom:'Bedroom',living:'Living room',bathroom:'Bathroom',office:'Home office',dining:'Dining room',garage:'Garage / basement / attic'};
+var BC_PRESETS={studio:['kitchen','bedroom','living','bathroom'],one:['kitchen','bedroom','living','bathroom','office'],two:['kitchen','bedroom','bedroom','living','bathroom','bathroom'],three:['kitchen','bedroom','bedroom','bedroom','living','dining','bathroom','bathroom','office','garage'],four:['kitchen','bedroom','bedroom','bedroom','bedroom','living','dining','bathroom','bathroom','bathroom','office','garage','garage']};
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var notes=document.getElementById('bc-notes'),sizesEl=document.getElementById('bc-sizes'),totalEl=document.getElementById('bc-total'),perEl=document.getElementById('bc-perroom'),supEl=document.getElementById('bc-sup');if(!notes)return;var ORDER=['kitchen','bedroom','living','bathroom','office','dining','garage'];var counts={kitchen:1,bedroom:2,living:1,bathroom:2,office:0,dining:0,garage:0};var SIZE_META=[['small','Small','books \u00b7 dishes \u00b7 tools'],['medium','Medium','kitchenware \u00b7 clothes'],['large','Large','bedding \u00b7 pillows'],['wardrobe','Wardrobe','clothes on hangers'],['dish','Dish pack','glassware \u00b7 china']];function stuffMult(){var r=document.querySelector('input[name="bc-s"]:checked');return r?parseFloat(r.value):1;}function roomList(){var l=[];ORDER.forEach(function(k){for(var i=0;i<counts[k];i++)l.push(k);});return l;}function render(){notes.innerHTML='';ORDER.forEach(function(rk){if(counts[rk]<=0)return;var est=boxEstimate(rk);var sum=est.small+est.medium+est.large+est.wardrobe+est.dish;var d=document.createElement('div');d.className='bc-note';var parts=[];if(est.small)parts.push('small '+est.small);if(est.medium)parts.push('med '+est.medium);if(est.large)parts.push('lg '+est.large);if(est.wardrobe)parts.push('ward '+est.wardrobe);if(est.dish)parts.push('dish '+est.dish);var extraStr=parts.join(' \u00b7 ');d.innerHTML='<button class="rm" type="button" aria-label="Remove room">\u00d7</button><div class="rn">'+BC_NAMES[rk]+'</div><div class="rc">\u2248 '+sum+' boxes each<br>'+extraStr+'</div><div class="bc-stepper"><button type="button" aria-label="Fewer">\u2212</button><span class="n">'+counts[rk]+'</span><button type="button" aria-label="More">+</button></div>';var btns=d.querySelectorAll('.bc-stepper button');btns[0].addEventListener('click',function(){counts[rk]=Math.max(0,counts[rk]-1);render();});btns[1].addEventListener('click',function(){counts[rk]=Math.min(9,counts[rk]+1);render();});d.querySelector('.rm').addEventListener('click',function(){counts[rk]=0;render();});notes.appendChild(d);});calc();}function calc(){var m=stuffMult();var tot={small:0,medium:0,large:0,wardrobe:0,dish:0};var list=roomList();list.forEach(function(rk){var e=boxEstimate(rk);Object.keys(tot).forEach(function(k){tot[k]+=Math.round(e[k]*m);});});var grand=0;var h='';SIZE_META.forEach(function(sm){grand+=tot[sm[0]];h+='<div class="bc-size"><div class="n">'+tot[sm[0]]+'</div><div class="k">'+sm[1]+'</div><div class="d">'+sm[2]+'</div></div>';});sizesEl.innerHTML=h;totalEl.textContent=grand;perEl.textContent=list.length+' rooms \u00b7 \u00d7'+m+' stuff level';var tape=Math.max(1,Math.ceil(grand/12)),paper=Math.round(grand*0.5),wrap=tot.dish*8+tot.small*2;supEl.innerHTML='Also buy: <b>'+tape+' rolls</b> packing tape \u00b7 <b>'+paper+' lbs</b> packing paper \u00b7 <b>'+wrap+' ft</b> bubble wrap \u00b7 <b>'+counts.bedroom+'</b> mattress bags \u00b7 1 tape gun \u00b7 thick markers.';}var presets=document.querySelectorAll('#bc-presets button');presets.forEach(function(b){b.addEventListener('click',function(){var p=BC_PRESETS[b.getAttribute('data-p')];ORDER.forEach(function(k){counts[k]=0;});p.forEach(function(k){counts[k]++;});render();});});document.getElementById('bc-add').addEventListener('click',function(){var k=document.getElementById('bc-roomtype').value;counts[k]=Math.min(9,counts[k]+1);render();});var sr=document.querySelectorAll('#bc-stuff input');sr.forEach(function(r){r.addEventListener('change',calc);});document.getElementById('bc-print').addEventListener('click',function(){window.print();});render();});}
+</script>
+</body>
+</html>
