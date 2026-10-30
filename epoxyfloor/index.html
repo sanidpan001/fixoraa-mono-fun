@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epoxy Floor Calculator — Kits for Your Garage | EpoxyFloor</title>
+<meta name="description" content="Epoxy kits for your garage floor: primer, coats, flakes and cost.">
+<link rel="canonical" href="https://fun.fixoraa.tech/epoxyfloor/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Epoxy Floor Calculator — Kits for Your Garage | EpoxyFloor">
+<meta property="og:description" content="Epoxy kits for your garage floor: primer, coats, flakes and cost.">
+<meta property="og:url" content="https://fun.fixoraa.tech/epoxyfloor/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "EpoxyFloor",
+      "url": "https://fun.fixoraa.tech/epoxyfloor/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Epoxy kits for your garage floor: primer, coats, flakes and cost.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much epoxy do I need for a 2-car garage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 400 sq ft garage needs about 2 gallons of primer, 4 gallons of base coat, 2 flake boxes and 2 gallons of topcoat — roughly $440 in a pro-tier kit. The calculator sizes all four layers from your exact square footage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I really need primer before epoxy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Primer penetrates the concrete and creates the bond the whole system hangs onto, especially on smooth power-troweled slabs. Skipping primer is the most common cause of epoxy peeling up in sheets — and it's the cheapest layer per square foot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I etch or grind concrete before epoxy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Grinding (diamond grinder) is the pro standard — it profiles the surface uniformly and removes weak laitance. Acid etching works on unsealed, porous concrete but fails over previous sealers. Test with water first: if it beads, you must grind."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long before I can drive on a new epoxy floor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically 24 hours before foot traffic and 72 hours before vehicles, at 70°F — longer when cold. Hot tires on green epoxy cause the classic hot-tire pickup failure, so keep the garage empty for the full cure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the flakes in epoxy floors for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Decorative vinyl flakes add texture and slip resistance, hide concrete imperfections and slab variations, and let you tune the look. Broadcast them into the wet base coat — one 25-lb box covers ~250 sq ft at full broadcast."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my epoxy floor peeling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Almost always prep: oil or sealer left on the concrete, moisture vapor drive, or skipped primer. Epoxy bonds mechanically to clean, profiled concrete — contamination or a shiny sealed surface means the bond was never there. Fix the cause before recoating, or it peels again."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F9F5E1; --tint:#F4EED2; --accent:#7B6A14; --accent-deep:#5E173B;
+  --ink:#3A2130; --muted:#755A6B; --line:#DAB5C9;
+  --display:'Mulish',system-ui,sans-serif; --body:'Mulish',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:#fff;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:#fff}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:#fff}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:#fff;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:#1d1d1d;color:#e8e8e8;margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bdbdbd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--tint);font-weight:700}
+input,select,button{font:inherit}
+
+
+.ef-hero{text-align:center;padding:52px 0 4px}
+.ef-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:2px solid var(--line);padding:7px 16px;border-radius:999px;margin-bottom:16px}
+.ef-hero h1{font-size:clamp(34px,5vw,52px);letter-spacing:-.03em;font-weight:800;margin-bottom:12px}
+.ef-hero p{font-size:18px;color:var(--muted);max-width:620px;margin:0 auto}
+.ef-tool{background:#fff;border:2px solid var(--line);border-radius:24px;margin:26px 0 8px;overflow:hidden;box-shadow:0 14px 34px rgba(139,35,88,.10)}
+.ef-cols{display:grid;grid-template-columns:.9fr 1fr 1fr}
+.ef-layers{padding:30px 26px;background:var(--tint);border-right:2px dashed var(--line);display:flex;flex-direction:column;justify-content:center;gap:0}
+.ef-layer{background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;border-radius:12px;padding:13px 16px;font-weight:800;font-size:14px;margin-bottom:8px;box-shadow:4px 4px 0 rgba(139,35,88,.18);transform:translateX(calc(var(--d)*10px))}
+.ef-layer em{display:block;font-style:normal;font-weight:600;font-size:12px;opacity:.85}
+.ef-layer:nth-child(2){background:linear-gradient(135deg,#B44A7E,var(--accent))}
+.ef-layer:nth-child(3){background:linear-gradient(135deg,#C97B9C,#A04A72)}
+.ef-layer:nth-child(4){background:linear-gradient(135deg,#D8A4BC,#B96E93)}
+.ef-slab{background:#fff;border:2px solid var(--line);border-radius:12px;padding:12px 16px;font-weight:800;font-size:13px;color:var(--muted);transform:translateX(40px)}
+.ef-mid{padding:28px;border-right:2px dashed var(--line)}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.field input{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);margin-bottom:18px}
+.field input:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.ef-tiers{display:grid;gap:8px}
+.ef-tiers button{border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px;font-weight:800;font-size:15px;cursor:pointer;color:var(--ink);text-align:left;display:flex;justify-content:space-between;align-items:center}
+.ef-tiers button span{font-size:13px;color:var(--muted);font-weight:700}
+.ef-tiers button.on{border-color:var(--accent);background:var(--tint);box-shadow:0 3px 0 var(--accent)}
+.ef-fine{font-size:13px;color:var(--muted);margin-top:14px}
+.ef-out{padding:28px;background:linear-gradient(180deg,#fff,var(--bg))}
+.ef-big{background:var(--accent);color:#fff;border-radius:18px;text-align:center;padding:24px;margin-bottom:18px;box-shadow:0 6px 0 var(--accent-deep)}
+.ef-big .n{font-size:52px;font-weight:800;line-height:1}
+.ef-big .l{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.92;margin-top:8px}
+.ef-lines{list-style:none;font-size:15px}
+.ef-lines li{display:flex;justify-content:space-between;padding:9px 2px;border-bottom:1px dashed var(--line)}
+.ef-lines li:last-child{border:0}
+.ef-lines .k{color:var(--muted)}
+.ef-lines .v{font-weight:800}
+.ef-note{margin-top:14px;font-size:13px;color:var(--muted);background:var(--tint);border-radius:12px;padding:12px 14px}
+@media(max-width:860px){.ef-cols{grid-template-columns:1fr}.ef-layers{border-right:0;border-bottom:2px dashed var(--line)}.ef-mid{border-right:0;border-bottom:2px dashed var(--line)}}
+
+</style>
+</head>
+<body>
+<header class="fx-header epoxyfloor-hdr">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/epoxyfloor/" aria-label="EpoxyFloor home">
+      <span class="fx-tile" aria-hidden="true">E</span>
+      <span class="fx-name">EpoxyFloor</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="ef-hero">
+    <span class="ef-eyebrow">Garage math</span>
+    <h1>Epoxy Floor Calculator</h1>
+    <p>Primer, base, flakes, topcoat — the full kit list for a garage floor that actually lasts.</p>
+  </section>
+  <section class="ef-tool" aria-label="EpoxyFloor tool">
+    <div class="ef-cols">
+      <div class="ef-layers" aria-hidden="true">
+        <div class="ef-layer" style="--d:0"><span>Topcoat <em>200 sq ft/gal</em></span></div>
+        <div class="ef-layer" style="--d:1"><span>Flakes <em>1 box / 250 sq ft</em></span></div>
+        <div class="ef-layer" style="--d:2"><span>Base coat <em>125 sq ft/gal</em></span></div>
+        <div class="ef-layer" style="--d:3"><span>Primer <em>250 sq ft/gal</em></span></div>
+        <div class="ef-slab"><span>concrete</span></div>
+      </div>
+      <div class="ef-mid">
+        <div class="field"><label for="ef-area">Garage area (sq ft)</label>
+          <input type="number" id="ef-area" value="400" min="50" max="5000" step="10"></div>
+        <div class="field"><label>Kit tier</label>
+          <div class="ef-tiers" id="ef-tiers" role="group" aria-label="Kit tier">
+            <button type="button" data-r="0.65">Economy<span>$0.65/sq ft</span></button>
+            <button type="button" data-r="1.10" class="on">Pro<span>$1.10/sq ft</span></button>
+            <button type="button" data-r="1.65">Premium<span>$1.65/sq ft</span></button>
+          </div>
+        </div>
+        <p class="ef-fine">Two-car garage ≈ 400–450 sq ft. Measure wall to wall, then subtract nothing — epoxy the whole slab.</p>
+      </div>
+      <div class="ef-out" aria-live="polite">
+        <div class="ef-big"><div class="n" id="ef-cost">$440</div><div class="l">estimated kit cost</div></div>
+        <ul class="ef-lines">
+          <li><span class="k">Primer</span><span class="v" id="ef-p">2 gal</span></li>
+          <li><span class="k">Base coat</span><span class="v" id="ef-b">4 gal</span></li>
+          <li><span class="k">Flake boxes</span><span class="v" id="ef-f">2</span></li>
+          <li><span class="k">Topcoat</span><span class="v" id="ef-t">2 gal</span></li>
+        </ul>
+        <p class="ef-note">Recoat windows matter more than brands: apply the next coat inside the previous coat's window or you'll be sanding between coats.</p>
+      </div>
+    </div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+    <h2>Epoxy Is a System, Not a Paint</h2>
+    <p>The kits that fail are the ones treated like paint: one product, rolled on, hoped for the best. A real epoxy floor is a <strong>system of layers</strong> that each do one job. Primer penetrates and bonds to the concrete. The base coat builds thickness and color. Decorative flakes add texture, hide imperfections and stretch the coating. The topcoat seals everything against hot tires, chemicals and UV.</p>
+    <p>Skip a layer and you inherit its job as a failure mode. No primer on smooth concrete: delamination in sheets. No topcoat: the base chalks under UV and hot tires pull it up in summer. Thin single coats: every concrete pore telegraphs through and the floor looks tired within two years.</p>
+    <p>The calculator sizes all four layers from your square footage using realistic coverage rates — primer at 250 sq ft per gallon, base at 125, topcoat at 200 — and prices the job by kit tier. Buy the system, apply the system, and the floor outlasts the cars parked on it.</p>
+    <h2>Prep Is 80 Percent of the Job</h2>
+    <p>Every epoxy failure story starts with prep. Concrete must be <strong>clean, dry and profiled</strong> — epoxy bonds mechanically to a roughened surface, not chemically to a shiny one. Degrease with a concrete degreaser (garages accumulate years of oil), then etch with citric or muriatic acid or, better, <strong>diamond-grind</strong>. Grinding is the pro standard: it opens the concrete uniformly and removes the weak surface laitance that acid sometimes leaves behind.</p>
+    <p>Test for sealers first: sprinkle water on the slab. If it beads, a previous sealer or cure-and-seal is present and must be ground off — epoxy over sealer peels like sunburn. Test for moisture with a taped-down plastic square for 24 hours; condensation underneath means vapor drive that needs a moisture-mitigating primer, not a standard one.</p>
+    <p>Crack repair comes before primer: V-groove cracks, fill with epoxy crack filler, and let it cure. Moving cracks (ones that change with seasons) need a flexible polyurea filler or they will mirror straight through your beautiful new floor within a year.</p>
+    <h2>Primer: The Layer Nobody Sees</h2>
+    <p>Primer's job is penetration. Thin, low-viscosity epoxy primer soaks into the concrete's pores and creates the bond everything else hangs onto — especially important on smooth, power-troweled slabs that base coats struggle to grip. At 250 sq ft per gallon it is also the cheapest layer per square foot, which makes skipping it the worst economy on the project.</p>
+    <p>Apply primer with a squeegee and back-roll, working in the cool of the morning. Hot concrete — afternoon sun on a slab — shortens working time dramatically and can cause outgassing bubbles as air expands out of the concrete into your wet film. If the slab is warm, prime in the evening as it cools.</p>
+    <p>Respect the <strong>recoat window</strong>: the next coat must go on after the primer is tack-free but before it fully cures (typically 8–24 hours depending on product and temperature). Miss the window and you are sanding the whole floor to create a mechanical bond — a day of labor that a glance at the data sheet prevents.</p>
+    <h2>Base Coat and Flakes: Color, Thickness, Forgiveness</h2>
+    <p>The base coat is the color and the build — one solid coat at about 125 sq ft per gallon gives roughly 10 mils of film, the thickness that resists hot-tire pickup and impact. Two thin coats beat one thick coat: thick epoxy can trap solvent and cure soft underneath. If your kit allows, split the base into two passes.</p>
+    <p>Decorative flakes go into the <strong>wet</strong> base coat, broadcast by hand like feeding chickens — full broadcast to refusal for maximum texture and hiding power, or a light sprinkle for a subtle look. Flakes do real work: they break up the surface so imperfections disappear, add slip resistance, and stretch coverage by adding visual thickness. One 25-pound box covers about 250 sq ft at full broadcast.</p>
+    <p>Flake color is a design decision with practical consequences: light blends show tire marks less; dark blends hide dirt. Whatever you choose, buy all flake boxes from the <strong>same batch</strong> — dye lots vary visibly across a floor.</p>
+    <h2>Topcoat: The Shield</h2>
+    <p>The topcoat — usually a polyaspartic or aliphatic polyurethane — is what stands between your epoxy and the real world: UV that yellows and chalks standard epoxy, hot tires that soften it, brake fluid and road salt that stain it. At 200 sq ft per gallon it is a thin layer doing heavy work.</p>
+    <p>Polyaspartics cure fast (often walkable in hours) and stay clear outdoors, which is why pros love them; they are also less forgiving to apply, with short working times that punish slow rollers. Standard epoxy topcoats are friendlier for DIY but will amber slightly over years — fine under flakes, noticeable on solid light colors.</p>
+    <p>Add a <strong>slip-resistant additive</strong> (aluminum oxide or polymer grit) to the topcoat. Epoxy gets slick when wet, and a garage floor meets wet tires, snowmelt and spilled oil. The additive is invisible underfoot and unforgettable the first time it saves a fall.</p>
+    <h2>Kit Tiers: What the Money Buys</h2>
+    <p><strong>Economy kits</strong> (~$0.65/sq ft) are typically water-based or thin-solids epoxies: easier to apply, lower odor, but thinner films and shorter life — expect 3 to 5 years in a working garage. Fine for a clean storage garage that sees a parked car and little else.</p>
+    <p><strong>Pro kits</strong> (~$1.10/sq ft) are 100-percent-solids epoxy with polyaspartic topcoat: the sweet spot for DIY garages that actually get used. Thicker build, real chemical resistance, 7 to 10-plus years with basic care. This is what the calculator defaults to, because it is what most garages need.</p>
+    <p><strong>Premium kits</strong> (~$1.65/sq ft) add moisture-mitigating primers, higher-build bases and premium topcoats — the choice for problem slabs (moisture, heavy staining) or anyone who wants to do this exactly once. Compare against pro installation ($4–$9/sq ft) and every tier looks like a bargain.</p>
+    <h2>Temperature and Timing</h2>
+    <p>Epoxy is chemistry, and chemistry obeys temperature. Most products want the slab and air between <strong>55 and 90°F</strong>, with no rain or heavy dew during cure. Cold slows curing to a crawl — a floor coated at 50°F may stay tacky for days; heat accelerates it until the working time collapses.</p>
+    <p>Plan the sequence backward from the recoat windows: primer day one morning, base and flakes day one evening or day two, topcoat the following day. Keep the garage <strong>empty and closed</strong> for the full cure — typically 24 hours to walk, 72 hours for vehicles — and resist the urge to “just pull in for the night” on day two. Hot tires on green epoxy is the classic self-inflicted failure.</p>
+    <p>Humidity matters too: high humidity can blush amine-cured epoxies (a waxy film called amine blush) that must be washed off before the next coat. If the air feels tropical, run a dehumidifier or wait for a better window.</p>
+    <h2>Maintenance: Keeping It New</h2>
+    <p>Cured epoxy is gloriously low-maintenance: dust-mop or blow out grit (grit is what dulls any floor), damp-mop with a mild cleaner, and never use citrus or vinegar-based cleaners that can dull the topcoat over time. A foam squeegee handles snowmelt puddles in winter.</p>
+    <p>Hot-tire pickup — tires lifting the coating — is almost always a prep or thin-film failure, not a product failure, which is why the system approach matters. Quality topcoats resist it; if it happens in year one, the cause was underneath, and warranty conversations start with photos of the prep.</p>
+    <p>Keep a small jar of flake blend and a pint of topcoat on the shelf. Chips from dropped tools touch up invisibly: dab base color, sprinkle flakes into the wet spot, seal with topcoat. Five minutes, and the floor looks new again.</p>
+    <h2>When to Hire It Out</h2>
+    <p>DIY epoxy is very achievable — and these kit estimates assume DIY. Hire a pro when the slab has serious moisture (needs professional mitigation), extensive cracking or spalling (needs grinding and repair beyond filler), or when the garage cannot be empty for four days. Pros also bring industrial grinders and crew speed that compress the timeline.</p>
+    <p>Get quotes per square foot and ask exactly which system they apply — primer type, solids content, topcoat chemistry. A $4/sq ft quote for a single thin coat is worse value than a $7 quote for a full four-layer system. The calculator's kit costs give you the material baseline to judge quotes against.</p>
+    <p>Either way, the prep standard does not change. A contractor who proposes to skip grinding or primer is selling you a future failure at a premium price — the same failure modes, just more expensive.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How much epoxy do I need for a 2-car garage?</summary><p>A 400 sq ft garage needs about 2 gallons of primer, 4 gallons of base coat, 2 flake boxes and 2 gallons of topcoat — roughly $440 in a pro-tier kit. The calculator sizes all four layers from your exact square footage.</p></details>
+    <details><summary>Do I really need primer before epoxy?</summary><p>Yes. Primer penetrates the concrete and creates the bond the whole system hangs onto, especially on smooth power-troweled slabs. Skipping primer is the most common cause of epoxy peeling up in sheets — and it's the cheapest layer per square foot.</p></details>
+    <details><summary>Should I etch or grind concrete before epoxy?</summary><p>Grinding (diamond grinder) is the pro standard — it profiles the surface uniformly and removes weak laitance. Acid etching works on unsealed, porous concrete but fails over previous sealers. Test with water first: if it beads, you must grind.</p></details>
+    <details><summary>How long before I can drive on a new epoxy floor?</summary><p>Typically 24 hours before foot traffic and 72 hours before vehicles, at 70°F — longer when cold. Hot tires on green epoxy cause the classic hot-tire pickup failure, so keep the garage empty for the full cure.</p></details>
+    <details><summary>What are the flakes in epoxy floors for?</summary><p>Decorative vinyl flakes add texture and slip resistance, hide concrete imperfections and slab variations, and let you tune the look. Broadcast them into the wet base coat — one 25-lb box covers ~250 sq ft at full broadcast.</p></details>
+    <details><summary>Why is my epoxy floor peeling?</summary><p>Almost always prep: oil or sealer left on the concrete, moisture vapor drive, or skipped primer. Epoxy bonds mechanically to clean, profiled concrete — contamination or a shiny sealed surface means the bond was never there. Fix the cause before recoating, or it peels again.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">EpoxyFloor</div>
+    <p>EpoxyFloor breaks your garage floor into kits — primer, base coat, flakes, topcoat — with cost per square foot by kit tier.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TOOLJS */
+var efRate=1.10;
+function computeEpoxy(o){
+  return{primer:Math.ceil(o.area/250-1e-9),base:Math.ceil(o.area/125-1e-9),
+    top:Math.ceil(o.area/200-1e-9),flakes:Math.ceil(o.area/250-1e-9),cost:o.area*o.tierRate};
+}
+if(typeof document!=='undefined'){
+(function(){
+  function val(id){return parseFloat(document.getElementById(id).value)||0;}
+  function fmt(n,d){return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});}
+  document.getElementById('ef-area').addEventListener('input',calc);
+  document.getElementById('ef-tiers').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;efRate=parseFloat(b.getAttribute('data-r'));
+    this.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');calc();});
+  function calc(){
+    var r=computeEpoxy({area:val('ef-area'),tierRate:efRate});
+    document.getElementById('ef-cost').textContent='$'+fmt(r.cost,0);
+    document.getElementById('ef-p').textContent=r.primer+(r.primer===1?' gal':' gal');
+    document.getElementById('ef-b').textContent=r.base+' gal';
+    document.getElementById('ef-f').textContent=r.flakes+(r.flakes===1?' box':' boxes');
+    document.getElementById('ef-t').textContent=r.top+' gal';
+  }
+  calc();
+})();
+}
+</script>
+</body>
+</html>
