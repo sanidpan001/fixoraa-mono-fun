@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transpose Chords Online — Free Key Changer with Capo Finder | KeyShift</title>
+<meta name="description" content="Transpose chords online free: shift any progression to a new key, find the easiest capo position, and score playability. With chart mode.">
+<link rel="canonical" href="https://fun.fixoraa.tech/keyshift/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Transpose Chords Online — Free Key Changer with Capo Finder | KeyShift">
+<meta property="og:description" content="Transpose chords online free: shift any progression to a new key, find the easiest capo position, and score playability. With chart mode.">
+<meta property="og:url" content="https://fun.fixoraa.tech/keyshift/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "KeyShift",
+      "url": "https://fun.fixoraa.tech/keyshift/",
+      "applicationCategory": "Music Tools",
+      "operatingSystem": "Web",
+      "description": "Transpose chords online free: shift any progression to a new key, find the easiest capo position, and score playability. With chart mode.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I transpose chords to a different key?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter your progression (e.g. C G Am F) and tap the + or \u2212 stepper \u2014 every chord moves by the same number of semitones instantly. Or use Key Jump: set the original key and the target key and the semitone math is done for you. Chord qualities (m7, sus4, add9) travel unchanged; only roots and bass notes move."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the easiest way to avoid barre chords when transposing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check the Capo Finder after transposing. It tests capo positions 0\u20135 and ranks them by how many barre-prone chords remain, showing the exact shapes to finger. Often a capo 2 or 3 turns a barre-heavy transposition into easy open shapes that sound in the right key."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a capo change the key of a song?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 each fret raises the pitch one semitone, exactly like transposing up. The difference: a capo changes the sounding pitch while your fingers play familiar shapes. Shape + capo position = sounding key, so G shapes with capo 2 sound in A."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use sharps or flats when transposing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Match the spelling to the target key: sharp keys (G, D, A, E) read naturally in sharps, flat keys (F, Bb, Eb) in flats. The pitches are identical either way. KeyShift's toggle re-spells the whole result with one tap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do slash chords transpose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both sides move by the same interval. D/F# up two semitones becomes E/G# \u2014 the bass note is a pitch too, so it travels with the root. KeyShift handles this automatically in both the stepper and Chart Mode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many semitones should I transpose for a singer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with 2\u20133 semitones down if the chorus feels too high; most vocal comfort problems are solved in that range. If the verse then feels too low, split the difference at 1\u20132. For choirs and congregations, aim for a final key between G and D where untrained voices sit most comfortably."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F1F7F4; --surface:#FFFFFF; --accent:#0F766E; --accent-ink:#FFFFFF;
+  --ink:#22302B; --muted:#54655E; --line:#D8E4DD;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ks-wrap{font-family:'Sora',Inter,system-ui,sans-serif;background:#F1F7F4;color:#22302B;padding:58px 20px 76px;}
+.ks-inner{max-width:1060px;margin:0 auto;}
+.ks-topline{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.ks-dot{width:11px;height:11px;border-radius:50%;background:#3E9B4F;box-shadow:0 0 0 4px rgba(62,155,79,.18);}
+.ks-status{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:#54655E;font-weight:600;}
+.ks-inner h1{font-size:clamp(32px,5vw,50px);line-height:1.05;letter-spacing:-.015em;margin:0 0 10px;font-weight:700;text-wrap:balance;}
+.ks-tag{color:#54655E;font-size:17px;max-width:660px;margin:0 0 30px;line-height:1.55;font-family:Inter,system-ui,sans-serif;}
+.ks-screen{background:#22302B;border-radius:22px;padding:30px 30px 26px;box-shadow:0 24px 60px rgba(15,118,110,.18), inset 0 2px 0 rgba(255,255,255,.08);margin-bottom:22px;position:relative;overflow:hidden;}
+.ks-screen::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.014) 3px 4px);pointer-events:none;}
+.ks-screen-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;}
+.ks-screen-h .ks-lab{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#8FD8CE;font-weight:700;}
+.ks-semi{font-size:13px;color:#C9E9E3;font-family:Inter,system-ui,sans-serif;font-weight:600;}
+.ks-semi b{color:#fff;font-size:15px;}
+.ks-disp{display:flex;flex-wrap:wrap;gap:10px;min-height:64px;align-items:center;}
+.ks-tok{background:rgba(143,216,206,.12);border:1px solid rgba(143,216,206,.4);color:#F2FBF9;font-size:26px;font-weight:700;border-radius:12px;padding:8px 18px;letter-spacing:.01em;}
+.ks-dim{color:#7FA39B;font-size:16px;font-family:Inter,system-ui,sans-serif;}
+.ks-meter{margin-top:18px;display:flex;align-items:center;gap:12px;}
+.ks-meter .ks-lab{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#8FD8CE;font-weight:700;white-space:nowrap;}
+.ks-mbar{flex:1;height:10px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden;}
+.ks-mbar span{display:block;height:100%;background:linear-gradient(90deg,#5FC9BC,#0F766E);border-radius:999px;transition:width .3s ease;}
+.ks-meter .ks-val{font-size:13px;color:#C9E9E3;font-family:Inter,system-ui,sans-serif;font-weight:600;white-space:nowrap;}
+.ks-grid{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:18px;margin-bottom:22px;}
+.ks-card{background:#fff;border:1px solid #D8E4DD;border-radius:20px;padding:24px;box-shadow:0 14px 34px rgba(15,118,110,.08);}
+.ks-card h2{font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;color:#0F766E;margin:0 0 4px;font-weight:700;}
+.ks-card .ks-sub{font-size:13.5px;color:#54655E;margin:0 0 16px;font-family:Inter,system-ui,sans-serif;line-height:1.55;}
+.ks-stepper{display:flex;align-items:center;gap:12px;}
+.ks-stepbtn{width:58px;height:58px;border-radius:16px;border:2px solid #0F766E;background:#fff;color:#0F766E;font-size:26px;font-weight:700;cursor:pointer;line-height:1;}
+.ks-stepbtn:hover{background:#0F766E;color:#fff;}
+.ks-stepbtn:active{transform:scale(.94);}
+.ks-zero{margin-top:12px;background:none;border:none;color:#0F766E;font-weight:700;font-size:13.5px;cursor:pointer;text-decoration:underline;font-family:Inter,system-ui,sans-serif;}
+.ks-in{width:100%;padding:13px 15px;font-size:16px;border:2px solid #D8E4DD;border-radius:13px;font-family:Inter,system-ui,sans-serif;color:#22302B;margin-bottom:10px;}
+.ks-in:focus{outline:none;border-color:#0F766E;}
+.ks-row{display:flex;gap:10px;align-items:center;margin-bottom:10px;font-family:Inter,system-ui,sans-serif;font-size:14px;color:#54655E;}
+.ks-row select{flex:1;padding:11px 12px;border:2px solid #D8E4DD;border-radius:11px;font-size:15px;font-family:inherit;color:#22302B;background:#fff;}
+.ks-btn{background:#0F766E;color:#fff;border:none;border-radius:12px;padding:12px 18px;font-size:14px;font-weight:700;cursor:pointer;font-family:Inter,system-ui,sans-serif;}
+.ks-btn:hover{filter:brightness(1.08);}
+.ks-btn.ghost{background:#fff;color:#0F766E;border:2px solid #0F766E;}
+.ks-btn.ghost.on{background:#0F766E;color:#fff;}
+.ks-slot{border:1px solid #D8E4DD;border-radius:14px;padding:12px 14px;margin-bottom:10px;background:#F8FCFA;}
+.ks-slot.best{border:2px solid #0F766E;background:#fff;}
+.ks-slot-h{font-weight:700;font-size:14.5px;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.ks-best{font-size:10.5px;background:#3E9B4F;color:#fff;border-radius:999px;padding:3px 10px;letter-spacing:.08em;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;}
+.ks-shapes{display:flex;flex-wrap:wrap;gap:7px;}
+.ks-sh{background:#fff;border:1px solid #D8E4DD;border-radius:8px;padding:4px 11px;font-size:14px;font-weight:600;}
+.ks-chart{background:#fff;border:1px solid #D8E4DD;border-radius:20px;padding:26px;box-shadow:0 14px 34px rgba(15,118,110,.08);}
+.ks-chart h2{font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;color:#0F766E;margin:0 0 4px;font-weight:700;}
+.ks-chart .ks-sub{font-size:13.5px;color:#54655E;margin:0 0 16px;font-family:Inter,system-ui,sans-serif;line-height:1.55;}
+.ks-chartgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.ks-chart textarea{width:100%;min-height:190px;padding:14px 15px;font-size:14.5px;border:2px solid #D8E4DD;border-radius:13px;font-family:ui-monospace,Menlo,monospace;color:#22302B;resize:vertical;line-height:1.7;}
+.ks-chart textarea:focus{outline:none;border-color:#0F766E;}
+.ks-chartout{background:#22302B;color:#EAF6F3;border-radius:13px;padding:16px;font-family:ui-monospace,Menlo,monospace;font-size:14.5px;line-height:1.75;white-space:pre-wrap;min-height:190px;}
+.ks-chartfoot{margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.ks-note{font-size:13px;color:#54655E;font-family:Inter,system-ui,sans-serif;}
+@media(max-width:920px){.ks-grid{grid-template-columns:1fr;}.ks-chartgrid{grid-template-columns:1fr;}}
+@media(max-width:520px){.ks-wrap{padding:40px 14px 56px;}.ks-screen{padding:22px 18px;}.ks-tok{font-size:21px;padding:7px 14px;}.ks-card{padding:20px 16px;}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="KeyShift home">
+      <span class="fx-logo-tile" aria-hidden="true">🎸</span>
+      <span class="fx-brand">KeyShift</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-console-dash" aria-label="KeyShift tool">
+<section class='ks-wrap'><div class='ks-inner'>
+<div class='ss-topline ks-topline'><span class='ks-dot' aria-hidden='true'></span><span class='ks-status'>Transpose Deck &middot; Live</span></div>
+<h1>Transpose Chords Online — Free Key Changer with Capo Finder</h1>
+<p class='ks-tag'>Shift any progression to the singer's key in one tap, then let the capo finder turn barre-heavy results into easy open shapes.</p>
+<div class='ks-screen' aria-live='polite'>
+<div class='ks-screen-h'><span class='ks-lab'>Output &middot; Transposed Progression</span><span class='ks-semi'><b id='ks-semi'>+0 semitones</b> &middot; <span id='ks-keynote'>sounding key: &mdash;</span></span></div>
+<div class='ks-disp' id='ks-disp'></div>
+<div class='ks-meter'><span class='ks-lab'>Playability</span><div class='ks-mbar'><span id='ks-diffbar' style='width:100%'></span></div><span class='ks-val' id='ks-difft'>100% open-friendly</span></div>
+</div>
+<div class='ks-grid'>
+<div class='ks-card'>
+<h2>Semitone Stepper</h2>
+<p class='ks-sub'>Nudge the whole song up or down. One semitone = one fret.</p>
+<div class='ks-stepper'>
+<button class='ks-stepbtn' id='ks-minus' type='button' aria-label='Transpose down'>&minus;</button>
+<button class='ks-stepbtn' id='ks-plus' type='button' aria-label='Transpose up'>+</button>
+<button class='ks-btn ghost' id='ks-flat' type='button'>&#9839; sharps</button>
+</div>
+<button class='ks-zero' id='ks-zero' type='button'>reset to original key</button>
+<div style='margin-top:16px'><label class='ks-note' for='ks-prog' style='display:block;margin-bottom:6px;font-weight:600'>Your progression</label>
+<input class='ks-in' id='ks-prog' value='C G Am F' spellcheck='false' autocomplete='off'></div>
+</div>
+<div class='ks-card'>
+<h2>Key Jump</h2>
+<p class='ks-sub'>Pick the key it's in and the key you want — the stepper follows.</p>
+<div class='ks-row'><span style='min-width:44px'>From</span><select id='ks-from' aria-label='Original key'></select></div>
+<div class='ks-row'><span style='min-width:44px'>To</span><select id='ks-to' aria-label='Target key'></select></div>
+<p class='ks-note'>Great for worship leaders and teachers moving a song to the band's key.</p>
+</div>
+<div class='ks-card'>
+<h2>Capo Finder</h2>
+<p class='ks-sub'>Easiest ways to play the transposed chords, ranked.</p>
+<div id='ks-capo'></div>
+</div>
+</div>
+<div class='ks-chart'>
+<h2>Chart Mode</h2>
+<p class='ks-sub'>Paste a full chord chart — verses, choruses, slash chords and all. Every chord transposes with your stepper setting.</p>
+<div class='ks-chartgrid'>
+<textarea id='ks-chart' spellcheck='false' placeholder="Verse&#10;C          G&#10;  Hallelujah, hallelujah&#10;Am         F&#10;  Hallelujah, hallelujah"></textarea>
+<div class='ks-chartout' id='ks-chartout' aria-live='polite'></div>
+</div>
+<div class='ks-chartfoot'>
+<button class='ks-btn' id='ks-copy' type='button'>Copy result</button>
+<span class='ks-note'>Slash chords transpose on both sides: D/F&#9839; up 2 becomes E/G&#9839;.</span>
+</div>
+</div>
+</div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why Every Guitarist Eventually Needs a Transposer</h2><p>It happens at every campfire, worship rehearsal and open mic: the song is in the wrong key. The original recording sits too high for your voice, or the published chord chart is a thicket of barre chords &mdash; F, Bb, Eb &mdash; that kills the groove. You have two honest fixes: learn the hard shapes, or move the song. Transposing moves every chord in the song up or down by the same number of semitones, so the melody's shape stays identical while the pitch lands where your voice &mdash; or your fingers &mdash; are comfortable.</p><p>A semitone (half step) is the smallest interval in Western music: one fret on the guitar, one adjacent key on the piano. The chromatic scale has twelve notes (C, C#/Db, D, D#/Eb, E, F, F#/Gb, G, G#/Ab, A, A#/Bb, B), so any song can be transposed into eleven other keys. The relationships between chords never change &mdash; a I&ndash;V&ndash;vi&ndash;IV in C (C&ndash;G&ndash;Am&ndash;F) becomes D&ndash;A&ndash;Bm&ndash;G up two semitones, still I&ndash;V&ndash;vi&ndash;IV, still the same song, just higher.</p><h2>The Three Reasons to Change Key</h2><p><strong>1. The singer's range.</strong> This is the big one. Most singers have a comfortable range of about an octave and a half, and a song that sits even two semitones too high turns the chorus into a shout. Dropping the key three semitones can rescue a song completely. Worship leaders transpose weekly for exactly this reason &mdash; the recorded key was chosen for the artist, not for the congregation.</p><p><strong>2. Easier chord shapes.</strong> Some keys are simply friendlier on guitar. The open-string keys &mdash; C, G, D, A, E and their relative minors &mdash; give you ringing open chords. Flat keys like Bb and Eb force barre chords everywhere. Transposing from F major (barre-heavy) to G major (open and bright) is a two-semitone move that transforms playability. This is where the capo finder earns its keep: sometimes the smartest move is not a transposition at all, but a capo that lets you play easy shapes while sounding in the hard key.</p><p><strong>3. Playing with others.</strong> The pianist learned it in Bb, the recording is in B, and your singer needs A. Somebody has to move, and the guitarist with a transposer moves fastest. Horn players live in flat keys; guitarists live in sharp keys; a transposer is the diplomat between them.</p><h2>How KeyShift Works</h2><p>Type or paste your progression &mdash; <strong>C G Am F</strong>, say &mdash; and tap the <strong>+</strong> or <strong>&minus;</strong> stepper. Every chord moves together, instantly. The dark readout screen shows the transposed progression in large type, with the new sounding key and a <strong>playability meter</strong> that scores how open-chord-friendly the result is. Flip between <strong>sharps and flats</strong> with one tap: flat keys (F, Bb, Eb) read naturally in flats, sharp keys (G, D, A) in sharps &mdash; the pitches are identical, only the spelling changes.</p><p>The <strong>Key Jump</strong> panel is for when you think in keys rather than semitones: set &ldquo;from C&rdquo; and &ldquo;to Eb&rdquo; and the stepper computes the +3 move for you. <strong>Chart Mode</strong> handles full song sheets &mdash; paste verses and choruses with chords inline and the whole chart transposes at once, lyrics untouched. Slash chords are handled correctly on both sides: D/F# up two semitones becomes E/G#, not E/F#.</p><h2>The Capo Finder: Barre Chords Without the Barre</h2><p>A capo clamps across the fretboard and raises the pitch &mdash; each fret is one semitone, exactly like transposition. The trick is that a capo lets you play <em>easy shapes</em> that <em>sound</em> in a harder key. The finder tests capo positions 0 through 5 against your transposed chords and ranks them by how many barre-prone chords remain. Example: your song transposed to Eb gives you Eb&ndash;Bb&ndash;Cm&ndash;Ab (all barre shapes). Capo 3 with C&ndash;G&ndash;Am&ndash;F shapes sounds in Eb &mdash; because C shapes + 3 semitones = Eb &mdash; and your hand thanks you.</p><p>The math is simple once you see it: <strong>shape + capo position = sounding key</strong>. To find a capo for any target key, the tool subtracts the capo number from each chord to get the shape you would finger. The top suggestion is the position with the fewest hard shapes; the runner-ups give you options if you prefer a particular voicing or want the capo lower on the neck for a brighter tone.</p><h2>Sharps vs Flats: Spelling Matters</h2><p>C# and Db are the same pitch, but the right spelling depends on the key. Sharp keys (G, D, A, E, B) conventionally use sharps; flat keys (F, Bb, Eb, Ab) use flats. Reading &ldquo;A#&rdquo; in the key of F is like reading a typo &mdash; technically the same note, musically wrong. KeyShift's toggle re-spells the entire result instantly, so a horn-friendly flat key never shows up wearing sharps. When in doubt, match the spelling to the key signature of the target key.</p><h2>Transposing Progressions by Ear: The Number System</h2><p>Session players rarely think &ldquo;C to D&rdquo; &mdash; they think in <strong>numbers</strong>. In the Nashville Number System, chords are labeled by their scale degree: in C, C=1, Dm=2, Em=3, F=4, G=5, Am=6. A 1&ndash;5&ndash;6&ndash;4 progression is C&ndash;G&ndash;Am&ndash;F in C, G&ndash;D&ndash;Em&ndash;C in G, and so on. If you learn your songs as numbers, transposing becomes trivial: keep the numbers, change the key. KeyShift's Key Jump panel is essentially a number-system machine &mdash; it preserves every chord's function while moving the root.</p><p>This is also why the tool transposes <em>qualities</em> untouched: Am7 stays minor-seven, Dsus4 stays suspended, add9 stays added. Only the root (and bass note) are pitches; everything after the root is the chord's personality, and personality travels with it.</p><h2>Common Transposition Moves Worth Memorizing</h2><table><thead><tr><th>Move</th><th>Example</th><th>When to use it</th></tr></thead><tbody><tr><td>Down 2 semitones</td><td>G &rarr; F</td><td>Chorus slightly too high; keeps open shapes</td></tr><tr><td>Down 3 semitones</td><td>A &rarr; F#</td><td>The classic &ldquo;save my voice&rdquo; drop</td></tr><tr><td>Up 2 semitones</td><td>C &rarr; D</td><td>Brighter energy, still guitar-friendly</td></tr><tr><td>F &rarr; G (+2)</td><td>F&ndash;Bb&ndash;C &rarr; G&ndash;C&ndash;D</td><td>Escaping barre-chord jail</td></tr><tr><td>Bb &rarr; A (&minus;1)</td><td>Matching a recording tuned down a half step</td></tr><tr><td>Any &rarr; relative key</td><td>C major shapes for an A minor song</td><td>Capo + familiar shapes, new mood</td></tr></tbody></table><h2>Capo Strategy: Beyond the Basics</h2><p>Beginners treat the capo as a crutch; experienced players treat it as a tone control. Higher capo positions shorten the strings, giving a brighter, mandolin-like chime &mdash; the same chords at capo 5 sound completely different from open position. Two guitarists can play the same song in the same key with different capo positions (one open, one capo 5) and get a rich, layered 12-string-like spread with zero extra theory.</p><p>Watch the trade-offs, though: above the 5th fret, intonation gets fussier and the neck gets cramped for big hands. And a capo is no substitute for knowing when the <em>song</em> should move &mdash; if the singer is straining, change the key; if your fingers are straining, reach for the capo. KeyShift shows you both options side by side so the decision takes seconds.</p><h2>For Worship Leaders, Teachers and Band Leaders</h2><p>If you lead music for other people, transposition is a weekly discipline, not an occasional trick. Congregations sing best in keys roughly from G to D for most modern songs &mdash; yet recordings routinely sit in A, Bb or E because those flatter the artist. The workflow: paste the chart into Chart Mode, step it down to the congregation's key, check the capo finder for the easiest playable version, copy the result into your planning software. Thirty seconds, and the whole room can sing the chorus. Teachers: transpose method-book pieces into students' comfortable keys without rewriting a single exercise by hand.</p><h2>What KeyShift Doesn't Do (Honestly)</h2><p>Transposition preserves chord <em>function</em>, not always chord <em>voicing</em>: a delicate fingerpicked Cmaj7 voicing moved to Dbmaj7 may need re-voicing by ear. Key changes <em>within</em> a song (modulations) need to be transposed section by section &mdash; set the stepper per section in Chart Mode. And no tool replaces the final check: play the transposed version once through. If a chord suddenly sounds wrong, you likely had a mislabeled chord in the original chart (the classic: &ldquo;Am&rdquo; that was really &ldquo;A&rdquo;). Fix the source, re-run, done.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How do I transpose chords to a different key?</summary><p>Enter your progression (e.g. C G Am F) and tap the + or − stepper — every chord moves by the same number of semitones instantly. Or use Key Jump: set the original key and the target key and the semitone math is done for you. Chord qualities (m7, sus4, add9) travel unchanged; only roots and bass notes move.</p></details>
+<details><summary>What is the easiest way to avoid barre chords when transposing?</summary><p>Check the Capo Finder after transposing. It tests capo positions 0–5 and ranks them by how many barre-prone chords remain, showing the exact shapes to finger. Often a capo 2 or 3 turns a barre-heavy transposition into easy open shapes that sound in the right key.</p></details>
+<details><summary>Does a capo change the key of a song?</summary><p>Yes — each fret raises the pitch one semitone, exactly like transposing up. The difference: a capo changes the sounding pitch while your fingers play familiar shapes. Shape + capo position = sounding key, so G shapes with capo 2 sound in A.</p></details>
+<details><summary>Should I use sharps or flats when transposing?</summary><p>Match the spelling to the target key: sharp keys (G, D, A, E) read naturally in sharps, flat keys (F, Bb, Eb) in flats. The pitches are identical either way. KeyShift's toggle re-spells the whole result with one tap.</p></details>
+<details><summary>How do slash chords transpose?</summary><p>Both sides move by the same interval. D/F# up two semitones becomes E/G# — the bass note is a pitch too, so it travels with the root. KeyShift handles this automatically in both the stepper and Chart Mode.</p></details>
+<details><summary>How many semitones should I transpose for a singer?</summary><p>Start with 2–3 semitones down if the chorus feels too high; most vocal comfort problems are solved in that range. If the verse then feels too low, split the difference at 1–2. For choirs and congregations, aim for a final key between G and D where untrained voices sit most comfortably.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">KeyShift</div>
+    <p>KeyShift moves any chord progression into the singer's key in one tap — then its capo finder turns barre-heavy results into easy open shapes, with a playability score on every transposition.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+var KS_SHARP=["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+var KS_FLAT=["C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"];
+var KS_IDX={"C":0,"B#":0,"C#":1,"DB":1,"D":2,"D#":3,"EB":3,"E":4,"FB":4,"F":5,"E#":5,"F#":6,"GB":6,"G":7,"G#":8,"AB":8,"A":9,"A#":10,"BB":10,"B":11,"CB":11};
+var KS_HARD=["F","BB","B","EB","AB","DB","GB","F#","C#"];
+var KS_EASY=["C","G","D","A","E","AM","EM","DM","G7","C7","D7","A7","E7"];
+function ksNormRoot(r){var s=String(r).trim().toUpperCase().replace("\u266F","#").replace("\u266D","B");return KS_IDX[s];}
+function ksName(i,useFlats){i=((i%12)+12)%12;return useFlats?KS_FLAT[i]:KS_SHARP[i];}
+function transposeChord(chord,semi,useFlats){
+  var s=String(chord||"").trim();if(!s)return s;
+  var m=s.match(/^([A-G][#b\u266F\u266D]?)(.*)$/);
+  if(!m)return s;
+  var root=m[1],rest=m[2],bass=null;
+  var sl=rest.lastIndexOf("/");
+  if(sl>=0){var maybe=root+"";var bpart=rest.slice(sl+1);if(/^[A-G][#b\u266F\u266D]?$/.test(bpart)){bass=bpart;rest=rest.slice(0,sl);}}
+  var ix=ksNormRoot(root);if(ix===undefined)return s;
+  var out=ksName(ix+semi,useFlats)+rest;
+  if(bass!==null){var bix=ksNormRoot(bass);out+="/"+(bix===undefined?bass:ksName(bix+semi,useFlats));}
+  return out;
+}
+function ksDifficulty(chords){
+  if(!chords.length)return 100;
+  var easy=0;
+  chords.forEach(function(c){var r=c.match(/^([A-G][#b]?)/);var key=(r?r[1]:"").toUpperCase();if(KS_EASY.indexOf(key)>=0)easy++;});
+  return Math.round(easy/chords.length*100);
+}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){
+  var prog=document.getElementById('ks-prog'),disp=document.getElementById('ks-disp'),
+      semiEl=document.getElementById('ks-semi'),keynote=document.getElementById('ks-keynote'),
+      diffBar=document.getElementById('ks-diffbar'),diffT=document.getElementById('ks-difft'),
+      capoOut=document.getElementById('ks-capo'),flatB=document.getElementById('ks-flat'),
+      fromK=document.getElementById('ks-from'),toK=document.getElementById('ks-to'),
+      chart=document.getElementById('ks-chart'),chartOut=document.getElementById('ks-chartout'),
+      copyB=document.getElementById('ks-copy');
+  if(!prog||!disp)return;
+  var semi=0,useFlats=false;
+  function chords(){return prog.value.trim().split(/[\s|]+/).filter(Boolean);}
+  function shown(){return chords().map(function(c){return transposeChord(c,semi,useFlats);});}
+  function keyOf(chs){var r=(chs[0]||'').match(/^([A-G][#b]?)/);return r?r[1]:'\u2014';}
+  function render(){
+    var cs=shown();
+    disp.innerHTML=cs.length?cs.map(function(c){return '<span class="ks-tok">'+c+'</span>';}).join(''):'<span class="ks-dim">Type a progression below\u2026</span>';
+    var s=semi>0?'+'+semi:''+semi;
+    semiEl.textContent=s+' semitone'+(Math.abs(semi)===1?'':'s');
+    keynote.textContent='sounding key: '+keyOf(cs);
+    var d=ksDifficulty(cs);
+    diffBar.style.width=d+'%';
+    diffT.textContent=d+'% open-friendly';
+    renderCapo();
+    renderChart();
+  }
+  function renderCapo(){
+    var orig=chords();if(!orig.length){capoOut.innerHTML='<p class="ks-dim">Capo suggestions appear once you enter chords.</p>';return;}
+    var opts=[];
+    for(var c=0;c<=5;c++){
+      var shapes=orig.map(function(x){return transposeChord(x,semi-c,useFlats);});
+      var hard=0;
+      shapes.forEach(function(sh){var r=sh.match(/^([A-G][#b]?)/);if(r&&KS_HARD.indexOf(r[1].toUpperCase())>=0)hard++;});
+      opts.push({capo:c,shapes:shapes,hard:hard,score:hard*2+c*0.5});
+    }
+    opts.sort(function(a,b){return a.score-b.score||a.capo-b.capo;});
+    capoOut.innerHTML=opts.slice(0,3).map(function(o,i){
+      return '<div class="ks-slot'+(i===0?' best':'')+'"><div class="ks-slot-h">'+(o.capo===0?'No capo':'Capo '+o.capo)+
+      (i===0?'<span class="ks-best">easiest</span>':'')+'</div><div class="ks-shapes">'+
+      o.shapes.map(function(s2){return '<span class="ks-sh">'+s2+'</span>';}).join('')+'</div></div>';
+    }).join('');
+  }
+  function renderChart(){
+    if(!chart)return;
+    var txt=chart.value;
+    if(!txt.trim()){chartOut.innerHTML='<span class="ks-dim">Your transposed chart will appear here.</span>';return;}
+    var out=txt.replace(/\b([A-G][#b\u266F\u266D]?(?:m(?!aj)|maj7?|min7?|m7b5|m7|dim7?|aug|sus[24]?|add\d*|7|9|11|13|6)?(?:\/[A-G][#b\u266F\u266D]?)?)\b/g,function(mtok){
+      var t=transposeChord(mtok,semi,useFlats);return t===mtok?mtok:t;
+    });
+    chartOut.textContent=out;
+  }
+  prog.addEventListener('input',render);
+  document.getElementById('ks-minus').addEventListener('click',function(){if(semi>-11)semi--;render();});
+  document.getElementById('ks-plus').addEventListener('click',function(){if(semi<11)semi++;render();});
+  document.getElementById('ks-zero').addEventListener('click',function(){semi=0;render();});
+  if(flatB)flatB.addEventListener('click',function(){useFlats=!useFlats;flatB.textContent=useFlats?'\u266D flats':'\u266F sharps';flatB.classList.toggle('on',useFlats);render();});
+  function syncFromKeys(){
+    if(!fromK||!toK)return;
+    var f=KS_SHARP.indexOf(fromK.value),t=KS_SHARP.indexOf(toK.value);
+    semi=((t-f)%12+12)%12;if(semi>6)semi-=12;
+    render();
+  }
+  if(fromK)fromK.addEventListener('change',syncFromKeys);
+  if(toK)toK.addEventListener('change',syncFromKeys);
+  if(chart)chart.addEventListener('input',renderChart);
+  if(copyB)copyB.addEventListener('click',function(){
+    var txt=chart&&chart.value.trim()?chartOut.textContent:shown().join(' ');
+    if(navigator.clipboard)navigator.clipboard.writeText(txt);
+    copyB.textContent='Copied!';setTimeout(function(){copyB.textContent='Copy result';},1600);
+  });
+  var keyOpts=KS_SHARP.map(function(k){return '<option>'+k+'</option>';}).join('');
+  if(fromK){fromK.innerHTML=keyOpts;fromK.value='C';}
+  if(toK){toK.innerHTML=keyOpts;toK.value='G';}
+  render();
+});}
+
+</script>
+</body>
+</html>
