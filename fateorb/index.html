@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://fun.fixoraa.tech/fateorb/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FateOrb — Free Online Yes/No Oracle | Ask a Question, Get an Answer</title>
+<meta name="description" content="FateOrb is a free online yes/no oracle. Type your question, tap the glowing orb or shake your phone, and receive a mystic answer instantly. Classic, sassy and brutally honest decks. No signup, unlimited free use.">
+<meta name="keywords" content="yes no oracle, ask a question get an answer, fortune teller online, decision maker, mystic answer oracle">
+<meta name="theme-color" content="#2E1065">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html{scroll-behavior:smooth}
+  body{background:#1b0b3f}
+  .nebula-bg{background:
+    radial-gradient(1200px 600px at 20% -5%, rgba(103,232,249,.14), transparent 60%),
+    radial-gradient(900px 500px at 85% 10%, rgba(167,139,250,.18), transparent 60%),
+    radial-gradient(700px 700px at 50% 110%, rgba(76,29,149,.5), transparent 65%),
+    linear-gradient(#1b0b3f,#2E1065 45%,#170830);}
+  .star{position:absolute;background:#fff;border-radius:9999px;opacity:.7;animation:twinkle var(--tw,3s) ease-in-out infinite}
+  @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:.9;transform:scale(1.15)}}
+  .orb-wrap{filter:drop-shadow(0 0 45px rgba(103,232,249,.45)) drop-shadow(0 0 120px rgba(139,92,246,.35))}
+  .orb{
+    width:min(64vw,300px);height:min(64vw,300px);border-radius:9999px;position:relative;cursor:pointer;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255,255,255,.85) 0%, rgba(207,250,254,.55) 12%, transparent 30%),
+      radial-gradient(circle at 50% 50%, rgba(139,92,246,.95) 0%, rgba(88,28,135,.98) 42%, rgba(46,16,101,1) 72%, rgba(23,8,48,1) 100%);
+    box-shadow:inset -18px -26px 60px rgba(0,0,0,.65), inset 12px 16px 50px rgba(103,232,249,.25), 0 0 60px rgba(103,232,249,.35);
+    animation:floaty 5s ease-in-out infinite;
+    transition:transform .2s ease;
+  }
+  .orb:hover{transform:scale(1.03)}
+  .orb:active{transform:scale(.97)}
+  .orb .mist{
+    position:absolute;inset:12%;border-radius:9999px;opacity:.7;pointer-events:none;
+    background:conic-gradient(from 0deg, transparent, rgba(103,232,249,.25), transparent, rgba(196,181,253,.3), transparent);
+    animation:swirl 9s linear infinite;filter:blur(6px);
+  }
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @keyframes swirl{to{transform:rotate(360deg)}}
+  .orb.asking{animation:askshake .55s ease-in-out 3}
+  @keyframes askshake{0%,100%{transform:rotate(0) scale(1)}20%{transform:rotate(-7deg) scale(1.05)}40%{transform:rotate(6deg) scale(1.05)}60%{transform:rotate(-5deg) scale(1.04)}80%{transform:rotate(4deg) scale(1.04)}}
+  .answer-card{transition:opacity .5s ease, transform .5s ease}
+  .answer-hidden{opacity:0;transform:translateY(14px) scale(.97);pointer-events:none}
+  .answer-shown{opacity:1;transform:translateY(0) scale(1)}
+  .shimmer{background:linear-gradient(100deg,#67E8F9 20%,#fff 40%,#67E8F9 60%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 1.4s linear infinite}
+  @keyframes shimmer{to{background-position:200% center}}
+  .deck-tab[aria-selected="true"]{background:rgba(103,232,249,.18);border-color:#67E8F9;color:#fff;box-shadow:0 0 18px rgba(103,232,249,.35)}
+  .badge-yes{background:rgba(52,211,153,.15);color:#6EE7B7;border:1px solid rgba(52,211,153,.5)}
+  .badge-maybe{background:rgba(251,191,36,.15);color:#FCD34D;border:1px solid rgba(251,191,36,.5)}
+  .badge-no{background:rgba(251,113,133,.15);color:#FDA4AF;border:1px solid rgba(251,113,133,.5)}
+  .glass{background:rgba(255,255,255,.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12)}
+  .faq-item summary{cursor:pointer}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .no-print{}
+  @media print{.no-print{display:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is FateOrb really free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes. FateOrb is completely free with unlimited usage. There is no signup, no paywall, no account and no watermark. You can ask as many questions as you like, as often as you like."}},
+{"@type":"Question","name":"Will the same question always give the same answer?","acceptedAnswer":{"@type":"Answer","text":"Yes, by design. FateOrb hashes your question and uses the hash to pick the answer, so asking the exact same question always returns the same answer from the same deck. This is also why shared links show the same answer to everyone who opens them."}},
+{"@type":"Question","name":"What are the answer decks?","acceptedAnswer":{"@type":"Answer","text":"FateOrb has three themed decks of 20 answers each: Classic (timeless oracle-style guidance), Sassy (playful, teasing answers) and Brutally Honest (direct, no-sugar-coating answers). Every deck labels each answer as YES, MAYBE or NO."}},
+{"@type":"Question","name":"Does FateOrb work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. All answer generation happens entirely inside your browser with no network calls, so once the page has loaded, FateOrb works offline. Nothing you type is ever sent to a server."}},
+{"@type":"Question","name":"How does shake-to-ask work on my phone?","acceptedAnswer":{"@type":"Answer","text":"On phones with motion sensors, FateOrb can detect a firm shake as a way to ask your question, just like shaking a fortune-telling toy. On iPhone you may need to tap 'Enable shake' once to grant motion permission. Where motion sensors are unavailable, tapping the orb works exactly the same."}},
+{"@type":"Question","name":"Is FateOrb a fortune teller? Should I make real decisions with it?","acceptedAnswer":{"@type":"Answer","text":"FateOrb is an entertainment and decision-spark tool, not a real fortune teller. Its answers are randomly selected by a hash of your question. It is great for breaking a tie, sparking a new perspective or having fun, but important life decisions should be made with real information and advice from qualified people."}}
+]}
+</script>
+</head>
+<body id="top" class="nebula-bg text-slate-100 min-h-screen antialiased">
+<div id="starfield" class="fixed inset-0 overflow-hidden pointer-events-none" aria-hidden="true"></div>
+
+<!-- Sticky header -->
+<header class="sticky top-0 z-50 border-b border-white/10 bg-[#1b0b3f]/85 backdrop-blur">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2">
+      <span class="inline-block w-8 h-8 rounded-full" style="background:radial-gradient(circle at 35% 30%, #cffafe, #67E8F9 30%, #7c3aed 65%, #2E1065 100%);box-shadow:0 0 14px rgba(103,232,249,.8)"></span>
+      <span class="text-xl font-extrabold tracking-wide">Fate<span class="text-cyan-300">Orb</span></span>
+    </a>
+    <nav class="flex items-center gap-4 sm:gap-6 text-sm font-medium">
+      <a href="#top" class="hover:text-cyan-300 transition">Home</a>
+      <a href="https://fixoraa.tech" class="hover:text-cyan-300 transition">More Tools</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- TOP AD (above the tool) -->
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+    <div class="mx-auto text-center" style="max-width:728px">
+      <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+      <div class="flex justify-center overflow-hidden">
+        <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+          <script>
+            atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+          </script>
+          <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TOOL ============ -->
+  <section class="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-12 text-center relative">
+    <div class="mb-4 flex items-center justify-center gap-3 flex-wrap">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-1 text-xs font-semibold text-cyan-200">
+        <span class="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse"></span> Unlimited Free Usage
+      </span>
+      <span class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-300">No signup &middot; Works offline</span>
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-black tracking-tight mb-2">Ask the <span class="text-cyan-300">FateOrb</span></h1>
+    <p class="text-slate-300/90 text-sm sm:text-base max-w-xl mx-auto">Type your yes-or-no question, tap the orb &mdash; or shake your phone &mdash; and the universe will answer.</p>
+
+    <!-- Deck selector -->
+    <div class="mt-6 flex items-center justify-center gap-2 sm:gap-3 flex-wrap" role="tablist" aria-label="Answer decks">
+      <button class="deck-tab rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-slate-300 hover:border-cyan-300/60 transition" data-deck="classic" role="tab" aria-selected="true">🔮 Classic</button>
+      <button class="deck-tab rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-slate-300 hover:border-cyan-300/60 transition" data-deck="sassy" role="tab" aria-selected="false">😏 Sassy</button>
+      <button class="deck-tab rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-slate-300 hover:border-cyan-300/60 transition" data-deck="honest" role="tab" aria-selected="false">⚡ Brutally Honest</button>
+    </div>
+
+    <!-- Question input -->
+    <div class="mt-6 max-w-xl mx-auto">
+      <label for="question" class="sr-only">Your question</label>
+      <input id="question" type="text" maxlength="200" autocomplete="off" placeholder="Ask a yes-or-no question… e.g. Should I take the new job?"
+        class="w-full rounded-2xl glass px-5 py-4 text-base sm:text-lg text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300/70">
+      <p id="hint" class="mt-2 text-xs text-slate-400 h-4"></p>
+    </div>
+
+    <!-- The Orb -->
+    <div class="mt-2 flex justify-center">
+      <div class="orb-wrap">
+        <div id="orb" class="orb" role="button" tabindex="0" aria-label="Tap the orb to ask your question">
+          <div class="mist"></div>
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span id="orbGlyph" class="text-5xl sm:text-6xl opacity-90 select-none">✦</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="mt-3 text-sm text-cyan-200/90 font-medium">Tap the orb to ask</p>
+    <button id="shakeBtn" class="mt-3 hidden rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-semibold text-slate-200 hover:border-cyan-300/60 transition">📳 Enable shake-to-ask</button>
+    <p id="shakeNote" class="mt-2 text-[11px] text-slate-500 h-4"></p>
+
+    <!-- Answer reveal -->
+    <div id="answerCard" class="answer-card answer-hidden mt-6 max-w-xl mx-auto glass rounded-3xl px-6 py-7">
+      <div class="flex items-center justify-center gap-3 flex-wrap">
+        <span id="answerBadge" class="rounded-full px-4 py-1.5 text-xs font-extrabold tracking-widest uppercase badge-maybe">Maybe</span>
+      </div>
+      <p id="answerEcho" class="mt-3 text-xs text-slate-400 italic"></p>
+      <p id="answerText" class="mt-2 text-2xl sm:text-3xl font-bold leading-snug"></p>
+      <p id="answerMeta" class="mt-3 text-[11px] text-slate-500"></p>
+      <div class="mt-5 flex items-center justify-center gap-2 flex-wrap">
+        <button id="copyBtn" class="rounded-full bg-cyan-300/15 border border-cyan-300/40 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-300/25 transition">📋 Copy answer</button>
+        <button id="shareBtn" class="rounded-full bg-violet-500/20 border border-violet-400/40 px-4 py-2 text-sm font-semibold text-violet-200 hover:bg-violet-500/30 transition">🔗 Share this question</button>
+      </div>
+      <p id="shareNote" class="mt-2 text-[11px] text-slate-500 h-4"></p>
+    </div>
+
+    <!-- History -->
+    <div id="historyWrap" class="mt-8 max-w-xl mx-auto hidden text-left">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400">Recent questions</h2>
+        <button id="clearHistory" class="text-xs text-slate-500 hover:text-rose-300 transition underline">clear</button>
+      </div>
+      <ul id="historyList" class="space-y-2"></ul>
+    </div>
+  </section>
+
+  <!-- BOTTOM AD (below the tool) -->
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+    <div class="mx-auto text-center" style="max-width:300px">
+      <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+      <div class="flex justify-center overflow-hidden">
+        <script>
+(function(grnp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.currentScript || d.scripts[d.scripts.length - 1];
+s.settings = grnp || {};
+s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SEO ARTICLE ============ -->
+  <!-- SEO ARTICLE START -->
+  <article id="seo-article" class="mx-auto max-w-3xl px-4 sm:px-6 py-10 text-slate-200/95">
+    <h2 class="text-2xl sm:text-3xl font-extrabold mb-6 text-white">The Ancient Art of the Yes/No Oracle: Why Humans Have Always Asked the Universe Questions</h2>
+
+    <p class="mb-4">Every day, each of us makes roughly 35,000 decisions. Most are trivial — what to eat, which route to take — but a handful feel enormous: Should I accept this job? Is this the right person for me? Should I move to a new city? When the stakes feel high and the information feels incomplete, humans have always done the same remarkable thing: they have asked the universe. From the smoke-filled temples of ancient Greece to a glowing orb on a phone screen, the yes/no oracle is one of humanity's oldest technologies for coping with uncertainty. This article explores the history of decision oracles, the psychology behind why they work, and how a modern free online oracle like FateOrb fits into a tradition that stretches back thousands of years.</p>
+
+    <h3 class="text-xl font-bold mt-8 mb-3 text-cyan-200">What exactly is a yes/no oracle?</h3>
+    <p class="mb-4">An oracle, in its simplest form, is any system that produces guidance in response to a question. A yes/no oracle narrows that guidance to the most basic decision unit there is: yes, no, or maybe. The beauty of the format is its universality. No matter how complicated your situation — a career change, a relationship, an investment — it can usually be reframed as a yes-or-no question. The oracle then returns one of a fixed set of answers, each carrying a positive, negative, or neutral meaning. Unlike a human advisor, an oracle has no agenda, no memory of your past mistakes, and no reason to flatter you. It is a mirror, not a judge.</p>
+    <p class="mb-4">Modern online oracles preserve the drama of the ancient ritual: you focus on your question, you perform a small physical act — tapping a screen, shaking a phone — and then there is a pause, a moment of suspense, before the answer reveals itself. That pause matters enormously. It is the moment when your own feelings about the answer start to surface. Pay attention to what you hope the orb will say during that pause, and you have already learned something valuable.</p>
+
+    <h3 class="text-xl font-bold mt-8 mb-3 text-cyan-200">Oracles in ancient history: Delphi, the I Ching, and the Roman lots</h3>
+    <p class="mb-4">The most famous oracle of the ancient world was at Delphi in Greece, where the Pythia — a priestess of Apollo — delivered cryptic prophecies to kings and commoners alike from around the 8th century BCE. People traveled for weeks to ask questions about war, marriage, and colonization. The answers were famously ambiguous, which was arguably the point: a vague prophecy forces the questioner to interpret, and interpretation reveals intent. When Croesus of Lydia asked whether he should attack Persia and was told that a great empire would fall, he marched to war — and discovered the empire was his own. The oracle had not lied; the king had heard what he wanted to hear.</p>
+    <p class="mb-4">In China, the I Ching (Book of Changes), dating back over three thousand years, offered a different kind of oracle: a structured system of 64 hexagrams consulted by casting yarrow stalks or coins. Each hexagram came with poetic commentary on the situation at hand. Scholars did not necessarily believe the stalks were magic; many treated the I Ching as a wisdom device — a way to look at a problem from an angle the conscious mind had not considered. The Roman world had its own tradition called sortes, or "casting lots": verses from Virgil or the Bible were chosen at random (the sortes Virgilianae) and applied to the questioner's dilemma. Early Christians reportedly used a similar practice with scripture. The underlying pattern is identical everywhere: a random or semi-random output, a moment of interpretation, and a decision that suddenly feels clearer.</p>
+    <p class="mb-4">Cleromancy — divination by casting lots — appears in nearly every culture on earth: dice in Mesopotamia, rune stones among Germanic tribes, cowrie shells in West Africa, tea leaves in Britain and the Middle East. The persistence of the pattern across continents and millennia suggests it answers a deep human need rather than a passing superstition. When people search today for terms like "fortune teller online" or "yes no oracle," they are participating in the same ritual their ancestors performed with bones and shells — only the interface has changed.</p>
+
+    <h3 class="text-xl font-bold mt-8 mb-3 text-cyan-200">The psychology: why a random answer can genuinely help you decide</h3>
+    <p class="mb-4">Psychologists have a name for the moment of truth when an oracle speaks: the affective forecasting check. The instant before the answer appears, you form a hope or a dread about what it will say. If the orb says "yes" and you feel relief, you have your answer — and it was inside you all along. If it says "yes" and you feel a pang of disappointment, that tells you just as much. The oracle does not make the decision for you; it provokes your genuine reaction to a possible outcome, cutting through the fog of overthinking.</p>
+    <p class="mb-4">Decision researchers also point to a phenomenon called analysis paralysis. When options seem evenly matched, the brain keeps cycling through the same pros and cons without converging. A random nudge breaks the loop. Studies on "decision by coin flip" have found that people who commit to following a coin toss often report greater satisfaction — not because the coin was wise, but because the act of committing ended the exhausting deliberation. An oracle answer functions the same way: it gives your mind permission to stop rehearsing and start acting.</p>
+    <p class="mb-4">There is a third, subtler benefit: externalization. Speaking a question out loud — or typing it into an oracle — forces you to articulate what is actually bothering you. Many people discover, mid-question, that they were asking the wrong question entirely. "Should I quit my job?" sometimes turns out to really mean "Am I afraid I'm wasting my potential?" An oracle cannot answer the second question, but the ritual of asking the first one can surface it.</p>
+
+    <h3 class="text-xl font-bold mt-8 mb-3 text-cyan-200">How FateOrb picks your answer: the hash behind the magic</h3>
+    <p class="mb-4">FateOrb's answers are deterministic, which is a deliberate design choice rather than a limitation. When you type a question, the app normalizes it — trimming extra spaces and ignoring capitalization — and runs it through a hash function, a mathematical recipe that converts any text into a fixed-size number. That number selects one of 20 answers in your chosen deck. The result: asking the exact same question always produces the exact same answer. "Will I get the promotion?" will never flip-flop between yes and no depending on your mood or the time of day.</p>
+    <p class="mb-4">Why does determinism matter? Two reasons. First, consistency builds trust in the ritual. An oracle that contradicts itself every five minutes feels arbitrary; one that stands by its answer feels like it means something — even though you know it is just math. Second, determinism makes sharing meaningful. FateOrb encodes your question into the page's link, so when you send that link to a friend, they see the same question and receive the same answer. It turns a solitary moment of wondering into a shared experience: "The orb told me yes — what do you think?"</p>
+    <p class="mb-4">Importantly, everything happens inside your browser. There are no servers, no accounts, and no data collection. Your questions are never transmitted anywhere, which means FateOrb works even without an internet connection once the page has loaded. In an era when most "free" online tools quietly harvest your inputs, an oracle that literally cannot spy on you is a small but meaningful privacy win. Your doubts, hopes, and 2 a.m. questions stay on your device.</p>
+
+    <h3 class="text-xl font-bold mt-8 mb-3 text-cyan-200">Three decks for three moods</h3>
+    <p class="mb-4">Not every question wants the same kind of answer, so FateOrb offers three themed decks of 20 answers each. The Classic deck speaks in the timeless voice of the oracle tradition — measured, a little mysterious, the kind of guidance that could have come from a temple priestess. The Sassy deck is for when you need to laugh at yourself a little; its teasing answers are perfect for low-stakes questions among friends ("Should I order a second dessert?" deserves a sassy answer). The Brutally Honest deck drops the mysticism entirely and tells you what a blunt friend would say — often the most useful deck of all, because it names the thing you already suspected.</p>
+    <p class="mb-4">Each answer in every deck carries a clear YES, MAYBE, or NO label, so there is never any doubt about what the orb means. The decks are a reminder that the frame around an answer changes how we hear it. The same underlying "yes" lands very differently as "The stars align in your favor" versus "Obviously yes, why are you even asking?" Choose the deck that matches the gravity of your question — or deliberately mismatch them for fun.</p>
+
+    <h3 class="text-xl font-bold mt-8 mb-3 text-cyan-200">When an oracle helps — and when it doesn't</h3>
+    <p class="mb-4">A yes/no oracle shines in specific situations. It is excellent for breaking ties between genuinely equal options (pick a restaurant, choose a movie, decide which task to do first). It is useful as a creativity prompt — writers and game masters have used random oracles for decades to escape predictable plots. It is wonderful as a social icebreaker, a party game, or a way to settle friendly debates without anyone feeling overruled. And as discussed, it is a surprisingly effective tool for revealing your own hidden preferences.</p>
+    <p class="mb-4">But an oracle has firm limits, and honesty about them matters. FateOrb is entertainment and a thinking aid, not a fortune teller. It should never decide medical, legal, or financial matters for you. If you are facing a genuinely consequential choice — a health decision, a major investment, a relationship crossroads — use the orb for fun if you like, but make the real decision with real information, and where appropriate, with qualified professional advice. A good rule of thumb: if the question keeps you up at night, it deserves more than a tap on a glowing orb. If it merely amuses you at lunch, tap away.</p>
+
+    <h3 class="text-xl font-bold mt-8 mb-3 text-cyan-200">Fun ways to use your online oracle</h3>
+    <p class="mb-4">Beyond the classic solitary question, try these: run a "debate settler" round with friends where each person asks the orb and the majority of answers wins; use the Brutally Honest deck as a journaling prompt by writing a paragraph about why the answer stings; play "orb roulette" at a party with the Sassy deck and increasingly ridiculous questions; or use the share link to send a question to a friend across the world and compare reactions to the same answer. Teachers have even used yes/no oracles to demonstrate probability and hashing in classrooms — each student asks the same question and discovers everyone gets the identical answer, a memorable introduction to deterministic functions.</p>
+    <p class="mb-4">However you use it, remember the oldest lesson of the oracle tradition, from Delphi's temple doorway: "Know thyself." The orb's greatest trick was never predicting the future. It was always showing you, in that held-breath moment before the answer appears, what you already wanted it to say. Ask boldly, laugh often, and may the answers be ever in your favor.</p>
+  </article>
+  <!-- SEO ARTICLE END -->
+
+  <!-- ============ FAQs ============ -->
+  <section class="mx-auto max-w-3xl px-4 sm:px-6 pb-12">
+    <h2 class="text-2xl font-extrabold mb-6 text-white text-center">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      <div class="faq-item glass rounded-2xl">
+        <details class="px-5 py-4">
+          <summary class="font-semibold text-white list-none flex justify-between items-center gap-2">Is FateOrb really free to use?<span class="text-cyan-300">+</span></summary>
+          <p class="mt-2 text-sm text-slate-300">Yes. FateOrb is completely free with unlimited usage. There is no signup, no paywall, no account and no watermark. You can ask as many questions as you like, as often as you like.</p>
+        </details>
+      </div>
+      <div class="faq-item glass rounded-2xl">
+        <details class="px-5 py-4">
+          <summary class="font-semibold text-white list-none flex justify-between items-center gap-2">Will the same question always give the same answer?<span class="text-cyan-300">+</span></summary>
+          <p class="mt-2 text-sm text-slate-300">Yes, by design. FateOrb hashes your question and uses the hash to pick the answer, so asking the exact same question always returns the same answer from the same deck. This is also why shared links show the same answer to everyone who opens them.</p>
+        </details>
+      </div>
+      <div class="faq-item glass rounded-2xl">
+        <details class="px-5 py-4">
+          <summary class="font-semibold text-white list-none flex justify-between items-center gap-2">What are the answer decks?<span class="text-cyan-300">+</span></summary>
+          <p class="mt-2 text-sm text-slate-300">FateOrb has three themed decks of 20 answers each: Classic (timeless oracle-style guidance), Sassy (playful, teasing answers) and Brutally Honest (direct, no-sugar-coating answers). Every deck labels each answer as YES, MAYBE or NO.</p>
+        </details>
+      </div>
+      <div class="faq-item glass rounded-2xl">
+        <details class="px-5 py-4">
+          <summary class="font-semibold text-white list-none flex justify-between items-center gap-2">Does FateOrb work offline?<span class="text-cyan-300">+</span></summary>
+          <p class="mt-2 text-sm text-slate-300">Yes. All answer generation happens entirely inside your browser with no network calls, so once the page has loaded, FateOrb works offline. Nothing you type is ever sent to a server.</p>
+        </details>
+      </div>
+      <div class="faq-item glass rounded-2xl">
+        <details class="px-5 py-4">
+          <summary class="font-semibold text-white list-none flex justify-between items-center gap-2">How does shake-to-ask work on my phone?<span class="text-cyan-300">+</span></summary>
+          <p class="mt-2 text-sm text-slate-300">On phones with motion sensors, FateOrb can detect a firm shake as a way to ask your question, just like shaking a fortune-telling toy. On iPhone you may need to tap "Enable shake" once to grant motion permission. Where motion sensors are unavailable, tapping the orb works exactly the same.</p>
+        </details>
+      </div>
+      <div class="faq-item glass rounded-2xl">
+        <details class="px-5 py-4">
+          <summary class="font-semibold text-white list-none flex justify-between items-center gap-2">Is FateOrb a fortune teller? Should I make real decisions with it?<span class="text-cyan-300">+</span></summary>
+          <p class="mt-2 text-sm text-slate-300">FateOrb is an entertainment and decision-spark tool, not a real fortune teller. Its answers are selected by a hash of your question. It is great for breaking a tie, sparking a new perspective or having fun, but important life decisions should be made with real information and advice from qualified people.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-white/10 py-6 text-center text-xs text-slate-500">
+  <p><span class="font-bold text-slate-300">FateOrb</span> &middot; a free online yes/no oracle &middot; for entertainment purposes</p>
+  <p class="mt-1"><a href="#top" class="hover:text-cyan-300">Home</a> &middot; <a href="https://fixoraa.tech" class="hover:text-cyan-300">More Tools</a></p>
+<p class="fx-credit" style="text-align:center;font-size:12.5px;opacity:.62;margin:10px auto 2px;letter-spacing:.01em">Made by <a href="https://fixoraa.tech" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px">Fixoraa</a></p>
+</footer>
+
+<script>
+/* __PURE_START__ */
+// FateOrb pure logic — no DOM. Extracted by Node tests; also used by the UI below.
+function normQuestion(q){ return String(q == null ? '' : q).trim().replace(/\s+/g,' ').toLowerCase(); }
+function hash32(str){
+  var h = 0x811c9dc5;
+  for (var i = 0; i < str.length; i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+  return h >>> 0;
+}
+var DECK_KEYS = ['classic','sassy','honest'];
+var DECKS = {
+  classic: [
+    { t:'Yes, the signs are clear', k:'yes' },
+    { t:'Without a doubt, yes', k:'yes' },
+    { t:'It is certain — go for it', k:'yes' },
+    { t:'Absolutely, this is your moment', k:'yes' },
+    { t:'Yes, the future looks bright', k:'yes' },
+    { t:'Most definitely, yes', k:'yes' },
+    { t:'The stars align in your favor', k:'yes' },
+    { t:'Yes — trust the journey', k:'yes' },
+    { t:'Not yet — wait and ask again', k:'maybe' },
+    { t:'Hazy… try again later', k:'maybe' },
+    { t:'The signs are unclear right now', k:'maybe' },
+    { t:'Maybe — the future is still forming', k:'maybe' },
+    { t:'No, this path is not for you', k:'no' },
+    { t:'The answer is a firm no', k:'no' },
+    { t:'Do not count on it', k:'no' },
+    { t:'The future says otherwise', k:'no' },
+    { t:'No — walk away from this one', k:'no' },
+    { t:'Unlikely. Consider another way', k:'no' },
+    { t:'No, the signs point elsewhere', k:'no' },
+    { t:'Definitely not — not this time', k:'no' }
+  ],
+  sassy: [
+    { t:'Obviously yes, why are you even asking?', k:'yes' },
+    { t:'Yes, duh. Next question', k:'yes' },
+    { t:'Yes — finally a good idea from you', k:'yes' },
+    { t:'Yes, but do not tell anyone I agreed', k:'yes' },
+    { t:'Yes, the universe is tired of your doubts', k:'yes' },
+    { t:'Yes, yes, a thousand times yes', k:'yes' },
+    { t:'Sure, yes. Can I go back to my nap now?', k:'yes' },
+    { t:'Yes. Even your cat knew that', k:'yes' },
+    { t:'Maybe — flip a coin, it is faster', k:'maybe' },
+    { t:'Ask me later, I am napping', k:'maybe' },
+    { t:'Hmm… maybe. Or maybe not. Who knows?', k:'maybe' },
+    { t:'Reply hazy, like your plan', k:'maybe' },
+    { t:'No. And it is not even close', k:'no' },
+    { t:'Nope. Hard pass', k:'no' },
+    { t:'Absolutely not. Next', k:'no' },
+    { t:'No, and please stop asking questions like that', k:'no' },
+    { t:'The crystal ball just face-palmed. No', k:'no' },
+    { t:'No — this is a terrible idea', k:'no' },
+    { t:'No. Delete that thought', k:'no' },
+    { t:'Nope, nope, and also no', k:'no' }
+  ],
+  honest: [
+    { t:'Yes. Stop overthinking and do it', k:'yes' },
+    { t:'Yes — the data agrees with your gut', k:'yes' },
+    { t:'Yes. You will regret not trying more than failing', k:'yes' },
+    { t:'Yes, and it will be worth the effort', k:'yes' },
+    { t:'Yes. Fortune favors the ones who act', k:'yes' },
+    { t:'Yes — even your doubts agree', k:'yes' },
+    { t:'Yes. The odds are genuinely in your favor', k:'yes' },
+    { t:'Yes. Do the work and it will pay off', k:'yes' },
+    { t:'Maybe. It depends entirely on your effort', k:'maybe' },
+    { t:'Unclear — you need more information first', k:'maybe' },
+    { t:'Possibly, but do not bet everything on it', k:'maybe' },
+    { t:'Maybe. Ask again after you have done the work', k:'maybe' },
+    { t:'No. You already know the answer', k:'no' },
+    { t:'No — and you knew that before asking', k:'no' },
+    { t:'No. This is sunk-cost talking', k:'no' },
+    { t:'No. Move on; it is costing you time', k:'no' },
+    { t:'No. Wrong timing, wrong direction', k:'no' },
+    { t:'No — the honest answer is rarely the comfortable one', k:'no' },
+    { t:'No. Let this one go', k:'no' },
+    { t:'No, and deep down you agree', k:'no' }
+  ]
+};
+function answerIndex(question){ return hash32(normQuestion(question)) % 20; }
+function answerFor(question, deckKey){
+  var deck = DECKS[deckKey] || DECKS.classic;
+  var idx = answerIndex(question);
+  var a = deck[idx];
+  return { index: idx, text: a.t, type: a.k };
+}
+function encodeShare(question, deckKey){
+  var q = String(question == null ? '' : question).trim();
+  var s = '#q=' + encodeURIComponent(q);
+  if (deckKey && deckKey !== 'classic' && DECKS[deckKey]) s += '&d=' + deckKey;
+  return s;
+}
+function decodeShare(hash){
+  var out = { question: '', deck: 'classic' };
+  var s = String(hash == null ? '' : hash).replace(/^#/, '');
+  if (!s) return out;
+  var parts = s.split('&');
+  for (var i = 0; i < parts.length; i++){
+    var kv = parts[i].split('=');
+    if (kv[0] === 'q' && kv[1]){ try { out.question = decodeURIComponent(kv[1]); } catch (e) { out.question = ''; } }
+    else if (kv[0] === 'd' && DECKS[kv[1]]){ out.deck = kv[1]; }
+  }
+  return out;
+}
+function validateQuestion(q){
+  var t = String(q == null ? '' : q).trim();
+  if (!t) return { ok: false, message: 'Type your question above first, then tap the orb.' };
+  if (t.length < 3) return { ok: false, message: 'Give me a real question — at least a few characters.' };
+  return { ok: true, message: '' };
+}
+/* __PURE_END__ */
+</script>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var questionEl = $('question'), orb = $('orb'), glyph = $('orbGlyph'),
+      answerCard = $('answerCard'), answerBadge = $('answerBadge'), answerEcho = $('answerEcho'),
+      answerText = $('answerText'), answerMeta = $('answerMeta'), hint = $('hint'),
+      shareNote = $('shareNote'), shakeBtn = $('shakeBtn'), shakeNote = $('shakeNote');
+  var currentDeck = 'classic';
+  var asking = false;
+
+  // Starfield
+  try {
+    var sf = $('starfield');
+    for (var i = 0; i < 110; i++){
+      var s = document.createElement('span');
+      s.className = 'star';
+      var sz = (Math.random() * 2.2 + 0.8).toFixed(1);
+      s.style.cssText = 'left:' + (Math.random()*100).toFixed(2) + '%;top:' + (Math.random()*100).toFixed(2) +
+        '%;width:' + sz + 'px;height:' + sz + 'px;--tw:' + (Math.random()*4+2).toFixed(1) + 's;animation-delay:' + (Math.random()*4).toFixed(1) + 's';
+      sf.appendChild(s);
+    }
+  } catch (e) {}
+
+  // Deck tabs
+  var tabs = document.querySelectorAll('.deck-tab');
+  function setDeck(key){
+    if (!DECKS[key]) key = 'classic';
+    currentDeck = key;
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.deck === key ? 'true' : 'false'); });
+    try { localStorage.setItem('fateorb-deck', key); } catch (e) {}
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ setDeck(t.dataset.deck); }); });
+  try { setDeck(localStorage.getItem('fateorb-deck') || 'classic'); } catch (e) { setDeck('classic'); }
+
+  // History
+  var history = [];
+  try { history = JSON.parse(localStorage.getItem('fateorb-history') || '[]'); } catch (e) { history = []; }
+  function saveHistory(){
+    try { localStorage.setItem('fateorb-history', JSON.stringify(history.slice(0, 10))); } catch (e) {}
+    renderHistory();
+  }
+  function renderHistory(){
+    var wrap = $('historyWrap'), list = $('historyList');
+    if (!history.length){ wrap.classList.add('hidden'); return; }
+    wrap.classList.remove('hidden');
+    list.innerHTML = '';
+    history.forEach(function(h){
+      var li = document.createElement('li');
+      li.className = 'glass rounded-xl px-4 py-2.5 text-sm flex items-center justify-between gap-2 cursor-pointer hover:border-cyan-300/50 transition';
+      var q = document.createElement('span');
+      q.className = 'truncate text-slate-200';
+      q.textContent = h.q;
+      var b = document.createElement('span');
+      b.className = 'shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-widest badge-' + h.type;
+      b.textContent = h.type;
+      li.appendChild(q); li.appendChild(b);
+      li.addEventListener('click', function(){
+        questionEl.value = h.q;
+        setDeck(h.deck || 'classic');
+        ask();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      list.appendChild(li);
+    });
+  }
+  $('clearHistory').addEventListener('click', function(){ history = []; saveHistory(); });
+  renderHistory();
+
+  function setBadge(type){
+    answerBadge.className = 'rounded-full px-4 py-1.5 text-xs font-extrabold tracking-widest uppercase badge-' + type;
+    answerBadge.textContent = type;
+  }
+
+  function ask(){
+    if (asking) return;
+    var v = validateQuestion(questionEl.value);
+    if (!v.ok){
+      hint.textContent = v.message;
+      questionEl.focus();
+      return;
+    }
+    hint.textContent = '';
+    asking = true;
+    orb.classList.add('asking');
+    glyph.textContent = '…';
+    answerCard.classList.remove('answer-shown');
+    answerCard.classList.add('answer-hidden');
+    answerText.innerHTML = '<span class="shimmer text-xl sm:text-2xl font-bold">Consulting the stars…</span>';
+    setTimeout(function(){
+      var res = answerFor(questionEl.value, currentDeck);
+      orb.classList.remove('asking');
+      glyph.textContent = res.type === 'yes' ? '✦' : (res.type === 'no' ? '✧' : '❖');
+      setBadge(res.type);
+      answerEcho.textContent = '“' + questionEl.value.trim() + '”';
+      answerText.textContent = res.text;
+      answerMeta.textContent = 'Deck: ' + currentDeck.charAt(0).toUpperCase() + currentDeck.slice(1) +
+        ' · Same question always gives this answer · ' + new Date().toLocaleDateString();
+      answerCard.classList.remove('answer-hidden');
+      answerCard.classList.add('answer-shown');
+      history.unshift({ q: questionEl.value.trim(), type: res.type, deck: currentDeck });
+      history = history.slice(0, 10);
+      saveHistory();
+      asking = false;
+    }, 1700);
+  }
+
+  orb.addEventListener('click', ask);
+  orb.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); ask(); } });
+  questionEl.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ ask(); } });
+  questionEl.addEventListener('input', function(){ hint.textContent = ''; });
+
+  // Copy answer
+  $('copyBtn').addEventListener('click', function(){
+    var txt = 'Q: ' + questionEl.value.trim() + '\nFateOrb (' + answerBadge.textContent + '): ' + answerText.textContent;
+    function done(ok){ shareNote.textContent = ok ? 'Answer copied to clipboard.' : 'Copy failed — select the text manually.'; }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ done(true); }, function(){ done(false); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { done(document.execCommand('copy')); } catch (e) { done(false); }
+      document.body.removeChild(ta);
+    }
+  });
+
+  // Share link
+  $('shareBtn').addEventListener('click', function(){
+    var h = encodeShare(questionEl.value, currentDeck);
+    try { location.hash = h; } catch (e) {}
+    var url = location.href.split('#')[0] + h;
+    function done(ok){ shareNote.textContent = ok ? 'Share link copied — anyone opening it gets the same answer.' : 'Copy this link: ' + url; }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){ done(true); }, function(){ done(false); });
+    } else { done(false); }
+  });
+
+  // Shake via DeviceMotion (graceful fallback)
+  var lastShake = 0;
+  function handleMotion(e){
+    var a = e.accelerationIncludingGravity;
+    if (!a || a.x == null) return;
+    var mag = Math.sqrt(a.x*a.x + a.y*a.y + a.z*a.z);
+    if (mag > 26 && Date.now() - lastShake > 3000){
+      lastShake = Date.now();
+      if (validateQuestion(questionEl.value).ok) ask();
+    }
+  }
+  function enableMotion(){
+    function granted(){ window.addEventListener('devicemotion', handleMotion); shakeBtn.classList.add('hidden'); shakeNote.textContent = 'Shake-to-ask is on — give your phone a firm shake.'; }
+    if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function'){
+      DeviceMotionEvent.requestPermission().then(function(state){
+        if (state === 'granted') granted();
+        else shakeNote.textContent = 'Motion permission denied — tap the orb instead.';
+      }).catch(function(){ shakeNote.textContent = 'Motion unavailable — tap the orb instead.'; });
+    } else if ('DeviceMotionEvent' in window || 'ondevicemotion' in window){
+      granted();
+    } else {
+      shakeNote.textContent = 'Shake not supported on this device — tap the orb instead.';
+    }
+  }
+  if (typeof DeviceMotionEvent !== 'undefined' || 'ondevicemotion' in window){
+    shakeBtn.classList.remove('hidden');
+    shakeBtn.addEventListener('click', enableMotion);
+  } else {
+    shakeNote.textContent = 'Tip: on phones with motion sensors you can shake to ask.';
+  }
+
+  // Shared link: decode hash on load and auto-ask
+  (function(){
+    var d = decodeShare(location.hash);
+    if (d.question){
+      setDeck(d.deck);
+      questionEl.value = d.question;
+      setTimeout(function(){ ask(); }, 900);
+    }
+  })();
+})();
+</script>
+</body>
+</html>
