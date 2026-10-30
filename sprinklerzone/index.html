@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprinkler Zone Calculator — Heads per Zone & Layout | SprinklerZone</title>
+<meta name="description" content="Sprinkler heads per zone with GPM budget and spacing layout.">
+<link rel="canonical" href="https://fun.fixoraa.tech/sprinklerzone/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Sprinkler Zone Calculator — Heads per Zone & Layout | SprinklerZone">
+<meta property="og:description" content="Sprinkler heads per zone with GPM budget and spacing layout.">
+<meta property="og:url" content="https://fun.fixoraa.tech/sprinklerzone/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SprinklerZone",
+      "url": "https://fun.fixoraa.tech/sprinklerzone/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Sprinkler heads per zone with GPM budget and spacing layout.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many sprinkler heads can I put on one zone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As many as fit under 90% of your supply GPM. Divide your usable GPM (supply \u00d7 0.9) by one head's GPM and round down. With a 10 GPM supply and 2.6 GPM spray heads, that is 3 heads per zone. Low-flow MP rotators at 0.9 GPM stretch the same supply to 10 heads per zone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I measure my water supply in GPM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Do the bucket test: time how long a fully-open outdoor spigot takes to fill a 5-gallon bucket, then divide 300 by the seconds. Thirty seconds means 10 GPM. Test at the watering time of day, and design zones to 90% of that number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does head-to-head spacing mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Space heads so each head's spray reaches the next head \u2014 spacing equals the head's throw radius. This overlaps the wet outer edge of one head's pattern with the dry inner area of its neighbor, which is what makes coverage even instead of ring-shaped."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I mix spray heads and rotors in the same zone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Sprays apply roughly 1.5 inches per hour while rotors apply about 0.4\u20130.5. In a mixed zone one type always gets the wrong amount of water. Zone by head type so every head in a zone applies water at the same rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Spray heads or rotors \u2014 which should I choose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sprays for lawns under ~30 feet across and tight corners; MP rotators for medium lawns where efficiency matters; gear rotors for large open areas. Match the head's radius to the space \u2014 a 30-foot rotor on a 15-foot lawn just waters the fence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What water pressure do sprinklers need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most heads want 30\u201350 PSI at the head. Above ~60 PSI sprays mist and waste water to wind; below ~30 PSI rotors stall. Check static pressure with a gauge on the spigot, and add a regulator if you are high."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#E1E8F9; --surface:#FFFFFF; --tint:#D2DCF4;
+  --accent:#153484; --accent-deep:#6E321B; --btn-ink:#FFFFFF;
+  --ink:#3A2A20; --muted:#6E5747; --line:#EADBCF;
+  --display:'Barlow',system-ui,sans-serif; --body:'Barlow',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:var(--surface)}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:var(--btn-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px;color:var(--ink)}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:var(--ink)}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--ink)}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px;color:var(--ink)}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:var(--ink);font-size:15px}
+.fx-footer{background:var(--footbg,#26211c);color:#f0e6da;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#cbb9a8;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#ffd9a8;font-weight:700}
+.no-print{}
+@media(max-width:760px){.fx-nav{margin-left:0}}
+
+
+.sz-hero{padding:46px 0 6px;position:relative}
+.sz-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:6px;margin-bottom:16px}
+.sz-hero h1{font-size:clamp(34px,5vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:12px}
+.sz-hero h1 em{font-style:normal;color:var(--accent)}
+.sz-hero p{font-size:18px;color:var(--muted);max-width:620px}
+.sz-plot{margin:28px 0 10px;background:var(--surface);border:2px solid var(--line);border-radius:6px 22px 6px 22px;box-shadow:8px 8px 0 var(--tint);overflow:hidden}
+.sz-journal-lines{background-image:repeating-linear-gradient(180deg,transparent,transparent 31px,var(--line) 31px,var(--line) 32px)}
+.sz-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:0}
+.sz-notes{padding:30px;border-right:2px dashed var(--line)}
+.sz-notes h2,.sz-plan h2{font-size:19px;font-weight:800;margin-bottom:4px;letter-spacing:-.01em}
+.sz-sub{font-size:14px;color:var(--muted);margin-bottom:20px}
+.sz-field{margin-bottom:22px}
+.sz-field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.sz-field .hint{font-weight:400;color:var(--muted);font-size:13px}
+.sz-dim{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sz-dim input,.sz-field select{font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%}
+.sz-dim input:focus,.sz-field select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.sz-heads{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sz-head{border:2px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;background:#fff;transition:all .12s;text-align:left;font:inherit;color:var(--ink)}
+.sz-head b{display:block;font-size:15px}
+.sz-head span{font-size:13px;color:var(--muted)}
+.sz-head.on{border-color:var(--accent);background:var(--tint);box-shadow:0 3px 0 var(--accent)}
+.sz-range{display:flex;align-items:center;gap:12px}
+.sz-range input[type=range]{flex:1;accent-color:var(--accent)}
+.sz-range output{font-weight:800;font-size:18px;min-width:74px;text-align:right;color:var(--accent-deep)}
+.sz-plan{padding:30px;background:linear-gradient(180deg,#FFFDFB,var(--bg))}
+.sz-lawn{width:100%;height:auto;border:2px solid var(--line);border-radius:14px;background:#FDFAF6;display:block;margin-bottom:18px}
+.sz-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.sz-stat{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.sz-stat .n{font-size:26px;font-weight:800;color:var(--accent);line-height:1.1}
+.sz-stat .l{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sz-meter{height:14px;border-radius:999px;background:var(--tint);overflow:hidden;margin:8px 0 4px;border:1px solid var(--line)}
+.sz-meter i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));border-radius:999px;transition:width .3s}
+.sz-tip{background:var(--tint);border-left:5px solid var(--accent);border-radius:0 12px 12px 0;padding:12px 16px;font-size:14px;color:var(--accent-deep);margin-top:14px}
+@media(max-width:860px){.sz-grid{grid-template-columns:1fr}.sz-notes{border-right:0;border-bottom:2px dashed var(--line)}.sz-stats{grid-template-columns:repeat(2,1fr)}}
+
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/sprinklerzone/" aria-label="SprinklerZone home">
+      <span class="fx-tile" aria-hidden="true">💧</span>
+      <span class="fx-name">SprinklerZone</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="sz-hero">
+    <span class="sz-eyebrow">Field journal · Irrigation</span>
+    <h1>SprinklerZone</h1>
+    <p>Design sprinkler zones that actually water evenly. Pick your heads, measure your supply, and get head counts, GPM budgets, and a head-to-head layout plan.</p>
+  </section>
+
+  <section class="sz-plot" aria-label="SprinklerZone tool">
+
+  <div class="sz-grid">
+    <div class="sz-notes sz-journal-lines">
+      <h2>📝 Field notes</h2>
+      <p class="sz-sub">Measure the lawn, pick a head, test your supply.</p>
+      <div class="sz-field">
+        <label>Lawn size <span class="hint">— feet</span></label>
+        <div class="sz-dim">
+          <input type="number" id="sz-len" value="40" min="4" max="300" aria-label="Lawn length in feet">
+          <input type="number" id="sz-wid" value="30" min="4" max="300" aria-label="Lawn width in feet">
+        </div>
+      </div>
+      <div class="sz-field">
+        <label>Sprinkler head <span class="hint">— radius is throw distance</span></label>
+        <div class="sz-heads" id="sz-heads" role="group" aria-label="Head type">
+          <button type="button" class="sz-head on" data-r="12" data-g="1.8"><b>Pop-up spray</b><span>12 ft radius · 1.8 GPM</span></button>
+          <button type="button" class="sz-head" data-r="15" data-g="2.6"><b>Pop-up spray</b><span>15 ft radius · 2.6 GPM</span></button>
+          <button type="button" class="sz-head" data-r="22" data-g="0.9"><b>MP rotator</b><span>22 ft radius · 0.9 GPM</span></button>
+          <button type="button" class="sz-head" data-r="30" data-g="2.8"><b>Gear rotor</b><span>30 ft radius · 2.8 GPM</span></button>
+        </div>
+      </div>
+      <div class="sz-field">
+        <label for="sz-supply">Water supply <span class="hint">— GPM from a bucket test</span></label>
+        <div class="sz-range">
+          <input type="range" id="sz-supply" min="4" max="25" step="0.5" value="10">
+          <output id="sz-supply-out" for="sz-supply">10 GPM</output>
+        </div>
+      </div>
+    </div>
+    <div class="sz-plan">
+      <h2>🗺️ Plot plan</h2>
+      <p class="sz-sub">Head-to-head grid for your lawn, colored by zone.</p>
+      <svg class="sz-lawn" id="sz-svg" viewBox="0 0 400 300" role="img" aria-label="Sprinkler head layout diagram"></svg>
+      <div class="sz-stats">
+        <div class="sz-stat"><div class="n" id="sz-heads-n">0</div><div class="l">Heads</div></div>
+        <div class="sz-stat"><div class="n" id="sz-zones">0</div><div class="l">Zones</div></div>
+        <div class="sz-stat"><div class="n" id="sz-gpm">0</div><div class="l">Total GPM</div></div>
+        <div class="sz-stat"><div class="n" id="sz-perzone">0</div><div class="l">Heads / zone</div></div>
+      </div>
+      <div class="sz-field" style="margin-bottom:6px">
+        <label style="font-size:13px">Zone GPM budget <span class="hint" id="sz-budget-lbl"></span></label>
+        <div class="sz-meter"><i id="sz-meter" style="width:0%"></i></div>
+      </div>
+      <div class="sz-tip" id="sz-tip" aria-live="polite"></div>
+    </div>
+  </div>
+
+  </section>
+
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec" aria-label="Guide">
+
+<h2>Why Sprinkler Zones Exist</h2>
+<p>Every sprinkler system is really two systems: the pipes in the ground and the <strong>zones</strong> the controller switches on one at a time. A zone exists for one reason — your water supply can only push so many gallons per minute. Exceed that budget and pressure collapses: heads dribble instead of spraying, coverage turns patchy, and the far corner of the lawn goes brown while the near corner floods. Zoning is simply the art of dividing your heads into groups that your supply can actually feed.</p>
+<p>The golden rule is the <strong>90% rule</strong>: never design a zone to use more than 90% of your measured supply. That 10% margin absorbs pressure fluctuations, a neighbor running their system, and the slow mineral buildup that narrows old pipes. This calculator applies the 90% rule automatically — the "usable GPM per zone" figure is your supply times 0.9, and heads-per-zone is the largest whole number of heads that fits under it.</p>
+<h2>Head-to-Head Coverage, Explained</h2>
+<p>Sprinkler heads do not water evenly across their throw. A spray head throws most of its water near the <em>outer edge</em> of its arc and very little right next to the head. The fix, proven over decades of irrigation science, is <strong>head-to-head spacing</strong>: place heads so each one's spray reaches the next head. The dry spot beside head A gets watered by head B's outer edge, and vice versa. The result is the famously even "matched" coverage.</p>
+<p>In practice this means spacing equals the head's radius: 15-foot sprays go 15 feet apart, 30-foot rotors go 30 feet apart. Stretch spacing to 120% of radius and you will see dry diamonds between heads within a month. The layout diagram above draws exactly this grid — count the dots, and that is your head count for a rectangular lawn. L-shaped or curved lawns need the same spacing applied along their edges, usually with a few extra heads at inside corners.</p>
+<h2>Spray Heads vs Rotors: Picking Your Team</h2>
+<p><strong>Pop-up sprays</strong> (12–15 ft radius) are the workhorses of small lawns. They apply water fast — roughly 1.5 inches per hour — which is efficient but means short runtimes before runoff starts. Use them for lawns under about 30 feet across, parkway strips, and odd corners. Their GPM appetite is modest per head (around 1.8–2.6 GPM for full circles), but you need a lot of them, so zone counts climb quickly.</p>
+<p><strong>MP rotators</strong> (up to ~22–30 ft) are the efficiency sweet spot for medium lawns: multiple rotating streams, very low GPM per head (under 1 GPM), and application rates around 0.4 inches per hour that soak in instead of running off. One zone of MP rotators can cover what takes two zones of sprays. <strong>Gear-drive rotors</strong> (25–35+ ft) suit large open lawns with the lowest head count, but each head drinks 2–3+ GPM, so zones stay small in head count even though they cover big areas.</p>
+<p>The iron rule: <strong>never mix head types in one zone</strong>. A spray applying 1.5 in/hr next to a rotor applying 0.5 in/hr means one of them is always wrong — either the spray area drowns or the rotor area thirsts. Zone by head type, always.</p>
+<h2>Measuring Your Real Water Supply</h2>
+<p>Catalog GPM numbers mean nothing; your spigot's actual flow is what matters. Do the <strong>bucket test</strong>: get a 5-gallon bucket, open the outdoor spigot fully, and time how long it takes to fill. GPM = 300 divided by seconds (a 5-gallon bucket filled in 30 seconds = 10 GPM). Test at the time of day you will water, and test the spigot closest to where the system will tie in.</p>
+<p>Also note your <strong>static pressure</strong> with a $10 gauge on the spigot. Most residential heads want 30–50 PSI at the head. Above 60 PSI, sprays mist — water atomizes and blows away — so a pressure regulator earns its keep. Below 30 PSI, rotors stall and sprays collapse. If pressure is marginal, smaller zones (fewer heads) are the fix, not wishful thinking.</p>
+<h2>Reading Your Results</h2>
+<p>The calculator gives you four numbers. <strong>Heads</strong> is the head-to-head grid count for your rectangle — your shopping list. <strong>Zones</strong> is how many valve groups those heads split into. <strong>Total GPM</strong> is what all heads would draw at once (which is why you zone). <strong>Heads per zone</strong> is the max per zone under the 90% rule — the number you hand to whoever wires the valves.</p>
+<p>The colored dots in the plot plan show one possible grouping: heads of the same color share a zone. Wire accordingly — all heads in a zone connect to one valve, and the controller runs zones sequentially. A 4-zone system with 10-minute runtimes waters for 40 minutes total, which is exactly why early-morning start times exist.</p>
+<h2>Layout Tips the Pros Use</h2>
+<p>Start heads in the <strong>corners</strong> — corners are the hardest spots to cover and they anchor the grid. Work along edges with half-circle (180°) patterns, and fill the interior with full circles. Along straight edges, the "triangle" offset pattern covers slightly better than a square grid, but square is fine for home lawns.</p>
+<p>Keep heads 4–6 inches from hardscape so the spray clears the concrete, and never aim across a sidewalk onto the neighbor's lawn — that is how you water the street. For slopes, run shorter cycles twice ("cycle and soak") rather than one long soak; clay soil may need three short cycles to absorb what sandy soil takes in one.</p>
+<h2>Common Zoning Mistakes</h2>
+<p>Mistake one is <strong>designing to the full supply</strong> instead of 90% — the system works on paper and wheezes in July. Mistake two is <strong>mixing sprays and rotors</strong> in a zone, covered above. Mistake three is <strong>one giant zone</strong> on a big lawn: even if the GPM math works, pressure loss down a long pipe run starves the far heads — keep pipe runs short and zones compact.</p>
+<p>Mistake four is forgetting <strong>microclimates</strong>: the strip along the south-facing driveway needs more water than the shady north side. Zone sunny and shady areas separately so runtimes can differ. Mistake five is no <strong>winterization</strong> plan in freeze climates — a blowout port and a compressor visit each fall beats replacing split heads every spring.</p>
+<h2>What About Drip Zones?</h2>
+<p>Beds, shrubs, and gardens should not be on spray zones at all — put them on <strong>drip</strong>. Drip runs at low pressure (usually regulated to 25–30 PSI), sips a fraction of a GPM, and waters roots instead of leaves, which cuts disease and evaporation. Because drip uses so little flow, an entire bed system often fits on a single zone that would barely register in your GPM budget. If your plan includes beds, zone them separately from day one; retrofitting later means re-trenching.</p>
+<h2>Putting It All Together</h2>
+<p>The workflow: measure the lawn, pick the head that fits its size (sprays under ~30 ft, rotators above), bucket-test your supply, and let the math split heads into zones. Buy one spare head and two spare nozzles — mowers find heads the way lightning finds tall trees. Then water deep and infrequent: an inch a week in two sessions trains roots downward, while daily sprinkles train them to live at the surface and panic in August. Your lawn, your water bill, and your Saturday mornings will all notice the difference.</p>
+
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many sprinkler heads can I put on one zone?</summary><p>As many as fit under 90% of your supply GPM. Divide your usable GPM (supply × 0.9) by one head's GPM and round down. With a 10 GPM supply and 2.6 GPM spray heads, that is 3 heads per zone. Low-flow MP rotators at 0.9 GPM stretch the same supply to 10 heads per zone.</p></details>
+    <details><summary>How do I measure my water supply in GPM?</summary><p>Do the bucket test: time how long a fully-open outdoor spigot takes to fill a 5-gallon bucket, then divide 300 by the seconds. Thirty seconds means 10 GPM. Test at the watering time of day, and design zones to 90% of that number.</p></details>
+    <details><summary>What does head-to-head spacing mean?</summary><p>Space heads so each head's spray reaches the next head — spacing equals the head's throw radius. This overlaps the wet outer edge of one head's pattern with the dry inner area of its neighbor, which is what makes coverage even instead of ring-shaped.</p></details>
+    <details><summary>Can I mix spray heads and rotors in the same zone?</summary><p>No. Sprays apply roughly 1.5 inches per hour while rotors apply about 0.4–0.5. In a mixed zone one type always gets the wrong amount of water. Zone by head type so every head in a zone applies water at the same rate.</p></details>
+    <details><summary>Spray heads or rotors — which should I choose?</summary><p>Sprays for lawns under ~30 feet across and tight corners; MP rotators for medium lawns where efficiency matters; gear rotors for large open areas. Match the head's radius to the space — a 30-foot rotor on a 15-foot lawn just waters the fence.</p></details>
+    <details><summary>What water pressure do sprinklers need?</summary><p>Most heads want 30–50 PSI at the head. Above ~60 PSI sprays mist and waste water to wind; below ~30 PSI rotors stall. Check static pressure with a gauge on the spigot, and add a regulator if you are high.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SprinklerZone</div>
+    <p>SprinklerZone plans your irrigation zones — heads per zone, GPM budget from your real water supply, and head-to-head spacing layouts for even coverage.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+
+function szPlan(len, wid, radius, gpmHead, supply){
+  var spacing = radius;
+  var nx = Math.ceil(len / spacing) + 1;
+  var ny = Math.ceil(wid / spacing) + 1;
+  var heads = nx * ny;
+  var totalGpm = Math.round(heads * gpmHead * 100) / 100;
+  var capacity = Math.round(supply * 0.9 * 100) / 100;
+  var zones = Math.max(1, Math.ceil(totalGpm / capacity));
+  var headsPerZone = Math.max(1, Math.floor(capacity / gpmHead));
+  return {nx:nx, ny:ny, heads:heads, totalGpm:totalGpm, capacity:capacity, zones:zones, headsPerZone:headsPerZone};
+}
+
+
+(function(){
+var radius=12, gpmHead=1.8;
+var $=function(id){return document.getElementById(id);};
+var ZONE_COLORS=['#153484','#B96A3B','#7A9E43','#3E7C8B','#8B6AA8','#B98A3B'];
+function draw(plan){
+  var svg=$('sz-svg'); svg.innerHTML='';
+  var W=400,H=300,pad=26;
+  var iw=W-2*pad, ih=H-2*pad;
+  var s=Math.min(iw/(plan.nx-1||1), ih/(plan.ny-1||1));
+  if(plan.nx===1&&plan.ny===1){s=0;}
+  var ox=(W-s*(plan.nx-1))/2, oy=(H-s*(plan.ny-1))/2;
+  var ns='http://www.w3.org/2000/svg';
+  var lawn=document.createElementNS(ns,'rect');
+  lawn.setAttribute('x',pad-8);lawn.setAttribute('y',pad-8);
+  lawn.setAttribute('width',iw+16);lawn.setAttribute('height',ih+16);
+  lawn.setAttribute('rx',10);lawn.setAttribute('fill','#EAF3DF');lawn.setAttribute('stroke','#C9DDB4');
+  svg.appendChild(lawn);
+  var idx=0;
+  for(var r=0;r<plan.ny;r++)for(var c=0;c<plan.nx;c++){
+    var zone=Math.floor(idx/plan.headsPerZone)%ZONE_COLORS.length;
+    var dot=document.createElementNS(ns,'circle');
+    dot.setAttribute('cx',ox+s*c);dot.setAttribute('cy',oy+s*r);
+    dot.setAttribute('r',Math.max(4,Math.min(9,s*0.14)));
+    dot.setAttribute('fill',ZONE_COLORS[zone]);dot.setAttribute('stroke','#fff');dot.setAttribute('stroke-width','1.5');
+    svg.appendChild(dot);idx++;
+  }
+}
+function calc(){
+  var len=parseFloat($('sz-len').value)||0, wid=parseFloat($('sz-wid').value)||0;
+  var supply=parseFloat($('sz-supply').value)||0;
+  $('sz-supply-out').textContent=supply+' GPM';
+  if(len<=0||wid<=0){return;}
+  var p=szPlan(len,wid,radius,gpmHead,supply);
+  $('sz-heads-n').textContent=p.heads;
+  $('sz-zones').textContent=p.zones;
+  $('sz-gpm').textContent=p.totalGpm;
+  $('sz-perzone').textContent=p.headsPerZone;
+  var pct=Math.min(100,Math.round(p.headsPerZone*gpmHead/p.capacity*100));
+  $('sz-meter').style.width=pct+'%';
+  $('sz-budget-lbl').textContent='— '+p.capacity+' GPM usable per zone (90% of supply)';
+  draw(p);
+  var tip;
+  if(p.zones===1){tip='One zone does it — '+p.heads+' heads draw '+p.totalGpm+' GPM against '+p.capacity+' GPM of usable supply. Keep every head in the zone the same type for matched precipitation.';}
+  else{tip=p.zones+' zones needed: split the '+p.heads+' heads into groups of up to '+p.headsPerZone+' ('+(Math.round(p.headsPerZone*gpmHead*10)/10)+' GPM each). Never mix sprays and rotors in one zone — they apply water at very different rates.';}
+  if(radius>=30&&Math.min(len,wid)<radius){tip+=' Note: a '+radius+' ft rotor overshoots this small lawn — a 12 ft spray would fit better.';}
+  $('sz-tip').textContent=tip;
+}
+$('sz-heads').addEventListener('click',function(e){
+  var b=e.target.closest('.sz-head');if(!b)return;
+  radius=parseFloat(b.getAttribute('data-r'));gpmHead=parseFloat(b.getAttribute('data-g'));
+  this.querySelectorAll('.sz-head').forEach(function(x){x.classList.remove('on');});
+  b.classList.add('on');calc();
+});
+['sz-len','sz-wid','sz-supply'].forEach(function(id){
+  $(id).addEventListener('input',calc);$(id).addEventListener('change',calc);
+});
+calc();
+})();
+
+</script>
+</body>
+</html>
