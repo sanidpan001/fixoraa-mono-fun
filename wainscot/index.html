@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wainscot: Wainscoting Panel Calculator - Panels, Stiles &amp; Trim for Any Wall</title>
+<meta name="description" content="Calculate wainscoting panels, stiles and chair rail lengths from wall length and panel width.">
+<link rel="canonical" href="https://fun.fixoraa.tech/wainscot/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Wainscot: Wainscoting Panel Calculator - Panels, Stiles &amp; Trim for Any Wall">
+<meta property="og:description" content="Calculate wainscoting panels, stiles and chair rail lengths from wall length and panel width.">
+<meta property="og:url" content="https://fun.fixoraa.tech/wainscot/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Wainscot",
+      "url": "https://fun.fixoraa.tech/wainscot/",
+      "applicationCategory": "Home / DIY",
+      "operatingSystem": "Web",
+      "description": "Calculate wainscoting panels, stiles and chair rail lengths from wall length and panel width.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many wainscoting panels fit on a 4 metre wall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With 60 cm panels, 7 panels, with 8 stiles. The last panel is trimmed to fit, so plan from the centre outwards for even end panels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How high should wainscoting be?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About one-third of the wall height, typically 80 to 110 cm. Never put the chair rail at exactly half the wall height."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between flat and raised panel wainscoting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Flat panel uses plain rectangular frames and suits modern homes. Raised panel has bevelled panels, looks more formal, and costs more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I install wainscoting in a bathroom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with moisture-resistant boards and a good primer, plus a durable satin or semi-gloss paint finish."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I avoid uneven end panels?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lay out from the centre of the wall, or adjust the panel width slightly so every panel in the run is equal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to add extra for cutting waste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, about 10 percent extra trim, especially with several short wall sections or walls that are not perfectly straight."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F0FDF4; --surface:#FFFFFF; --accent:#166534; --accent-ink:#FFFFFF;
+  --ink:#1A2E1A; --muted:#4D5D4F; --line:#BBF7D0;
+  --display:'Libre Caslon Text',serif; --body:'Source Sans 3',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.wa-rail{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:1rem 1rem .6rem;display:flex;gap:.6rem;flex-wrap:wrap;align-items:flex-end}.wa-rail span{flex:1;min-width:60px;height:90px;background:#DCFCE7;border:2px solid var(--accent);border-bottom:6px solid var(--accent);border-radius:6px;display:block}.wa-rail p{width:100%;color:var(--muted);font-weight:600}.wa-form{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:1.3rem;display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1.2rem}.wa-form label{font-weight:600;display:flex;flex-direction:column;gap:.35rem}.wa-form input,.wa-form select{padding:.7rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;min-height:44px}.wa-check{flex-direction:row!important;align-items:center}.wa-go,.wa-copy{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.8rem 1.2rem;font-weight:700;min-height:44px;cursor:pointer}.wa-go{grid-column:1/-1}.wa-result{margin-top:1.2rem;background:#DCFCE7;border-radius:16px;padding:1.4rem}.wa-result .big{font-size:2.2rem;font-weight:800;font-family:var(--display)}.wa-sub{color:var(--muted);margin:.4rem 0 1.2rem}@media(max-width:640px){.wa-form{grid-template-columns:1fr}.wa-rail span{min-width:44px;height:70px}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="Wainscot home">
+      <span class="fx-logo-tile" aria-hidden="true">🛠</span>
+      <span class="fx-brand">Wainscot</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-panel-rail" aria-label="Wainscot tool">
+<h1>Wainscot: Wainscoting Panel Calculator</h1><p class="wa-sub">Panels, stiles and trim for any wall, planned before you buy a single board.</p><div class="wa-rail" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><p>Chair rail &middot; panels &middot; baseboard</p></div><div class="wa-form"><label>Wall length (m)<input id="len" type="number" min="0" step="0.1" value="4"></label><label>Panel width (m)<input id="pw" type="number" min="0.1" step="0.05" value="0.6"></label><label>Style<select id="style"><option>Flat panel (Shaker)</option><option>Raised panel</option><option>Beadboard</option><option>Picture-frame moulding</option></select></label><label class="wa-check"><input id="waste" type="checkbox" checked> Add 10% cutting waste to trim</label><button class="wa-go" id="go">Calculate panels</button></div><div class="wa-result" id="res"><p>Enter your wall length and panel width.</p></div><button class="wa-copy" id="copy">Copy materials list</button>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What wainscoting is and why it suits so many rooms</h2><p>Wainscoting is the panelled woodwork that covers the lower part of a wall, usually up to chair-rail height, and it is one of the most effective ways to add character to a plain room without a full renovation. It protects walls in hallways and dining rooms from scuffs and chair backs, it hides uneven plaster and old repairs, and it gives a room a finished, architectural feel that paint alone cannot achieve. Traditional wainscoting uses raised panels framed by stiles and rails, while modern versions use simple flat panels, beadboard or picture-frame moulding applied directly to the wall. All of them share the same planning problem: how many panels fit along a wall, how many vertical stiles you need, and how much chair rail and baseboard to buy. This calculator answers those questions from your wall length and your chosen panel width.</p><h2>How the panel calculation works</h2><p>The calculator divides the wall length by the panel width to find how many panels fit, rounding up to a whole panel, because you cannot buy part of a panel and the last panel can be trimmed narrower to fit. The number of vertical stiles is always one more than the number of panels, since each panel needs a stile on both sides and neighbouring panels share the stiles between them. The chair rail and baseboard each run the full length of the wall, so their lengths are simply the wall length, plus a little extra for cuts and mitres that you should add when ordering. If a wall has a door or a window, measure the wall in sections and calculate each section separately, rather than treating the whole wall as one run, because the panels on either side of an opening are laid out independently.</p><h2>Choosing a style: raised panel, flat panel or beadboard</h2><p>Raised panel wainscoting is the most traditional and the most formal, with bevelled panels that catch light and shadow; it suits period homes and formal dining rooms, but it costs more and takes longer to install. Flat panel, or shaker-style, wainscoting uses plain rectangular frames and suits almost any modern home: it is clean, easy to build from standard boards, and easy to paint. Beadboard, with its narrow vertical grooves, suits bathrooms, kitchens and cottages, and it is often sold in sheets that install quickly, though the calculator's panel count still helps you plan the framing and trim. Picture-frame moulding is the simplest option of all: thin moulding rectangles applied to a painted wall, giving the look of panelling without any boards. Whichever style you choose, keep the panel width consistent within a room, because uneven panels are immediately visible.</p><h2>Step by step: planning with the calculator</h2><p>Measure each wall at chair-rail height, not at floor level, because skirting boards and uneven walls can change the effective length. Enter the longest unbroken run first, then the panel width you want: narrower panels, around 40 to 50 centimetres, look refined and traditional, while wider panels, around 60 to 75 centimetres, look modern and need fewer stiles. The calculator returns the panel count, the stile count and the trim lengths. Before ordering, add about ten percent extra for cutting waste, especially if your walls are not perfectly straight or you have several short sections. Buy all the moulding from one batch if you can, because profiles can vary slightly between suppliers, and a mismatched profile is very hard to hide once painted.</p><h2>Getting the height and proportions right</h2><p>Classic wainscoting height is about one-third of the wall height, typically 80 to 110 centimetres in a room with standard ceilings. In a room with a 240 centimetre ceiling, a chair rail at 90 centimetres looks balanced; in a taller room, you can go higher, up to about 120 centimetres, without the room feeling top-heavy. Never place the chair rail at exactly half the wall height, which tends to look awkward and cuts the room in two visually. If you have a dado rail already, or a window sill at a convenient height, align the chair rail with it for a coherent look. The panel height itself is the chair-rail height minus the baseboard and the rail, so measure carefully and cut one test panel before cutting the rest, because a small error repeated across ten panels becomes a very visible problem.</p><h2>Installation basics for a clean result</h2><p>Start by finding the studs in the wall, because stiles should be fixed into studs wherever possible for a solid result. Mark a level line for the chair rail around the whole room, since floors are rarely perfectly level and a rail that follows the floor will look crooked. Install the baseboard first, then the stiles, then the panels or moulding, and finally the chair rail, which caps the whole assembly and hides the tops of the stiles. Use a mitre saw for clean joints, fill nail holes and small gaps with paintable filler, and caulk the joint between the chair rail and the wall for a seamless finish. Paint the whole assembly after installation, rather than painting boards beforehand, so the filler, caulk and nail holes disappear into one even coat.</p><h2>Common wainscoting mistakes</h2><p>The most common mistake is uneven panel spacing, usually caused by starting at one end and letting the last panel end up much narrower than the rest. Avoid this by planning the layout from the centre of the wall outwards, or by adjusting the panel width slightly so all panels in a run are equal. Another frequent error is ignoring outlets and switches: plan panels around them, and move a stile slightly rather than cutting a panel awkwardly around a socket. A third mistake is using the wrong materials in a damp room: in a bathroom, use moisture-resistant boards and a good primer, or the panels will swell. Finally, do not skip the primer on bare wood or MDF, because unprimed boards absorb paint unevenly and the finish will look patchy no matter how many topcoats you apply.</p><h2>Costs, painting and maintenance</h2><p>Wainscoting is one of the better-value upgrades because the materials are simple boards and moulding, and the transformation is dramatic. Costs rise with the complexity of the profile and with the number of panels, so a flat-panel design in a small hallway can be very affordable, while raised panels throughout a large dining room cost considerably more. Paint in a durable satin or semi-gloss finish, which resists scuffs and wipes clean, unlike flat paint, which marks easily at chair height. Touch up scuffs promptly, because the lower wall takes the most wear in any home. With the panel count, stile count and trim lengths calculated before you buy, you can order accurately, cut efficiently and install with the confidence that the finished wall will look planned rather than improvised.</p><h2>Adapting the plan to tricky walls</h2><p>Stair walls, bay windows and walls with radiators all need a little extra thought. On a stair wall, the chair rail follows the slope of the stairs, and panels become parallelograms rather than rectangles; measure along the slope and keep the vertical stiles truly vertical for a professional look. Around a bay window, treat each face of the bay as its own run and mitre the chair rail at the corners. Where a radiator sits against the wall, either stop the wainscoting at the radiator and return it neatly, or build a radiator cover in the same style so the panelling reads as continuous. These details take a little more planning, but they are what separate a good wainscoting job from a great one, and the calculator gives you the basic numbers for every straight run along the way.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How many wainscoting panels fit on a 4 metre wall?</summary><p>With 60 cm panels, 7 panels, with 8 stiles. The last panel is trimmed to fit, so plan from the centre outwards for even end panels.</p></details>
+<details><summary>How high should wainscoting be?</summary><p>About one-third of the wall height, typically 80 to 110 cm. Never put the chair rail at exactly half the wall height.</p></details>
+<details><summary>What is the difference between flat and raised panel wainscoting?</summary><p>Flat panel uses plain rectangular frames and suits modern homes. Raised panel has bevelled panels, looks more formal, and costs more.</p></details>
+<details><summary>Can I install wainscoting in a bathroom?</summary><p>Yes, with moisture-resistant boards and a good primer, plus a durable satin or semi-gloss paint finish.</p></details>
+<details><summary>How do I avoid uneven end panels?</summary><p>Lay out from the centre of the wall, or adjust the panel width slightly so every panel in the run is equal.</p></details>
+<details><summary>Do I need to add extra for cutting waste?</summary><p>Yes, about 10 percent extra trim, especially with several short wall sections or walls that are not perfectly straight.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">Wainscot</div>
+    <p>Wainscot plans wainscoting panels, stiles and trim from wall length and panel width.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function computeWainscot(len,pw,waste){if(!(len>0)||!(pw>0))return{panels:0,stiles:0,trim:0};var p=Math.ceil(len/pw);var trim=len*2;if(waste)trim*=1.1;return{panels:p,stiles:p+1,trim:Math.round(trim*100)/100};}
+function render(){var l=+document.getElementById('len').value,p=+document.getElementById('pw').value,w=document.getElementById('waste').checked;var r=computeWainscot(l,p,w);if(!r.panels){document.getElementById('res').innerHTML='<p>Enter a wall length and panel width above zero.</p>';return;}document.getElementById('res').innerHTML='<p class="big">'+r.panels+' panels</p><p>'+r.stiles+' stiles &middot; Chair rail + baseboard about '+r.trim+' m total</p><p>Plan the layout from the centre of the wall outwards so the end panels match.</p>';}
+document.getElementById('go').addEventListener('click',render);
+document.getElementById('copy').addEventListener('click',function(){var t=document.getElementById('res').innerText;navigator.clipboard&&navigator.clipboard.writeText(t);});
+render();
+</script>
+</body>
+</html>
