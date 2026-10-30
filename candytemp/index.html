@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sugar Syrup Temperature Stages — Candy Chart (°C/°F)</title>
+<meta name="description" content="Identify any sugar syrup stage from temperature — thread to caramel — with °C/°F toggle, uses for each stage, and a visual ladder. Free.">
+<link rel="canonical" href="https://fun.fixoraa.tech/candytemp/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Sugar Syrup Temperature Stages — Candy Chart (°C/°F)">
+<meta property="og:description" content="Identify any sugar syrup stage from temperature — thread to caramel — with °C/°F toggle, uses for each stage, and a visual ladder. Free.">
+<meta property="og:url" content="https://fun.fixoraa.tech/candytemp/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CandyTemp",
+      "url": "https://fun.fixoraa.tech/candytemp/",
+      "applicationCategory": "Cooking",
+      "operatingSystem": "Web",
+      "description": "Identify any sugar syrup stage from temperature \u2014 thread to caramel \u2014 with \u00b0C/\u00b0F toggle, uses for each stage, and a visual ladder. Free.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the candy stages in Fahrenheit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the converter's \u00b0C/\u00b0F toggle, or memorise the anchors: thread 230\u00b0F, soft ball 234\u2013240\u00b0F, firm ball 244\u2013250\u00b0F, hard ball 250\u2013266\u00b0F, soft crack 270\u2013290\u00b0F, hard crack 290\u2013310\u00b0F, caramel 320\u2013338\u00b0F."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My syrup is at 118\u00b0C \u2014 what stage is that?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At 118\u00b0C you're in firm ball \u2014 the caramel zone. The syrup will form a firm, pliable ball in cold water and set into chewy caramels. Two degrees either way changes the texture noticeably, so trust your thermometer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I test the stage without a thermometer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Drop a little syrup into cold water: soft ball forms a ball that flattens, firm ball holds its shape but is pliable, hard ball is hard and holds its shape, soft crack makes pliable threads, hard crack makes brittle threads that snap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did my candy turn sticky the next day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sugar is hygroscopic \u2014 on humid days candies absorb moisture and turn sticky. Avoid candy-making when it's raining; if you must, cook 1\u20132\u00b0C above the target stage and store finished candy airtight immediately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do candy stages change at high altitude?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Water boils at a lower temperature at altitude (about 1\u00b0C lower per 300 m), and every candy stage shifts down with it. The fix: subtract the same difference from your target \u2014 if water boils at 95\u00b0C where you live, aim 5\u00b0C lower than the chart says, and verify with the cold-water test."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I overshot into burnt caramel \u2014 can I save it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Past ~175\u00b0C caramel turns bitter and then burns, and there's no rescue \u2014 start over. For hard crack and caramel stages, never leave the pan unattended past 150\u00b0C; the final degrees go very fast."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#FFFBF2; --surface:#FFFFFF; --accent:#9A3412; --accent-ink:#FFF7ED;
+  --ink:#2E1D10; --muted:#6B563F; --line:#F0E2CC;
+  --display:'Righteous',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.ct-wrap{max-width:720px;margin:0 auto;padding:28px 16px 72px;font-family:Inter,system-ui,sans-serif;color:#2E1D10}
+.ct-hero{text-align:center;margin:10px 0 30px}
+.ct-hero h1{font-family:Righteous,Inter,sans-serif;font-size:clamp(34px,6vw,52px);margin:0 0 10px;font-weight:400}
+.ct-tag{color:#6B563F;font-size:17px;margin:0}
+.ct-card{background:#FFFFFF;border:1px solid #F0E2CC;border-radius:28px;padding:30px 26px;box-shadow:0 12px 40px rgba(154,52,18,.10)}
+.ct-input{display:flex;gap:10px;margin-bottom:8px}
+#ct-temp{flex:1;min-height:60px;border:2px solid #F0E2CC;border-radius:14px;padding:0 18px;font-size:26px;text-align:center;color:#2E1D10;font-weight:700}
+.ct-toggle{display:flex;border:2px solid #F0E2CC;border-radius:14px;overflow:hidden}
+.ct-toggle button{min-height:60px;padding:0 22px;border:0;background:#FFFBF2;font-size:17px;font-weight:700;color:#2E1D10;cursor:pointer}
+.ct-toggle button.on{background:#9A3412;color:#FFF7ED}
+.ct-stage{text-align:center;padding:18px 0 6px}
+.ct-stage .name{font-family:Righteous,Inter,sans-serif;font-size:clamp(32px,6vw,46px);color:#9A3412}
+.ct-stage .range{font-size:18px;color:#6B563F;margin-top:6px}
+.ct-stage .uses{font-size:16px;margin-top:10px;line-height:1.6}
+.ct-ladder{margin-top:22px;border-top:1px solid #F0E2CC;padding-top:16px}
+.ct-ladder h3{font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:#6B563F;margin:0 0 10px}
+.ct-rung{display:flex;justify-content:space-between;gap:10px;padding:11px 14px;border-radius:12px;font-size:15px;margin-bottom:6px;background:#FFFBF2;border:1px solid #F0E2CC}
+.ct-rung .r{color:#6B563F}
+.ct-rung.hit{background:#9A3412;border-color:#9A3412;color:#FFF7ED;font-weight:700}
+.ct-rung.hit .r{color:#FFF7ED}
+@media (max-width:560px){.ct-card{padding:20px 16px}.ct-input{flex-direction:column}.ct-toggle button{flex:1}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="CandyTemp home">
+      <span class="fx-logo-tile" aria-hidden="true">🍬</span>
+      <span class="fx-brand">CandyTemp</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-hero-card" aria-label="CandyTemp tool">
+<div class='ct-wrap'>
+<div class='ct-hero'><h1>Candy Stages</h1><p class='ct-tag'>From thread to caramel — know your syrup's stage instantly.</p></div>
+<div class='ct-card'>
+<div class='ct-input'>
+<input id='ct-temp' type='number' value='118' aria-label='Syrup temperature'>
+<div class='ct-toggle'><button id='ct-c' class='on'>°C</button><button id='ct-f'>°F</button></div>
+</div>
+<div class='ct-stage'>
+<div class='name' id='ct-name'>–</div>
+<div class='range' id='ct-range'></div>
+<div class='uses' id='ct-uses'></div>
+</div>
+<div class='ct-ladder'>
+<h3>All stages</h3>
+<div id='ct-ladder'></div>
+</div>
+</div>
+</div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>Why candy is all about temperature</h2>
+<p>Sugar syrup behaves completely differently at 112°C and 150°C, even though both look like innocent bubbling liquid. As water boils off, the sugar concentration climbs, and each concentration has a distinct physical personality: pourable syrup, soft ball, pliable ball, brittle snap, liquid caramel. Candy-making is therefore thermometry — the recipe's temperatures <em>are</em> the recipe. A <strong>sugar syrup temperature stages</strong> reference tells you which stage any temperature belongs to and what you can make there.</p>
+<h2>The seven stages</h2>
+<table>
+<thead><tr><th>Stage</th><th>°C</th><th>°F</th><th>Sugar conc.</th><th>Classic uses</th></tr></thead>
+<tbody>
+<tr><td>Thread</td><td>110–112</td><td>230–234</td><td>80%</td><td>Fruit syrups, glazes, candy coatings</td></tr>
+<tr><td>Soft ball</td><td>112–116</td><td>234–240</td><td>85%</td><td>Fudge, fondant, pralines</td></tr>
+<tr><td>Firm ball</td><td>118–122</td><td>244–250</td><td>87%</td><td>Caramels, firm toffees</td></tr>
+<tr><td>Hard ball</td><td>124–130</td><td>250–266</td><td>92%</td><td>Marshmallows, nougat, divinity</td></tr>
+<tr><td>Soft crack</td><td>132–143</td><td>270–290</td><td>95%</td><td>Butterscotch, taffy</td></tr>
+<tr><td>Hard crack</td><td>146–154</td><td>290–310</td><td>99%</td><td>Brittles, lollipops, toffee</td></tr>
+<tr><td>Caramel</td><td>160–170</td><td>320–338</td><td>100%</td><td>Caramel sauce, flan, spun sugar</td></tr>
+</tbody>
+</table>
+<h2>The cold-water test (no thermometer needed)</h2>
+<p>Before thermometers, candy makers tested syrup by dropping a little into cold water — and the stage names come from what the drop does:</p>
+<ul>
+<li><strong>Thread:</strong> forms thin threads in the water.</li>
+<li><strong>Soft ball:</strong> forms a soft ball that flattens when removed.</li>
+<li><strong>Firm ball:</strong> forms a firm ball that holds its shape but is pliable.</li>
+<li><strong>Hard ball:</strong> forms a hard, sticky ball that holds its shape.</li>
+<li><strong>Soft crack:</strong> separates into hard but pliable threads.</li>
+<li><strong>Hard crack:</strong> separates into hard, brittle threads that snap.</li>
+</ul>
+<p>The test still works beautifully as a cross-check: if your thermometer says 118°C but the drop won't form a firm ball, trust the drop and check your thermometer's calibration.</p>
+<h2>Stage-by-stage guide</h2>
+<h3>Thread (110–112°C)</h3>
+<p>The syrup spins a thread when drizzled. Too thin for standalone candy, but perfect for soaking cakes, glazing fruit, and making cocktail syrups with body. Italian meringue starts here — hot syrup at thread-to-soft-ball poured into whipping egg whites.</p>
+<h3>Soft ball (112–116°C)</h3>
+<p>The fudge zone. Cooled syrup beaten at this concentration crystallises into millions of tiny crystals — that is what makes fudge smooth instead of grainy. Fondant, pralines, and maple candy all live here. The cardinal rule: don't stir while it cools, or you'll seed large crystals and get grainy fudge.</p>
+<h3>Firm ball (118–122°C)</h3>
+<p>Caramel territory. At this concentration the syrup sets into chewy, shape-holding caramels. Precision matters enormously here — two degrees is the difference between flowing caramel sauce and cuttable squares. This is the stage where a digital thermometer earns its price.</p>
+<h3>Hard ball (124–130°C)</h3>
+<p>Marshmallow and nougat zone. The syrup is concentrated enough to whip into stable foams with gelatin or egg white. Divinity — that cloud-like Southern candy — is the classic hard-ball showpiece, famously finicky on humid days.</p>
+<h3>Soft crack (132–143°C)</h3>
+<p>The syrup bends before it breaks. Butterscotch, saltwater taffy (which gets its chew from pulling, aligning the sugar structure), and toffee apples. Taffy pulling is aeration as much as cooking — the pulling incorporates air and develops the chew.</p>
+<h3>Hard crack (146–154°C)</h3>
+<p>Brittle, glassy, snappy. Peanut brittle, lollipops, honeycomb (where baking soda foams the hot syrup into a crunchy lattice), and hard toffee. Almost all water is gone; work fast because the syrup sets within a minute or two off the heat.</p>
+<h3>Caramel (160–170°C)</h3>
+<p>Past hard crack, the sugar itself begins to break down — caramelisation. The flavour transforms from sweet to complex: nutty, buttery, faintly bitter. Dry caramel (sugar alone) or wet caramel (sugar + water) both pass through here on the way to flan topping, caramel sauce, and spun sugar. Past ~175°C, caramel becomes bitter and then burns — there is no coming back, so mise en place is mandatory.</p>
+<h2>Thermometer technique</h2>
+<ul>
+<li><strong>Calibrate in boiling water.</strong> At sea level it should read 100°C; note any offset and apply it to every stage. (Altitude lowers the boiling point ~1°C per 300 m — adjust stages down accordingly.)</li>
+<li><strong>Don't touch the bottom.</strong> Clip the probe so it sits in the syrup, not on the pan base, which is hotter.</li>
+<li><strong>Stirring cools the reading.</strong> Stir, then wait a few seconds for the temperature to stabilise before trusting it.</li>
+<li><strong>Syrup keeps cooking off heat.</strong> Carryover can add 1–3°C — pull the pan a degree or two early for critical stages like firm ball.</li>
+<li><strong>Digital beats dial</strong> for candy: faster response, easier to read at a glance, and most have alarms you can set to the target stage.</li>
+</ul>
+<h2>Humidity: the invisible ingredient</h2>
+<p>Sugar is hygroscopic — it grabs moisture from the air. On humid days, hard-ball and hard-crack candies absorb water and turn sticky within hours. Old confectioners' rule: don't make candy when it's raining. If you must, cook 1–2°C higher than the target stage to compensate, and store finished candy airtight with desiccant the moment it cools.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Grainy fudge:</strong> stirred while cooling, or sugar crystals on the pan wall seeded the batch. Wash down the pan walls with a wet pastry brush as it cooks, and don't touch it until it hits ~43°C.</li>
+<li><strong>Caramel too runny / too hard:</strong> you missed the stage by a few degrees. There is no fixing it after the fact — recalibrate and re-cook.</li>
+<li><strong>Brittle is chewy:</strong> it didn't reach hard crack. Humidity is the usual suspect.</li>
+<li><strong>Sugar crystallised in the pan:</strong> a stray crystal or agitation started a chain reaction. Start over, keep it still, and consider adding a tablespoon of corn syrup or lemon juice to interfere with crystal formation.</li>
+<li><strong>Burnt caramel:</strong> walked away at the end. The last 10 degrees go fast — never leave caramel unattended past 150°C.</li>
+</ul>
+<h2>Safety</h2>
+<p>Hot sugar causes worse burns than boiling water — it sticks to skin and keeps burning. Keep a bowl of ice water nearby, never leave the pan unattended past soft ball, and keep children and pets out of the splash zone. If sugar sticks to skin, cool under running water; don't try to wipe it off while hot.</p>
+<h2>Your first fudge: a walkthrough</h2>
+<p>Fudge is the perfect first candy — just one stage (soft ball, 112–116°C) and deeply forgiving of imperfect technique:</p>
+<ol>
+<li>Combine sugar, butter, milk, and a pinch of salt in a heavy pan. Stir over medium heat until the sugar fully dissolves — no graininess when you rub a drop between your fingers.</li>
+<li>Clip on your thermometer and bring to a boil <strong>without stirring</strong>. Wash down any crystals on the pan wall with a wet pastry brush.</li>
+<li>Cook to 114°C (the middle of soft ball), then take off the heat. Don't touch it — let it cool undisturbed to about 43°C.</li>
+<li>Now beat: vigorously, with a wooden spoon, until it thickens and loses its gloss. This is crystallisation happening correctly — millions of tiny crystals, which is what makes fudge smooth.</li>
+<li>Stir in vanilla and nuts at the last moment, pour into a lined pan, and let it set. Cut into squares and try to share.</li>
+</ol>
+<p>If it comes out grainy, you stirred too early or seeded crystals — delicious anyway, and you'll nail it next time.</p>
+<h2>The essential candy toolkit</h2>
+<ul>
+<li><strong>Digital probe thermometer</strong> — the single most important tool. Instant-read, with a clip.</li>
+<li><strong>Heavy-bottomed pan</strong> — distributes heat evenly and prevents scorching; light pans create hot spots that burn sugar.</li>
+<li><strong>Wooden spoon</strong> — doesn't conduct heat to your hand and won't scratch the pan.</li>
+<li><strong>Pastry brush + water</strong> — for washing sugar crystals off the pan walls.</li>
+<li><strong>Marble slab or cold water bath</strong> — for stopping the cooking fast at critical stages.</li>
+<li><strong>Bowl of ice water</strong> — for the cold-water test and for burns. Non-negotiable.</li>
+</ul>
+<h2>Storing homemade candy</h2>
+<p>Most homemade candy keeps 2–3 weeks at room temperature in airtight containers, layered with wax paper. The enemies are moisture and heat: fudge and caramels go sticky in humidity, chocolate blooms in warmth, and hard candy absorbs water from the air within days if left out. Refrigeration helps caramels but ruins chocolate's texture — when in doubt, a cool dark cupboard in a sealed tin is the universal answer. And label everything with the date; homemade candy has no preservatives, and your future self will thank you.</p>
+<h2>Gifting and packaging homemade candy</h2>
+<p>Homemade candy is a superb gift precisely because it can't be bought in that exact form — but presentation decides whether it reads as “artisan” or “afterthought.” Wrap pieces individually in wax paper twists for caramels and taffy (they'll stick to each other otherwise), layer fudge and brittle between parchment in a rigid tin, and keep hard candy in sealed cellophane bags with the air pressed out. Include a small card with the candy name and the date it was made — it looks professional and quietly communicates freshness. Avoid the classic mistake of gifting mixed candy in one box without separators: strong flavours migrate, and your delicate caramels will taste faintly of peppermint bark by morning. Packed right, homemade candy keeps its two-to-three-week life and arrives looking like it came from a proper confectioner.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>What are the candy stages in Fahrenheit?</summary><p>Use the converter's °C/°F toggle, or memorise the anchors: thread 230°F, soft ball 234–240°F, firm ball 244–250°F, hard ball 250–266°F, soft crack 270–290°F, hard crack 290–310°F, caramel 320–338°F.</p></details>
+<details><summary>My syrup is at 118°C — what stage is that?</summary><p>At 118°C you're in firm ball — the caramel zone. The syrup will form a firm, pliable ball in cold water and set into chewy caramels. Two degrees either way changes the texture noticeably, so trust your thermometer.</p></details>
+<details><summary>How do I test the stage without a thermometer?</summary><p>Drop a little syrup into cold water: soft ball forms a ball that flattens, firm ball holds its shape but is pliable, hard ball is hard and holds its shape, soft crack makes pliable threads, hard crack makes brittle threads that snap.</p></details>
+<details><summary>Why did my candy turn sticky the next day?</summary><p>Sugar is hygroscopic — on humid days candies absorb moisture and turn sticky. Avoid candy-making when it's raining; if you must, cook 1–2°C above the target stage and store finished candy airtight immediately.</p></details>
+<details><summary>Do candy stages change at high altitude?</summary><p>Yes. Water boils at a lower temperature at altitude (about 1°C lower per 300 m), and every candy stage shifts down with it. The fix: subtract the same difference from your target — if water boils at 95°C where you live, aim 5°C lower than the chart says, and verify with the cold-water test.</p></details>
+<details><summary>I overshot into burnt caramel — can I save it?</summary><p>Past ~175°C caramel turns bitter and then burns, and there's no rescue — start over. For hard crack and caramel stages, never leave the pan unattended past 150°C; the final degrees go very fast.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CandyTemp</div>
+    <p>CandyTemp maps any sugar-syrup temperature to its candy stage — thread to caramel — with uses for each.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function candyStage(tempC){var t=Number(tempC);var stages=[{min:110,max:112,stage:'Thread',uses:'Fruit syrups, light glazes and candy coatings.'},{min:112,max:116,stage:'Soft ball',uses:'Fudge, fondant, pralines and buttercreams.'},{min:118,max:122,stage:'Firm ball',uses:'Caramels and toffees that hold their shape.'},{min:124,max:130,stage:'Hard ball',uses:'Marshmallows, nougat and divinity.'},{min:132,max:143,stage:'Soft crack',uses:'Butterscotch, saltwater taffy and toffee apples.'},{min:146,max:154,stage:'Hard crack',uses:'Brittles, lollipops and hard toffee.'},{min:160,max:170,stage:'Caramel',uses:'Caramel sauce, flan, spun sugar and praline.'}];if(!(t>=110))return{stage:'Below thread',range:'Under 110°C',uses:'Syrup is too thin for candy — keep heating.'};for(var i=0;i<stages.length;i++){var s=stages[i];if(t>=s.min&&t<=s.max)return{stage:s.stage,range:s.min+'–'+s.max+'°C',uses:s.uses};}if(t>170)return{stage:'Beyond caramel',range:'Above 170°C',uses:'Sugar is burning — start over with fresh sugar.'};var last=stages[0];for(var j=0;j<stages.length;j++){if(t>stages[j].max)last=stages[j];}return{stage:last.stage+' (transitional)',range:last.min+'–'+last.max+'°C',uses:last.uses+' Between stages — keep heating slowly.'};}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var tempEl=document.getElementById('ct-temp'),cBtn=document.getElementById('ct-c'),fBtn=document.getElementById('ct-f'),nameEl=document.getElementById('ct-name'),rangeEl=document.getElementById('ct-range'),usesEl=document.getElementById('ct-uses'),ladder=document.getElementById('ct-ladder');var unit='C';var LADDER=[['Thread','110–112°C · 230–234°F'],['Soft ball','112–116°C · 234–240°F'],['Firm ball','118–122°C · 244–250°F'],['Hard ball','124–130°C · 250–266°F'],['Soft crack','132–143°C · 270–290°F'],['Hard crack','146–154°C · 290–310°F'],['Caramel','160–170°C · 320–338°F']];function toC(v){return unit==='C'?v:(v-32)*5/9;}function render(){var c=toC(parseFloat(tempEl.value)||0);var r=candyStage(c);nameEl.textContent=r.stage;rangeEl.textContent=r.range;usesEl.textContent=r.uses;var html='';LADDER.forEach(function(row){var hit=row[0]===r.stage;html+='<div class=\'ct-rung'+(hit?' hit':'')+'\'><span>'+row[0]+'</span><span class=\'r\'>'+row[1]+'</span></div>';});ladder.innerHTML=html;}cBtn.addEventListener('click',function(){unit='C';cBtn.classList.add('on');fBtn.classList.remove('on');tempEl.value='118';render();});fBtn.addEventListener('click',function(){unit='F';fBtn.classList.add('on');cBtn.classList.remove('on');tempEl.value='244';render();});tempEl.addEventListener('input',render);render();});}
+</script>
+</body>
+</html>
