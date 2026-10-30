@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dryer Vent Max Length Calculator — Elbows &amp; Code | DryerVent</title>
+<meta name="description" content="Dryer vent equivalent length with elbows, code check and fixes.">
+<link rel="canonical" href="https://fun.fixoraa.tech/dryervent/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Dryer Vent Max Length Calculator — Elbows &amp; Code | DryerVent">
+<meta property="og:description" content="Dryer vent equivalent length with elbows, code check and fixes.">
+<meta property="og:url" content="https://fun.fixoraa.tech/dryervent/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "DryerVent",
+      "url": "https://fun.fixoraa.tech/dryervent/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Dryer vent equivalent length with elbows, code check and fixes.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is the maximum length for a dryer vent?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Under the International Residential Code (M1502), a dryer exhaust duct may be at most 35 feet of developed length, measured from the dryer to the exterior termination. Every elbow shortens that allowance: subtract 5 feet for each 90-degree elbow and 2.5 feet for each 45-degree elbow. The dryer's own transition duct is not counted in the 35 feet." } },
+        { "@type": "Question", "name": "How much length does a 90-degree elbow add to a dryer vent?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A 90-degree elbow counts as 5 feet of equivalent duct length, and a 45-degree elbow counts as 2.5 feet. So a 20-foot straight run with two 90-degree elbows has an equivalent length of 30 feet (20 + 5 + 5), which is within the 35-foot code maximum. Smooth, long-sweep elbows perform slightly better than tight stamped elbows." } },
+        { "@type": "Question", "name": "Can I use flexible foil duct for a dryer vent?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Only for the short transition duct between the dryer and the wall — never for a concealed run inside walls or ceilings. Flexible foil or plastic accordion duct traps lint in its ridges, crushes easily, and adds far more airflow resistance than smooth rigid metal. This calculator derates flexible duct by 1.5x to reflect that penalty; concealed runs must be smooth rigid metal at least 4 inches in diameter." } },
+        { "@type": "Question", "name": "What happens if my dryer vent is too long?",
+          "acceptedAnswer": { "@type": "Answer", "text": "An over-long vent cannot push moist air out fast enough, so drying times stretch, energy bills climb, and lint settles inside the duct instead of exiting — a genuine fire hazard. Fixes include converting flexible duct to rigid, removing or combining elbows, moving the dryer closer to an exterior wall, or installing a code-listed dryer booster fan where the run cannot be shortened." } },
+        { "@type": "Question", "name": "Does the code allow a booster fan on a long dryer vent?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The IRC permits the 35-foot maximum to be exceeded when a dryer exhaust duct power ventilator (booster fan) listed and labeled for the application is installed, and the fan is sized per the duct manufacturer's instructions. The fan must run automatically with the dryer, and many jurisdictions still want the equivalent length documented — which is exactly what this calculator produces." } },
+        { "@type": "Question", "name": "Can dryer vent screws stick into the duct?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Code requires the duct interior to be smooth, and screws or rivets that protrude inside catch lint and start blockages. Join rigid metal duct sections with foil tape (not cloth duct tape) or draw-band clamps, and support the run so it does not sag. The duct must terminate outside — never into an attic, crawlspace, or garage — with a backdraft damper and no screen finer than the code allows." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F2F9E1; --surface:#FFFFFF; --tint:#E9F4D2;
+  --accent:#5A7B14; --accent-deep:#145C41; --accent-ink:#FFFFFF;
+  --ink:#173A2D; --muted:#4E6E60; --line:#CBE7D8;
+  --fail:#B3372F;
+  --display:'Public Sans',system-ui,sans-serif; --body:'Public Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px;
+  background-image:linear-gradient(var(--tint) 1px,transparent 1px),linear-gradient(90deg,var(--tint) 1px,transparent 1px);
+  background-size:28px 28px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--accent);box-shadow:0 1px 0 var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:11px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:42px;height:42px;border:2px solid var(--accent);border-radius:6px;color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:20px;background:var(--tint)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:.02em;font-family:var(--mono)}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 16px;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--accent);color:var(--accent);font-family:var(--mono);transition:background .12s}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn:hover{background:var(--tint)}
+.fx-btn.solid:hover{background:var(--accent-deep)}
+.fx-badge{display:inline-block;padding:7px 12px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:12px;font-family:var(--mono);letter-spacing:.06em;border:1px dashed var(--accent)}
+/* hero */
+.dv-hero{padding:40px 0 6px}
+.dv-eyebrow{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--accent);border:1px solid var(--accent);padding:6px 12px;margin-bottom:14px;background:var(--surface)}
+.dv-hero h1{font-size:clamp(28px,4.4vw,44px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:10px}
+.dv-hero p{font-size:17px;color:var(--muted);max-width:660px}
+/* tool */
+.dv-sheet{margin:26px 0 8px;background:var(--surface);border:1px solid var(--accent);box-shadow:6px 6px 0 var(--tint)}
+.dv-sheet-head{border-bottom:1px solid var(--accent);padding:14px 22px;display:flex;align-items:center;gap:12px;background:var(--tint)}
+.dv-sheet-head h2{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.dv-sheet-head .rule{flex:1;border-top:2px dashed var(--accent)}
+.dv-body{display:grid;grid-template-columns:1fr 1.1fr;gap:0}
+.dv-inputs{padding:24px;border-right:1px dashed var(--line)}
+.dv-output{padding:24px;background:var(--bg)}
+.spec-row{display:grid;grid-template-columns:1fr 130px;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.spec-row:last-child{border-bottom:0}
+.spec-row label{font-weight:600;font-size:14px}
+.spec-row label small{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
+.spec-row input[type=number]{font-family:var(--mono);font-size:17px;font-weight:600;padding:9px 11px;border:1px solid var(--accent);background:#fff;color:var(--ink);width:100%;text-align:right}
+.spec-row input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.seg{display:flex;gap:6px}
+.seg button{flex:1;border:1px solid var(--accent);background:#fff;color:var(--accent);font-family:var(--mono);font-size:12.5px;font-weight:700;padding:9px 4px;cursor:pointer;letter-spacing:.02em}
+.seg button.on{background:var(--accent);color:#fff}
+.dv-diagram{border:1px solid var(--accent);background:#fff;padding:14px;margin-bottom:16px}
+.dv-diagram svg{width:100%;height:auto;display:block}
+.dv-capbar{margin:4px 0 16px}
+.dv-capbar .track{position:relative;height:26px;border:1px solid var(--accent);background:#fff}
+.dv-capbar .fill{position:absolute;left:0;top:0;bottom:0;background:var(--accent);opacity:.85}
+.dv-capbar .fill.over{background:var(--fail)}
+.dv-capbar .tick{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--ink)}
+.dv-capbar .labs{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:5px}
+.dv-verdict{border:2px solid var(--accent);padding:16px 18px;display:flex;gap:14px;align-items:center;margin-bottom:14px;background:#fff}
+.dv-verdict .stamp{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.1em;border:3px double var(--accent);color:var(--accent);padding:8px 12px;transform:rotate(-3deg);white-space:nowrap}
+.dv-verdict.fail{border-color:var(--fail)}
+.dv-verdict.fail .stamp{border-color:var(--fail);color:var(--fail)}
+.dv-verdict .txt{font-size:14px}
+.dv-verdict .txt strong{font-family:var(--mono)}
+.dv-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.dv-num{border:1px solid var(--line);background:#fff;padding:10px 12px;text-align:center}
+.dv-num .v{font-family:var(--mono);font-size:21px;font-weight:700;color:var(--accent-deep)}
+.dv-num .k{font-size:11.5px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+.dv-fixes{background:#fff;border:1px dashed var(--accent);padding:14px 16px;font-size:14px}
+.dv-fixes h3{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;color:var(--accent-deep)}
+.dv-fixes ul{margin-left:18px}
+.dv-fixes li{margin-bottom:5px}
+/* article */
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:23px;letter-spacing:-.015em;margin:34px 0 12px;font-weight:800;color:var(--accent-deep)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:23px;font-weight:800;letter-spacing:-.015em;margin-bottom:16px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:1px solid var(--accent);margin-bottom:10px}
+.faq-sec summary{padding:15px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:15.5px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::before{content:"+ ";font-family:var(--mono);color:var(--accent)}
+.faq-sec details[open] summary::before{content:"– "}
+.faq-sec details[open] summary{border-bottom:1px solid var(--line);color:var(--accent-deep)}
+.faq-sec details p{padding:14px 18px;font-size:15px;color:var(--ink)}
+/* footer */
+.fx-footer{background:var(--accent-deep);color:#eaf5ef;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff;font-family:var(--mono);letter-spacing:.02em}
+.fx-footer p{font-size:15px;color:#c4ded1;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#9fe0c2;font-weight:700}
+@media(max-width:760px){
+  .dv-body{grid-template-columns:1fr}
+  .dv-inputs{border-right:0;border-bottom:1px dashed var(--line)}
+  .dv-nums{grid-template-columns:1fr 1fr}
+  .fx-nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/dryervent/" aria-label="DryerVent home">
+      <span class="fx-tile" aria-hidden="true">D</span>
+      <span class="fx-name">DRYERVENT</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="dv-hero">
+    <span class="dv-eyebrow">CODE SHEET · IRC M1502</span>
+    <h1>Dryer Vent Max Length Calculator</h1>
+    <p>Elbows eat your vent budget. Enter the straight run, count the bends, and get the true equivalent length — with a code pass/fail verdict and fixes when it fails.</p>
+  </section>
+
+  <section class="dv-sheet" aria-label="DryerVent tool">
+    <div class="dv-sheet-head"><h2>Run specification</h2><span class="rule"></span><span style="font-family:var(--mono);font-size:12px;color:var(--muted)">DWG DV-01</span></div>
+    <div class="dv-body">
+      <div class="dv-inputs">
+        <div class="spec-row">
+          <label for="dv-straight">Straight duct length <small>feet of rigid duct, dryer to termination</small></label>
+          <input type="number" id="dv-straight" value="20" min="0" max="200" step="0.5">
+        </div>
+        <div class="spec-row">
+          <label for="dv-n90">90° elbows <small>each deducts 5 ft from the allowance</small></label>
+          <input type="number" id="dv-n90" value="2" min="0" max="10" step="1">
+        </div>
+        <div class="spec-row">
+          <label for="dv-n45">45° elbows <small>each deducts 2.5 ft from the allowance</small></label>
+          <input type="number" id="dv-n45" value="0" min="0" max="10" step="1">
+        </div>
+        <div class="spec-row">
+          <label>Duct type <small>concealed runs must be smooth rigid metal</small></label>
+          <div class="seg" id="dv-ductseg" role="group" aria-label="Duct type">
+            <button type="button" data-flex="0" class="on">RIGID</button>
+            <button type="button" data-flex="1">FLEXIBLE</button>
+          </div>
+        </div>
+      </div>
+      <div class="dv-output" aria-live="polite">
+        <div class="dv-diagram" aria-hidden="true">
+          <svg id="dv-svg" viewBox="0 0 560 120" role="img" aria-label="Duct run diagram"></svg>
+        </div>
+        <div class="dv-capbar">
+          <div class="track">
+            <div class="fill" id="dv-fill" style="width:0%"></div>
+            <div class="tick" style="left:100%" title="35 ft code maximum"></div>
+          </div>
+          <div class="labs"><span>0 ft</span><span id="dv-barlabel">Equivalent length</span><span>35 ft MAX</span></div>
+        </div>
+        <div class="dv-nums">
+          <div class="dv-num"><div class="v" id="dv-equiv">–</div><div class="k">Equiv. length</div></div>
+          <div class="dv-num"><div class="v" id="dv-allow">35 ft</div><div class="k">Code max</div></div>
+          <div class="dv-num"><div class="v" id="dv-margin">–</div><div class="k">Margin</div></div>
+        </div>
+        <div class="dv-verdict" id="dv-verdict">
+          <span class="stamp" id="dv-stamp">PASS</span>
+          <div class="txt" id="dv-vtext"></div>
+        </div>
+        <div class="dv-fixes" id="dv-fixes" hidden>
+          <h3>Fixes, in order of cost</h3>
+          <ul id="dv-fixlist"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-sec" aria-label="Guide">
+    <h2>The 35-Foot Rule, Explained</h2>
+    <p>Every dryer vent question eventually lands on the same number: 35 feet. That is the maximum developed duct length the International Residential Code (section M1502) allows between your dryer and the exterior termination. It sounds generous until you realize a "developed length" is not the tape-measure distance along the wall — it is the straight run <em>plus</em> a penalty for every bend, because bends choke airflow far more than straight duct does. A run that measures 22 feet on a tape can easily be a 32-foot code run once the elbows are counted, and that is before anyone accounts for flexible duct.</p>
+    <p>Why does the code care so much? A dryer moves a surprising volume of hot, wet air — roughly 150 to 200 cubic feet per minute. If the duct resists that flow, three bad things happen at once: clothes take forever to dry, the heating element or gas burner cycles far more than it should, and lint drops out of the airstream and coats the inside of the duct. Lint plus heat is the part that should concentrate the mind — the U.S. Fire Administration attributes thousands of residential fires a year to dryers, and restricted vents are the classic accelerant. The 35-foot rule is not bureaucracy; it is the line between a duct that self-cleans with airflow and one that slowly packs itself with fuel.</p>
+    <h2>Equivalent Length: The Only Math That Matters</h2>
+    <p>Equivalent length converts every bend into the feet of straight duct that would resist airflow equally. The code's conversion table is short enough to memorize: each <strong>90-degree elbow counts as 5 feet</strong>, each <strong>45-degree elbow counts as 2.5 feet</strong>. Add those penalties to the straight length and you have the number the inspector checks. A 20-foot straight run with two 90-degree elbows is a 30-foot equivalent run (20 + 5 + 5) — compliant, with 5 feet to spare. The same 20 feet with four 90s is a 40-foot run — over the limit, even though the tape measure never moved.</p>
+    <p>One detail people miss: the short flexible transition duct connecting the dryer to the wall is <em>not</em> counted in the 35 feet, provided it is a single length, not concealed, and installed per the dryer manufacturer's instructions. Everything concealed inside walls, floors, or ceilings counts, and it must be smooth rigid metal — more on that below.</p>
+    <h2>Why Elbows Cost So Much</h2>
+    <p>Air does not like turning corners. In a straight duct, the fastest air rides the center and a thin slow layer hugs the walls. Force that flow around a 90-degree bend and the airstream separates from the inner wall, creating a swirling eddy that eats energy and dumps lint exactly where the duct turns. A sharp stamped elbow is the worst offender; a smooth long-sweep elbow with a generous radius performs measurably better, though the code still counts it as a full 5 feet. When you are redesigning a run, the highest-value move is almost always <em>removing</em> an elbow rather than shortening straight duct — each eliminated 90 buys back 5 feet of budget, equivalent to deleting 5 feet of pipe.</p>
+    <p>Two 45-degree elbows in place of one 90 is the classic compromise: the pair costs the same 5 feet on paper but flows a little easier in practice, and it lets you jog around an obstacle without the hard turn. Offsets made from two 45s are the professional's default wherever space allows.</p>
+    <h2>Rigid vs. Flexible: The 1.5× Penalty</h2>
+    <p>Here is where most DIY vent jobs quietly fail. That shiny flexible foil duct feels convenient, but its spiral ridges trip the airflow along every inch, it crushes to half its diameter if you look at it wrong, and every ridge is a lint shelf. Code flatly prohibits flexible duct for concealed runs — concealed duct must be minimum 4-inch smooth rigid metal with a smooth interior. Flexible duct is allowed only for the exposed transition behind the dryer.</p>
+    <p>This calculator derates flexible duct by <strong>1.5×</strong> to reflect the real-world friction penalty: a 20-foot flexible run behaves like 30 feet of rigid. Treat any concealed flexible duct as a defect to be replaced, not a number to be optimized. While you are at it, throw away the white vinyl accordion duct entirely — it is a fire hazard and has no place in any home.</p>
+    <h2>Measuring Your Run Like an Inspector</h2>
+    <p>Start at the dryer's exhaust outlet and trace the duct's centerline to the exterior termination cap. Measure straight sections with a tape; count every bend and note its angle. Do not forget the vertical portions — a run that goes up through the ceiling, across the attic, and out the roof has the same budget as any other run, and roof terminations add their own detailing (a proper roof cap with damper, sealed against weather, never a plain open pipe).</p>
+    <p>Also measure what is <em>inside</em> the duct. If the home has a history of slow drying, shine a light in from the termination end or run a vacuum with a brush attachment through it. A duct half-choked with lint has an effective length far worse than its geometry suggests, and no calculator can see that — cleaning is the prerequisite to trusting any number.</p>
+    <h2>The Rest of Code M1502 (The Parts People Fail)</h2>
+    <p>Length is only one clause. The duct must be at least <strong>4 inches in diameter</strong>, with a smooth interior — no screws or rivets protruding inside, because each one snags lint. Join sections with foil tape or draw-band metal clamps, never cloth duct tape, which dries out and fails. Support the duct so it does not sag between joists; sags become lint traps. The duct must terminate <strong>outside the building</strong> — never into an attic, crawlspace, soffit, or garage — at least 3 feet from any opening into the building, with a backdraft damper that closes when the dryer stops. Screens at the termination are restricted: anything finer than the code allows will clog with lint in a season.</p>
+    <p>And the termination needs clearance from the ground and from obstructions so exhaust — and the considerable moisture it carries — dissipates instead of soaking your siding or freezing into an ice dam on the cap in winter.</p>
+    <h2>When the Run Is Too Long: Fixes That Work</h2>
+    <p>If the calculator stamps your run OVER LIMIT, work through the fixes in this order. First, <strong>replace any flexible duct with rigid</strong> — this alone can claw back a third of the equivalent length. Second, <strong>eliminate elbows</strong>: reroute to cut a bend, combine two 45s into a gentler offset, or move the dryer to an exterior wall so the run becomes a short straight shot out. Third, consider a <strong>dryer booster fan</strong> — a code-listed inline ventilator wired to run with the dryer — which the IRC explicitly allows as the path to exceed 35 feet when shortening is impractical. Size it per the manufacturer's duct-length tables and confirm your local authority having jurisdiction accepts it; most do, but the fan needs a service switch and periodic cleaning like any mechanical device.</p>
+    <p>What <em>not</em> to do: do not upsize to a bigger dryer hoping it "pushes harder," do not vent into the attic "temporarily," and do not assume a periscope or recessed vent box changes the math — those fittings have their own small equivalent lengths, usually 5 feet or less, which still count.</p>
+    <h2>Booster Fans: The Legal Way Past 35 Feet</h2>
+    <p>A booster fan is a small inline blower, typically mounted mid-run in an accessible location, with a pressure switch or current sensor that starts it whenever the dryer runs. Good units add the equivalent of 30 to 60 feet of effective push, and they are specifically named in the code commentary as the remedy for long runs. Installation rules matter: mount it where you can reach it for cleaning, wire it so it cannot run without the dryer, and keep the duct clean — a booster fan in a lint-choked duct just pressurizes the blockage. Budget a few hundred dollars installed, and verify the model is listed for dryer exhaust specifically, not just general inline ventilation.</p>
+    <h2>Maintenance: The Other Half of Vent Safety</h2>
+    <p>Even a code-perfect run degrades. Clean the lint screen every load — a clogged screen is effectively extra duct length. Once a year, disconnect the transition duct and vacuum the run, or hire a duct cleaner with a rotary brush for long runs; check the exterior cap for a stuck damper or bird nest each spring. If drying times creep up over months with no other change, the vent is the first suspect, not the dryer. And if your run is at 33 or 34 equivalent feet — technically compliant — treat cleaning as non-negotiable, because you have no margin left for lint buildup.</p>
+    <h2>Renters, Condos, and Shared Ducts</h2>
+    <p>Apartment and condo dryers often share exhaust risers or run through common chases you cannot modify. If your unit dries slowly and the building's duct is a mystery, the calculator still helps: estimate the run from your dryer to the building exterior and bring the number to management. Independent duct cleaning services can scope shared runs with a camera, and many HOAs schedule it building-wide once the fire math is explained. Never modify a shared duct yourself — but do document the problem in writing.</p>
+    <h2>Putting It All Together</h2>
+    <p>The workflow is simple: measure the straight run, count the elbows honestly, note the duct type, and read the verdict. If it passes with margin, keep it clean and forget about it. If it passes by a foot or two, schedule annual cleaning and watch drying times. If it fails, the fixes are ranked above — rigid over flex, fewer elbows, shorter path, booster fan as the sanctioned last resort. Run the numbers above before you buy a single fitting; a compliant vent is one of the cheapest fire-safety upgrades a home can get.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What is the maximum length for a dryer vent?</summary><p>Under the International Residential Code (M1502), a dryer exhaust duct may be at most 35 feet of developed length, measured from the dryer to the exterior termination. Every elbow shortens that allowance: subtract 5 feet for each 90-degree elbow and 2.5 feet for each 45-degree elbow. The dryer's own transition duct is not counted in the 35 feet.</p></details>
+    <details><summary>How much length does a 90-degree elbow add to a dryer vent?</summary><p>A 90-degree elbow counts as 5 feet of equivalent duct length, and a 45-degree elbow counts as 2.5 feet. So a 20-foot straight run with two 90-degree elbows has an equivalent length of 30 feet (20 + 5 + 5), which is within the 35-foot code maximum. Smooth, long-sweep elbows perform slightly better than tight stamped elbows.</p></details>
+    <details><summary>Can I use flexible foil duct for a dryer vent?</summary><p>Only for the short transition duct between the dryer and the wall — never for a concealed run inside walls or ceilings. Flexible foil or plastic accordion duct traps lint in its ridges, crushes easily, and adds far more airflow resistance than smooth rigid metal. This calculator derates flexible duct by 1.5x to reflect that penalty; concealed runs must be smooth rigid metal at least 4 inches in diameter.</p></details>
+    <details><summary>What happens if my dryer vent is too long?</summary><p>An over-long vent cannot push moist air out fast enough, so drying times stretch, energy bills climb, and lint settles inside the duct instead of exiting — a genuine fire hazard. Fixes include converting flexible duct to rigid, removing or combining elbows, moving the dryer closer to an exterior wall, or installing a code-listed dryer booster fan where the run cannot be shortened.</p></details>
+    <details><summary>Does the code allow a booster fan on a long dryer vent?</summary><p>Yes. The IRC permits the 35-foot maximum to be exceeded when a dryer exhaust duct power ventilator (booster fan) listed and labeled for the application is installed, and the fan is sized per the duct manufacturer's instructions. The fan must run automatically with the dryer, and many jurisdictions still want the equivalent length documented — which is exactly what this calculator produces.</p></details>
+    <details><summary>Can dryer vent screws stick into the duct?</summary><p>No. Code requires the duct interior to be smooth, and screws or rivets that protrude inside catch lint and start blockages. Join rigid metal duct sections with foil tape (not cloth duct tape) or draw-band clamps, and support the run so it does not sag. The duct must terminate outside — never into an attic, crawlspace, or garage — with a backdraft damper and no screen finer than the code allows.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">DryerVent</div>
+    <p>DryerVent computes your dryer duct's true equivalent length — straight run plus elbow deductions with flexible-duct derating — and gives a code pass/fail verdict with ranked fixes.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+"use strict";
+var MAX = 35;
+function r1(n){ return Math.round(n*10)/10; }
+function dryerMath(straight, n90, n45, flex){
+  straight = Math.max(0, parseFloat(straight)||0);
+  n90 = Math.max(0, Math.round(parseFloat(n90)||0));
+  n45 = Math.max(0, Math.round(parseFloat(n45)||0));
+  var raw = straight + 5*n90 + 2.5*n45;
+  var equiv = raw * (flex ? 1.5 : 1);
+  var pass = equiv <= MAX + 1e-9;
+  return { raw: r1(raw), equiv: r1(equiv), max: MAX, pass: pass, margin: r1(MAX - equiv), flex: !!flex, n90: n90, n45: n45, straight: r1(straight) };
+}
+window.__fx = { dryer: dryerMath };
+
+var svg = document.getElementById('dv-svg');
+function drawDiagram(m){
+  var elbows0 = m.n90 + m.n45;
+  var W = Math.max(560, 24+96+elbows0*(26+44)+64), H=120, x=24, y=64, segLen=96, html='';
+  svg.setAttribute('viewBox', '0 0 '+W+' '+H);
+  function duct(x1,y1,x2,y2){
+    return '<line x1="'+x1+'" y1="'+(y1-9)+'" x2="'+x2+'" y2="'+(y2-9)+'" stroke="#5A7B14" stroke-width="1.6"/>'+
+           '<line x1="'+x1+'" y1="'+(y1+9)+'" x2="'+x2+'" y2="'+(y2+9)+'" stroke="#5A7B14" stroke-width="1.6"/>'+
+           '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="#5A7B14" stroke-width="0.8" stroke-dasharray="6 5" opacity="0.55"/>';
+  }
+  html += '<rect x="4" y="44" width="16" height="40" fill="#E9F4D2" stroke="#5A7B14"/>'+
+          '<text x="12" y="70" text-anchor="middle" font-size="9" fill="#145C41" font-family="IBM Plex Mono">DRY</text>';
+  var elbows = [];
+  for(var i=0;i<m.n90;i++) elbows.push(90);
+  for(var i=0;i<m.n45;i++) elbows.push(45);
+  var dir = 0, cx = 24;
+  html += duct(cx, y, cx+segLen, y); cx += segLen;
+  html += '<text x="'+(24+segLen/2)+'" y="40" text-anchor="middle" font-size="10" fill="#4E6E60" font-family="IBM Plex Mono">'+m.straight+' ft straight</text>';
+  elbows.forEach(function(a, i){
+    var ny = y + (dir===0 ? -34 : 34);
+    html += '<path d="M '+cx+' '+(y-9)+' Q '+cx+' '+(ny-9)+' '+(cx+26)+' '+(ny-9)+'" fill="none" stroke="#5A7B14" stroke-width="1.6"/>'+
+            '<path d="M '+cx+' '+(y+9)+' Q '+cx+' '+(ny+9)+' '+(cx+26)+' '+(ny+9)+'" fill="none" stroke="#5A7B14" stroke-width="1.6"/>';
+    html += '<circle cx="'+(cx+13)+'" cy="'+ny+'" r="11" fill="#fff" stroke="#5A7B14" stroke-width="1.4"/>'+
+            '<text x="'+(cx+13)+'" y="'+(ny+3.5)+'" text-anchor="middle" font-size="9" fill="#145C41" font-family="IBM Plex Mono">'+a+'°</text>';
+    html += '<text x="'+(cx+13)+'" y="'+(ny+(dir===0?-16:26))+'" text-anchor="middle" font-size="9.5" fill="#B3372F" font-family="IBM Plex Mono">−'+(a===90?'5':'2.5')+' ft</text>';
+    y = ny; dir = 1-dir; cx += 26;
+    if(cx < 470){ html += duct(cx, y, cx+44, y); cx += 44; }
+  });
+  html += '<rect x="'+cx+'" y="'+(y-13)+'" width="52" height="26" fill="#5A7B14"/>'+
+          '<text x="'+(cx+26)+'" y="'+(y+4)+'" text-anchor="middle" font-size="9.5" fill="#fff" font-family="IBM Plex Mono">OUT</text>';
+  svg.innerHTML = html;
+}
+function fixesFor(m){
+  var f = [];
+  if(m.flex) f.push('Replace flexible duct with smooth rigid metal — saves about ' + r1(m.raw*0.5) + ' ft of equivalent length.');
+  if(m.n90 + m.n45 > 0) f.push('Remove or combine elbows: each 90° costs 5 ft, each 45° costs 2.5 ft of budget.');
+  f.push('Reroute for a shorter, straighter path — ideally straight out an exterior wall.');
+  f.push('Install a code-listed dryer booster fan (IRC-sanctioned remedy) where the run cannot be shortened.');
+  return f;
+}
+function calc(){
+  var m = dryerMath(
+    document.getElementById('dv-straight').value,
+    document.getElementById('dv-n90').value,
+    document.getElementById('dv-n45').value,
+    document.querySelector('#dv-ductseg button.on').getAttribute('data-flex') === '1'
+  );
+  document.getElementById('dv-equiv').textContent = m.equiv + ' ft';
+  document.getElementById('dv-margin').textContent = (m.margin >= 0 ? '+' : '') + m.margin + ' ft';
+  var pct = Math.min(100, m.equiv / MAX * 100);
+  var fill = document.getElementById('dv-fill');
+  fill.style.width = pct + '%';
+  fill.classList.toggle('over', !m.pass);
+  document.getElementById('dv-barlabel').textContent = 'Equivalent: ' + m.equiv + ' ft' + (m.flex ? ' (flex 1.5×)' : '');
+  var verdict = document.getElementById('dv-verdict');
+  verdict.classList.toggle('fail', !m.pass);
+  document.getElementById('dv-stamp').textContent = m.pass ? 'CODE PASS' : 'OVER LIMIT';
+  document.getElementById('dv-vtext').innerHTML = m.pass
+    ? 'Equivalent length <strong>' + m.equiv + ' ft</strong> is within the 35 ft maximum. You have <strong>' + m.margin + ' ft</strong> of margin — keep the duct clean to protect it.'
+    : 'Equivalent length <strong>' + m.equiv + ' ft</strong> exceeds the 35 ft maximum by <strong>' + Math.abs(m.margin) + ' ft</strong>. Work the fixes below, cheapest first.';
+  var fx = document.getElementById('dv-fixes');
+  if(m.pass){ fx.hidden = true; }
+  else {
+    fx.hidden = false;
+    document.getElementById('dv-fixlist').innerHTML = fixesFor(m).map(function(x){ return '<li>'+x+'</li>'; }).join('');
+  }
+  drawDiagram(m);
+}
+['dv-straight','dv-n90','dv-n45'].forEach(function(id){
+  var el = document.getElementById(id);
+  el.addEventListener('input', calc); el.addEventListener('change', calc);
+});
+document.getElementById('dv-ductseg').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  this.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); });
+  b.classList.add('on'); calc();
+});
+calc();
+})();
+</script>
+</body>
+</html>
