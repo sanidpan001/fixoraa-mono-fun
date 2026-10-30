@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cricket Run Rate Calculator — Current &amp; Required Run Rate</title>
+<meta name="description" content="Calculate cricket current run rate, required run rate, projected total and balls remaining for any chase or innings.">
+<link rel="canonical" href="https://fun.fixoraa.tech/cricketcalc/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Cricket Run Rate Calculator — Current &amp; Required Run Rate">
+<meta property="og:description" content="Calculate cricket current run rate, required run rate, projected total and balls remaining for any chase or innings.">
+<meta property="og:url" content="https://fun.fixoraa.tech/cricketcalc/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CricketCalc",
+      "url": "https://fun.fixoraa.tech/cricketcalc/",
+      "applicationCategory": "Sports",
+      "operatingSystem": "Web",
+      "description": "Calculate cricket current run rate, required run rate, projected total and balls remaining for any chase or innings.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is cricket run rate calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Run rate equals runs scored divided by overs faced, where overs are counted in balls. For example, 120 runs in 20 overs is 120 divided by 20, which is 6.00 runs per over."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate the required run rate in a chase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subtract runs scored from the target to get runs needed, then divide by overs remaining. Needing 80 runs from 10 overs is a required rate of 8.00."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 12.3 overs mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It means 12 completed overs plus 3 balls of the next over, or 75 balls in total. It is not 12.3 decimal overs, and this calculator asks for overs and balls separately to avoid that error."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good run rate in T20 cricket?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Around 8 runs per over is par on most pitches, 9 to 10 is strong, and anything above 11 across a full innings is exceptional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the projected total change during an innings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The projection assumes the current rate continues, so every good or quiet over moves it. It is a guide to the current trajectory, not a prediction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator handle rain-shortened matches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Just enter the revised total overs for the match and the target that applies, and the rates will be computed from those revised figures."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#f0fdf4; --surface:#ffffff; --accent:#166534; --accent-ink:#ffffff;
+  --ink:#14231a; --muted:#43584a; --line:#c8ddd0;
+  --display:'Fraunces',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.cc-sub{color:var(--muted);margin:.4rem 0 1.2rem}.cc-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:1.4rem}.cc-card,.cc-results{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem}.cc-card label{display:block;font-weight:600;margin-bottom:.7rem}.cc-card input{width:100%;padding:.6rem;border:1px solid var(--line);border-radius:10px;margin-top:.25rem}.cc-btns{display:flex;gap:.5rem;flex-wrap:wrap}.cc-btns button{background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.55rem 1rem;font-weight:700;cursor:pointer}.cc-big span{display:block;color:var(--muted)}.cc-big strong{font-size:2.4rem}.cc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem}.cc-grid div{background:var(--bg);border-radius:12px;padding:.7rem}.cc-grid span{display:block;color:var(--muted);font-size:.85rem}.cc-bar{height:10px;background:var(--bg);border-radius:99px;overflow:hidden;margin-top:1rem}.cc-bar div{height:100%;background:var(--accent)}@media(max-width:640px){.cc-wrap{grid-template-columns:1fr}.cc-big strong{font-size:2rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="CricketCalc home">
+      <span class="fx-logo-tile" aria-hidden="true">🏏</span>
+      <span class="fx-brand">CricketCalc</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-crease-score" aria-label="CricketCalc tool">
+<h1>Cricket Run Rate Calculator</h1><p class="cc-sub">Enter the match state and see the current rate, required rate and projected total instantly.</p><div class="cc-wrap"><div class="cc-card"><label>Runs scored <input id="cc-runs" type="number" min="0" value="96"></label><label>Overs completed <input id="cc-overs" type="number" min="0" value="12"></label><label>Balls in current over <input id="cc-balls" type="number" min="0" max="5" value="0"></label><label>Wickets lost (optional) <input id="cc-wk" type="number" min="0" max="10" value="2"></label><label>Target (chase only) <input id="cc-target" type="number" min="0" value="180"></label><label>Total overs <input id="cc-total" type="number" min="1" value="20"></label><div class="cc-btns"><button id="cc-t20">T20 chase preset</button><button id="cc-odi">ODI preset</button><button id="cc-copy">Copy summary</button></div></div><div class="cc-results"><div class="cc-big"><span>Current run rate</span><strong id="cc-rr">—</strong></div><div class="cc-grid"><div><span>Required rate</span><strong id="cc-req">—</strong></div><div><span>Runs needed</span><strong id="cc-need">—</strong></div><div><span>Balls left</span><strong id="cc-left">—</strong></div><div><span>Projected total</span><strong id="cc-proj">—</strong></div></div><p id="cc-verdict"></p><div class="cc-bar"><div id="cc-barfill"></div></div><p id="cc-note"></p></div></div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What run rate really tells you</h2>
+<p>Cricket run rate is simply the average number of runs a batting team scores per over, and it is the single quickest way to judge whether an innings is on track, ahead of the game, or falling behind. If a team has scored 120 runs in 20 overs, its run rate is 6.00, which means it has been scoring at a steady six runs every six balls. Coaches, commentators, and fans all use this number because it turns a messy scorecard into one clean figure that can be compared across matches, formats, and eras. A run rate on its own does not tell you everything, since wickets in hand and the match situation matter enormously, but it gives you the pace of the innings at a glance, and when it is paired with the required run rate in a chase, it tells you instantly whether the batting side is ahead or behind the asking rate.</p>
+<p>In limited-overs cricket the required run rate is even more important than the current run rate, because it shows what the chasing team must score from here to win. If the target is 200 and the chasing team is 120 for 3 after 15 overs in a 20-over match, it needs 80 runs from the remaining 30 balls, which is a required rate of 16 runs per over, a very steep ask that usually means big hitting or a lost cause. That is why this calculator shows both numbers side by side, along with a projected total based on the current rate, so you can see not only where the innings stands but also where it is heading if nothing changes. The projected total assumes the same scoring pace continues, which is a simplification, but it is a useful anchor for discussion and for planning the next few overs.</p>
+<h2>How to use this calculator</h2>
+<p>Start by entering the runs scored so far and how many overs and balls have been bowled, then add the total overs in the innings and, if it is a chase, the target being chased. The calculator converts overs into balls automatically, so an entry of 12 overs and 3 balls is treated as 75 balls, which keeps the maths exact and avoids the common mistake of treating 12.3 overs as 12.3 decimal overs. Wickets lost are optional, but they add useful context to the result, because a team at 150 for 2 is in a far stronger position than a team at 150 for 8, even though both have exactly the same run rate. Once you press calculate, you will see the current run rate, the required run rate, the runs still needed, the balls remaining, and the projected final total.</p>
+<p>The three preset buttons cover the most common situations people search for: a Twenty20 chase, a fifty-over chase, and a first-innings projection with no target set. Use the presets as a starting point and then adjust the numbers to match your match, because every game has its own rhythm, pitch, and pressure. The copy-summary button puts a one-line summary on your clipboard, which is handy for sharing a score update in a group chat or a match report without retyping the figures. Results update instantly when you change any input, so you can experiment with scenarios, for example asking what happens to the required rate if the next over goes for fifteen runs, or how many the team needs from each remaining over to win comfortably.</p>
+<h2>Reading the required run rate like a coach</h2>
+<p>A required run rate below the current run rate means the chasing team is ahead of the game and can afford to play sensibly, while a required rate well above the current rate means the pressure is building and boundaries will soon be needed. The gap between the two rates is often more revealing than either number alone: a gap of one or two runs per over can be closed with a single good over, whereas a gap of six or more usually demands a dramatic shift in approach and a fair amount of luck. This is also why the balls-remaining figure matters so much, because the same runs-needed total feels very different with sixty balls left than with twelve balls left, and the required rate captures that difference automatically. Watch how the required rate moves over by over in a real match and you will start to feel the momentum shifts long before the commentators mention them.</p>
+<p>Wickets change the meaning of every rate, which is why experienced watchers never quote a run rate without mentioning wickets in hand. A team chasing at eight an over with nine wickets left can take risks and absorb a quiet over, while the same required rate with only two wickets left forces batters to protect their wickets and often leads to a slower, more cautious finish that falls short. The projected total has the same caveat: it assumes a constant pace, but real innings accelerate at the death, slow down after wickets fall, and respond to match pressure in ways no simple average can capture. Use the projection as a guide and a conversation starter, not as a prediction, and always read it together with the wickets column and the state of the pitch.</p>
+<h2>Run rate in different formats</h2>
+<p>In Test cricket, run rate is less about chasing a target and more about controlling the tempo of a long innings, with rates around three runs per over considered solid and rates above four considered aggressive. In one-day internationals, par scores have climbed steadily over the years, so a first-innings rate of five and a half to six is now common on good pitches, and chases are often planned in blocks of ten overs rather than as one long calculation. In Twenty20 cricket, everything is compressed: a rate of eight is unremarkable, a rate of ten feels strong, and a single over can swing the required rate by two full runs. The calculator works for all three formats because it uses balls rather than format-specific assumptions, so you only need to enter the correct total overs for the match you are following.</p>
+<p>Net run rate, which decides league standings when teams finish level on points, is a related but different idea, and it is worth not confusing the two. A team's net run rate is its own run rate across the tournament minus the run rate it conceded to opponents, adjusted for all-out innings counting as the full allocation of overs. This calculator is designed for a single innings rather than a whole tournament table, so it will not compute net run rate directly, but understanding single-innings run rate is the essential first step before tackling the tournament version. If you follow a league closely, keep a note of each match's run rates and you will find the tournament maths far less mysterious when the table tightens near the end of the group stage.</p>
+<h2>Common mistakes and worked example</h2>
+<p>The most common mistake is entering overs as a decimal, so 12.3 overs is read as twelve point three overs instead of twelve overs and three balls, which quietly distorts every result. A second common error is forgetting that an innings that ends early, for example a team bowled out in 40 overs of a 50-over match, still counts its full allocation for some tournament calculations, even though the single-innings run rate here uses the balls actually faced. A third mistake is comparing run rates across different stages of an innings without noting wickets, since a team that starts slowly and accelerates will look poor at the halfway mark and brilliant at the end, even though both readings describe the same innings honestly. Keeping the inputs clean and the context visible avoids all three traps.</p>
+<p>Consider a worked example: a team chasing 180 in a Twenty20 match reaches 96 for 2 after 12 overs, which is 72 balls. Its current run rate is 96 divided by 12, which is 8.00 runs per over, a healthy pace. It still needs 84 runs from the remaining 48 balls, so the required rate is 84 divided by 8 overs, which is 10.50 runs per over, noticeably above the current rate, which tells you the chase has work to do despite the solid start. If the team simply continued at 8.00, its projected total would be 160, twenty short of the target, so the batters know they need to lift the tempo by about two and a half runs per over. That single paragraph of arithmetic is exactly what this calculator produces in a second, and it is the kind of clarity that makes watching a chase far more engaging.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>How is cricket run rate calculated?</summary><p>Run rate equals runs scored divided by overs faced, where overs are counted in balls. For example, 120 runs in 20 overs is 120 divided by 20, which is 6.00 runs per over.</p></details>
+<details><summary>How do I calculate the required run rate in a chase?</summary><p>Subtract runs scored from the target to get runs needed, then divide by overs remaining. Needing 80 runs from 10 overs is a required rate of 8.00.</p></details>
+<details><summary>What does 12.3 overs mean?</summary><p>It means 12 completed overs plus 3 balls of the next over, or 75 balls in total. It is not 12.3 decimal overs, and this calculator asks for overs and balls separately to avoid that error.</p></details>
+<details><summary>What is a good run rate in T20 cricket?</summary><p>Around 8 runs per over is par on most pitches, 9 to 10 is strong, and anything above 11 across a full innings is exceptional.</p></details>
+<details><summary>Why does the projected total change during an innings?</summary><p>The projection assumes the current rate continues, so every good or quiet over moves it. It is a guide to the current trajectory, not a prediction.</p></details>
+<details><summary>Does this calculator handle rain-shortened matches?</summary><p>Yes. Just enter the revised total overs for the match and the target that applies, and the rates will be computed from those revised figures.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CricketCalc</div>
+    <p>CricketCalc computes current and required run rates, projected totals and balls remaining for any limited-overs innings.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function calcCricket(runs,ballsBowled,target,totalBalls){runs=+runs||0;ballsBowled=+ballsBowled||0;target=+target||0;totalBalls=+totalBalls||0;if(ballsBowled<=0)return{rr:0,req:0,proj:runs,ballsLeft:totalBalls,runsNeeded:Math.max(0,target-runs)};var rr=Math.round(runs/(ballsBowled/6)*100)/100;var ballsLeft=Math.max(0,totalBalls-ballsBowled);var proj=Math.round(rr*totalBalls/6*10)/10;var req=ballsLeft>0&&target>0?Math.round(Math.max(0,target-runs)/(ballsLeft/6)*100)/100:0;return{rr:rr,req:req,proj:proj,ballsLeft:ballsLeft,runsNeeded:Math.max(0,target-runs)};}
+function ccRender(){var runs=+document.getElementById('cc-runs').value||0,ov=+document.getElementById('cc-overs').value||0,bl=+document.getElementById('cc-balls').value||0,tg=+document.getElementById('cc-target').value||0,tot=+document.getElementById('cc-total').value||20;var r=calcCricket(runs,ov*6+bl,tg,tot*6);document.getElementById('cc-rr').textContent=r.rr.toFixed(2);document.getElementById('cc-req').textContent=tg?r.req.toFixed(2):'—';document.getElementById('cc-need').textContent=tg?r.runsNeeded:'—';document.getElementById('cc-left').textContent=r.ballsLeft;document.getElementById('cc-proj').textContent=r.proj;var wk=+document.getElementById('cc-wk').value||0;document.getElementById('cc-verdict').textContent=!tg?'First innings: scoring at '+r.rr.toFixed(2)+' per over.':(r.req<=r.rr?'Ahead of the rate with '+wk+' wickets down.':'Behind the rate: need '+r.req.toFixed(2)+' per over.');document.getElementById('cc-note').textContent='Wickets lost: '+wk+' of 10. Projected total assumes the current rate continues.';var pct=tot?Math.min(100,Math.round((ov*6+bl)/(tot*6)*100)):0;document.getElementById('cc-barfill').style.width=pct+'%';}
+['cc-runs','cc-overs','cc-balls','cc-wk','cc-target','cc-total'].forEach(function(id){document.getElementById(id).addEventListener('input',ccRender);});
+document.getElementById('cc-t20').onclick=function(){document.getElementById('cc-total').value=20;ccRender();};
+document.getElementById('cc-odi').onclick=function(){document.getElementById('cc-total').value=50;ccRender();};
+document.getElementById('cc-copy').onclick=function(){var t='CricketCalc: RR '+document.getElementById('cc-rr').textContent+', required '+document.getElementById('cc-req').textContent+', projected '+document.getElementById('cc-proj').textContent;if(navigator.clipboard)navigator.clipboard.writeText(t);};
+ccRender();
+</script>
+</body>
+</html>
