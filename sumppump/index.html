@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sump Pump Size Calculator — GPH, Head & Backup | SumpPump</title>
+<meta name="description" content="Sump pump GPH from inflow test and head height, plus backup runtime.">
+<link rel="canonical" href="https://fun.fixoraa.tech/sumppump/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Sump Pump Size Calculator — GPH, Head & Backup | SumpPump">
+<meta property="og:description" content="Sump pump GPH from inflow test and head height, plus backup runtime.">
+<meta property="og:url" content="https://fun.fixoraa.tech/sumppump/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SumpPump",
+      "url": "https://fun.fixoraa.tech/sumppump/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Sump pump GPH from inflow test and head height, plus backup runtime.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What size sump pump do I need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Measure inflow with a bucket test (gallons ÷ seconds × 3600 = GPH), add total dynamic head (lift + pipe friction + elbows), and choose a pump delivering 1.5× your inflow at that head. Most homes land on 1/3 HP; high inflow or deep lifts need 1/2 HP or staged dual pumps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I do a sump pump bucket test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "During wet weather, time how long your inflow takes to fill a bucket of known size. GPH = gallons ÷ seconds × 3600. A 5-gallon bucket filling in 20 seconds is 900 GPH. Test at the wettest time — sizing to a dry-day trickle undersizes the pump."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is total dynamic head for a sump pump?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vertical lift from pump to discharge exit, plus friction: ~4 ft of head per 100 ft of 1.5-in. pipe plus ~5 ft equivalent per 90° elbow. Pumps must be compared at your TDH using their published curves — GPH at zero head is meaningless."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long will a battery backup run a sump pump?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Roughly battery amp-hours × 12V × 0.85 ÷ pump watts = hours of continuous run. A 75Ah battery on a 400W pump gives ~1.9 hours continuous — longer in practice since pumps cycle. Size batteries to your area's outage history."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my sump pump run constantly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common causes: a stuck or tangled float switch, a failed check valve letting discharge drain back, discharge water recycling to the foundation (pipe too short), or genuinely high inflow. Check the float and check valve first — they're the usual suspects."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should a sump pump be replaced?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every 7–10 years, proactively. Replace the float switch and check valve at the same time, keep the old working pump as an emergency spare, and test the system (plus battery backup and high-water alarm) twice a year with a bucket of water."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F4F9E1; --tint:#EDF4D2; --accent:#5F7213; --accent-deep:#1E5413;
+  --ink:#26331F; --muted:#5C6B54; --line:#BAD6B4;
+  --display:'Inter',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:#fff;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:#fff}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:#fff}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:#fff;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:#1d1d1d;color:#e8e8e8;margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bdbdbd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--tint);font-weight:700}
+input,select,button{font:inherit}
+
+
+.sp-hero{text-align:left;padding:52px 0 4px;max-width:760px}
+.sp-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:1.5px solid var(--accent);padding:7px 16px;border-radius:4px;margin-bottom:16px}
+.sp-hero h1{font-size:clamp(34px,5vw,50px);letter-spacing:-.02em;font-weight:800;margin-bottom:12px}
+.sp-hero p{font-size:18px;color:var(--muted);max-width:640px}
+.sp-tool{background:#fff;border:1.5px solid var(--accent);border-radius:6px;margin:26px 0 8px;overflow:hidden;box-shadow:0 14px 34px rgba(45,124,29,.10)}
+.sp-cols{display:grid;grid-template-columns:1.15fr .85fr}
+.sp-left{padding:26px;border-right:1px dashed var(--line)}
+.sp-h{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.sp-h:not(:first-child){margin-top:20px}
+.sp-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.sp-row .field label{font-size:12px}
+.field label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}
+.field input{width:100%;padding:10px 12px;border:1.5px solid var(--accent);border-radius:4px;background:#fff;color:var(--ink);font-variant-numeric:tabular-nums}
+.field input:focus{outline:3px solid var(--tint)}
+.sp-right{padding:26px;background:linear-gradient(180deg,#fff,var(--bg))}
+#sp-svg{width:100%;height:auto;display:block;margin-bottom:14px}
+.sp-gauge{position:relative;background:var(--tint);border:1.5px solid var(--accent);border-radius:99px;height:38px;overflow:hidden;margin-bottom:16px}
+.sp-fill{position:absolute;inset:0;width:30%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));border-radius:99px;transition:width .3s}
+.sp-gauge span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:var(--ink)}
+.sp-lines{list-style:none;font-size:15px;font-variant-numeric:tabular-nums}
+.sp-lines li{display:flex;justify-content:space-between;gap:10px;padding:9px 2px;border-bottom:1px dashed var(--line)}
+.sp-lines li:last-child{border:0}
+.sp-lines .k{color:var(--muted)}
+.sp-lines .v{font-weight:800;text-align:right}
+.sp-lines .v.hl{color:var(--accent);font-size:18px}
+@media(max-width:760px){.sp-cols{grid-template-columns:1fr}.sp-left{border-right:0;border-bottom:1px dashed var(--line)}.sp-row{grid-template-columns:1fr 1fr}}
+
+</style>
+</head>
+<body>
+<header class="fx-header sumppump-hdr">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/sumppump/" aria-label="SumpPump home">
+      <span class="fx-tile" aria-hidden="true">SP</span>
+      <span class="fx-name">SumpPump</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="sp-hero">
+    <span class="sp-eyebrow">Pump math</span>
+    <h1>Sump Pump Size Calculator</h1>
+    <p>Size from your real inflow — not a guess. Bucket test, head height, backup runtime.</p>
+  </section>
+  <section class="sp-tool" aria-label="SumpPump tool">
+    <div class="sp-cols">
+      <div class="sp-left">
+        <h2 class="sp-h">1 · Bucket test</h2>
+        <div class="sp-row">
+          <div class="field"><label for="sp-gal">Bucket size (gal)</label><input type="number" id="sp-gal" value="5" min="1" max="10" step="0.5"></div>
+          <div class="field"><label for="sp-sec">Seconds to fill</label><input type="number" id="sp-sec" value="20" min="1" max="600" step="1"></div>
+        </div>
+        <h2 class="sp-h">2 · Discharge head</h2>
+        <div class="sp-row">
+          <div class="field"><label for="sp-lift">Vertical lift (ft)</label><input type="number" id="sp-lift" value="8" min="1" max="30" step="0.5"></div>
+          <div class="field"><label for="sp-pipe">Pipe run (ft)</label><input type="number" id="sp-pipe" value="20" min="0" max="200" step="1"></div>
+          <div class="field"><label for="sp-elb">90° elbows</label><input type="number" id="sp-elb" value="2" min="0" max="10" step="1"></div>
+        </div>
+        <h2 class="sp-h">3 · Battery backup</h2>
+        <div class="sp-row">
+          <div class="field"><label for="sp-ah">Battery (Ah)</label><input type="number" id="sp-ah" value="75" min="0" max="300" step="5"></div>
+          <div class="field"><label for="sp-w">Pump watts</label><input type="number" id="sp-w" value="400" min="100" max="1500" step="25"></div>
+        </div>
+      </div>
+      <div class="sp-right" aria-live="polite">
+        <svg id="sp-svg" viewBox="0 0 300 260" role="img" aria-label="Pump and head diagram"></svg>
+        <div class="sp-gauge"><div class="sp-fill" id="sp-fill"></div><span id="sp-gph">900 GPH inflow</span></div>
+        <ul class="sp-lines">
+          <li><span class="k">Total dynamic head</span><span class="v" id="sp-tdh">9.2 ft</span></li>
+          <li><span class="k">Pump capacity needed</span><span class="v" id="sp-req">1,350 GPH</span></li>
+          <li><span class="k">Recommended pump</span><span class="v hl" id="sp-pump">1/3 HP</span></li>
+          <li><span class="k">Backup runtime</span><span class="v" id="sp-backup">1.9 hrs</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+<article class="article-sec" aria-label="Guide">
+    <h2>Start With Inflow, Not Horsepower</h2>
+    <p>Pump shopping usually starts at the wrong end: “1/3 or 1/2 HP?” Horsepower is a motor rating, not a pumping rate — what your basement needs is a pump that moves <strong>more water than arrives</strong>, at the height it must lift it. The honest starting point is a bucket test: time how long your inflow takes to fill a 5-gallon bucket during wet weather, and you have measured gallons per hour directly.</p>
+    <p>Five gallons in 20 seconds is 900 GPH of real inflow. Five gallons in 5 seconds is 3,600 GPH — a very different basement. Most homes land between 300 and 1,500 GPH; anything consistently above 2,000 deserves attention to <strong>why</strong> so much water arrives (grading, downspouts, high water table) alongside a bigger pump.</p>
+    <p>Size the pump for <strong>1.5 times the measured inflow</strong>. The margin covers storms bigger than your test day, partial blockages, and the fact that pumps slow as they age. A pump running near its limit cycles constantly and dies young; a pump with headroom sips along for a decade.</p>
+    <h2>Total Dynamic Head: Lift Plus Friction</h2>
+    <p>Pumps are rated in GPH <strong>at a head height</strong> — 2,400 GPH at 10 feet of head is a completely different pump than 2,400 GPH at zero head. <strong>Total dynamic head (TDH)</strong> is the vertical lift from the pump to the discharge point plus friction losses in the pipe and fittings. Every foot of head costs flow; ignore it and the pump you bought exists only on paper.</p>
+    <p>Vertical lift is measured from the pump's intake to where the pipe exits the house — typically 7 to 10 feet for a basement. Friction adds up: straight 1.5-inch pipe costs roughly 4 feet of head per 100 feet of run, and each 90-degree elbow adds about as much as 5 feet of straight pipe. Two elbows and a 20-foot run add over a foot and a half most people never count.</p>
+    <p>The calculator totals it: lift + pipe friction + elbow equivalents. Then it matches the required GPH against real pump curves — because a “1/3 HP” label without a head rating is marketing, not engineering.</p>
+    <h2>Reading Pump Curves (Two Minutes)</h2>
+    <p>Every legitimate pump publishes a <strong>curve</strong>: GPH on one axis, head in feet on the other, sloping down as head rises. Find your TDH on the head axis, read across to the curve, and down to the flow — that is what the pump actually delivers in your basement. If that number is not comfortably above your inflow, keep shopping.</p>
+    <p>Compare pumps at <strong>your</strong> head, not at zero: a pump advertising 3,000 GPH might deliver 1,800 at 10 feet while a “weaker” 2,500 GPH pump delivers 2,000 at the same head because its curve is flatter. The flatter curve wins in deep basements every time.</p>
+    <p>Shut-off head — where the curve hits zero flow — must exceed your TDH with margin. A pump whose shut-off is 11 feet on a 10-foot TDH system is running at its absolute limit: noisy, hot, and short-lived. Want shut-off at least 50 percent above your TDH.</p>
+    <h2>1/3 HP vs. 1/2 HP: The Real Difference</h2>
+    <p>For most homes, <strong>1/3 HP</strong> is the sweet spot: roughly 2,000–2,500 GPH at 10 feet of head, modest power draw, and long life because it is rarely stressed. If your bucket test says under ~1,400 GPH required, 1/3 HP with margin is the answer — bigger is not better here.</p>
+    <p><strong>1/2 HP</strong> suits high-inflow basements (required flow 2,200–3,500 GPH), deeper lifts, or long discharge runs. It moves more water but cycles the same way — oversizing far beyond need just means short-cycling, which wears switches faster without helping anything.</p>
+    <p>Beyond 1/2 HP, or when required flow tops ~3,500 GPH, think <strong>system</strong> instead of pump: dual pumps (a primary plus a higher-set backup that only runs in extremes), or fixing the water source. Two staged 1/3 HP pumps outlast and outperform one strained 3/4 HP in most residential setups — and one can fail without flooding the basement.</p>
+    <h2>The Pit: Size Matters More Than You Think</h2>
+    <p>An undersized pit makes any pump short-cycle: the pump empties a tiny pit in seconds, the float drops, the pump stops, water refills in a minute, repeat — hundreds of cycles a day that kill float switches years early. An <strong>18-inch diameter, 24-inch deep</strong> pit is the practical minimum; bigger is better.</p>
+    <p>Set the float switch with real <strong>differential</strong>: the pump should turn on with several inches of water above the turn-off point, so each cycle moves a meaningful volume. Adjustable floats and vertical (non-tethered) switches give cleaner control in narrow pits — tethered floats snag on pit walls and stick.</p>
+    <p>Keep the pit covered and the intake screen clear. A surprising number of “pump failures” are a float tangled in the power cord or an intake choked with silt. Coil cords up and out of the float's travel, and vacuum the pit every spring.</p>
+    <h2>Discharge: Where the Water Goes</h2>
+    <p>Pump the water <strong>at least 10–20 feet from the foundation</strong>, downhill, onto grade that carries it away — not into a pipe that ends at the footing, which just recycles the same water through the pump forever (watch for a pump that runs constantly in dry weather: classic recycle). In winter climates, bury the line below frost depth or expect a frozen pipe and a flooded basement in January.</p>
+    <p>Use <strong>1.5-inch</strong> discharge pipe minimum (check the pump's outlet — reducing it chokes flow), with a <strong>check valve</strong> on the vertical run just above the pump. Without it, the pipe's water column drains back into the pit at shutoff and the pump re-pumps the same gallons all day.</p>
+    <p>Drill a small <strong>weep hole</strong> in the discharge pipe just above the pump (below the check valve) angled down into the pit. It prevents air-lock on startup — the mysterious condition where the pump hums but moves nothing — at the cost of a harmless trickle during each cycle.</p>
+    <h2>Battery Backup: Sizing the Safety Net</h2>
+    <p>Pumps fail when power fails — storms take both. A <strong>battery backup system</strong> (DC pump or inverter running the AC pump) bridges outages. Runtime is simple physics: a 75 Ah 12V battery holds about 900 watt-hours; at 85 percent inverter efficiency driving a 400W pump, that is roughly <strong>1.9 hours of continuous pumping</strong> — longer in practice, since pumps cycle.</p>
+    <p>The calculator estimates your runtime from battery amp-hours and pump watts. Size for your outage history: two hours covers most blips; storm-prone areas want dual batteries or a <strong>water-powered backup pump</strong> (municipal water only — it uses tap pressure, runs indefinitely, but drinks water and needs good pressure).</p>
+    <p>Maintain the battery: check water levels on flooded batteries, keep terminals clean, and replace every 3–5 years whether it has “been used” or not. Test the whole system twice a year — pour a bucket of water in the pit and kill the main breaker. A backup you have never tested is a rumor.</p>
+    <h2>Alarms: The Cheapest Insurance</h2>
+    <p>A <strong>high-water alarm</strong> — a $15 float alarm that screams when water rises above the normal trigger point — is the highest-value device in the basement. It catches stuck floats, failed pumps and overwhelmed systems while there is still time to act, instead of at the ruined-carpet stage.</p>
+    <p>WiFi alarms that text you are worth it for anyone who travels; basements flood most enthusiastically when nobody is home. Pair the alarm float <strong>above</strong> the pump's on-point but below the floor — it should only ever sound when something is wrong.</p>
+    <p>Test alarms with the same bucket test as the pump. Batteries in alarms die silently; check them when you check smoke detectors. Fifteen dollars, two minutes, twice a year — the math is absurdly favorable.</p>
+    <h2>Replacement Day Checklist</h2>
+    <p>Pumps last <strong>7–10 years</strong>; replace proactively, not after a flood. Match the new pump's outlet size to your pipe, verify the curve at your TDH (not just the HP label), and consider upgrading the check valve and float switch while the pit is open — switches fail more often than motors.</p>
+    <p>Keep the old working pump as an <strong>emergency spare</strong> on the shelf, with a spare check valve and a length of discharge hose. When a pump dies at 11 PM in a storm, the spare on the shelf beats the store that opens at 7 AM.</p>
+    <p>Log the install date on the pump with a paint marker and in your phone. Future-you, ankle-deep and calm because the replacement was already scheduled, says thanks.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What size sump pump do I need?</summary><p>Measure inflow with a bucket test (gallons ÷ seconds × 3600 = GPH), add total dynamic head (lift + pipe friction + elbows), and choose a pump delivering 1.5× your inflow at that head. Most homes land on 1/3 HP; high inflow or deep lifts need 1/2 HP or staged dual pumps.</p></details>
+    <details><summary>How do I do a sump pump bucket test?</summary><p>During wet weather, time how long your inflow takes to fill a bucket of known size. GPH = gallons ÷ seconds × 3600. A 5-gallon bucket filling in 20 seconds is 900 GPH. Test at the wettest time — sizing to a dry-day trickle undersizes the pump.</p></details>
+    <details><summary>What is total dynamic head for a sump pump?</summary><p>Vertical lift from pump to discharge exit, plus friction: ~4 ft of head per 100 ft of 1.5-in. pipe plus ~5 ft equivalent per 90° elbow. Pumps must be compared at your TDH using their published curves — GPH at zero head is meaningless.</p></details>
+    <details><summary>How long will a battery backup run a sump pump?</summary><p>Roughly battery amp-hours × 12V × 0.85 ÷ pump watts = hours of continuous run. A 75Ah battery on a 400W pump gives ~1.9 hours continuous — longer in practice since pumps cycle. Size batteries to your area's outage history.</p></details>
+    <details><summary>Why does my sump pump run constantly?</summary><p>Common causes: a stuck or tangled float switch, a failed check valve letting discharge drain back, discharge water recycling to the foundation (pipe too short), or genuinely high inflow. Check the float and check valve first — they're the usual suspects.</p></details>
+    <details><summary>How often should a sump pump be replaced?</summary><p>Every 7–10 years, proactively. Replace the float switch and check valve at the same time, keep the old working pump as an emergency spare, and test the system (plus battery backup and high-water alarm) twice a year with a bucket of water.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">SumpPump</div>
+    <p>SumpPump sizes your pump from a real bucket-test inflow and total head — then checks how long a battery backup keeps it running.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TOOLJS */
+function computeSump(o){
+  var inflow=o.gal/o.sec*3600;
+  var friction=o.pipe*0.04+o.elbows*0.2;
+  var tdh=o.lift+friction,req=inflow*1.5;
+  var pump=req<=2200?'1/3 HP':(req<=3500?'1/2 HP':'High-capacity 3/4 HP or dual pumps');
+  return{inflow:inflow,tdh:tdh,req:req,pump:pump,backup:o.ah*12*0.85/o.watts};
+}
+if(typeof document!=='undefined'){
+(function(){
+  function val(id){return parseFloat(document.getElementById(id).value)||0;}
+  function fmt(n,d){return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});}
+  ['sp-gal','sp-sec','sp-lift','sp-pipe','sp-elb','sp-ah','sp-w'].forEach(function(id){
+    document.getElementById(id).addEventListener('input',calc);});
+  function draw(tdh){
+    var svg=document.getElementById('sp-svg'),NS='http://www.w3.org/2000/svg';
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    function e(n,at){var el=document.createElementNS(NS,n);for(var k in at)el.setAttribute(k,at[k]);svg.appendChild(el);return el;}
+    e('rect',{x:60,y:170,width:120,height:70,rx:8,fill:'#EDF4D2',stroke:'#5F7213','stroke-width':2});
+    e('rect',{x:95,y:195,width:50,height:34,rx:6,fill:'#5F7213'});
+    e('rect',{x:114,y:120,width:12,height:80,fill:'#5F7213'});
+    e('line',{x1:120,y1:120,x2:230,y2:120,stroke:'#5F7213','stroke-width':12,'stroke-linecap':'round'});
+    e('line',{x1:230,y1:120,x2:230,y2:60,stroke:'#5F7213','stroke-width':12,'stroke-linecap':'round'});
+    e('line',{x1:230,y1:60,x2:280,y2:60,stroke:'#5F7213','stroke-width':12,'stroke-linecap':'round'});
+    e('line',{x1:40,y1:60,x2:40,y2:205,stroke:'#26331F','stroke-width':1.5});
+    e('line',{x1:32,y1:60,x2:48,y2:60,stroke:'#26331F','stroke-width':1.5});
+    e('line',{x1:32,y1:205,x2:48,y2:205,stroke:'#26331F','stroke-width':1.5});
+    var t=e('text',{x:22,y:135,'text-anchor':'middle','font-size':13,'font-weight':800,fill:'#5F7213',
+      transform:'rotate(-90 22 135)'});
+    t.textContent='head '+fmt(tdh,1)+' ft';
+    function lab(x,y,s){var el=e('text',{x:x,y:y,'text-anchor':'middle','font-size':12,'font-weight':700,fill:'#5C6B54'});el.textContent=s;}
+    lab(120,256,'sump pit');lab(255,48,'discharge');
+  }
+  function calc(){
+    var o={gal:val('sp-gal'),sec:val('sp-sec'),lift:val('sp-lift'),pipe:val('sp-pipe'),
+      elbows:val('sp-elb'),ah:val('sp-ah'),watts:val('sp-w')};
+    if(o.sec<=0)o.sec=1;if(o.watts<=0)o.watts=1;
+    var r=computeSump(o);
+    document.getElementById('sp-gph').textContent=fmt(r.inflow,0)+' GPH inflow';
+    document.getElementById('sp-fill').style.width=Math.min(100,r.inflow/60)+'%';
+    document.getElementById('sp-tdh').textContent=fmt(r.tdh,1)+' ft';
+    document.getElementById('sp-req').textContent=fmt(r.req,0)+' GPH';
+    document.getElementById('sp-pump').textContent=r.pump;
+    document.getElementById('sp-backup').textContent=fmt(r.backup,1)+' hrs';
+    draw(r.tdh);
+  }
+  calc();
+})();
+}
+</script>
+</body>
+</html>
