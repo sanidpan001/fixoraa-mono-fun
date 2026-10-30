@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cat Litter Calculator — How Much Litter &amp; What It Costs</title>
+<meta name="description" content="Calculate cat litter usage, bags per month and monthly cost from the number of cats, litter per cat and bag size — with a change schedule.">
+<link rel="canonical" href="https://fun.fixoraa.tech/catlitter/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "CatLitter", "url": "https://fun.fixoraa.tech/catlitter/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much litter does one cat use per month?", "acceptedAnswer": {"@type": "Answer", "text": "Typically 8–17 kg of clumping litter per month, depending on the cat, tray depth and litter type."}}, {"@type": "Question", "name": "How many litter trays do I need?", "acceptedAnswer": {"@type": "Answer", "text": "One per cat plus one spare is the standard recommendation."}}, {"@type": "Question", "name": "How often should I fully change the litter?", "acceptedAnswer": {"@type": "Answer", "text": "Every 1–2 weeks for clumping litter; every few days for non-clumping types, with daily scooping in both cases."}}, {"@type": "Question", "name": "Is expensive litter actually cheaper?", "acceptedAnswer": {"@type": "Answer", "text": "Often yes — long-lasting silica or good clumping litter can cost less per month than cheap litter that needs frequent full changes."}}, {"@type": "Question", "name": "Why does my cat toilet outside the tray?", "acceptedAnswer": {"@type": "Answer", "text": "Common causes are a dirty tray, too few trays, a disliked litter type, stress, or a health problem — check tray hygiene first, then see a vet if it persists."}}, {"@type": "Question", "name": "Can I compost cat litter?", "acceptedAnswer": {"@type": "Answer", "text": "Only plant-based litters, and only where local rules allow; never compost cat waste near food crops."}}]}</script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1F2937;line-height:1.6;background:#EFF6FF}
+header{background:#1E3A5F;color:#fff;padding:18px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:52px;height:52px;border-radius:14px;background:#fff;color:#2563EBD;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+.brand h1{margin:0;font-size:26px;line-height:1.1}.brand p{margin:2px 0 0;opacity:.9;font-size:14px}
+.btn{display:inline-block;background:#fff;color:#2563EBD;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;border:0;cursor:pointer;font-size:15px}
+.btn.primary{background:#2563EB;color:#fff}.badge{display:inline-block;background:#fff;color:#2563EBD;border-radius:999px;padding:5px 12px;font-weight:700;font-size:13px}
+main{max-width:1020px;margin:0 auto;padding:8px 16px 30px}label{font-weight:700;display:block;margin:12px 0 4px}
+input,select{width:100%;padding:12px;border:2px solid #d8d2c4;border-radius:10px;font-size:16px;background:#fff;color:#1f2937}
+.result{margin-top:18px;background:#fff;border:2px solid #2563EB;border-radius:14px;padding:18px;font-size:18px}
+.result b{font-size:26px}.small{font-size:14px;color:#4b5563}.hist{font-size:14px;background:#fff;border-radius:10px;padding:12px;margin-top:14px}
+article{max-width:1020px;margin:0 auto;padding:10px 20px 30px}article h2{font-size:24px}article h3{font-size:19px}
+.faq{max-width:1020px;margin:0 auto;padding:0 20px 30px}.faq details{background:#fff;border-radius:10px;padding:14px 18px;margin:10px 0}
+footer{background:#1E3A5F;color:#fff;padding:28px 20px;text-align:center}footer a{color:#fff}
+@media(max-width:640px){.brand h1{font-size:21px}header{flex-direction:column;align-items:flex-start}.result b{font-size:22px}}
+.toolwrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}.kanban{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 18px rgba(0,0,0,.08)}.kanban h3{border-bottom:3px solid #2563EB;padding-bottom:8px}@media(max-width:640px){.toolwrap{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<header>
+<div class="brand"><div class="logo" aria-hidden="true">🐱</div><div><h1>CatLitter</h1><p>Clean trays, honest litter maths.</p></div></div>
+<div><span class="badge">Unlimited Free Usage</span>&nbsp; <a class="btn" href="https://fixoraa.tech">Home</a> <a class="btn" href="https://fixoraa.tech">More Tools</a></div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<section aria-label="Tool">
+<div class="toolwrap"><div class="kanban"><h3>Your cats</h3><label for="cats">Number of cats</label><input id="cats" type="number" value="2" ><label for="percat">Litter per cat per week (kg)</label><input id="percat" type="number" value="3.5" ></div><div class="kanban"><h3>Your litter</h3><label for="bagkg">Bag size (kg)</label><input id="bagkg" type="number" value="10" ><label for="lprice">Price per bag ($)</label><input id="lprice" type="number" value="12" ></div><div class="kanban"><h3>Result</h3><p><button class="btn primary" onclick="crun()">Calculate</button></p><div class="result" id="out">Enter your cats and litter details.</div></div></div>
+<div class="hist" id="hist">Recent results will appear here as you calculate.</div>
+<p><button class="btn primary" onclick="copyResult()">Copy result</button> <button class="btn" onclick="clearHist()">Clear history</button></p>
+</section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<article>
+<h2>About CatLitter</h2>
+<h2>How much litter does a cat actually use</h2><p>Most cat owners buy litter by habit, grabbing a bag when the cupboard looks empty, and only discover the true monthly cost when they add it up at year end. A typical indoor cat goes through roughly two to four kilograms of clumping litter per week, depending on the cat&#x27;s size, how much time it spends indoors, and how generously the tray is filled. Multi-cat households do not scale perfectly linearly, because cats share trays and some litter is lost to tracking and cleaning, but a per-cat figure is still the most reliable way to budget. This calculator multiplies your per-cat weekly use by the number of cats, converts weeks to months using 4.33 weeks per month, and rounds up to whole bags, giving a monthly cost you can compare with subscriptions and bulk deals.</p><h2>Why tray numbers matter as much as litter</h2><p>The rule of thumb is one tray per cat plus one spare, and the reason is behaviour, not tidiness: cats that must queue or share a dirty tray are far more likely to toilet elsewhere in the house. More trays also change litter use, because a thin layer spread across three trays can use more litter in total than a deep layer in one, while too shallow a layer makes clumps stick to the base and wastes litter during cleaning. Aim for a depth of seven to ten centimetres in each tray, scoop at least once a day, and fully empty and wash the tray every one to two weeks for clumping litter, or every few days for non-clumping types. A regular routine keeps use predictable and odour low.</p><h2>Clumping, non-clumping, wood, silica and paper</h2><p>Clumping clay litter is the most popular choice because urine forms firm clumps that lift out cleanly, which stretches each bag further. Non-clumping clay absorbs moisture until saturated, so the whole tray must be changed more often and total use is higher. Wood pellet litter breaks down into sawdust when wet, suits sifting trays, and is compostable in many areas, but some cats dislike the pellet texture. Silica crystal litter absorbs a remarkable amount of moisture per kilogram and lasts longest per bag, though the upfront price is higher. Paper pellet litter is soft, low dust and good for post-surgery cats, but it needs frequent full changes. Compare cost per month from this calculator, not price per bag, since a long-lasting litter often wins.</p><h2>Scooping technique that saves litter</h2><p>Scoop daily and sift gently rather than stirring the whole tray, because stirring breaks clumps and mixes clean litter with soiled material. Top up the tray to its original depth after scooping instead of waiting until it looks empty, since a shallow tray produces broken clumps and wasted litter. Use a scoop with slots matched to your litter grain size: slots too wide let clumps fall back, while slots too fine trap clean litter. Keep the scoop clean and dry, because a damp scoop encourages clumping on the tool itself. These small habits can cut monthly use by ten to twenty percent without any change to the cats&#x27; routine.</p><h2>Odour control without extra cost</h2><p>Odour mostly comes from urine sitting in the tray, not from the litter brand, so daily scooping beats any scented product. Ventilation matters more than fragrance: place trays in a well-ventilated spot away from food bowls, and avoid covered trays in small rooms unless the cat strongly prefers them, since trapped air concentrates smell. Baking soda sprinkled lightly under fresh litter can help, but heavy perfuming can put cats off using the tray entirely, which is a far worse problem than a faint smell. If odour suddenly worsens, check for a missed clump stuck to the base, and consider a vet check, since strong-smelling urine can signal a health issue.</p><h2>Kittens, seniors and special cases</h2><p>Kittens use less litter per week but need more frequent full changes, because their trays soil quickly relative to their size and hygiene matters more for young immune systems. Senior cats and cats with kidney disease urinate more and therefore use noticeably more litter, sometimes fifty percent above the average adult figure, so use a higher per-cat number for them. Cats on wet food diets tend to produce more urine than cats on dry food, which also raises use. Multi-cat homes with one cat that digs enthusiastically will lose more litter to tracking, and a litter mat outside the tray catches much of it and can be shaken back. Adjust the per-cat figure for the first month, then re-check against actual bags used.</p><h2>Budgeting, subscriptions and bulk buying</h2><p>Once you know your monthly bag count, compare three buying routes: supermarket bags, bulk online orders, and subscription delivery. Subscriptions save the emergency shop run and often discount by ten percent, but only if the delivery quantity matches your real use — a subscription that sends too much creates a stockpile, while too little forces top-up shops at full price. Bulk buying makes sense when you have dry storage and use at least two bags a month, since litter keeps indefinitely if kept dry. Track one month of actual use against the calculator&#x27;s estimate, adjust the per-cat figure, and the budget becomes accurate within a bag per month.</p><h2>Disposal and the environment</h2><p>Most clay litter must go in general waste, not compost or garden bins, because cat waste can carry parasites that survive home composting. Wood and paper litters are often compostable through municipal green waste, but check local rules and never compost cat waste where food is grown. Flushable litters exist, yet many water authorities advise against flushing, and septic systems are especially sensitive to it. Double-bag soiled litter for hygiene, and keep the storage area dry and out of reach of children and other pets. Choosing a longer-lasting litter type is usually the biggest environmental saving, since it directly reduces the total weight thrown away each year.</p><h2>When litter problems signal a vet visit</h2><p>A sudden change in litter use, such as much larger clumps, more frequent visits, or toileting outside the tray, deserves attention rather than a litter brand change. Increased thirst and urination can indicate kidney disease or diabetes, straining can indicate a urinary blockage that needs urgent care, and avoidance of the tray can indicate pain, stress or a dirty tray. Keep a rough note of how many bags you use each month, because a steady rise is an early clue that something has changed. The calculator helps you spot that trend, but it never replaces veterinary advice when a cat&#x27;s habits change suddenly.</p><h2>Transitioning to a new litter type</h2><p>Cats are creatures of habit, and a sudden litter change can cause tray avoidance, which owners often mistake for a behaviour problem when it is simply a preference. Transition gradually over seven to ten days, mixing increasing proportions of the new litter into the old, starting with about a quarter new and ending with a full tray of the new type. Watch for signs of rejection, such as scratching without using the tray, perching on the edge, or toileting elsewhere, and slow the transition if any appear. Some cats accept a new texture immediately, while others need two weeks, and senior cats and kittens are usually the most sensitive. Keep the tray location and scooping routine unchanged during the transition, since changing two things at once makes it impossible to know which caused a problem. If a cat refuses a new litter entirely after a gradual change, return to the previous type and try a different alternative later, because a cat that avoids the tray will develop habits that are far harder to reverse than a litter preference. Record which types your cat accepts, so future purchases do not repeat a failed experiment.</p>
+</article>
+<section class="faq"><h2>Frequently asked questions</h2><details><summary><strong>How much litter does one cat use per month?</strong></summary><p>Typically 8–17 kg of clumping litter per month, depending on the cat, tray depth and litter type.</p></details><details><summary><strong>How many litter trays do I need?</strong></summary><p>One per cat plus one spare is the standard recommendation.</p></details><details><summary><strong>How often should I fully change the litter?</strong></summary><p>Every 1–2 weeks for clumping litter; every few days for non-clumping types, with daily scooping in both cases.</p></details><details><summary><strong>Is expensive litter actually cheaper?</strong></summary><p>Often yes — long-lasting silica or good clumping litter can cost less per month than cheap litter that needs frequent full changes.</p></details><details><summary><strong>Why does my cat toilet outside the tray?</strong></summary><p>Common causes are a dirty tray, too few trays, a disliked litter type, stress, or a health problem — check tray hygiene first, then see a vet if it persists.</p></details><details><summary><strong>Can I compost cat litter?</strong></summary><p>Only plant-based litters, and only where local rules allow; never compost cat waste near food crops.</p></details></section>
+<footer>
+<p><strong>CatLitter</strong> — Clean trays, honest litter maths.</p>
+<p>CatLitter helps cat owners budget litter accurately: weekly and monthly use, bags per month, cost, and how often to fully change the tray.</p>
+<p><a href="https://fixoraa.tech">Home</a> · <a href="https://fixoraa.tech">More Tools</a></p>
+<p>Made by <a href="https://fixoraa.tech">Fixoraa</a></p>
+</footer>
+<script>
+function compute(cats,per,bag,price){if(cats<=0||per<=0)return{weekly:0,monthly:0,bags:0,cost:0};var weekly=cats*per;var monthly=weekly*4.33;var bags=Math.ceil(monthly/bag);return{weekly:Math.round(weekly*100)/100,monthly:Math.round(monthly*100)/100,bags:bags,cost:Math.round(bags*price*100)/100};}
+function crun(){var r=compute(+document.getElementById('cats').value,+document.getElementById('percat').value,+document.getElementById('bagkg').value,+document.getElementById('lprice').value);var t='Weekly use: <b>'+r.weekly+' kg</b>. Monthly: <b>'+r.monthly+' kg</b> — <b>'+r.bags+' bags</b> costing <b>$'+r.cost+'</b> per month.';document.getElementById('out').innerHTML=t;pushHist(t);}
+function copyResult(){var r=document.getElementById('out');if(r){navigator.clipboard.writeText(r.innerText);alert('Result copied!');}}
+function clearHist(){try{localStorage.removeItem('hist_catlitter');}catch(e){}document.getElementById('hist').innerHTML='Recent results will appear here as you calculate.';}
+function pushHist(txt){try{var h=JSON.parse(localStorage.getItem('hist_catlitter')||'[]');h.unshift(txt);h=h.slice(0,5);localStorage.setItem('hist_catlitter',JSON.stringify(h));document.getElementById('hist').innerHTML='<strong>Recent:</strong><br>'+h.map(function(x){return x;}).join('<br>');}catch(e){}}
+</script>
+</body>
+</html>
