@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crown Molding Calculator — Miter & Bevel for Any Corner | CrownMold</title>
+<meta name="description" content="Crown molding miter and bevel settings for any corner angle and spring angle.">
+<link rel="canonical" href="https://fun.fixoraa.tech/crownmold/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Crown Molding Calculator — Miter & Bevel for Any Corner | CrownMold">
+<meta property="og:description" content="Crown molding miter and bevel settings for any corner angle and spring angle.">
+<meta property="og:url" content="https://fun.fixoraa.tech/crownmold/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CrownMold",
+      "url": "https://fun.fixoraa.tech/crownmold/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Crown molding miter and bevel settings for any corner angle and spring angle.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the miter and bevel settings for crown molding on a 90° corner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For 38° spring angle: 31.6° miter and 33.9° bevel. For 45° spring: 35.3° miter and 30.0° bevel. These assume a perfect 90° corner — measure your actual corners, since real ones run 88–92°."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you cut crown molding for a 135° bay window corner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With 45° spring angle: about 59.7° miter and 15.7° bevel. Bay corners need much wider miters and shallow bevels. Measure each facet — bays are rarely exactly 135° — and test every setting in scrap first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 'upside down and backwards' mean for cutting crown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Position the molding on the saw with the ceiling edge DOWN on the table and the wall edge against the fence — exactly as it sits on the wall, inverted. The saw's miter + bevel settings then cut the compound angle directly, no math at the saw."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should inside crown corners be mitered or coped?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Coped joints last: one piece runs square into the corner, the other is cut to match its profile, so seasonal wood movement slides instead of gapping. Mitered inside corners look perfect on day one and open within a year or two."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find my crown molding's spring angle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check the manufacturer's spec, or hold the molding in the corner position and measure the tilt off the wall with an angle finder. Most residential profiles are 38°; many chunky or polyurethane profiles are 45°. Using the wrong one throws every joint off."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much extra crown molding should I buy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fifteen percent over the measured wall length. Compound miters demand test cuts on every non-90° corner, and crown costs enough per foot that running short mid-room is painful. Save all offcuts over 6 inches until the room is finished."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F7F9E1; --tint:#F1F4D2; --accent:#6A7213; --accent-deep:#4B4E12;
+  --ink:#33301A; --muted:#6E6A4C; --line:#D3D4B3;
+  --display:'Fraunces',system-ui,sans-serif; --body:'Fraunces',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+.fx-header{background:#fff;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent);transition:transform .12s ease;background:#fff}
+.fx-btn:hover{transform:translateY(-1px)}
+.fx-btn.solid{background:var(--accent);color:#fff}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+.article-sec{margin:44px 0;max-width:800px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 12px;font-weight:800;color:var(--ink)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+.faq-sec{margin:36px 0;max-width:800px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:#fff;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+.fx-footer{background:#1d1d1d;color:#e8e8e8;margin-top:48px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#bdbdbd;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:var(--tint);font-weight:700}
+input,select,button{font:inherit}
+
+
+.cm-hero{padding:56px 0 4px;max-width:780px}
+.cm-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--tint);border:1.5px solid var(--accent);padding:7px 16px;border-radius:4px;margin-bottom:16px}
+.cm-hero h1{font-size:clamp(36px,5vw,54px);letter-spacing:-.02em;font-weight:800;margin-bottom:12px;font-family:var(--display)}
+.cm-hero h1 em{font-style:italic;color:var(--accent)}
+.cm-hero p{font-size:18px;color:var(--muted);max-width:640px}
+.cm-hero p em{font-style:italic}
+.cm-tool{background:#fff;border:1.5px solid var(--accent);border-radius:6px;margin:26px 0 8px;overflow:hidden;box-shadow:0 14px 34px rgba(111,116,27,.10)}
+.cm-cols{display:grid;grid-template-columns:1fr 1fr}
+.cm-left{padding:26px;border-right:1px dashed var(--line)}
+.cm-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;color:var(--accent)}
+.field input,.field select{width:100%;padding:10px 12px;border:1.5px solid var(--accent);border-radius:4px;background:#fff;color:var(--ink);font-variant-numeric:tabular-nums}
+.field input:focus,.field select:focus{outline:3px solid var(--tint)}
+#cm-svg{width:100%;height:auto;background:var(--bg);border:1.5px solid var(--accent);border-radius:4px}
+.cm-right{padding:26px;background:linear-gradient(180deg,#fff,var(--bg))}
+.cm-dials{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.cm-dial{border:2px solid var(--accent);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--tint)}
+.cm-dial .k{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.cm-dial .v{font-size:34px;font-weight:800;font-variant-numeric:tabular-nums}
+.cm-table{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:16px}
+.cm-table th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);border-bottom:2px solid var(--accent);padding:8px 6px}
+.cm-table td{border-bottom:1px dashed var(--line);padding:9px 6px;font-variant-numeric:tabular-nums}
+.cm-order{display:flex;gap:12px;align-items:baseline;background:var(--accent);color:#fff;border-radius:12px;padding:16px 18px;margin-bottom:14px}
+.cm-order span:first-child{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;opacity:.9}
+.cm-order b{font-size:28px;font-weight:800}
+.cm-order .s{margin-left:auto;font-size:13px;opacity:.9}
+.cm-note{font-size:13px;color:var(--muted)}
+.cm-note b{color:var(--accent)}
+@media(max-width:760px){.cm-cols{grid-template-columns:1fr}.cm-left{border-right:0;border-bottom:1px dashed var(--line)}}
+
+</style>
+</head>
+<body>
+<header class="fx-header crownmold-hdr">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/crownmold/" aria-label="CrownMold home">
+      <span class="fx-tile" aria-hidden="true">CM</span>
+      <span class="fx-name">CrownMold</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="cm-hero">
+    <div>
+      <span class="cm-eyebrow">Compound angles</span>
+      <h1>Crown Molding Calculator</h1>
+      <p>Miter and bevel for <em>your</em> corner — 90°, bay windows, vaults — with the upside-down, backwards cutting method.</p>
+    </div>
+  </section>
+  <section class="cm-tool" aria-label="CrownMold tool">
+    <div class="cm-cols">
+      <div class="cm-left">
+        <div class="cm-form">
+          <div class="field"><label for="cm-corner">Corner angle (°)</label>
+            <input type="number" id="cm-corner" value="90" min="30" max="180" step="1"></div>
+          <div class="field"><label for="cm-spring">Spring angle</label>
+            <select id="cm-spring"><option value="38" selected>38° (most profiles)</option><option value="45">45°</option></select></div>
+          <div class="field"><label for="cm-wall">Wall length (ft)</label>
+            <input type="number" id="cm-wall" value="40" min="1" max="500" step="1"></div>
+          <div class="field"><label for="cm-side">Corner type</label>
+            <select id="cm-side"><option value="inside" selected>Inside corner</option><option value="outside">Outside corner</option></select></div>
+        </div>
+        <svg id="cm-svg" viewBox="0 0 360 250" role="img" aria-label="Corner plan view"></svg>
+      </div>
+      <div class="cm-right" aria-live="polite">
+        <div class="cm-dials">
+          <div class="cm-dial"><span class="k">Miter</span><span class="v" id="cm-miter">31.6&deg;</span></div>
+          <div class="cm-dial"><span class="k">Bevel</span><span class="v" id="cm-bevel">33.9&deg;</span></div>
+        </div>
+        <table class="cm-table">
+          <tr><th>Piece</th><th>Cut</th><th>Orientation</th></tr>
+          <tbody id="cm-cuts"></tbody>
+        </table>
+        <div class="cm-order"><span>Total molding</span><b id="cm-lf">46.0 ft</b><span class="s" id="cm-boards">3 × 16-ft boards</span></div>
+        <p class="cm-note">Cut crown <b>upside down and backwards</b>: ceiling edge down on the saw table, wall edge against the fence — the saw then cuts the compound angle with single miter + bevel settings.</p>
+      </div>
+    </div>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+    <h2>The Compound-Angle Problem</h2>
+    <p>Crown molding sits at an angle between wall and ceiling — the <strong>spring angle</strong> — so every corner cut is a compound cut: a miter and a bevel happening at once. Get either one wrong and the joint gapes; get both right and the corner closes like a book. The formulas are honest trigonometry: miter = arctan(sin(spring) × tan(corner/2)), bevel = arcsin(cos(spring) × cos(corner/2)).</p>
+    <p>For the standard 90-degree corner with 38-degree spring angle — the most common crown profile in North America — that works out to <strong>31.6° miter, 33.9° bevel</strong>. Memorize those two numbers and you can cut most rooms without a calculator. But the moment a corner is not 90 degrees — bay windows, vaults, old houses where nothing is square — the memorized numbers betray you and the math earns its keep.</p>
+    <p>This calculator takes your actual corner angle and spring angle and returns both saw settings, plus a cut list with orientation. Because the cruelest part of crown is not the math — it is cutting the perfect angle on the wrong face.</p>
+    <h2>Spring Angle: 38° vs. 45°</h2>
+    <p>The spring angle is the profile's designed tilt: how far it leans off the wall. Most residential crown is <strong>38 degrees</strong> (52 degrees off the ceiling); chunkier profiles and many polyurethane moldings use <strong>45 degrees</strong>. The setting changes everything: at 90° corners, 45° spring gives 35.3° miter and 30.0° bevel — rounder numbers, same unforgiving precision.</p>
+    <p>How to tell which you have: hold the molding in the corner position and measure, or check the manufacturer's spec. Guessing wrong by 7 degrees produces joints that miss by a visible sixteenth or more — the exact gap that no amount of caulk convincingly hides on stain-grade work.</p>
+    <p>When buying, note the spring angle on the cut list. Mixed profiles in one house (38 in the bedrooms, 45 in the living room) are fine as long as each room's cuts use its own number. The calculator remembers; your miter saw does not.</p>
+    <h2>Measure the Corner, Don't Assume It</h2>
+    <p>Framers frame to 90 degrees the way weather forecasts predict sunshine — aspirationally. Real corners run 88 to 92 degrees, and a 2-degree error in the corner becomes a visible gap at the joint. Measure with a <strong>digital angle finder</strong> or a simple bevel gauge transferred to a protractor; measure every corner, because they vary within a room.</p>
+    <p>For bay windows, measure each facet angle — typically 135 degrees for a standard bay, 150 for a gentle one. For vaulted ceilings where crown meets a slope, you need the <strong>ceiling pitch</strong> too, and the math gets genuinely three-dimensional; the calculator handles wall-to-wall corners, and vaults deserve a dedicated tutorial (or a patient afternoon with scrap).</p>
+    <p>Record each corner's angle on painter's tape stuck near it. Cutting station amnesia — “was this the 91 or the 89?” — is responsible for more wasted crown than dull blades.</p>
+    <h2>Upside Down and Backwards: The Only Method</h2>
+    <p>Here is the technique that makes compound cuts cuttable on a basic miter saw: position the molding <strong>upside down and backwards</strong> — ceiling edge down on the saw table, wall edge against the fence. In this position, the molding sits exactly as it will on the wall, and the saw's single miter + single bevel settings produce the compound cut automatically.</p>
+    <p>It feels wrong the first three times. The piece looks inverted, the waste falls on the unfamiliar side, and your instincts scream. Trust the position, make the cut on scrap, and hold the scrap up to the corner — it will fit, and the feeling of wrongness will evaporate into delight.</p>
+    <p>Critical detail: the <strong>fence must be tall enough</strong> to support the molding's wall edge, or the piece rocks mid-cut. Clamp a sacrificial tall fence to your saw for crown work. And always cut with the <strong>finished face</strong> oriented so tear-out lands on the back — blade enters the show face last on a chop cut.</p>
+    <h2>Inside Corners: Miter or Cope?</h2>
+    <p>Two schools exist for inside corners. <strong>Mitered</strong> inside corners — both pieces cut at the compound settings, meeting at the corner — are fast and look perfect on day one. <strong>Coped</strong> joints — one piece square into the corner, the other cut to match its profile — take longer and look perfect on day one thousand.</p>
+    <p>Wood moves with seasons; mitered inside corners open into gaps as it shrinks, while coped joints slide along each other and stay tight. For paint-grade crown in stable climates, miters are defensible. For stain-grade, wide profiles, or anywhere with real humidity swings, <strong>cope</strong>. The calculator's cut list shows the miter settings; the cope alternative is one square cut plus a coping saw.</p>
+    <p>Coping crown uses the same upside-down position: cut the miter first to reveal the profile line, then follow it with the coping saw, back-cutting slightly. Your third cope will take ten minutes and outlast the house's next three paint jobs.</p>
+    <h2>Outside Corners and Scarf Joints</h2>
+    <p>Outside corners — bump-outs, chimney chases, tray ceiling edges — use the same settings with mirrored orientation: the long point of the miter goes to the <strong>outside</strong>. Mark each piece “OL” and “OR” (outside-left, outside-right) before cutting; a pile of identical-looking compound miters is a puzzle nobody wants.</p>
+    <p>Long walls need <strong>scarf joints</strong>: join two lengths with opposing 22.5-degree bevels (not square butts), glued. The shallow bevel gives glue surface and the seam nearly disappears. Place scarfs where they are least visible — never centered on the wall's main sightline — and always over a stud or blocking so both pieces are nailed solid.</p>
+    <p>Glue every joint — miters, copes' back edges, scarfs — with wood glue (paint-grade) or polyurethane glue. Nails hold position; <strong>glue holds the joint</strong>. Pin-nail with 18-gauge brads into studs and ceiling joists wherever possible; crown nailed only to drywall eventually waves.</p>
+    <h2>Cutting Order and the Waste Budget</h2>
+    <p>Cut longest pieces first, then medium, then short — offcuts cascade downward into returns and small pieces. Cut <strong>all</strong> of one corner type before switching settings; every settings change is a chance to cut the perfect angle on the wrong orientation.</p>
+    <p>Budget <strong>15 percent waste</strong> for crown — higher than baseboard, because compound miters punish mistakes at $2–$6 per foot and test cuts are mandatory on non-90 corners. The calculator adds 15 percent to your wall length and converts to 16-foot boards, the standard crown length.</p>
+    <p>Save every offcut longer than 6 inches until the room is done. Returns (the little end caps where crown dies into a wall), scarf practice, and the inevitable “one more piece” all come from the offcut pile. Throw them away and the store trip they cause costs more than the boards.</p>
+    <h2>Coping With Out-of-Square Everything</h2>
+    <p>Old houses: corners at 91, walls that lean, ceilings that wave. The pro move is <strong>test with scrap</strong>: cut the computed settings in a foot of scrap, hold it up, and adjust the miter by half degrees until it closes. Then cut the real piece. The calculator gets you within a degree; the scrap gets you to perfect.</p>
+    <p>For wavy ceilings, <strong>scribe</strong> the top edge: hold the crown in position, trace the ceiling's wave onto the molding, and belt-sand to the line. Caulk hides up to about 1/4 inch of gap on paint-grade; beyond that, scribing is the answer. Stain-grade on wavy plaster is genuinely hard — this is the crown job most worth hiring out.</p>
+    <p>Backer blocks help everywhere: nail 2x2 blocking along the wall-ceiling joint where studs are sparse, giving every inch of crown solid nailing. Crown follows the blocking, not the waves, and the installation goes twice as fast.</p>
+    <h2>Finish: Caulk, Fill, Paint</h2>
+    <p>Paint-grade crown gets the full treatment: fill nail holes, caulk the top edge to the ceiling and the bottom edge to the wall with <strong>paintable</strong> caulk, sand the filler, then two coats of paint. The caulk lines are what make crown look built-in rather than applied — skip them and every joint casts a shadow line.</p>
+    <p>Stain-grade gets no caulk and no filler — every gap is permanent, which is why the cutting matters so much more. Pre-finish before installation when you can: stain and topcoat on sawhorses, then touch up nail holes with a wax pencil after hanging. Touch-up beats trying to stain a ceiling-adjacent edge on a ladder.</p>
+    <p>One last check before paint: sight down each run at dusk with a work light raking across it. Raking light reveals every dip, gap and proud joint while there is still time for a dab of filler. Then paint, step back, and enjoy the room looking a foot taller.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What are the miter and bevel settings for crown molding on a 90° corner?</summary><p>For 38° spring angle: 31.6° miter and 33.9° bevel. For 45° spring: 35.3° miter and 30.0° bevel. These assume a perfect 90° corner — measure your actual corners, since real ones run 88–92°.</p></details>
+    <details><summary>How do you cut crown molding for a 135° bay window corner?</summary><p>With 45° spring angle: about 59.7° miter and 15.7° bevel. Bay corners need much wider miters and shallow bevels. Measure each facet — bays are rarely exactly 135° — and test every setting in scrap first.</p></details>
+    <details><summary>What does 'upside down and backwards' mean for cutting crown?</summary><p>Position the molding on the saw with the ceiling edge DOWN on the table and the wall edge against the fence — exactly as it sits on the wall, inverted. The saw's miter + bevel settings then cut the compound angle directly, no math at the saw.</p></details>
+    <details><summary>Should inside crown corners be mitered or coped?</summary><p>Coped joints last: one piece runs square into the corner, the other is cut to match its profile, so seasonal wood movement slides instead of gapping. Mitered inside corners look perfect on day one and open within a year or two.</p></details>
+    <details><summary>How do I find my crown molding's spring angle?</summary><p>Check the manufacturer's spec, or hold the molding in the corner position and measure the tilt off the wall with an angle finder. Most residential profiles are 38°; many chunky or polyurethane profiles are 45°. Using the wrong one throws every joint off.</p></details>
+    <details><summary>How much extra crown molding should I buy?</summary><p>Fifteen percent over the measured wall length. Compound miters demand test cuts on every non-90° corner, and crown costs enough per foot that running short mid-room is painful. Save all offcuts over 6 inches until the room is finished.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">CrownMold</div>
+    <p>CrownMold computes miter and bevel for any corner angle and spring angle — plus a cut list with piece orientation so every piece goes up right.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+/* TOOLJS */
+function computeCrown(o){
+  var C=o.corner*Math.PI/180,S=o.spring*Math.PI/180;
+  var miter=Math.atan(Math.sin(S)*Math.tan(C/2))*180/Math.PI;
+  var bevel=Math.asin(Math.cos(S)*Math.cos(C/2))*180/Math.PI;
+  var lf=o.wallLen*(1+o.waste);
+  return{miter:miter,bevel:bevel,lf:lf,boards16:Math.ceil(lf/16-1e-9)};
+}
+if(typeof document!=='undefined'){
+(function(){
+  function val(id){return parseFloat(document.getElementById(id).value)||0;}
+  function fmt(n,d){return n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});}
+  ['cm-corner','cm-spring','cm-wall','cm-side'].forEach(function(id){
+    var el=document.getElementById(id);el.addEventListener('input',calc);el.addEventListener('change',calc);});
+  function draw(C,inside){
+    var svg=document.getElementById('cm-svg'),NS='http://www.w3.org/2000/svg';
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    var cx=180,cy=170,rad=(180-C)*Math.PI/360,L=120;
+    function e(n,at){var el=document.createElementNS(NS,n);for(var k in at)el.setAttribute(k,at[k]);svg.appendChild(el);return el;}
+    var a1=Math.PI+rad,a2=-rad;
+    var x1=cx+L*Math.cos(a1),y1=cy+L*Math.sin(a1),x2=cx+L*Math.cos(a2),y2=cy+L*Math.sin(a2);
+    e('line',{x1:cx,y1:cy,x2:x1,y2:y1,stroke:'#6A7213','stroke-width':14,'stroke-linecap':'round'});
+    e('line',{x1:cx,y1:cy,x2:x2,y2:y2,stroke:'#6A7213','stroke-width':14,'stroke-linecap':'round'});
+    e('line',{x1:cx,y1:cy,x2:x1,y2:y1,stroke:'#fff','stroke-width':2,'stroke-dasharray':'5 5'});
+    e('line',{x1:cx,y1:cy,x2:x2,y2:y2,stroke:'#fff','stroke-width':2,'stroke-dasharray':'5 5'});
+    var arc=e('path',{fill:'none',stroke:'#6A7213','stroke-width':2.5});
+    var r0=52,sx1=cx+r0*Math.cos(a1),sy1=cy+r0*Math.sin(a1),sx2=cx+r0*Math.cos(a2),sy2=cy+r0*Math.sin(a2);
+    arc.setAttribute('d','M'+sx1+' '+sy1+' A'+r0+' '+r0+' 0 0 '+(inside?1:0)+' '+sx2+' '+sy2);
+    var t=e('text',{x:cx,y:cy-66,'text-anchor':'middle','font-size':20,'font-weight':800,fill:'#6A7213'});
+    t.textContent=fmt(C,0)+'\u00b0';
+    var s=e('text',{x:180,y:232,'text-anchor':'middle','font-size':12,'font-weight':700,fill:'#6E6A4C'});
+    s.textContent=(inside?'Inside':'Outside')+' corner — plan view (looking down)';
+  }
+  function calc(){
+    var r=computeCrown({corner:val('cm-corner'),spring:parseFloat(document.getElementById('cm-spring').value),
+      wallLen:val('cm-wall'),waste:0.15});
+    var inside=document.getElementById('cm-side').value==='inside';
+    document.getElementById('cm-miter').innerHTML=fmt(r.miter,1)+'&deg;';
+    document.getElementById('cm-bevel').innerHTML=fmt(r.bevel,1)+'&deg;';
+    document.getElementById('cm-lf').textContent=fmt(r.lf,1)+' ft';
+    document.getElementById('cm-boards').textContent=r.boards16+' × 16-ft boards';
+    var L=inside?'Left piece':'Left piece',R=inside?'Right piece':'Right piece';
+    document.getElementById('cm-cuts').innerHTML=
+      '<tr><td>'+L+'</td><td>miter '+fmt(r.miter,1)+'&deg; L, bevel '+fmt(r.bevel,1)+'&deg;</td><td>ceiling edge DOWN</td></tr>'+
+      '<tr><td>'+R+'</td><td>miter '+fmt(r.miter,1)+'&deg; R, bevel '+fmt(r.bevel,1)+'&deg;</td><td>ceiling edge DOWN</td></tr>'+
+      '<tr><td>Cope alt.</td><td>one side square-cut</td><td>cope to profile</td></tr>';
+    draw(val('cm-corner'),inside);
+  }
+  calc();
+})();
+}
+</script>
+</body>
+</html>
