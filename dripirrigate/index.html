@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drip Irrigation Calculator — Emitters, Flow &amp; Runtime | DripIrrigate</title>
+<meta name="description" content="Drip emitter layout, zone flow and watering runtime in one planner.">
+<link rel="canonical" href="https://fun.fixoraa.tech/dripirrigate/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Drip Irrigation Calculator — Emitters, Flow &amp; Runtime | DripIrrigate">
+<meta property="og:description" content="Drip emitter layout, zone flow and watering runtime in one planner.">
+<meta property="og:url" content="https://fun.fixoraa.tech/dripirrigate/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "DripIrrigate",
+      "url": "https://fun.fixoraa.tech/dripirrigate/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "description": "Drip emitter layout, zone flow and watering runtime in one planner.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How many drip emitters does each plant need?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Small vegetables and flowers: 1 emitter each. Medium shrubs: 2 emitters on opposite sides. Large shrubs: 3–4 in a ring. Trees: 4–6+ emitters spaced around the drip line, moving outward as the tree grows. More emitters at lower flow beats one high-flow emitter — it wets a wider root zone." } },
+        { "@type": "Question", "name": "How long should I run drip irrigation?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Runtime = water needed ÷ total emitter flow. A 100 sq ft bed needing 1 inch of water (62 gallons) with 20 one-GPH emitters runs about 3.1 hours. Sandy soil needs shorter, more frequent runs; clay needs one long slow run to avoid runoff." } },
+        { "@type": "Question", "name": "How many emitters can I put on one zone?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Add up emitter GPH and convert to GPM (÷ 60). Keep the zone under 75% of your supply's measured GPM — a 6 GPM hose bib supports about 270 one-GPH emitters per zone. Exceeding supply starves the far emitters and nothing gets watered properly." } },
+        { "@type": "Question", "name": "Do I need a pressure regulator for drip irrigation?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Almost always yes. Household water runs 40–80 PSI; drip emitters and tubing want 20–30 PSI. Without a regulator, emitters pop off, flow rates go wild and tubing splits. A 25 PSI preset regulator costs a few dollars and belongs right after the filter." } },
+        { "@type": "Question", "name": "What is the difference between 0.5, 1 and 2 GPH emitters?",
+          "acceptedAnswer": { "@type": "Answer", "text": "They deliver water at different rates into different soils. Use 0.5 GPH in clay (slow absorption), 1 GPH in loam (the all-rounder), and 2 GPH in sand (water drains fast). Match emitter flow to soil so water spreads sideways into the root zone instead of draining past it or pooling." } },
+        { "@type": "Question", "name": "Why are my drip emitters clogged?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sediment, hard-water minerals or algae. Prevention: a 120-mesh filter at the zone head, flush end caps seasonally, and keep emitters staked above mulch rather than buried. Affected emitters can often be soaked in vinegar to dissolve mineral scale." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#E1EBF9; --surface:#FFFFFF; --tint:#D2E0F4;
+  --accent:#154184; --accent-deep:#671A41; --accent-ink:#FFFFFF;
+  --ink:#33202B; --muted:#7A5F6C; --line:#E8C4D6;
+  --display:'Public Sans',system-ui,sans-serif; --body:'Public Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:1120px;margin:0 auto;padding:0 20px}
+/* header */
+.fx-header{background:var(--surface);border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:44px;height:44px;border-radius:50%;background:conic-gradient(from 200deg,var(--accent),var(--accent-deep),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
+.fx-name{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--accent);color:var(--accent)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-badge{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:13px;border:1.5px dashed var(--accent)}
+/* hero */
+.dr-hero{padding:44px 0 6px}
+.dr-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.dr-hero h1{font-size:clamp(30px,4.6vw,46px);line-height:1.1;letter-spacing:-.025em;font-weight:800;margin-bottom:12px}
+.dr-hero p{font-size:18px;color:var(--muted);max-width:680px}
+/* planner */
+.dr-plan{margin:28px 0 10px;background:var(--surface);border:2px solid var(--line);border-radius:22px;overflow:hidden}
+.dr-head{background:linear-gradient(120deg,var(--tint),#FBF2F7);border-bottom:2px solid var(--line);padding:18px 28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dr-head h2{font-size:19px;font-weight:800}
+.dr-head .sub{font-size:13px;color:var(--muted)}
+.dr-grid{display:grid;grid-template-columns:380px 1fr;gap:0}
+.dr-left{padding:28px;border-right:2px dashed var(--line)}
+.dr-right{padding:28px;background:linear-gradient(180deg,#FDFBFD,var(--bg))}
+.dr-field{margin-bottom:18px}
+.dr-field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.dr-field label .hint{font-weight:400;color:var(--muted);font-size:13px}
+.dr-field input,.dr-field select{font:inherit;width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-weight:600}
+.dr-field input:focus,.dr-field select:focus{outline:3px solid var(--tint);border-color:var(--accent)}
+.dr-emit{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dr-emit button{font:inherit;font-weight:700;font-size:14px;padding:12px;border:2px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;color:var(--ink)}
+.dr-emit button small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.dr-emit button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.dr-emit button.on small{color:#F2D7E4}
+.dr-rows .dr-r{display:grid;grid-template-columns:1fr 90px 40px;gap:8px;margin-bottom:8px;align-items:center}
+.dr-r input,.dr-r select{font:inherit;font-weight:600;padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);width:100%;min-width:0}
+.dr-del{border:2px solid var(--line);background:#fff;border-radius:10px;font-size:18px;cursor:pointer;color:var(--muted);height:44px}
+.dr-add{border:2px dashed var(--accent);background:transparent;color:var(--accent);border-radius:10px;padding:10px;width:100%;font:inherit;font-weight:700;cursor:pointer;margin-top:4px}
+.dr-gauge{background:#fff;border:2px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+.dr-gauge .bar{height:26px;border-radius:999px;background:var(--tint);position:relative;overflow:hidden;margin:10px 0 6px}
+.dr-gauge .fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,var(--accent),#C0528A);transition:width .3s}
+.dr-gauge .mark{position:absolute;top:-2px;bottom:-2px;width:3px;background:var(--accent-deep)}
+.dr-gauge .cap{font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
+.dr-verdict{font-weight:800;font-size:16px;margin-bottom:4px}
+.dr-verdict.ok{color:#1D7C40}.dr-verdict.warn{color:#B23A2E}
+.dr-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
+.dr-card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.dr-card.hero{background:var(--accent);border-color:var(--accent);color:#fff}
+.dr-card .n{font-size:26px;font-weight:800}
+.dr-card .k{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;opacity:.85;margin-top:2px}
+.dr-card .k2{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.dr-soil{display:flex;gap:8px;flex-wrap:wrap}
+.dr-soil button{font:inherit;font-size:13px;font-weight:700;padding:9px 14px;border-radius:999px;border:2px solid var(--line);background:#fff;cursor:pointer;color:var(--ink)}
+.dr-soil button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.dr-note{background:var(--tint);border-radius:12px;padding:12px 16px;font-size:13.5px;color:var(--accent-deep)}
+@media(max-width:860px){
+  .dr-grid{grid-template-columns:1fr}
+  .dr-left{border-right:0;border-bottom:2px dashed var(--line)}
+  .dr-cards{grid-template-columns:1fr 1fr}
+  .fx-nav{margin-left:0}
+}
+/* article */
+.article-sec{margin:40px 0;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.02em;margin:34px 0 12px;font-weight:800}
+.article-sec p{margin-bottom:14px;color:#3d2b35}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px;color:#3d2b35}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px 0;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.faq-sec details{background:var(--surface);border:2px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-sec summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:2px solid var(--line);color:var(--accent)}
+.faq-sec details p{padding:14px 18px;color:#3d2b35;font-size:15px}
+/* footer */
+.fx-footer{background:#331627;color:#f2dce8;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#c69cae;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#eda9c8;font-weight:700}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/dripirrigate/" aria-label="DripIrrigate home">
+      <span class="fx-tile" aria-hidden="true">&#128167;</span>
+      <span class="fx-name">DripIrrigate</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="dr-hero">
+    <span class="dr-eyebrow">water journal &middot; zone by zone</span>
+    <h1>Drip Irrigation Calculator — Emitters, Flow &amp; Runtime</h1>
+    <p>Plan the emitters, check the zone against your water supply, and get the runtime your soil actually needs — one planner, no guesswork.</p>
+  </section>
+
+  <section class="dr-plan" aria-label="DripIrrigate tool">
+    <div class="dr-head">
+      <h2>Zone planner</h2>
+      <span class="sub">emitters &middot; supply check &middot; runtime</span>
+    </div>
+    <div class="dr-grid">
+      <div class="dr-left">
+        <div class="dr-field">
+          <label>Emitter flow rate <span class="hint">— match to soil</span></label>
+          <div class="dr-emit" id="dr-emit">
+            <button type="button" data-g="0.5"><small>clay soil</small>0.5 GPH</button>
+            <button type="button" data-g="1" class="on"><small>loam · all-rounder</small>1 GPH</button>
+            <button type="button" data-g="2"><small>sandy soil</small>2 GPH</button>
+            <button type="button" data-g="4"><small>trees · high flow</small>4 GPH</button>
+          </div>
+        </div>
+        <div class="dr-field">
+          <label>Emitter groups <span class="hint">— count × per-plant emitters</span></label>
+          <div class="dr-rows" id="dr-rows"></div>
+          <button type="button" class="dr-add" id="dr-add">+ Add plant group</button>
+        </div>
+        <div class="dr-field">
+          <label for="dr-supply">Water supply <span class="hint">— measured GPM at the bib</span></label>
+          <input type="number" id="dr-supply" value="6" min="0" step="any">
+        </div>
+        <div class="dr-field">
+          <label>Soil type <span class="hint">— sets watering depth &amp; frequency</span></label>
+          <div class="dr-soil" id="dr-soil">
+            <button type="button" data-s="sand">Sandy</button>
+            <button type="button" data-s="loam" class="on">Loam</button>
+            <button type="button" data-s="clay">Clay</button>
+          </div>
+        </div>
+        <div class="dr-field">
+          <label for="dr-area">Bed area <span class="hint">— sq ft, for runtime math</span></label>
+          <input type="number" id="dr-area" value="100" min="0" step="any">
+        </div>
+      </div>
+      <div class="dr-right" aria-live="polite">
+        <div class="dr-gauge">
+          <div class="dr-verdict ok" id="dr-verdict">Zone OK — 5.6% of safe capacity</div>
+          <div class="bar"><div class="fill" id="dr-fill" style="width:5.6%"></div><div class="mark" style="left:75%"></div></div>
+          <div class="cap"><span id="dr-flow">0.33 GPM used</span><span>safe limit: 75% of supply</span></div>
+        </div>
+        <div class="dr-cards">
+          <div class="dr-card hero"><div class="n" id="dr-emitters">20</div><div class="k">emitters</div></div>
+          <div class="dr-card"><div class="n" id="dr-gph">20</div><div class="k2">GPH total</div></div>
+          <div class="dr-card"><div class="n" id="dr-runtime">3.1 h</div><div class="k2">runtime / watering</div></div>
+        </div>
+        <div class="dr-note" id="dr-note"></div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-sec" aria-label="Guide">
+    <h2>Why Drip Beats Every Other Way to Water</h2>
+    <p>Sprinklers throw water into the air, where wind steals it and leaves evaporate it; soaker hoses weep unevenly. Drip irrigation delivers water <strong>drop by drop at the root zone</strong>, where plants actually drink. The efficiency gap is enormous — drip runs at 90%+ application efficiency versus 60–75% for sprinklers — which is why commercial farms converted decades ago and home gardens are following. Less water, fewer weeds (dry soil between rows germinates nothing), less disease (dry foliage), and happier plants.</p>
+    <p>But drip only works when it is <em>designed</em>. Random emitters on a timer produce random results: starved far ends, drowned near ends, mysterious dry spots. Three calculations make a system work — <strong>how many emitters</strong>, <strong>whether the zone's flow fits the supply</strong>, and <strong>how long to run</strong>. This planner does all three from your inputs.</p>
+    <h2>Emitters: How Many per Plant</h2>
+    <p>Size the emitter count to the root zone, not the stem. <strong>Vegetables and flowers:</strong> 1 emitter per plant, placed 2–3 inches from the stem. <strong>Medium shrubs:</strong> 2 emitters on opposite sides. <strong>Large shrubs:</strong> 3–4 in a ring. <strong>Trees:</strong> 4–6+ emitters around the drip line, moved outward as the canopy grows. The pattern to internalize: <strong>more emitters at lower flow beat one high-flow emitter</strong> — four 1-GPH emitters wet a wide, shallow root zone while one 4-GPH emitter punches a narrow wet chimney past the roots.</p>
+    <p>Spacing rules of thumb: 12 inches apart in sandy soil (water moves down, not sideways), 18 inches in loam, 24 inches in clay (water spreads wide). For row crops, that spacing along the row with one lateral line per row covers most vegetables; wide-spaced plants get their own ring of emitters on a loop of tubing.</p>
+    <h2>Matching Flow to Soil</h2>
+    <p>Emitter flow rate and soil type are a matched pair. <strong>Clay</strong> absorbs slowly — use 0.5 GPH so water spreads laterally instead of pooling and running off. <strong>Loam</strong> is the forgiving middle — 1 GPH is the all-rounder. <strong>Sand</strong> drains instantly — use 2 GPH (or more emitters) to keep up. Mismatching is the classic drip failure: 2-GPH emitters in clay create puddles and runoff while the soil six inches away stays bone dry; 0.5-GPH emitters in sand wet a teacup of soil while the roots go thirsty.</p>
+    <p>Pressure matters too. Household water arrives at 40–80 PSI; drip components want <strong>20–30 PSI</strong>. Without a regulator, emitters pop off their barbs, flows go erratic and tubing splits at the fittings. A 25-PSI preset regulator plus a 120-mesh filter, installed right at the zone head in that order (filter before regulator is the common pro arrangement — check your filter's rating), costs under $20 and prevents 90% of drip headaches.</p>
+    <h2>The Zone Flow Check</h2>
+    <p>A "zone" is everything watered by one valve at one time, and its total flow must fit the supply. Add up every emitter's GPH, divide by 60 for GPM, and compare against your measured supply — time how long your hose bib takes to fill a 5-gallon bucket (5 gallons ÷ minutes = GPM). Keep the zone under <strong>75% of supply</strong>: the margin covers pressure fluctuations and future expansion.</p>
+    <p>Example: 20 one-GPH emitters = 20 GPH = 0.33 GPM — trivial for a 6-GPM bib, using about 6% of the safe capacity. That same bib's safe limit is 4.5 GPM, or 270 one-GPH emitters. When a zone exceeds supply, the symptom is unmistakable: near emitters gush while far ones dribble. The fix is splitting into two zones on separate valves or timer outlets — never cranking pressure to compensate.</p>
+    <h2>Runtime: Doing the Water Math</h2>
+    <p>Runtime answers "how long per watering," and it is pure arithmetic: <strong>runtime = water needed ÷ total emitter flow</strong>. Water needed comes from the target depth: 1 inch of water over 1 square foot is 0.623 gallons. So a 100 sq ft bed getting 1 inch needs 62.3 gallons; with 20 GPH of emitters that is 62.3 ÷ 20 = <strong>3.1 hours</strong>. Drip runtimes surprise sprinkler converts — hours, not minutes — because the flow is a trickle by design.</p>
+    <p>Soil sets the depth and frequency. <strong>Sand:</strong> 0.5 inch per watering, every 1–2 days — it cannot hold more. <strong>Loam:</strong> 1 inch, every 2–3 days. <strong>Clay:</strong> 1 inch, every 4–7 days, ideally split into two shorter cycles ("cycle and soak") so water absorbs instead of sheeting off. The planner applies these defaults from your soil selection; adjust for heat waves (add ~25%) and rain (skip).</p>
+    <h2>Layout: Laterals, Loops and Rings</h2>
+    <p>Water enters through a <strong>mainline</strong> (usually ½-inch poly), branches into <strong>laterals</strong> along rows, and reaches plants via emitters punched directly into the lateral or on spaghetti tubing. Keep laterals under ~200 feet per run (pressure drops with distance); for big zones, feed from the middle or loop the mainline into a ring so both ends stay pressurized. End each lateral with a flush cap or valve — sediment settles at dead ends, and seasonal flushing through an open end clears it in seconds.</p>
+    <p>On slopes, run laterals <strong>across</strong> the slope, not down it, and consider pressure-compensating emitters — they cost slightly more but deliver rated flow from 10 to 50 PSI, erasing the uphill/downhill difference. On flat ground, standard turbulent-flow emitters are fine and cheaper.</p>
+    <h2>Installation Order That Avoids Rework</h2>
+    <p>Build in this order: hose bib → backflow preventer (required by code in most places — a $10 vacuum breaker) → filter → pressure regulator → mainline → valves → laterals → emitters last. Punching emitters before the lines are flushed guarantees clogs; always flush each lateral with the end open before installing a single emitter. Stake emitters <strong>above</strong> mulch, not buried under it — buried emitters clog with soil and roots, and you cannot see them fail.</p>
+    <p>Test each zone before mulching: run it 15 minutes and walk the line. Every emitter should drip steadily; dry emitters are usually kinked spaghetti tube or a missed punch. Mulch 2–3 inches after testing — mulch plus drip is the combination that cuts garden water use in half.</p>
+    <h2>Maintenance: the 20-Minute Season</h2>
+    <p>Drip is low-maintenance, not no-maintenance. Each spring: flush laterals, clean the filter screen, check the regulator, and walk every emitter. Mid-season: glance at the filter monthly — a clogged filter silently starves the whole zone. Fall: in freezing climates, drain or blow out lines; water left in tubing splits it when it freezes. Emitters that clog with mineral scale often recover after an overnight vinegar soak; emitters clogged with roots get replaced.</p>
+    <p>The tell-tale sign of a failing zone is <em>uneven plant performance</em> — one thriving tomato next to a stunted one on the same lateral almost always means a clogged or missing emitter, not a soil problem. Check the hardware before amending the soil.</p>
+    <h2>Winterizing and Freeze Protection</h2>
+    <p>In climates where temperatures drop below freezing, water left in drip lines will split tubing, crack filters and destroy regulators — a spring of leaks that costs far more than the twenty minutes of fall prep that prevents it. The procedure is simple: shut off the water at the source, open every end cap and flush valve, and let gravity drain the low points. On flat runs, that is often enough. Where lines dip or the system is large, blow them out with an air compressor at <strong>no more than 30 PSI</strong> — higher pressure blows emitters off their barbs and can rupture thin-wall tubing.</p>
+    <p>Remove the filter element, regulator and any battery timer, and store them indoors; freezing cracks regulator diaphragms and kills timer electronics. Leave manual drain valves open all winter so condensation has somewhere to go. Above-ground mainlines in marginal climates benefit from foam pipe insulation on exposed sections, but insulation only delays freezing — draining is what prevents damage. Come spring, reassemble, flush each zone with ends open before reinstalling emitters, and walk the system the way you did at first install. A winterized system wakes up in an hour; a neglected one eats a weekend.</p>
+    <h2>Automating Without Overwatering</h2>
+    <p>A simple battery timer turns a good drip design into a nearly autonomous one — but automation amplifies mistakes, so get the manual schedule right first. Program the runtime the calculator gives you, set the frequency from the soil guidance, and then <strong>verify with a soil probe</strong> for the first two weeks: push a screwdriver or moisture meter 6 inches down a few hours after watering. It should slide in easily to the target depth and meet resistance below — moist root zone, dry subsoil. Soggy at depth means cut runtime; dry at 4 inches means add time.</p>
+    <p>Rain sensors and soil-moisture sensors are the upgrade that pays for itself in a single wet season: a $30 rain sensor wired into the timer skips scheduled waterings after real rain, and a capacitance soil sensor waters only when the root zone actually dries. Smart controllers that pull local weather data do this automatically. Whatever you automate, keep a manual override habit — walk the garden weekly, look at the plants, and trust your eyes over the schedule. Drip irrigation is precise, but gardening is still a contact sport.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many drip emitters does each plant need?</summary><p>Small vegetables and flowers: 1 emitter each. Medium shrubs: 2 emitters on opposite sides. Large shrubs: 3–4 in a ring. Trees: 4–6+ emitters spaced around the drip line, moving outward as the tree grows. More emitters at lower flow beats one high-flow emitter — it wets a wider root zone.</p></details>
+    <details><summary>How long should I run drip irrigation?</summary><p>Runtime = water needed ÷ total emitter flow. A 100 sq ft bed needing 1 inch of water (62 gallons) with 20 one-GPH emitters runs about 3.1 hours. Sandy soil needs shorter, more frequent runs; clay needs one long slow run to avoid runoff.</p></details>
+    <details><summary>How many emitters can I put on one zone?</summary><p>Add up emitter GPH and convert to GPM (÷ 60). Keep the zone under 75% of your supply's measured GPM — a 6 GPM hose bib supports about 270 one-GPH emitters per zone. Exceeding supply starves the far emitters and nothing gets watered properly.</p></details>
+    <details><summary>Do I need a pressure regulator for drip irrigation?</summary><p>Almost always yes. Household water runs 40–80 PSI; drip emitters and tubing want 20–30 PSI. Without a regulator, emitters pop off, flow rates go wild and tubing splits. A 25 PSI preset regulator costs a few dollars and belongs right after the filter.</p></details>
+    <details><summary>What is the difference between 0.5, 1 and 2 GPH emitters?</summary><p>They deliver water at different rates into different soils. Use 0.5 GPH in clay (slow absorption), 1 GPH in loam (the all-rounder), and 2 GPH in sand (water drains fast). Match emitter flow to soil so water spreads sideways into the root zone instead of draining past it or pooling.</p></details>
+    <details><summary>Why are my drip emitters clogged?</summary><p>Sediment, hard-water minerals or algae. Prevention: a 120-mesh filter at the zone head, flush end caps seasonally, and keep emitters staked above mulch rather than buried. Affected emitters can often be soaked in vinegar to dissolve mineral scale.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">DripIrrigate</div>
+    <p>DripIrrigate designs drip zones: emitter counts by plant, flow-vs-supply checks and soil-based watering runtimes.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+var gph=1, soil='loam';
+var $=function(id){return document.getElementById(id);};
+var groups=[{label:'Vegetables', count:20, per:1}];
+var SOIL={sand:{depth:0.5,freq:'every 1–2 days',note:'Sandy soil holds little water: 0.5″ per watering, frequent short runs.'},loam:{depth:1,freq:'every 2–3 days',note:'Loam default: 1″ per watering, every 2–3 days.'},clay:{depth:1,freq:'every 4–7 days',note:'Clay absorbs slowly: 1″ per watering split into 2 cycles (cycle & soak) to avoid runoff.'}};
+function fmt(n,d){ if(!isFinite(n)) return '—'; return n.toLocaleString('en-US',{maximumFractionDigits:d===undefined?1:d}); }
+document.querySelectorAll('#dr-emit button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#dr-emit button').forEach(function(x){x.classList.toggle('on',x===b);});
+    gph=parseFloat(b.getAttribute('data-g')); calc();
+  });
+});
+document.querySelectorAll('#dr-soil button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#dr-soil button').forEach(function(x){x.classList.toggle('on',x===b);});
+    soil=b.getAttribute('data-s'); calc();
+  });
+});
+function renderRows(){
+  var el=$('dr-rows'); el.innerHTML='';
+  groups.forEach(function(g,i){
+    var row=document.createElement('div'); row.className='dr-r';
+    var nm=document.createElement('input'); nm.type='text'; nm.value=g.label; nm.setAttribute('aria-label','Plant group name');
+    nm.addEventListener('input',function(){g.label=nm.value;});
+    var ct=document.createElement('input'); ct.type='number'; ct.min='0'; ct.step='1'; ct.value=g.count; ct.setAttribute('aria-label','Number of plants');
+    ct.addEventListener('input',function(){g.count=parseFloat(ct.value)||0; calc();});
+    var del=document.createElement('button'); del.type='button'; del.className='dr-del'; del.textContent='×'; del.setAttribute('aria-label','Remove group');
+    del.addEventListener('click',function(){groups.splice(i,1); if(!groups.length) groups.push({label:'Plants',count:0,per:1}); renderRows(); calc();});
+    row.appendChild(nm); row.appendChild(ct); row.appendChild(del);
+    el.appendChild(row);
+  });
+}
+$('dr-add').addEventListener('click',function(){ groups.push({label:'Group '+(groups.length+1), count:5, per:1}); renderRows(); calc(); });
+['dr-supply','dr-area'].forEach(function(id){ $(id).addEventListener('input',calc); });
+function calc(){
+  var supply=parseFloat($('dr-supply').value)||0;
+  var area=parseFloat($('dr-area').value)||0;
+  var emitters=groups.reduce(function(a,g){return a+g.count*(g.per||1);},0);
+  var totalGPH=emitters*gph, totalGPM=totalGPH/60;
+  var safe=supply*0.75, pct=safe>0?totalGPM/safe*100:0;
+  var v=$('dr-verdict');
+  if(supply<=0){ v.textContent='Enter your measured supply GPM.'; v.className='dr-verdict warn'; }
+  else if(totalGPM<=safe){ v.textContent='Zone OK — '+fmt(pct,1)+'% of safe capacity'; v.className='dr-verdict ok'; }
+  else { v.textContent='Over capacity — split into '+Math.ceil(totalGPM/safe)+' zones'; v.className='dr-verdict warn'; }
+  $('dr-fill').style.width=Math.min(100,pct)+'%';
+  $('dr-flow').textContent=fmt(totalGPM,2)+' GPM used · safe ≤ '+fmt(safe,2)+' GPM';
+  $('dr-emitters').textContent=fmt(emitters,0);
+  $('dr-gph').textContent=fmt(totalGPH,1);
+  var depth=SOIL[soil].depth;
+  var galNeeded=area*depth*0.623;
+  var hrs=totalGPH>0?galNeeded/totalGPH:0;
+  var rh=Math.floor(hrs), rm=Math.round((hrs-rh)*60);
+  $('dr-runtime').textContent=totalGPH>0?(rh>0?rh+'h '+rm+'m':rm+' min'):'—';
+  $('dr-note').textContent='Per watering: '+fmt(depth,1)+'″ over '+fmt(area,0)+' sq ft = '+fmt(galNeeded,1)+' gal ÷ '+fmt(totalGPH,1)+' GPH. '+SOIL[soil].note+' Frequency: '+SOIL[soil].freq+'.';
+}
+renderRows(); calc();
+})();
+</script>
+</body>
+</html>
