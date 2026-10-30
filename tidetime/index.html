@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tide Height Calculator — Live Tide Curve &amp; Fishing Windows | TideTime</title>
+<meta name="description" content="Tide height calculator: enter hours since high tide to get current tide state, next high/low times, a 24h curve, and fishing windows. Free tool.">
+<link rel="canonical" href="https://fun.fixoraa.tech/tidetime/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Tide Height Calculator — Live Tide Curve &amp; Fishing Windows | TideTime">
+<meta property="og:description" content="Tide height calculator: enter hours since high tide to get current tide state, next high/low times, a 24h curve, and fishing windows. Free tool.">
+<meta property="og:url" content="https://fun.fixoraa.tech/tidetime/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "TideTime",
+      "url": "https://fun.fixoraa.tech/tidetime/",
+      "applicationCategory": "Outdoor Tools",
+      "operatingSystem": "Web",
+      "description": "Tide height calculator: enter hours since high tide to get current tide state, next high/low times, a 24h curve, and fishing windows. Free tool.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does the tide cycle last 12.4 hours instead of 12?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tides run on the lunar day \u2014 about 24 hours 50 minutes \u2014 because the Moon moves along its orbit while the Earth spins. That gives two high tides and two low tides every 24h50m, so the cycle length is half of that: about 12 hours 25 minutes (12.4 hours). Each day's tides arrive roughly 50 minutes later than the day before."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use this tide calculator without a tide table?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter the time of the most recent high tide (from a tide table, harbour board, or your own observation) and how many hours have passed since. The tool computes the cosine curve from that anchor and shows current height, whether the water is rising or falling, and the next high and low times."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a simplified tide model accurate enough for fishing trips?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes \u2014 but treat it as a planning aid, not a navigation instrument. The simplified cosine model gets the timing of highs and lows and the rising/falling direction right for semidiurnal coasts, which is what fishing, surfing, and beach trips need. For boating, harbour entry, or diving, always use official harmonic tide tables from your national hydrographic office."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best tide state for fishing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The two hours around each tide change \u2014 when water moves fastest \u2014 are usually the most productive. The first hours of the flood push bait onto flats and the first hours of the ebb drain it off, with predators waiting at the exits. Slack water at the exact high or low is often the slowest bite."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this work for coasts with one tide per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This model assumes semidiurnal tides (two highs and two lows per day). In diurnal regions like parts of the Gulf of Mexico, the period is about 24.8 hours, and in mixed-tide regions the two daily highs differ in height. The timing output would be wrong there \u2014 check which tidal regime your coast follows first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between spring and neap tides?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Spring tides (new and full moon) have the largest range \u2014 highest highs and lowest lows \u2014 because the Sun and Moon pull together. Neap tides (quarter moons) have the smallest range because the pulls partly cancel. The cycle repeats roughly every 14.8 days."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#F1F3F7; --surface:#FFFFFF; --accent:#1E3A8A; --accent-ink:#FFFFFF;
+  --ink:#232A35; --muted:#5B6472; --line:#D6DBE9;
+  --display:'Marcellus',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.tt-wrap{font-family:'Marcellus',Georgia,serif;background:#F1F3F7;color:#232A35;padding:56px 20px 72px;}.tt-hero{max-width:860px;margin:0 auto 8px;text-align:center;}.tt-logo{font-size:44px;}.tt-hero h1{font-size:clamp(30px,4.6vw,46px);margin:10px 0 8px;font-weight:400;letter-spacing:.01em;}.tt-tag{color:#5B6472;font-size:17px;margin:0 0 26px;font-family:Inter,system-ui,sans-serif;}.tt-grid{max-width:1020px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start;}.tt-card{background:#FFFFFF;border:1px solid #D6DBE9;border-radius:24px;padding:30px;box-shadow:0 18px 44px rgba(30,58,138,.08);}.tt-card h2{font-size:22px;margin:0 0 6px;font-weight:400;}.tt-sub{color:#5B6472;font-size:14px;margin:0 0 18px;font-family:Inter,system-ui,sans-serif;}.tt-dialrow{display:flex;gap:22px;align-items:center;flex-wrap:wrap;}.tt-state{font-family:Inter,system-ui,sans-serif;}.tt-state .tt-big{font-size:40px;color:#1E3A8A;font-family:'Marcellus',serif;}.tt-badge{display:inline-block;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700;margin-top:8px;}.tt-badge.up{background:#E4ECFB;color:#1E3A8A;}.tt-badge.down{background:#F3E8EE;color:#9D174D;}.tt-ctl{margin-top:18px;font-family:Inter,system-ui,sans-serif;}.tt-ctl label{display:block;font-size:13px;font-weight:700;color:#5B6472;margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase;}.tt-ctl input[type=range]{width:100%;accent-color:#1E3A8A;}.tt-ctl input[type=number]{width:110px;padding:10px 12px;border:2px solid #D6DBE9;border-radius:12px;font-size:16px;font-family:inherit;}.tt-row{display:flex;gap:12px;align-items:end;flex-wrap:wrap;}.tt-times{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;font-family:Inter,system-ui,sans-serif;}.tt-time{background:#F1F3F7;border:1px solid #D6DBE9;border-radius:14px;padding:14px;}.tt-time b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#5B6472;}.tt-time span{font-size:20px;color:#1E3A8A;font-weight:700;}.tt-plot{width:100%;height:auto;display:block;margin-top:6px;}.tt-fish{margin-top:16px;font-family:Inter,system-ui,sans-serif;font-size:14.5px;line-height:1.65;}.tt-fish li{margin-bottom:8px;}.tt-presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;font-family:Inter,system-ui,sans-serif;}.tt-presets button{border:1px solid #D6DBE9;background:#F1F3F7;border-radius:999px;padding:8px 16px;font-size:13.5px;cursor:pointer;color:#1E3A8A;font-weight:600;}.tt-presets button:hover{background:#E4ECFB;}@media (max-width:760px){.tt-grid{grid-template-columns:1fr;}.tt-card{padding:22px 18px;}.tt-wrap{padding:40px 14px 56px;}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="TideTime home">
+      <span class="fx-logo-tile" aria-hidden="true">🌊</span>
+      <span class="fx-brand">TideTime</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-chart-dial" aria-label="TideTime tool">
+<section class='tt-wrap'><div class='tt-hero'><div class='tt-logo' aria-hidden='true'>🌊</div><h1>Tide Height Calculator</h1><p class='tt-tag'>Hours since high tide in — live tide curve, next turn, and fishing windows out.</p></div><div class='tt-grid'><div class='tt-card'><h2>Live tide dial</h2><p class='tt-sub'>Simplified semidiurnal model · 12.4 h cycle</p><div class='tt-dialrow'><svg id='tt-dial' width='150' height='150' viewBox='0 0 150 150' role='img' aria-label='Tide dial'><circle cx='75' cy='75' r='66' fill='none' stroke='#D6DBE9' stroke-width='12'/><path id='tt-arc' fill='none' stroke='#1E3A8A' stroke-width='12' stroke-linecap='round'/><text id='tt-pct' x='75' y='82' text-anchor='middle' font-size='26' fill='#232A35' font-family='Marcellus,serif'>–</text></svg><div class='tt-state'><div class='tt-big' id='tt-state'>–</div><span class='tt-badge' id='tt-badge' style='display:none'></span><div id='tt-rate' style='margin-top:8px;font-size:14px;color:#5B6472'></div></div></div><div class='tt-ctl'><label for='tt-hours'>Hours since last high tide</label><div class='tt-row'><input type='range' id='tt-range' min='0' max='12.4' step='0.1' value='2' style='flex:1;min-width:160px'><input type='number' id='tt-hours' min='0' max='48' step='0.1' value='2'></div><div class='tt-presets'><button data-h='0'>Just now</button><button data-h='3.1'>Mid-ebb</button><button data-h='6.2'>Low water</button><button data-h='9.3'>Mid-flood</button></div></div><div class='tt-times'><div class='tt-time'><b>Next high tide</b><span id='tt-nexthigh'>–</span></div><div class='tt-time'><b>Next low tide</b><span id='tt-nextlow'>–</span></div></div></div><div class='tt-card'><h2>24-hour curve &amp; fishing windows</h2><p class='tt-sub'>Projected from your high-tide anchor</p><svg id='tt-plot' class='tt-plot' viewBox='0 0 400 150' role='img' aria-label='24 hour tide curve'><path id='tt-curve' fill='none' stroke='#1E3A8A' stroke-width='2.5'/><line id='tt-now' y1='8' y2='142' stroke='#9D174D' stroke-width='1.5' stroke-dasharray='5 4'/><circle id='tt-dot' r='5' fill='#9D174D'/></svg><div class='tt-fish'><b style='color:#1E3A8A'>Prime fishing windows</b><ul id='tt-fish' style='margin:8px 0 0;padding-left:20px'></ul></div><p class='tt-sub' style='margin-top:14px'>Simplified model for planning — always check official tide tables for navigation or safety.</p></div></div></section>
+  </section>
+  <article class="article-sec" aria-label="Guide">
+<h2>How Tides Actually Work</h2><p>Tides are the ocean's slow breathing, and the lungs are the Moon and the Sun. The Moon's gravity pulls water toward it, creating a bulge on the near side of the Earth — and because the Earth–Moon system rotates around a shared center of gravity, a second bulge forms on the far side too. As the Earth spins beneath these two bulges, most coastlines pass through two high tides and two low tides roughly every 24 hours and 50 minutes. That 50-minute lag is the lunar day: while the Earth completes one rotation, the Moon has moved a little further along its orbit, so the Earth must spin a bit extra to bring the same point back under the Moon.</p><p>The result is the <strong>semidiurnal tide cycle</strong>: high tide, falling water, low tide, rising water, repeating every <strong>12 hours and 25 minutes</strong> (12.4 hours in the simplified model this tool uses). The Sun contributes its own smaller tidal bulges. When the Sun, Moon, and Earth line up at new and full moon, the solar and lunar bulges add up and you get <strong>spring tides</strong> — the biggest highs and lowest lows of the month. At the quarter moons the bulges partly cancel and you get <strong>neap tides</strong>, with a much smaller range. None of this is academic: a spring tide can expose or flood a beach by meters more than a neap tide on the very same shore.</p><h2>The Simplified Tide Curve Behind This Tool</h2><p>Real tide prediction is harmonic analysis — dozens of sine waves (astronomers call them constituents, like M2 for the principal lunar tide) summed with local phase corrections measured over years at a specific gauge. TideTime uses a deliberate simplification: one cosine wave with a 12.4-hour period, anchored to the time you enter as the last high tide. The height at <em>h</em> hours after high water is <strong>cos(h × 2π / 12.4)</strong>, scaled from +1 (high) to −1 (low).</p><p>This model nails the two things that matter most for planning: the <em>timing</em> of highs and lows and the <em>direction</em> of the water (rising or falling). What it cannot do is tell you absolute water depth in meters, account for shallow-water distortion (which makes real tide curves asymmetric — the flood often runs faster than the ebb), or handle diurnal tides (one high and one low per day, common in the Gulf of Mexico and parts of Southeast Asia) and mixed tides. For navigation, harbour entry, or anything where grounding or clearance matters, always use your national hydrographic office's official tide tables. For deciding when to fish, surf, beachcomb, or photograph the shore, the simplified curve is genuinely useful.</p><h2>Reading the Dial: Rising, Falling, Slack, and Stand</h2><p>The dial on this tool shows where you are in the cycle right now. A few terms worth knowing:</p><ul><li><strong>Flood tide:</strong> water rising toward high tide. Currents push shoreward; channels fill.</li><li><strong>Ebb tide:</strong> water falling toward low tide. Currents run seaward; flats and reefs emerge.</li><li><strong>High-water stand / slack water:</strong> the brief pause around high tide when the water barely moves. Low-water stand is the same at the bottom of the cycle.</li><li><strong>Tide rip / race:</strong> where a strong tidal current squeezes through a narrow gap, the water can stand up in visible waves even on a calm day.</li></ul><p>The fastest current usually runs about <strong>three hours after high or low water</strong> — halfway through the flood or ebb — while the hour around each extreme is the gentlest. That single fact organizes most coastal activity: divers and kayakers often plan around slack water, while anglers hunt the moving water in between.</p><h2>Why Anglers Obsess Over Tide Changes</h2><p>Ask a dozen surfcasters when to fish and most will say the same thing: <strong>around the change of tide</strong>. Moving water carries scent, dislodges baitfish and crustaceans, and concentrates predators at current edges, gutters, and drop-offs. The first two hours of the flood push baitfish up onto flats; the first two hours of the ebb drain them back off, and predators line up at the exits. Slack water at the exact top or bottom is often the slowest bite of the cycle.</p><p>TideTime's fishing window finder highlights the two hours straddling each tide change — the periods when the water is moving fastest. It is a simplification (real feeding also depends on light, moon phase, water temperature, and bait presence), but 'fish the moving water' is the highest-percentage rule in shore angling. Combine it with dawn or dusk and you have covered the two biggest variables in one plan.</p><h2>Spring Tides, Neap Tides, and the Monthly Rhythm</h2><table><thead><tr><th>Phase</th><th>Moon</th><th>Tide range</th><th>Best for</th></tr></thead><tbody><tr><td>Spring tides</td><td>New &amp; full moon</td><td>Largest — highest highs, lowest lows</td><td>Beachcombing at extreme lows, surf at max push</td></tr><tr><td>Neap tides</td><td>First &amp; last quarter</td><td>Smallest — gentle highs and lows</td><td>Kayaking, snorkeling, easy wading</td></tr><tr><td>Equinoctial springs</td><td>Near March/September equinox</td><td>Year's largest ranges</td><td>Tidal-bore watching, extreme low exploration</td></tr></tbody></table><p>The spring–neap cycle runs about 14.8 days. If you fish the same mark regularly, you will notice the pattern: spring tides bring stronger currents and more dramatic feeding windows but can make small boats and wading uncomfortable, while neap tides are forgiving and predictable. Serious anglers keep a log of catches against tide state — after a season, your own data beats any generic advice.</p><h2>Tide Safety: What the Curve Cannot Tell You</h2><p>Tides kill people every year, almost always through the same handful of mistakes:</p><ul><li><strong>Cut off by the flood:</strong> walking out on a causeway, sandbar, or rocky ledge at low water and finding the return route underwater an hour later. Check how fast the tide floods at your specific spot — some estuaries rise faster than you can walk.</li><li><strong>Underestimating spring tides:</strong> a beach that is fine at neap high water can be fully submerged at spring high water, trapping you against cliffs.</li><li><strong>Rip currents on the ebb:</strong> outgoing tidal flow combines with wave-driven rips. Swim parallel to shore to escape, never against.</li><li><strong>Mud and quicksand flats:</strong> exposed tidal flats can be soft enough to trap boots or legs; the incoming tide does not wait.</li></ul><p>A simplified model like this one is a planning aid, not a safety instrument. For unfamiliar coasts, check official tide tables, ask locals, and give yourself a generous margin — being back an hour early beats being rescued.</p><h2>Coastal Activities Timed to the Tide</h2><h3>Surfing</h3><p>Most beach breaks work best on a <strong>rising tide</strong>: the extra water over the sandbar shapes the wave up instead of dumping it. Reef breaks vary — some need the low-tide push over the reef. Watch your spot across a full cycle once and you will know its window forever.</p><h3>Beachcombing and rock-pooling</h3><p>Go on a <strong>falling tide toward a spring low</strong>. The lowest water exposes the richest ground: rock pools at their fullest variety, shells and sea glass freshly deposited, and the retreating water leaves everything visible. Start two hours before low water and head back as it turns.</p><h3>Photography</h3><p>Long exposures of water over rocks want <strong>mid-tide movement</strong> — enough flow to blur, not so much that your tripod is swimming. Reflections in wet sand are best just after the ebb exposes fresh, glassy flats.</p><h3>Kayaking and paddleboarding</h3><p>Plan with the current, not against it: ride the flood in, ride the ebb home. Fighting a 3-knot tidal stream in a kayak is a losing proposition, and many coastal rescues start exactly this way.</p><h2>Tides Around the World: Not Everywhere Is Semidiurnal</h2><p>The 12.4-hour model fits the Atlantic coasts of Europe and North America beautifully, but the ocean is full of exceptions. The <strong>Bay of Fundy</strong> in Canada sees the world's largest range — over 16 meters — because the bay's natural sloshing period resonates with the tidal period, amplifying it like a pushed swing. The <strong>Mediterranean</strong> barely has tides at all (often under half a meter) because it is nearly enclosed. <strong>Southampton</strong> famously gets a 'double high water' from interacting tidal waves in the English Channel. And in parts of the Gulf of Mexico, the Philippines, and Vietnam, tides are <strong>diurnal</strong> — one high and one low per lunar day — where this tool's cosine curve simply does not apply. Knowing which regime your coast follows is step one of reading any tide tool sensibly.</p><h2>From Tide Tables to Your Phone: A Short History</h2><p>Predicting tides is one of humanity's oldest applied sciences. Tide tables were being printed for London Bridge by the 13th century; Newton's <em>Principia</em> (1687) gave the gravitational explanation; and in the 1860s William Thomson (Lord Kelvin) built a mechanical <strong>tide-predicting machine</strong> — brass gears summing harmonic constituents, accurate enough for harbour planning, with some machines still working into the 1960s. Modern harmonic prediction uses 30–60 constituents fitted to years of gauge data. Your phone's tide app is the direct descendant of Kelvin's gears — and this tool's single cosine is the great-great-grandchild simplified to one wave. Use the right tool for the job: harmonic tables for navigation, a quick curve for a fishing trip.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>Why does the tide cycle last 12.4 hours instead of 12?</summary><p>Tides run on the lunar day — about 24 hours 50 minutes — because the Moon moves along its orbit while the Earth spins. That gives two high tides and two low tides every 24h50m, so the cycle length is half of that: about 12 hours 25 minutes (12.4 hours). Each day's tides arrive roughly 50 minutes later than the day before.</p></details>
+<details><summary>How do I use this tide calculator without a tide table?</summary><p>Enter the time of the most recent high tide (from a tide table, harbour board, or your own observation) and how many hours have passed since. The tool computes the cosine curve from that anchor and shows current height, whether the water is rising or falling, and the next high and low times.</p></details>
+<details><summary>Is a simplified tide model accurate enough for fishing trips?</summary><p>Yes — but treat it as a planning aid, not a navigation instrument. The simplified cosine model gets the timing of highs and lows and the rising/falling direction right for semidiurnal coasts, which is what fishing, surfing, and beach trips need. For boating, harbour entry, or diving, always use official harmonic tide tables from your national hydrographic office.</p></details>
+<details><summary>What is the best tide state for fishing?</summary><p>The two hours around each tide change — when water moves fastest — are usually the most productive. The first hours of the flood push bait onto flats and the first hours of the ebb drain it off, with predators waiting at the exits. Slack water at the exact high or low is often the slowest bite.</p></details>
+<details><summary>Does this work for coasts with one tide per day?</summary><p>No. This model assumes semidiurnal tides (two highs and two lows per day). In diurnal regions like parts of the Gulf of Mexico, the period is about 24.8 hours, and in mixed-tide regions the two daily highs differ in height. The timing output would be wrong there — check which tidal regime your coast follows first.</p></details>
+<details><summary>What is the difference between spring and neap tides?</summary><p>Spring tides (new and full moon) have the largest range — highest highs and lowest lows — because the Sun and Moon pull together. Neap tides (quarter moons) have the smallest range because the pulls partly cancel. The cycle repeats roughly every 14.8 days.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">TideTime</div>
+    <p>TideTime turns hours since the last high tide into a live tide curve: current state, next high and low, a 24-hour plot, and prime fishing windows.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function tideHeight(h){return Math.cos(h*2*Math.PI/12.4);}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',function(){var range=document.getElementById('tt-range'),num=document.getElementById('tt-hours'),arc=document.getElementById('tt-arc'),pct=document.getElementById('tt-pct'),state=document.getElementById('tt-state'),badge=document.getElementById('tt-badge'),rateEl=document.getElementById('tt-rate'),nh=document.getElementById('tt-nexthigh'),nl=document.getElementById('tt-nextlow'),curve=document.getElementById('tt-curve'),nowLine=document.getElementById('tt-now'),dot=document.getElementById('tt-dot'),fish=document.getElementById('tt-fish');if(!range||!num)return;function polar(cx,cy,r,frac){var a=Math.PI*0.75+frac*Math.PI*1.5;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];}function arcPath(frac){var s=polar(75,75,66,0),e=polar(75,75,66,Math.max(frac,0.001));var large=frac>0.5?1:0;return'M '+s[0].toFixed(1)+' '+s[1].toFixed(1)+' A 66 66 0 '+large+' 1 '+e[0].toFixed(1)+' '+e[1].toFixed(1);}function fmtH(h){h=((h%12.4)+12.4)%12.4;var H=Math.floor(h),M=Math.round((h-H)*60);if(M===60){H++;M=0;}return'in '+H+'h '+M+'m';}function render(){var h=parseFloat(num.value);if(isNaN(h)||h<0)h=0;var hm=h%12.4;var height=tideHeight(h);var rate=-Math.sin(hm*2*Math.PI/12.4);var rising=rate>0;var frac=(height+1)/2;if(arc)arc.setAttribute('d',arcPath(frac));if(pct)pct.textContent=Math.round(frac*100)+'%';if(state)state.textContent=height>0.85?'High water':height<-0.85?'Low water':rising?'Flooding':'Ebbing';if(badge){badge.style.display='inline-block';badge.textContent=rising?'Rising':'Falling';badge.className='tt-badge '+(rising?'up':'down');}if(rateEl)rateEl.textContent='Water moving '+(Math.abs(rate)<0.15?'slowly (near slack)':rising?'in — flood tide':'out — ebb tide');var toHigh=(12.4-hm)%12.4,toLow=(6.2-hm+12.4)%12.4;if(nh)nh.textContent=fmtH(toHigh);if(nl)nl.textContent=fmtH(toLow);if(curve){var d='';for(var i=0;i<=120;i++){var hh=i/120*24.8;var v=tideHeight(hh);var x=8+hh/24.8*384;var y=75-v*62;d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' ';}curve.setAttribute('d',d);}var xn=8+(h/24.8)*384;if(nowLine){nowLine.setAttribute('x1',xn);nowLine.setAttribute('x2',xn);}if(dot){dot.setAttribute('cx',xn);dot.setAttribute('cy',75-height*62);}if(fish){var items='';var marks=[{t:toHigh,n:'high'},{t:toLow,n:'low'}];marks.sort(function(a,b){return a.t-b.t;});marks.forEach(function(m){var s=Math.max(0,m.t-1),e=m.t+1;items+='<li><b>'+m.n+' tide turn</b>: fish from '+fmtH(s).replace('in ','')+' to '+fmtH(e).replace('in ','')+' from now (fastest water).</li>';});fish.innerHTML=items;}}range.addEventListener('input',function(){num.value=range.value;render();});num.addEventListener('input',function(){var v=parseFloat(num.value);if(!isNaN(v)&&v>=0&&v<=12.4)range.value=v;render();});var btns=document.querySelectorAll('.tt-presets button');for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){num.value=this.getAttribute('data-h');range.value=Math.min(12.4,parseFloat(num.value));render();});}render();});}
+</script>
+</body>
+</html>
