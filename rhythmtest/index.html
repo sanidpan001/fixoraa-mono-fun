@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rhythm Tapping Accuracy Game: Test Your Timing</title>
+<meta name="description" content="Play a rhythm tapping accuracy game: tap along to a beat and get scored on timing error, consistency and a rating you can improve.">
+<link rel="canonical" href="https://fun.fixoraa.tech/rhythmtest/">
+<link rel="preconnect" href="https://www.highrevenueformat.com">
+<link rel="preconnect" href="https://peacefulbicycle.com">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Rhythm Tapping Accuracy Game: Test Your Timing">
+<meta property="og:description" content="Play a rhythm tapping accuracy game: tap along to a beat and get scored on timing error, consistency and a rating you can improve.">
+<meta property="og:url" content="https://fun.fixoraa.tech/rhythmtest/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RhythmTest",
+      "url": "https://fun.fixoraa.tech/rhythmtest/",
+      "applicationCategory": "Games / Music",
+      "operatingSystem": "Web",
+      "description": "Play a rhythm tapping accuracy game: tap along to a beat and get scored on timing error, consistency and a rating you can improve.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this just a metronome?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A metronome only plays a beat. This game scores your taps against the beat, showing timing error and a rating for each session."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good average error?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under 25 ms is excellent, under 50 ms is good, and under 100 ms is fair. Beginners commonly average over 100 ms at first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I tap early or late?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Neither. Aim for exactly on the beat. Consistent early tapping is rushing; consistent late tapping is dragging, and each has different fixes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What tempo should I practise at?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start near 90 to 120 BPM, then practise slower for steadiness and faster for reaction. Track average error across days, not one best score."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I practise?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Short daily sessions work best. A few minutes a day builds timing faster than one long weekly session."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does tapping practice help real music?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A steadier internal pulse helps singing, playing, dancing and even speaking, because timing frames everything else."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+
+:root{
+  --bg:#fef9ec; --surface:#ffffff; --accent:#8a4b00; --accent-ink:#ffffff;
+  --ink:#2a2110; --muted:#6a5c44; --line:#eadfc2;
+  --display:'Sora',serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+.fx-container{max-width:72rem;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.fx-container{padding-left:1.5rem;padding-right:1.5rem}}
+/* ad utilities (for the verbatim ad snippets) */
+.no-print{}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-6xl{max-width:72rem}
+.px-4{padding-left:1rem;padding-right:1rem}.pt-4{padding-top:1rem}.pb-4{padding-bottom:1rem}
+@media(min-width:640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:scale-100{transform:scale(1)}}
+.text-center{text-align:center}.block{display:block}
+.text-\[10px\]{font-size:10px}.tracking-\[0\.18em\]{letter-spacing:.18em}.uppercase{text-transform:uppercase}
+.text-slate-400{color:#94a3b8}.mb-1\.5{margin-bottom:.375rem}
+.flex{display:flex}.justify-center{justify-content:center}.overflow-hidden{overflow:hidden}
+.origin-top{transform-origin:top}.scale-\[0\.44\]{transform:scale(.44)}.shrink-0{flex-shrink:0}
+/* header */
+.fx-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.fx-header-in{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+.fx-logo-tile{width:44px;height:44px;border-radius:14px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.fx-brand{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.fx-nav{margin-left:auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:.55rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  border:2px solid var(--accent);color:var(--accent);background:transparent;transition:all .18s ease;min-height:44px;line-height:1.5}
+.fx-btn:hover{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn.solid:hover{filter:brightness(.94)}
+.fx-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);border:1.5px dashed var(--accent);border-radius:999px;padding:.3rem .8rem;white-space:nowrap}
+/* tool section */
+.tool-sec{padding:2.2rem 0 1rem}
+/* article */
+.article-sec{padding:2.5rem 0;max-width:46rem;margin:0 auto}
+.article-sec h2{font-family:var(--display);font-size:1.55rem;margin:2rem 0 .8rem;line-height:1.25;letter-spacing:-.01em}
+.article-sec h3{font-size:1.15rem;margin:1.5rem 0 .6rem}
+.article-sec p,.article-sec li{margin-bottom:.85rem;color:var(--ink)}
+.article-sec ul,.article-sec ol{padding-left:1.4rem;margin-bottom:1rem}
+.article-sec table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.article-sec th,.article-sec td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left}
+.article-sec th{background:var(--surface);font-weight:700}
+/* faq */
+.faq-sec{padding:1rem 0 3rem;max-width:46rem;margin:0 auto}
+.faq-sec h2{font-family:var(--display);font-size:1.55rem;margin-bottom:1.2rem}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;overflow:hidden}
+.faq-sec summary{padding:1rem 1.2rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0}
+.faq-sec details[open] summary::after{content:'\2013'}
+.faq-sec details p{padding:0 1.2rem 1.1rem;color:var(--muted)}
+/* footer */
+.fx-footer{background:var(--surface);border-top:1px solid var(--line);padding:2.2rem 0;margin-top:1rem}
+.fx-footer .fx-brand{font-size:1.2rem}
+.fx-footer p{color:var(--muted);font-size:.95rem;max-width:44rem;margin:.5rem 0}
+.fx-footer nav{display:flex;gap:1.2rem;margin:1rem 0;flex-wrap:wrap}
+.fx-footer nav a{color:var(--accent);font-weight:600;text-decoration:none}
+.fx-footer nav a:hover{text-decoration:underline}
+.fx-credit{font-size:.9rem;color:var(--muted)}
+.fx-credit a{color:var(--accent);font-weight:700;text-decoration:none}
+@media(max-width:640px){.fx-brand{font-size:1.2rem}.tool-sec{padding:1.4rem 0 .6rem}}
+@media print{.no-print{display:none!important}}
+
+.rt-sub{color:var(--muted);margin-bottom:1.2rem}.rt-stage{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:1.6rem;text-align:center;max-width:36rem;margin:0 auto}.rt-stage label{font-weight:600}.rt-stage input{padding:.7rem;border:1px solid var(--line);border-radius:10px;margin-left:.5rem;font-size:1rem;width:6rem}.rt-start{background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:.8rem 1.4rem;font-weight:700;cursor:pointer;margin-left:.5rem}.rt-beat{font-size:1.4rem;margin:1.2rem 0}.rt-beat.on{color:var(--accent)}.rt-tap{width:10rem;height:10rem;border-radius:50%;background:var(--accent);color:var(--accent-ink);border:0;font-size:1.6rem;font-weight:800;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.15)}.rt-tap:disabled{opacity:.5;cursor:default}.rt-score{font-weight:700;margin-top:1.2rem}.rt-detail,.rt-note{color:var(--muted);font-size:.95rem}@media(max-width:640px){.rt-tap{width:8rem;height:8rem}.rt-stage{padding:1.2rem}}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container fx-header-in">
+    <a class="fx-logo" href="https://fixoraa.tech" aria-label="RhythmTest home">
+      <span class="fx-logo-tile" aria-hidden="true">🥁</span>
+      <span class="fx-brand">RhythmTest</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge" aria-label="Free forever">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="tool-sec tpl-beat-tap" aria-label="RhythmTest tool">
+<h1>Rhythm Tapping Accuracy Game</h1><p class="rt-sub">Listen to the beat, tap along, and get scored on timing accuracy. This is a scoring game, not a metronome.</p><div class="rt-stage"><label>Tempo (BPM)<input id="rtBpm" type="number" value="100" min="60" max="180"></label><button class="rt-start" id="rtStart">Start test</button><p class="rt-beat" id="rtBeat">Press start, listen for the pulse, then tap in time.</p><button class="rt-tap" id="rtTap" disabled>TAP</button><p class="rt-score" id="rtScore">Score: — · Average error: —</p><p class="rt-detail" id="rtDetail"></p><p class="rt-note">Tip: relax, do not chase a missed tap, and rejoin the pulse calmly. Best score is saved on this device.</p></div>
+  </section>
+  <div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+  <article class="article-sec" aria-label="Guide">
+<h2>What rhythm tapping accuracy measures</h2><p>Rhythm is easy to feel and hard to measure, which is why a tapping test is so useful. You listen to a steady beat, tap along with it, and the test measures how close each tap lands to the beat, in milliseconds. A tap exactly on the beat scores perfectly; a tap a little early or late loses a few points; a tap far off loses many. Over a series of taps, the average error and the consistency of your timing tell a story that a single good tap cannot: a steady player with small, even errors has better rhythm than a player who lands one perfect tap among wild ones. This game turns that measurement into a short, focused challenge you can repeat and improve.</p><p>Timing error is measured in milliseconds, thousandths of a second, because musical timing lives at that scale. Professional drummers and percussionists often keep average errors within a few tens of milliseconds, while beginners commonly average over a hundred. That gap is not a verdict on musicality; it is a trainable skill. Like any motor skill, timing improves with short, frequent, focused practice, and with feedback that shows you not just whether you were right or wrong, but by how much and in which direction. This test gives you that feedback after every tap, so you can feel the difference between rushing and dragging and correct it in real time.</p><h2>How to play the test well</h2><p>Start by listening for a few beats before you tap, so the tempo settles in your body. Tap with a relaxed hand, using a finger or a soft tap on the button, rather than a tense slam, because tension makes timing erratic. Do not chase the beat by speeding up after a late tap or slowing down after an early one; instead, aim to rejoin the steady pulse and let the next tap land where the beat is, not where your correction thinks it should be. The metronome-style beat in this test is a reference, not a performance: the game is about matching it, and the score simply reflects how closely you matched it. If you lose the pulse, stop, listen for a beat or two, and rejoin calmly.</p><p>Tempo changes everything. A slow tempo gives you more time between beats but also more room to drift, while a fast tempo demands quicker reactions and punishes hesitation. Most people have a comfort zone around 90 to 120 beats per minute, and practising slightly outside it, slower for steadiness and faster for reaction, builds a wider skill. Try the test at different tempos over days, and track your average error rather than your best single score. A falling average error across a week is real progress, even if one session feels worse than the last. Short daily sessions beat one long session, because timing skill consolidates between practices.</p><h2>Rushing, dragging and consistency</h2><p>Two patterns show up in almost every beginner's results. Rushing means tapping consistently early, often because of excitement or tension, and it tends to get worse as a session goes on. Dragging means tapping consistently late, often because of hesitation or overthinking each tap. Both are fixable once you can see them: if your average error leans early, practise relaxing and waiting for the beat; if it leans late, practise committing to the tap a fraction sooner. Consistency matters as much as average error. A player who taps 20 milliseconds early every time can adjust easily; a player whose errors swing from 80 early to 80 late has a steadiness problem that slow, relaxed practice fixes better than speed work.</p><p>Rhythm training transfers to real music-making. Singers, instrumentalists, dancers and even public speakers benefit from a steadier internal pulse, because timing is the frame that melody, movement and speech hang on. Use tapping practice as a warm-up before playing or singing, keep sessions short and playful, and celebrate steadiness rather than perfection. No one taps perfectly, and the goal is not a flawless score but a reliable sense of pulse you can trust when the music gets complicated. Play the test, note your average error, practise for a few minutes, and come back tomorrow to see the line move.</p><h2>Training drills that improve tapping accuracy</h2><p>One effective drill is slow-tempo tapping. Set the test to 60 beats per minute, a full second between beats, and tap with the goal of landing exactly on each pulse without rushing to fill the gap. The long gap exposes drift: many people speed up unconsciously, tapping earlier and earlier as the session goes on. Practising at slow tempos trains patience and internal steadiness, and it transfers surprisingly well to faster tempos, because the skill being trained is waiting for the beat rather than reacting to it. Five minutes at a slow tempo is a demanding and valuable session.</p><p>A second drill is subdivision practice. Between main beats, silently count halves or quarters, feeling two or four small pulses inside each beat, and tap only on the main beat. Subdividing gives your internal clock more reference points and prevents the feeling of floating between beats that causes erratic timing. A third drill is call and response: tap a short pattern, then repeat it exactly, focusing on reproducing the gaps between taps as well as the taps themselves. Recording yourself, even on a phone, and listening back reveals timing errors that are hard to notice while playing, and it builds the habit of self-assessment that separates improving musicians from stuck ones.</p><p>Group practice adds another dimension. Tapping or clapping in time with other people forces you to listen outward rather than inward, and ensemble timing is a social skill as much as a motor one: you must match others without dragging them or rushing them. If you play in a band or sing in a choir, notice who holds the tempo steady and who pulls it around, and practise being the steady one. The test on this page measures individual timing, but the real reward of rhythm training shows up when you make music with others and the whole group locks into a pulse that feels effortless.</p><p>Keep a simple practice log: date, tempo, number of taps, average error, and a one-line note about what felt hard. Over a month, the log will show patterns, such as better scores in the morning or worse scores when tired, that a single session never reveals. Use those patterns to schedule practice when you are fresh, keep sessions short, and resist the temptation to chase a personal best every day. Steady, logged, patient practice is how timing improves, and it is also how the improvement becomes permanent rather than a lucky session.</p><h2>Using your score honestly</h2><p>Treat each test score as a snapshot, not a grade. Scores vary with fatigue, mood, device latency, and whether you used a finger, a mouse, or a touchscreen, so compare sessions on the same device under similar conditions rather than chasing a single number across different setups. A touchscreen and a mouse can differ by tens of milliseconds in latency, which shifts every tap equally and makes cross-device comparisons meaningless. Within one setup, however, the trend is real: a falling average error over weeks means your timing is genuinely improving, and that improvement is worth far more than any one perfect round.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+<details><summary>Is this just a metronome?</summary><p>No. A metronome only plays a beat. This game scores your taps against the beat, showing timing error and a rating for each session.</p></details>
+<details><summary>What is a good average error?</summary><p>Under 25 ms is excellent, under 50 ms is good, and under 100 ms is fair. Beginners commonly average over 100 ms at first.</p></details>
+<details><summary>Should I tap early or late?</summary><p>Neither. Aim for exactly on the beat. Consistent early tapping is rushing; consistent late tapping is dragging, and each has different fixes.</p></details>
+<details><summary>What tempo should I practise at?</summary><p>Start near 90 to 120 BPM, then practise slower for steadiness and faster for reaction. Track average error across days, not one best score.</p></details>
+<details><summary>How often should I practise?</summary><p>Short daily sessions work best. A few minutes a day builds timing faster than one long weekly session.</p></details>
+<details><summary>Does tapping practice help real music?</summary><p>Yes. A steadier internal pulse helps singing, playing, dancing and even speaking, because timing frames everything else.</p></details>
+  </section>
+</main>
+
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RhythmTest</div>
+    <p>Free rhythm tapping accuracy game for timing, steadiness and musical pulse.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+function scoreTap(errMs){var e=Math.abs(errMs);var s=Math.max(0,Math.round(100-e*0.5));return s;}
+function rating(avg){if(avg<=25)return 'Excellent';if(avg<=50)return 'Good';if(avg<=100)return 'Fair';return 'Keep practising';}
+var rtTimer=null,rtBeatTimes=[],rtTaps=[],rtStartAt=0;
+function renderScore(){if(!rtTaps.length){document.getElementById('rtScore').textContent='Score: — · Average error: —';return;}var errs=rtTaps.map(function(t){return t.err;});var avg=Math.round(errs.reduce(function(a,b){return a+Math.abs(b);},0)/errs.length);var sc=Math.round(rtTaps.map(function(t){return scoreTap(t.err);}).reduce(function(a,b){return a+b;},0)/rtTaps.length);document.getElementById('rtScore').textContent='Score: '+sc+' · Average error: '+avg+' ms ('+rating(avg)+') after '+rtTaps.length+' taps';try{var best=parseInt(localStorage.getItem('rhythm_best')||'0',10);if(sc>best){localStorage.setItem('rhythm_best',sc);best=sc;}document.getElementById('rtDetail').textContent='Best score on this device: '+best+'. Last tap error: '+rtTaps[rtTaps.length-1].err+' ms.';}catch(e){}}
+document.getElementById('rtStart').addEventListener('click',function(){var bpm=parseFloat(document.getElementById('rtBpm').value)||100;var interval=60000/bpm;rtTaps=[];if(rtTimer)clearInterval(rtTimer);document.getElementById('rtTap').disabled=false;document.getElementById('rtBeat').textContent='Listening… tap on each pulse.';rtStartAt=Date.now()+interval;var beatEl=document.getElementById('rtBeat');var n=0;rtTimer=setInterval(function(){n++;beatEl.classList.toggle('on');beatEl.textContent='Beat '+n+' — tap now!';rtBeatTimes.push(Date.now());if(n>=20){clearInterval(rtTimer);document.getElementById('rtTap').disabled=true;beatEl.textContent='Test finished. Press start to play again.';}},interval);renderScore();});
+document.getElementById('rtTap').addEventListener('click',function(){var now=Date.now();if(!rtBeatTimes.length)return;var nearest=rtBeatTimes.reduce(function(a,b){return Math.abs(b-now)<Math.abs(a-now)?b:a;});rtTaps.push({err:Math.round(now-nearest)});renderScore();});
+</script>
+</body>
+</html>
