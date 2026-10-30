@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Range Hood CFM Calculator — Size by BTU &amp; Cooktop | RangeHood</title>
+<meta name="description" content="Range hood CFM by BTU and cooktop width, with duct sizing and makeup air.">
+<link rel="canonical" href="https://fun.fixoraa.tech/rangehood/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Range Hood CFM Calculator — Size by BTU &amp; Cooktop | RangeHood">
+<meta property="og:description" content="Range hood CFM by BTU and cooktop width, with duct sizing and makeup air.">
+<meta property="og:url" content="https://fun.fixoraa.tech/rangehood/">
+<meta property="og:type" content="website">
+<script defer src="https://t.fixoraa.tech/track.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,800&amp;family=IBM+Plex+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "RangeHood",
+      "url": "https://fun.fixoraa.tech/rangehood/",
+      "applicationCategory": "Home Tools",
+      "operatingSystem": "Web",
+      "description": "Range hood CFM by BTU and cooktop width, with duct sizing and makeup air.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How many CFM do I need for a gas range?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Use 1 CFM for every 100 BTU of total burner output. A 56,000-BTU gas range needs about 560 CFM, rounded up to a 600 CFM hood. Also check the width method (about 100 CFM per linear foot of cooktop) and buy to the larger of the two numbers — this calculator does both and takes the maximum." } },
+        { "@type": "Question", "name": "What CFM range hood do I need for a 30-inch electric cooktop?",
+          "acceptedAnswer": { "@type": "Answer", "text": "About 250 CFM: electric and induction cooktops need roughly 100 CFM per linear foot of width, so a 30-inch (2.5-foot) cooktop needs 250 CFM. Gas needs more because combustion adds heat and byproducts — the same 30-inch width on gas typically needs 400 to 600 CFM depending on total BTU." } },
+        { "@type": "Question", "name": "When is makeup air required for a range hood?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The International Residential Code (M1503.6) requires makeup air for exhaust systems over 400 CFM. A powerful hood in a tight modern house can depressurize the home, backdrafting furnaces and water heaters. Solutions include an interlocked makeup-air damper or a hood with a makeup-air kit — check with your local inspector before buying a 600+ CFM hood." } },
+        { "@type": "Question", "name": "What size duct does my range hood need?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Match the duct to the CFM: up to 400 CFM works on 6-inch round duct, 400–650 CFM wants 7-inch, 650–950 CFM wants 8-inch, and 950–1250 CFM wants 9-inch. Undersized duct strangles a strong blower — a 900 CFM hood on 6-inch duct will be loud and move far less air than its rating. Keep the run short with minimal elbows." } },
+        { "@type": "Question", "name": "How high should a range hood be above the cooktop?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Typically 24 to 30 inches above a gas cooktop and 20 to 24 inches above electric or induction, but always follow the hood manufacturer's instructions — they override rules of thumb. Too high and capture suffers; too low and you lose headroom and risk heat damage. Island hoods usually mount a few inches higher than wall hoods." } },
+        { "@type": "Question", "name": "Is a recirculating (ductless) range hood worth it?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Only when ducting outside is truly impossible. Recirculating hoods filter grease and some odor through charcoal filters but return heat and moisture to the kitchen, and they do nothing for gas combustion byproducts. If you can run ductwork — even a short run out a side wall — a ducted hood of the same CFM performs dramatically better." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#EFF9E1; --surface:#FFFFFF; --tint:#E5F4D2;
+  --accent:#4E7B14; --accent-deep:#184A6C; --accent-ink:#FFFFFF;
+  --ink:#16293A; --muted:#54708A; --line:#C6DCEB;
+  --warn:#A8641F;
+  --display:'Source Serif 4',Georgia,serif; --body:'Source Serif 4',Georgia,serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.fx-container{max-width:960px;margin:0 auto;padding:0 20px}
+/* header */
+.fx-header{background:var(--surface);border-bottom:3px double var(--accent);position:sticky;top:0;z-index:50}
+.fx-header .fx-container{display:flex;align-items:center;gap:14px;padding:11px 20px;flex-wrap:wrap}
+.fx-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.fx-tile{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:22px;box-shadow:inset 0 0 0 3px var(--surface),inset 0 0 0 4.5px var(--accent)}
+.fx-name{font-weight:800;font-size:21px;letter-spacing:-.01em}
+.fx-nav{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fx-btn{display:inline-block;padding:8px 16px;border-radius:2px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--accent);color:var(--accent);font-family:var(--mono)}
+.fx-btn.solid{background:var(--accent);color:var(--accent-ink)}
+.fx-btn:hover{background:var(--tint)}
+.fx-btn.solid:hover{background:var(--accent-deep)}
+.fx-badge{display:inline-block;padding:7px 12px;background:var(--tint);color:var(--accent-deep);font-weight:700;font-size:12px;font-family:var(--mono);border-top:1px solid var(--accent);border-bottom:1px solid var(--accent)}
+/* hero */
+.rh-hero{padding:38px 0 4px;text-align:center}
+.rh-eyebrow{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--accent);margin-bottom:12px;text-transform:uppercase}
+.rh-hero h1{font-size:clamp(28px,4.4vw,42px);line-height:1.14;letter-spacing:-.02em;font-weight:800;margin-bottom:10px}
+.rh-hero p{font-size:17px;color:var(--muted);max-width:640px;margin:0 auto}
+/* tool card */
+.rh-card{margin:26px auto 8px;background:var(--surface);border:1px solid var(--line);max-width:860px}
+.rh-tabs{display:flex;border-bottom:1px solid var(--line)}
+.rh-tabs button{flex:1;background:none;border:0;border-right:1px solid var(--line);padding:15px 8px;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.rh-tabs button:last-child{border-right:0}
+.rh-tabs button.on{background:var(--accent);color:#fff}
+.rh-body{padding:28px}
+.rh-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:6px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.field label small{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
+.field input[type=number]{font-family:var(--mono);font-size:18px;font-weight:600;padding:11px 13px;border:1.5px solid var(--line);background:#fff;color:var(--ink);width:100%}
+.field input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.rh-compare{background:var(--tint);border:1px solid var(--line);padding:14px 18px;margin:18px 0;font-family:var(--mono);font-size:13.5px;display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+.rh-compare b{color:var(--accent-deep)}
+.rh-gauge{text-align:center;padding:10px 0 4px}
+.rh-gauge .cfm{font-family:var(--mono);font-size:64px;font-weight:700;color:var(--accent-deep);line-height:1;letter-spacing:-.03em}
+.rh-gauge .cap{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-top:6px}
+.rh-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);margin-top:20px}
+.rh-stat{padding:16px 12px;text-align:center;border-right:1px solid var(--line)}
+.rh-stat:last-child{border-right:0}
+.rh-stat .v{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent-deep)}
+.rh-stat .k{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:4px}
+.rh-stat .v.alert{color:var(--warn)}
+.rh-runcheck{margin-top:18px;border:1px dashed var(--accent);padding:14px 18px}
+.rh-runcheck h3{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px}
+.rh-runrow{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
+.rh-runrow .field input{font-size:15px;padding:9px 11px}
+.rh-runverdict{font-family:var(--mono);font-size:13px;font-weight:700;margin-top:10px}
+/* article */
+.article-sec{margin:40px auto;max-width:780px}
+.article-sec h2{font-size:24px;letter-spacing:-.015em;margin:34px 0 12px;font-weight:800;color:var(--accent-deep)}
+.article-sec p{margin-bottom:14px}
+.article-sec ul,.article-sec ol{margin:0 0 14px 22px}
+.article-sec li{margin-bottom:6px}
+/* faq */
+.faq-sec{margin:36px auto;max-width:780px}
+.faq-sec h2{font-size:24px;font-weight:800;letter-spacing:-.015em;margin-bottom:16px;color:var(--accent-deep)}
+.faq-sec details{background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.faq-sec summary{padding:15px 18px;font-weight:700;cursor:pointer;list-style:none;font-size:16px}
+.faq-sec summary::-webkit-details-marker{display:none}
+.faq-sec summary:hover{color:var(--accent)}
+.faq-sec details[open] summary{border-bottom:1px solid var(--line);color:var(--accent-deep)}
+.faq-sec details p{padding:14px 18px;font-size:15px}
+/* footer */
+.fx-footer{background:var(--accent-deep);color:#e3eef6;margin-top:44px;padding:40px 0 34px}
+.fx-footer .fx-brand{font-size:22px;font-weight:800;margin-bottom:8px;color:#fff}
+.fx-footer p{font-size:15px;color:#b9cfdf;max-width:640px;margin-bottom:14px}
+.fx-footer nav{display:flex;gap:18px;margin-bottom:16px}
+.fx-footer nav a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent)}
+.fx-credit{font-size:14px!important}
+.fx-credit a{color:#9cc8e8;font-weight:700}
+@media(max-width:760px){
+  .rh-grid{grid-template-columns:1fr}
+  .rh-stats{grid-template-columns:1fr 1fr}
+  .rh-stat:nth-child(2){border-right:0}
+  .rh-stat{border-bottom:1px solid var(--line)}
+  .rh-stat:nth-child(3),.rh-stat:nth-child(4){border-bottom:0}
+  .rh-runrow{grid-template-columns:1fr}
+  .fx-nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+<header class="fx-header">
+  <div class="fx-container">
+    <a class="fx-logo" href="https://fun.fixoraa.tech/rangehood/" aria-label="RangeHood home">
+      <span class="fx-tile" aria-hidden="true">R</span>
+      <span class="fx-name">RangeHood</span>
+    </a>
+    <nav class="fx-nav" aria-label="Site">
+      <a class="fx-btn" href="https://fixoraa.tech">Home</a>
+      <a class="fx-btn solid" href="https://fixoraa.tech">More Tools</a>
+      <span class="fx-badge">&#8734; Unlimited Free Usage</span>
+    </nav>
+  </div>
+</header>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pt-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:728px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <div class="origin-top scale-[0.44] sm:scale-100 shrink-0">
+        <script>
+          atOptions = { 'key' : '4e68ac77881c17fe128a46565d9a4e8c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+        </script>
+        <script src="https://www.highrevenueformat.com/4e68ac77881c17fe128a46565d9a4e8c/invoke.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="fx-container">
+  <section class="rh-hero">
+    <div class="rh-eyebrow">Ventilation Spec · No. RH-400</div>
+    <h1>Range Hood CFM Calculator</h1>
+    <p>Two sizing methods, one honest answer. Enter your cooktop and get the CFM, the duct size, and whether code demands makeup air.</p>
+  </section>
+
+  <section class="rh-card" aria-label="RangeHood tool">
+    <div class="rh-tabs" id="rh-tabs" role="tablist" aria-label="Cooktop fuel">
+      <button type="button" role="tab" data-mode="gas" class="on" aria-selected="true">Gas</button>
+      <button type="button" role="tab" data-mode="electric" aria-selected="false">Electric</button>
+      <button type="button" role="tab" data-mode="induction" aria-selected="false">Induction</button>
+    </div>
+    <div class="rh-body">
+      <div class="rh-grid">
+        <div class="field" id="rh-btufield">
+          <label for="rh-btu">Total burner output <small>add up all burners, BTU/hr</small></label>
+          <input type="number" id="rh-btu" value="56000" min="0" max="200000" step="1000">
+        </div>
+        <div class="field">
+          <label for="rh-width">Cooktop width <small>inches, wall-hood sizing</small></label>
+          <input type="number" id="rh-width" value="30" min="12" max="72" step="1">
+        </div>
+      </div>
+      <div class="rh-compare" aria-live="polite">
+        <span>BTU method: <b id="rh-m1">–</b></span>
+        <span>Width method: <b id="rh-m2">–</b></span>
+      </div>
+      <div class="rh-gauge">
+        <div class="cfm" id="rh-cfm">–</div>
+        <div class="cap">Recommended CFM</div>
+      </div>
+      <div class="rh-stats" aria-live="polite">
+        <div class="rh-stat"><div class="v" id="rh-duct">–</div><div class="k">Duct diameter</div></div>
+        <div class="rh-stat"><div class="v" id="rh-makeup">–</div><div class="k">Makeup air</div></div>
+        <div class="rh-stat"><div class="v" id="rh-hoodw">–</div><div class="k">Min hood width</div></div>
+        <div class="rh-stat"><div class="v" id="rh-sone">–</div><div class="k">Noise target</div></div>
+      </div>
+      <div class="rh-runcheck">
+        <h3>Duct run check</h3>
+        <div class="rh-runrow">
+          <div class="field"><label for="rh-runlen">Straight duct (ft)</label><input type="number" id="rh-runlen" value="20" min="0" max="120" step="1"></div>
+          <div class="field"><label for="rh-runelb">90° elbows</label><input type="number" id="rh-runelb" value="2" min="0" max="8" step="1"></div>
+          <div class="rh-runverdict" id="rh-runverdict">–</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-sec" aria-label="Guide">
+    <h2>Why CFM Is the Number That Decides Everything</h2>
+    <p>Walk into any appliance showroom and the range hoods shout their CFM — cubic feet per minute, the volume of air the blower moves. It is the single number that decides whether your hood actually clears the kitchen or just makes expensive noise above the stove. Too little CFM and grease films every cabinet, steam condenses on the windows, and gas combustion byproducts linger in the air you breathe. Too much CFM without planning and you have bought a wind tunnel that needs makeup air, oversized duct, and an understanding inspector. Sizing is a Goldilocks problem, and it starts with the two methods below.</p>
+    <p>The confusion is understandable because the "right" number genuinely differs by fuel. A gas burner is an open flame: it dumps far more heat into the room than an electric element of the same cooking power, and it produces combustion byproducts — carbon monoxide, nitrogen dioxide, water vapor — that must be exhausted, not merely filtered. Electric and induction put almost all their energy into the pan, so the hood's job is mostly grease and steam. Any sizing method that ignores fuel is guessing.</p>
+    <h2>Method 1: The BTU Rule for Gas</h2>
+    <p>For gas cooktops, the industry rule is beautifully simple: <strong>1 CFM per 100 BTU</strong> of total burner output. Add up every burner — the searing 18,000-BTU power burner, the simmer burners, the griddle if you have one — and divide by 100. A typical 30-inch gas range totals 40,000 to 60,000 BTU, which lands at 400 to 600 CFM. A 48-inch pro-style range can total 100,000+ BTU and honestly needs 1,000+ CFM, at which point the conversation becomes about makeup air and commercial-style duct.</p>
+    <p>Where do you find the BTU? The rating plate inside the oven door or the installation manual lists each burner. When in doubt, use the manufacturer's total input rating — it is printed on the spec sheet. And size for the burners you <em>have</em>, not the ones you usually light; Thanksgiving only comes once a year, but the hood has to survive it.</p>
+    <h2>Method 2: The Width Rule for Electric and Induction</h2>
+    <p>For electric and induction, use <strong>100 CFM per linear foot</strong> of cooktop width. A 30-inch cooktop is 2.5 feet, so 250 CFM. A 36-inch cooktop wants 300 CFM. This method also serves as the sanity check for gas: a 30-inch gas range should never go below 300 CFM even if the BTU math somehow says less, because the hood still has to cover the physical width of the cooking surface and capture the rising plume.</p>
+    <p>This calculator runs both methods and recommends the <strong>larger</strong> result, rounded up to the next 50 CFM — because hoods come in standard sizes and rounding up is the direction that preserves capture. That "take the max" step is the whole point: competitors that show one number are hiding the disagreement between the methods.</p>
+    <h2>Hood Width and Mounting Height</h2>
+    <p>CFM without coverage is wasted. The hood should be <strong>at least as wide as the cooktop</strong> — and 6 inches wider (3 inches of overhang per side) is the pro move for wall hoods, because the cooking plume spreads as it rises. Island hoods, which lack a wall to help funnel air, deserve the wider size even more. Mounting height matters just as much: follow the manufacturer's instructions first, but the typical range is 24–30 inches above gas and 20–24 above electric. Every inch higher widens the capture area the hood must cover, which is why high-mounted statement hoods need more CFM than the formulas suggest.</p>
+    <h2>Duct Size: The Bottleneck Nobody Prices In</h2>
+    <p>A 900 CFM blower connected to a 6-inch duct is a 400 CFM system that screams. Duct diameter must grow with airflow: roughly <strong>6 inches to 400 CFM, 7 inches to 650, 8 inches to 950, 9 inches to 1,250</strong>, and 10 inches beyond. The physics is unforgiving — halve the duct area and velocity must double for the same flow, and noise rises with roughly the fifth power of velocity. An undersized duct does not just underperform; it converts your expensive blower into a noise machine.</p>
+    <p>Keep the run short and straight: each 90-degree elbow costs about 10 feet of equivalent length in range-hood duct, and the practical cap for a residential run is about 50 equivalent feet. Use smooth rigid metal, never flexible, and terminate outside with a proper cap — the same discipline as dryer venting, at higher stakes.</p>
+    <h2>Makeup Air: The 400 CFM Tripwire</h2>
+    <p>Here is the clause that surprises buyers of powerful hoods: the International Residential Code (M1503.6) requires <strong>mechanical makeup air for exhaust over 400 CFM</strong>. A 600 CFM hood in a tight, modern house can pull the home negative enough to backdraft a furnace or water heater — spilling carbon monoxide into the living space — or simply refuse to move its rated air because there is nothing to replace it. The fix is an interlocked makeup-air damper that opens when the hood runs, sometimes with a small heater in cold climates.</p>
+    <p>This is not a reason to fear a 600 CFM hood; it is a reason to budget the makeup-air kit and mention it to your inspector <em>before</em> the drywall goes up. Many jurisdictions enforce this strictly, and retrofitting makeup air through finished walls is the expensive version.</p>
+    <h2>Noise: Sones, and Why Variable Speed Matters</h2>
+    <p>Hood noise is rated in <strong>sones</strong> — a 1-sone hood is whisper-quiet, 4 sones is normal conversation level, and cheap high-CFM hoods can hit 7+ sones, which is "shout over dinner" territory. The trick is that you rarely need full blast: a quality hood with a good variable-speed control spends 90% of its life at low speed moving 150–250 CFM nearly silently, with the big number reserved for searing and wok cooking. When comparing hoods, look at the sone rating <em>at working speed</em>, not just the max-CFM headline. Baffle filters, by the way, are quieter in practice than mesh filters because they stay cleaner and disturb airflow less.</p>
+    <h2>Ducted vs. Recirculating</h2>
+    <p>If you can duct outside, do — no exceptions worth discussing. Recirculating (ductless) hoods pass air through grease and charcoal filters and blow it back into the kitchen. They catch some grease and odor, but they return all the heat and moisture, do nothing for gas combustion byproducts, and the charcoal filters need regular replacement to keep even the odor performance. Recirculating is a legitimate last resort for apartments where ducting is impossible, not a design choice. For gas cooking especially, "ductless" should be read as "decorative."</p>
+    <h2>Capture, Filters, and the Details That Matter</h2>
+    <p>Capture efficiency — the fraction of the plume the hood actually catches — depends on depth as well as width: a 24-inch-deep hood captures far better than a shallow 18-inch one at the same CFM. Baffle filters (the interlocking metal channels on pro-style hoods) outperform mesh: they are dishwasher-safe, do not clog as fast, and maintain airflow. Clean them monthly; a grease-loaded filter is a fire load hanging over an open flame. And keep the duct clean too — kitchen exhaust ducts accumulate grease that is every bit as flammable as dryer lint, which is why commercial kitchens have mandated cleaning schedules and residential ones should borrow the habit.</p>
+    <h2>Island Hoods and Downdrafts</h2>
+    <p>Island cooktops are the hard case: no wall to assist capture, cross-drafts from every direction, and hoods that must hang higher for sightlines. Size island hoods generously — many designers add 50–100 CFM over the formula — and go wider than the cooktop. Downdraft vents, which pop up behind the cooktop and pull sideways, fight physics (heat rises) and consistently underperform overhead hoods of the same CFM; they are a compromise for islands where a hanging hood is unacceptable, not an equal alternative.</p>
+    <h2>Putting It All Together</h2>
+    <p>The workflow: total your BTUs (gas) or measure your width (electric/induction), take the larger of the two CFM methods, round up to the next standard size, size the duct to the CFM, and flag makeup air the moment you cross 400. Enter your numbers above and the calculator does the methods, the duct, and the code flag in one pass — then buy the quietest hood at that CFM with baffle filters and a real variable-speed control. Your cabinets, your windows, and your lungs will notice the difference within a week.</p>
+  </article>
+  <section class="faq-sec" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many CFM do I need for a gas range?</summary><p>Use 1 CFM for every 100 BTU of total burner output. A 56,000-BTU gas range needs about 560 CFM, rounded up to a 600 CFM hood. Also check the width method (about 100 CFM per linear foot of cooktop) and buy to the larger of the two numbers — this calculator does both and takes the maximum.</p></details>
+    <details><summary>What CFM range hood do I need for a 30-inch electric cooktop?</summary><p>About 250 CFM: electric and induction cooktops need roughly 100 CFM per linear foot of width, so a 30-inch (2.5-foot) cooktop needs 250 CFM. Gas needs more because combustion adds heat and byproducts — the same 30-inch width on gas typically needs 400 to 600 CFM depending on total BTU.</p></details>
+    <details><summary>When is makeup air required for a range hood?</summary><p>The International Residential Code (M1503.6) requires makeup air for exhaust systems over 400 CFM. A powerful hood in a tight modern house can depressurize the home, backdrafting furnaces and water heaters. Solutions include an interlocked makeup-air damper or a hood with a makeup-air kit — check with your local inspector before buying a 600+ CFM hood.</p></details>
+    <details><summary>What size duct does my range hood need?</summary><p>Match the duct to the CFM: up to 400 CFM works on 6-inch round duct, 400–650 CFM wants 7-inch, 650–950 CFM wants 8-inch, and 950–1250 CFM wants 9-inch. Undersized duct strangles a strong blower — a 900 CFM hood on 6-inch duct will be loud and move far less air than its rating. Keep the run short with minimal elbows.</p></details>
+    <details><summary>How high should a range hood be above the cooktop?</summary><p>Typically 24 to 30 inches above a gas cooktop and 20 to 24 inches above electric or induction, but always follow the hood manufacturer's instructions — they override rules of thumb. Too high and capture suffers; too low and you lose headroom and risk heat damage. Island hoods usually mount a few inches higher than wall hoods.</p></details>
+    <details><summary>Is a recirculating (ductless) range hood worth it?</summary><p>Only when ducting outside is truly impossible. Recirculating hoods filter grease and some odor through charcoal filters but return heat and moisture to the kitchen, and they do nothing for gas combustion byproducts. If you can run ductwork — even a short run out a side wall — a ducted hood of the same CFM performs dramatically better.</p></details>
+  </section>
+</main>
+<div class="no-print mx-auto max-w-6xl px-4 sm:px-6 pb-4" role="complementary" aria-label="Advertisement">
+  <div class="mx-auto text-center" style="max-width:300px">
+    <span class="block text-[10px] tracking-[0.18em] uppercase text-slate-400 mb-1.5">Advertisement</span>
+    <div class="flex justify-center overflow-hidden">
+      <script>
+      (function(grnp){
+      var d = document,
+          s = d.createElement('script'),
+          l = d.currentScript || d.scripts[d.scripts.length - 1];
+      s.settings = grnp || {};
+      s.src = "\/\/peacefulbicycle.com\/bnXtVJsnd.GElF0oYVWQcY\/Qe\/mf9qu-ZqUtlZk\/PzTHcx1LM\/jWIZwkMTj\/U\/t-NrzmUnyOMsj\/AzydO\/Qx";
+      s.async = true;
+      s.referrerPolicy = 'no-referrer-when-downgrade';
+      l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
+    </div>
+  </div>
+</div>
+<footer class="fx-footer">
+  <div class="fx-container">
+    <div class="fx-brand">RangeHood</div>
+    <p>RangeHood sizes your ventilation by both the BTU method and the cooktop-width method, then specs the duct diameter, checks the duct run, and flags makeup-air requirements.</p>
+    <nav aria-label="Footer">
+      <a href="https://fixoraa.tech">Home</a>
+      <a href="https://fixoraa.tech">More Tools</a>
+    </nav>
+    <p class="fx-credit">Made by <a href="https://fixoraa.tech">Fixoraa</a> &middot; Free forever, no signup.</p>
+  </div>
+</footer>
+<script>
+(function(){
+"use strict";
+function rangeMath(o){
+  var mode = o.mode || 'gas';
+  var btu = Math.max(0, parseFloat(o.btu)||0);
+  var width = Math.max(0, parseFloat(o.width)||0);
+  var btuCFM = mode === 'gas' ? btu/100 : 0;
+  var widthCFM = mode === 'gas' ? width*10 : (width/12)*100;
+  var raw = Math.max(btuCFM, widthCFM);
+  var rec = Math.ceil(raw/50 - 1e-9)*50;
+  var duct = rec<=400?6 : rec<=650?7 : rec<=950?8 : rec<=1250?9 : 10;
+  var makeup = rec > 400;
+  var runLen = Math.max(0, parseFloat(o.runLen)||0);
+  var runElb = Math.max(0, Math.round(parseFloat(o.runElb)||0));
+  var effRun = runLen + 10*runElb;
+  return {
+    btuCFM: Math.round(btuCFM), widthCFM: Math.round(widthCFM),
+    rec: rec, duct: duct, makeup: makeup,
+    hoodMin: Math.ceil(width) + '"',
+    noise: rec<=300 ? '≤ 3 sones easy' : rec<=600 ? 'get ≤ 4 sones' : 'get ≤ 6 sones',
+    effRun: effRun, runOK: effRun <= 50
+  };
+}
+window.__fx = { range: rangeMath };
+
+var mode = 'gas';
+function read(){
+  return { mode: mode,
+    btu: document.getElementById('rh-btu').value,
+    width: document.getElementById('rh-width').value,
+    runLen: document.getElementById('rh-runlen').value,
+    runElb: document.getElementById('rh-runelb').value };
+}
+function calc(){
+  var m = rangeMath(read());
+  document.getElementById('rh-m1').textContent = mode==='gas' ? m.btuCFM + ' CFM' : 'n/a (gas only)';
+  document.getElementById('rh-m2').textContent = m.widthCFM + ' CFM';
+  document.getElementById('rh-cfm').textContent = m.rec.toLocaleString('en-US');
+  document.getElementById('rh-duct').textContent = m.duct + '″';
+  var mu = document.getElementById('rh-makeup');
+  mu.textContent = m.makeup ? 'REQUIRED' : 'not needed';
+  mu.classList.toggle('alert', m.makeup);
+  document.getElementById('rh-hoodw').textContent = m.hoodMin;
+  document.getElementById('rh-sone').textContent = m.noise;
+  var rv = document.getElementById('rh-runverdict');
+  rv.textContent = m.effRun + ' ft equiv. — ' + (m.runOK ? 'OK ✓' : 'TOO LONG ✗');
+  rv.style.color = m.runOK ? '#184A6C' : '#A8641F';
+}
+document.getElementById('rh-tabs').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  mode = b.getAttribute('data-mode');
+  this.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); x.setAttribute('aria-selected','false'); });
+  b.classList.add('on'); b.setAttribute('aria-selected','true');
+  document.getElementById('rh-btufield').style.display = mode==='gas' ? '' : 'none';
+  calc();
+});
+['rh-btu','rh-width','rh-runlen','rh-runelb'].forEach(function(id){
+  var el = document.getElementById(id);
+  el.addEventListener('input', calc); el.addEventListener('change', calc);
+});
+calc();
+})();
+</script>
+</body>
+</html>
